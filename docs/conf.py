@@ -341,12 +341,13 @@ else:
         "use_edit_page_button": True,
         "use_repository_button": True,
         "navbar_center": ["back_to_main.html"],
-        "default_mode": "light",
+        # "default_mode": "light",
         }
 
     html_context = {
         "main_site_url": main_site_url,
         "main_site_text": main_site_text,
+        "default_mode": "dark"
     }
 
     # No html_sidebars for Sphinx Book Theme
