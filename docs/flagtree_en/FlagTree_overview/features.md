@@ -23,6 +23,7 @@ FlagTree includes the following main features:
 TLE-Lite, TLE-Struct, and TLE-Raw are the compiler hint languages, located in the middle layer of the AI ecosystem. The upper layer connects AI frameworks through graph compilers and operator libraries, while the lower layer connects to various hardware runtimes. 
 
 The following diagram demonstrates the location of TLE-Lite, TLE-Struct, and TLE-Raw in the AI ecosystem.
+
 ![alt text](../assets/images/three-level-tle.png)
 
 These three compiler hint languages provide different levels of performance optimizations for different users:
