@@ -12,7 +12,7 @@ for s in range(0, 2):  # @hint: bind_sub_block
     # ... code ...
 ```
 
-## Supported Hints
+## Supported hints
 
 The following tables list the optimization hints applicable to Triton operations for compilation on different backends.
 
