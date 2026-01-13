@@ -56,3 +56,7 @@ The following list includes the supported tools:
 
   - **Backend specific dependencies**  
     For more information, see [Install FlagTree for different backends](/getting_started/install.md#install-flagtree-for-different-backends).
+  
+  - **Features on different branches**
+    - Hints are available on specific branches. For more information, see [Use Hints](/user_guide/use-hints.md).
+    - TLE-Lite, TLE-Struct, and TLE-Raw are available on trition_3.5.x.
