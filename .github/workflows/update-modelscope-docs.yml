@@ -1,4 +1,3 @@
-```yaml
 name: Update ModelScope Documentation
 
 on:
@@ -21,68 +20,118 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: 🛎️ Checkout repository code
-      uses: actions/checkout@v4
+    - name: Checkout repository code
+      uses: actions/checkout@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch full history for proper git diff
     
-    - name: 🐍 Set up Python environment
+    - name: Set up Python environment
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
         cache: 'pip'
-        # Cache dependencies to improve subsequent run speed
-        cache-dependency-path: 'docs/scripts/requirements.txt'
+        cache-dependency-path: 'requirements.txt'
     
-    - name: 📦 Install Python dependencies
+    - name: Install Python dependencies
       run: |
-        # Install dependencies in the root directory, but specify the requirements.txt path
         pip install -r docs/scripts/requirements.txt
     
-    - name: 📥 Download ModelScope documentation
+    - name: Download ModelScope documentation
       id: download
       run: |
-        # Key fix: Execute script in the repository root directory and pass the correct path
-        cd /home/runner/work/test-github-actions/test-github-actions
+        cd "$GITHUB_WORKSPACE"
         python docs/scripts/download_readmes.py
-      continue-on-error: true
+      continue-on-error: true  # Continue even if some downloads fail
     
-    - name: 📊 Check for file changes
+    - name: Generate download report
+      id: generate-report
+      run: |
+        # Create a detailed download report file with success and failure information
+        REPORT_FILE="docs/flagrelease_en/model_readmes/download_report_$(date +'%Y%m%d_%H%M%S').txt"
+        echo "# ModelScope Documentation Update Report" > $REPORT_FILE
+        echo "## Generated on: $(date)" >> $REPORT_FILE
+        echo "## Workflow Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $REPORT_FILE
+        echo "" >> $REPORT_FILE
+        
+        # Count the number of updated files
+        if [ -d "docs/flagrelease_en/model_readmes/" ]; then
+          CHANGED_COUNT=$(git diff --name-only docs/flagrelease_en/model_readmes/ 2>/dev/null | wc -l || echo "0")
+          echo "## Summary" >> $REPORT_FILE
+          echo "- **Total changes detected:** $CHANGED_COUNT files" >> $REPORT_FILE
+          echo "" >> $REPORT_FILE
+          
+          if [ "$CHANGED_COUNT" -gt 0 ]; then
+            echo "## Changed Files" >> $REPORT_FILE
+            git diff --name-only docs/flagrelease_en/model_readmes/ | while read file; do
+              echo "- $file" >> $REPORT_FILE
+            done
+            echo "" >> $REPORT_FILE
+          fi
+        fi
+        
+        # Extract statistics from script output if available
+        echo "## Model Download Statistics" >> $REPORT_FILE
+        echo "- **Last run status:** ${{ job.status }}" >> $REPORT_FILE
+        echo "- **Trigger type:** ${{ github.event_name }}" >> $REPORT_FILE
+        if [ "${{ github.event_name }}" = "schedule" ]; then
+          echo "- **Schedule:** Daily at 02:00 UTC (10:00 Beijing Time)" >> $REPORT_FILE
+        fi
+        echo "" >> $REPORT_FILE
+        
+        echo "## Next Steps" >> $REPORT_FILE
+        echo "Please review the changes in the model documentation files above." >> $REPORT_FILE
+        echo "After merging this PR, the documentation will be updated on the main branch." >> $REPORT_FILE
+        
+        echo "report_file=$REPORT_FILE" >> $GITHUB_OUTPUT
+    
+    - name: Check for file changes
       id: check-changes
       run: |
         # Check if any files have been modified or added
         git add -N .
         if git diff --name-only --exit-code docs/flagrelease_en/model_readmes/; then
           echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "🔄 No file changes detected"
+          echo "No file changes detected"
         else
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "📝 File changes detected:"
+          echo "File changes detected:"
           git diff --name-only docs/flagrelease_en/model_readmes/
+          
+          # Calculate change statistics
+          ADDED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^A' || echo "0")
+          MODIFIED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^M' || echo "0")
+          echo "added_files=$ADDED_FILES" >> $GITHUB_OUTPUT
+          echo "modified_files=$MODIFIED_FILES" >> $GITHUB_OUTPUT
         fi
     
-    - name: 💾 Commit and push changes
+    - name: Create Pull Request
       if: steps.check-changes.outputs.has_changes == 'true'
-      run: |
-        # Configure Git user
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        
-        # Add changed files (only under flagrelease_en directory)
-        git add docs/flagrelease_en/model_readmes/
-        
-        # Commit changes
-        git commit -m "📚 Auto-update ModelScope documentation [$(date +'%Y-%m-%d %H:%M')]"
-        
-        # Push to repository
-        git push origin HEAD:${{ github.ref_name }}
-        echo "✅ Changes pushed to repository"
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "Auto-update ModelScope documentation [$(date +'%Y-%m-%d %H:%M')]"
+        title: "ModelScope Documentation Update - $(date +'%Y-%m-%d')"
+        body-path: ${{ steps.generate-report.outputs.report_file }}  # Use generated report as PR description
+        labels: |
+          documentation
+          auto-update
+          modelscope
+        branch: update/modelscope-docs-$(date +'%Y%m%d-%H%M%S')  # Unique branch name
+        delete-branch: true  # Auto-delete branch after PR merge
+        reviewers: ${{ github.event.pull_request.user.login }}
+        assignees: ${{ github.event.pull_request.user.login }}
+        draft: false
     
-    - name: 📋 Generate execution report
-      if: always()
+    - name: Generate execution summary
+      if: always()  # Run even if previous steps fail
       run: |
-        echo "Workflow execution status: ${{ job.status }}"
-        echo "Changes detected: ${{ steps.check-changes.outputs.has_changes }}"
-        echo "Completion time: $(date)"
-```
+        echo "## Workflow Execution Summary"
+        echo "- **Status:** ${{ job.status }}"
+        echo "- **Changes detected:** ${{ steps.check-changes.outputs.has_changes }}"
+        if [ "${{ steps.check-changes.outputs.has_changes }}" = "true" ]; then
+          echo "- **Added files:** ${{ steps.check-changes.outputs.added_files }}"
+          echo "- **Modified files:** ${{ steps.check-changes.outputs.modified_files }}"
+        fi
+        echo "- **Completion time:** $(date)"
+        echo "- **Workflow run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"

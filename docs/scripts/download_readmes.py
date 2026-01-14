@@ -7,6 +7,7 @@ and download files to docs/flagrelease_en/model_readmes/
 import os
 import sys
 import shutil
+
 from modelscope.hub.snapshot_download import snapshot_download
 
 def download_models():
