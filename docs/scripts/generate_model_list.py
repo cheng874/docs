@@ -1,98 +1,145 @@
 #!/usr/bin/env python3
 """
-Automatically generate model list for the FlagRelease organization.
+Automatically fetch the list of all models for the FlagRelease organization via the ModelScope official API.
+Version: 2.1 (Enhanced detection, compatible with both dictionary and list types for the Model field)
 """
 
-import os
 import requests
 import json
+import time
+import os
+from collections import Counter
 
-def get_flagrelease_models():
-    """Fetch all models under the FlagRelease organization from ModelScope."""
-    organization = "FlagRelease"
-    models = []
+def fetch_all_models():
+    url = "https://modelscope.cn/api/v1/dolphin/models"
+    all_models = []
     page = 1
-    page_size = 100
-
-    print(f"Fetching model list for organization: {organization}...")
-
-    while True:
-        # API for the organization page on ModelScope (unofficial API, but usually stable)
-        url = f"https://modelscope.cn/api/v1/organization/{organization}/models"
-        params = {
-            "PageSize": page_size,
-            "PageNumber": page
-        }
-
+    page_size = 20
+    
+    payload_template = {
+        "PageSize": page_size,
+        "PageNumber": 1,
+        "SortBy": "GmtModified",
+        "Name": "",
+        "IncludePrePublish": True,
+        "Criterion": [{"category": "organizations", "predicate": "contains", "values": ["FlagRelease"]}]
+    }
+    
+    headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Referer': 'https://modelscope.cn/organization/FlagRelease?tab=model',
+        'Origin': 'https://modelscope.cn',
+    }
+    
+    print(f"Starting to fetch model list ({page_size} per page)...")
+    
+    while page <= 50: # Safety upper limit
+        payload_template["PageNumber"] = page
         try:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
-            data = response.json()
-
-            if not data.get("Data"):
+            print(f"  Fetching page {page}...")
+            resp = requests.put(url, headers=headers, data=json.dumps(payload_template), timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            
+            # 1. Check basic response structure
+            if data.get('Code') not in [200, '200']:
+                print(f"    Abnormal response code: {data.get('Code')} - {data.get('Message')}")
                 break
-
-            # Extract model IDs
-            for item in data["Data"]:
-                model_id = item.get("Name")  # Format like "FlagRelease/ModelName"
-                if model_id:
-                    models.append(model_id)
-                    print(f"  Found: {model_id}")
-
-            # Check if there are more pages
-            total = data.get("Total", 0)
-            print(f"  Page {page}, found {len(models)}/{total} models in total")
-
-            if len(models) >= total or len(data["Data"]) < page_size:
+            
+            data_field = data.get('Data', {})
+            if not isinstance(data_field, dict):
+                print(f"    The 'Data' field is not a dictionary: {type(data_field)}")
                 break
-
+            
+            # 2. Core: Intelligently parse the 'Model' field
+            model_container = data_field.get('Model')
+            items_to_process = []
+            
+            if isinstance(model_container, list):
+                print(f"    The 'Model' field is a list, length: {len(model_container)}")
+                items_to_process = model_container
+            elif isinstance(model_container, dict):
+                print(f"    The 'Model' field is a dictionary, its keys: {list(model_container.keys())}")
+                # Try to find a list within this dictionary
+                possible_list_keys = ['Items', 'Models', 'List', 'records', 'data', 'hits']
+                found = False
+                for key in possible_list_keys:
+                    if key in model_container and isinstance(model_container[key], list):
+                        items_to_process = model_container[key]
+                        print(f"      Found a list in Model['{key}'], length: {len(items_to_process)}")
+                        found = True
+                        break
+                if not found:
+                    print("      Warning: No common list field found in the Model dictionary.")
+            else:
+                print(f"    Unexpected type for 'Model' field: {type(model_container)}")
+            
+            # 3. Process the found model entries
+            current_page_count = 0
+            if items_to_process:
+                for item in items_to_process:
+                    model_id = None
+                    if isinstance(item, dict):
+                        # Try multiple possible field names
+                        model_id = item.get('model_id') or item.get('ModelId') or item.get('id')
+                        if not model_id and item.get('Name'):
+                            org = item.get('Organization', {}).get('Name', 'FlagRelease')
+                            model_id = f"{org}/{item['Name']}"
+                    
+                    if model_id:
+                        if not model_id.startswith('FlagRelease/'):
+                            model_id = f"FlagRelease/{model_id}"
+                        if model_id not in all_models:
+                            all_models.append(model_id)
+                            current_page_count += 1
+                            if current_page_count <= 3: # Print only the first 3 per page to avoid clutter
+                                print(f"      Found: {model_id}")
+                print(f"    Page {page} extracted {current_page_count} new models.")
+            else:
+                print(f"    Page {page} has no processable model entries.")
+            
+            # 4. Pagination judgment
+            if current_page_count < page_size:
+                print(f"    Reached the last page (items on this page {current_page_count} < {page_size}), stopping pagination.")
+                break
+                
             page += 1
-
+            time.sleep(0.3)
+            
         except Exception as e:
-            print(f"  Error fetching page {page}: {e}")
+            print(f"  Error processing page {page}: {type(e).__name__}: {e}")
             break
+    
+    return all_models
 
-    return models
-
-def main():
-    # 1. Fetch all models
-    models = get_flagrelease_models()
-
+if __name__ == '__main__':
+    print("=" * 60)
+    print("FlagRelease Organization Model List Fetcher v2.1 (Enhanced Detection)")
+    print("=" * 60)
+    models = fetch_all_models()
+    
     if not models:
-        print("⚠️  No models found, keeping existing list.")
-        return
-
-    print(f"\n Found {len(models)} models in total.")
-
-    # 2. Sort and deduplicate
-    models = sorted(set(models))
-
-    # 3. Write to file
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    list_file = os.path.join(script_dir, '..', 'flagrelease_en', 'model_list.txt')
-
-    with open(list_file, 'w', encoding='utf-8') as f:
-        for model in models:
-            f.write(f"{model}\n")
-
-    print(f"📁 Model list updated to: {list_file}")
-
-    # 4. Display statistics
-    print("\n Statistics:")
-    print(f"  Total models: {len(models)}")
-
-    # Group statistics by prefix
-    prefix_count = {}
-    for model in models:
-        # Extract the part after the organization name
-        parts = model.split('/')
-        if len(parts) > 1:
-            prefix = parts[1].split('-')[0] if '-' in parts[1] else parts[1][:10]
-            prefix_count[prefix] = prefix_count.get(prefix, 0) + 1
-
-    print(f"  Model series: {len(prefix_count)} different series")
-    for prefix, count in sorted(prefix_count.items(), key=lambda x: x[1], reverse=True)[:5]:
-        print(f"    - {prefix}: {count} models")
-
-if __name__ == "__main__":
-    main()
+        print("\nWarning: Failed to fetch models. Please run diagnostics or check network.")
+    else:
+        unique_models = sorted(set(models))
+        print(f"\nSuccessfully fetched {len(unique_models)} unique models.")
+        
+        # Save the file (adjust the path according to your project structure)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        output_path = os.path.normpath(os.path.join(script_dir, '..', 'flagrelease_en', 'model_list.txt'))
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            for model in unique_models:
+                f.write(f"{model}\n")
+        print(f"List saved to: {output_path}")
+        
+        # Simple statistics
+        series_counter = Counter()
+        for model in unique_models:
+            short_name = model.replace('FlagRelease/', '')
+            series = short_name.split('-')[0] if '-' in short_name else short_name[:10]
+            series_counter[series] += 1
+        print(f"Total of {len(series_counter)} different model series.")
