@@ -90,22 +90,12 @@ jobs:
       run: |
         # Check if any files have been modified or added
         git add -N .
-        if git diff --name-only --exit-code docs/flagrelease_en/model_readmes/; then
-          echo "has_changes=false" >> $GITHUB_OUTPUT
+        if git diff --quiet docs/flagrelease_en/model_readmes/ 2>/dev/null; then
           echo "No file changes detected"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
         else
+          echo "File changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "File changes detected:"
-          git diff --name-only docs/flagrelease_en/model_readmes/
-          
-          # Calculate change statistics
-          ADDED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^A' || echo "0")
-          MODIFIED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^M' || echo "0")
-          {
-            echo "has_changes=true"
-            echo "added_files=$ADDED_FILES"
-            echo "modified_files=$MODIFIED_FILES"
-          } >> $GITHUB_OUTPUT
         fi
     
     - name: Create Pull Request
