@@ -11,7 +11,7 @@ from typing import List, Dict, Tuple, Set
 from datetime import datetime
 import hashlib
 
-# 添加项目根目录到Python路径
+# Add project root directory to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
 def get_flagos_models() -> List[Dict]:
@@ -118,25 +118,25 @@ def extract_model_names_from_markdown(filename: str) -> Set[str]:
         with open(filename, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         
-        # 跳过标题行和表格分隔行
+        # Skip header lines and table separator lines
         in_table = False
         for line in lines:
             line = line.strip()
             
-            # 检查是否进入表格部分
+            # Check if entering table section
             if line.startswith('| Model Name |'):
                 in_table = True
                 continue
             
-            # 如果是表格分隔行，跳过
+            # If it's a table separator line, skip
             if in_table and line.startswith('|---'):
                 continue
             
-            # 处理表格行
+            # Process table rows
             if in_table and line.startswith('|'):
-                # 分割行并获取模型名称（第二列，索引1）
+                # Split the line and get model name (second column, index 1)
                 parts = [part.strip() for part in line.split('|')]
-                if len(parts) >= 3:  # 至少有 Model Name 和 Website 两列
+                if len(parts) >= 3:  # At least have Model Name and Website columns
                     model_name = parts[1]
                     if model_name and not model_name.startswith('---'):
                         model_names.add(model_name)
@@ -174,9 +174,7 @@ def create_markdown_table(models: List[Dict]) -> Tuple[str, Set[str]]:
     model_data.sort(key=lambda x: x[0].lower())
     
     # Create Markdown table
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    markdown = f"# Model on aihuanxin\n\n"
-    markdown += f"*Last updated: {current_time}*\n\n"
+    markdown = f"# Models on AI Huanxin\n\n"
     markdown += "| Model Name | Website |\n"
     markdown += "|------------|---------|\n"
     
@@ -213,12 +211,12 @@ def main():
     print("Model List Update Script")
     print(f"{'='*60}")
     
-    # Configuration - 根据你的目录结构调整
+    # Configuration - adjust according to your directory structure
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.join(script_dir, '../..')
     output_filename = os.path.join(repo_root, "docs/flagrelease_en/modle-list/model-list-aihuanxin.md")
     
-    # 确保输出目录存在
+    # Ensure output directory exists
     output_dir = os.path.dirname(output_filename)
     os.makedirs(output_dir, exist_ok=True)
     
@@ -233,15 +231,15 @@ def main():
     
     if not models:
         print("\n❌ No models retrieved from API")
-        # 如果API失败但仍然需要继续，我们可以使用现有文件
+        # If the API fails but we need to continue, we can use the existing file
         if os.path.exists(output_filename):
             print("  Using existing file as fallback")
             with open(output_filename, 'r', encoding='utf-8') as f:
                 existing_content = f.read()
-            # 退出码1表示无变化
+            # Exit code 1 means no changes
             exit(1)
         else:
-            exit(2)  # 退出码2表示API失败且无现有文件
+            exit(2)  # Exit code 2 means API failure and no existing file
     
     # Create new markdown table
     print("\n3. Creating new markdown table...")
@@ -279,7 +277,7 @@ def main():
         
         print(f"   ✓ File updated successfully")
         
-        # 创建变更日志文件
+        # Create change log file
         summary_filename = os.path.join(script_dir, "model-update-summary.txt")
         with open(summary_filename, 'w', encoding='utf-8') as f:
             f.write(f"Model List Update Summary\n")
