@@ -2,7 +2,7 @@ name: Update All Model Lists
 
 on:
   schedule:
-    # 每天UTC时间4点运行（北京时间12点）
+    # Run daily at 4:00 UTC (12:00 Beijing time)
     - cron: '0 4 * * *'
   
   workflow_dispatch:
