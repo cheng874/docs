@@ -12,6 +12,14 @@ on:
         required: false
         default: 'Manual update all model lists'
 
+    # Trigger when model_list.txt or workflow files change
+  push:
+    paths:
+      - '.github/workflows/update-all-models.yml'
+      - 'docs/scripts/update_models_aihuanxin.py'      
+      - 'docs/scripts/update_models_huggingface.py'
+      - 'docs/scripts/update_models_modelscope.py'
+
 jobs:
   update-aihuanxin:
     runs-on: ubuntu-latest
