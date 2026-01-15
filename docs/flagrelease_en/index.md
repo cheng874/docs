@@ -49,5 +49,5 @@ getting_started/getting-started.md
 :maxdepth: 5
 :hidden:
 
-model-list.md
+modle_list/model-list.md
 ```
