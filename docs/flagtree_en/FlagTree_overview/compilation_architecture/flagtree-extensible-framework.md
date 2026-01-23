@@ -5,6 +5,7 @@ FlagTree extensible framework is specifically designed to support multi-backend 
 - **Backend extensions**: FlagTree follows a plugin-based architecture, where each backend is self-contained in `third_party/[backend_name]/`. Each backend implements the BaseBackend interface, defines its compilation pipeline through `add_stages()`, and provides backend-specific optimizations and code generation. This design allows adding new backends without modifying the core Triton code.
 
 - **Language and compiler optimization extensions**: For existing Triton code, FlagTree adopts incremental extensions for full compatibility with native Triton. These extensions include the following modification to the common architecture:
+  
   - Adding `flagtree_hints` parameter to `load()` in `core.py` and `semantic.py`
   - Parsing `#@hint:` comments in `jit.py` and extracting hints in `code_generator.py`
   - Dispatching to TLE modules via module_map mechanism in `code_generator.py`
