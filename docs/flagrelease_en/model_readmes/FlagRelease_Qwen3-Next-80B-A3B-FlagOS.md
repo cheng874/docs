@@ -1,66 +1,83 @@
+---
+base_model:
+- ""
+---
 # Introduction
-新模型介绍，待定....
+Leveraging the cross-chip capabilities of FlagOS, a unified open-source system software stack purpose-built for diverse AI chips, the FlagOS community completed full adaptation, accuracy alignment, enabling the simultaneous adaptation and launch of Qwen3-Next-80B-A3B-FlagOS on nvidia chips:
 
 ### Integrated Deployment
-- Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Mthreads** container image supporting deployment within minutes
+- Out-of-the-box inference scripts with pre-configured hardware and software parameters
+- Released **FlagOS-nvidia** container image supporting deployment within minutes
 ### Consistency Validation
-- Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
-
+- Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | Qwen3-8B-mthreads-FlagOS-Origin | Qwen3-8B-mthreads-FlagOS-FlagOS |
-|--------------|---------------------------------|---------------------------------|
-| GPQA_Diamond | 0 | 0 |
-| ERQA | - | - |
-| Aime24 | - | - |
+| Metrics | Qwen3-Next-80B-A3B-Origin | Qwen3-Next-80B-A3B-FlagOS |
+|---------|--------|--------|
+| AIME | 80.0 | 83.33 |
+| GPQA | 64.26 | 67.2 |
+| LiveBench | 65.24 | 77.02 |
+| MMLU | 71.46 | 81.18 |
+| MUSR | 53.17 | 60.85 |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | 24.0.7
-24.0.7
-22.04.1 |
-| Operating System | Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
+| Docker Version   | 24.0.0 |
+| Operating System | Ubuntu 24.04.3 LTS (Noble Numbat) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-mthreads-release-model_qwen3-8b-tree_0.5.0.mthreads3.1-gems_5.0.1rc0-cx_none-python_3.10.12-torch_musa-2.7.1-pcp_musa4.3.5-gpu_mthreads-arc_amd64-driver_x:202605251504
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-nvidia-release-model_qwen3-next-80b-a3b-tree_none-gems_4.2.1rc0-scale_none-cx_none-python_3.12.3-torch_cuda-2.9.0-pcp_cuda13.1-gpu_nvidia003-arc_amd64-driver_570.158.01:202603301645
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3-8B-mthreads-FlagOS --local_dir /data/Qwen3-8B-mthreads-FlagOS
+modelscope download --model Qwen/Qwen3-Next-80B-A3B --local_dir /data/models/Qwen3-Next-80B-A3B
 ```
 
 ### Start the Container
 ```bash
-docker run -d --name flagos --net=host --ipc=host --privileged --shm-size=16g --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --tmpfs /tmp:exec -e MTHREADS_VISIBLE_DEVICES=all -e MTHREADS_DRIVER_CAPABILITIES=all -v /data:/data harbor.baai.ac.cn/flagrelease-public/flagrelease-mthreads-release-model_qwen3-8b-tree_0.5.0.mthreads3.1-gems_5.0.1rc0-cx_none-python_3.10.12-torch_musa-2.7.1-pcp_musa4.3.5-gpu_mthreads-arc_amd64-driver_x:202605251504 sleep infinity
+docker run --init --detach --net=host --uts=host --ipc=host --security-opt=seccomp=unconfined --privileged=true --ulimit stack=67108864 --ulimit memlock=-1 --ulimit nofile=1048576:1048576 --shm-size=32G -v /data:/data --gpus all --name flagos  harbor.baai.ac.cn/flagrelease-public/flagrelease-nvidia-release-model_qwen3-next-80b-a3b-tree_none-gems_4.2.1rc0-scale_none-cx_none-python_3.12.3-torch_cuda-2.9.0-pcp_cuda13.1-gpu_h20-3e-arc_amd64-driver_570.158.01_260330:202603301356  sleep infinity
+docker exec -it flagos /bin/bash
 ```
 ### Start the Server
 ```bash
-vllm serve /data/Qwen3-8B-FlagOS \
---host 0.0.0.0 --port 8000 \
---tensor-parallel-size 1 \
---served-model-name Qwen3-8B \
---trust-remote-code
+VLLM_USE_DEEP_GEMM=0 vllm serve \
+/data/models/qwen3-next \
+--served-model-name qwen3_next_80b_a3b \
+--host 0.0.0.0 --port 8888 \
+--tensor-parallel-size 2 \
+--gpu-memory-utilization 0.85 \
+--max-num-batched-tokens 8192 \
+--max-num-seqs 1024 \
+--compilation-config '{"cudagraph_mode": "FULL_AND_PIECEWISE"}'
 ```
 
 ## Service Invocation
 ### Invocation Script
-```bash
-curl http://localhost:8000/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "Qwen3-8B",
-    "messages": [{"role": "user", "content": "你好"}]
-  }'
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="EMPTY",
+    base_url="http://<ip>:8888"
+)
+
+response = client.chat.completions.create(
+    model="qwen3_next_80b_a3b",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+print(response.choices[0].message.content)
 ```
 
 
@@ -101,7 +118,6 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ model evaluations across NLP, CV, Audio, and Multimodal fields, covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizontal evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
-
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -111,4 +127,5 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Qwen3-8B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+本模型的权重来源于Qwen/Qwen3-Next-80B-A3B，以apache2.0协议开源: https://www.apache.org/licenses/LICENSE-2.0.txt。
+
