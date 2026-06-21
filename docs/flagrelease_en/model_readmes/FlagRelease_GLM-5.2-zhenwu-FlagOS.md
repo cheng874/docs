@@ -6,86 +6,92 @@ language:
 ---
 
 # Introduction
-MiniMax M3, released on June 1st, is the first Chinese model to simultaneously deliver frontier coding/agentic capabilities, 1M ultra-long context, and native multimodality — and the only open-source model in the world with all three. The core innovation is a proprietary MSA sparse attention architecture: at 1M context, compute per token is just 1/20th of the previous generation, with 9× prefilling speedup and 15× decoding speedup. On SWE-Bench Pro, M3 scores 59.0%, surpassing GPT-5.5 and Gemini 3.1 Pro, and approaching Opus 4.7; on the multimodal benchmark OmniDocBench, it also outperforms Gemini 3.1 Pro. In real-world tests, M3 autonomously ran for nearly 12 hours to successfully reproduce an ICLR award-winning paper, and within ~24 hours pushed FP8 GEMM kernel utilization from 7.6% to 71.3% — a 9.4× speedup.
+Zhipu officially released its next-generation open-source flagship model **GLM-5.2**, the latest flagship targeting **Long Horizon Tasks**. Compared to its predecessor GLM-5.1, it achieves a significant leap in long-horizon task capabilities and is open-sourced under the **MIT License**. The **FlagOS Zhongzhi Community** completed multi-chip adaptation and inference deployment at the first opportunity, currently covering four chips:
+**Moore Threads S5000, T-Head 810E, Metax C550 and Hygon DCU BW1000**.
+
+Developers can rapidly deploy via the FlagOS unified, open-source software stack; model files and deployment guides are simultaneously available on **ModelScope** and **HuggingFace**. GLM-5.2 is a model featuring a stable and usable **1M context window**, purpose-built for Long Horizon Tasks. Its core capabilities include:
+
+- **Solid 1M context**: Stably supports a 1,000,000-token context window for long-horizon workloads
+- **Flexible advanced coding**: Enhanced coding capabilities with support for multiple inference effort levels to balance performance and latency
+- **Improved architecture**: Introduces **IndexShare**, which reuses the same indexer across every four sparse attention layers, reducing per-token FLOPs by 2.9× at 1M context length; improves the MTP layer to support speculative decoding, increasing acceptance length by up to **20%**
+- **Fully open-source**: MIT license, with no geographic restrictions
+
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Nvidia** container image supporting deployment within minutes
+- Released **FlagOS-Zhenwu** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Nvidia-FlagOS |
-|--------------|-------------------------------|--------------------------|
-| GPQA_Diamond | 86.36                             | 84.77                    |
-| ERQA         | 52.25                            | 52.75                    |
+| Metrics      | GLM-5.2-Nvidia-Origin | GLM-5.2-Zhenwu-FlagOS |
+|--------------|-------------------------------|-----------------------|
+| GPQA_Diamond | 85.85                 | 84.62                 |
+| musr_generative        | 69.2                  | Evaluating            |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
-| Operating System | 22.04.4 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 28.1.0, build 4d8c241 |
+| Operating System | Ubuntu 24.04.2 LTS |
 
 ## Operation Steps
+The image for this task is exported from Alibaba Cloud PAI and can be used on Alibaba Cloud EAS and DSW, both of which are container‑based resource services. For detailed instructions on how to use this image, please contact the PAI platform support team. The task released by BAAI is developed based on the container environment launched via the PAI platform.
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-glm5.2-zhenwu-tree_none-gems_5.0.2-vllm_0.20.2_empty-plugin_0.2.0rc2.post1_g672dedc42-cx_none-python_3.12.3-torch_2.10.0-pcp_hggc13.0-gpu_pp001-arc_amd64-driver_1.3.2-d7f5a2:202606161003
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/MiniMax-M3-nvidia-FlagOS --local_dir /data/MiniMax-M3
+modelscope download --model FlagRelease/GLM-5.2-zhenwu-FlagOS --local_dir /data/GLM-5.2
 ```
 
-### Start the Container
-```bash
-docker run -d --name flagos-m3 \
-    --gpus all \
-    --network host \
-    --ipc host \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    -v /dev/shm:/dev/shm \
-    -v /root/.cache:/root/.cache \
-    -v /data:/data \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536 \
-    sleep infinity
-```
 ### Start the Server
 ```bash
-export FLASHINFER_DISABLE_VERSION_CHECK=1
-export USE_FLAGGEMS=1
-export SGLANG_FL_OOT_ENABLED=1
-export SGLANG_FL_PREFER=flagos
+export NCCL_ALGO=Ring              # 跨机用 Ring 算法更稳定
+export NCCL_MIN_NCHANNELS=16       # 增加并行通道数（默认8）
+export NCCL_NTHREADS=512           # NCCL 线程数
+export NCCL_IB_GID_INDEX=3         # RoCE 网络优化
+export NCCL_SOCKET_IFNAME=eth0
 
-python3 -m sglang.launch_server \
-  --model-path /data/MiniMax-M3 \
-  --tp 8 --trust-remote-code --port 30000 --host 0.0.0.0 \
-  --dtype bfloat16 --quantization mxfp8 \
-  --attention-backend flashinfer \
-  --mem-fraction-static 0.80 \
-  --max-total-tokens 414018 \
-  --chunked-prefill-size 4096 \
-  --max-prefill-tokens 16384 \
-  --disable-custom-all-reduce
+# In node 0
+VLLM_RPC_TIMEOUT=3000 NCCL_DEBUG=INFO VLLM_PLUGINS=fl nohup vllm serve /data/GLM-5.2 \
+--served-model-name "glm5.2" --host 0.0.0.0 --port 8000 \
+--tensor-parallel-size 32 \
+--nnodes 2 --node-rank 0 \
+--master-addr 10.11.0.3 --master-port 29500 \
+--trust-remote-code --enforce-eager \
+--max-model-len 32768 --gpu-memory-utilization 0.95 \
+--max-num-batched-tokens 8192 \
+> glm5_2.log 2>&1 &
+
+# In node 1
+VLLM_RPC_TIMEOUT=3000 NCCL_DEBUG=INFO VLLM_PLUGINS=fl nohup vllm serve /data/GLM-5.2 \
+--served-model-name "glm5.2" --host 0.0.0.0 --port 8000 \
+--tensor-parallel-size 32 \
+--nnodes 2 --node-rank 1 \
+--master-addr 10.11.0.3 --master-port 29500 \
+--trust-remote-code --enforce-eager --headless \
+--max-model-len 32768 --gpu-memory-utilization 0.95 \
+--max-num-batched-tokens 8192 \
+> glm5_2-2.log 2>&1 &
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:30000/v1/completions \
+curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "Minimax",
-    "prompt": "中国的首都是？",
-    "max_tokens": 32,
-    "temperature": 0
+    "model": "glm5.2",
+    "messages": [{"role": "user", "content": "你好"}]
   }'
 ```
 
@@ -137,5 +143,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from MiniMaxAI/MiniMax-M3 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
-
+The model weights are derived from ZhipuAI/GLM-5.2 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
