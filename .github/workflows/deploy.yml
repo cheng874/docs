@@ -63,7 +63,14 @@ jobs:
           ALL_EN=""
           for p in "${ALL[@]}"; do
             case "$p" in
-              *_en) VALID_EN["$p"]=1; ALL_EN="$ALL_EN $p" ;;
+              # 仅保留英文版本，且源目录真实存在（conf.py 里声明但缺目录的会被跳过）
+              *_en)
+                if [ -d "docs/$p" ]; then
+                  VALID_EN["$p"]=1; ALL_EN="$ALL_EN $p"
+                else
+                  echo "::warning::Skipping $p: source dir docs/$p not found"
+                fi
+                ;;
             esac
           done
           ALL_EN=$(echo "$ALL_EN" | xargs)
