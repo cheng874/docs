@@ -1,32 +1,27 @@
 name: Deploy Docs Preview
 
 on:
-  # 推送到 fork 的任意分支时触发（自动检测改动的子项目）
+  # 推送到任意分支时触发：仅增量构建改动的英文子项目
   push:
-  # 允许手动触发，并可指定要预览的子项目
+  # 手动触发：全量构建全部英文子项目（可用 projects 指定子集）
   workflow_dispatch:
     inputs:
       projects:
-        description: "要构建预览的子项目（空格分隔，如：flaggems_en flagcx_en）"
+        description: "手动构建的子项目（空格分隔；留空或 all = 全部英文子项目）"
         required: false
-        default: "flaggems_en"
+        default: "all"
 
-# 设置 GITHUB_TOKEN 的权限，允许写入 GitHub Pages
+# 部署到 gh-pages 分支需要写仓库内容的权限
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# 确保同一时间只有一个部署任务在运行
+# 串行化，避免多个任务同时写 gh-pages 分支
 concurrency:
-  group: "pages"
+  group: "gh-pages"
   cancel-in-progress: false
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -45,13 +40,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Determine which subprojects to build
+      - name: Select subprojects
         id: select
         run: |
           set -euo pipefail
 
-          # conf.py 中定义的全部子项目（作为白名单，避免构建无效目录）
-          mapfile -t ALL < <(python - <<'PY'
+          # conf.py 中定义的全部子项目（白名单），并取其中的英文版本（_en 结尾）
+          mapfile -t ALL < <(python - <<'PY' | tr -d '\r'
           import ast, pathlib
           src = pathlib.Path("docs/conf.py").read_text(encoding="utf-8")
           tree = ast.parse(src)
@@ -64,17 +59,35 @@ jobs:
           PY
           )
 
-          declare -A VALID=()
-          for p in "${ALL[@]}"; do VALID["$p"]=1; done
+          declare -A VALID_EN=()
+          ALL_EN=""
+          for p in "${ALL[@]}"; do
+            case "$p" in
+              *_en) VALID_EN["$p"]=1; ALL_EN="$ALL_EN $p" ;;
+            esac
+          done
+          ALL_EN=$(echo "$ALL_EN" | xargs)
+          if [ -z "$ALL_EN" ]; then
+            echo "::error::No English (_en) subprojects found in docs/conf.py"
+            exit 1
+          fi
 
+          MODE="incremental"
           SELECTED=""
+
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            # 手动指定
-            for p in ${{ github.event.inputs.projects }}; do
-              if [ -n "${VALID[$p]:-}" ]; then SELECTED="$SELECTED $p"; fi
-            done
+            # 手动触发：全量（或按输入过滤到有效的英文子项目）
+            MODE="full"
+            REQ="${{ github.event.inputs.projects }}"
+            if [ -z "$REQ" ] || [ "$REQ" = "all" ]; then
+              SELECTED="$ALL_EN"
+            else
+              for p in $REQ; do
+                if [ -n "${VALID_EN[$p]:-}" ]; then SELECTED="$SELECTED $p"; fi
+              done
+            fi
           else
-            # push：从 git diff 中提取改动的顶层子项目目录
+            # push：从 git diff 提取改动的英文子项目，只增量构建它们
             BEFORE="${{ github.event.before }}"
             if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
               BEFORE="HEAD~1"
@@ -82,21 +95,21 @@ jobs:
             CHANGED=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- 'docs/*' || true)
             declare -A SEEN=()
             while IFS= read -r f; do
-              # docs/<project>/...
               proj=$(echo "$f" | sed -n 's#^docs/\([^/]*\)/.*#\1#p')
-              if [ -n "$proj" ] && [ -n "${VALID[$proj]:-}" ] && [ -z "${SEEN[$proj]:-}" ]; then
+              if [ -n "$proj" ] && [ -n "${VALID_EN[$proj]:-}" ] && [ -z "${SEEN[$proj]:-}" ]; then
                 SEEN[$proj]=1
                 SELECTED="$SELECTED $proj"
               fi
             done <<< "$CHANGED"
           fi
 
-          # 回退：未检测到改动的子项目时构建首页
           SELECTED=$(echo "$SELECTED" | xargs || true)
-          if [ -z "$SELECTED" ]; then SELECTED="flagos_homepage"; fi
 
-          echo "Selected subprojects: $SELECTED"
+          echo "Mode: $MODE"
+          echo "Selected: ${SELECTED:-<none>}"
+          echo "mode=$MODE"        >> "$GITHUB_OUTPUT"
           echo "projects=$SELECTED" >> "$GITHUB_OUTPUT"
+          echo "all_en=$ALL_EN"     >> "$GITHUB_OUTPUT"
 
       - name: Build selected subprojects
         run: |
@@ -105,9 +118,10 @@ jobs:
           rm -rf "$OUT"
           mkdir -p "$OUT"
 
+          TOBUILD="${{ steps.select.outputs.projects }}"
           OK=""
           FAIL=""
-          for p in ${{ steps.select.outputs.projects }}; do
+          for p in $TOBUILD; do
             echo "::group::Building $p"
             if PROJECT="$p" sphinx-build -b html docs "$OUT/$p"; then
               OK="$OK $p"
@@ -118,41 +132,67 @@ jobs:
             echo "::endgroup::"
           done
 
-          # 生成预览着陆页
+          # 着陆页：始终列出全部英文子项目（gh-pages 上其余子项目会被保留）
           {
             echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             echo '<title>Docs Preview</title>'
             echo '<style>body{font-family:sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem}li{margin:.4rem 0}</style>'
             echo '</head><body><h1>FlagOS Docs Preview</h1>'
-            echo '<p>本页仅包含本次改动构建的子项目预览。</p><ul>'
-            for p in $OK; do
+            echo '<p>Preview of the English documentation site.</p><ul>'
+            for p in ${{ steps.select.outputs.all_en }}; do
               echo "<li><a href=\"./$p/index.html\">$p</a></li>"
             done
             echo '</ul>'
             if [ -n "$FAIL" ]; then
-              echo "<h2>构建失败</h2><ul>"
+              echo "<h2>Build failed (this run)</h2><ul>"
               for p in $FAIL; do echo "<li>$p</li>"; done
               echo "</ul>"
             fi
             echo '</body></html>'
           } > "$OUT/index.html"
 
+          # 向本次构建出的所有页面（含着陆页）注入统一的顶部 "Preview" 横幅
+          python - "$OUT" <<'PY'
+          import sys, pathlib
+          BAR_H = "36px"
+          banner = (
+              '<!--preview-badge-->'
+              '<div style="position:fixed;top:0;left:0;right:0;height:' + BAR_H + ';'
+              'line-height:' + BAR_H + ';z-index:2147483647;background:#f59e0b;color:#000;'
+              'text-align:center;font:700 15px sans-serif;letter-spacing:.08em;'
+              'box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div>'
+          )
+          # 让页面整体下移，避免横幅遮挡主题顶部导航
+          spacer = ('<!--preview-badge-css--><style>html{scroll-padding-top:' + BAR_H + '}'
+                    'body{padding-top:' + BAR_H + ' !important}</style>')
+          root = pathlib.Path(sys.argv[1])
+          for f in root.rglob("*.html"):
+              html = f.read_text(encoding="utf-8", errors="ignore")
+              if "<!--preview-badge-->" in html:  # 避免重复注入
+                  continue
+              if "</head>" in html:
+                  html = html.replace("</head>", spacer + "</head>", 1)
+              if "</body>" in html:
+                  html = html.replace("</body>", banner + "</body>", 1)
+              else:
+                  html = spacer + banner + html
+              f.write_text(html, encoding="utf-8")
+          PY
+
           echo "Built:$OK"
           echo "Failed:$FAIL"
-          # 全部失败才让任务失败
-          if [ -z "$OK" ]; then
+          # 指定了要构建却全部失败，才让任务失败（push 无改动时 TOBUILD 为空，属正常）
+          if [ -n "$(echo "$TOBUILD" | xargs)" ] && [ -z "$OK" ]; then
             echo "::error::No subproject built successfully."
             exit 1
           fi
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: './docs/_build/html'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html
+          publish_branch: gh-pages
+          # 增量：保留其余子项目，只覆盖本次构建的目录
+          # 全量：清空后整站刷新
+          keep_files: ${{ steps.select.outputs.mode == 'incremental' }}
