@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Install software for running an inference task" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="getting_started/install.html" />
+<meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vllm from the official v0.20.2(optional if the correct version is installed), Install vllm-plugin-FL 2.1 Clone t..." />
+<meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
+<meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vllm from the official v0.20.2(optional if the correct version is installed), Install vllm-plugin-FL 2.1 Clone t..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Install software for running an inference task &#8212; VLLM-Plugin-FL Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
+    <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.3a02934c-3eba-4f3a-8e29-cde445ebaf63.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
+    <link rel="canonical" href="/getting_started/install.html" />
+    <link rel="icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Run an inference task" href="run-inference-task.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+  <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo-en-light.svg" class="logo__image only-light" alt="VLLM-Plugin-FL Documentation - Home"/>
+    <img src="../_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="VLLM-Plugin-FL Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    vllm-plugin-FL Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release-notes.html">Release Notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/overview.html">vllm-plugin-FL Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/operator-dispatch-mechanism.html">Operator dispatch mechanism</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Install software for running an inference task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-inference-task.html">Run an inference task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html">Qwen2.5-1.5B inference on Iluvatar BI-V150</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator dispatch user guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/quick-start.html">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/configure-backend-selection.html">Configure backend selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/configure-policy.html">Policy context management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/add-ops-and-vendors.html">Add new operators and vendor backends</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-api-reference.html">Dispatch API Reference</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/getting_started/install.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Install software for running an inference task</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-setup-for-huawei-ascend">Additional setup for Huawei Ascend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-additional-setup-for-cuda">（Optional）Additional setup for CUDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cuda-communication-library">Use CUDA communication library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-native-cuda-operators">Use native CUDA operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svt-full-stack-test-images-v0-2-0-rc2">SVT Full-Stack Test Images (v0.2.0-rc2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huawei-ascend">Huawei Ascend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-bi-v150">Iluvatar BI-V150</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dispatch-operators">(Optional) Dispatch operators</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="install-software-for-running-an-inference-task">
+<h1>Install software for running an inference task<a class="headerlink" href="#install-software-for-running-an-inference-task" title="Link to this heading">#</a></h1>
+<p>vllm-plugin-FL can be installed from source code or via Docker images.</p>
+<section id="install-from-source">
+<h2>Install from source<a class="headerlink" href="#install-from-source" title="Link to this heading">#</a></h2>
+<p>This section covers installing vllm-plugin-FL and its dependencies from source code.</p>
+<ol class="arabic">
+<li><p>Install vllm from the official <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.2">v0.20.2</a> (optional if the correct version is installed)</p></li>
+<li><p>Install vllm-plugin-FL</p>
+<p>2.1 Clone the repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
+</pre></div>
+</div>
+<p>2.2 install</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+<span class="c1"># or editable install</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Install <a class="reference external" href="https://github.com/flagos-ai/FlagGems/blob/master/docs/getting-started.md#quick-installation">FlagGems</a></p>
+<p>3.1 Install build dependencies</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+</pre></div>
+</div>
+<p>3.2 Install FlagGems</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+<span class="c1"># or editable install</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Sunrise platform, depends on FlagGems <a class="reference external" href="https://github.com/flagos-ai/FlagGems/pull/2949">PR #2949</a>.
+On Hygon platform, depends on FlagGems <a class="reference external" href="https://github.com/flagos-ai/FlagGems/pull/3477">PR #3477</a>.</p>
+</div>
+</li>
+<li><p>(Optional) Install <a class="reference external" href="https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation">FlagCX</a></p>
+<p>4.1 Clone the repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagCX.git
+<span class="nb">cd</span><span class="w"> </span>FlagCX
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>v0.9.0
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+</pre></div>
+</div>
+<p>4.2 Build the library with different flags targeting to different platforms:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">USE_NVIDIA</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>4.3 Set environment</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>4.4 Install FlagCX</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>plugin/torch/
+<span class="nv">FLAGCX_ADAPTOR</span><span class="o">=[</span>xxx<span class="o">]</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
+<span class="c1"># or editable install</span>
+<span class="nv">FLAGCX_ADAPTOR</span><span class="o">=[</span>xxx<span class="o">]</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[xxx] should be selected according to the current platform, e.g., nvidia, ascend, etc.</p>
+</div>
+</li>
+</ol>
+<p>If there are multiple plugins in the current environment, you can specify use vllm-plugin-fl via VLLM_PLUGINS=‘fl’.</p>
+<section id="additional-setup-for-huawei-ascend">
+<h3>Additional setup for Huawei Ascend<a class="headerlink" href="#additional-setup-for-huawei-ascend" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Install <a class="reference external" href="https://resource.flagos.net">FlagTree</a></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">RES</span><span class="o">=</span><span class="s2">&quot;--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net&quot;</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">==</span><span class="m">0</span>.4.0+ascend3.2<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set required environment variable</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">TRITON_ALL_BLOCKS_PARALLEL</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Enable eager execution</p>
+<p>Ascend requires eager execution. Add <code class="docutils literal notranslate"><span class="pre">enforce_eager=True</span></code> to the <code class="docutils literal notranslate"><span class="pre">LLM</span></code> constructor or pass <code class="docutils literal notranslate"><span class="pre">--enforce-eager</span></code> on the command line.</p>
+</li>
+</ol>
+</section>
+<section id="optional-additional-setup-for-cuda">
+<h3>（Optional）Additional setup for CUDA<a class="headerlink" href="#optional-additional-setup-for-cuda" title="Link to this heading">#</a></h3>
+<p>This section illustrates how to run an inference task with CUDA through setting environment variables.</p>
+<p>For operator dispatch environment variables, see <a class="reference internal" href="../dispatch_user_guide/configure-backend-selection.html#environment-variables"><span class="std std-ref">Environment variables</span></a>.</p>
+<section id="use-cuda-communication-library">
+<h4>Use CUDA communication library<a class="headerlink" href="#use-cuda-communication-library" title="Link to this heading">#</a></h4>
+<p>This section demonstrates how to run an inference task with CUDA by setting environment variables.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">unset</span><span class="w"> </span>FLAGCX_PATH
+</pre></div>
+</div>
+</section>
+<section id="use-native-cuda-operators">
+<h4>Use native CUDA operators<a class="headerlink" href="#use-native-cuda-operators" title="Link to this heading">#</a></h4>
+<p>If you want to use the original CUDA operators, you can set the following environment variables.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGGEMS</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="install-from-docker-image">
+<h2>Install from docker image<a class="headerlink" href="#install-from-docker-image" title="Link to this heading">#</a></h2>
+<p>This section covers running vllm-plugin-FL using pre-built Docker images.</p>
+<section id="svt-full-stack-test-images-v0-2-0-rc2">
+<h3>SVT Full-Stack Test Images (v0.2.0-rc2)<a class="headerlink" href="#svt-full-stack-test-images-v0-2-0-rc2" title="Link to this heading">#</a></h3>
+<p>Pre-built SVT images with full FlagOS stack:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Image</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA GPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt</span></code></p></td>
+<td><p>vllm 0.20.2, FlagGems 5.3.0-rc2.post1, FlagTree 3.6.0, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.11.0+cu130</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hygon DCU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt</span></code></p></td>
+<td><p>vllm 0.20.0, FlagGems 5.3.0-rc2.post1, FlagTree 0.5.0-rc2.post1+hcu, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.10.0+das</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NVIDIA SVT</span>
+docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt
+
+<span class="c1"># Hygon DCU SVT</span>
+docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt
+</pre></div>
+</div>
+</section>
+<section id="hygon-dcu">
+<h3>Hygon DCU<a class="headerlink" href="#hygon-dcu" title="Link to this heading">#</a></h3>
+<p>Available for vllm-plugin-FL v0.2.0 (vLLM 0.20.0).</p>
+<ol class="arabic">
+<li><p>Pull and start the Hygon DCU Docker container:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6
+
+docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>perf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="o">=</span>/dev/kfd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="o">=</span>/dev/mkfd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="o">=</span>/dev/dri<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/opt/hyhal:/opt/hyhal<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--group-add<span class="w"> </span>video<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-itd<span class="w"> </span>harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/bin/bash
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
+</li>
+<li><p>Inside the container, install FlagGems:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+git<span class="w"> </span>checkout<span class="w"> </span>2718037d887cd6a3143474da0224648e40c5004f
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Install vllm-plugin-FL:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
+git<span class="w"> </span>checkout<span class="w"> </span>48af29e21491700a38020ab031af5d3b90e6795e
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Download models:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-27B
+modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-35B-A3B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-35B-A3B
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="nvidia">
+<h3>NVIDIA<a class="headerlink" href="#nvidia" title="Link to this heading">#</a></h3>
+<p>Available for vllm-plugin-FL v0.2.0 (vLLM 0.20.2).</p>
+<ol class="arabic">
+<li><p>Pull and start the NVIDIA Docker container:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>vllm/vllm-openai:v0.20.0-cu130-ubuntu2404
+
+docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>perf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--entrypoint<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--shm-size<span class="w"> </span>512g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vllm/vllm-openai:v0.20.0-cu130-ubuntu2404
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
+</li>
+<li><p>Inside the container, install dependencies:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>update
+apt<span class="w"> </span>install<span class="w"> </span>git
+apt<span class="w"> </span>install<span class="w"> </span>vim
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+</pre></div>
+</div>
+</li>
+<li><p>Install vllm:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">vllm</span><span class="o">==</span><span class="m">0</span>.20.2
+</pre></div>
+</div>
+</li>
+<li><p>Install FlagGems:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+git<span class="w"> </span>checkout<span class="w"> </span>1dab11ab1a6671e3132528492d2cc193e78af8f4
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Install vllm-plugin-FL:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
+git<span class="w"> </span>checkout<span class="w"> </span>48af29e21491700a38020ab031af5d3b90e6795e
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Download models:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-27B
+modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-35B-A3B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-35B-A3B
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="huawei-ascend">
+<h3>Huawei Ascend<a class="headerlink" href="#huawei-ascend" title="Link to this heading">#</a></h3>
+<p>Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).</p>
+<ol class="arabic">
+<li><p>Pull and start the Ascend Docker container:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>quay.io/ascend/vllm-ascend:v0.13.0rc1-a3
+
+docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+--name<span class="w"> </span>flagos<span class="w"> </span><span class="se">\</span>
+--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+--privileged<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci1<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci2<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci3<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci4<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci5<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci6<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci7<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci8<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci9<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci10<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci11<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci12<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci13<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci14<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci15<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/Ascend/driver:/usr/local/Ascend/driver<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/usr/local/sbin:/usr/local/sbin<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
+-itd<span class="w"> </span>quay.io/ascend/vllm-ascend:v0.13.0rc1-a3<span class="w"> </span>bash
+
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>flagos<span class="w"> </span>bash
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
+</li>
+<li><p>Inside the container, install FlagGems:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+git<span class="w"> </span>checkout<span class="w"> </span>6f2585dc9c48d440d856ad75f4aedee66fac365a
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Install FlagTree:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">RES</span><span class="o">=</span><span class="s2">&quot;--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net&quot;</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">==</span><span class="m">0</span>.4.0+ascend3.2<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install vllm-plugin-FL:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
+git<span class="w"> </span>checkout<span class="w"> </span>ba008211c1c9646e19290e832a7f7775f7d2944f
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Set environment variables and start the service:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_PLUGINS</span><span class="o">=</span>fl
+<span class="nb">export</span><span class="w"> </span><span class="nv">TRITON_ALL_BLOCKS_PARALLEL</span><span class="o">=</span><span class="m">1</span>
+vllm<span class="w"> </span>serve<span class="w"> </span>--model<span class="w"> </span>/models/Qwen3-4B<span class="w"> </span>--served-model-name<span class="w"> </span>qwen<span class="w"> </span>--enforce-eager
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ascend requires eager execution. Add <code class="docutils literal notranslate"><span class="pre">enforce_eager=True</span></code> to the <code class="docutils literal notranslate"><span class="pre">LLM</span></code> constructor or pass <code class="docutils literal notranslate"><span class="pre">--enforce-eager</span></code> on the command line.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="iluvatar-bi-v150">
+<h3>Iluvatar BI-V150<a class="headerlink" href="#iluvatar-bi-v150" title="Link to this heading">#</a></h3>
+<p>Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).</p>
+<ol class="arabic">
+<li><p>Load and start the Corex Docker container:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>/mnt/share/images/corex.4.4.0.release.0211.vllm.013.flagos.tar
+
+docker<span class="w"> </span>run<span class="w"> </span>--shm-size<span class="o">=</span><span class="s2">&quot;32g&quot;</span><span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/dev:/dev<span class="w"> </span>-v<span class="w"> </span>/usr/src/:/usr/src<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/lib/modules/:/lib/modules<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/mnt/share/user_homes/:/mnt/share/user_homes/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--privileged<span class="w"> </span>--cap-add<span class="o">=</span>ALL<span class="w"> </span>--pid<span class="o">=</span>host<span class="w"> </span>--net<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>flagos_v2<span class="w"> </span>corex:4.4.0.release.0211.vllm.013.flagos<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+</li>
+<li><p>Inside the container, install FlagGems:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+git<span class="w"> </span>checkout<span class="w"> </span>6f2585dc9c48d440d856ad75f4aedee66fac365a
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+<span class="nb">cd</span><span class="w"> </span>../
+</pre></div>
+</div>
+</li>
+<li><p>Install vllm-plugin-FL:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL.git
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
+git<span class="w"> </span>checkout<span class="w"> </span>f11a0f4707aecae245ec81289329b208ede5b06d
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--no-deps
+<span class="nb">cd</span><span class="w"> </span>../
+</pre></div>
+</div>
+</li>
+<li><p>Start the service:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_PLUGINS</span><span class="o">=</span>fl
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_ENGINE_ITERATION_TIMEOUT_S</span><span class="o">=</span><span class="m">36000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_RPC_TIMEOUT</span><span class="o">=</span><span class="m">36000000</span>
+vllm<span class="w"> </span>serve<span class="w"> </span>/mnt/share/user_homes/zyp/Qwen3-4B/<span class="w"> </span>--served-model-name<span class="w"> </span>qwen<span class="w"> </span>--enforce-eager
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first startup takes approximately 15 minutes. Subsequent startups take less than 2 minutes.</p>
+</div>
+</li>
+</ol>
+<p>The steps above provide a minimal setup for running Qwen3-4B on BV150. If you need the full FlagOS stack with FlagTree, FlagGems usage patterns, environment verification, and troubleshooting — or if you are setting up BV150 for the first time — see the complete end-to-end guide: <a class="reference internal" href="example-qwen2.5-bv150.html"><span class="std std-doc">Qwen2.5-1.5B on Iluvatar BI-V150</span></a>.</p>
+</section>
+</section>
+<section id="optional-dispatch-operators">
+<h2>(Optional) Dispatch operators<a class="headerlink" href="#optional-dispatch-operators" title="Link to this heading">#</a></h2>
+<p>If needed, you can also dispatch operators.</p>
+<p>For concept related information, see <a class="reference internal" href="../overview/overview.html"><span class="std std-doc">vllm-plugin-FL Overview</span></a>.
+For configuration related information, see <a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html"><span class="std std-doc">Operator dispatch user guide</span></a>.</p>
+<p>After installation and optional operator dispatch configuration, you can proceed to <a class="reference internal" href="run-inference-task.html"><span class="std std-doc">Run an inference task</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="requirements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Requirements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="run-inference-task.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Run an inference task</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-setup-for-huawei-ascend">Additional setup for Huawei Ascend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-additional-setup-for-cuda">（Optional）Additional setup for CUDA</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cuda-communication-library">Use CUDA communication library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-native-cuda-operators">Use native CUDA operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svt-full-stack-test-images-v0-2-0-rc2">SVT Full-Stack Test Images (v0.2.0-rc2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huawei-ascend">Huawei Ascend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-bi-v150">Iluvatar BI-V150</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dispatch-operators">(Optional) Dispatch operators</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By FlagOS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025-2026, FlagOS Community.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 03, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+</html>

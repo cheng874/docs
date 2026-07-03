@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="FlagOS-Robo User Guide" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="flagos-robo-user-guide.html" />
+<meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="Overview: FlagOS-Robo is an integrated training and inference framework for AI models used in robots (Embodied Intelligence), built upon FlagOS, the unified and open-source AI system software stack for various AI chips. FlagOS-Robo can be deployed across diverse scenarios, ranging from edge to cl..." />
+<meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
+<meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="Overview: FlagOS-Robo is an integrated training and inference framework for AI models used in robots (Embodied Intelligence), built upon FlagOS, the unified and open-source AI system software stack for various AI chips. FlagOS-Robo can be deployed across diverse scenarios, ranging from edge to cl..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>FlagOS-Robo User Guide &#8212; FlagOS-Robo Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=538fca1d" />
+    <link rel="stylesheet" type="text/css" href="_static/homepage.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="_static/tippy/flagos-robo-user-guide.e2b9a350-acfd-47ca-aaee-61aa5f3bbd06.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'flagos-robo-user-guide';</script>
+    <link rel="canonical" href="/flagos-robo-user-guide.html" />
+    <link rel="icon" href="_static/favicon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="FlagOS-Robo Documentation" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+  <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-en-light.svg" class="logo__image only-light" alt="FlagOS-Robo Documentation - Home"/>
+    <img src="_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="FlagOS-Robo Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    FlagOS-Robo Documentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FlagOS-Robo User Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/flagos-robo-user-guide.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>FlagOS-Robo User Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flageval-robo-platform">FlagEval-Robo Platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-evaluation-tool">Auto-Evaluation Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#available-apis">Available APIs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-an-evaluation">Start an Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roboxstudio-platform">RoboXStudio Platform</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="flagos-robo-user-guide">
+<h1>FlagOS-Robo User Guide<a class="headerlink" href="#flagos-robo-user-guide" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>FlagOS-Robo is an integrated training and inference framework for AI models used in robots (Embodied Intelligence), built upon <a class="reference external" href="https://flagos.io">FlagOS</a>, the unified and open-source AI system software stack for various AI chips.</p>
+<p>FlagOS-Robo can be deployed across diverse scenarios, ranging from edge to cloud. Being portable across various chip models, it enables efficient training, inference, and deployment for both Vision Language Models (VLMs) and Vision Language Action (VLA) models. VLMs usually act as the brain for task planning, while VLA models act as the cerebellum to output actions for robot control.</p>
+<section id="key-features">
+<h3>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://github.com/flagos-ai/FlagScale">FlagScale</a></strong> as the user entrypoint, supporting robot-related AI model training and inference</p></li>
+<li><p><strong>Full Model Lifecycle</strong>: Data loading, supervised fine-tuning (SFT), inference deployment, and evaluation</p></li>
+<li><p><strong>Multi-Format Data Loading</strong>: Supports webdataset, Megatron-Energon, and lerobot dataset formats</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/FlagOpen/RoboOS">RoboOS</a> Integration</strong>: Cross-embodiment collaboration with different data formats and edge-cloud coordination</p></li>
+<li><p><strong><a class="reference external" href="https://ei2data.baai.ac.cn/home">RoboXStudio</a> Integration</strong>: One-stop services including data collection, annotation, model training, simulation evaluation, and deployment</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<section id="supported-models">
+<h3>Supported Models<a class="headerlink" href="#supported-models" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Checkpoint</p></th>
+<th class="head"><p>Train</p></th>
+<th class="head"><p>Inference</p></th>
+<th class="head"><p>Serve</p></th>
+<th class="head"><p>Evaluate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PI0</p></td>
+<td><p>VLA</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/lerobot/pi0_base">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>PI0.5</p></td>
+<td><p>VLA</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/lerobot/pi05_libero_base">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>RoboBrain-2.0</p></td>
+<td><p>VLM</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/BAAI/RoboBrain2.0-7B">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>RoboBrain-2.5</p></td>
+<td><p>VLM</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/collections/BAAI/robobrain25">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>RoboBrain-X0</p></td>
+<td><p>VLA</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/BAAI/RoboBrain-X0-Preview">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qwen-GR00T</p></td>
+<td><p>VLA</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>GR00T-N1.5</p></td>
+<td><p>VLA</p></td>
+<td><p><a class="reference external" href="https://huggingface.co/nvidia/GR00T-N1.5-3B">HuggingFace</a></p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For detailed guides on each model, refer to the <a class="reference external" href="https://github.com/flagos-ai/FlagScale/tree/main/examples">FlagScale examples</a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<section id="flageval-robo-platform">
+<h3>FlagEval-Robo Platform<a class="headerlink" href="#flageval-robo-platform" title="Link to this heading">#</a></h3>
+<p>FlagOS-Robo integrates with the <a class="reference external" href="https://embodiedverse.flageval.net/home">FlagEval-Robo</a> platform for testing and evaluation of embodied intelligence models.</p>
+</section>
+<section id="auto-evaluation-tool">
+<h3>Auto-Evaluation Tool<a class="headerlink" href="#auto-evaluation-tool" title="Link to this heading">#</a></h3>
+<p>Auto-Evaluation is a multi-chip adaptive model automatic evaluation tool built on the <a class="reference external" href="https://flageval.baai.ac.cn/#/home">FlagEval</a> platform. It supports Embodied VLM models and is bound with ten classic datasets. Currently, it supports online evaluation only.</p>
+<p><strong>Tool API Endpoint</strong>: <code class="docutils literal notranslate"><span class="pre">120.92.17.239:5050</span></code></p>
+<section id="available-apis">
+<h4>Available APIs<a class="headerlink" href="#available-apis" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/evaluation</span></code></p></td>
+<td><p>POST</p></td>
+<td><p>Start evaluation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/evaldiffs</span></code></p></td>
+<td><p>GET</p></td>
+<td><p>Query evaluation results</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/stop_evaluation</span></code></p></td>
+<td><p>POST</p></td>
+<td><p>Stop evaluation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/resume_evaluation</span></code></p></td>
+<td><p>POST</p></td>
+<td><p>Resume evaluation from breakpoint</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/evaluation_progress</span></code></p></td>
+<td><p>POST</p></td>
+<td><p>View evaluation progress</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/evaluation_diffs</span></code></p></td>
+<td><p>POST</p></td>
+<td><p>Compare results between multiple models</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="start-an-evaluation">
+<h4>Start an Evaluation<a class="headerlink" href="#start-an-evaluation" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://120.92.17.239:5050/evaluation<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;eval_infos&quot;: [{</span>
+<span class="s1">      &quot;eval_model&quot;: &quot;my-model-eval&quot;,</span>
+<span class="s1">      &quot;model&quot;: &quot;Qwen/Qwen3-8B&quot;,</span>
+<span class="s1">      &quot;eval_url&quot;: &quot;http://&lt;your-host&gt;:9010/v1/chat/completions&quot;,</span>
+<span class="s1">      &quot;tokenizer&quot;: &quot;Qwen/Qwen3-8B&quot;</span>
+<span class="s1">    }],</span>
+<span class="s1">    &quot;domain&quot;: &quot;MM&quot;,</span>
+<span class="s1">    &quot;mode&quot;: &quot;EmbodiedVerse&quot;</span>
+<span class="s1">  }&#39;</span>
+</pre></div>
+</div>
+<p>Key parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_model</span></code>: Unique name for the evaluation task</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: The deployed model name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_url</span></code>: Your model’s evaluation endpoint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tokenizer</span></code>: Vendor and model information (e.g., <code class="docutils literal notranslate"><span class="pre">Qwen/Qwen3-8B</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chip</span></code>: Chip used for evaluation (default: <code class="docutils literal notranslate"><span class="pre">Nvidia-H100</span></code>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="roboxstudio-platform">
+<h2>RoboXStudio Platform<a class="headerlink" href="#roboxstudio-platform" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://ei2data.baai.ac.cn/home">RoboXStudio</a> platform provides a SaaS environment for the full embodied intelligence pipeline:</p>
+<ul class="simple">
+<li><p><strong>Data Collection</strong>: Real-robot data acquisition across diverse robotic embodiments</p></li>
+<li><p><strong>Data Annotation</strong>: Labeling and data augmentation tools</p></li>
+<li><p><strong>Model Training</strong>: SFT built on FlagOS with multi-chip adaptation</p></li>
+<li><p><strong>Simulation Evaluation</strong>: Integrated testing and evaluation</p></li>
+<li><p><strong>Model Deployment</strong>: End-to-end deployment pipeline</p></li>
+</ul>
+<p>RoboXStudio has completed the full training and inference workflow based on FlagOS + BAAI RoboBrain-X0 model, achieving an end-to-end pipeline from model development and real-robot validation to task execution.</p>
+<p><strong>Links</strong>:</p>
+<ul class="simple">
+<li><p>Official Website: <a class="reference external" href="https://ei2data.baai.ac.cn">https://ei2data.baai.ac.cn</a></p></li>
+<li><p>Product Manual: <a class="reference external" href="https://jwolpxeehx.feishu.cn/wiki/GzbCwlYWwiqHvTk9b4icob3inug">Feishu Wiki</a></p></li>
+<li><p>Getting Started Guide: <a class="reference external" href="https://jwolpxeehx.feishu.cn/wiki/SbGzwjgakiQbHMkc0aecJbUunhg">Feishu Wiki</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FlagOS-Robo Documentation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flageval-robo-platform">FlagEval-Robo Platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-evaluation-tool">Auto-Evaluation Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#available-apis">Available APIs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-an-evaluation">Start an Evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roboxstudio-platform">RoboXStudio Platform</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By FlagOS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025-2026, FlagOS Community.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 03, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+</html>

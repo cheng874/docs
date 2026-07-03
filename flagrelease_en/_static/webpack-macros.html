@@ -1,0 +1,24 @@
+<!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style><!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--
+  AUTO-GENERATED from webpack.config.js, do **NOT** edit by hand.
+  These are re-used in layout.html
+-->
+
+{% macro head_pre_assets() %}
+  <!-- Loaded before other Sphinx assets -->
+  <link href="{{ pathto('_static/styles/theme.css', 1) }}?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="{{ pathto('_static/styles/pydata-sphinx-theme.css', 1) }}?digest=8878045cc6db502f8baf" rel="stylesheet" />
+{% endmacro %}
+
+{% macro head_js_preload() %}
+  <!-- So that users can add custom icons -->
+  <script src="{{ pathto('_static/scripts/fontawesome.js', 1) }}?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="{{ pathto('_static/scripts/bootstrap.js', 1) }}?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="{{ pathto('_static/scripts/pydata-sphinx-theme.js', 1) }}?digest=8878045cc6db502f8baf" />
+{% endmacro %}
+
+{% macro body_post() %}
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="{{ pathto('_static/scripts/bootstrap.js', 1) }}?digest=8878045cc6db502f8baf"></script>
+<script defer src="{{ pathto('_static/scripts/pydata-sphinx-theme.js', 1) }}?digest=8878045cc6db502f8baf"></script>
+{% endmacro %}

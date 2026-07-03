@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="FlagTensor CI Matrix" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="reference/ci_matrix.html" />
+<meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="This document describes the CI/CD workflows and their purposes in the FlagTensor acceptance process. Workflows Overview:,,,,, Workflow, Trigger, Purpose, GPU Required, Output,,, quality-gate.yaml, PR, push, manual, Static quality checks (pre-commit, build, registry), No, Build artifacts, consiste..." />
+<meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
+<meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="This document describes the CI/CD workflows and their purposes in the FlagTensor acceptance process. Workflows Overview:,,,,, Workflow, Trigger, Purpose, GPU Required, Output,,, quality-gate.yaml, PR, push, manual, Static quality checks (pre-commit, build, registry), No, Build artifacts, consiste..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>FlagTensor CI Matrix &#8212; FlagTensor Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
+    <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/reference/ci_matrix.6264f0bf-76b9-4ac2-8bea-af3e45ea2c54.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/ci_matrix';</script>
+    <link rel="canonical" href="/reference/ci_matrix.html" />
+    <link rel="icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FlagTensor Known Issues" href="known_issues.html" />
+    <link rel="prev" title="FlagTensor Benchmark Policy" href="benchmark_policy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+  <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo-en-light.svg" class="logo__image only-light" alt="FlagTensor Documentation - Home"/>
+    <img src="../_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="FlagTensor Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    FlagTensor Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release-notes.html">FlagTensor Release Notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">FlagTensor Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started with FlagTensor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagTensor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Install FlagTensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">FlagTensor User Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="reference.html">Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="acceptance_checklist.html">FlagTensor Acceptance Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accuracy_policy.html">FlagTensor Accuracy Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark_policy.html">FlagTensor Benchmark Policy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">FlagTensor CI Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known_issues.html">FlagTensor Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator_coverage.html">FlagTensor Operator Coverage Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_commands.html">FlagTensor Standard Acceptance Commands</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/reference/ci_matrix.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>FlagTensor CI Matrix</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflows-overview">Workflows Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-gate-workflow-quality-gate-yaml">Quality Gate Workflow (<code class="docutils literal notranslate"><span class="pre">quality-gate.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit">pre-commit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#build-check">build-check</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#registry-consistency">registry-consistency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-workflow-ci-yaml">CI Workflow (<code class="docutils literal notranslate"><span class="pre">ci.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-smoke">correctness-smoke</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perf-smoke">perf-smoke</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-workflow-weekly-yaml">Weekly Workflow (<code class="docutils literal notranslate"><span class="pre">weekly.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-entry">weekly-entry</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-parameters">Weekly Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-workflow-acceptance-yaml">Acceptance Workflow (<code class="docutils literal notranslate"><span class="pre">acceptance.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-acceptance">correctness-acceptance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perf-acceptance">perf-acceptance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-parameters">Acceptance Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-summary-output">Acceptance Summary Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-gpu-validation">Cluster GPU Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-slurm-template">Standard Slurm Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-node">Cluster Node</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-storage">Artifact Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-status-indicators">CI Status Indicators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-step-summary">GitHub Step Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-codes">Exit Codes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-best-practices">CI Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-vs-local-testing">CI vs Local Testing</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="flagtensor-ci-matrix">
+<h1>FlagTensor CI Matrix<a class="headerlink" href="#flagtensor-ci-matrix" title="Link to this heading">#</a></h1>
+<p>This document describes the CI/CD workflows and their purposes in the FlagTensor acceptance process.</p>
+<section id="workflows-overview">
+<h2>Workflows Overview<a class="headerlink" href="#workflows-overview" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Workflow</p></th>
+<th class="head"><p>Trigger</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>GPU Required</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quality-gate.yaml</span></code></p></td>
+<td><p>PR, push, manual</p></td>
+<td><p>Static quality checks (pre-commit, build, registry)</p></td>
+<td><p>No</p></td>
+<td><p>Build artifacts, consistency reports</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ci.yaml</span></code></p></td>
+<td><p>PR, push, manual</p></td>
+<td><p>Smoke-level correctness and performance</p></td>
+<td><p>No</p></td>
+<td><p>Smoke results, summary</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weekly.yaml</span></code></p></td>
+<td><p>Manual</p></td>
+<td><p>Weekly regression on cluster</p></td>
+<td><p>Yes (via Slurm)</p></td>
+<td><p>Weekly results, artifacts</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">acceptance.yaml</span></code></p></td>
+<td><p>Manual, weekly schedule</p></td>
+<td><p>Acceptance-level full coverage</p></td>
+<td><p>No (structure) / Yes (cluster)</p></td>
+<td><p>Acceptance results, summary</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="quality-gate-workflow-quality-gate-yaml">
+<h2>Quality Gate Workflow (<code class="docutils literal notranslate"><span class="pre">quality-gate.yaml</span></code>)<a class="headerlink" href="#quality-gate-workflow-quality-gate-yaml" title="Link to this heading">#</a></h2>
+<section id="jobs">
+<h3>Jobs<a class="headerlink" href="#jobs" title="Link to this heading">#</a></h3>
+<section id="pre-commit">
+<h4>pre-commit<a class="headerlink" href="#pre-commit" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Run static analysis and formatting checks</p></li>
+<li><p><strong>Checks</strong>: YAML syntax, trailing whitespace, flake8, isort, black, clang-format</p></li>
+<li><p><strong>Runtime</strong>: ~2-3 minutes</p></li>
+<li><p><strong>Failure Impact</strong>: Blocks PR merge</p></li>
+</ul>
+</section>
+<section id="build-check">
+<h4>build-check<a class="headerlink" href="#build-check" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Verify package can be built and distributed</p></li>
+<li><p><strong>Steps</strong>: Build wheel/sdist, twine check</p></li>
+<li><p><strong>Runtime</strong>: ~1-2 minutes</p></li>
+<li><p><strong>Failure Impact</strong>: Blocks PR merge</p></li>
+</ul>
+</section>
+<section id="registry-consistency">
+<h4>registry-consistency<a class="headerlink" href="#registry-consistency" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Ensure operator registry is consistent with codebase</p></li>
+<li><p><strong>Checks</strong>:</p>
+<ul>
+<li><p>All impl files exist</p></li>
+<li><p>All correctness test files exist</p></li>
+<li><p>All benchmark test files exist</p></li>
+<li><p>Coverage statistics</p></li>
+</ul>
+</li>
+<li><p><strong>Runtime</strong>: ~30 seconds</p></li>
+<li><p><strong>Failure Impact</strong>: Blocks PR merge</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="ci-workflow-ci-yaml">
+<h2>CI Workflow (<code class="docutils literal notranslate"><span class="pre">ci.yaml</span></code>)<a class="headerlink" href="#ci-workflow-ci-yaml" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Jobs<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="correctness-smoke">
+<h4>correctness-smoke<a class="headerlink" href="#correctness-smoke" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Validate correctness structure and basic functionality</p></li>
+<li><p><strong>Scope</strong>: All active operators (non-blocked)</p></li>
+<li><p><strong>Mode</strong>: Smoke (reduced shapes/dtypes)</p></li>
+<li><p><strong>Benchmark Mode</strong>: Default kernel, configurable</p></li>
+<li><p><strong>Runtime</strong>: ~5-10 minutes (CPU-only structure check)</p></li>
+<li><p><strong>Output</strong>: summary.json, summary.md, per-operator logs</p></li>
+<li><p><strong>Failure Impact</strong>: Warning only (GPU validation done on cluster)</p></li>
+</ul>
+</section>
+<section id="perf-smoke">
+<h4>perf-smoke<a class="headerlink" href="#perf-smoke" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Validate benchmark structure and CSV generation</p></li>
+<li><p><strong>Scope</strong>: All active operators (non-blocked)</p></li>
+<li><p><strong>Mode</strong>: Smoke (reduced shapes)</p></li>
+<li><p><strong>Benchmark Mode</strong>: Default kernel, configurable</p></li>
+<li><p><strong>Runtime</strong>: ~5-10 minutes (CPU-only structure check)</p></li>
+<li><p><strong>Output</strong>: summary.json, summary.md, benchmark CSVs</p></li>
+<li><p><strong>Failure Impact</strong>: Warning only (GPU validation done on cluster)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="weekly-workflow-weekly-yaml">
+<h2>Weekly Workflow (<code class="docutils literal notranslate"><span class="pre">weekly.yaml</span></code>)<a class="headerlink" href="#weekly-workflow-weekly-yaml" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3>Jobs<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="weekly-entry">
+<h4>weekly-entry<a class="headerlink" href="#weekly-entry" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Full weekly regression on GPU cluster</p></li>
+<li><p><strong>Scope</strong>: All active operators (non-blocked) from registry</p></li>
+<li><p><strong>Mode</strong>: Full (all shapes/dtypes)</p></li>
+<li><p><strong>GPU Allocation</strong>: Configurable via <code class="docutils literal notranslate"><span class="pre">--gpus</span></code> parameter</p></li>
+<li><p><strong>Runtime</strong>: 1-2 hours (depends on GPU count)</p></li>
+<li><p><strong>Output</strong>: Weekly results, operator list, artifacts</p></li>
+<li><p><strong>Failure Impact</strong>: Requires investigation</p></li>
+</ul>
+</section>
+</section>
+<section id="weekly-parameters">
+<h3>Weekly Parameters<a class="headerlink" href="#weekly-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">op_list</span></code></p></td>
+<td><p>(generated from registry)</p></td>
+<td><p>Optional path to operator list file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>GPU IDs to use (comma-separated)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code></p></td>
+<td><p>Benchmark mode (kernel/operator/wrapper)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="acceptance-workflow-acceptance-yaml">
+<h2>Acceptance Workflow (<code class="docutils literal notranslate"><span class="pre">acceptance.yaml</span></code>)<a class="headerlink" href="#acceptance-workflow-acceptance-yaml" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Jobs<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="correctness-acceptance">
+<h4>correctness-acceptance<a class="headerlink" href="#correctness-acceptance" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Acceptance-level correctness validation</p></li>
+<li><p><strong>Scope</strong>: All active operators or specific category</p></li>
+<li><p><strong>Mode</strong>: Full (all shapes/dtypes)</p></li>
+<li><p><strong>Category Filter</strong>: Optional (unary/binary/contraction/sparse)</p></li>
+<li><p><strong>Benchmark Mode</strong>: Configurable</p></li>
+<li><p><strong>Runtime</strong>: 30-60 minutes (CPU structure) / 1-2 hours (GPU cluster)</p></li>
+<li><p><strong>Output</strong>: ACCEPTANCE_SUMMARY.md, summary.json, per-operator logs</p></li>
+<li><p><strong>Failure Impact</strong>: Blocks acceptance</p></li>
+</ul>
+</section>
+<section id="perf-acceptance">
+<h4>perf-acceptance<a class="headerlink" href="#perf-acceptance" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Acceptance-level performance validation</p></li>
+<li><p><strong>Scope</strong>: All active operators or specific category</p></li>
+<li><p><strong>Mode</strong>: Full (all shapes)</p></li>
+<li><p><strong>Category Filter</strong>: Optional (unary/binary/contraction/sparse)</p></li>
+<li><p><strong>Benchmark Mode</strong>: Configurable</p></li>
+<li><p><strong>Runtime</strong>: 30-60 minutes (CPU structure) / 2-4 hours (GPU cluster)</p></li>
+<li><p><strong>Output</strong>: ACCEPTANCE_SUMMARY.md, summary.json, benchmark CSVs, speedup stats</p></li>
+<li><p><strong>Failure Impact</strong>: Blocks acceptance</p></li>
+</ul>
+</section>
+</section>
+<section id="acceptance-parameters">
+<h3>Acceptance Parameters<a class="headerlink" href="#acceptance-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code></p></td>
+<td><p>Benchmark mode (kernel/operator/wrapper)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (all)</p></td>
+<td><p>Operator category filter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="acceptance-summary-output">
+<h3>Acceptance Summary Output<a class="headerlink" href="#acceptance-summary-output" title="Link to this heading">#</a></h3>
+<p>The acceptance workflow generates detailed summaries including:</p>
+<ul class="simple">
+<li><p>Total operators tested</p></li>
+<li><p>Pass/fail counts and pass rate</p></li>
+<li><p>Failed operators list</p></li>
+<li><p>Performance speedup statistics (avg, median, min, max)</p></li>
+<li><p>Per-operator status table</p></li>
+</ul>
+</section>
+</section>
+<section id="cluster-gpu-validation">
+<h2>Cluster GPU Validation<a class="headerlink" href="#cluster-gpu-validation" title="Link to this heading">#</a></h2>
+<p>Since GitHub Actions runners do not have GPU access, actual GPU validation is performed on the cluster using Slurm.</p>
+<section id="standard-slurm-template">
+<h3>Standard Slurm Template<a class="headerlink" href="#standard-slurm-template" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--job-name<span class="w"> </span>&lt;job_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--nodelist<span class="w"> </span>&lt;node_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--gres<span class="o">=</span>gpu:&lt;gpu_count&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpus-per-task<span class="o">=</span><span class="k">$((</span><span class="m">24</span><span class="o">*</span><span class="nv">gpu_count</span><span class="k">))</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mem<span class="o">=</span><span class="k">$((</span><span class="m">242144</span><span class="o">*</span><span class="nv">gpu_count</span><span class="k">))</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-w<span class="w"> </span>/workspace/FlagGems/flagtensor<span class="w"> </span>triton_cuda12<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">&quot;&lt;command&gt;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="cluster-node">
+<h3>Cluster Node<a class="headerlink" href="#cluster-node" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Primary Node</strong>: <code class="docutils literal notranslate"><span class="pre">bjdb-h20-node-038</span></code></p></li>
+<li><p><strong>Container</strong>: <code class="docutils literal notranslate"><span class="pre">triton_cuda12</span></code></p></li>
+<li><p><strong>Container Path</strong>: <code class="docutils literal notranslate"><span class="pre">/workspace/FlagGems/flagtensor</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="artifact-storage">
+<h2>Artifact Storage<a class="headerlink" href="#artifact-storage" title="Link to this heading">#</a></h2>
+<p>All workflows upload artifacts for audit and debugging:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Artifact</p></th>
+<th class="head"><p>Workflow</p></th>
+<th class="head"><p>Retention</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-ci-correctness-smoke</span></code></p></td>
+<td><p>ci.yaml</p></td>
+<td><p>30 days</p></td>
+<td><p>Smoke correctness results</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-ci-perf-smoke</span></code></p></td>
+<td><p>ci.yaml</p></td>
+<td><p>30 days</p></td>
+<td><p>Smoke performance results</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-weekly-results</span></code></p></td>
+<td><p>weekly.yaml</p></td>
+<td><p>90 days</p></td>
+<td><p>Weekly regression results</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-acceptance-correctness</span></code></p></td>
+<td><p>acceptance.yaml</p></td>
+<td><p>90 days</p></td>
+<td><p>Acceptance correctness results</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-acceptance-perf</span></code></p></td>
+<td><p>acceptance.yaml</p></td>
+<td><p>90 days</p></td>
+<td><p>Acceptance performance results</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flagtensor-build-dist</span></code></p></td>
+<td><p>quality-gate.yaml</p></td>
+<td><p>30 days</p></td>
+<td><p>Wheel/sdist packages</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ci-status-indicators">
+<h2>CI Status Indicators<a class="headerlink" href="#ci-status-indicators" title="Link to this heading">#</a></h2>
+<section id="github-step-summary">
+<h3>GitHub Step Summary<a class="headerlink" href="#github-step-summary" title="Link to this heading">#</a></h3>
+<p>Workflows report results to GitHub Step Summary:</p>
+<ul class="simple">
+<li><p><strong>Quality Gate</strong>: Pre-commit status, build status, registry consistency</p></li>
+<li><p><strong>CI Smoke</strong>: Pass/fail table for correctness and performance</p></li>
+<li><p><strong>Weekly</strong>: Operator count and overall status</p></li>
+<li><p><strong>Acceptance</strong>: Detailed pass/fail statistics, speedup analysis</p></li>
+</ul>
+</section>
+<section id="exit-codes">
+<h3>Exit Codes<a class="headerlink" href="#exit-codes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>0</strong>: All checks passed</p></li>
+<li><p><strong>1</strong>: One or more checks failed</p></li>
+<li><p><strong>Non-zero</strong>: Workflow error (e.g., missing dependencies)</p></li>
+</ul>
+</section>
+</section>
+<section id="ci-best-practices">
+<h2>CI Best Practices<a class="headerlink" href="#ci-best-practices" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Always run quality gate before PR merge</strong></p></li>
+<li><p><strong>Use smoke mode for rapid iteration</strong></p></li>
+<li><p><strong>Run acceptance on GPU cluster before release</strong></p></li>
+<li><p><strong>Review weekly regression results weekly</strong></p></li>
+<li><p><strong>Keep registry in sync with codebase</strong></p></li>
+<li><p><strong>Update category benchmark entries when adding operators</strong></p></li>
+</ol>
+</section>
+<section id="ci-vs-local-testing">
+<h2>CI vs Local Testing<a class="headerlink" href="#ci-vs-local-testing" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>CI</p></th>
+<th class="head"><p>Local</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Speed</strong></p></td>
+<td><p>Fast (CPU structure)</p></td>
+<td><p>Variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GPU Access</strong></p></td>
+<td><p>No</p></td>
+<td><p>Yes (via Slurm)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Coverage</strong></p></td>
+<td><p>Smoke</p></td>
+<td><p>Full</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Purpose</strong></p></td>
+<td><p>Structure validation</p></td>
+<td><p>Functional validation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recommendation</strong></p></td>
+<td><p>Use for PR checks</p></td>
+<td><p>Use for acceptance validation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="benchmark_policy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FlagTensor Benchmark Policy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="known_issues.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">FlagTensor Known Issues</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflows-overview">Workflows Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-gate-workflow-quality-gate-yaml">Quality Gate Workflow (<code class="docutils literal notranslate"><span class="pre">quality-gate.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit">pre-commit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#build-check">build-check</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#registry-consistency">registry-consistency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-workflow-ci-yaml">CI Workflow (<code class="docutils literal notranslate"><span class="pre">ci.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-smoke">correctness-smoke</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perf-smoke">perf-smoke</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-workflow-weekly-yaml">Weekly Workflow (<code class="docutils literal notranslate"><span class="pre">weekly.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-entry">weekly-entry</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-parameters">Weekly Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-workflow-acceptance-yaml">Acceptance Workflow (<code class="docutils literal notranslate"><span class="pre">acceptance.yaml</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-acceptance">correctness-acceptance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perf-acceptance">perf-acceptance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-parameters">Acceptance Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-summary-output">Acceptance Summary Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-gpu-validation">Cluster GPU Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-slurm-template">Standard Slurm Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-node">Cluster Node</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-storage">Artifact Storage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-status-indicators">CI Status Indicators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-step-summary">GitHub Step Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-codes">Exit Codes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-best-practices">CI Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-vs-local-testing">CI vs Local Testing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By FlagOS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025-2026, FlagOS Community.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 03, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+</html>

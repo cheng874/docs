@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="End-to-End Use Case: GRPO Training with verl-FL" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user_guide/e2e-use-case.html" />
+<meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="This guide provides step-by-step instructions for running end-to-end GRPO training of Qwen3-0.6B on the GSM8K dataset across different hardware platforms using verl-FL. NVIDIA E2E GRPO Training: End-to-end GRPO training test on NVIDIA GPU environment. Model: Qwen3-0.6B, Dataset: GSM8K. Step 1: Pu..." />
+<meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
+<meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="This guide provides step-by-step instructions for running end-to-end GRPO training of Qwen3-0.6B on the GSM8K dataset across different hardware platforms using verl-FL. NVIDIA E2E GRPO Training: End-to-end GRPO training test on NVIDIA GPU environment. Model: Qwen3-0.6B, Dataset: GSM8K. Step 1: Pu..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>End-to-End Use Case: GRPO Training with verl-FL &#8212; verl-FL Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
+    <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/e2e-use-case.ba09d185-6490-4e75-8ad7-0c05dab32960.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/e2e-use-case';</script>
+    <link rel="canonical" href="/user_guide/e2e-use-case.html" />
+    <link rel="icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="../references/reference.html" />
+    <link rel="prev" title="verl-FL User Guide" href="user-guide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+  <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+      
+    </div>
+    
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/en/latest/" 
+   class="return-to-main-link"
+   aria-label="Back to FlagOS Documentation"
+   title="Back to FlagOS Documentation">
+  ← Back to FlagOS Documentation
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo-en-light.svg" class="logo__image only-light" alt="verl-FL Documentation - Home"/>
+    <img src="../_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="verl-FL Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    verl-FL Documentation
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release-notes.html">Release Notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">verl-FL Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started with verl-FL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Quick Setup</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">verl-FL User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">End-to-End Use Case: GRPO Training with verl-FL</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references/reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/user_guide/e2e-use-case.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>End-to-End Use Case: GRPO Training with verl-FL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-e2e-grpo-training">NVIDIA E2E GRPO Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-pull-image-and-create-container">Step 1: Pull Image and Create Container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-data-and-model">Step 2: Prepare Data and Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-install-flagos-software-stack">Step 3: Install FlagOS Software Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-install-verl-fl">Step 4: Install verl-FL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-modify-script-and-run">Step 5: Modify Script and Run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metax-e2e-grpo-training">MetaX E2E GRPO Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Step 1: Pull Image and Create Container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 2: Prepare Data and Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 3: Install FlagOS Software Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 4: Install verl-FL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 5: Modify Script and Run</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="end-to-end-use-case-grpo-training-with-verl-fl">
+<h1>End-to-End Use Case: GRPO Training with verl-FL<a class="headerlink" href="#end-to-end-use-case-grpo-training-with-verl-fl" title="Link to this heading">#</a></h1>
+<p>This guide provides step-by-step instructions for running end-to-end GRPO training of Qwen3-0.6B on the GSM8K dataset across different hardware platforms using verl-FL.</p>
+<hr class="docutils" />
+<section id="nvidia-e2e-grpo-training">
+<h2>NVIDIA E2E GRPO Training<a class="headerlink" href="#nvidia-e2e-grpo-training" title="Link to this heading">#</a></h2>
+<p>End-to-end GRPO training test on NVIDIA GPU environment. Model: Qwen3-0.6B, Dataset: GSM8K.</p>
+<section id="step-1-pull-image-and-create-container">
+<h3>Step 1: Pull Image and Create Container<a class="headerlink" href="#step-1-pull-image-and-create-container" title="Link to this heading">#</a></h3>
+<p>Follow the <a class="reference internal" href="../getting_started/install.html#nvidia"><span class="std std-ref">NVIDIA Docker setup</span></a> in Quick Setup.</p>
+</section>
+<section id="step-2-prepare-data-and-model">
+<h3>Step 2: Prepare Data and Model<a class="headerlink" href="#step-2-prepare-data-and-model" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+
+<span class="c1"># Download model</span>
+modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3-0.6B<span class="w"> </span>--local_dir<span class="w"> </span>./Qwen3-0.6B
+
+<span class="c1"># Download dataset</span>
+mkdir<span class="w"> </span>gsm8k<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>gsm8k
+wget<span class="w"> </span><span class="s2">&quot;https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/train.parquet&quot;</span>
+wget<span class="w"> </span><span class="s2">&quot;https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/test.parquet&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-install-flagos-software-stack">
+<h3>Step 3: Install FlagOS Software Stack<a class="headerlink" href="#step-3-install-flagos-software-stack" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Note:</strong> FlagCX is required. All other FlagOS components (FlagGems, vllm-plugin-FL, TransformerEngine-FL, Megatron-LM-FL) are optional.</p>
+</div></blockquote>
+<p><strong>3.1 Install FlagCX (Required)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagCX.git
+<span class="nb">cd</span><span class="w"> </span>FlagCX
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-v<span class="w"> </span>--no-build-isolation
+
+<span class="c1"># Post-install configuration</span>
+<span class="c1"># export FLAGCX_PATH=/workspace/FlagCX/</span>
+</pre></div>
+</div>
+<p><strong>3.2 Install FlagGems (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core&gt;<span class="o">=</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems.git
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+</pre></div>
+</div>
+<p><strong>3.3 Install vllm-plugin-FL (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Option A: Install from PyPI</span>
+pip<span class="w"> </span>install<span class="w"> </span>vllm-plugin-fl<span class="o">==</span><span class="m">0</span>.1.0+vllm0.13.0<span class="w"> </span>--extra-index-url<span class="w"> </span>https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+<span class="c1">## Option B: Install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+vllm0.13.0<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL.git
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-fl
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+</pre></div>
+</div>
+<p><strong>3.4 Install Megatron-LM-FL / TransformerEngine-FL (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Option A: Install from PyPI</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">transformer_engine</span><span class="o">==</span><span class="m">0</span>.1.0+te2.9.0<span class="w"> </span>--extra-index-url<span class="w"> </span>https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+<span class="c1">## Option B: Install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+te2.9.0<span class="w"> </span>https://github.com/flagos-ai/TransformerEngine-FL.git
+<span class="nb">cd</span><span class="w"> </span>TransformerEngine-FL
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+
+<span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Option A: Install from PyPI</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">megatron_core</span><span class="o">==</span><span class="m">0</span>.1.0+megatron0.15.0rc7<span class="w"> </span>--extra-index-url<span class="w"> </span>https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+<span class="c1">## Option B: Install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+megatron0.15.0rc7<span class="w"> </span>https://github.com/flagos-ai/Megatron-LM-FL.git
+<span class="nb">cd</span><span class="w"> </span>Megatron-LM-FL
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="step-4-install-verl-fl">
+<h3>Step 4: Install verl-FL<a class="headerlink" href="#step-4-install-verl-fl" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.2.0-rc2.post1<span class="w"> </span>https://github.com/flagos-ai/verl-FL.git
+<span class="nb">cd</span><span class="w"> </span>verl-FL
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="step-5-modify-script-and-run">
+<h3>Step 5: Modify Script and Run<a class="headerlink" href="#step-5-modify-script-and-run" title="Link to this heading">#</a></h3>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">examples/grpo_trainer/run_qwen3-0.6b_fl.sh</span></code>, modify model/data/FlagCX paths according to your actual setup (all paths below assume <code class="docutils literal notranslate"><span class="pre">/workspace</span></code> from the steps above):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># FL Multi-Chip Support Version of run_qwen3-0.6b.sh</span>
+<span class="c1"># This script demonstrates training with FL (FlagOS) multi-chip support</span>
+<span class="c1"># including FlagGems operators, Transformer-Engine-FL, and FlagCX communication.</span>
+<span class="c1">#</span>
+<span class="c1"># Reference: docs/design/fl_multi_chip_support.md</span>
+
+<span class="nb">set</span><span class="w"> </span>-x
+
+<span class="c1"># ============ Device Configuration ============</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">4</span>,5,6,7
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYDRA_FULL_ERROR</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># ============ FlagCX Communication Library ============</span>
+<span class="c1"># export FLAGCX_PATH=/share/project/lizhiyu/FlagCX</span>
+<span class="c1"># export PYTHONPATH=/share/project/gzy/FlagCX/plugin/torch:${PYTHONPATH}</span>
+
+<span class="c1"># ============ FL Configuration via verl fl_config ============</span>
+<span class="c1"># Note: Environment variables below are for reference only.</span>
+<span class="c1"># In verl FL architecture, these are set dynamically by FLEnvManager</span>
+<span class="c1"># based on fl_config YAML configuration.</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VERL_ENGINE_DEVICE</span><span class="o">=</span>flagos
+<span class="c1"># Training phase environment variables:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PREFER</span><span class="o">=</span>flagos<span class="w">  </span><span class="c1">#flagos / vendor / reference    flagos</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PREFER_VENDOR</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="c1"># Prefer vendor (legacy)    1 / 0   0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_STRICT</span><span class="o">=</span><span class="m">0</span><span class="w">   </span><span class="c1"># Strict mode (no fallback) 1 / 0   0</span>
+<span class="c1"># TE_FL_ALLOW_VENDORS=nvidia,amd    # Allowed vendors (whitelist)   nvidia,amd</span>
+<span class="c1"># TE_FL_DENY_VENDORS=vendor_a   # Denied vendors (blacklist)    vendor_a</span>
+<span class="c1"># TE_FL_PER_OP=rmsnorm_fwd=vendor:cuda|default</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_FLAGOS_BLACKLIST</span><span class="o">=</span><span class="s2">&quot;where_scalar_other,where_scalar_self,where_self,where_self_out,pad&quot;</span>
+<span class="c1"># Logging</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TEFL_LOG_LEVEL</span><span class="o">=</span>DEBUG<span class="w"> </span><span class="c1"># / INFO / WARNING / ERROR  INF</span>
+
+<span class="c1"># Rollout phase environment variables:</span>
+<span class="c1"># export VLLM_PLUGINS=&quot;&quot;</span>
+<span class="c1"># export VLLM_FL_PREFER_ENABLED=true</span>
+<span class="c1"># export VLLM_FL_PLATFORM=cuda # will cause error</span>
+<span class="c1"># export VLLM_FL_PREFER=flagos</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGGEMS</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_OOT_ENABLED</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGCX</span><span class="o">=</span><span class="m">1</span>
+<span class="c1"># unset FLAGCX_PATH</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span>/workspace/FlagCX/
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_LOG_LEVEL</span><span class="o">=</span>DEBUG
+
+<span class="c1">## Key modifications below</span>
+<span class="nv">DATA_DIR</span><span class="o">=</span>/workspace/gsm8k/
+<span class="nv">MODEL_DIR</span><span class="o">=</span>/workspace/Qwen3-0.6B
+
+python3<span class="w"> </span>-m<span class="w"> </span>verl.trainer.main_ppo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>algorithm.adv_estimator<span class="o">=</span>grpo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.train_files<span class="o">=</span><span class="si">${</span><span class="nv">DATA_DIR</span><span class="si">}</span>/train.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.val_files<span class="o">=</span><span class="si">${</span><span class="nv">DATA_DIR</span><span class="si">}</span>/test.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.train_batch_size<span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.max_prompt_length<span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.max_response_length<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.filter_overlong_prompts<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.truncation<span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.path<span class="o">=</span><span class="si">${</span><span class="nv">MODEL_DIR</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.optim.lr<span class="o">=</span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.use_remove_padding<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.ppo_mini_batch_size<span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.use_kl_loss<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.kl_loss_coef<span class="o">=</span><span class="m">0</span>.001<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.kl_loss_type<span class="o">=</span>low_var_kl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.entropy_coeff<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.enable_gradient_checkpointing<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.fsdp_config.param_offload<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.fsdp_config.optimizer_offload<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.tensor_model_parallel_size<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.name<span class="o">=</span>vllm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.gpu_memory_utilization<span class="o">=</span><span class="m">0</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.n<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.ref.fsdp_config.param_offload<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>algorithm.use_kl_in_reward<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.critic_warmup<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.logger<span class="o">=</span><span class="s1">&#39;[&quot;console&quot;]&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.project_name<span class="o">=</span><span class="s1">&#39;verl_grpo_example_gsm8k_fl&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.experiment_name<span class="o">=</span><span class="s1">&#39;qwen3_0.6b_fl&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.n_gpus_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.nnodes<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.save_freq<span class="o">=</span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.test_freq<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.use_legacy_worker_impl<span class="o">=</span><span class="s1">&#39;disable&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+actor_rollout_ref.rollout.enable_sleep_mode<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.free_cache_engine<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.total_epochs<span class="o">=</span><span class="m">15</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$@</span>
+</pre></div>
+</div>
+<p>Once the script is modified, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>examples/grpo_trainer/run_qwen3-0.6b_fl.sh
+</pre></div>
+</div>
+<p><strong>Validation criteria:</strong> Training outputs step information normally, no errors during the training process, and the reward metric shows a convergence trend.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="metax-e2e-grpo-training">
+<h2>MetaX E2E GRPO Training<a class="headerlink" href="#metax-e2e-grpo-training" title="Link to this heading">#</a></h2>
+<p>End-to-end GRPO training test on MetaX C500 environment. Model: Qwen3-0.6B, Dataset: GSM8K.</p>
+<section id="id1">
+<h3>Step 1: Pull Image and Create Container<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Follow the <a class="reference internal" href="../getting_started/install.html#metax"><span class="std std-ref">MetaX Docker setup</span></a> in Quick Setup.</p>
+</section>
+<section id="id2">
+<h3>Step 2: Prepare Data and Model<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+
+<span class="c1"># Download model</span>
+modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3-0.6B<span class="w"> </span>--local_dir<span class="w"> </span>./Qwen3-0.6B
+
+<span class="c1"># Download dataset</span>
+mkdir<span class="w"> </span>gsm8k<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>gsm8k
+wget<span class="w"> </span><span class="s2">&quot;https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/train.parquet&quot;</span>
+wget<span class="w"> </span><span class="s2">&quot;https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/test.parquet&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Step 3: Install FlagOS Software Stack<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Note:</strong> FlagCX is required. All other FlagOS components (FlagGems, vllm-plugin-FL, TransformerEngine-FL, Megatron-LM-FL) are optional.</p>
+</div></blockquote>
+<p><strong>3.1 Install FlagCX (Required)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagCX.git
+<span class="nb">cd</span><span class="w"> </span>FlagCX
+git<span class="w"> </span>checkout<span class="w"> </span>v0.9.0
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+make<span class="w"> </span><span class="nv">USE_METAX</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span>
+<span class="nb">cd</span><span class="w"> </span>plugin/torch/
+<span class="nv">FLAGCX_ADAPTOR</span><span class="o">=</span>metax<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
+
+<span class="c1"># Post-install configuration</span>
+<span class="c1"># export FLAGCX_PATH=/workspace/FlagCX/</span>
+</pre></div>
+</div>
+<p><strong>3.2 Install FlagGems (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core&gt;<span class="o">=</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems.git
+<span class="nb">cd</span><span class="w"> </span>FlagGems
+git<span class="w"> </span>checkout<span class="w"> </span>v4.2.0
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+</pre></div>
+</div>
+<p><strong>3.3 Install vllm-plugin-FL (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Option A: Install from PyPI</span>
+pip<span class="w"> </span>install<span class="w"> </span>vllm-plugin-fl<span class="o">==</span><span class="m">0</span>.1.0+vllm0.13.0<span class="w"> </span>--extra-index-url<span class="w"> </span>https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+<span class="c1">## Option B: Install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+vllm0.13.0<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL.git
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-fl
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+
+<span class="c1"># Uninstall metax plugin to avoid conflicts</span>
+pip<span class="w"> </span>uninstall<span class="w"> </span>vllm-metax
+</pre></div>
+</div>
+<p><strong>3.4 Install Megatron-LM-FL / TransformerEngine-FL (Optional)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Install TransformerEngine-FL from source</span>
+pip<span class="w"> </span>install<span class="w"> </span>onnxscript<span class="w">  </span><span class="c1"># Install dependency</span>
+wget<span class="w"> </span>https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/pkg/metax/transformer_engine_metax-2.9.0%2Bmaca3.3.0-cp310-cp310-linux_x86_64.whl
+pip<span class="w"> </span>install<span class="w"> </span>transformer_engine_metax-2.9.0+maca3.3.0-cp310-cp310-linux_x86_64.whl
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+te2.9.0<span class="w"> </span>https://github.com/flagos-ai/TransformerEngine-FL.git
+<span class="nb">cd</span><span class="w"> </span>TransformerEngine-FL
+<span class="nv">TE_FL_SKIP_CUDA</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+
+<span class="nb">cd</span><span class="w"> </span>/workspace
+<span class="c1">## Option A: Install from PyPI</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">megatron_core</span><span class="o">==</span><span class="m">0</span>.1.0+megatron0.15.0rc7<span class="w"> </span>--extra-index-url<span class="w"> </span>https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+<span class="c1">## Option B: Install from source</span>
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.1.0+megatron0.15.0rc7<span class="w"> </span>https://github.com/flagos-ai/Megatron-LM-FL.git
+<span class="nb">cd</span><span class="w"> </span>Megatron-LM-FL
+pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Step 4: Install verl-FL<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace
+git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>v0.2.0-rc2.post1<span class="w"> </span>https://github.com/flagos-ai/verl-FL.git
+<span class="nb">cd</span><span class="w"> </span>verl-FL
+pip3<span class="w"> </span>install<span class="w"> </span>nvtx
+pip3<span class="w"> </span>install<span class="w"> </span>--no-deps<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Step 5: Modify Script and Run<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Based on <code class="docutils literal notranslate"><span class="pre">examples/grpo_trainer/run_qwen3-0.6b_fl.sh</span></code>, modify model/data/FlagCX paths according to your actual setup (all paths below assume <code class="docutils literal notranslate"><span class="pre">/workspace</span></code> from the steps above):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># FL Multi-Chip Support Version of run_qwen3-0.6b.sh</span>
+<span class="c1"># This script demonstrates training with FL (FlagOS) multi-chip support</span>
+<span class="c1"># including FlagGems operators, Transformer-Engine-FL, and FlagCX communication.</span>
+<span class="c1">#</span>
+<span class="c1"># Reference: docs/design/fl_multi_chip_support.md</span>
+
+<span class="nb">set</span><span class="w"> </span>-x
+
+<span class="c1"># ============ MetaX Platform Environment ============</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1,2,3,4,5,6,7
+<span class="nb">export</span><span class="w"> </span><span class="nv">RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_FLAGOS_BLACKLIST</span><span class="o">=</span><span class="s2">&quot;where_scalar_other,where_scalar_self,where_self,where_self_out,pad&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VERL_ENGINE_DEVICE</span><span class="o">=</span><span class="s2">&quot;flagos&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGCX</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_PREFER</span><span class="o">=</span><span class="s2">&quot;vendor&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_PLATFORM</span><span class="o">=</span><span class="s2">&quot;metax&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOGLEVEL</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>
+
+<span class="c1"># MetaX MACA SDK paths</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUCC_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/maca/tools/cu-bridge&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/maca/tools/cu-bridge&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DEVINFO_ROOT</span><span class="o">=</span><span class="s2">&quot;/opt/maca&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/maca/lib:/opt/maca/mxgpu_llvm/lib:/opt/mxdriver/lib:/opt/maca/ompi/lib:/opt/maca/ucx/lib:/opt/mxdriver/lib&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MACA_CLANG</span><span class="o">=</span><span class="s2">&quot;/opt/maca/mxgpu_llvm&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MACA_CLANG_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/maca/mxgpu_llvm/bin&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MACA_PATH</span><span class="o">=</span><span class="s2">&quot;/opt/maca&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/opt/conda/bin:/opt/conda/condabin:/opt/maca/tools/cu-bridge:/opt/maca/bin:/opt/maca/mxgpu_llvm/bin:/opt/maca/ompi/bin:/opt/maca/ucx/bin:/opt/mxdriver/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;</span>
+
+<span class="c1"># MetaX performance tuning</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_DEVICE_MAX_CONNECTIONS</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NVTE_FLASH_ATTN</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NVTE_FUSED_ATTN</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MACA_SMALL_PAGESIZE_ENABLE</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCCL_MAX_NCHANNELS</span><span class="o">=</span><span class="m">18</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCCL_P2P_LEVEL</span><span class="o">=</span>SYS
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTORCH_ENABLE_SAME_RAND_CONF</span><span class="o">=</span>multiprocessosr_count:114,maxthreads_per_multiprocessor:2048
+<span class="nb">export</span><span class="w"> </span><span class="nv">NVTE_ALLOW_NONDETERMINISTIC_ALGO</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1"># MetaX network configuration</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GLOO_SOCKET_IFNAME</span><span class="o">=</span>bond0
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCCL_SOCKET_IFNAME</span><span class="o">=</span>bond0
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCCL_IB_HCA</span><span class="o">=</span>mlx5_101,mlx5_102,mlx5_103,mlx5_104,mlx5_105,mlx5_106,mlx5_107,mlx5_108
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCCL_PCIE_BUFFER_MODE</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1"># FlagCX configuration for MetaX</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_P2P_LEVEL</span><span class="o">=</span>SYS
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_GLOO_SOCKET_IFNAME</span><span class="o">=</span>bond0
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_SOCKET_IFNAME</span><span class="o">=</span>bond0
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_IB_HCA</span><span class="o">=</span>mlx5_101,mlx5_102,mlx5_103,mlx5_104,mlx5_105,mlx5_106,mlx5_107,mlx5_108
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_MAX_NCHANNELS</span><span class="o">=</span><span class="m">18</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_ENABLE_TOPO_DETECT</span><span class="o">=</span>TRUE
+<span class="c1"># ============ End MetaX Platform Environment ============</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">HYDRA_FULL_ERROR</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># ============ FlagCX Communication Library ============</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span>/workspace/FlagCX/
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_LOG_LEVEL</span><span class="o">=</span>DEBUG
+
+<span class="c1"># ============ FL Configuration ============</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PREFER</span><span class="o">=</span>flagos
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PREFER_VENDOR</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_STRICT</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TEFL_LOG_LEVEL</span><span class="o">=</span>DEBUG
+
+<span class="c1"># Rollout phase environment variables:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGGEMS</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_FL_OOT_ENABLED</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1">## Key modifications below</span>
+<span class="nv">DATA_DIR</span><span class="o">=</span>/workspace/gsm8k/
+<span class="nv">MODEL_DIR</span><span class="o">=</span>/workspace/Qwen3-0.6B
+
+python3<span class="w"> </span>-m<span class="w"> </span>verl.trainer.main_ppo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>algorithm.adv_estimator<span class="o">=</span>grpo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.train_files<span class="o">=</span><span class="si">${</span><span class="nv">DATA_DIR</span><span class="si">}</span>/train.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.val_files<span class="o">=</span><span class="si">${</span><span class="nv">DATA_DIR</span><span class="si">}</span>/test.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.train_batch_size<span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.max_prompt_length<span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.max_response_length<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.filter_overlong_prompts<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>data.truncation<span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.path<span class="o">=</span><span class="si">${</span><span class="nv">MODEL_DIR</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.use_fused_kernels<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.optim.lr<span class="o">=</span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.use_remove_padding<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.ppo_mini_batch_size<span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.use_kl_loss<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.kl_loss_coef<span class="o">=</span><span class="m">0</span>.001<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.kl_loss_type<span class="o">=</span>low_var_kl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.entropy_coeff<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.model.enable_gradient_checkpointing<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.fsdp_config.param_offload<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.actor.fsdp_config.optimizer_offload<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.tensor_model_parallel_size<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.name<span class="o">=</span>vllm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.gpu_memory_utilization<span class="o">=</span><span class="m">0</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.n<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.ref.fsdp_config.param_offload<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>algorithm.use_kl_in_reward<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.critic_warmup<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.logger<span class="o">=</span><span class="s1">&#39;[&quot;console&quot;]&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.project_name<span class="o">=</span><span class="s1">&#39;verl_grpo_example_gsm8k_fl&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.experiment_name<span class="o">=</span><span class="s1">&#39;qwen3_0.6b_fl&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.n_gpus_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.nnodes<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.save_freq<span class="o">=</span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.test_freq<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.use_legacy_worker_impl<span class="o">=</span><span class="s1">&#39;disable&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+actor_rollout_ref.rollout.enable_sleep_mode<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>actor_rollout_ref.rollout.free_cache_engine<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>trainer.total_epochs<span class="o">=</span><span class="m">15</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$@</span>
+</pre></div>
+</div>
+<p>Once the script is modified, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>examples/grpo_trainer/run_qwen3-0.6b_fl.sh
+</pre></div>
+</div>
+<p><strong>Validation criteria:</strong> Training outputs step information normally, no errors during the training process, and the reward metric shows a convergence trend.</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="user-guide.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">verl-FL User Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references/reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-e2e-grpo-training">NVIDIA E2E GRPO Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-pull-image-and-create-container">Step 1: Pull Image and Create Container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-data-and-model">Step 2: Prepare Data and Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-install-flagos-software-stack">Step 3: Install FlagOS Software Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-install-verl-fl">Step 4: Install verl-FL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-modify-script-and-run">Step 5: Modify Script and Run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metax-e2e-grpo-training">MetaX E2E GRPO Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Step 1: Pull Image and Create Container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 2: Prepare Data and Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Step 3: Install FlagOS Software Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Step 4: Install verl-FL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Step 5: Modify Script and Run</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By FlagOS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025-2026, FlagOS Community.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 03, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+</html>
