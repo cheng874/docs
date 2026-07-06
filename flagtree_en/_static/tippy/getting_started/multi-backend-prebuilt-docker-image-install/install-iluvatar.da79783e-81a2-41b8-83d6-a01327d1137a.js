@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"#iluvatar-iluvatar\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\ud83d\udcab ILUVATAR\uff08\u5929\u6570\u667a\u82af\uff09<a class=\"reference external\" href=\"https://github.com/flagos-ai/FlagTree/tree/main/third_party/iluvatar/\">iluvatar</a><a class=\"headerlink\" href=\"#iluvatar-iluvatar\" title=\"Link to this heading\">#</a></h1><h2>1. Build and run environment<a class=\"headerlink\" href=\"#build-and-run-environment\" title=\"Link to this heading\">#</a></h2><h3>1.1 Use the image (BI-V150)<a class=\"headerlink\" href=\"#use-the-image-bi-v150\" title=\"Link to this heading\">#</a></h3><p>If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.</p>", "a[href=\"#testing-and-validation\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">3. Testing and validation<a class=\"headerlink\" href=\"#testing-and-validation\" title=\"Link to this heading\">#</a></h2><p>Refer to <a class=\"reference internal\" href=\"#/.github/workflows/iluvatar-build-and-test.yml\"><span class=\"xref myst\">Tests of iluvatar backend</span></a></p>", "a[href=\"#build-and-run-environment\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">1. Build and run environment<a class=\"headerlink\" href=\"#build-and-run-environment\" title=\"Link to this heading\">#</a></h2><h3>1.1 Use the image (BI-V150)<a class=\"headerlink\" href=\"#use-the-image-bi-v150\" title=\"Link to this heading\">#</a></h3><p>If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.</p>", "a[href=\"#manually-download-the-triton-dependencies\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">1.3 Manually download the Triton dependencies<a class=\"headerlink\" href=\"#manually-download-the-triton-dependencies\" title=\"Link to this heading\">#</a></h3><p>The Triton dependencies are already downloaded and installed in the image.\nIf you do not need to build FlagTree or Triton from source, you do not need to download the Triton dependencies.</p>", "a[href=\"#build-from-source\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">2.2 Build from Source<a class=\"headerlink\" href=\"#build-from-source\" title=\"Link to this heading\">#</a></h3>", "a[href=\"#manually-download-the-flagtree-dependencies\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">1.2 Manually download the FlagTree dependencies<a class=\"headerlink\" href=\"#manually-download-the-flagtree-dependencies\" title=\"Link to this heading\">#</a></h3>", "a[href=\"#installation-commands\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">2. Installation Commands<a class=\"headerlink\" href=\"#installation-commands\" title=\"Link to this heading\">#</a></h2><h3>2.1 Source-free Installation<a class=\"headerlink\" href=\"#source-free-installation\" title=\"Link to this heading\">#</a></h3><p>After installing <code class=\"docutils literal notranslate\"><span class=\"pre\">flagtree</span></code>, you can check it with:</p>", "a[href=\"#use-the-image-bi-v150\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">1.1 Use the image (BI-V150)<a class=\"headerlink\" href=\"#use-the-image-bi-v150\" title=\"Link to this heading\">#</a></h3><p>If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.</p>", "a[href=\"#source-free-installation\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">2.1 Source-free Installation<a class=\"headerlink\" href=\"#source-free-installation\" title=\"Link to this heading\">#</a></h3><p>After installing <code class=\"docutils literal notranslate\"><span class=\"pre\">flagtree</span></code>, you can check it with:</p>"}
+skip_classes = ["headerlink", "sd-stretched-link"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(` ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};
