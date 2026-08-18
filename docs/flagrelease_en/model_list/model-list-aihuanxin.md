@@ -110,6 +110,16 @@
 | Qwen3.6-35B-A3B-nomtp-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12784> |
 | Qwen3.6-35B-A3B-nomtp-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12783> |
 | Qwen3.6-35B-A3B-nomtp-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12787> |
+| Qwen3.8-2.4T-A95B-FP8-enflame-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36809> |
+| Qwen3.8-2.4T-A95B-FP8-mthreads-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36357> |
+| Qwen3.8-2.4T-A95B-FP8-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36358> |
+| Qwen3.8-2.4T-A95B-INT8-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36356> |
+| Qwen3.8-2.4T-A95B-INT8-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36812> |
+| Qwen3.8-2.4T-A95B-INT8-kunlunxin-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36201> |
+| Qwen3.8-2.4T-A95B-INT8-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36807> |
+| Qwen3.8-2.4T-A95B-INT8-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36813> |
+| Qwen3.8-2.4T-A95B-INT8-tsingmicro-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36806> |
+| Qwen3.8-2.4T-A95B-INT8-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/36808> |
 | QwQ-32B-FlagOS-Cambricon | <https://aihuanxin.cn/#/model?path=/model/detail/8894> |
 | QwQ-32B-FlagOS-Iluvatar | <https://aihuanxin.cn/#/model?path=/model/detail/9059> |
 | QwQ-32B-FlagOS-Nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8895> |
