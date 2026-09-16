@@ -1,8 +1,25 @@
 # FlagSparse 发布说明
 
-## 未发布（FlagOS 2.2 开发中）
+## v0.3.0-rc2（候选发布版）
 
-- **打包（FEP-0019，Wave 1）** —— Debian `.deb` 与 RPM `.rpm` 打包已合入（FlagSparse#12），并新增 openEuler 24.03 RPM 构建支持（FlagSparse#29）。二进制包发布至 FlagOS Nexus 仓库。
+```{note}
+这是 FlagOS 2.2 的候选发布版（标签 `v0.3.0-rc2.post1`，发布于 2026-09）。版本号与支持平台列表将在 GA 时最终确定。打包工作（FEP-0019 Wave 1）已合入：Debian `.deb` 与 RPM `.rpm` 打包（FlagSparse#12），含 openEuler 24.03 RPM 构建支持（FlagSparse#29）；二进制包发布至 FlagOS Nexus 仓库。
+```
+
+- **新增特性**
+
+  - 新增/扩充稀疏算子：SpMM CSR 扩展、col-major 与 COO 优化变体、SpMM CSC/BSR；SpMV CSC、BSR 及 BSR 优化（含 scipy 基线）；SpSV SELL。
+  - 合入 NCIC-AlphaSparse 线的最新稀疏算子实现，测试对齐官方 runner，并发布更新的稀疏支持矩阵 (#25, #26, #30, #38)。
+  - 海光 DCU 支持与 CUDA 一并合入（含 DCU 运行命令与健壮性修复）(#44, #45)。
+  - 专用 runner 上的 GPU CI（Triton 3.6 / FlagTree 依赖）及 GPU benchmark 工作流 (#23, #24)。
+
+- **改进 / 修复**
+
+  - SpMV CSR 与 SpGEMM 优化；SDDMM 优化 v0.1 (#39, #40)。
+  - 修复 SpSM 与 SpSV 测试；统一计时与索引修复 (#28)。
+  - 打包后续修复：smoke-test 解耦、ubuntu:24.04 基础镜像对齐、RPM spec 修复 (#8, #9, #11)。
+  - 算子注册表解析器兼容版权头 (#33)。
+  - 全部源码文件添加 Apache-2.0 版权头 (#33)。
 
 ## v0.2.0
 

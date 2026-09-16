@@ -8,11 +8,3 @@ __pycache__/
 
 # Sphinx auto-generated
 source/locales/
-
-# Generated operator detail pages (build artifacts)
-references/generated/*.md
-!references/generated/.gitkeep
-
-# Backup files
-*.bak
-*.bak.*

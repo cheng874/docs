@@ -1,5 +1,59 @@
 # Change History
 
+## v5.4.0-rc2 (release candidate)
+
+```{note}
+This is the FlagOS 2.2 release candidate (tag `v5.4.0-rc2.post2`, published 2026-09). Version numbers and supported-platform lists will be finalized at GA.
+```
+
+- Added operators:
+  `hash_tensor` (#6088),
+  `split_with_sizes` (#5590),
+  `convolution_overrideable` (#5642),
+  `adaptive_max_pool3d` (#5671),
+  `topk_w8a16_fp8` (E4M3FN, Hygon) (#6190)
+- Added vendor-specialized kernels: Moore Threads `conv_transpose1d`, `upsample_linear1d_backward`, `fmod_`, `matmuladd` (#6174, #6175, #6170, #6180); Ascend `matrix_rank`, `igammac`, `gru` and `linalg_solve_triangular` improvements (#6161, #6136, #6201, #6209)
+- Added a pure Triton `lgamma` fallback and a standalone FP8 MM benchmark with a vLLM baseline (#5464, #6183)
+- Kunlunxin `copy` operator family migrated onto TLE (#6093)
+- Improved autotune cache robustness (SQLite WAL mode and busy timeout, fixing "database is locked" errors) (#6203)
+- Fixed graph-capture buffer reuse for `pointwise_dynamic` (#6171), Sunrise `cumsum` empty-input guard with an `asin` fallback (#6165), FFT `res_out` (#4802), Triton 3.5 compatibility for `flash_attention_backward` (#6253), and gated `tl.map_elementwise` so flag_gems imports on the flagtree/3.5 line (#6236)
+- Documentation: noted that the `fused_marlin_moe` weight layout is not the vLLM Marlin layout (#6204)
+
+## v5.3.0
+
+**Release date**: 2026-09
+
+Derived from 863 commits between `v5.0.0` and `v5.3.0` (including the v5.3.x patch releases up to v5.3.6). Highlights:
+
+- Added operators:
+  `ctc_loss` (#2723),
+  `svd` (#2904),
+  `scatter_reduce` (#2914),
+  `chunk_gated_delta_rule` (#2921),
+  `median` (#2796),
+  `index_copy_` (#1743),
+  `router_gemm` (with split-K `mm` support) (#3220),
+  `topk_softplus_sqrt` fused MoE gating (#3046, #3428),
+  `affine_grid_generator` (#3373),
+  `_euclidean_dist` (#3371),
+  `conv_transpose2d` (semantic Triton) (#3405),
+  `top_k_per_row_prefill` / `top_k_per_row_decode` for DeepSeek V4 (#3279, #3431),
+  `fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert` (#3327),
+  `fused_inv_rope_fp8_quant` (#3332),
+  `pack_seq_triton` / `unpack_seq_triton` (#3433, #3437),
+  DeepSeek V4 attention operators `fused_q_kv_rmsnorm`, `compute_global_topk_indices_and_lens`, `dequantize_and_gather_k_cache`, `combine_topk_swa_indices` and indexer k-quant/cache kernels (#3478–#3481, #3438, #3439),
+  `rad2deg` (#3445), `randint` (#3446), `reflection_pad1d_backward` (#3448),
+  `cauchy` (#3496), `as_strided_copy` (#3501), `log1p` (#1747), `floor` (#1736)
+- Added fused Marlin MoE (INT4 MoE GEMM, later optimized with transposed-B layout and W8A16 support) (#3222, #3375, #3609)
+- Added M×N fused Hadamard transform kernels (H3/H5/H7) (#3096)
+- New vendor backends and major vendor work: ARM64 CPU backend (NEON/SVE2 with INT8 quant) (#3775); Spacemit backend setup with Triton 3.6.0+spacemit.a5 (#3355, #3793, #3828); Enflame backend operator migration, C++ wrapper and int64 support (#3335, #2938, #3471); Moore Threads SQMMA adaptation to Triton 3.6 and mm autotune (#3351, #3493); Sunrise CI support (#3544)
+- DeepSeek V4 operator benchmarks against vLLM APIs and vLLM accuracy tests (#3494, #3500)
+- NVIDIA backend bumped to Triton 3.6 and newer PyTorch (#3383, #3391, #3601); CUDA 12.8/13.0 Containerfiles (#3528, #3600)
+- Added a simple extensible FlagTune API for selected matmul ops (#3462)
+- Optimized fused MoE kernel selection and safe_softmax dynamic block/warp scaling (#3340, #2936)
+- Fixed flash-attn varlen with non-contiguous key cache (#3410), fp8 copy (#3509), Iluvatar `trunc_divide` integer dispatch (#3608), Ascend `fill_` on empty tensors (#4105), MUSA device-type dispatch issues (#3495, #3498, #3499)
+- Large-scale test-coverage campaign across operators and a reworked `run_tests` script with shared-queue batch testing (#3073–#3343, #3633–#3647)
+
 ## v5.0
 
 **Release date**: TBD

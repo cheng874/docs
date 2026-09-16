@@ -70,17 +70,14 @@ docker exec -it flagos /bin/bash
 ```
 ### Start the Server
 ```bash
-export VLLM_FL_PLATFORM=kunlunxin
-export VLLM_FL_PREFER=flagos
-export VLLM_FL_FLAGOS_WHITELIST='rms_norm,silu_and_mul,rotary_embedding'
-export FLAGCX_PATH=/env/FlagCX
-export CUDA_VISIBLE_DEVICES=0
 vllm serve /data/MiniCPM5-1B \
-    --served-model-name MiniCPM5-1B \
-    --port 8000 \
-    --tensor-parallel-size 1 \
-    --gpu-memory-utilization 0.95 \
-    --enforce-eager
+--trust-remote-code \
+--dtype bfloat16 \
+--enforce-eager \
+--port 8000 \
+--host 0.0.0.0 \
+--served-model-name MiniCPM5-1B \
+--gpu-memory-utilization 0.85
 ```
 
 ## Service Invocation

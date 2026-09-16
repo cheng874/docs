@@ -50,6 +50,7 @@ modelscope download --model FlagRelease/Qwen3.5-397B-A17B-metax-FlagOS --local_d
 ### Start the Container
 
 ```bash
+#Container Startup
 docker run -itd \
 	--name flagos \
 	--privileged \
@@ -71,26 +72,28 @@ docker run -itd \
 docker exec -it flagos /bin/bash
 ```
 
-### Start the Server
+### Serve and use Qwen3.5-397B-A17B with vllm
 
-in the node 0
+on the node1, you can use
 
 ```bash
 USE_FLAGGEMS=1
 vllm serve /data/Qwen3.5-397B-A17B/snapshots/qwen35/ \
   --tensor-parallel-size 8 --pipeline-parallel-size 2 --served-model-name qwen35 \
   --nnodes 2 --node-rank 0 \
-  --master-addr <node0_ip>
+  --master-addr <node1_ip>
 ```
+to launch server.
 
-in the node 1
+on the node2, you can use
 ```bash
 USE_FLAGGEMS=1
 vllm serve /data/Qwen3.5-397B-A17B/snapshots/qwen35/ \
   --tensor-parallel-size 8 --pipeline-parallel-size 2 --served-model-name qwen35 \
   --nnodes 2 --node-rank 1 \
-  --master-addr <node0_ip> --headless
+  --master-addr <node1_ip> --headless
 ```
+to launch server 
 
 ## Service Invocation
 

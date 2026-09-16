@@ -2,13 +2,33 @@
 
 本节包含 vllm-plugin-FL 的发布信息。
 
-## v0.3.0-rc0
+## v0.3.0-rc2（发布候选版）
 
 ```{note}
-这是 FlagOS 2.2 的发布候选版本（2026-08-24 发布，tag `v0.3.0-rc0`）。版本号与支持平台列表将在 GA 时定稿。
+这是 FlagOS 2.2 的发布候选版本（2026-09 发布，tag `v0.3.0-rc2.post1`；取代 2026-08-24 的 `v0.3.0-rc0`）。版本号与支持平台列表将在 GA 时定稿。
 ```
 
-vllm-plugin-FL v0.3.0-rc0 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0)。
+vllm-plugin-FL v0.3.0-rc2 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0)。
+
+自 rc0 以来的新增内容（来自 `v0.3.0-rc0...v0.3.0-rc2.post1` 对比）：
+
+- **新增功能**
+
+  - vLLM 0.24 上的 Qwen3.5 纯文本运行时兼容 (#383)。
+  - W8A8 量化推理适配 vLLM 0.24 (#336)；Arm CPU 集成 Qwen packed W4A8 与 GDN (#433)。
+  - FlagCX connector：Prometheus KV 传输指标，并移植 release/0.2 的 #315 (#418)。
+  - Sunrise attention 后端移植至 vLLM 0.24.0（CUSTOM 注册 + ptpu `memory_stats` shim）(#391)；基于空设备 vLLM 0.24.0 的 TXDA 支持 (#447)；启用 vLLM 0.24.0 的海光工作流 (#436)。
+  - Dispatch：支持追加 FlagGems 黑名单条目 (#439)；自定义吞吐测试用例 (#426)；MTP xGrammar mask 批处理 (#414)。
+  - 新增版本文档页 (#403)；CI 从 release/0.2 迁移至 main (#415)，并支持 `/rerun-failed-ci`、`/cancel-ci` PR 评论命令 (#480)。
+
+- **修复**
+
+  - GDN：packed decode beta 保持 fp32 (#385)。
+  - Iluvatar：Triton patch 收敛至模块级并移除死代码 (#406)。
+  - Dispatch 保留可用的参考回退注册 (#440)；out-of-tree 后端继承原生 MXFP8 候选 (#441)。
+  - 恢复 #382 的 FlagGems KV cache 更新 (#474) 与 #279 的 T-Head 静态图支持 (#472)。
+
+以下 rc0 内容仍属于本发布候选版：
 
 - **新增功能**
 

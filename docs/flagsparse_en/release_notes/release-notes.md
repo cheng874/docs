@@ -1,8 +1,25 @@
 # FlagSparse Release Notes
 
-## Unreleased (FlagOS 2.2 in development)
+## v0.3.0-rc2 (release candidate)
 
-- **Packaging (FEP-0019, Wave 1)** — Debian `.deb` and RPM `.rpm` packaging has landed (FlagSparse#12), including openEuler 24.03 RPM build support (FlagSparse#29). Binary packages are published to the FlagOS Nexus repository.
+```{note}
+This is the FlagOS 2.2 release candidate (tag `v0.3.0-rc2.post1`, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. Packaging (FEP-0019 Wave 1) has landed: Debian `.deb` and RPM `.rpm` packaging (FlagSparse#12) including openEuler 24.03 RPM build support (FlagSparse#29); binary packages are published to the FlagOS Nexus repository.
+```
+
+- **Added Features**
+
+  - New/expanded sparse operators: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR; SpMV CSC, BSR and BSR-optimized (with a scipy baseline); SpSV SELL.
+  - Latest sparse operator implementations merged from the NCIC-AlphaSparse line, with tests aligned to the official runners and an updated sparse support matrix (#25, #26, #30, #38).
+  - Hygon DCU support merged alongside CUDA (with DCU run commands and robustness fixes) (#44, #45).
+  - GPU CI on dedicated runners with Triton 3.6 / FlagTree requirements, plus a GPU benchmark workflow (#23, #24).
+
+- **Improved / Fixed**
+
+  - SpMV CSR and SpGEMM optimizations; SDDMM optimization v0.1 (#39, #40).
+  - Fixed SpSM and SpSV tests; unified timing and index fixes (#28).
+  - Packaging follow-ups: smoke-test decoupling, ubuntu:24.04 base alignment, RPM spec fixes (#8, #9, #11).
+  - Operator registry parser made resilient to copyright headers (#33).
+  - Apache-2.0 copyright headers added across all source files (#33).
 
 ## v0.2.0
 

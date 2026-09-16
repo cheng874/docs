@@ -1,8 +1,23 @@
 # FlagDNN 发布说明
 
-## 未发布（FlagOS 2.2 开发中）
+## v0.3.0-rc2（候选发布版）
 
-- **打包（FEP-0019，Wave 1）** —— 原生 NVIDIA runtime 与 development 包正在 FlagDNN#1 中添加（first-contributor workflow 需 maintainer 批准）。这些包将消费 `libtriton-jit-nvidia >= 0.1.0-3` 并发布至 FlagOS Nexus 仓库。
+```{note}
+这是 FlagOS 2.2 的候选发布版（标签 `v0.3.0-rc2.post1`，发布于 2026-09）。版本号与支持平台列表将在 GA 时最终确定。FEP-0019 Wave 1 的打包工作仍在 FlagDNN#1 中推进（原生 NVIDIA runtime/development 包，依赖 `libtriton-jit-nvidia >= 0.1.0-3`，将发布至 FlagOS Nexus 仓库）。
+```
+
+- **新增特性**
+
+  - 新硬件后端：昇腾（含专项测试与性能调优）、海光 DCU（含 CPU 参考算子）、摩尔线程（MUSA）、Iluvatar（2026-08-24 同步的 WIP 适配），以及更新的平头哥后端——均附带后端 README (#5, #8, #9, #10)。
+  - 新算子：`conv_dgrad`、`conv_wgrad`，以及 `sdpa_fp8_backward` 草案。
+  - FlagDNN CI/CD 工作流 (#2)，包含基于 `run_op.sh` 的单算子运行。
+
+- **改进 / 修复**
+
+  - 测试框架架构重构（同时适配 NVIDIA 与昇腾），修复批量测试收集问题。
+  - 长序列 causal SDPA 性能优化：host descriptor、反向 pass 的 bounded id、owner-compute causal d128 反向。
+  - `add_square`、`matmul`、`conv2d`、binary 相关算子、`batchnorm` 的性能修复及 NVIDIA/昇腾多轮调优 (#6, #7, #8)。
+  - 全部源码文件添加 Apache-2.0 版权头 (#3, #4)。
 
 ## v0.2.0
 

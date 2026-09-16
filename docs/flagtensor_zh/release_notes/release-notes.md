@@ -1,8 +1,27 @@
 # FlagTensor 发布说明
 
-## 未发布（FlagOS 2.2 开发中）
+## v0.3.0-rc2（候选发布版）
 
-- **打包（FEP-0019，Wave 1）** —— 后端无关的 Python 包以及原生 NVIDIA runtime/development/CPython 包正在 FlagTensor#4 中添加（first-contributor workflow 需 maintainer 批准）。这些包依赖 `libtriton-jit-nvidia >= 0.1.0-3`，将发布至 PyPI（wheel）和 FlagOS Nexus 仓库（DEB/RPM）。
+```{note}
+这是 FlagOS 2.2 的候选发布版（标签 `v0.3.0-rc2.post1`，发布于 2026-09）。版本号与支持平台列表将在 GA 时最终确定。FEP-0019 Wave 1 的打包工作仍在 FlagTensor#4 中推进（后端无关的 Python 包及原生 NVIDIA runtime/development/CPython 包，依赖 `libtriton-jit-nvidia >= 0.1.0-3`，将发布至 PyPI 与 FlagOS Nexus 仓库）。
+```
+
+- **新增特性**
+
+  - 新硬件后端：平头哥 PPU (#10)、Iluvatar CoreX（含 BI-V150 contraction GEMM 调优与已发布的性能报告：36 算子、2158 组测量）(#11, #13, #16)、华为昇腾 (#12)、沐曦 MetaX C550（含 PyTorch 原生基线支持）(#15, #17)，以及海光 DCU + 昆仑芯 XPU。
+  - 覆盖全部 36 个算子的 C++ 封装（TritonJIT 支持）(#7, #8)。
+  - 新增 contraction 与 trinary 算子及融合 trinary 原型；额外 6 个 binary 算子注册进 `_FULL_CONFIG`；`add()` 新增 `alpha` 参数以兼容 `aten::add.Tensor`。
+  - FlagOS 插件及面向非生产后端的厂商门控算子选择。
+  - 算子命名全面对齐 cuTensor 官方命名体系。
+  - 统一的多后端 `setup.sh`（`--backend metax`、nvidia/ppu/iluvatar）与生产级 GPU 无关 Dockerfile。
+
+- **改进 / 修复**
+
+  - 面向验收的重构：FlagGems 风格文档、符合规范的 CI 路径；CI 收敛为 4 条核心工作流并使用组织级 runner 标签。
+  - 修复 block-sparse contraction 与 CuTensor workspace；benchmark dtype 对齐；双 key 性能数据解析修复 (#5)。
+  - Triton 3.6 兼容（flagtree 0.6.1+iluvatar3.6）及 Iluvatar tune configs。
+  - 恢复 Iluvatar 上的厂商原生基线解析 (#16)；benchmark 通过/失败判定与 matplotlib 解耦。
+  - 全部源码文件添加 Apache-2.0 版权头 (#6)。
 
 ## v0.2.0
 

@@ -2,6 +2,33 @@
 
 This section includes the Megatron-LM-FL release information.
 
+## v2.6
+
+- **Added Features**
+
+  - Partial (layer-selective) Transformer checkpointing — checkpoint only a configurable number of individual Transformer layers instead of the full model.
+  - Conditional release of `grad`/`main_grad` memory in `copy_model_grads_to_main_grads` after the copy, plus a flag for emptying unused memory.
+  - Contiguous gradient buffers made the default in local DDP, with fixes for Torch DDP and removal of the contiguous buffer for checkpointed activations.
+  - Pipeline schedules no longer save input/output tensors for forward-only passes; additional asserts for local DDP and `params_have_main_grad`.
+  - `destroy_model_parallel` now destroys more process groups; torch.distributed init switched from TCP to the `env` method.
+
+- **Fixed**
+
+  - SIMD fixes in fused kernels for short sequences and the upper-triangular softmax kernel; additional fused-softmax bug fixes.
+  - Across-rank synchronization for checkpoint iteration load, with timing type and validation-iteration fixes.
+  - Various argument-naming and typo fixes in distributed examples and `mappings.py`.
+
+## v2.5
+
+```{note}
+The v2.5 tag shares its base history with the upstream Megatron-LM lineage; the v2.0 → v2.5 compare contains a large amount of historical upstream sync commits. The entries below summarize the FlagOS-side changes verified in that range.
+```
+
+- **Added Features**
+
+  - Upstream Megatron-LM synchronization across the v2.x line, bringing the fork up to date with upstream core improvements (training schedules, fused kernels, distributed checkpointing, and API server support).
+  - Continued multi-platform backend maintenance on top of the plugin dispatch system introduced in earlier releases (CUDA, MetaX, MUSA, TXDA, NPU).
+
 ## v0.2.0
 
 

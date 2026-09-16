@@ -2,33 +2,6 @@
 
 /* FlagGems Documentation Custom Styles */
 
-/* ---------- Sidebar spacing (symmetric, desktop only) ---------- */
-
-@media (min-width: 992px) {
-    /* Left sidebar (navigation tree) */
-    .bd-sidebar-primary {
-        padding-left: 0.75rem;   /* left edge to nav tree */
-        padding-right: 0.5rem;   /* nav tree to main content */
-    }
-
-    /* Right sidebar (TOC) */
-    .bd-sidebar-secondary {
-        padding-right: 0.75rem;  /* right edge to TOC */
-        padding-left: 0.5rem;    /* TOC to main content */
-    }
-
-    /* Main content area */
-    .bd-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    /* Global container */
-    .container-fluid {
-        max-width: 1400px;
-    }
-}
-
 /* Operator List Table */
 .operator-list {
     width: 100%;
@@ -37,15 +10,15 @@
 }
 
 /* Hide right sidebar and expand width on operators, benchmark, and summary pages */
-#operator-table ~ .bd-sidebar-secondary,
-body:has(#operator-table) .bd-sidebar-secondary,
+#operator-list ~ .bd-sidebar-secondary,
+body:has(#operator-list) .bd-sidebar-secondary,
 body:has(#benchmark-results) .bd-sidebar-secondary,
 body:has(#ut-summary) .bd-sidebar-secondary,
 body:has([id^="test-results-"]) .bd-sidebar-secondary {
     display: none !important;
 }
 
-body:has(#operator-table) .bd-article-container,
+body:has(#operator-list) .bd-article-container,
 body:has(#benchmark-results) .bd-article-container,
 body:has(#ut-summary) .bd-article-container,
 body:has([id^="test-results-"]) .bd-article-container {
@@ -53,14 +26,14 @@ body:has([id^="test-results-"]) .bd-article-container {
     max-width: none !important;
 }
 
-body:has(#operator-table) .bd-content .bd-article,
+body:has(#operator-list) .bd-content .bd-article,
 body:has(#benchmark-results) .bd-content .bd-article,
 body:has(#ut-summary) .bd-content .bd-article,
 body:has([id^="test-results-"]) .bd-content .bd-article {
     max-width: none !important;
 }
 
-body:has(#operator-table) .pst-scrollable-table-container {
+body:has(#operator-list) .pst-scrollable-table-container {
     overflow-x: auto;
 }
 
@@ -217,53 +190,6 @@ a.reference:hover {
 /* Dark theme specific */
 [data-theme="dark"] .operator-list th {
     background-color: #1a1a2e;
-}
-
-/* Operator category list table */
-.operator-category-table {
-    width: 100%;
-    font-size: 0.85em;
-    margin-bottom: 2em;
-}
-
-.operator-category-table th {
-    background-color: var(--pst-color-surface);
-    font-weight: bold;
-    text-align: left;
-    padding: 0.5em;
-    position: sticky;
-    top: 0;
-}
-
-.operator-category-table td {
-    padding: 0.4em 0.5em;
-    border-bottom: 1px solid var(--pst-color-border);
-    vertical-align: top;
-}
-
-.operator-category-table td code {
-    background: var(--pst-color-surface);
-    padding: 1px 4px;
-    border-radius: 3px;
-    color: inherit;
-    font-family: monospace;
-}
-
-.operator-category-table td:first-child {
-    white-space: nowrap;
-    width: 15%;
-}
-
-.operator-category-table td:last-child {
-    color: var(--pst-color-text-muted);
-}
-
-[data-theme="dark"] .operator-category-table th {
-    background-color: #1a1a2e;
-}
-
-[data-theme="dark"] .operator-category-table td code {
-    background: #2a2a3e;
 }
 
 [data-theme="dark"] .benchmark-table th {
