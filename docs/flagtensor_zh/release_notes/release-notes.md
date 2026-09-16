@@ -1,5 +1,9 @@
 # FlagTensor 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— 后端无关的 Python 包以及原生 NVIDIA runtime/development/CPython 包正在 FlagTensor#4 中添加（first-contributor workflow 需 maintainer 批准）。这些包依赖 `libtriton-jit-nvidia >= 0.1.0-3`，将发布至 PyPI（wheel）和 FlagOS Nexus 仓库（DEB/RPM）。
+
 ## v0.2.0
 
 

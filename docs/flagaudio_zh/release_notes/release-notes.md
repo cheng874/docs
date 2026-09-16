@@ -1,5 +1,10 @@
 # FlagAudio 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— Debian `.deb` 与 RPM `.rpm` 打包正在 FlagAudio#2 中进行（等待 first-contributor CI 批准）。Python wheel 将发布至 PyPI，二进制包发布至 FlagOS Nexus 仓库。
+- 所有源文件新增 Apache-2.0 版权头。
+
 ## v0.2.0
 
 

@@ -1,5 +1,9 @@
 # FlagBLAS 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— Debian `.deb` 与 RPM `.rpm` 打包正在 FlagBLAS#1 中评审（CI 已通过）。Python wheel 将发布至 PyPI，二进制包发布至 FlagOS Nexus 仓库。
+
 ## v0.2.0
 
 

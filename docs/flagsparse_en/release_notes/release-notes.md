@@ -1,5 +1,9 @@
 # FlagSparse Release Notes
 
+## Unreleased (FlagOS 2.2 in development)
+
+- **Packaging (FEP-0019, Wave 1)** — Debian `.deb` and RPM `.rpm` packaging has landed (FlagSparse#12), including openEuler 24.03 RPM build support (FlagSparse#29). Binary packages are published to the FlagOS Nexus repository.
+
 ## v0.2.0
 
 

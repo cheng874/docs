@@ -1,5 +1,9 @@
 # FlagDNN Release Notes
 
+## Unreleased (FlagOS 2.2 in development)
+
+- **Packaging (FEP-0019, Wave 1)** — Native NVIDIA runtime and development packages are being added in FlagDNN#1 (the first-contributor workflow requires maintainer approval). The packages will consume `libtriton-jit-nvidia >= 0.1.0-3` and be published to the FlagOS Nexus repository.
+
 ## v0.2.0
 
 

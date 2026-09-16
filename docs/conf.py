@@ -393,6 +393,20 @@ multiproject_projects = {
             "html_title": "verl-FL Documentation",
         },
     },
+    "verl_hardware_plugin_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "verl-hardware-plugin Documentation",
+            "html_title": "verl-hardware-plugin Documentation",
+        },
+    },
+    "flagprism_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagPrism Documentation",
+            "html_title": "FlagPrism Documentation",
+        },
+    },
     "flagos_robo_en": {
         "use_config_file": False,
         "config": {
@@ -536,6 +550,20 @@ multiproject_projects = {
         "config": {
             "project": "verl-FL 文档中心",
             "html_title": "verl-FL 文档中心", 
+        },
+    },
+    "verl_hardware_plugin_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "verl-hardware-plugin 文档中心",
+            "html_title": "verl-hardware-plugin 文档中心",
+        },
+    },
+    "flagprism_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagPrism 文档中心",
+            "html_title": "FlagPrism 文档中心",
         },
     },
     "flagos_robo_zh": {

@@ -1,5 +1,9 @@
 # FlagSparse 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— Debian `.deb` 与 RPM `.rpm` 打包已合入（FlagSparse#12），并新增 openEuler 24.03 RPM 构建支持（FlagSparse#29）。二进制包发布至 FlagOS Nexus 仓库。
+
 ## v0.2.0
 
 

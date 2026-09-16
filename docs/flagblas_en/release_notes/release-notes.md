@@ -1,5 +1,9 @@
 # FlagBLAS Release Notes
 
+## Unreleased (FlagOS 2.2 in development)
+
+- **Packaging (FEP-0019, Wave 1)** — Debian `.deb` and RPM `.rpm` packaging is in review in FlagBLAS#1 (CI is green). Python wheels will be published to PyPI and binary packages to the FlagOS Nexus repository.
+
 ## v0.2.0
 
 

@@ -6,7 +6,22 @@ vllm-plugin-FL can be installed from source code or via Docker images.
 
 This section covers installing vllm-plugin-FL and its dependencies from source code.
 
-1. Install vllm from the official [v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2) (optional if the correct version is installed)
+1. Install vLLM
+
+    For **NVIDIA** GPUs, install vLLM from the official [v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) release (optional if the correct version is already installed):
+
+    ```{code-block} shell
+    pip install vllm==0.24.0
+    ```
+
+    For **non-NVIDIA** chips, install vLLM from source with the `empty` device target:
+
+    ```{code-block} shell
+    git clone -b v0.24.0 https://github.com/vllm-project/vllm.git
+    cd vllm
+    VLLM_TARGET_DEVICE=empty pip install -v --no-build-isolation --no-deps .
+    ```
+
 2. Install vllm-plugin-FL
 
     2.1 Clone the repository:
@@ -17,11 +32,21 @@ This section covers installing vllm-plugin-FL and its dependencies from source c
 
     2.2 install
 
+    By default vllm-plugin-FL installs as a Python-only package:
+
     ```{code-block} shell
     cd vllm-plugin-FL
     pip install --no-build-isolation .
     # or editable install
     pip install --no-build-isolation -e .
+    ```
+
+    On **NVIDIA**, set `VLLM_VENDOR=cuda` during installation to build and install the `vllm_fl._C` native C++ extension, which is required by some CUDA-graph and custom-op paths on vLLM 0.24.0+:
+
+    ```{code-block} shell
+    VLLM_VENDOR=cuda pip install --no-build-isolation .
+    # or editable install
+    VLLM_VENDOR=cuda pip install --no-build-isolation -e .
     ```
 
 3. Install [FlagGems](https://github.com/flagos-ai/FlagGems/blob/master/docs/getting-started.md#quick-installation)
@@ -91,8 +116,10 @@ If there are multiple plugins in the current environment, you can specify use vl
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.4.0+ascend3.2 $RES
+    python3 -m pip install flagtree==0.6.1rc1+ascend3.5 $RES
     ```
+
+    For other chips, use the matching FlagTree build (e.g., `flagtree==0.6.1+iluvatar3.6`, `flagtree==0.6.1+metax3.6`).
 
 2. Set required environment variable
 

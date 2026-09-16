@@ -1,5 +1,9 @@
 # FlagDNN 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— 原生 NVIDIA runtime 与 development 包正在 FlagDNN#1 中添加（first-contributor workflow 需 maintainer 批准）。这些包将消费 `libtriton-jit-nvidia >= 0.1.0-3` 并发布至 FlagOS Nexus 仓库。
+
 ## v0.2.0
 
 

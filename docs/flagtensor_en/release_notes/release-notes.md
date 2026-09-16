@@ -1,5 +1,9 @@
 # FlagTensor Release Notes
 
+## Unreleased (FlagOS 2.2 in development)
+
+- **Packaging (FEP-0019, Wave 1)** — Backend-neutral Python packages plus native NVIDIA runtime/development/CPython packages are being added in FlagTensor#4 (the first-contributor workflow requires maintainer approval). The packages depend on `libtriton-jit-nvidia >= 0.1.0-3` and will be published to PyPI (wheels) and the FlagOS Nexus repository (DEB/RPM).
+
 ## v0.2.0
 
 
