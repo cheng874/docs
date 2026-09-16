@@ -36,21 +36,21 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -61,8 +61,9 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/custom-backend-registration.b0741bd4-1e75-4db8-9c98-024050c6dd86.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/custom-backend-registration.888e2cd5-0d69-48e6-91bd-ccf89528ccd4.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/custom-backend-registration';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/user_guide/custom-backend-registration.html" />
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -72,21 +73,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Jul 06, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
-
+  <body data-default-mode="light">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -112,7 +119,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -191,8 +198,32 @@
     </div>
     
     
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
   </div>
   
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
   
 
   
@@ -467,11 +498,18 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
 
 
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -499,7 +537,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-approaches">Two Approaches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-tree-approach-3-steps">In-tree Approach (3 Steps)</a></li>
@@ -589,17 +627,17 @@ python<span class="w"> </span>example_outtree.py
 <span class="c1"># 2. Register to Registry</span>
 <span class="n">registry</span> <span class="o">=</span> <span class="n">OpRegistry</span><span class="p">()</span>
 <span class="n">registry</span><span class="o">.</span><span class="n">register_impl</span><span class="p">(</span><span class="n">OpImpl</span><span class="p">(</span>
-    <span class="n">op_name</span><span class="o">=</span><span class="s2">&quot;rmsnorm_fwd&quot;</span><span class="p">,</span>
-    <span class="n">impl_id</span><span class="o">=</span><span class="s2">&quot;vendor.mybackend&quot;</span><span class="p">,</span>
+    <span class="n">op_name</span><span class="o">=</span><span class="s2">"rmsnorm_fwd"</span><span class="p">,</span>
+    <span class="n">impl_id</span><span class="o">=</span><span class="s2">"vendor.mybackend"</span><span class="p">,</span>
     <span class="n">kind</span><span class="o">=</span><span class="n">BackendImplKind</span><span class="o">.</span><span class="n">VENDOR</span><span class="p">,</span>
-    <span class="n">vendor</span><span class="o">=</span><span class="s2">&quot;mybackend&quot;</span><span class="p">,</span>
+    <span class="n">vendor</span><span class="o">=</span><span class="s2">"mybackend"</span><span class="p">,</span>
     <span class="n">fn</span><span class="o">=</span><span class="n">my_rmsnorm</span><span class="p">,</span>
     <span class="n">priority</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
 <span class="p">))</span>
 
 <span class="c1"># 3. Call via Manager</span>
 <span class="n">manager</span> <span class="o">=</span> <span class="n">OpManager</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
-<span class="n">output</span><span class="p">,</span> <span class="n">rsigma</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;rmsnorm_fwd&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">rsigma</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"rmsnorm_fwd"</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -622,12 +660,12 @@ python<span class="w"> </span>example_outtree.py
     <span class="o">...</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span><span class="n">registry</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called automatically by TE-FL&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Called automatically by TE-FL"""</span>
     <span class="n">registry</span><span class="o">.</span><span class="n">register_impl</span><span class="p">(</span><span class="n">OpImpl</span><span class="p">(</span>
-        <span class="n">op_name</span><span class="o">=</span><span class="s2">&quot;rmsnorm_fwd&quot;</span><span class="p">,</span>
-        <span class="n">impl_id</span><span class="o">=</span><span class="s2">&quot;vendor.myvendor&quot;</span><span class="p">,</span>
+        <span class="n">op_name</span><span class="o">=</span><span class="s2">"rmsnorm_fwd"</span><span class="p">,</span>
+        <span class="n">impl_id</span><span class="o">=</span><span class="s2">"vendor.myvendor"</span><span class="p">,</span>
         <span class="n">kind</span><span class="o">=</span><span class="n">BackendImplKind</span><span class="o">.</span><span class="n">VENDOR</span><span class="p">,</span>
-        <span class="n">vendor</span><span class="o">=</span><span class="s2">&quot;myvendor&quot;</span><span class="p">,</span>
+        <span class="n">vendor</span><span class="o">=</span><span class="s2">"myvendor"</span><span class="p">,</span>
         <span class="n">fn</span><span class="o">=</span><span class="n">my_rmsnorm</span><span class="p">,</span>
         <span class="n">priority</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
     <span class="p">))</span>
@@ -808,7 +846,7 @@ python<span class="w"> </span>your_script.py
 <section id="custom-per-operator-ordering">
 <h3>Custom per-operator ordering<a class="headerlink" href="#custom-per-operator-ordering" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use acme vendor for rmsnorm, flagos for others</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PER_OP</span><span class="o">=</span><span class="s2">&quot;rmsnorm_fwd=vendor:acme|flagos&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TE_FL_PER_OP</span><span class="o">=</span><span class="s2">"rmsnorm_fwd=vendor:acme|flagos"</span>
 python<span class="w"> </span>your_script.py
 </pre></div>
 </div>
@@ -832,8 +870,8 @@ python<span class="w"> </span>your_script.py
 <section id="expected-output">
 <h2>Expected Output<a class="headerlink" href="#expected-output" title="Link to this heading">#</a></h2>
 <p>When running, you should see logs like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">TE</span><span class="o">-</span><span class="n">FL</span> <span class="n">manager</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">133</span> <span class="n">INFO</span><span class="p">]</span> <span class="n">Registered</span> <span class="n">impl_ids</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;default.flagos&#39;</span><span class="p">,</span> <span class="s1">&#39;reference.torch&#39;</span><span class="p">,</span> <span class="s1">&#39;vendor.mybackend&#39;</span><span class="p">]</span>
-<span class="p">[</span><span class="n">TE</span><span class="o">-</span><span class="n">FL</span> <span class="n">manager</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">390</span> <span class="n">INFO</span><span class="p">]</span> <span class="n">Op</span> <span class="s1">&#39;rmsnorm_fwd&#39;</span> <span class="n">using</span> <span class="s1">&#39;vendor.mybackend&#39;</span> <span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">vendor</span><span class="p">,</span> <span class="n">vendor</span><span class="o">=</span><span class="n">mybackend</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">TE</span><span class="o">-</span><span class="n">FL</span> <span class="n">manager</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">133</span> <span class="n">INFO</span><span class="p">]</span> <span class="n">Registered</span> <span class="n">impl_ids</span><span class="p">:</span> <span class="p">[</span><span class="s1">'default.flagos'</span><span class="p">,</span> <span class="s1">'reference.torch'</span><span class="p">,</span> <span class="s1">'vendor.mybackend'</span><span class="p">]</span>
+<span class="p">[</span><span class="n">TE</span><span class="o">-</span><span class="n">FL</span> <span class="n">manager</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">390</span> <span class="n">INFO</span><span class="p">]</span> <span class="n">Op</span> <span class="s1">'rmsnorm_fwd'</span> <span class="n">using</span> <span class="s1">'vendor.mybackend'</span> <span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">vendor</span><span class="p">,</span> <span class="n">vendor</span><span class="o">=</span><span class="n">mybackend</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -885,7 +923,7 @@ python<span class="w"> </span>your_script.py
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-approaches">Two Approaches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-tree-approach-3-steps">In-tree Approach (3 Steps)</a></li>
@@ -946,7 +984,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 06, 2026.
+  Last updated on Sep 16, 2026.
   <br/>
 </p>
   </div>
@@ -964,8 +1002,8 @@ By FlagOS Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
   </footer>

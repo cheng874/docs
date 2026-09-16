@@ -36,21 +36,21 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
@@ -61,8 +61,9 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/standard_commands.1f8504b9-9707-4e91-9073-61ff0f7b4066.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/standard_commands.d79059ff-789e-411b-a074-4207904e43dc.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/standard_commands';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/reference/standard_commands.html" />
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -71,21 +72,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Jul 06, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
-
+  <body data-default-mode="light">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -111,7 +118,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -190,8 +197,32 @@
     </div>
     
     
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
   </div>
   
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
   
 
   
@@ -470,11 +501,18 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
 
 
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -502,7 +540,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-quality-checks">Static Quality Checks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-testing">Correctness Testing</a><ul class="nav section-nav flex-column">
@@ -670,21 +708,21 @@ python<span class="w"> </span>tools/run_flagtensor_weekly.py<span class="w"> </s
 <section id="registry-operations">
 <h2>Registry Operations<a class="headerlink" href="#registry-operations" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load and inspect registry</span>
-python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;'PY'</span>
 <span class="s">import sys</span>
-<span class="s">sys.path.insert(0, &#39;src&#39;)</span>
+<span class="s">sys.path.insert(0, 'src')</span>
 <span class="s">from flagtensor_registry import load_operator_registry</span>
 
 <span class="s">for spec in load_operator_registry():</span>
-<span class="s">    print(f&quot;{spec.name}: category={spec.category}, status={spec.status}&quot;)</span>
+<span class="s">    print(f"{spec.name}: category={spec.category}, status={spec.status}")</span>
 <span class="s">PY</span>
 
 <span class="c1"># Check registry consistency</span>
-python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;'PY'</span>
 <span class="s">import sys</span>
 <span class="s">from pathlib import Path</span>
 
-<span class="s">sys.path.insert(0, &#39;src&#39;)</span>
+<span class="s">sys.path.insert(0, 'src')</span>
 <span class="s">from flagtensor_registry import load_operator_registry</span>
 
 <span class="s">registry = load_operator_registry()</span>
@@ -693,22 +731,22 @@ python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&
 <span class="s">for spec in registry:</span>
 <span class="s">    impl_path = Path(spec.impl_file)</span>
 <span class="s">    if not impl_path.exists():</span>
-<span class="s">        errors.append(f&quot;Missing impl: {spec.name} -&gt; {spec.impl_file}&quot;)</span>
+<span class="s">        errors.append(f"Missing impl: {spec.name} -&gt; {spec.impl_file}")</span>
 
 <span class="s">    test_path = Path(spec.correctness_test)</span>
 <span class="s">    if not test_path.exists():</span>
-<span class="s">        errors.append(f&quot;Missing test: {spec.name} -&gt; {spec.correctness_test}&quot;)</span>
+<span class="s">        errors.append(f"Missing test: {spec.name} -&gt; {spec.correctness_test}")</span>
 
 <span class="s">    bench_path = Path(spec.benchmark_test)</span>
 <span class="s">    if not bench_path.exists():</span>
-<span class="s">        errors.append(f&quot;Missing benchmark: {spec.name} -&gt; {spec.benchmark_test}&quot;)</span>
+<span class="s">        errors.append(f"Missing benchmark: {spec.name} -&gt; {spec.benchmark_test}")</span>
 
 <span class="s">if errors:</span>
-<span class="s">    print(&quot;Registry consistency errors:&quot;)</span>
+<span class="s">    print("Registry consistency errors:")</span>
 <span class="s">    for e in errors:</span>
-<span class="s">        print(f&quot;  - {e}&quot;)</span>
+<span class="s">        print(f"  - {e}")</span>
 <span class="s">else:</span>
-<span class="s">    print(f&quot;Registry consistency OK: {len(registry)} operators&quot;)</span>
+<span class="s">    print(f"Registry consistency OK: {len(registry)} operators")</span>
 <span class="s">PY</span>
 </pre></div>
 </div>
@@ -735,12 +773,12 @@ python<span class="w"> </span>tools/export_env.py<span class="w"> </span>--proje
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run correctness on GPU cluster node</span>
 srun<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--job-name<span class="w"> </span>flagtensor-correctness<span class="w"> </span>--nodelist<span class="w"> </span>&lt;node_name&gt;<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">24</span><span class="w"> </span>--mem<span class="o">=</span><span class="m">242144</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-w<span class="w"> </span>/workspace/FlagGems/flagtensor<span class="w"> </span>triton_cuda12<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">&quot;python tools/run_flagtensor_ci.py --smoke --run-correctness --results-dir /tmp/flagtensor_ci_results&quot;</span>
+<span class="w">  </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">"python tools/run_flagtensor_ci.py --smoke --run-correctness --results-dir /tmp/flagtensor_ci_results"</span>
 
 <span class="c1"># Run weekly on GPU cluster node</span>
 srun<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--job-name<span class="w"> </span>flagtensor-weekly<span class="w"> </span>--nodelist<span class="w"> </span>&lt;node_name&gt;<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">24</span><span class="w"> </span>--mem<span class="o">=</span><span class="m">242144</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-w<span class="w"> </span>/workspace/FlagGems/flagtensor<span class="w"> </span>triton_cuda12<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">&quot;python tools/run_flagtensor_weekly.py --project-root /workspace/FlagGems/flagtensor --results-dir /tmp/flagtensor_weekly_results --gpus 0&quot;</span>
+<span class="w">  </span>bash<span class="w"> </span>-lc<span class="w"> </span><span class="s2">"python tools/run_flagtensor_weekly.py --project-root /workspace/FlagGems/flagtensor --results-dir /tmp/flagtensor_weekly_results --gpus 0"</span>
 </pre></div>
 </div>
 </section>
@@ -754,7 +792,7 @@ srun<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><s
 </div>
 </li>
 <li><p><strong>Registry Consistency</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; sys.path.insert(0, &#39;src&#39;); from flagtensor_registry import load_operator_registry; print(f&#39;Registry OK: {len(list(load_operator_registry()))} operators&#39;)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys; sys.path.insert(0, 'src'); from flagtensor_registry import load_operator_registry; print(f'Registry OK: {len(list(load_operator_registry()))} operators')"</span>
 </pre></div>
 </div>
 </li>
@@ -817,7 +855,7 @@ python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> <
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-quality-checks">Static Quality Checks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-testing">Correctness Testing</a><ul class="nav section-nav flex-column">
@@ -872,7 +910,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 06, 2026.
+  Last updated on Sep 16, 2026.
   <br/>
 </p>
   </div>
@@ -890,8 +928,8 @@ By FlagOS Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
   </footer>
