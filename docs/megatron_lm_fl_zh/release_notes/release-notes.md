@@ -2,6 +2,33 @@
 
 本节包含 Megatron-LM-FL 的发布信息。
 
+## v2.6
+
+- **新增特性**
+
+  - 部分（按层选择）Transformer checkpoint — 仅对可配置数量的 Transformer 层做 checkpoint，而非整个模型。
+  - 在 `copy_model_grads_to_main_grads` 拷贝完成后有条件地释放 `grad`/`main_grad` 内存，并新增清空未使用内存的开关。
+  - 本地 DDP 默认启用连续梯度缓冲，并修复 Torch DDP、移除 checkpoint 激活的连续缓冲。
+  - pipeline schedule 在仅前向传播时不再保存输入/输出张量；为本地 DDP 与 `params_have_main_grad` 增加断言检查。
+  - `destroy_model_parallel` 现在销毁更多进程组；torch.distributed 初始化方式由 TCP 切换为 `env`。
+
+- **修复**
+
+  - 修复 fused kernel 在短序列上的 SIMD 问题及上三角 softmax kernel；另有若干 fused softmax 修复。
+  - 修复 checkpoint iteration 加载的跨 rank 同步、计时类型与验证迭代问题。
+  - 分布式示例与 `mappings.py` 中的若干参数命名与拼写修复。
+
+## v2.5
+
+```{note}
+v2.5 标签与上游 Megatron-LM 共享基础历史；v2.0 → v2.5 的对比中包含大量上游历史同步提交。以下条目仅总结该区间内已核实的 FlagOS 侧变更。
+```
+
+- **新增特性**
+
+  - v2.x 线的上游 Megatron-LM 同步，使 fork 跟进上游核心改进（训练 schedule、fused kernel、分布式 checkpoint 与 API server 支持）。
+  - 在早期版本引入的插件分派体系之上持续维护多平台后端（CUDA、MetaX、MUSA、TXDA、NPU）。
+
 ## v0.2.0
 
 

@@ -2,6 +2,54 @@
 
 This section includes the vllm-plugin-FL release information.
 
+## v0.3.0-rc2 (release candidate)
+
+```{note}
+This is the FlagOS 2.2 release candidate (published 2026-09, tag `v0.3.0-rc2.post1`; supersedes `v0.3.0-rc0` from 2026-08-24). Version numbers and supported-platform lists will be finalized at GA.
+```
+
+vllm-plugin-FL v0.3.0-rc2 requires [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0).
+
+New since rc0 (from compare `v0.3.0-rc0...v0.3.0-rc2.post1`):
+
+- **Added Features**
+
+  - Qwen3.5 text-only runtime compatibility on vLLM 0.24 (#383).
+  - W8A8 quantization inference adapted to vLLM 0.24 (#336); Arm CPU integration of Qwen packed W4A8 and GDN (#433).
+  - FlagCX connector: Prometheus KV-transfer metrics and port of #315 from release/0.2 (#418).
+  - Sunrise attention backend ported to vLLM 0.24.0 (CUSTOM registration + ptpu `memory_stats` shim) (#391); TXDA support on empty vLLM 0.24.0 (#447); Hygon workflow enabled for vLLM 0.24.0 (#436).
+  - Dispatch: support appending FlagGems blacklist entries (#439); custom throughput test cases (#426); batched MTP xGrammar masks (#414).
+  - Version documentation page (#403); CI migrated from release/0.2 to main (#415) with `/rerun-failed-ci` and `/cancel-ci` PR comment commands (#480).
+
+- **Fixed**
+
+  - GDN: keep packed decode beta in fp32 (#385).
+  - Iluvatar: consolidate Triton patches at module level and remove dead code (#406).
+  - Keep available reference fallbacks registered in dispatch (#440); inherit native MXFP8 candidates for out-of-tree backends (#441).
+  - Restore FlagGems KV cache updates from #382 (#474) and T-Head static graph support from #279 (#472).
+
+The rc0 content below remains part of this release candidate:
+
+- **Added Features**
+
+  - Upgraded vLLM compatibility from v0.20.2 to v0.24.0, including support for the official vLLM 0.24 CUDA stable-ABI wheels.
+  - Added and re-adapted vendor backends for vLLM 0.24.0:
+    - MetaX C550 backend adaptation (#294, building on the 0.20.2 adaptation in #241).
+    - Moore Threads MUSA (MTT S5000) backend adaptation (#308, building on the 0.20.2 update in #176).
+    - Iluvatar BI-V150 backend adaptation (#310).
+    - T-Head vendor attention backend (#360).
+    - PPU empty-mode support (#190).
+  - Added the `weak_ref_tensor` C++ extension with a CMake build system (#231).
+  - Added `BreakableCUDAGraphWrapper` support for out-of-tree vendor backends on vLLM 0.24.0+ (#342), and enabled CUDA graph on Iluvatar (#232).
+  - Upgraded the FlagCX connector to support vLLM 0.20–0.24 (#295).
+
+- **Improved Features**
+
+  - Ascend fused module refactor: reworked the fused-MoE implementation and consolidated the vendor fused modules (#240, cherry-pick of #136).
+  - Dispatch enhancements: opt-in Hopper long-context routing (#384); routed `fused_experts` through FlagGems (#230); fixed `GroupedTopKRouterFL` `valid_grouping` closure (#237); updated the NVIDIA FlagGems blacklist and supported-vendor list (#222, #228); removed direct FlagGems calls from the MUSA vendor backend (#376); improved `CachedOp` fast-path diagnostics and fallback behavior (#206).
+  - CUDA graph robustness: disable CUDA graph for non-DeepEP backends (#346); account for CUDA graph memory in KV cache sizing (#381); MTP fixes for vLLM 0.24.0 (#334, #337).
+  - Worker fixes: preserve data-parallel GPU offset for independent engines (#380); guard `kernel_warmup` against missing `torchvision` on out-of-tree runtimes (#386); MetaX `all_reduce` now passes `group=device_group` (#348).
+
 ## v0.2.0
 
 

@@ -1,5 +1,9 @@
 # FlagFFT 发布说明
 
+## 未发布（FlagOS 2.2 开发中）
+
+- **打包（FEP-0019，Wave 1）** —— NVIDIA 后端的 Debian `.deb` 与 RPM `.rpm` 打包正在 FlagFFT#12 中进行。首发仅提供 NVIDIA 后端；MThreads 支持待公开 build image，PPU 后端待上游化。
+
 ## v0.1.0
 
 

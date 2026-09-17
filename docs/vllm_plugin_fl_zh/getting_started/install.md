@@ -6,7 +6,22 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
 
 本节介绍从源代码安装 vllm-plugin-FL 及其依赖项。
 
-1. 从官方版本安装 vllm [v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)（如果已安装正确版本则可选）
+1. 安装 vLLM
+
+    对于 **NVIDIA** GPU，从官方 [v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) 版本安装 vLLM（如果已安装正确版本则可选）：
+
+    ```{code-block} shell
+    pip install vllm==0.24.0
+    ```
+
+    对于 **非 NVIDIA** 芯片，使用 `empty` 设备目标从源码安装 vLLM：
+
+    ```{code-block} shell
+    git clone -b v0.24.0 https://github.com/vllm-project/vllm.git
+    cd vllm
+    VLLM_TARGET_DEVICE=empty pip install -v --no-build-isolation --no-deps .
+    ```
+
 2. 安装 vllm-plugin-FL
 
     2.1 克隆仓库：
@@ -17,11 +32,21 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
 
     2.2 安装
 
+    默认情况下，vllm-plugin-FL 以纯 Python 包形式安装：
+
     ```{code-block} shell
     cd vllm-plugin-FL
     pip install --no-build-isolation .
     # 或可编辑安装
     pip install --no-build-isolation -e .
+    ```
+
+    在 **NVIDIA** 上，安装时设置 `VLLM_VENDOR=cuda` 以编译并安装 `vllm_fl._C` 原生 C++ 扩展；在 vLLM 0.24.0+ 上，部分 CUDA graph 和自定义算子路径需要该扩展：
+
+    ```{code-block} shell
+    VLLM_VENDOR=cuda pip install --no-build-isolation .
+    # 或可编辑安装
+    VLLM_VENDOR=cuda pip install --no-build-isolation -e .
     ```
 
 3. 安装 [FlagGems](https://github.com/flagos-ai/FlagGems/blob/master/docs/getting-started.md#quick-installation)
@@ -91,8 +116,10 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.4.0+ascend3.2 $RES
+    python3 -m pip install flagtree==0.6.1rc1+ascend3.5 $RES
     ```
+
+    其他芯片请使用对应的 FlagTree 构建（例如 `flagtree==0.6.1+iluvatar3.6`、`flagtree==0.6.1+metax3.6`）。
 
 2. 设置必需的环境变量
 
