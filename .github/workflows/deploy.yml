@@ -38,7 +38,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          # 文档构建工具链在 docs/requirements.txt（含 sphinx 及全部扩展）；
+          # 根 requirements.txt 只有 modelscope，缺 sphinx 会导致 sphinx-build: command not found
+          pip install -r docs/requirements.txt
+          # 根 requirements.txt 供个别子项目 autodoc 使用，缺失不应中断文档构建
+          pip install -r requirements.txt || true
 
       - name: Select subprojects
         id: select
