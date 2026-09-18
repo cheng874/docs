@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.99a17d00-7f78-4340-bb6b-56129b62827d.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.76f0f55e-5f59-48d4-916e-7241d4b23cb9.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/user_guide/user-guide.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -373,6 +378,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Megatron-LM-FL User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html">Override Plugin Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a></li>
 </ul>
 </details></li>
 </ul>
@@ -543,6 +549,17 @@
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html#quick-start-checklist">Quick Start Checklist</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#supported-platforms">1. Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#prepare-the-environment">2. Prepare the environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#install-megatron-lm-fl">3. Install Megatron-LM-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#prepare-the-dataset-and-tokenizer">4. Prepare the dataset and tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#run-the-training-test">5. Run the training test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#switch-to-the-flagos-compiler-and-operator-library">6. Switch to the FlagOS compiler and operator library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#known-issues-and-workarounds">7. Known issues and workarounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#notes">8. Notes</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -611,7 +628,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.3841ff52-9c8e-4642-88ed-3a7012b77c95.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.1ba359ff-f505-43db-8536-4ae9fdbdddb6.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/requirements.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -365,6 +370,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v210.html">FlagScale v2.1.0-rc2 Release Notes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v200.html">FlagScale v2.0.0 Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v100.html">FlagScale v1.0.0 Release Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
@@ -379,7 +387,10 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -554,6 +565,45 @@
 <section id="hardware-platforms">
 <h2>Hardware platforms<a class="headerlink" href="#hardware-platforms" title="Link to this heading">#</a></h2>
 <p>FlagScale is designed to work collaboratively with FlagOS plugins. While FlagScale itself has no hardware platform requirements, you should review the hardware requirements of the specific FlagOS plugins you intend to use. For more information, see <a class="reference external" href="https://github.com/flagos-ai/Megatron-LM-FL">Megatron-LM-FL</a>, <a class="reference external" href="https://github.com/flagos-ai/TransformerEngine-FL">TransformerEngine-FL</a>, <a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a>, and <a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL">vllm-plugin-FL</a>.</p>
+<p>Training has been validated end to end on the following platforms together with Megatron-LM-FL and TransformerEngine-FL:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Device check</p></th>
+<th class="head"><p>Visible-devices env</p></th>
+<th class="head"><p>FlagTree backend</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mx-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MACA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Hygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hy-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hcu</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCEND_RT_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>T-Head PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the step-by-step procedure, see <a class="reference internal" href="../user_guide/multi-platform-training.html"><span class="std std-doc">Multi-Platform Training and Testing</span></a>.</p>
 </section>
 <section id="supported-models">
 <h2>Supported models<a class="headerlink" href="#supported-models" title="Link to this heading">#</a></h2>
@@ -733,7 +783,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

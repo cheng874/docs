@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vllm from the official v0.20.2(optional if the correct version is installed), Install vllm-plugin-FL 2.1 Clone t..." />
+<meta property="og:description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vLLM For NVIDIA GPUs, install vLLM from the official v0.24.0 release (optional if the correct version is already..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vllm from the official v0.20.2(optional if the correct version is installed), Install vllm-plugin-FL 2.1 Clone t..." />
+<meta name="description" content="vllm-plugin-FL can be installed from source code or via Docker images. Install from source: This section covers installing vllm-plugin-FL and its dependencies from source code. Install vLLM For NVIDIA GPUs, install vLLM from the official v0.24.0 release (optional if the correct version is already..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install software for running an inference task &#8212; VLLM-Plugin-FL Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.ade7130b-b645-4ee7-9092-16caa49f2f9f.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.e9c37c54-a8f1-4bc3-b2b9-80fa0599093d.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/install.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -553,6 +558,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2-release-images-v0-3-0-rc2">FlagOS 2.2 Release Images (v0.3.0-rc2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svt-full-stack-test-images-v0-2-0-rc2">SVT Full-Stack Test Images (v0.2.0-rc2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
@@ -579,17 +585,35 @@
 <h2>Install from source<a class="headerlink" href="#install-from-source" title="Link to this heading">#</a></h2>
 <p>This section covers installing vllm-plugin-FL and its dependencies from source code.</p>
 <ol class="arabic">
-<li><p>Install vllm from the official <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.2">v0.20.2</a> (optional if the correct version is installed)</p></li>
+<li><p>Install vLLM</p>
+<p>For <strong>NVIDIA</strong> GPUs, install vLLM from the official <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">v0.24.0</a> release (optional if the correct version is already installed):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">vllm</span><span class="o">==</span><span class="m">0</span>.24.0
+</pre></div>
+</div>
+<p>For <strong>non-NVIDIA</strong> chips, install vLLM from source with the <code class="docutils literal notranslate"><span class="pre">empty</span></code> device target:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.24.0<span class="w"> </span>https://github.com/vllm-project/vllm.git
+<span class="nb">cd</span><span class="w"> </span>vllm
+<span class="nv">VLLM_TARGET_DEVICE</span><span class="o">=</span>empty<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-deps<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
 <li><p>Install vllm-plugin-FL</p>
 <p>2.1 Clone the repository:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
 </pre></div>
 </div>
 <p>2.2 install</p>
+<p>By default vllm-plugin-FL installs as a Python-only package:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
 pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
 <span class="c1"># or editable install</span>
 pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>On <strong>NVIDIA</strong>, set <code class="docutils literal notranslate"><span class="pre">VLLM_VENDOR=cuda</span></code> during installation to build and install the <code class="docutils literal notranslate"><span class="pre">vllm_fl._C</span></code> native C++ extension, which is required by some CUDA-graph and custom-op paths on vLLM 0.24.0+:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">VLLM_VENDOR</span><span class="o">=</span>cuda<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+<span class="c1"># or editable install</span>
+<span class="nv">VLLM_VENDOR</span><span class="o">=</span>cuda<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 </li>
@@ -647,9 +671,10 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
 <ol class="arabic">
 <li><p>Install <a class="reference external" href="https://resource.flagos.net">FlagTree</a></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">==</span><span class="m">0</span>.4.0+ascend3.2<span class="w"> </span><span class="nv">$RES</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">==</span><span class="m">0</span>.6.1rc1+ascend3.5<span class="w"> </span><span class="nv">$RES</span>
 </pre></div>
 </div>
+<p>For other chips, use the matching FlagTree build (e.g., <code class="docutils literal notranslate"><span class="pre">flagtree==0.6.1+iluvatar3.6</span></code>, <code class="docutils literal notranslate"><span class="pre">flagtree==0.6.1+metax3.6</span></code>).</p>
 </li>
 <li><p>Set required environment variable</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">TRITON_ALL_BLOCKS_PARALLEL</span><span class="o">=</span><span class="m">1</span>
@@ -684,6 +709,80 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 <section id="install-from-docker-image">
 <h2>Install from docker image<a class="headerlink" href="#install-from-docker-image" title="Link to this heading">#</a></h2>
 <p>This section covers running vllm-plugin-FL using pre-built Docker images.</p>
+<section id="flagos-2-2-release-images-v0-3-0-rc2">
+<h3>FlagOS 2.2 Release Images (v0.3.0-rc2)<a class="headerlink" href="#flagos-2-2-release-images-v0-3-0-rc2" title="Link to this heading">#</a></h3>
+<p>Pre-built images for the FlagOS 2.2 release (vllm-plugin-FL v0.3.0, vLLM 0.24.0) are published on the FlagOS resource download page: <a class="reference external" href="https://flagos.io/resourcedownload">https://flagos.io/resourcedownload</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Image</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Alibaba PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508</span></code></p></td>
+<td><p>PPU SDK 2.0.0-715aa1, torch 2.10.0, vLLM 0.19.0 (replaced by an <code class="docutils literal notranslate"><span class="pre">empty</span></code> 0.24.0 source build in the guide)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Moore Threads MTT S5000</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagrelease-public/flagrelease_mthreads-gmi_vllm024plugin_base:08281629</span></code></p></td>
+<td><p>MUSA base image used for the vLLM 0.24.0 + plugin 0.3.0 stack</p></td>
+</tr>
+<tr class="row-even"><td><p>Moore Threads MTT S5000</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/musa-ph1.4.3.5-tree0.6.1a2-triton3.6.0-cxnone-plugin0.3.0-vllm0.24.0-cp310-pt290-x64:20260804</span></code></p></td>
+<td><p>Full stack: MUSA PH 1.4.3.5, FlagTree 0.6.1a2 (Triton 3.6.0), plugin 0.3.0, vLLM 0.24.0, Python 3.10, torch 2.9.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Iluvatar BI-V150</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/iluvatar-corex4.5.0-flagtree0.6.0-triton3.6.0-cxnone-vllm_fl0.24.0:20260827</span></code></p></td>
+<td><p>corex 4.5.0, FlagTree 0.6.0 (Triton 3.6.0), vllm_fl for vLLM 0.24.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Tsingmicro TX8110</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/tsingmicro001-gems4.2.1-treenone-triton3.6.0-cx0.1.0-plugin0.2.0-vllm0.20.2-cp310-pt211-x64-v260604163331.01:202607130736</span></code></p></td>
+<td><p>FlagGems 4.2.1, Triton 3.6.0, FlagCX 0.1.0, plugin 0.2.0, vLLM 0.20.2, Python 3.10, torch 2.11.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enflame ZIXIAOC200</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/enflame001-gems5.3.1-treenone-triton3.6.0-cxnone-plugin0.2.1-vllm0.20.2-cp312-pt211-x64-1.10.6:202608281710</span></code></p></td>
+<td><p>FlagGems 5.3.1, Triton 3.6.0, plugin 0.2.1, vLLM 0.20.2, Python 3.12, torch 2.11.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Sunrise S2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/sunrise001-gems5.3.4-tree0.6.0_sunrise3.6-cx0.13.0-plugin0.2.1-vllm0.20.2_flagos-cp310-pt211-x64-v0.25.0:202608311648</span></code></p></td>
+<td><p>FlagGems 5.3.4, FlagTree 0.6.0 (sunrise 3.6), FlagCX 0.13.0, plugin 0.2.1, vLLM 0.20.2+flagos, Python 3.10, torch 2.11.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kunlunxin P800</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821</span></code></p></td>
+<td><p>xre 5.37.1 runtime base image for the vLLM 0.20.2 + plugin 0.2.0-rc0 source build</p></td>
+</tr>
+<tr class="row-even"><td><p>Hygon DCU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6</span></code></p></td>
+<td><p>DTK 26.04 base image (vLLM 0.20.0 Hygon build) used for the 0.20.2/0.24.0 <code class="docutils literal notranslate"><span class="pre">empty</span></code> source builds</p></td>
+</tr>
+<tr class="row-odd"><td><p>MetaX C550</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64</span></code></p></td>
+<td><p>MACA 3.7.0 image, torch 2.8.0+metax, Python 3.12; the image vLLM is replaced by an <code class="docutils literal notranslate"><span class="pre">empty</span></code> 0.24.0 source build</p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend 910c</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">quay.io/ascend/vllm-ascend:v0.20.2rc1-a3</span></code></p></td>
+<td><p>CANN 9.0.0 Ascend image used for the 0.20.2 <code class="docutils literal notranslate"><span class="pre">empty</span></code> source build</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>MetaX and Hygon require device passthrough rather than <code class="docutils literal notranslate"><span class="pre">--gpus</span> <span class="pre">all</span></code>; for example, on MetaX:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>metax-vllm-024-plugin-030<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>--ipc<span class="w"> </span>host<span class="w"> </span>--shm-size<span class="w"> </span>64g<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/dri:/dev/dri:rwm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/mxcd:/dev/mxcd:rwm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/data/models:/models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sleep<span class="w"> </span>infinity
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release candidate, replace vLLM with the <code class="docutils literal notranslate"><span class="pre">empty</span></code> v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in <a class="reference internal" href="#install-from-source"><span class="xref myst">Install from source</span></a>. For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides linked from the FlagOS resource download page.</p>
+</div>
+</section>
 <section id="svt-full-stack-test-images-v0-2-0-rc2">
 <h3>SVT Full-Stack Test Images (v0.2.0-rc2)<a class="headerlink" href="#svt-full-stack-test-images-v0-2-0-rc2" title="Link to this heading">#</a></h3>
 <p>Pre-built SVT images with full FlagOS stack:</p>
@@ -1020,6 +1119,7 @@ For configuration related information, see <a class="reference internal" href=".
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2-release-images-v0-3-0-rc2">FlagOS 2.2 Release Images (v0.3.0-rc2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svt-full-stack-test-images-v0-2-0-rc2">SVT Full-Stack Test Images (v0.2.0-rc2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
@@ -1061,7 +1161,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.bd3c2fdf-480c-43b3-96dc-9954e95588f4.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.1c189cd5-fd05-4b45-aaf3-16d2696f46c0.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/requirements.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -380,6 +385,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -579,12 +585,19 @@
 <tr class="row-even"><td><p>MUSA</p></td>
 <td><p>Moore Threads S-series GPU support</p></td>
 </tr>
-<tr class="row-odd"><td><p>ENFLAME</p></td>
+<tr class="row-odd"><td><p>NPU</p></td>
+<td><p>Ascend NPU support, requires <code class="docutils literal notranslate"><span class="pre">transformer_engine_npu</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ENFLAME</p></td>
 <td><p>ENFLAME chip vendor support with flash attention and operator registration</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tsingmicro</p></td>
+<td><p>Tsingmicro TXDA support</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Training with TransformerEngine-FL has been validated end to end on MetaX, Hygon, Ascend, and T-Head PPU. See <a class="reference internal" href="../user_guide/multi-platform-testing.html"><span class="std std-doc">Multi-Platform Build and Testing</span></a> for the build flags and the procedure.</p>
 </section>
 <section id="operating-system">
 <h2>Operating system<a class="headerlink" href="#operating-system" title="Link to this heading">#</a></h2>
@@ -694,7 +707,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

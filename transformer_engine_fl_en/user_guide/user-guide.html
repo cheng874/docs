@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., TE-FL Custom Backend ..." />
+<meta property="og:description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., Multi-Platform Build ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., TE-FL Custom Backend ..." />
+<meta name="description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., Multi-Platform Build ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>User Guide &#8212; Transformer-Engine-FL Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.9fdd6ee3-452f-4494-aee8-2f3918f2853e.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.34abe260-3d50-4f48-b9e0-a9201d93780b.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/user_guide/user-guide.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -376,6 +381,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -551,6 +557,17 @@
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#notes">8. Notes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="multi-platform-testing.html">Multi-Platform Build and Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#backend-layout">1. Backend layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#platform-prerequisites">2. Platform prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#build-from-source">3. Build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#install-the-flagos-compiler-and-operator-library">4. Install the FlagOS compiler and operator library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#operator-selection">5. Operator selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#run-the-training-test">6. Run the training test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#known-issues-and-workarounds">7. Known issues and workarounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#notes">8. Notes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="custom-backend-registration.html">TE-FL Custom Backend Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#two-approaches">Two Approaches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#quick-start">Quick Start</a></li>
@@ -629,7 +646,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

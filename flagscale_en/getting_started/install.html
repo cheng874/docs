@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.895c3e5d-7f4b-41a2-bc18-a55ae2dcdd38.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.32b7d580-6c2a-486c-8c98-a190bcce0f7b.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/install.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -365,6 +370,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v210.html">FlagScale v2.1.0-rc2 Release Notes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v200.html">FlagScale v2.0.0 Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v100.html">FlagScale v1.0.0 Release Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
@@ -379,7 +387,10 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Install FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -539,6 +550,7 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Install FlagScale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">3. Non-NVIDIA platforms</a></li>
 </ul>
 </li>
 </ul>
@@ -635,6 +647,53 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
+<section id="non-nvidia-platforms">
+<h3>3. Non-NVIDIA platforms<a class="headerlink" href="#non-nvidia-platforms" title="Link to this heading">#</a></h3>
+<p>On MetaX, Hygon, Ascend, and T-Head PPU, use the platform container image and install Megatron-LM-FL and TransformerEngine-FL from source at the matching release candidate.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Container image</p></th>
+<th class="head"><p>FlagTree backend</p></th>
+<th class="head"><p>Visible-devices env</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MACA_VISIBLE_DEVICES</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hcu</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos-dev/flagscale:manual-20260812-ascend-dev-inference</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCEND_RT_VISIBLE_DEVICES</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>T-Head PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagtree/flagtree-ppu-py312-torch2.10.0-sdk2.1.0-cu130-ubuntu24.04:202607-3.6-vllm0.24.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace/Megatron-LM-FL<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">0</span>.3.0-rc2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
+<span class="nb">cd</span><span class="w"> </span>/workspace/TransformerEngine-FL<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">0</span>.3.0-rc2
+<span class="nv">TE_FL_SKIP_CUDA</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">64</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
+<span class="nb">cd</span><span class="w"> </span>/workspace/FlagScale<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">2</span>.1.0-rc2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">TE_FL_SKIP_CUDA=1</span></code> is mandatory on non-NVIDIA platforms — without it the build tries to compile the CUDA kernels and fails.</p>
+</div>
+<p>For the full procedure, including the FlagTree and FlagGems operator stack and the platform-specific issues, see <a class="reference internal" href="../user_guide/multi-platform-training.html"><span class="std std-doc">Multi-Platform Training and Testing</span></a>.</p>
+</section>
 </section>
 </section>
 
@@ -693,6 +752,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Install FlagScale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">3. Non-NVIDIA platforms</a></li>
 </ul>
 </li>
 </ul>
@@ -728,7 +788,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

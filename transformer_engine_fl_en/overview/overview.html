@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.9060cafd-52c8-4f72-94c6-64f6424b96c4.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.b4eac0a4-ce14-4e32-9b6f-0caae9c7da58.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/overview/overview.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -380,6 +385,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -561,7 +567,9 @@
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
 <p>TransformerEngine-FL adopts a three-layer plugin-based architecture that decouples operator management from hardware-specific implementations.</p>
-<p><img alt="alt text" src="../_images/te-fl-architecture.PNG" /></p>
+<p><a href="../_images/te-fl-architecture.PNG" data-lightbox="image-set">
+<img alt="alt text" src="../_images/te-fl-architecture.PNG" /></a>
+</p>
 <p><strong>Upper Layer</strong> — Core API remains unchanged. TEFLModule initializes the plugin system and abstracts an Op API layer. CppExtension/Pybind binds TEFLModule to execute selected backend kernels.</p>
 <p><strong>Middle Layer</strong> — OpManager serves as the core dispatch hub, coordinating OpRegistry (thread-safe operator registration), SelectionPolicy (backend selection with prefer/strict/per-op configuration), and Discovery (automatic plugin detection via Python Entry Points and environment variables).</p>
 <p><strong>Lower Layer</strong> — Three backend types: FlagOS (default, Triton-based cross-platform), Vendor (hardware-specific optimized implementations, supports In-Tree and Out-of-Tree plugins), and Reference (pure PyTorch fallback for correctness guarantee).</p>
@@ -703,7 +711,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

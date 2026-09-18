@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/requirements.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Software Requirements:,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, From official release or fork,, FlagGems,&gt;= v5.0.0,&gt;= v5.0.0, Required f..." />
+<meta property="og:description" content="Software Requirements:,,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), v0.3.0-rc2 (vLLM 0.24.0), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, 0.24.0, From official rele..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Software Requirements:,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, From official release or fork,, FlagGems,&gt;= v5.0.0,&gt;= v5.0.0, Required f..." />
+<meta name="description" content="Software Requirements:,,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), v0.3.0-rc2 (vLLM 0.24.0), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, 0.24.0, From official rele..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Requirements &#8212; VLLM-Plugin-FL Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.cb01e813-5565-45dd-a2d1-a08934bf07d7.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.64888315-8ebb-4538-87ac-8f94eb938eec.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/requirements.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -545,6 +550,7 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verified-configurations-flagos-2-2-rc0">Verified configurations (FlagOS 2.2-RC0)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported models</a></li>
 </ul>
             </nav>
@@ -566,6 +572,7 @@
 <tr class="row-odd"><th class="head"><p>Requirement</p></th>
 <th class="head"><p>v0.1.0 (vLLM 0.13.0)</p></th>
 <th class="head"><p>v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2)</p></th>
+<th class="head"><p>v0.3.0-rc2 (vLLM 0.24.0)</p></th>
 <th class="head"><p>Notes</p></th>
 </tr>
 </thead>
@@ -573,9 +580,11 @@
 <tr class="row-even"><td><p>Python</p></td>
 <td><p>3.10 - 3.13</p></td>
 <td><p>3.10 - 3.13</p></td>
+<td><p>3.10 - 3.13</p></td>
 <td><p>Required</p></td>
 </tr>
 <tr class="row-odd"><td><p>PyTorch</p></td>
+<td><p>&gt;= 2.7.1</p></td>
 <td><p>&gt;= 2.7.1</p></td>
 <td><p>&gt;= 2.7.1</p></td>
 <td><p>Required</p></td>
@@ -583,9 +592,11 @@
 <tr class="row-even"><td><p>vLLM</p></td>
 <td><p>0.13.0</p></td>
 <td><p>0.20.2</p></td>
-<td><p>From official release or fork</p></td>
+<td><p>0.24.0</p></td>
+<td><p>From official release (NVIDIA) or source with <code class="docutils literal notranslate"><span class="pre">VLLM_TARGET_DEVICE=empty</span></code> (non-NVIDIA)</p></td>
 </tr>
 <tr class="row-odd"><td><p>FlagGems</p></td>
+<td><p>&gt;= v5.0.0</p></td>
 <td><p>&gt;= v5.0.0</p></td>
 <td><p>&gt;= v5.0.0</p></td>
 <td><p>Required for operator dispatch</p></td>
@@ -593,12 +604,14 @@
 <tr class="row-even"><td><p>FlagCX</p></td>
 <td><p>v0.9.0</p></td>
 <td><p>v0.9.0</p></td>
+<td><p>v0.9.0</p></td>
 <td><p>Optional, for multi-chip communication</p></td>
 </tr>
 <tr class="row-odd"><td><p>FlagTree</p></td>
 <td><p>0.4.0</p></td>
 <td><p>0.4.0</p></td>
-<td><p>Ascend NPU only</p></td>
+<td><p>0.7.0-rc0-triton3.6</p></td>
+<td><p>Built from the <code class="docutils literal notranslate"><span class="pre">0.7.0-rc0</span></code> release branch with the matching vendor backend (see <a class="reference internal" href="install.html"><span class="std std-doc">Install from source</span></a>). Ascend uses <code class="docutils literal notranslate"><span class="pre">0.7.0-rc0-triton3.5</span></code>; Tsingmicro uses <code class="docutils literal notranslate"><span class="pre">0.7.0-rc0-triton3.3</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -612,6 +625,7 @@
 <tr class="row-odd"><th class="head"><p>Chip Vendor</p></th>
 <th class="head"><p>v0.1.0 (vLLM 0.13.0)</p></th>
 <th class="head"><p>v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2)</p></th>
+<th class="head"><p>v0.3.0-rc2 (vLLM 0.24.0)</p></th>
 <th class="head"><p>Notes</p></th>
 </tr>
 </thead>
@@ -619,47 +633,169 @@
 <tr class="row-even"><td><p>NVIDIA</p></td>
 <td><p>Supported</p></td>
 <td><p>Supported</p></td>
+<td><p>Supported</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>Ascend</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
+<td><p>Supported</p></td>
 <td><p>Requires FlagTree and eager execution</p></td>
 </tr>
 <tr class="row-even"><td><p>MetaX</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
-<td><p></p></td>
+<td><p>Supported</p></td>
+<td><p>MetaX C550 adapted for vLLM 0.24.0</p></td>
 </tr>
 <tr class="row-odd"><td><p>T-Head</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
+<td><p>Supported</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>Iluvatar</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
-<td><p>Requires FlagTree and eager execution</p></td>
+<td><p>Supported</p></td>
+<td><p>BI-V150 adapted for vLLM 0.24.0; CUDA graph enabled</p></td>
 </tr>
 <tr class="row-odd"><td><p>Moore Threads</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
-<td><p></p></td>
+<td><p>Supported</p></td>
+<td><p>MTT S5000 adapted for vLLM 0.24.0</p></td>
 </tr>
 <tr class="row-even"><td><p>Tsingmicro</p></td>
 <td><p>Merging</p></td>
 <td><p>—</p></td>
+<td><p>Supported</p></td>
 <td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/pull/52">PR #52</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Hygon DCU</p></td>
 <td><p>Supported</p></td>
 <td><p>Supported</p></td>
-<td><p>v0.2.0 requires DTK container (see install guide)</p></td>
+<td><p>Supported</p></td>
+<td><p>Requires DTK container (see install guide)</p></td>
 </tr>
 <tr class="row-even"><td><p>Sunrise</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
+<td><p>Supported</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>PPU</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>Supported</p></td>
+<td><p>Empty-mode support (#190); source build of the FlagTree PPU backend is still in progress (FlagTree #1131)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="verified-configurations-flagos-2-2-rc0">
+<h2>Verified configurations (FlagOS 2.2-RC0)<a class="headerlink" href="#verified-configurations-flagos-2-2-rc0" title="Link to this heading">#</a></h2>
+<p>The configurations below were exercised end to end during the FlagOS 2.2-RC0 cross-vendor verification. “Verified” means the listed components installed, imported and passed the recorded checks; items marked otherwise are still open and reference the tracking issue. The plugin version column records the build that was actually installed for the run (<code class="docutils literal notranslate"><span class="pre">0.3.0-rc0</span></code> for the vLLM 0.24.0 groups); the current release candidate is <code class="docutils literal notranslate"><span class="pre">0.3.0-rc2</span></code> and its verified behaviour is unchanged for these configurations.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Accelerator</p></th>
+<th class="head"><p>vLLM</p></th>
+<th class="head"><p>vllm-plugin-FL</p></th>
+<th class="head"><p>FlagGems</p></th>
+<th class="head"><p>FlagTree (backend)</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MetaX</p></td>
+<td><p>MACA C550 x8</p></td>
+<td><p>0.24.0 empty</p></td>
+<td><p>0.3.0-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.6 (metax)</p></td>
+<td><p>Environment and FlagTree build verified; <code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">'BLOCK_M'</span></code> not reproduced</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hygon DCU</p></td>
+<td><p>BW1000 x8</p></td>
+<td><p>0.24.0 empty</p></td>
+<td><p>0.3.0-rc0</p></td>
+<td><p>5.4.0-rc0 + flash-attention fix</p></td>
+<td><p>0.7.0-rc0-triton3.6 (hcu)</p></td>
+<td><p>Environment verified</p></td>
+</tr>
+<tr class="row-even"><td><p>Hygon DCU</p></td>
+<td><p>BW1000 x8</p></td>
+<td><p>0.20.0+das native</p></td>
+<td><p>0.3.0-rc0</p></td>
+<td><p>5.4.0-rc0 + flash-attention fix</p></td>
+<td><p>0.7.0-rc0-triton3.6 (hcu)</p></td>
+<td><p>Native-mode environment verified</p></td>
+</tr>
+<tr class="row-odd"><td><p>Iluvatar</p></td>
+<td><p>BI-V150 x16</p></td>
+<td><p>0.24.0 empty</p></td>
+<td><p>0.3.0-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.6 (iluvatar)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vllm</span> <span class="pre">serve</span></code> starts, CUDA graph capture and the first request return 200 OK; cold-cache autotune still open</p></td>
+</tr>
+<tr class="row-even"><td><p>Moore Threads</p></td>
+<td><p>MTT S5000 x8</p></td>
+<td><p>0.24.0 empty</p></td>
+<td><p>0.3.0</p></td>
+<td><p>5.4.0-rc0.post1</p></td>
+<td><p>0.7.0-rc0-triton3.6 (mthreads)</p></td>
+<td><p>Runs on the development stack; the rc0 standard stack (FlagGems 5.3.4 + Triton 3.2.0) stops at FlagGems autotune</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alibaba PPU</p></td>
+<td><p>PPU x16</p></td>
+<td><p>0.24.0 empty</p></td>
+<td><p>0.3.0-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.6 (ppu)</p></td>
+<td><p>Source build of the FlagTree PPU backend blocked (FlagTree #1131); <code class="docutils literal notranslate"><span class="pre">release/0.2</span></code> plugin path verified</p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend</p></td>
+<td><p>910c x16</p></td>
+<td><p>0.20.2 empty</p></td>
+<td><p>0.2.0-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.5 (ascend)</p></td>
+<td><p>Environment verified, requires eager execution</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tsingmicro</p></td>
+<td><p>TX8110 x32</p></td>
+<td><p>0.20.2 (in image)</p></td>
+<td><p>0.2.0</p></td>
+<td><p>4.2.1 (in image)</p></td>
+<td><p>0.7.0-rc0-triton3.3 (tsingmicro)</p></td>
+<td><p>Offline and online serving verified</p></td>
+</tr>
+<tr class="row-even"><td><p>Enflame</p></td>
+<td><p>ZIXIAOC200 x8</p></td>
+<td><p>0.20.2 empty</p></td>
+<td><p>0.2.1</p></td>
+<td><p>5.3.1 (in image)</p></td>
+<td><p>0.7.0-rc0-triton3.6 (enflame)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vllm</span> <span class="pre">serve</span></code> starts</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sunrise</p></td>
+<td><p>S2 x8</p></td>
+<td><p>0.20.2+flagos empty</p></td>
+<td><p>0.2.2-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.6 (sunrise)</p></td>
+<td><p>Text inference verified; vision embedding numerical issue open</p></td>
+</tr>
+<tr class="row-even"><td><p>Kunlunxin</p></td>
+<td><p>P800 OAM x8</p></td>
+<td><p>0.20.2 empty</p></td>
+<td><p>0.2.0-rc0</p></td>
+<td><p>5.4.0-rc0</p></td>
+<td><p>0.7.0-rc0-triton3.6 (kunlunxin)</p></td>
+<td><p>Installation verified; model loading blocked by a backend incompatibility</p></td>
 </tr>
 </tbody>
 </table>
@@ -775,6 +911,7 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software Requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verified-configurations-flagos-2-2-rc0">Verified configurations (FlagOS 2.2-RC0)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported models</a></li>
 </ul>
   </nav></div>
@@ -809,7 +946,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>

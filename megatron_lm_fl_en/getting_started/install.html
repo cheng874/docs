@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="You can install Megatron-LM-FL through one of the following methods: Docker (Recommended): FlagOS Release Image (v0.2.0-rc2): Includes: torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training. CUDA: Install from source: For an end-to-end training workflow..." />
+<meta property="og:description" content="You can install Megatron-LM-FL through one of the following methods: Docker (Recommended): FlagOS Release Image (v0.2.0-rc2): Includes: torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training. CUDA: Install from source: Non-NVIDIA platforms: Megatron-LM-F..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="You can install Megatron-LM-FL through one of the following methods: Docker (Recommended): FlagOS Release Image (v0.2.0-rc2): Includes: torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training. CUDA: Install from source: For an end-to-end training workflow..." />
+<meta name="description" content="You can install Megatron-LM-FL through one of the following methods: Docker (Recommended): FlagOS Release Image (v0.2.0-rc2): Includes: torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training. CUDA: Install from source: Non-NVIDIA platforms: Megatron-LM-F..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install Megatron-LM-FL &#8212; Megatron-LM-FL Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.6254201b-da5c-41c0-ac06-b28bada6952f.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.ed407377-823e-4f68-b866-51fb24537e7f.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting_started/install.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 18, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -377,6 +382,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">Megatron-LM-FL User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/override-usage.html">Override Plugin Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
 </ul>
 </details></li>
 </ul>
@@ -536,6 +542,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
 </ul>
             </nav>
         </div>
@@ -578,7 +585,60 @@ git<span class="w"> </span>checkout<span class="w"> </span>&lt;tag<span class="w
 pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
 </pre></div>
 </div>
-<p>For an end-to-end training workflow using Megatron-LM-FL, TransformerEngine-FL, and FlagScale, see <a class="reference internal" href="#../user_guide/e2e-use-case.md"><span class="xref myst">End-to-End Use Case</span></a>.</p>
+</section>
+<section id="non-nvidia-platforms">
+<h2>Non-NVIDIA platforms<a class="headerlink" href="#non-nvidia-platforms" title="Link to this heading">#</a></h2>
+<p>Megatron-LM-FL v0.3.0-rc2 has been validated on MetaX, Hygon, Ascend, and T-Head PPU. Use the vendor container image, then install from source at the matching tag:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Device check</p></th>
+<th class="head"><p>Container image</p></th>
+<th class="head"><p>Visible-devices env</p></th>
+<th class="head"><p>FlagTree backend</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mx-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MACA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hy-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hcu</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos-dev/flagscale:manual-20260812-ascend-dev-inference</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCEND_RT_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>T-Head PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagtree/flagtree-ppu-py312-torch2.10.0-sdk2.1.0-cu130-ubuntu24.04:202607-3.6-vllm0.24.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace/Megatron-LM-FL
+git<span class="w"> </span>checkout<span class="w"> </span><span class="m">0</span>.3.0-rc2
+pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
+
+pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>megatron
+megatron-core<span class="w">                            </span><span class="m">0</span>.18.2+c8fa61f2e
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hygon requires <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/dtk/env.sh</span></code> before installing or running. Ascend requires <code class="docutils literal notranslate"><span class="pre">--privileged</span></code> plus the <code class="docutils literal notranslate"><span class="pre">davinci*</span></code>, <code class="docutils literal notranslate"><span class="pre">davinci_manager</span></code>, <code class="docutils literal notranslate"><span class="pre">devmm_svm</span></code>, and <code class="docutils literal notranslate"><span class="pre">hisi_hdc</span></code> device mounts.</p>
+</div>
+<p>For an end-to-end training workflow using Megatron-LM-FL, TransformerEngine-FL, and FlagScale, see <a class="reference external" href="https://docs.flagos.io/projects/TransformerEngine-FL/en/latest/user_guide/e2e-use-case.html">End-to-End Use Case</a> and <a class="reference internal" href="../user_guide/multi-platform-training.html"><span class="std std-doc">Multi-Platform Training and Testing</span></a>.</p>
 </section>
 </section>
 
@@ -635,6 +695,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </sp
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
 </ul>
   </nav></div>
 
@@ -668,7 +729,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 18, 2026.
   <br/>
 </p>
   </div>
