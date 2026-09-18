@@ -36,4 +36,22 @@ MAX_JOBS=xxx pip install .
 This requires the image from the vendors. 
 ```
 
-For an end-to-end training workflow using TransformerEngine-FL, Megatron-LM-FL, and FlagScale, see [End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale](/e2e-use-case.md).
+## Non-NVIDIA platforms
+
+TransformerEngine-FL v0.3.0-rc2 has been validated on MetaX, Hygon, Ascend, and T-Head PPU. Non-NVIDIA builds must skip the CUDA extension:
+
+```bash
+git clone https://github.com/flagos-ai/TransformerEngine-FL.git
+cd TransformerEngine-FL
+git checkout 0.3.0-rc2
+git submodule update --init --recursive
+TE_FL_SKIP_CUDA=1 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
+```
+
+```{note}
+`TE_FL_SKIP_CUDA=1` is mandatory on non-NVIDIA platforms — without it the build tries to compile the CUDA kernels and fails.
+```
+
+The FlagOS operator tier (`te_fl_prefer: flagos`) additionally requires FlagTree and FlagGems. See [Multi-Platform Build and Testing](../user_guide/multi-platform-testing.md) for the full procedure.
+
+For an end-to-end training workflow using TransformerEngine-FL, Megatron-LM-FL, and FlagScale, see [End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale](../user_guide/e2e-use-case.md).

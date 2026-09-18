@@ -2,6 +2,44 @@
 
 本节包含 Megatron-LM-FL 的发布信息。
 
+## v0.3.0（候选发布版）
+
+```{note}
+这是 FlagOS 2.2 的候选发布版（标签 `v0.3.0-rc2.post1`，发布于 2026-09；取代 `v0.3.0-rc0` 与 `v0.3.0-rc1`）。版本号与支持平台列表将在 GA 时最终确定。
+```
+
+Megatron-LM-FL v0.3.0 已同步上游 Megatron-LM v0.18.2，要求 Python >= 3.12。
+
+- **新增特性**
+
+  - 升级至 Megatron-LM v0.18.2 (#109)。
+  - 新增平台后端：ENFLAME (#45)、昆仑芯 KunlunXin (#63) 与 MUSA (#92)，沿用既有的平台插件模式。
+  - 支持 `GLM5` / `GLM5.1` / `GLM5.2` 系列的 DSA 结构 (#69)，并新增 sm90 的融合 DSA kernel (#86)。
+  - 支持分块 cross-entropy 以降低显存占用 (#126)。
+  - Engram 序列并行支持 (#56) 与 Triton mHC 融合 kernel (#71)。
+  - MegatronAdaptor 模块在 FlagOS 上的昇腾原生集成 (#68)。
+  - TXDA 平台升级至 v0.17.0 (#87)。
+  - MoE 1F1B overlap 与 MHC 的兼容支持，在关闭 MHC 时保持向后兼容 (#54)。
+
+- **改进特性**
+
+  - Override 机制升级 (#59)。
+  - 将 XME blocking 补丁与其余 XME 核心补丁迁移为 Megatron-LM-FL override (#70, #74)。
+  - CI 新增 TransformerEngine-FL 增量构建与运行时集成 (#128)，并为 TE-FL 准备/检出步骤增加重试机制 (#140)。
+
+- **修复**
+
+  - 修复 `moe_act_func` 与 MHC recompute 数据类型导致相对上游 Megatron-LM 的精度偏差 (#73)。
+  - Engram：移除 Engram 子模块上错误的 `sequence_parallel` 标志 (#75)。
+  - DualPipeV 与 DeepSeek-V4 修复 (#48, #64)。
+  - 修复 `get_device_type` 报错 (#60) 与共享存储路径处理 (#66)。
+  - 修复插件层的平台名与设备名上报 (#151, #154)、原生加速器探测优先级 (#148)、非 CUDA 加速器运行时 (#156)、异构场景下专家数据并行的进程组 world size (#149)，以及重复的 P2P communicator stage 属性 (#150)。
+  - `megatron_fsdp` cherry-pick 修复 (#79)、checkpoint 能耗监控保护 (#78)，以及移除自动生成的训练覆盖率测试 (#82)。
+
+- **CI/CD**
+
+  - 扩展多平台单元与功能测试覆盖：MetaX (#51, #58, #65)、昇腾 (#89)、MUSA (#92)、昆仑芯 P800 (#100)、海光 BW1000 (#93)、燧原 (#113)，并更新平台测试镜像 (#129) 与 CUDA runner label (#137)。
+
 ## v2.6
 
 - **新增特性**

@@ -1,18 +1,3 @@
-# FlagScale v2.1.0-rc2 发布说明
-
-```{note}
-这是 FlagOS 2.2 的候选发布版（标签 `v2.1.0-rc2.post1`，发布于 2026-09）。版本号与支持平台列表将在 GA 时最终确定。
-```
-
-## 亮点
-
-- **新模型支持**：新增 GLM5 训练支持 (#1227)、Qwen36 LLM 主干及 checkpoint 转换 (#1273)、KERV 训练与推理集成 (#1278, #1291)，以及 qwen_gr00t 中的 Orca 模型新特性 (#1228)；DeepSeek-V4 TFLOPs 统计 (#1230)。
-- **昇腾原生集成**：MegatronAdaptor FlagScale 模块在 FlagOS 上的原生集成 (#1226)，并新增清微 TXDA 后端平台 (#1254)。
-- **可观测性**：性能监控集成 (#1216)、straggler 检测 (#1215)、低开销 GPU 进度心跳监控 (#1243)，以及 profiler kernel 报告 (#1281)。
-- **训练引擎升级**：升级至 Megatron v0.18.2 (#1284)，采用新的 Override 机制 (#1214)。
-- **多芯片 CI 扩展**：新增 MTT S5000 镜像构建与端到端验证 CI (#1260)、昇腾与 MetaX 构建测试流水线 (#1250)、海光 BW1000 (#1272)、昆仑芯 P800 训练 (#1282)，以及燧原镜像构建与测试 (#1275)。
-- **修复**：DualPipeV 修复 (#1207)、GR00T checkpoint 可移植性 (#1219)、pi0.5 预训练加载内存峰值 (#1221)、Qwen3.5 checkpoint 转换 (#1231, #1233)、Engram transformer 集成 (#1279)，以及 chat template 返回类型兼容性 (#1262)。
-
 # FlagScale v2.0.0 发布说明
 
 ## 亮点

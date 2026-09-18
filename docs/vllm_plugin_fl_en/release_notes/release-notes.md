@@ -50,6 +50,26 @@ The rc0 content below remains part of this release candidate:
   - CUDA graph robustness: disable CUDA graph for non-DeepEP backends (#346); account for CUDA graph memory in KV cache sizing (#381); MTP fixes for vLLM 0.24.0 (#334, #337).
   - Worker fixes: preserve data-parallel GPU offset for independent engines (#380); guard `kernel_warmup` against missing `torchvision` on out-of-tree runtimes (#386); MetaX `all_reduce` now passes `group=device_group` (#348).
 
+### FlagOS 2.2-RC0 cross-vendor verification
+
+The v0.3.0 release candidate was verified across the following vendors during the FlagOS 2.2-RC0 cycle (runs used `0.3.0-rc0`; `0.3.0-rc2` carries the same vendor adaptations plus the fixes listed above). Every entry lists the components actually installed and the checks that passed; entries that did not complete are marked and reference the tracking issue.
+
+| Platform | vLLM | plugin | FlagGems | FlagTree (backend) | Result |
+|----------|------|--------|----------|--------------------|--------|
+| MetaX C550 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6 (metax) | Components import, FlagTree builds (TRITON 3.6.0, `['metax']`); `KeyError: 'BLOCK_M'` not reproduced |
+| Hygon BW1000 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 + flash-attention fix | 0.7.0-rc0-triton3.6 (hcu) | Components import; `compressed_tensors` upgrade required for vLLM 0.24.0 |
+| Hygon BW1000 | 0.20.0+das native | 0.3.0-rc0 | 5.4.0-rc0 + flash-attention fix | 0.7.0-rc0-triton3.6 (hcu) | Native-mode environment verified |
+| Iluvatar BI-V150 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6 (iluvatar) | `vllm serve` starts, CUDA graph capture succeeds, first request returns 200 OK; cold-cache LM-head autotune still open |
+| Moore Threads MTT S5000 | 0.24.0 empty | 0.3.0 | 5.4.0-rc0.post1 | 0.7.0-rc0-triton3.6 (mthreads) | Runs on the development stack; the rc0 standard stack (FlagGems 5.3.4 + Triton 3.2.0) stops at FlagGems autotune |
+| Alibaba PPU | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6 (ppu) | Source build of the FlagTree PPU backend blocked by [FlagTree #1131](https://github.com/flagos-ai/FlagTree/issues/1131); the `release/0.2` plugin path with the image toolchain was verified |
+| Ascend 910c | 0.20.2 empty | 0.2.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.5 (ascend) | Components import; requires `enforce_eager` and `TRITON_ALL_BLOCKS_PARALLEL=1` |
+| Tsingmicro TX8110 | 0.20.2 (in image) | 0.2.0 | 4.2.1 (in image) | 0.7.0-rc0-triton3.3 (tsingmicro) | Offline and online serving verified for Qwen3.6-27B and Qwen3.6-35B-A3B |
+| Enflame ZIXIAOC200 | 0.20.2 empty | 0.2.1 | 5.3.1 (in image) | 0.7.0-rc0-triton3.6 (enflame) | `vllm serve` starts |
+| Sunrise S2 | 0.20.2+flagos empty | 0.2.2-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6 (sunrise) | Text inference verified; vision embedding numerical issue open |
+| Kunlunxin P800 | 0.20.2 empty | 0.2.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6 (kunlunxin) | Installation verified; model loading blocked by a backend architecture incompatibility |
+
+Pre-built images for these configurations are published on the FlagOS resource download page: <https://flagos.io/resourcedownload>.
+
 ## v0.2.0
 
 

@@ -50,6 +50,26 @@ vllm-plugin-FL v0.3.0-rc2 需要 [vllm v0.24.0](https://github.com/vllm-project/
   - CUDA graph 健壮性：对非 DeepEP 后端禁用 CUDA graph（#346）；KV cache 容量计算计入 CUDA graph 显存（#381）；修复 vLLM 0.24.0 下的 MTP（#334、#337）。
   - Worker 修复：为独立引擎保留数据并行 GPU 偏移（#380）；在 out-of-tree 运行时缺失 `torchvision` 时对 `kernel_warmup` 做保护（#386）；MetaX `all_reduce` 现传入 `group=device_group`（#348）。
 
+### FlagOS 2.2-RC0 跨厂商验证
+
+v0.3.0 发布候选版在 FlagOS 2.2-RC0 周期中于以下厂商完成验证（各次运行使用 `0.3.0-rc0`；`0.3.0-rc2` 在此基础上包含上述修复，厂商适配不变）。每行列出实际安装的组件与通过的检查项；未完成的项已标注并附追踪 issue。
+
+| 平台 | vLLM | plugin | FlagGems | FlagTree（backend） | 结果 |
+|----------|------|--------|----------|--------------------|--------|
+| 沐曦 MetaX C550 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6（metax） | 组件可导入，FlagTree 编译通过（TRITON 3.6.0、`['metax']`）；未复现 `KeyError: 'BLOCK_M'` |
+| 海光 Hygon BW1000 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 + flash attention 修复 | 0.7.0-rc0-triton3.6（hcu） | 组件可导入；vLLM 0.24.0 需要升级 `compressed_tensors` |
+| 海光 Hygon BW1000 | 0.20.0+das native | 0.3.0-rc0 | 5.4.0-rc0 + flash attention 修复 | 0.7.0-rc0-triton3.6（hcu） | native 模式环境已验证 |
+| 天数智芯 Iluvatar BI-V150 | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6（iluvatar） | `vllm serve` 可启动，CUDA graph 捕获成功，首次请求返回 200 OK；冷缓存 LM-head autotune 仍未打通 |
+| 摩尔线程 MTT S5000 | 0.24.0 empty | 0.3.0 | 5.4.0-rc0.post1 | 0.7.0-rc0-triton3.6（mthreads） | dev 栈可运行；rc0 标准栈（FlagGems 5.3.4 + Triton 3.2.0）卡在 FlagGems autotune |
+| 阿里 PPU | 0.24.0 empty | 0.3.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6（ppu） | FlagTree PPU backend 源码编译受阻（[FlagTree #1131](https://github.com/flagos-ai/FlagTree/issues/1131)）；使用镜像工具链 + `release/0.2` plugin 的路径已验证 |
+| 昇腾 Ascend 910c | 0.20.2 empty | 0.2.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.5（ascend） | 组件可导入；需要 `enforce_eager` 与 `TRITON_ALL_BLOCKS_PARALLEL=1` |
+| 清微智能 TX8110 | 0.20.2（镜像内置） | 0.2.0 | 4.2.1（镜像内置） | 0.7.0-rc0-triton3.3（tsingmicro） | Qwen3.6-27B 与 Qwen3.6-35B-A3B 的离线与在线 serve 均验证通过 |
+| 燧原 Enflame ZIXIAOC200 | 0.20.2 empty | 0.2.1 | 5.3.1（镜像内置） | 0.7.0-rc0-triton3.6（enflame） | `vllm serve` 可启动 |
+| 曦望 Sunrise S2 | 0.20.2+flagos empty | 0.2.2-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6（sunrise） | 文本推理已验证；vision embedding 数值问题未解决 |
+| 昆仑芯 Kunlunxin P800 | 0.20.2 empty | 0.2.0-rc0 | 5.4.0-rc0 | 0.7.0-rc0-triton3.6（kunlunxin） | 安装已验证；模型加载受阻于 backend 架构不兼容 |
+
+这些配置的预构建镜像发布在 FlagOS 资源下载页：<https://flagos.io/resourcedownload>。
+
 ## v0.2.0
 
 
