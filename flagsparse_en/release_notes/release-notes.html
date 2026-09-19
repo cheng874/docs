@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- SpMM Operators — SpMM COO, SpMM CSR-opt, SpMM CSR-opt-alg2, AlphaSparse SpMM alg1 (with TLE and TLE-opt variants).- Supported on NVIDIA.., SpGEMM Operator — Sparse matrix-sparse matrix multiplication for CSR inputs.- Supported on NVIDIA.., SDDMM Operator — Sampled dense-de..." />
+<meta property="og:description" content="v0.3.0-rc2 (release candidate): Added Features- New/expanded sparse operators: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR; SpMV CSC, BSR and BSR-optimized (with a scipy baseline); SpSV SELL., Latest sparse operator implementations merged from the NCIC-AlphaSparse line,..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- SpMM Operators — SpMM COO, SpMM CSR-opt, SpMM CSR-opt-alg2, AlphaSparse SpMM alg1 (with TLE and TLE-opt variants).- Supported on NVIDIA.., SpGEMM Operator — Sparse matrix-sparse matrix multiplication for CSR inputs.- Supported on NVIDIA.., SDDMM Operator — Sampled dense-de..." />
+<meta name="description" content="v0.3.0-rc2 (release candidate): Added Features- New/expanded sparse operators: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR; SpMV CSC, BSR and BSR-optimized (with a scipy baseline); SpSV SELL., Latest sparse operator implementations merged from the NCIC-AlphaSparse line,..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagSparse Release Notes &#8212; FlagSparse Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.1a18533b-9631-4f50-bc3c-e3b7b37187ae.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.fc690c33-b56f-447a-af9a-a25f132fd8a8.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/release_notes/release-notes.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -533,6 +538,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -548,6 +554,32 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagsparse-release-notes">
 <h1>FlagSparse Release Notes<a class="headerlink" href="#flagsparse-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0-rc2-release-candidate">
+<h2>v0.3.0-rc2 (release candidate)<a class="headerlink" href="#v0-3-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the FlagOS 2.2 release candidate (tag <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc2.post1</span></code>, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. Packaging (FEP-0019 Wave 1) has landed: Debian <code class="docutils literal notranslate"><span class="pre">.deb</span></code> and RPM <code class="docutils literal notranslate"><span class="pre">.rpm</span></code> packaging (FlagSparse#12) including openEuler 24.03 RPM build support (FlagSparse#29); binary packages are published to the FlagOS Nexus repository.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New/expanded sparse operators: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR; SpMV CSC, BSR and BSR-optimized (with a scipy baseline); SpSV SELL.</p></li>
+<li><p>Latest sparse operator implementations merged from the NCIC-AlphaSparse line, with tests aligned to the official runners and an updated sparse support matrix (#25, #26, #30, #38).</p></li>
+<li><p>Hygon DCU support merged alongside CUDA (with DCU run commands and robustness fixes) (#44, #45).</p></li>
+<li><p>GPU CI on dedicated runners with Triton 3.6 / FlagTree requirements, plus a GPU benchmark workflow (#23, #24).</p></li>
+</ul>
+</li>
+<li><p><strong>Improved / Fixed</strong></p>
+<ul>
+<li><p>SpMV CSR and SpGEMM optimizations; SDDMM optimization v0.1 (#39, #40).</p></li>
+<li><p>Fixed SpSM and SpSV tests; unified timing and index fixes (#28).</p></li>
+<li><p>Packaging follow-ups: smoke-test decoupling, ubuntu:24.04 base alignment, RPM spec fixes (#8, #9, #11).</p></li>
+<li><p>Operator registry parser made resilient to copyright headers (#33).</p></li>
+<li><p>Apache-2.0 copyright headers added across all source files (#33).</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -671,6 +703,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -706,7 +739,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

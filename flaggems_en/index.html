@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=2549e136" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" />
@@ -62,9 +63,13 @@
     <script src="_static/js/benchmark.js?v=bfe1f9a9"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/index.8c3f9879-1d13-4eb2-a8cc-dea6e6ac86ea.js"></script>
+    <script defer="defer" src="_static/tippy/index.f97d6030-e343-42bf-8117-94486242c784.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/index.html" />
@@ -75,7 +80,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -617,8 +622,12 @@
                   
   <section id="flaggems-overview">
 <h1>FlagGems Overview<a class="headerlink" href="#flaggems-overview" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com/flagos-ai/FlagGems"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-flagos--ai/FlagGems-blue" /></a>
-<a class="reference external" href="https://github.com/flagos-ai/FlagGems/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-green" /></a></p>
+<p><a class="reference external" href="https://github.com/flagos-ai/FlagGems"><a href="https://img.shields.io/badge/GitHub-flagos--ai/FlagGems-blue" data-lightbox="image-set">
+<img alt="GitHub" src="https://img.shields.io/badge/GitHub-flagos--ai/FlagGems-blue" /></a>
+</a>
+<a class="reference external" href="https://github.com/flagos-ai/FlagGems/blob/master/LICENSE"><a href="https://img.shields.io/badge/License-Apache%202.0-green" data-lightbox="image-set">
+<img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-green" /></a>
+</a></p>
 <section id="about-flaggems">
 <h2>About FlagGems<a class="headerlink" href="#about-flaggems" title="Link to this heading">#</a></h2>
 <p><em>FlagGems</em> is a high-performance general operator library implemented in the <a class="reference external" href="https://github.com/openai/triton">Triton</a> language. It aims to provide a suite of kernel functions to accelerate LLM training and inference.</p>
@@ -746,7 +755,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

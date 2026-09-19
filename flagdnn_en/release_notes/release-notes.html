@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Graph Execution Engine — New graph-mode execution path with IR capture, kernel fusion, auto-tuning, and multi-node planning. Supports graph-level operator dispatch and memory optimization., Neural Network Operators — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgr..." />
+<meta property="og:description" content="v0.3.0-rc2 (release candidate): Added Features- New hardware backends: Ascend (with dedicated tests and performance tuning), Hygon DCU (with CPU reference ops), Moore Threads (MUSA), Iluvatar (WIP adaptation synced 2026-08-24), and an updated T-Head backend — each with a backend README (#5, #8, #..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Graph Execution Engine — New graph-mode execution path with IR capture, kernel fusion, auto-tuning, and multi-node planning. Supports graph-level operator dispatch and memory optimization., Neural Network Operators — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgr..." />
+<meta name="description" content="v0.3.0-rc2 (release candidate): Added Features- New hardware backends: Ascend (with dedicated tests and performance tuning), Hygon DCU (with CPU reference ops), Moore Threads (MUSA), Iluvatar (WIP adaptation synced 2026-08-24), and an updated T-Head backend — each with a backend README (#5, #8, #..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagDNN Release Notes &#8212; FlagDNN Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.c21610c6-c056-4e47-b46e-0fc8db000371.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.7515ba41-d45f-42e0-8c28-0c652ad18fd4.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/release_notes/release-notes.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -529,6 +534,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -544,6 +550,30 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagdnn-release-notes">
 <h1>FlagDNN Release Notes<a class="headerlink" href="#flagdnn-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0-rc2-release-candidate">
+<h2>v0.3.0-rc2 (release candidate)<a class="headerlink" href="#v0-3-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the FlagOS 2.2 release candidate (tag <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc2.post1</span></code>, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. The packaging work tracked under FEP-0019 Wave 1 continues in FlagDNN#1 (native NVIDIA runtime/development packages consuming <code class="docutils literal notranslate"><span class="pre">libtriton-jit-nvidia</span> <span class="pre">&gt;=</span> <span class="pre">0.1.0-3</span></code>, to be published to the FlagOS Nexus repository).</p>
+</div>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New hardware backends: Ascend (with dedicated tests and performance tuning), Hygon DCU (with CPU reference ops), Moore Threads (MUSA), Iluvatar (WIP adaptation synced 2026-08-24), and an updated T-Head backend — each with a backend README (#5, #8, #9, #10).</p></li>
+<li><p>New operators: <code class="docutils literal notranslate"><span class="pre">conv_dgrad</span></code>, <code class="docutils literal notranslate"><span class="pre">conv_wgrad</span></code>, and an <code class="docutils literal notranslate"><span class="pre">sdpa_fp8_backward</span></code> draft.</p></li>
+<li><p>CI/CD workflow for FlagDNN (#2), including <code class="docutils literal notranslate"><span class="pre">run_op.sh</span></code>-based per-operator runs.</p></li>
+</ul>
+</li>
+<li><p><strong>Improved / Fixed</strong></p>
+<ul>
+<li><p>Architecture refactoring of the testing framework (adapted to both NVIDIA and Ascend) with fixes for batch test collection.</p></li>
+<li><p>Long causal SDPA performance work: host descriptors, bounded ids in the backward pass, and owner-compute causal d128 backward.</p></li>
+<li><p>Performance fixes for <code class="docutils literal notranslate"><span class="pre">add_square</span></code>, <code class="docutils literal notranslate"><span class="pre">matmul</span></code>, <code class="docutils literal notranslate"><span class="pre">conv2d</span></code>, binary-related ops, <code class="docutils literal notranslate"><span class="pre">batchnorm</span></code>, and NVIDIA/Ascend tuning rounds (#6, #7, #8).</p></li>
+<li><p>Apache-2.0 copyright headers added across all source files (#3, #4).</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -637,6 +667,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -672,7 +703,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

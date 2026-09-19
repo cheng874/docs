@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2549e136" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" />
@@ -62,9 +63,13 @@
     <script src="../_static/js/benchmark.js?v=bfe1f9a9"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/features.001f2400-ca2d-488c-85b2-7d9ed8179534.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/features.1de73d80-5c65-45ee-accc-1b054d8be8ae.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/features';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/overview/features.html" />
@@ -76,7 +81,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -630,7 +635,9 @@ for list of formally supported operators and experimental operators.</p>
 <h2>Hand-optimized Performance for Selected Operators<a class="headerlink" href="#hand-optimized-performance-for-selected-operators" title="Link to this heading">#</a></h2>
 <p>The following chart shows the speedup of FlagGems compared with PyTorch ATen library in eager mode.
 The speedup is calculated by averaging the speedup on each shape, representing the overall performance of the operator.</p>
-<p><img alt="Operator Speedup" src="../_images/speedup-20251225.png" /></p>
+<p><a href="../_images/speedup-20251225.png" data-lightbox="image-set">
+<img alt="Operator Speedup" src="../_images/speedup-20251225.png" /></a>
+</p>
 </section>
 <section id="eager-mode-ready-independent-of-torch-compile">
 <h2>Eager-mode ready, independent of <code class="docutils literal notranslate"><span class="pre">torch.compile</span></code><a class="headerlink" href="#eager-mode-ready-independent-of-torch-compile" title="Link to this heading">#</a></h2>
@@ -767,7 +774,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Operator Registry — Added conf/operators.yaml with full operator metadata., CI/CD Pipeline — GitHub Actions workflow with correctness tests, performance benchmarks, and pre-commit hooks., libtuner Autotuning — Integrated libtuner for automatic kernel configuration tuning....." />
+<meta property="og:description" content="v0.3.0-rc2 (release candidate): Added Features- New Level-1 operators: rotg, rotm, rotmg; amin fixes., New Level-2 operators: hpmv, trsv, cher2, zher2, chpr, zhpr, sspr2, dspr2, chpr2, zhpr2, sspr, dspr, ssyr2, dsyr2, ger, tpsv, tbsv, syr, her, plus the trmm operator., New GEMM operators: dgemm, ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Operator Registry — Added conf/operators.yaml with full operator metadata., CI/CD Pipeline — GitHub Actions workflow with correctness tests, performance benchmarks, and pre-commit hooks., libtuner Autotuning — Integrated libtuner for automatic kernel configuration tuning....." />
+<meta name="description" content="v0.3.0-rc2 (release candidate): Added Features- New Level-1 operators: rotg, rotm, rotmg; amin fixes., New Level-2 operators: hpmv, trsv, cher2, zher2, chpr, zhpr, sspr2, dspr2, chpr2, zhpr2, sspr, dspr, ssyr2, dsyr2, ger, tpsv, tbsv, syr, her, plus the trmm operator., New GEMM operators: dgemm, ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagBLAS Release Notes &#8212; FlagBLAS Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.6b2a2ac6-5994-48f0-b524-89f31101a616.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.5023d15a-cf0c-49ad-ac56-990d5fac9986.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/release_notes/release-notes.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -529,6 +534,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -544,6 +550,36 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagblas-release-notes">
 <h1>FlagBLAS Release Notes<a class="headerlink" href="#flagblas-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0-rc2-release-candidate">
+<h2>v0.3.0-rc2 (release candidate)<a class="headerlink" href="#v0-3-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the FlagOS 2.2 release candidate (tag <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc2.post1</span></code>, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. The packaging work tracked under FEP-0019 Wave 1 continues in FlagBLAS#1 (Debian <code class="docutils literal notranslate"><span class="pre">.deb</span></code> / RPM <code class="docutils literal notranslate"><span class="pre">.rpm</span></code>; wheels to PyPI and binary packages to the FlagOS Nexus repository).</p>
+</div>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New Level-1 operators: <code class="docutils literal notranslate"><span class="pre">rotg</span></code>, <code class="docutils literal notranslate"><span class="pre">rotm</span></code>, <code class="docutils literal notranslate"><span class="pre">rotmg</span></code>; <code class="docutils literal notranslate"><span class="pre">amin</span></code> fixes.</p></li>
+<li><p>New Level-2 operators: <code class="docutils literal notranslate"><span class="pre">hpmv</span></code>, <code class="docutils literal notranslate"><span class="pre">trsv</span></code>, <code class="docutils literal notranslate"><span class="pre">cher2</span></code>, <code class="docutils literal notranslate"><span class="pre">zher2</span></code>, <code class="docutils literal notranslate"><span class="pre">chpr</span></code>, <code class="docutils literal notranslate"><span class="pre">zhpr</span></code>, <code class="docutils literal notranslate"><span class="pre">sspr2</span></code>, <code class="docutils literal notranslate"><span class="pre">dspr2</span></code>, <code class="docutils literal notranslate"><span class="pre">chpr2</span></code>, <code class="docutils literal notranslate"><span class="pre">zhpr2</span></code>, <code class="docutils literal notranslate"><span class="pre">sspr</span></code>, <code class="docutils literal notranslate"><span class="pre">dspr</span></code>, <code class="docutils literal notranslate"><span class="pre">ssyr2</span></code>, <code class="docutils literal notranslate"><span class="pre">dsyr2</span></code>, <code class="docutils literal notranslate"><span class="pre">ger</span></code>, <code class="docutils literal notranslate"><span class="pre">tpsv</span></code>, <code class="docutils literal notranslate"><span class="pre">tbsv</span></code>, <code class="docutils literal notranslate"><span class="pre">syr</span></code>, <code class="docutils literal notranslate"><span class="pre">her</span></code>, plus the <code class="docutils literal notranslate"><span class="pre">trmm</span></code> operator.</p></li>
+<li><p>New GEMM operators: <code class="docutils literal notranslate"><span class="pre">dgemm</span></code>, <code class="docutils literal notranslate"><span class="pre">cgemm</span></code>, <code class="docutils literal notranslate"><span class="pre">zgemm</span></code> (#14) and Group GEMM for the NVIDIA backend (#18).</p></li>
+<li><p>Static dispatch infrastructure with documentation (#9), applied to <code class="docutils literal notranslate"><span class="pre">hgemm</span></code>.</p></li>
+<li><p>New hardware backends: Ascend (Level-2 BLAS support, 910C CI, <code class="docutils literal notranslate"><span class="pre">saxpy</span></code> demo op) and Hygon DCU (<code class="docutils literal notranslate"><span class="pre">GEMV</span></code>, <code class="docutils literal notranslate"><span class="pre">SYMV</span></code>, <code class="docutils literal notranslate"><span class="pre">HEMV</span></code>, <code class="docutils literal notranslate"><span class="pre">TRMV</span></code>, <code class="docutils literal notranslate"><span class="pre">TBMV</span></code>, <code class="docutils literal notranslate"><span class="pre">TPMV</span></code>, <code class="docutils literal notranslate"><span class="pre">GBMV</span></code>, <code class="docutils literal notranslate"><span class="pre">HBMV</span></code>, <code class="docutils literal notranslate"><span class="pre">SPMV</span></code>, <code class="docutils literal notranslate"><span class="pre">HPMV</span></code>, hipBLAS benchmark integration).</p></li>
+<li><p>Comprehensive benchmark suite expansion for Level-2 operators (rotations, triangular, banded, symmetric/Hermitian, packed, rank-1/rank-2 updates, <code class="docutils literal notranslate"><span class="pre">ger</span></code>, <code class="docutils literal notranslate"><span class="pre">trmm</span></code>, <code class="docutils literal notranslate"><span class="pre">fp8_gemv</span></code>, <code class="docutils literal notranslate"><span class="pre">sbmv</span></code>) with core-shape registrations (#40–#66).</p></li>
+<li><p>Weekly full-test workflow (#19) and Ascend/Hygon CI pipelines.</p></li>
+</ul>
+</li>
+<li><p><strong>Improved / Fixed</strong></p>
+<ul>
+<li><p>All L2/L3 operators promoted to stable stage (#65).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sgemm_nt</span></code>/<code class="docutils literal notranslate"><span class="pre">sgemm_tt</span></code>, TRSV, GER, sgemm/hgemm/bfgemm optimizations (#17).</p></li>
+<li><p>Fixed int32 index overflow in large-n <code class="docutils literal notranslate"><span class="pre">amin</span></code> kernels for strided inputs.</p></li>
+<li><p>Registered missing ops in <code class="docutils literal notranslate"><span class="pre">operators.yaml</span></code> and removed the orphan <code class="docutils literal notranslate"><span class="pre">fp8gemm</span></code> entry (#62).</p></li>
+<li><p>Hygon CI hardening: DTK environment loading, torch diagnose steps, uv-managed Python (#67).</p></li>
+<li><p>Apache-2.0 copyright headers added across all source files (#12, #13).</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -627,6 +663,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -662,7 +699,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

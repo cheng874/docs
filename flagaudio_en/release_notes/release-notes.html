@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_DB, spectral_centroid., Audio signal processing operators with multi-backend support., Complete processing chain from raw audio to model input.., Enhanced Features- Operators underwent d..." />
+<meta property="og:description" content="Unreleased (FlagOS 2.2 in development): Packaging (FEP-0019, Wave 1) — Debian.deb and RPM.rpm packaging is in progress in FlagAudio#2 (awaiting first-contributor CI approval). Python wheels will be published to PyPI and binary packages to the FlagOS Nexus repository., Added Apache-2.0 copyright h..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_DB, spectral_centroid., Audio signal processing operators with multi-backend support., Complete processing chain from raw audio to model input.., Enhanced Features- Operators underwent d..." />
+<meta name="description" content="Unreleased (FlagOS 2.2 in development): Packaging (FEP-0019, Wave 1) — Debian.deb and RPM.rpm packaging is in progress in FlagAudio#2 (awaiting first-contributor CI approval). Python wheels will be published to PyPI and binary packages to the FlagOS Nexus repository., Added Apache-2.0 copyright h..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagAudio Release Notes &#8212; FlagAudio Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.020afeab-9326-4b29-873b-2c3db5b912f4.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.eebdb74d-0614-4ad6-b072-e47034022906.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/release_notes/release-notes.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -526,6 +531,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -541,6 +547,13 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagaudio-release-notes">
 <h1>FlagAudio Release Notes<a class="headerlink" href="#flagaudio-release-notes" title="Link to this heading">#</a></h1>
+<section id="unreleased-flagos-2-2-in-development">
+<h2>Unreleased (FlagOS 2.2 in development)<a class="headerlink" href="#unreleased-flagos-2-2-in-development" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Packaging (FEP-0019, Wave 1)</strong> — Debian <code class="docutils literal notranslate"><span class="pre">.deb</span></code> and RPM <code class="docutils literal notranslate"><span class="pre">.rpm</span></code> packaging is in progress in FlagAudio#2 (awaiting first-contributor CI approval). Python wheels will be published to PyPI and binary packages to the FlagOS Nexus repository.</p></li>
+<li><p>Added Apache-2.0 copyright headers across all source files.</p></li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -621,6 +634,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -656,7 +670,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

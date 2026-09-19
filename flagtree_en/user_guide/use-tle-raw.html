@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/use-tle-raw.fc81b849-6bd0-4e7f-b2fd-b4e220c69a29.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/use-tle-raw.725a31db-e75b-4766-b5a4-4e97fa4a153b.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/use-tle-raw';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/user_guide/use-tle-raw.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -366,6 +371,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../release_notes/release-notes.html">Release Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes/release_notes_v070.html">FlagTree 0.7.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes/release_notes_v060.html">FlagTree 0.6.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes/release_notes_v050.html">FlagTree 0.5.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes/release_notes_v040.html">FlagTree 0.4.0 release</a></li>
@@ -690,17 +696,23 @@
 <section id="llvm-route">
 <h3>LLVM route<a class="headerlink" href="#llvm-route" title="Link to this heading">#</a></h3>
 <p>Basic flow: use clang to translate CUDA code into LLVM IR, then apply the existing LLVM inline pass.</p>
-<p><img alt="alt text" src="../_images/cuda-to-vllm-line-pass.png" /></p>
+<p><a href="../_images/cuda-to-vllm-line-pass.png" data-lightbox="image-set">
+<img alt="alt text" src="../_images/cuda-to-vllm-line-pass.png" /></a>
+</p>
 </section>
 <section id="usage-example">
 <h3>Usage example<a class="headerlink" href="#usage-example" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Reference: <code class="docutils literal notranslate"><span class="pre">python/tutorials/tle/raw/cuda/01-vector-add.py</span></code></p></li>
 <li><p>Triton side: provide the CUDA file path and function declaration. Other vendors could register your own language name as the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter.
-<img alt="alt text" src="../_images/triton-side.png" /></p></li>
+<a href="../_images/triton-side.png" data-lightbox="image-set">
+<img alt="alt text" src="../_images/triton-side.png" /></a>
+</p></li>
 <li><p>CUDA side: implement the CUDA kernel. LLVM struct parameter declarations are still retained (because subsequent inlining requires handling the Triton ptr-to-LLVM conversion, which is currently left to the user for one-to-one mapping). Other vendors should customize the mapping based on your own language.</p></li>
 </ul>
-<p><img alt="alt text" src="../_images/cuda-side.PNG" /></p>
+<p><a href="../_images/cuda-side.PNG" data-lightbox="image-set">
+<img alt="alt text" src="../_images/cuda-side.PNG" /></a>
+</p>
 </section>
 <section id="processing-flow">
 <h3>Processing flow<a class="headerlink" href="#processing-flow" title="Link to this heading">#</a></h3>
@@ -724,7 +736,9 @@
 </tr>
 <tr class="row-even"><td><p>CUDA runtime: where clang is actually invoked</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">python/triton/experimental/tle/raw/cuda/runtime.py</span></code></p></td>
-<td><p>- <code class="docutils literal notranslate"><span class="pre">CUDAJITFunction</span></code> reads the <code class="docutils literal notranslate"><span class="pre">.cu</span></code> source text at initialization.<br>- <code class="docutils literal notranslate"><span class="pre">make_llvm()</span></code> directly calls <code class="docutils literal notranslate"><span class="pre">subprocess.run(clang</span> <span class="pre">...)</span></code> to produce LLVM IR.<br>- <code class="docutils literal notranslate"><span class="pre">parse_llvm_ir(...)</span></code> converts the text into a module that can be plugged into the Triton builder.<br><img alt="alt text" src="../_images/make_llvm.PNG" /></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">CUDAJITFunction</span></code> reads the <code class="docutils literal notranslate"><span class="pre">.cu</span></code> source text at initialization.<br>- <code class="docutils literal notranslate"><span class="pre">make_llvm()</span></code> directly calls <code class="docutils literal notranslate"><span class="pre">subprocess.run(clang</span> <span class="pre">...)</span></code> to produce LLVM IR.<br>- <code class="docutils literal notranslate"><span class="pre">parse_llvm_ir(...)</span></code> converts the text into a module that can be plugged into the Triton builder.<br><a href="../_images/make_llvm.PNG" data-lightbox="image-set">
+<img alt="alt text" src="../_images/make_llvm.PNG" /></a>
+</p></td>
 </tr>
 </tbody>
 </table>
@@ -742,7 +756,9 @@
 <tbody>
 <tr class="row-even"><td><p>Attach LLVM function to <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">python/triton/experimental/tle/language/raw/core.py</span></code></p></td>
-<td><p>- <code class="docutils literal notranslate"><span class="pre">call()</span></code> obtains the builder context.<br>- Triggers <code class="docutils literal notranslate"><span class="pre">func.make_llvm(context)</span></code>.<br>- Calls <code class="docutils literal notranslate"><span class="pre">create_tle_raw_region_by_llvm_func(...)</span></code> to generate the <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> op.<br><img alt="alt text" src="../_images/dsl_region_op.PNG" /></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">call()</span></code> obtains the builder context.<br>- Triggers <code class="docutils literal notranslate"><span class="pre">func.make_llvm(context)</span></code>.<br>- Calls <code class="docutils literal notranslate"><span class="pre">create_tle_raw_region_by_llvm_func(...)</span></code> to generate the <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> op.<br><a href="../_images/dsl_region_op.PNG" data-lightbox="image-set">
+<img alt="alt text" src="../_images/dsl_region_op.PNG" /></a>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p>C++ bridge: IR injection and type bridging</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">third_party/tle/triton_tle.cc</span></code></p></td>
@@ -764,7 +780,9 @@
 <tbody>
 <tr class="row-even"><td><p>Backend pass registration</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">third_party/nvidia/backend/compiler.py</span></code></p></td>
-<td><p>- <code class="docutils literal notranslate"><span class="pre">make_ttgir()</span></code> inserts <code class="docutils literal notranslate"><span class="pre">tle.raw_passes.add_tle_convert_arg_to_memdesc(pm)</span></code>, which converts <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> tensor parameters into memdesc form.<br>- <code class="docutils literal notranslate"><span class="pre">make_llir()</span></code> inserts <code class="docutils literal notranslate"><span class="pre">tle.raw_passes.add_tle_dsl_region_inline(pm)</span></code>, which inlines <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> into the main control flow before LLVM conversion.<br><img alt="alt text" src="../_images/make_ttgir_and_make_llir.png" /></p></td>
+<td><p>- <code class="docutils literal notranslate"><span class="pre">make_ttgir()</span></code> inserts <code class="docutils literal notranslate"><span class="pre">tle.raw_passes.add_tle_convert_arg_to_memdesc(pm)</span></code>, which converts <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> tensor parameters into memdesc form.<br>- <code class="docutils literal notranslate"><span class="pre">make_llir()</span></code> inserts <code class="docutils literal notranslate"><span class="pre">tle.raw_passes.add_tle_dsl_region_inline(pm)</span></code>, which inlines <code class="docutils literal notranslate"><span class="pre">dsl_region</span></code> into the main control flow before LLVM conversion.<br><a href="../_images/make_ttgir_and_make_llir.png" data-lightbox="image-set">
+<img alt="alt text" src="../_images/make_ttgir_and_make_llir.png" /></a>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p>Parameter bridging</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TleConvertArgToMemDesc</span></code> (TTGIR stage)</p></td>
@@ -910,7 +928,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/user-guide.4595b4b3-ed44-4c48-a5f4-add704c9b061.js"></script>
+    <script defer="defer" src="_static/tippy/user-guide.96e2f6ce-6959-4f5e-b53c-919fd6459520.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user-guide';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/user-guide.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -690,14 +695,18 @@ doubles the message size each step (128 KiB, 256 KiB, 512 KiB, 1 MiB …) up to 
 For each size, the benchmark records bandwidth, latency, and correctness results.</p>
 </li>
 <li><p>Correct Performance Test Output</p>
-<p><img alt="correct_performance_test_output.png" src="_images/correct_performance_test_output.png" /></p>
+<p><a href="_images/correct_performance_test_output.png" data-lightbox="image-set">
+<img alt="correct_performance_test_output.png" src="_images/correct_performance_test_output.png" /></a>
+</p>
 </li>
 <li><p>Issues Encountered During Execution</p>
 <ul>
 <li><p>During execution, you may see an assertion warning when OpenMPI attempts to establish a connection
 via InfiniBand (openib BTL) but cannot find an available CPC (Connection Protocol).
 In this case, the IB port is disabled automatically.This warning does not affect the performance test results.</p>
-<p><img alt="issues_encountered_during_execution.png" src="_images/issues_encountered_during_execution.png" /></p>
+<p><a href="_images/issues_encountered_during_execution.png" data-lightbox="image-set">
+<img alt="issues_encountered_during_execution.png" src="_images/issues_encountered_during_execution.png" /></a>
+</p>
 <p><strong>Solution</strong></p>
 <p>To suppress this warning, disable <code class="docutils literal notranslate"><span class="pre">openib</span></code> and fall back to TCP by adding the following option
 to your <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> command.</p>
@@ -788,7 +797,9 @@ All nodes must use the same port, and the port has to be available on all nodes.
 </ul>
 </li>
 <li><p>Sample screenshot from a correct performance test</p>
-<p><img alt="sample_screenshot_of_correct_performance_test.png" src="_images/sample_screenshot_of_correct_performance_test.png" /></p>
+<p><a href="_images/sample_screenshot_of_correct_performance_test.png" data-lightbox="image-set">
+<img alt="sample_screenshot_of_correct_performance_test.png" src="_images/sample_screenshot_of_correct_performance_test.png" /></a>
+</p>
 </li>
 </ol>
 </section>
@@ -921,7 +932,9 @@ and a run script will be generated at:</p>
 <ul>
 <li><p>You can inspect the run script to verify the commands and environment settings used for the training.</p></li>
 <li><p>All logs and model checkpoints will be saved under the output directory.</p>
-<p><img alt="distributed_training.png" src="_images/distributed_training.png" /></p>
+<p><a href="_images/distributed_training.png" data-lightbox="image-set">
+<img alt="distributed_training.png" src="_images/distributed_training.png" /></a>
+</p>
 </li>
 </ul>
 </li>
@@ -1181,7 +1194,9 @@ configure the port number environment variable:</p>
 <li><p>As a result, GPU utilization may show 0%, and the overall AllReduce runtime may be much longer.</p></li>
 <li><p>However, the computation results are correct, and this behavior is expected.</p></li>
 <li><p>To fully utilize GPU acceleration for heterogeneous testing, use 2+2 GPUs (4 GPUs total) across the nodes.</p>
-<p><img alt="heterogeneous_communication_api_test.png" src="_images/heterogeneous_communication_api_test.png" /></p>
+<p><a href="_images/heterogeneous_communication_api_test.png" data-lightbox="image-set">
+<img alt="heterogeneous_communication_api_test.png" src="_images/heterogeneous_communication_api_test.png" /></a>
+</p>
 </li>
 </ul>
 </li>
@@ -1309,7 +1324,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

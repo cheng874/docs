@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/FlagTree_overview/compilation_architecture/features-tle.fcb98f62-027d-4aa3-b54f-5f1fd7260fd1.js"></script>
+    <script defer="defer" src="../../_static/tippy/FlagTree_overview/compilation_architecture/features-tle.60a33d7b-9f8d-4cee-85aa-8c6b48428dea.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'FlagTree_overview/compilation_architecture/features-tle';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/FlagTree_overview/compilation_architecture/features-tle.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -366,6 +371,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../release_notes/release-notes.html">Release Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../release_notes/release_notes_v070.html">FlagTree 0.7.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../release_notes/release_notes_v060.html">FlagTree 0.6.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../release_notes/release_notes_v050.html">FlagTree 0.5.0 Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../release_notes/release_notes_v040.html">FlagTree 0.4.0 release</a></li>
@@ -578,7 +584,9 @@
 <h2>TLE-Lite, TLE-Struct, and TLE-Raw introduction<a class="headerlink" href="#tle-lite-tle-struct-and-tle-raw-introduction" title="Link to this heading">#</a></h2>
 <p>TLE-Lite, TLE-Struct, and TLE-Raw are the compiler languages, located in the middle layer of the AI ecosystem. The upper layer connects AI frameworks through graph compilers and operator libraries, while the lower layer connects to various hardware runtimes.</p>
 <p>The following diagram demonstrates the location of TLE-Lite, TLE-Struct, and TLE-Raw in the AI ecosystem.</p>
-<p><img alt="alt text" src="../../_images/three-level-tle.png" /></p>
+<p><a href="../../_images/three-level-tle.png" data-lightbox="image-set">
+<img alt="alt text" src="../../_images/three-level-tle.png" /></a>
+</p>
 <p>These three compiler languages provide different levels of performance optimizations for different users:</p>
 <ul class="simple">
 <li><p>TLE-Lite allows users to modify existing Triton kernels with minimal changes, while being compatible with various hardware backends. It can be used by algorithm engineers in quick optimization scenarios.</p></li>
@@ -587,7 +595,9 @@
 </ul>
 <p>Hints, TLE-Lite and TLE-Struct will eventually lower to LLVM (Low Level Virtual Machine) IR (Intermediate Representation) through FLIR (that is, FlagTree IR), while TLE-Raw will lower to LLVM IR through the corresponding compilation pipeline of the language, such as the vendor’s private compiler. Finally, they will be linked together to jointly generate a complete kernel for the runtime to load and execute.</p>
 <p>The following diagram illustrates the TLE-Raw’s compatibility with existing DSLs (TileLang and cuTile) as well as essential libraries and tools (PyCUDA and MLIR Pybind), and also the location in the AI ecosystem.</p>
-<p><img alt="alt text" src="../../_images/tle-raw.png" /></p>
+<p><a href="../../_images/tle-raw.png" data-lightbox="image-set">
+<img alt="alt text" src="../../_images/tle-raw.png" /></a>
+</p>
 <p>For how to use TLE, see <a class="reference internal" href="../../user_guide/use-tle-lite.html"><span class="std std-doc">Use TLE-Lite</span></a>, <a class="reference internal" href="../../user_guide/use-tle-struct.html"><span class="std std-doc">Use TLE-Struct</span></a>, and <a class="reference internal" href="../../user_guide/use-tle-raw.html"><span class="std std-doc">Use TLE-Raw</span></a>.</p>
 </section>
 <section id="tle-in-the-compilation-process">
@@ -742,7 +752,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

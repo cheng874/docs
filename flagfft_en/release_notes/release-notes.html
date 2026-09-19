@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.1.0: Initial release of FlagFFT. Added Features- Experimental C++ FFT library with cuFFT-style C API., Triton/TLE-generated CUDA kernels with JIT compilation at plan creation time., 1D Complex-to-Complex — C2C, Z2Z (complex64 and complex128)., 1D Real-to-Complex — R2C, D2Z (float and double).,..." />
+<meta property="og:description" content="Unreleased (FlagOS 2.2 in development): Packaging (FEP-0019, Wave 1) — Debian.deb and RPM.rpm packaging for the NVIDIA backend is in progress in FlagFFT#12. The first release ships the NVIDIA backend only; MThreads support awaits a public build image and the PPU backend is pending upstreaming.. v..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.1.0: Initial release of FlagFFT. Added Features- Experimental C++ FFT library with cuFFT-style C API., Triton/TLE-generated CUDA kernels with JIT compilation at plan creation time., 1D Complex-to-Complex — C2C, Z2Z (complex64 and complex128)., 1D Real-to-Complex — R2C, D2Z (float and double).,..." />
+<meta name="description" content="Unreleased (FlagOS 2.2 in development): Packaging (FEP-0019, Wave 1) — Debian.deb and RPM.rpm packaging for the NVIDIA backend is in progress in FlagFFT#12. The first release ships the NVIDIA backend only; MThreads support awaits a public build image and the PPU backend is pending upstreaming.. v..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagFFT Release Notes &#8212; FlagFFT Documentation</title>
@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="../_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.ef840f08-7338-4b7b-b3ec-af45c2e2a6bc.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.e076729b-d8c6-4029-b565-c97b4611e5e3.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/release_notes/release-notes.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -534,6 +539,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -548,6 +554,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagfft-release-notes">
 <h1>FlagFFT Release Notes<a class="headerlink" href="#flagfft-release-notes" title="Link to this heading">#</a></h1>
+<section id="unreleased-flagos-2-2-in-development">
+<h2>Unreleased (FlagOS 2.2 in development)<a class="headerlink" href="#unreleased-flagos-2-2-in-development" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Packaging (FEP-0019, Wave 1)</strong> — Debian <code class="docutils literal notranslate"><span class="pre">.deb</span></code> and RPM <code class="docutils literal notranslate"><span class="pre">.rpm</span></code> packaging for the NVIDIA backend is in progress in FlagFFT#12. The first release ships the NVIDIA backend only; MThreads support awaits a public build image and the PPU backend is pending upstreaming.</p></li>
+</ul>
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <p>Initial release of FlagFFT.</p>
@@ -624,6 +636,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -658,7 +671,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=538fca1d" />
     <link rel="stylesheet" type="text/css" href="_static/homepage.css" />
   
@@ -59,9 +60,13 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/getting-started.4470f462-0d90-476a-a394-f205b1681508.js"></script>
+    <script defer="defer" src="_static/tippy/getting-started.250ec6d9-ce21-49d3-9db9-f7918ad3b849.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="/getting-started.html" />
@@ -73,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 16, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -635,7 +640,9 @@ make USE_SUNRISE=1 -j$(nproc) # Sunrise AI Platform
 <p>See <a class="reference internal" href="build.html"><span class="std std-doc">Build and Installation</span></a> for the full list of supported backend flags.</p>
 </li>
 <li><p>Successful Build Result</p>
-<p><img alt="flagcx_build_and_installation_successful_build_result.png" src="_images/flagcx_build_and_installation_successful_build_result.png" /></p>
+<p><a href="_images/flagcx_build_and_installation_successful_build_result.png" data-lightbox="image-set">
+<img alt="flagcx_build_and_installation_successful_build_result.png" src="_images/flagcx_build_and_installation_successful_build_result.png" /></a>
+</p>
 </li>
 <li><p>Potential Issues During Compilation</p>
 <ul>
@@ -685,7 +692,9 @@ make USE_NVIDIA=1 # Compile with options based on the hardware platform
 </div>
 </li>
 <li><p>Successful Build Result</p>
-<p><img alt="homogeneous_communication_api_test_successful_build_result.png" src="_images/homogeneous_communication_api_test_successful_build_result.png" /></p>
+<p><a href="_images/homogeneous_communication_api_test_successful_build_result.png" data-lightbox="image-set">
+<img alt="homogeneous_communication_api_test_successful_build_result.png" src="_images/homogeneous_communication_api_test_successful_build_result.png" /></a>
+</p>
 </li>
 </ol>
 </section>
@@ -930,7 +939,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 16, 2026.
+  Last updated on Sep 19, 2026.
   <br/>
 </p>
   </div>
