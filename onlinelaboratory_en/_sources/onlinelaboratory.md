@@ -1,6 +1,6 @@
 # Online Laboratory User Guide
 
-## Getting Started
+## Getting started
 
 1. Open <https://flagos.net/Home> in your browser.
 
@@ -9,60 +9,71 @@
 3. View all unreleased container instances, reservation information, access endpoints, and other related information associated with your account.
    ![alt text](asset/online-lab.jpg)
 
-4. If there is a **Reservation Management** menu in the left sidebar of your Online Laboratory, your container instance is in **Reservation mode**, and you should refer to the **Reservation Usage** section of this guide. If there is no such menu, the container instance is in **Dedicated mode**.
+   ```{note}
+   - If there is a **My Bookings** menu in the left sidebar of your Online Laboratory, your container instance is in **Reservation mode**, and you should refer to the **Reservation Mode** section of this guide. 
+   - If there is no such menu, the container instance is in **Dedicated mode**, and you should refer to the **Dedicate Mode** section of this guide.
+   ```
 
-5. On the **Container Instance** page, in the **Operation** column, check the image information:
-   1. Navigate to **Operation**, and click Settings ![alt text](asset/settings.png).
-   2. In the pop-up window, click **Image**.
-      ![alt text](asset/check-image.jpg)
-
-## Reservation Usage
+## 1. Reservation mode
 
 ### Reservation Rules
 
-1. To ensure the overall resource utilization of the platform, the platform allocates reservation vouchers when a container instance is created, and the container instance is then used within fixed time slots by reservation.
+- To ensure the overall resource utilization of the platform, the platform allocates reservation vouchers when a container instance is created, and the container instance is then used within fixed time slots by reservation.
 
-2. The fixed time slots are divided by Beijing time as follows: 0:00-6:00, 6:00-12:00, 12:00-18:00, and 18:00-24:00. Reserving one time slot consumes one reservation voucher, and the entire slot is reserved for you.
+- The fixed time slots are divided by Beijing time as follows: 0:00-6:00, 6:00-12:00, 12:00-18:00, and 18:00-24:00. Reserving one time slot consumes one reservation voucher, and the entire slot is reserved for you.
 
-3. The instance container is automatically pre-warmed and allocated at the start of the reserved time slot. Click **Start** to use it. When the slot ends, the system automatically saves the changes inside the container, shuts it down, and releases it.
+- The instance container is automatically pre-warmed and allocated at the start of the reserved time slot. Click **Start** to use it. When the slot ends, the system automatically saves the changes inside the container, shuts it down, and releases it.
 
-4. If the reserved time slot is not actually used, the reservation voucher is not refunded.
+- If the reserved time slot is not actually used, the reservation voucher is not refunded.
 
-5. Reservation vouchers are divided by type. The Reservation Management menu displays and operates on user reservation vouchers or collective reservation vouchers.
+- Reservation vouchers are divided by type. The Reservation Management menu displays and operates on user reservation vouchers or collective reservation vouchers.
 
-6. Time slot reservations for a container instance can be made starting 7 days before the activity begins, and only slots within 7 days from the current time can be reserved. Consecutive reservations are supported (the container is not shut down in between).
+- Time slot reservations for a container instance can be made starting 7 days before the activity begins, and only slots within 7 days from the current time can be reserved. Consecutive reservations are supported (the container is not shut down in between).
 
-7. To ensure a good experience, real-time reservation is not supported for now. The reservation deadline for each time slot is 15 minutes before the slot starts (for example, after 11:45 on the same day, the 12:00-18:00 slot can no longer be reserved).
+- To ensure a good experience, real-time reservation is not supported for now. The reservation deadline for each time slot is 15 minutes before the slot starts (for example, after 11:45 on the same day, the 12:00-18:00 slot can no longer be reserved).
 
-8. User or collective reservations can be cancelled before the time slot starts, and the corresponding reservation voucher is refunded. Collective reservations cannot be cancelled by regular users.
+- User or collective reservations can be cancelled before the time slot starts, and the corresponding reservation voucher is refunded. Collective reservations cannot be cancelled by regular users.
 
-9. When the reserved time slot ends, the system automatically shuts down the container and saves the data inside it (the data is not destroyed). When the voucher's release time is reached, the system releases the container and destroys the data inside it. Please make sure to keep your own copy of your data.
+- When the reserved time slot ends, the system automatically shuts down the container and saves the data inside it (the data is not destroyed). When the voucher's release time is reached, the system releases the container and destroys the data inside it. Please make sure to keep your own copy of your data.
 
-### Container Instance
+### Reserve time slots and start container instance
 
-1. A container instance in Reservation mode can only be accessed within the reserved time slots.
+A container instance in Reservation mode can only be accessed within the reserved time slots. 
 
-2. To check the current and reserved time slots of a container instance, see the **Runtime Period** column.
+1. On the **Container Instance** page, check the current and reserved time slots of a container instance in the **Operating period** column.
 
-3. In the Operation column, click **Reservation Management** to jump to the reservation drawer of the corresponding container instance on the Reservation Management page, where you can reserve runtime slots.
+2. In the **Actions** column, click **Reservations** to jump to the reservation drawer of the corresponding container instance on the Reservation Management page, where you can reserve runtime slots.
    ![alt text](asset/reservation-instance.jpg)
 
-4. After the reservation is allocated, the environment container is in the powered-off state. Click **Start** in the Operation column to start it manually.
+3. After selecting one or more reservable time slots and click **Confirm**, the time slots are reserved. You are routed to the **My Booking** tab. 
 
-### Reservation Management
+   - The **Available Quota** list shows the container instance and reservation voucher information, and is used to make reservations for the instance.
+      - When the current time is more than 7 days before the activity start time, the container instance cannot be reserved.
+      - When the remaining reservation vouchers are 0, the available quota of this container instance is used up, but this does not affect reservations for other container instances.
 
-1. The Reservable Quota list shows the container instance and reservation voucher information, and is used to make reservations for the instance.
-   1. When the current time is more than 7 days before the activity start time, the container instance cannot be reserved.
-   2. When the remaining reservation vouchers are 0, the available quota of this container instance is used up, but this does not affect reservations for other container instances.
+   - In the **Reservation Records**, regular users can cancel self reservations and event group administrator can cancel group reservers that have not been started.
+      ![alt text](asset/reservation-management.jpg)
 
-2. In the reservation records, self reservations or collective reservations that have not started yet can be cancelled. Collective reservations cannot be cancelled by regular users in the activity group.
-   ![alt text](asset/reservation-management.jpg)
+  ```{note}
+   - To select the current time slot, verify its availability with your administrator. If available, the administrator can select the time slot on your behalf. The administrator reserved time slot appears in the **Current Reservations** section and the instance turns to **running** status.
 
-3. If a collective reservation conflicts with an existing user reservation, the system automatically cancels the user reservation and refunds the corresponding user reservation voucher.
+   - If a group reservation conflicts with an existing user self reservation, the system automatically cancels the user reservation and refunds the corresponding user reservation voucher.
+   ```
+  
+4. Go to the **Container Instances** tab, the environment container is in the powered-off state. When reserved time slot comes, Click **Start** in the **Action** column to start the instance.
 
-## Online Development Environment
+## 2. Dedicated mode
 
-### Environment Access
+On the **Container Instance** page, in the **Operation** column, check the image information:
+  
+  1. Navigate to **Operation**, and click Settings ![alt text](asset/settings.png).
+  2. In the pop-up window, click **Image**.
+      ![alt text](asset/check-image.jpg)
+
+
+## Operations in online development environment
+
+### Access online development environment
 
 After starting the instance, you can use one of the following methods to access the cloud-based online development environment:
 
@@ -84,9 +95,10 @@ After starting the instance, you can use one of the following methods to access 
   2. In the pop-up window, click **Action**. In the **More Access** section, click the **Service URL** link to open the development environment.
   ![alt text](asset/public-access.jpg)
 
-### Querying the Computing Configuration
+### Query the computing configuration
 
 Query the computing power configuration through terminal commands according to the GPU card type.
+
 - For Iluvatar GPU cards, use the command:
 
    ```{code-block} bash
@@ -102,9 +114,10 @@ Query the computing power configuration through terminal commands according to t
 
   ![alt text](asset/ascend-gpu-info.jpg)
 
-### Uploading / Downloading Files
+### Upload and download files
 
-You can upload or download files such as code packages and models through the following methods:
+You can upload files from your local place and download files to your local place, such as code packages through the following methods:
+
 - Right-click your `Workspace` and select **Upload...**
   ![alt text](asset/upload.jpg)
 - Right-click your `Workspace` and select **Download...**

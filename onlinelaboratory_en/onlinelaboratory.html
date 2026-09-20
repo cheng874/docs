@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="onlinelaboratory.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Getting Started: Open https://flagos.net/Home in your browser., Click Online Laboratory at the top. Select Phone Login or Email Login. Enter your phone number or email address, and click Get Verification Code. Enter the verification code, check the box to accept the community usage agreement and ..." />
+<meta property="og:description" content="Getting started: Open https://flagos.net/Home in your browser., Click Online Laboratory at the top. Select Phone Login or Email Login. Enter your phone number or email address, and click Get Verification Code. Enter the verification code, check the box to accept the community usage agreement and ..." />
 <meta property="og:image" content="_images/online-lab.jpg" />
 <meta property="og:image:alt" content="alt text" />
-<meta name="description" content="Getting Started: Open https://flagos.net/Home in your browser., Click Online Laboratory at the top. Select Phone Login or Email Login. Enter your phone number or email address, and click Get Verification Code. Enter the verification code, check the box to accept the community usage agreement and ..." />
+<meta name="description" content="Getting started: Open https://flagos.net/Home in your browser., Click Online Laboratory at the top. Select Phone Login or Email Login. Enter your phone number or email address, and click Get Verification Code. Enter the verification code, check the box to accept the community usage agreement and ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Online Laboratory User Guide &#8212; Online Laboratory Documentation</title>
@@ -64,7 +64,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/onlinelaboratory.1b766441-4fe3-444d-97cb-a76d27318eab.js"></script>
+    <script defer="defer" src="_static/tippy/onlinelaboratory.51dd5c4d-40d4-4e39-987d-496f8aa75608.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'onlinelaboratory';</script>
@@ -77,7 +77,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 20, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -520,17 +520,17 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-usage">Reservation Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-mode">1. Reservation mode</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-rules">Reservation Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-instance">Container Instance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-management">Reservation Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reserve-time-slots-and-start-container-instance">Reserve time slots and start container instance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-development-environment">Online Development Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-access">Environment Access</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-the-computing-configuration">Querying the Computing Configuration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-downloading-files">Uploading / Downloading Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-mode">2. Dedicated mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-in-online-development-environment">Operations in online development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-online-development-environment">Access online development environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-the-computing-configuration">Query the computing configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-and-download-files">Upload and download files</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-environment">Reset Environment</a></li>
@@ -548,33 +548,29 @@
   <section class="tex2jax_ignore mathjax_ignore" id="online-laboratory-user-guide">
 <h1>Online Laboratory User Guide<a class="headerlink" href="#online-laboratory-user-guide" title="Link to this heading">#</a></h1>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<ol class="arabic">
 <li><p>Open <a class="reference external" href="https://flagos.net/Home">https://flagos.net/Home</a> in your browser.</p></li>
 <li><p>Click <strong>Online Laboratory</strong> at the top. Select <strong>Phone Login</strong> or <strong>Email Login</strong>. Enter your phone number or email address, and click <strong>Get Verification Code</strong>. Enter the verification code, check the box to accept the community usage agreement and privacy policy, and click <strong>Login/Register Now</strong>.</p></li>
 <li><p>View all unreleased container instances, reservation information, access endpoints, and other related information associated with your account.
 <a href="_images/online-lab.jpg" data-lightbox="image-set">
 <img alt="alt text" src="_images/online-lab.jpg" /></a>
-</p></li>
-<li><p>If there is a <strong>Reservation Management</strong> menu in the left sidebar of your Online Laboratory, your container instance is in <strong>Reservation mode</strong>, and you should refer to the <strong>Reservation Usage</strong> section of this guide. If there is no such menu, the container instance is in <strong>Dedicated mode</strong>.</p></li>
-<li><p>On the <strong>Container Instance</strong> page, in the <strong>Operation</strong> column, check the image information:</p>
-<ol class="arabic simple">
-<li><p>Navigate to <strong>Operation</strong>, and click Settings <a href="_images/settings.png" data-lightbox="image-set">
-<img alt="alt text" src="_images/settings.png" /></a>
-.</p></li>
-<li><p>In the pop-up window, click <strong>Image</strong>.
-<a href="_images/check-image.jpg" data-lightbox="image-set">
-<img alt="alt text" src="_images/check-image.jpg" /></a>
-</p></li>
-</ol>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If there is a <strong>My Bookings</strong> menu in the left sidebar of your Online Laboratory, your container instance is in <strong>Reservation mode</strong>, and you should refer to the <strong>Reservation Mode</strong> section of this guide.</p></li>
+<li><p>If there is no such menu, the container instance is in <strong>Dedicated mode</strong>, and you should refer to the <strong>Dedicate Mode</strong> section of this guide.</p></li>
+</ul>
+</div>
 </li>
 </ol>
 </section>
-<section id="reservation-usage">
-<h2>Reservation Usage<a class="headerlink" href="#reservation-usage" title="Link to this heading">#</a></h2>
+<section id="reservation-mode">
+<h2>1. Reservation mode<a class="headerlink" href="#reservation-mode" title="Link to this heading">#</a></h2>
 <section id="reservation-rules">
 <h3>Reservation Rules<a class="headerlink" href="#reservation-rules" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p>To ensure the overall resource utilization of the platform, the platform allocates reservation vouchers when a container instance is created, and the container instance is then used within fixed time slots by reservation.</p></li>
 <li><p>The fixed time slots are divided by Beijing time as follows: 0:00-6:00, 6:00-12:00, 12:00-18:00, and 18:00-24:00. Reserving one time slot consumes one reservation voucher, and the entire slot is reserved for you.</p></li>
 <li><p>The instance container is automatically pre-warmed and allocated at the start of the reserved time slot. Click <strong>Start</strong> to use it. When the slot ends, the system automatically saves the changes inside the container, shuts it down, and releases it.</p></li>
@@ -584,41 +580,61 @@
 <li><p>To ensure a good experience, real-time reservation is not supported for now. The reservation deadline for each time slot is 15 minutes before the slot starts (for example, after 11:45 on the same day, the 12:00-18:00 slot can no longer be reserved).</p></li>
 <li><p>User or collective reservations can be cancelled before the time slot starts, and the corresponding reservation voucher is refunded. Collective reservations cannot be cancelled by regular users.</p></li>
 <li><p>When the reserved time slot ends, the system automatically shuts down the container and saves the data inside it (the data is not destroyed). When the voucher’s release time is reached, the system releases the container and destroys the data inside it. Please make sure to keep your own copy of your data.</p></li>
-</ol>
+</ul>
 </section>
-<section id="container-instance">
-<h3>Container Instance<a class="headerlink" href="#container-instance" title="Link to this heading">#</a></h3>
+<section id="reserve-time-slots-and-start-container-instance">
+<h3>Reserve time slots and start container instance<a class="headerlink" href="#reserve-time-slots-and-start-container-instance" title="Link to this heading">#</a></h3>
+<p>A container instance in Reservation mode can only be accessed within the reserved time slots.</p>
 <ol class="arabic simple">
-<li><p>A container instance in Reservation mode can only be accessed within the reserved time slots.</p></li>
-<li><p>To check the current and reserved time slots of a container instance, see the <strong>Runtime Period</strong> column.</p></li>
-<li><p>In the Operation column, click <strong>Reservation Management</strong> to jump to the reservation drawer of the corresponding container instance on the Reservation Management page, where you can reserve runtime slots.
+<li><p>On the <strong>Container Instance</strong> page, check the current and reserved time slots of a container instance in the <strong>Operating period</strong> column.</p></li>
+<li><p>In the <strong>Actions</strong> column, click <strong>Reservations</strong> to jump to the reservation drawer of the corresponding container instance on the Reservation Management page, where you can reserve runtime slots.
 <a href="_images/reservation-instance.jpg" data-lightbox="image-set">
 <img alt="alt text" src="_images/reservation-instance.jpg" /></a>
 </p></li>
-<li><p>After the reservation is allocated, the environment container is in the powered-off state. Click <strong>Start</strong> in the Operation column to start it manually.</p></li>
-</ol>
-</section>
-<section id="reservation-management">
-<h3>Reservation Management<a class="headerlink" href="#reservation-management" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>The Reservable Quota list shows the container instance and reservation voucher information, and is used to make reservations for the instance.</p>
-<ol class="arabic simple">
+<li><p>After selecting one or more reservable time slots and click <strong>Confirm</strong>, the time slots are reserved. You are routed to the <strong>My Booking</strong> tab.</p>
+<ul class="simple">
+<li><p>The <strong>Available Quota</strong> list shows the container instance and reservation voucher information, and is used to make reservations for the instance.</p>
+<ul>
 <li><p>When the current time is more than 7 days before the activity start time, the container instance cannot be reserved.</p></li>
 <li><p>When the remaining reservation vouchers are 0, the available quota of this container instance is used up, but this does not affect reservations for other container instances.</p></li>
-</ol>
+</ul>
 </li>
-<li><p>In the reservation records, self reservations or collective reservations that have not started yet can be cancelled. Collective reservations cannot be cancelled by regular users in the activity group.
+<li><p>In the <strong>Reservation Records</strong>, regular users can cancel self reservations and event group administrator can cancel group reservers that have not been started.
 <a href="_images/reservation-management.jpg" data-lightbox="image-set">
 <img alt="alt text" src="_images/reservation-management.jpg" /></a>
 </p></li>
-<li><p>If a collective reservation conflicts with an existing user reservation, the system automatically cancels the user reservation and refunds the corresponding user reservation voucher.</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>To select the current time slot, verify its availability with your administrator. If available, the administrator can select the time slot on your behalf. The administrator reserved time slot appears in the <strong>Current Reservations</strong> section and the instance turns to <strong>running</strong> status.</p></li>
+<li><p>If a group reservation conflicts with an existing user self reservation, the system automatically cancels the user reservation and refunds the corresponding user reservation voucher.</p></li>
+</ul>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Go to the <strong>Container Instances</strong> tab, the environment container is in the powered-off state. When reserved time slot comes, Click <strong>Start</strong> in the <strong>Action</strong> column to start the instance.</p></li>
 </ol>
 </section>
 </section>
-<section id="online-development-environment">
-<h2>Online Development Environment<a class="headerlink" href="#online-development-environment" title="Link to this heading">#</a></h2>
-<section id="environment-access">
-<h3>Environment Access<a class="headerlink" href="#environment-access" title="Link to this heading">#</a></h3>
+<section id="dedicated-mode">
+<h2>2. Dedicated mode<a class="headerlink" href="#dedicated-mode" title="Link to this heading">#</a></h2>
+<p>On the <strong>Container Instance</strong> page, in the <strong>Operation</strong> column, check the image information:</p>
+<ol class="arabic simple">
+<li><p>Navigate to <strong>Operation</strong>, and click Settings <a href="_images/settings.png" data-lightbox="image-set">
+<img alt="alt text" src="_images/settings.png" /></a>
+.</p></li>
+<li><p>In the pop-up window, click <strong>Image</strong>.
+<a href="_images/check-image.jpg" data-lightbox="image-set">
+<img alt="alt text" src="_images/check-image.jpg" /></a>
+</p></li>
+</ol>
+</section>
+<section id="operations-in-online-development-environment">
+<h2>Operations in online development environment<a class="headerlink" href="#operations-in-online-development-environment" title="Link to this heading">#</a></h2>
+<section id="access-online-development-environment">
+<h3>Access online development environment<a class="headerlink" href="#access-online-development-environment" title="Link to this heading">#</a></h3>
 <p>After starting the instance, you can use one of the following methods to access the cloud-based online development environment:</p>
 <ul class="simple">
 <li><p><strong>Option 1: SSH Connection</strong>
@@ -657,8 +673,8 @@ To access the development environment from a public network, follow these steps.
 </li>
 </ul>
 </section>
-<section id="querying-the-computing-configuration">
-<h3>Querying the Computing Configuration<a class="headerlink" href="#querying-the-computing-configuration" title="Link to this heading">#</a></h3>
+<section id="query-the-computing-configuration">
+<h3>Query the computing configuration<a class="headerlink" href="#query-the-computing-configuration" title="Link to this heading">#</a></h3>
 <p>Query the computing power configuration through terminal commands according to the GPU card type.</p>
 <ul>
 <li><p>For Iluvatar GPU cards, use the command:</p>
@@ -679,9 +695,9 @@ To access the development environment from a public network, follow these steps.
 </li>
 </ul>
 </section>
-<section id="uploading-downloading-files">
-<h3>Uploading / Downloading Files<a class="headerlink" href="#uploading-downloading-files" title="Link to this heading">#</a></h3>
-<p>You can upload or download files such as code packages and models through the following methods:</p>
+<section id="upload-and-download-files">
+<h3>Upload and download files<a class="headerlink" href="#upload-and-download-files" title="Link to this heading">#</a></h3>
+<p>You can upload files from your local place and download files to your local place, such as code packages through the following methods:</p>
 <ul class="simple">
 <li><p>Right-click your <code class="docutils literal notranslate"><span class="pre">Workspace</span></code> and select <strong>Upload…</strong>
 <a href="_images/upload.jpg" data-lightbox="image-set">
@@ -757,17 +773,17 @@ After the environment is reset, all data will be permanently deleted and cannot 
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-usage">Reservation Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-mode">1. Reservation mode</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-rules">Reservation Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-instance">Container Instance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reservation-management">Reservation Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reserve-time-slots-and-start-container-instance">Reserve time slots and start container instance</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#online-development-environment">Online Development Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-access">Environment Access</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-the-computing-configuration">Querying the Computing Configuration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-downloading-files">Uploading / Downloading Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-mode">2. Dedicated mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-in-online-development-environment">Operations in online development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-online-development-environment">Access online development environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-the-computing-configuration">Query the computing configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-and-download-files">Upload and download files</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-environment">Reset Environment</a></li>
@@ -804,7 +820,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 20, 2026.
   <br/>
 </p>
   </div>
