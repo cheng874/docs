@@ -1,20 +1,12 @@
 # Install software for running an inference task
 
-You can download the docker images for supported hardwares from the [FlagOS main page](https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg). Just simply click the **Download** button, use the `docker pull` command to download the docker image, and then use the `docker run` and `docker exec` commands to start the container and enter it.
-
 ## Install from docker image
 
 vllm-plugin-FL is installed from a pre-built Docker image. Pull and start the image first, then install the components inside the container. The supported versions and hardware platforms are listed in [Requirements](requirements.md).
 
 1. Pull and start the image
 
-FlagOS release images are published with a uniform tag layout, in which the vLLM version and the plugin branch must match each other (vLLM 0.24.0 with plugin 0.3.0, vLLM 0.20.2 with plugin 0.2.2):
-
-```{code-block} shell
-<registry>/<repository>/vllm<vLLM version>-<vendor>-<vendor SDK>:<FlagOS version>-<plugin branch>_g<commit>.d<build date>
-```
-
-A container is always created with `docker run` and then entered with `docker exec`:
+Go to the [FlagOS main page](https://flagos.io/Home), click **Download** in the middle of the page, and select the image for your hardware; the page then shows the `docker pull` command for that image.
 
 ```{code-block} shell
 docker pull <image>
@@ -22,17 +14,19 @@ docker pull <image>
 docker run -itd \
   --name <container name> \
   --network host --ipc host \
-  --shm-size <shared memory, see the table below> \
+  --shm-size <shared memory> \
   <device passthrough, see the table below> \
   -v <model dir>:/models \
-  <image> <bash|sleep infinity>
+  <image> sleep infinity
+```
 
+`docker run` creates the container and runs in the current terminal, so keep that terminal open; open a second terminal to enter the running container:
+
+```{code-block} shell
 docker exec -it <container name> bash
 ```
 
-Container names are `<vendor>-vllm-<version>`, optionally suffixed with `-plugin-<branch>`; the name passed to `docker exec` must be identical to the `--name` given to `docker run`. The command after the image decides how the container stays alive: `bash` for an interactive container, `sleep infinity` (or `tail -f /dev/null`) for a detached one. Vendor test guides may also write the image path inline instead of defining a variable — the options are the same.
-
-Only the parameters below differ between backends; the rest are the same as in the template above. `—` means the vendor guide does not set that parameter.
+Use the same container name in `docker exec` as the `--name` given to `docker run` (`<vendor>-vllm-<version>`, optionally suffixed with `-plugin-<branch>`). Only the parameters below differ between backends; `—` means the vendor guide does not set that parameter.
 
 | Backend | Device passthrough | Extra mounts | Shared memory | Environment variables |
 |---------|--------------------|--------------|---------------|-----------------------|

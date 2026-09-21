@@ -1,20 +1,12 @@
 # 安装运行推理任务所需的软件
 
-您可以从 [FlagOS 主页面](https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg) 下载受支持硬件的 Docker 镜像。点击 **Download** 按钮，使用 `docker pull` 命令拉取镜像，然后使用 `docker run` 和 `docker exec` 命令启动容器并进入容器。
-
 ## 从 Docker 镜像安装
 
 vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见[要求](requirements.md)。
 
 1. 拉取并启动镜像
 
-FlagOS 发版镜像的 tag 布局是统一的，其中 vLLM 版本与 plugin 分支必须相互匹配（vLLM 0.24.0 配 plugin 0.3.0，vLLM 0.20.2 配 plugin 0.2.2）：
-
-```{code-block} shell
-<registry>/<repository>/vllm<vLLM 版本>-<厂商>-<厂商 SDK>:<FlagOS 版本>-<plugin 分支>_g<commit>.d<构建日期>
-```
-
-容器统一先用 `docker run` 创建，再用 `docker exec` 进入：
+打开 [FlagOS 主页面](https://flagos.io/Home)，点击页面正中间的 **Download**，选择与你的硬件对应的镜像，页面会给出该镜像的 `docker pull` 命令。
 
 ```{code-block} shell
 docker pull <镜像>
@@ -22,17 +14,19 @@ docker pull <镜像>
 docker run -itd \
   --name <容器名> \
   --network host --ipc host \
-  --shm-size <共享内存，见下表> \
+  --shm-size <共享内存> \
   <设备直通，见下表> \
   -v <模型目录>:/models \
-  <镜像> <bash|sleep infinity>
+  <镜像> sleep infinity
+```
 
+`docker run` 创建容器并在当前终端运行，请保持该终端不关闭；另开一个终端进入已运行的容器：
+
+```{code-block} shell
 docker exec -it <容器名> bash
 ```
 
-容器名统一为 `<厂商>-vllm-<版本>`，可加 `-plugin-<分支>` 后缀；`docker exec` 使用的容器名必须与 `docker run` 的 `--name` 完全一致。镜像之后的命令决定容器如何保持运行：交互式容器用 `bash`，后台容器用 `sleep infinity`（或 `tail -f /dev/null`）。厂商测试手册中也可能不定义变量而直接写镜像全路径，参数含义相同。
-
-各后端只有下列参数不同，其余与上面模板一致；`—` 表示厂商手册未设置该参数。
+`docker exec` 使用的容器名要与 `docker run` 的 `--name` 一致（`<厂商>-vllm-<版本>`，可加 `-plugin-<分支>` 后缀）。各后端只有下列参数不同；`—` 表示厂商手册未设置该参数。
 
 | 后端 | 设备直通 | 额外挂载 | 共享内存 | 环境变量 |
 |---------|--------------------|--------------|---------------|-----------------------|
