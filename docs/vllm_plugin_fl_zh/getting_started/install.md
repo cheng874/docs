@@ -4,7 +4,7 @@
 
 ## 从 Docker 镜像安装
 
-vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。
+vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见[要求](requirements.md)。
 
 1. 拉取并启动镜像
 

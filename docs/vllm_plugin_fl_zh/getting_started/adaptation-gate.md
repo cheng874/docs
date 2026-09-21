@@ -4,6 +4,8 @@
 
 测试用例本身维护在仓库中：[tools/adaptation-gate-cases](https://github.com/flagos-ai/vllm-plugin-FL/tree/main/tools/adaptation-gate-cases)。
 
+请在[安装](install.md) vllm-plugin-FL 之后、运行推理任务之前执行该门禁；所用模型与[运行推理任务](run-inference-task.md)一致。
+
 ## 测试矩阵
 
 | 模型 | 模式 | 单条长文本用例 | 单条长图像用例 | 文本用例 | 图像用例 | 文本图像混合用例 | 用例总数 |

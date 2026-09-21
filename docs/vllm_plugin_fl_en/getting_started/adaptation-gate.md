@@ -7,6 +7,9 @@ text, image, and mixed text-image requests for the required models in both eager
 The test cases themselves are maintained in the repository:
 [tools/adaptation-gate-cases](https://github.com/flagos-ai/vllm-plugin-FL/tree/main/tools/adaptation-gate-cases).
 
+Run the gate after [installing](install.md) vllm-plugin-FL and before running an inference task;
+the served models are the same ones used in [Run an inference task](run-inference-task.md).
+
 ## Test matrix
 
 | Model | Mode | Single long text case | Single long image case | Text cases | Image cases | Mixed text and image cases | Total cases |
