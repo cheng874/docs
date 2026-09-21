@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/run-inference-task.1616c137-c536-4781-9a6a-78d51061e308.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/run-inference-task.b6460c09-a2a9-4bc2-9af7-bb0cc6aa813f.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/run-inference-task';</script>
@@ -563,7 +563,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="run-an-inference-task">
 <h1>Run an inference task<a class="headerlink" href="#run-an-inference-task" title="Link to this heading">#</a></h1>
-<p>With vLLM and vllm-plugin-FL installed, you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.</p>
+<p>With vLLM and vllm-plugin-FL <a class="reference internal" href="install.html"><span class="std std-doc">installed</span></a>, you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.</p>
 <section id="run-an-offline-batched-inference">
 <h2>Run an offline batched inference<a class="headerlink" href="#run-an-offline-batched-inference" title="Link to this heading">#</a></h2>
 <p>Offline batched inference loads the model directly in a Python script and generates outputs for a batch of prompts in a single run — no server setup required.</p>
@@ -709,6 +709,7 @@ vllm<span class="w"> </span>serve<span class="w"> </span>/models/Qwen3.6-35B-A3B
 </pre></div>
 </div>
 <p>For examples with other models, see the <a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/tree/main/examples">examples directory</a>.</p>
+<p>To validate accelerator adaptation or a vLLM plugin upgrade against the served models, run the <a class="reference internal" href="adaptation-gate.html"><span class="std std-doc">adaptation gate</span></a>.</p>
 </section>
 </section>
 

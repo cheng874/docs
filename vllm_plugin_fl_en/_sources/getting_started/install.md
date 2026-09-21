@@ -4,7 +4,7 @@ You can download the docker images for supported hardwares from the [FlagOS main
 
 ## Install from docker image
 
-vllm-plugin-FL is installed from a pre-built Docker image. Pull and start the image first, then install the components inside the container.
+vllm-plugin-FL is installed from a pre-built Docker image. Pull and start the image first, then install the components inside the container. The supported versions and hardware platforms are listed in [Requirements](requirements.md).
 
 1. Pull and start the image
 
