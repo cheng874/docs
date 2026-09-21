@@ -1,18 +1,3 @@
-# FlagScale v2.1.0-rc2 Release Notes
-
-```{note}
-This is the FlagOS 2.2 release candidate (tag `v2.1.0-rc2.post1`, published 2026-09). Version numbers and supported-platform lists will be finalized at GA.
-```
-
-## Highlights
-
-- **New Model Support**: Added training support for GLM5 (#1227), Qwen36 LLM backbone with checkpoint conversion (#1273), KERV training and inference integration (#1278, #1291), and new Orca model features in qwen_gr00t (#1228); DeepSeek-V4 TFLOPs reporting (#1230).
-- **Ascend Native Integration**: Native integration of the MegatronAdaptor FlagScale module on FlagOS (#1226), plus a Tsingmicro TXDA backend platform (#1254).
-- **Observability**: Perf monitor integration (#1216), straggler detection (#1215), low-overhead GPU progress heartbeat monitoring (#1243), and profiler kernel reports (#1281).
-- **Training Engine Upgrade**: Upgraded to Megatron v0.18.2 (#1284) with the new Override mechanism (#1214).
-- **Multi-Chip CI Expansion**: Added CI for MTT S5000 image builds and end-to-end validation (#1260), Ascend and MetaX build-and-test pipelines (#1250), Hygon BW1000 (#1272), Kunlunxin P800 training (#1282), and Enflame image build and test (#1275).
-- **Fixes**: DualPipeV fix (#1207), GR00T checkpoint portability (#1219), pi0.5 pretrained-loading memory peak (#1221), Qwen3.5 checkpoint conversion (#1231, #1233), Engram transformer integration (#1279), and chat template return-type compatibility (#1262).
-
 # FlagScale v2.0.0 Release Notes
 
 ## Highlights

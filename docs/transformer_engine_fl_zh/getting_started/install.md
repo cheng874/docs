@@ -36,4 +36,22 @@ MAX_JOBS=xxx pip install .
 此方式需要使用厂商提供的镜像。
 ```
 
-有关使用 TransformerEngine-FL、Megatron-LM-FL 和 FlagScale 的端到端训练工作流，请参见[端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale](/e2e-use-case.md)。
+## 非 NVIDIA 平台
+
+TransformerEngine-FL v0.3.0-rc2 已在沐曦、海光、昇腾与平头哥 PPU 上完成验证。非 NVIDIA 平台构建时必须跳过 CUDA 扩展：
+
+```bash
+git clone https://github.com/flagos-ai/TransformerEngine-FL.git
+cd TransformerEngine-FL
+git checkout 0.3.0-rc2
+git submodule update --init --recursive
+TE_FL_SKIP_CUDA=1 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
+```
+
+```{note}
+非 NVIDIA 平台必须加 `TE_FL_SKIP_CUDA=1`——不加会尝试编译 CUDA kernel 并失败。
+```
+
+FlagOS 算子层（`te_fl_prefer: flagos`）还需要 FlagTree 与 FlagGems。完整流程请参见[多平台构建与测试](../user_guide/multi-platform-testing.md)。
+
+有关使用 TransformerEngine-FL、Megatron-LM-FL 和 FlagScale 的端到端训练工作流，请参见[端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale](../user_guide/e2e-use-case.md)。

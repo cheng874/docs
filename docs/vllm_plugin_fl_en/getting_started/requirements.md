@@ -2,31 +2,31 @@
 
 ## Software Requirements
 
-| Requirement | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0-rc0 (vLLM 0.24.0) | Notes |
+| Requirement | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
 |-------------|----------------------|----------------------|----------------------|-------|
 | Python | 3.10 - 3.13 | 3.10 - 3.13 | 3.10 - 3.13 | Required |
 | PyTorch | >= 2.7.1 | >= 2.7.1 | >= 2.7.1 | Required |
 | vLLM | 0.13.0 | 0.20.2 | 0.24.0 | From official release (NVIDIA) or source with `VLLM_TARGET_DEVICE=empty` (non-NVIDIA) |
-| FlagGems | >= v5.0.0 | >= v5.0.0 | >= v5.0.0 | Required for operator dispatch |
-| FlagCX | v0.9.0 | v0.9.0 | v0.9.0 | Optional, for multi-chip communication |
-| FlagTree | 0.4.0 | 0.4.0 | 0.6.1rc1+ascend3.5 (Ascend) | Ascend NPU only; other chips use the matching `flagtree==0.6.1+<backend>` build |
+| FlagGems | >= v5.0.0 | >= v5.0.0 | v5.3.4 (source install); >= v5.0.0 supported | Required for operator dispatch. The [Install from source](install.md) path pins `v5.3.4` (the version the upstream README installs) |
+| FlagCX | v0.13.0 | v0.13.0 | v0.13.0 | Optional, for multi-chip communication |
+| FlagTree | 0.4.0 | 0.4.0 | 0.7.0-triton3.6 | Built from the `0.7.0` release branch with the matching vendor backend (see [Install from source](install.md)). Ascend uses `0.7.0-triton3.5`; Tsingmicro uses `0.7.0-triton3.3` |
 
 ## Supported hardware platforms
 
 The following table summarizes supported hardware and their verification status:
 
-| Chip Vendor | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0-rc0 (vLLM 0.24.0) | Notes |
-|-------------|----------------------|----------------------|----------------------|-------|
-| NVIDIA | Supported | Supported | Supported | |
-| Ascend | Supported | — | Supported | Requires FlagTree and eager execution |
-| MetaX | Supported | — | Supported | MetaX C550 adapted for vLLM 0.24.0 |
-| T-Head | Supported | — | Supported | |
-| Iluvatar | Supported | — | Supported | BI-V150 adapted for vLLM 0.24.0; CUDA graph enabled |
-| Moore Threads | Supported | — | Supported | MTT S5000 adapted for vLLM 0.24.0 |
-| Tsingmicro | Merging | — | Supported | [PR #52](https://github.com/flagos-ai/vllm-plugin-FL/pull/52) |
-| Hygon DCU | Supported | Supported | Supported | Requires DTK container (see install guide) |
-| Sunrise | Supported | — | Supported | |
-| PPU | — | — | Supported | Empty-mode support (#190) |
+| Chip Vendor | Chip Model | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
+|-------------|------------|----------------------|----------------------|----------------------|-------|
+| NVIDIA | — | Supported | Supported | Supported | |
+| Ascend | 910c | Supported | — | Supported | Requires FlagTree and eager execution |
+| MetaX | MACA C550 | Supported | — | Supported | MetaX C550 adapted for vLLM 0.24.0 |
+| T-Head | PPU | Supported | — | Supported | |
+| Iluvatar | BI-V150 | Supported | — | Supported | BI-V150 adapted for vLLM 0.24.0; CUDA graph enabled |
+| Moore Threads | MTT S5000 | Supported | — | Supported | MTT S5000 adapted for vLLM 0.24.0 |
+| Tsingmicro | TX8110 | Merging | — | Supported | In progress upstream |
+| Hygon DCU | BW1000 | Supported | Supported | Supported | Requires DTK container (see install guide) |
+| Sunrise | S2 | Supported | — | Supported | |
+| Alibaba PPU | PPU | — | — | Supported | Empty-mode support; source build of the FlagTree PPU backend is still in progress |
 
 ## Supported models
 
