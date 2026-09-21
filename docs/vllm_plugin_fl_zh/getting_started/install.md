@@ -1,10 +1,19 @@
 # 安装运行推理任务所需的软件
 
-vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
+您可以从 [FlagOS 主页面](https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg) 下载受支持硬件的 Docker 镜像。点击 **Download** 按钮，使用 `docker pull` 命令拉取镜像，然后使用 `docker run` 和 `docker exec` 命令启动容器并进入容器。
 
 ## 从源代码安装
 
 本节介绍从源代码安装 vllm-plugin-FL 及其依赖项。
+
+### 版本兼容性
+
+请选择与 vLLM 版本匹配的分支，分支与 vLLM 版本必须成对使用：
+
+| vllm-plugin-FL 分支 | 社区 vLLM 版本 |
+|-----------------------|------------------------|
+| `release/0.2` | [v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2) |
+| `main` | [v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) |
 
 1. 安装 vLLM
 
@@ -41,7 +50,7 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
     pip install --no-build-isolation -e .
     ```
 
-    在 **NVIDIA** 上，安装时设置 `VLLM_VENDOR=cuda` 以编译并安装 `vllm_fl._C` 原生 C++ 扩展；在 vLLM 0.24.0+ 上，部分 CUDA graph 和自定义算子路径需要该扩展：
+    对于 CUDA 类设备（包括使用 PyTorch CUDA dispatch key 的 CUDA 与 HIP/ROCm 环境），安装时设置 `VLLM_VENDOR=cuda` 以编译并安装插件原生扩展：
 
     ```{code-block} shell
     VLLM_VENDOR=cuda pip install --no-build-isolation .
@@ -49,18 +58,20 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
     VLLM_VENDOR=cuda pip install --no-build-isolation -e .
     ```
 
-3. 安装 [FlagGems](https://github.com/flagos-ai/FlagGems/blob/master/docs/getting-started.md#quick-installation)
+    该步骤会构建并安装 `vllm_fl._C`，为部分 graph/自定义算子路径提供原生 C++ 支持，尤其适用于以 `VLLM_TARGET_DEVICE=empty` 安装 vLLM 的场景。若不设置 `VLLM_VENDOR`，vllm-plugin-FL 将以纯 Python 插件形式安装，跳过原生扩展。
 
-    3.1 安装构建依赖
+4. 安装 [FlagGems](https://flagos-ai.github.io/FlagGems/getting-started/install/)
+
+    4.1 安装构建依赖
 
     ```{code-block} shell
     pip install -U scikit-build-core==0.11 pybind11 ninja cmake
     ```
 
-    3.2 安装 FlagGems
+    4.2 安装 FlagGems
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/FlagGems
+    git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
     cd FlagGems
     pip install --no-build-isolation .
     # 或可编辑安装
@@ -72,30 +83,29 @@ vllm-plugin-FL 可以从源代码安装或通过 Docker 镜像安装。
     在 Hygon 平台上，依赖 FlagGems [PR #3477](https://github.com/flagos-ai/FlagGems/pull/3477)。
     ```
 
-4. （可选）安装 [FlagCX](https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation)
+5. （可选）安装 [FlagCX](https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation)
 
-    4.1 克隆仓库：
+    5.1 克隆仓库：
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/FlagCX.git
+    git clone -b v0.13.0 https://github.com/flagos-ai/FlagCX.git
     cd FlagCX
-    git checkout -b v0.9.0
     git submodule update --init --recursive
     ```
 
-    4.2 使用不同标志构建库以适配不同平台：
+    5.2 使用不同标志构建库以适配不同平台：
 
     ```{code-block} shell
     make USE_NVIDIA=1
     ```
 
-    4.3 设置环境变量
+    5.3 设置环境变量
 
     ```{code-block} shell
     export FLAGCX_PATH="$PWD"
     ```
 
-    4.4 安装 FlagCX
+    5.4 安装 FlagCX
 
     ```{code-block} shell
     cd plugin/torch/
@@ -157,9 +167,71 @@ export USE_FLAGGEMS=0
 
 本节介绍使用预构建的 Docker 镜像运行 vllm-plugin-FL。
 
-### FlagOS 2.2 发布镜像（v0.3.0-rc2）
+### docker run 与 docker exec 通用写法
 
-FlagOS 2.2 发布（vllm-plugin-FL v0.3.0，vLLM 0.24.0）的预构建镜像发布在 FlagOS 资源下载页：<https://flagos.io/resourcedownload>。
+FlagOS 发版镜像的 tag 布局是统一的：
+
+```{code-block} shell
+IMG=<registry>/<repository>/vllm<vLLM 版本>-<厂商>-<厂商 SDK>:<FlagOS 版本>-<plugin 分支>_g<commit>.d<构建日期>
+```
+
+例如：
+
+```{code-block} shell
+IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-hygon-dtk26.04:2.1.2-0.3.0rc2.post1_gc9bbcf0.d20260914
+```
+
+其中 `vLLM 版本` 与 `plugin 分支` 必须相互匹配（vLLM 0.24.0 配 plugin 0.3.0，vLLM 0.20.2 配 plugin 0.2.2）；`g<commit>` 与 `d<构建日期>` 标识构建版本。厂商测试手册中也可能不定义 `IMG=` 而直接写镜像全路径，参数含义相同。
+
+容器统一先用 `docker run` 创建，再用 `docker exec` 进入：
+
+```{code-block} shell
+docker run -itd \
+  --name <厂商>-vllm-<版本> \
+  --network host --ipc host \
+  --shm-size <64g|128g|512g> \
+  <设备直通，见下表> \
+  -e <VENDOR>_VISIBLE_DEVICES=all \
+  -v <模型目录>:/models \
+  -v <厂商运行时目录>:<厂商运行时目录> \
+  $IMG <bash|sleep infinity>
+
+docker exec -it <厂商>-vllm-<版本> bash
+```
+
+真正因厂商而异的只有设备直通，按平台选择其中一种：
+
+| 厂商 | 设备直通 |
+|--------|--------------------|
+| NVIDIA | `--gpus all` |
+| 天数智芯、燧原、清微智能、昆仑芯 | `--privileged`（天数智芯另挂 `/dev`、`/lib/modules`、`/sys`） |
+| 摩尔线程 | `--privileged --runtime=mthreads` |
+| 海光 DCU | `--device /dev/kfd --device /dev/mkfd --device /dev/dri --group-add video` |
+| 昇腾 | `--device /dev/davinci0..N --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc` |
+| 沐曦 MetaX | `--device /dev/mxcd --device /dev/dri` |
+| 阿里 PPU、T-Head PPU | `--device /dev/alixpu --device /dev/alixpu_ctl --device /dev/alixpu_ppu{0..15}` |
+
+各厂商共同遵循的约定：
+
+- `--network host`（`--net host`）各厂商都有，`--ipc host` 多数都有；`--shm-size` 视平台从 `64g` 到 `512g` 不等。
+- `-v <模型目录>:/models` 暴露模型权重；`-v <厂商运行时目录>:<同路径>` 挂载宿主机驱动（例如海光的 `/opt/hyhal`、天数智芯的 `/usr/local/corex-*`）。
+- 容器名统一为 `<厂商>-vllm-<版本>`，可加 `-plugin-<分支>` 后缀（例如 `hygon-vllm-024-plugin-030`）。`docker exec` 使用的容器名必须与 `docker run` 的 `--name` 完全一致。
+- `$IMG` 之后的命令决定容器如何保持运行：交互式容器用 `bash`，后台容器用 `sleep infinity`（或 `tail -f /dev/null`）。两种情况都在创建后用 `docker exec -it <容器名> bash` 进入。
+
+示例，使用上述镜像的海光 DCU：
+
+```{code-block} shell
+docker run -it --name vllm-hygon-0240 \
+  --device /dev/kfd --device /dev/mkfd --device /dev/dri \
+  --group-add video \
+  -v /opt/hyhal:/opt/hyhal \
+  -v /public-nvme:/public-nvme \
+  --security-opt seccomp=unconfined \
+  -e DCU_VISIBLE_DEVICES=all \
+  $IMG bash
+
+docker exec -it vllm-hygon-0240 bash
+```
 
 | 平台 | 镜像 | 内容 |
 |----------|-------|----------|
