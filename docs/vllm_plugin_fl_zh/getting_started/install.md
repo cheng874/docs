@@ -6,7 +6,7 @@ vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜
 
 1. 拉取并启动镜像
 
-打开 [FlagOS 主页面](https://flagos.io/Home)，点击页面正中间的 **Download**，选择与你的硬件对应的镜像，页面会给出该镜像的 `docker pull` 命令。
+打开 [FlagOS 主页面](https://flagos.io/Home)，点击页面正中间的 **下载**，选择与你的硬件对应的镜像，页面会给出该镜像的 `docker pull` 命令。
 
 ```{code-block} shell
 docker pull <镜像>
