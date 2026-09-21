@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="You can download the docker images for supported hardwares from the FlagOS main page. Just simply click the Download button, use the docker pull command to download the docker image, and then use the docker run and docker exec commands to start the container and enter it. Install from source: Thi..." />
+<meta property="og:description" content="You can download the docker images for supported hardwares from the FlagOS main page. Just simply click the Download button, use the docker pull command to download the docker image, and then use the docker run and docker exec commands to start the container and enter it. Install from docker imag..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="You can download the docker images for supported hardwares from the FlagOS main page. Just simply click the Download button, use the docker pull command to download the docker image, and then use the docker run and docker exec commands to start the container and enter it. Install from source: Thi..." />
+<meta name="description" content="You can download the docker images for supported hardwares from the FlagOS main page. Just simply click the Download button, use the docker pull command to download the docker image, and then use the docker run and docker exec commands to start the container and enter it. Install from docker imag..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install software for running an inference task &#8212; VLLM-Plugin-FL Documentation</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.53a690e3-e10b-480d-b1c1-dbe20cd333bd.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.e533fcb1-cf82-4a38-ba14-870fbe7b0ddc.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -548,8 +548,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-compatibility">Version compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-setup-for-huawei-ascend">Additional setup for Huawei Ascend</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-additional-setup-for-cuda">(Optional) Additional setup for CUDA</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cuda-communication-library">Use CUDA communication library</a></li>
@@ -558,15 +557,6 @@
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-docker-run-docker-exec-conventions">Common <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> / <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> conventions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huawei-ascend">Huawei Ascend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-bi-v150">Iluvatar BI-V150</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dispatch-operators">(Optional) Dispatch operators</a></li>
 </ul>
             </nav>
         </div>
@@ -581,11 +571,106 @@
   <section class="tex2jax_ignore mathjax_ignore" id="install-software-for-running-an-inference-task">
 <h1>Install software for running an inference task<a class="headerlink" href="#install-software-for-running-an-inference-task" title="Link to this heading">#</a></h1>
 <p>You can download the docker images for supported hardwares from the <a class="reference external" href="https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg">FlagOS main page</a>. Just simply click the <strong>Download</strong> button, use the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> command to download the docker image, and then use the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> commands to start the container and enter it.</p>
-<section id="install-from-source">
-<h2>Install from source<a class="headerlink" href="#install-from-source" title="Link to this heading">#</a></h2>
-<p>This section covers installing vllm-plugin-FL and its dependencies from source code.</p>
-<section id="version-compatibility">
-<h3>Version compatibility<a class="headerlink" href="#version-compatibility" title="Link to this heading">#</a></h3>
+<section id="install-from-docker-image">
+<h2>Install from docker image<a class="headerlink" href="#install-from-docker-image" title="Link to this heading">#</a></h2>
+<p>vllm-plugin-FL is installed from a pre-built Docker image. Pull and start the image first, then install the components inside the container.</p>
+<ol class="arabic simple">
+<li><p>Pull and start the image</p></li>
+</ol>
+<p>FlagOS release images are published with a uniform tag layout, in which the vLLM version and the plugin branch must match each other (vLLM 0.24.0 with plugin 0.3.0, vLLM 0.20.2 with plugin 0.2.2):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&lt;registry&gt;/&lt;repository&gt;/vllm&lt;vLLM<span class="w"> </span>version&gt;-&lt;vendor&gt;-&lt;vendor<span class="w"> </span>SDK&gt;:&lt;FlagOS<span class="w"> </span>version&gt;-&lt;plugin<span class="w"> </span>branch&gt;_g&lt;commit&gt;.d&lt;build<span class="w"> </span>date&gt;
+</pre></div>
+</div>
+<p>A container is always created with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> and then entered with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>&lt;image&gt;
+
+docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>&lt;container<span class="w"> </span>name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>--ipc<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--shm-size<span class="w"> </span>&lt;shared<span class="w"> </span>memory,<span class="w"> </span>see<span class="w"> </span>the<span class="w"> </span>table<span class="w"> </span>below&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&lt;device<span class="w"> </span>passthrough,<span class="w"> </span>see<span class="w"> </span>the<span class="w"> </span>table<span class="w"> </span>below&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>&lt;model<span class="w"> </span>dir&gt;:/models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>&lt;image&gt;<span class="w"> </span>&lt;bash<span class="p">|</span>sleep<span class="w"> </span>infinity&gt;
+
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;container<span class="w"> </span>name&gt;<span class="w"> </span>bash
+</pre></div>
+</div>
+<p>Container names are <code class="docutils literal notranslate"><span class="pre">&lt;vendor&gt;-vllm-&lt;version&gt;</span></code>, optionally suffixed with <code class="docutils literal notranslate"><span class="pre">-plugin-&lt;branch&gt;</span></code>; the name passed to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> must be identical to the <code class="docutils literal notranslate"><span class="pre">--name</span></code> given to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>. The command after the image decides how the container stays alive: <code class="docutils literal notranslate"><span class="pre">bash</span></code> for an interactive container, <code class="docutils literal notranslate"><span class="pre">sleep</span> <span class="pre">infinity</span></code> (or <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">/dev/null</span></code>) for a detached one. Vendor test guides may also write the image path inline instead of defining a variable — the options are the same.</p>
+<p>Only the parameters below differ between backends; the rest are the same as in the template above. <code class="docutils literal notranslate"><span class="pre">—</span></code> means the vendor guide does not set that parameter.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Backend</p></th>
+<th class="head"><p>Device passthrough</p></th>
+<th class="head"><p>Extra mounts</p></th>
+<th class="head"><p>Shared memory</p></th>
+<th class="head"><p>Environment variables</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--gpus</span> <span class="pre">all</span></code></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">512g</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hygon DCU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/kfd</span> <span class="pre">--device</span> <span class="pre">/dev/mkfd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span> <span class="pre">--group-add</span> <span class="pre">video</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/opt/hyhal:/opt/hyhal</span></code></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">DCU_VISIBLE_DEVICES=all</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Iluvatar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/dev:/dev</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/src:/usr/src</span></code>, <code class="docutils literal notranslate"><span class="pre">/lib/modules:/lib/modules</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">32g</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enflame, Tsingmicro, Sunrise</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">ENFLAME_VISIBLE_DEVICES=0</span></code> (Enflame only)</p></td>
+</tr>
+<tr class="row-even"><td><p>Kunlunxin</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">128G</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>Moore Threads</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span> <span class="pre">--runtime=mthreads</span></code></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">64g</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">MTHREADS_VISIBLE_DEVICES=all</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/davinci0..N</span> <span class="pre">--device</span> <span class="pre">/dev/davinci_manager</span> <span class="pre">--device</span> <span class="pre">/dev/devmm_svm</span> <span class="pre">--device</span> <span class="pre">/dev/hisi_hdc</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/usr/local/dcmi:/usr/local/dcmi</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/npu-smi:/usr/local/bin/npu-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local/Ascend/driver:/usr/local/Ascend/driver</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">512g</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/mxcd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span></code></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100gb</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>Alibaba PPU, T-Head PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/alixpu</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ctl</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ppu{0..15}</span></code></p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The release images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the <code class="docutils literal notranslate"><span class="pre">empty</span></code> v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in step 2 below. For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install the components in the container</p></li>
+</ol>
 <p>Pick the branch that matches your vLLM version; the branch and the vLLM version must stay paired:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -603,90 +688,109 @@
 </tbody>
 </table>
 </div>
-<ol class="arabic">
-<li><p>Install vLLM</p>
-<p>For <strong>NVIDIA</strong> GPUs, install vLLM from the official <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">v0.24.0</a> release (optional if the correct version is already installed):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">vllm</span><span class="o">==</span><span class="m">0</span>.24.0
+<p>2.1 Install vLLM</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>For **NVIDIA** GPUs, install vLLM from the official [v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) release (optional if the correct version is already installed):
+
+```{code-block} shell
+pip install vllm==0.24.0
+```
+
+For **non-NVIDIA** chips, install vLLM from source with the `empty` device target:
+
+```{code-block} shell
+git clone -b v0.24.0 https://github.com/vllm-project/vllm.git
+cd vllm
+VLLM_TARGET_DEVICE=empty pip install -v --no-build-isolation --no-deps .
+```
 </pre></div>
 </div>
-<p>For <strong>non-NVIDIA</strong> chips, install vLLM from source with the <code class="docutils literal notranslate"><span class="pre">empty</span></code> device target:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.24.0<span class="w"> </span>https://github.com/vllm-project/vllm.git
-<span class="nb">cd</span><span class="w"> </span>vllm
-<span class="nv">VLLM_TARGET_DEVICE</span><span class="o">=</span>empty<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-deps<span class="w"> </span>.
+<p>2.2 Install vllm-plugin-FL</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Clone the repository, using the branch that matches your vLLM version (see [Version compatibility](#version-compatibility)):
+
+```{code-block} shell
+git clone -b main https://github.com/flagos-ai/vllm-plugin-FL
+cd vllm-plugin-FL
+# for vLLM 0.20.2, use: git clone -b release/0.2 https://github.com/flagos-ai/vllm-plugin-FL
+```
+
+Install it. By default vllm-plugin-FL installs as a Python-only package:
+
+```{code-block} shell
+pip install --no-build-isolation .
+# or editable install
+pip install --no-build-isolation -e .
+```
+
+For CUDA-like devices, including CUDA and HIP/ROCm environments that use PyTorch's CUDA dispatch key, build the plugin native extension by setting `VLLM_VENDOR=cuda` during installation:
+
+```{code-block} shell
+VLLM_VENDOR=cuda pip install --no-build-isolation .
+# or editable install
+VLLM_VENDOR=cuda pip install --no-build-isolation -e .
+```
+
+This builds and installs `vllm_fl._C`, which provides native C++ support required by some graph/custom-op paths, especially when vLLM is installed with `VLLM_TARGET_DEVICE=empty`. If `VLLM_VENDOR` is not set, vllm-plugin-FL is installed as a Python-only plugin and the native extension is skipped.
 </pre></div>
 </div>
-</li>
-<li><p>Install vllm-plugin-FL</p>
-<p>2.1 Clone the repository, using the branch that matches your vLLM version (see <a class="reference internal" href="#version-compatibility"><span class="xref myst">Version compatibility</span></a>):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
-<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
-<span class="c1"># for vLLM 0.20.2, use: git clone -b release/0.2 https://github.com/flagos-ai/vllm-plugin-FL</span>
+<p>2.3 Install <a class="reference external" href="https://flagos-ai.github.io/FlagGems/getting-started/install/">FlagGems</a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Install build dependencies
+
+```{code-block} shell
+pip install -U scikit-build-core==0.11 pybind11 ninja cmake
+```
+
+Install FlagGems:
+
+```{code-block} shell
+git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
+cd FlagGems
+pip install --no-build-isolation .
+# or editable install
+pip install --no-build-isolation -e .
+```
+
+```{note}
+On Sunrise platform, depends on FlagGems [PR #2949](https://github.com/flagos-ai/FlagGems/pull/2949).
+On Hygon platform, depends on FlagGems [PR #3477](https://github.com/flagos-ai/FlagGems/pull/3477).
+```
 </pre></div>
 </div>
-<p>2.2 install</p>
-<p>By default vllm-plugin-FL installs as a Python-only package:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
-<span class="c1"># or editable install</span>
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
+<p>2.4 (Optional) Install <a class="reference external" href="https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation">FlagCX</a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Clone the repository:
+
+```{code-block} shell
+git clone -b v0.13.0 https://github.com/flagos-ai/FlagCX.git
+cd FlagCX
+git submodule update --init --recursive
+```
+
+Build the library with different flags targeting to different platforms:
+
+```{code-block} shell
+make USE_NVIDIA=1
+```
+
+Set environment:
+
+```{code-block} shell
+export FLAGCX_PATH="$PWD"
+```
+
+Install FlagCX:
+
+```{code-block} shell
+cd plugin/torch/
+FLAGCX_ADAPTOR=[xxx] pip install . --no-build-isolation
+# or editable install
+FLAGCX_ADAPTOR=[xxx] pip install -e . --no-build-isolation
+```
+
+```{note}
+[xxx] should be selected according to the current platform, e.g., nvidia, ascend, etc.
+```
 </pre></div>
 </div>
-<p>For CUDA-like devices, including CUDA and HIP/ROCm environments that use PyTorch’s CUDA dispatch key, build the plugin native extension by setting <code class="docutils literal notranslate"><span class="pre">VLLM_VENDOR=cuda</span></code> during installation:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">VLLM_VENDOR</span><span class="o">=</span>cuda<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
-<span class="c1"># or editable install</span>
-<span class="nv">VLLM_VENDOR</span><span class="o">=</span>cuda<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-<p>This builds and installs <code class="docutils literal notranslate"><span class="pre">vllm_fl._C</span></code>, which provides native C++ support required by some graph/custom-op paths, especially when vLLM is installed with <code class="docutils literal notranslate"><span class="pre">VLLM_TARGET_DEVICE=empty</span></code>. If <code class="docutils literal notranslate"><span class="pre">VLLM_VENDOR</span></code> is not set, vllm-plugin-FL is installed as a Python-only plugin and the native extension is skipped.</p>
-</li>
-<li><p>Install <a class="reference external" href="https://flagos-ai.github.io/FlagGems/getting-started/install/">FlagGems</a></p>
-<p>3.1 Install build dependencies</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
-</pre></div>
-</div>
-<p>3.2 Install FlagGems</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v5.3.4<span class="w"> </span>https://github.com/flagos-ai/FlagGems
-<span class="nb">cd</span><span class="w"> </span>FlagGems
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
-<span class="c1"># or editable install</span>
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On Sunrise platform, depends on FlagGems <a class="reference external" href="https://github.com/flagos-ai/FlagGems/pull/2949">PR #2949</a>.
-On Hygon platform, depends on FlagGems <a class="reference external" href="https://github.com/flagos-ai/FlagGems/pull/3477">PR #3477</a>.</p>
-</div>
-</li>
-<li><p>(Optional) Install <a class="reference external" href="https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation">FlagCX</a></p>
-<p>4.1 Clone the repository:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.13.0<span class="w"> </span>https://github.com/flagos-ai/FlagCX.git
-<span class="nb">cd</span><span class="w"> </span>FlagCX
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
-</pre></div>
-</div>
-<p>4.2 Build the library with different flags targeting to different platforms:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">USE_NVIDIA</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-<p>4.3 Set environment</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>
-</pre></div>
-</div>
-<p>4.4 Install FlagCX</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>plugin/torch/
-<span class="nv">FLAGCX_ADAPTOR</span><span class="o">=[</span>xxx<span class="o">]</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
-<span class="c1"># or editable install</span>
-<span class="nv">FLAGCX_ADAPTOR</span><span class="o">=[</span>xxx<span class="o">]</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>[xxx] should be selected according to the current platform, e.g., nvidia, ascend, etc.</p>
-</div>
-</li>
-</ol>
 <p>If there are multiple plugins in the current environment, you can select vllm-plugin-fl with VLLM_PLUGINS=‘fl’.</p>
-</section>
 <section id="additional-setup-for-huawei-ascend">
 <h3>Additional setup for Huawei Ascend<a class="headerlink" href="#additional-setup-for-huawei-ascend" title="Link to this heading">#</a></h3>
 <ol class="arabic">
@@ -723,393 +827,15 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">USE_FLAGGEMS</span><span class="o">=</span><span class="m">0</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
-<section id="install-from-docker-image">
-<h2>Install from docker image<a class="headerlink" href="#install-from-docker-image" title="Link to this heading">#</a></h2>
-<p>This section covers running vllm-plugin-FL using pre-built Docker images.</p>
-<section id="common-docker-run-docker-exec-conventions">
-<h3>Common <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> / <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> conventions<a class="headerlink" href="#common-docker-run-docker-exec-conventions" title="Link to this heading">#</a></h3>
-<p>FlagOS release images are published with a uniform tag layout:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">IMG</span><span class="o">=</span>&lt;registry&gt;/&lt;repository&gt;/vllm&lt;vLLM<span class="w"> </span>version&gt;-&lt;vendor&gt;-&lt;vendor<span class="w"> </span>SDK&gt;:&lt;FlagOS<span class="w"> </span>version&gt;-&lt;plugin<span class="w"> </span>branch&gt;_g&lt;commit&gt;.d&lt;build<span class="w"> </span>date&gt;
-</pre></div>
-</div>
-<p>For example:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">IMG</span><span class="o">=</span>harbor.baai.ac.cn/flagos-app/vllm0.24.0-hygon-dtk26.04:2.1.2-0.3.0rc2.post1_gc9bbcf0.d20260914
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">vLLM</span> <span class="pre">version</span></code> and the <code class="docutils literal notranslate"><span class="pre">plugin</span> <span class="pre">branch</span></code> must match each other (vLLM 0.24.0 with plugin 0.3.0, vLLM 0.20.2 with plugin 0.2.2); <code class="docutils literal notranslate"><span class="pre">g&lt;commit&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">d&lt;build</span> <span class="pre">date&gt;</span></code> identify the build. Vendor test guides may also write the image path inline instead of defining <code class="docutils literal notranslate"><span class="pre">IMG=</span></code> — the options are the same.</p>
-<p>A container is always created with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> and then entered with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--name<span class="w"> </span>&lt;vendor&gt;-vllm-&lt;version&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>--ipc<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--shm-size<span class="w"> </span>&lt;64g<span class="p">|</span>128g<span class="p">|</span>512g&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>&lt;device<span class="w"> </span>passthrough,<span class="w"> </span>see<span class="w"> </span>the<span class="w"> </span>table<span class="w"> </span>below&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span>&lt;VENDOR&gt;_VISIBLE_DEVICES<span class="o">=</span>all<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>&lt;model<span class="w"> </span>dir&gt;:/models<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>&lt;vendor<span class="w"> </span>runtime<span class="w"> </span>dir&gt;:&lt;vendor<span class="w"> </span>runtime<span class="w"> </span>dir&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nv">$IMG</span><span class="w"> </span>&lt;bash<span class="p">|</span>sleep<span class="w"> </span>infinity&gt;
-
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;vendor&gt;-vllm-&lt;version&gt;<span class="w"> </span>bash
-</pre></div>
-</div>
-<p>Device passthrough is the only part that really differs between vendors — pick exactly one form:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Vendor</p></th>
-<th class="head"><p>Device passthrough</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--gpus</span> <span class="pre">all</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Iluvatar, Enflame, Tsingmicro, Kunlunxin</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code> (Iluvatar additionally mounts <code class="docutils literal notranslate"><span class="pre">/dev</span></code>, <code class="docutils literal notranslate"><span class="pre">/lib/modules</span></code>, <code class="docutils literal notranslate"><span class="pre">/sys</span></code>)</p></td>
-</tr>
-<tr class="row-even"><td><p>Moore Threads</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span> <span class="pre">--runtime=mthreads</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Hygon DCU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/kfd</span> <span class="pre">--device</span> <span class="pre">/dev/mkfd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span> <span class="pre">--group-add</span> <span class="pre">video</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Ascend</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/davinci0..N</span> <span class="pre">--device</span> <span class="pre">/dev/davinci_manager</span> <span class="pre">--device</span> <span class="pre">/dev/devmm_svm</span> <span class="pre">--device</span> <span class="pre">/dev/hisi_hdc</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>MetaX</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/mxcd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Alibaba PPU, T-Head PPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/alixpu</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ctl</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ppu{0..15}</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Conventions shared by all vendors:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">host</span></code> (<code class="docutils literal notranslate"><span class="pre">--net</span> <span class="pre">host</span></code>) on every vendor, <code class="docutils literal notranslate"><span class="pre">--ipc</span> <span class="pre">host</span></code> on most; <code class="docutils literal notranslate"><span class="pre">--shm-size</span></code> ranges from <code class="docutils literal notranslate"><span class="pre">64g</span></code> to <code class="docutils literal notranslate"><span class="pre">512g</span></code> depending on the platform.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;model</span> <span class="pre">dir&gt;:/models</span></code> exposes the weights; <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;vendor</span> <span class="pre">runtime</span> <span class="pre">dir&gt;:&lt;same</span> <span class="pre">path&gt;</span></code> mounts the host driver (for example <code class="docutils literal notranslate"><span class="pre">/opt/hyhal</span></code> on Hygon, <code class="docutils literal notranslate"><span class="pre">/usr/local/corex-*</span></code> on Iluvatar).</p></li>
-<li><p>Container names are <code class="docutils literal notranslate"><span class="pre">&lt;vendor&gt;-vllm-&lt;version&gt;</span></code>, optionally suffixed with <code class="docutils literal notranslate"><span class="pre">-plugin-&lt;branch&gt;</span></code> (for example <code class="docutils literal notranslate"><span class="pre">hygon-vllm-024-plugin-030</span></code>). The name passed to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> must be identical to the <code class="docutils literal notranslate"><span class="pre">--name</span></code> given to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>.</p></li>
-<li><p>The command after <code class="docutils literal notranslate"><span class="pre">$IMG</span></code> decides how the container stays alive: <code class="docutils literal notranslate"><span class="pre">bash</span></code> for an interactive container, <code class="docutils literal notranslate"><span class="pre">sleep</span> <span class="pre">infinity</span></code> (or <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">/dev/null</span></code>) for a detached one. In both cases you enter it afterwards with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;name&gt;</span> <span class="pre">bash</span></code>.</p></li>
-</ul>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Platform</p></th>
-<th class="head"><p>Image</p></th>
-<th class="head"><p>Contents</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Alibaba PPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508</span></code></p></td>
-<td><p>PPU SDK 2.0.0-715aa1, torch 2.10.0, vLLM 0.19.0 (replaced by an <code class="docutils literal notranslate"><span class="pre">empty</span></code> 0.24.0 source build in the guide)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Moore Threads MTT S5000</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagrelease-public/flagrelease_mthreads-gmi_vllm024plugin_base:08281629</span></code></p></td>
-<td><p>MUSA base image used for the vLLM 0.24.0 + plugin 0.3.0 stack</p></td>
-</tr>
-<tr class="row-even"><td><p>Moore Threads MTT S5000</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/musa-ph1.4.3.5-tree0.6.1a2-triton3.6.0-cxnone-plugin0.3.0-vllm0.24.0-cp310-pt290-x64:20260804</span></code></p></td>
-<td><p>Full stack: MUSA PH 1.4.3.5, FlagTree 0.6.1a2 (Triton 3.6.0), plugin 0.3.0, vLLM 0.24.0, Python 3.10, torch 2.9.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Iluvatar BI-V150</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/iluvatar-corex4.5.0-flagtree0.6.0-triton3.6.0-cxnone-vllm_fl0.24.0:20260827</span></code></p></td>
-<td><p>corex 4.5.0, FlagTree 0.6.0 (Triton 3.6.0), vllm_fl for vLLM 0.24.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Tsingmicro TX8110</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/tsingmicro001-gems4.2.1-treenone-triton3.6.0-cx0.1.0-plugin0.2.0-vllm0.20.2-cp310-pt211-x64-v260604163331.01:202607130736</span></code></p></td>
-<td><p>FlagGems 4.2.1, Triton 3.6.0, FlagCX 0.1.0, plugin 0.2.0, vLLM 0.20.2, Python 3.10, torch 2.11.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Enflame ZIXIAOC200</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/enflame001-gems5.3.1-treenone-triton3.6.0-cxnone-plugin0.2.1-vllm0.20.2-cp312-pt211-x64-1.10.6:202608281710</span></code></p></td>
-<td><p>FlagGems 5.3.1, Triton 3.6.0, plugin 0.2.1, vLLM 0.20.2, Python 3.12, torch 2.11.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Sunrise S2</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/plugin/sunrise001-gems5.3.4-tree0.6.0_sunrise3.6-cx0.13.0-plugin0.2.1-vllm0.20.2_flagos-cp310-pt211-x64-v0.25.0:202608311648</span></code></p></td>
-<td><p>FlagGems 5.3.4, FlagTree 0.6.0 (sunrise 3.6), FlagCX 0.13.0, plugin 0.2.1, vLLM 0.20.2+flagos, Python 3.10, torch 2.11.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Kunlunxin P800</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821</span></code></p></td>
-<td><p>xre 5.37.1 runtime base image for the vLLM 0.20.2 + plugin 0.2.0 source build</p></td>
-</tr>
-<tr class="row-even"><td><p>Hygon DCU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6</span></code></p></td>
-<td><p>DTK 26.04 base image (vLLM 0.20.0 Hygon build) used for the 0.20.2/0.24.0 <code class="docutils literal notranslate"><span class="pre">empty</span></code> source builds</p></td>
-</tr>
-<tr class="row-odd"><td><p>MetaX C550</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64</span></code></p></td>
-<td><p>MACA 3.7.0 image, torch 2.8.0+metax, Python 3.12; the image vLLM is replaced by an <code class="docutils literal notranslate"><span class="pre">empty</span></code> 0.24.0 source build</p></td>
-</tr>
-<tr class="row-even"><td><p>Ascend 910c</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">quay.io/ascend/vllm-ascend:v0.20.2rc1-a3</span></code></p></td>
-<td><p>CANN 9.0.0 Ascend image used for the 0.20.2 <code class="docutils literal notranslate"><span class="pre">empty</span></code> source build</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The commands below use the vLLM 0.24.0 images and the FlagOS 2.2 release stack. For the vLLM 0.20.2 images, select the matching image from the FlagOS resource download page.</p>
-<p>Example, MetaX C550:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">IMG</span><span class="o">=</span>harbor.baai.ac.cn/flagos-app/vllm0.24.0-metax-maca3.7.2.1:2.1.2-0.2.1_g5c511da.d20260901
-
-docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--name<span class="w"> </span>metax-vllm-024-plugin-030<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>--ipc<span class="w"> </span>host<span class="w"> </span>--shm-size<span class="w"> </span>64g<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--device<span class="w"> </span>/dev/dri:/dev/dri:rwm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--device<span class="w"> </span>/dev/mxcd:/dev/mxcd:rwm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/data/models:/models<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nv">$IMG</span><span class="w"> </span>sleep<span class="w"> </span>infinity
-
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>metax-vllm-024-plugin-030<span class="w"> </span>bash
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the <code class="docutils literal notranslate"><span class="pre">empty</span></code> v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in <a class="reference internal" href="#install-from-source"><span class="xref myst">Install from source</span></a>. For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides.</p>
-</div>
-</section>
-<section id="hygon-dcu">
-<h3>Hygon DCU<a class="headerlink" href="#hygon-dcu" title="Link to this heading">#</a></h3>
-<p>Available for vllm-plugin-FL v0.2.0 (vLLM 0.20.0).</p>
-<ol class="arabic">
-<li><p>Pull and start the Hygon DCU Docker container:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6
-
-docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--name<span class="w"> </span>perf<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--device<span class="o">=</span>/dev/kfd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--device<span class="o">=</span>/dev/mkfd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--device<span class="o">=</span>/dev/dri<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>/opt/hyhal:/opt/hyhal<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--group-add<span class="w"> </span>video<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-itd<span class="w"> </span>harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>/bin/bash
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
-</li>
-<li><p>Inside the container, install FlagGems:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
-<span class="nb">cd</span><span class="w"> </span>FlagGems
-git<span class="w"> </span>checkout<span class="w"> </span>2718037d887cd6a3143474da0224648e40c5004f
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Install vllm-plugin-FL:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
-<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
-git<span class="w"> </span>checkout<span class="w"> </span>48af29e21491700a38020ab031af5d3b90e6795e
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Download models:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-27B
-modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-35B-A3B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-35B-A3B
-</pre></div>
-</div>
-</li>
+<ol class="arabic simple" start="3">
+<li><p>(Optional) Dispatch operators</p></li>
 </ol>
-</section>
-<section id="nvidia">
-<h3>NVIDIA<a class="headerlink" href="#nvidia" title="Link to this heading">#</a></h3>
-<p>Available for vllm-plugin-FL v0.2.0 (vLLM 0.20.2).</p>
-<ol class="arabic">
-<li><p>Pull and start the NVIDIA Docker container:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>vllm/vllm-openai:v0.20.0-cu130-ubuntu2404
-
-docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--name<span class="w"> </span>perf<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--entrypoint<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--shm-size<span class="w"> </span>512g<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>vllm/vllm-openai:v0.20.0-cu130-ubuntu2404
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
-</li>
-<li><p>Inside the container, install dependencies:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>update
-apt<span class="w"> </span>install<span class="w"> </span>git
-apt<span class="w"> </span>install<span class="w"> </span>vim
-pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
-</pre></div>
-</div>
-</li>
-<li><p>Install vllm:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">vllm</span><span class="o">==</span><span class="m">0</span>.20.2
-</pre></div>
-</div>
-</li>
-<li><p>Install FlagGems:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
-<span class="nb">cd</span><span class="w"> </span>FlagGems
-git<span class="w"> </span>checkout<span class="w"> </span>1dab11ab1a6671e3132528492d2cc193e78af8f4
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Install vllm-plugin-FL:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
-<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
-git<span class="w"> </span>checkout<span class="w"> </span>48af29e21491700a38020ab031af5d3b90e6795e
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Download models:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-27B
-modelscope<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-35B-A3B<span class="w"> </span>--local_dir<span class="w"> </span>/models/Qwen3.6-35B-A3B
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
-<section id="huawei-ascend">
-<h3>Huawei Ascend<a class="headerlink" href="#huawei-ascend" title="Link to this heading">#</a></h3>
-<p>Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).</p>
-<ol class="arabic">
-<li><p>Pull and start the Ascend Docker container:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>quay.io/ascend/vllm-ascend:v0.13.0rc1-a3
-
-docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
---name<span class="w"> </span>flagos<span class="w"> </span><span class="se">\</span>
---network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
---ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
---privileged<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci1<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci2<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci3<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci4<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci5<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci6<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci7<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci8<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci9<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci10<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci11<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci12<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci13<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci14<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci15<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
---device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/Ascend/driver:/usr/local/Ascend/driver<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/usr/local/sbin:/usr/local/sbin<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/path/to/models:/models<span class="w"> </span><span class="se">\</span>
--itd<span class="w"> </span>quay.io/ascend/vllm-ascend:v0.13.0rc1-a3<span class="w"> </span>bash
-
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>flagos<span class="w"> </span>bash
-</pre></div>
-</div>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/models</span></code> with your actual model storage path.</p>
-</li>
-<li><p>Inside the container, install FlagGems:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
-<span class="nb">cd</span><span class="w"> </span>FlagGems
-git<span class="w"> </span>checkout<span class="w"> </span>6f2585dc9c48d440d856ad75f4aedee66fac365a
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Install FlagTree:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">==</span><span class="m">0</span>.4.0+ascend3.2<span class="w"> </span><span class="nv">$RES</span>
-</pre></div>
-</div>
-</li>
-<li><p>Install vllm-plugin-FL:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL
-<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
-git<span class="w"> </span>checkout<span class="w"> </span>ba008211c1c9646e19290e832a7f7775f7d2944f
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Set environment variables and start the service:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_PLUGINS</span><span class="o">=</span>fl
-<span class="nb">export</span><span class="w"> </span><span class="nv">TRITON_ALL_BLOCKS_PARALLEL</span><span class="o">=</span><span class="m">1</span>
-vllm<span class="w"> </span>serve<span class="w"> </span>--model<span class="w"> </span>/models/Qwen3-4B<span class="w"> </span>--served-model-name<span class="w"> </span>qwen<span class="w"> </span>--enforce-eager
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
-<section id="iluvatar-bi-v150">
-<h3>Iluvatar BI-V150<a class="headerlink" href="#iluvatar-bi-v150" title="Link to this heading">#</a></h3>
-<p>Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).</p>
-<ol class="arabic">
-<li><p>Load and start the Corex Docker container:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>/mnt/share/images/corex.4.4.0.release.0211.vllm.013.flagos.tar
-
-docker<span class="w"> </span>run<span class="w"> </span>--shm-size<span class="o">=</span><span class="s2">"32g"</span><span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/dev:/dev<span class="w"> </span>-v<span class="w"> </span>/usr/src/:/usr/src<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/lib/modules/:/lib/modules<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>/mnt/share/user_homes/:/mnt/share/user_homes/<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--privileged<span class="w"> </span>--cap-add<span class="o">=</span>ALL<span class="w"> </span>--pid<span class="o">=</span>host<span class="w"> </span>--net<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--name<span class="w"> </span>flagos_v2<span class="w"> </span>corex:4.4.0.release.0211.vllm.013.flagos<span class="w"> </span>/bin/bash
-</pre></div>
-</div>
-</li>
-<li><p>Inside the container, install FlagGems:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-build-core<span class="o">==</span><span class="m">0</span>.11<span class="w"> </span>pybind11<span class="w"> </span>ninja<span class="w"> </span>cmake
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems
-<span class="nb">cd</span><span class="w"> </span>FlagGems
-git<span class="w"> </span>checkout<span class="w"> </span>6f2585dc9c48d440d856ad75f4aedee66fac365a
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.
-<span class="nb">cd</span><span class="w"> </span>../
-</pre></div>
-</div>
-</li>
-<li><p>Install vllm-plugin-FL:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL.git
-<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL
-git<span class="w"> </span>checkout<span class="w"> </span>f11a0f4707aecae245ec81289329b208ede5b06d
-pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>--no-deps
-<span class="nb">cd</span><span class="w"> </span>../
-</pre></div>
-</div>
-</li>
-<li><p>Start the service:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_PLUGINS</span><span class="o">=</span>fl
-<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_ENGINE_ITERATION_TIMEOUT_S</span><span class="o">=</span><span class="m">36000</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_RPC_TIMEOUT</span><span class="o">=</span><span class="m">36000000</span>
-vllm<span class="w"> </span>serve<span class="w"> </span>/mnt/share/user_homes/zyp/Qwen3-4B/<span class="w"> </span>--served-model-name<span class="w"> </span>qwen<span class="w"> </span>--enforce-eager
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The first startup takes approximately 15 minutes. Subsequent startups take less than 2 minutes.</p>
-</div>
-</li>
-</ol>
-<p>The steps above provide a minimal setup for running Qwen3-4B on BV150. If you need the full FlagOS stack with FlagTree, FlagGems usage patterns, environment verification, and troubleshooting — or if you are setting up BV150 for the first time — see the complete end-to-end guide: <a class="reference internal" href="#example-qwen2.5-bv150.md"><span class="xref myst">Qwen2.5-1.5B on Iluvatar BI-V150</span></a>.</p>
-</section>
-</section>
-<section id="optional-dispatch-operators">
-<h2>(Optional) Dispatch operators<a class="headerlink" href="#optional-dispatch-operators" title="Link to this heading">#</a></h2>
 <p>If needed, you can also dispatch operators.</p>
 <p>For concept related information, see <a class="reference internal" href="../overview/overview.html"><span class="std std-doc">vllm-plugin-FL Overview</span></a>.
 For configuration related information, see <a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html"><span class="std std-doc">Operator dispatch user guide</span></a>.</p>
 <p>After installation and optional operator dispatch configuration, you can proceed to <a class="reference internal" href="run-inference-task.html"><span class="std std-doc">Run an inference task</span></a>.</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -1160,8 +886,7 @@ For configuration related information, see <a class="reference internal" href=".
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-compatibility">Version compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-setup-for-huawei-ascend">Additional setup for Huawei Ascend</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-additional-setup-for-cuda">(Optional) Additional setup for CUDA</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cuda-communication-library">Use CUDA communication library</a></li>
@@ -1170,15 +895,6 @@ For configuration related information, see <a class="reference internal" href=".
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-docker-image">Install from docker image</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-docker-run-docker-exec-conventions">Common <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> / <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> conventions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hygon-dcu">Hygon DCU</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">NVIDIA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huawei-ascend">Huawei Ascend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-bi-v150">Iluvatar BI-V150</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dispatch-operators">(Optional) Dispatch operators</a></li>
 </ul>
   </nav></div>
 
