@@ -14,4 +14,4 @@ Automatically detects hardware and loads platform-specific configuration. Suppor
 
 - **Extensible vendor backend**
 
-Supports built-in vendor backends (CUDA, Ascend), external plugin packages via setuptools entry points, and environment-based plugin modules.
+Supports built-in vendor backends, external plugin packages via setuptools entry points, and environment-based plugin modules.

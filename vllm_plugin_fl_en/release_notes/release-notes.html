@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section includes the vllm-plugin-FL release information. v0.3.0-rc2 (release candidate): vllm-plugin-FL v0.3.0-rc2 requires vllm v0.24.0. New since rc0 (from compare v0.3.0-rc0...v0.3.0-rc2.post1): Added Features- Qwen3.5 text-only runtime compatibility on vLLM 0.24 (#383)., W8A8 quantizatio..." />
+<meta property="og:description" content="This section includes the vllm-plugin-FL release information. v0.3.0: vllm-plugin-FL v0.3.0 requires vllm v0.24.0 or vllm v0.20.0. Added Features- Support for vLLM 0.24.0, including the official vLLM 0.24 CUDA stable-ABI wheels; the FlagCX connector now covers vLLM 0.20-0.24., Vendor backends add..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section includes the vllm-plugin-FL release information. v0.3.0-rc2 (release candidate): vllm-plugin-FL v0.3.0-rc2 requires vllm v0.24.0. New since rc0 (from compare v0.3.0-rc0...v0.3.0-rc2.post1): Added Features- Qwen3.5 text-only runtime compatibility on vLLM 0.24 (#383)., W8A8 quantizatio..." />
+<meta name="description" content="This section includes the vllm-plugin-FL release information. v0.3.0: vllm-plugin-FL v0.3.0 requires vllm v0.24.0 or vllm v0.20.0. Added Features- Support for vLLM 0.24.0, including the official vLLM 0.24 CUDA stable-ABI wheels; the FlagCX connector now covers vLLM 0.20-0.24., Vendor backends add..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; VLLM-Plugin-FL Documentation</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.a4afc41f-85a7-4efa-979d-f051656608a0.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.9c9f10f4-4a34-47bc-8f68-132250abb9c6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 21, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -548,10 +548,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2-rc0-cross-vendor-verification">FlagOS 2.2-RC0 cross-vendor verification</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -568,158 +565,30 @@
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
 <p>This section includes the vllm-plugin-FL release information.</p>
-<section id="v0-3-0-rc2-release-candidate">
-<h2>v0.3.0-rc2 (release candidate)<a class="headerlink" href="#v0-3-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is the FlagOS 2.2 release candidate (published 2026-09, tag <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc2.post1</span></code>; supersedes <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc0</span></code> from 2026-08-24). Version numbers and supported-platform lists will be finalized at GA.</p>
-</div>
-<p>vllm-plugin-FL v0.3.0-rc2 requires <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">vllm v0.24.0</a>.</p>
-<p>New since rc0 (from compare <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc0...v0.3.0-rc2.post1</span></code>):</p>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<p>vllm-plugin-FL v0.3.0 requires <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">vllm v0.24.0</a> or <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.0">vllm v0.20.0</a>.</p>
 <ul class="simple">
 <li><p><strong>Added Features</strong></p>
 <ul>
-<li><p>Qwen3.5 text-only runtime compatibility on vLLM 0.24 (#383).</p></li>
-<li><p>W8A8 quantization inference adapted to vLLM 0.24 (#336); Arm CPU integration of Qwen packed W4A8 and GDN (#433).</p></li>
-<li><p>FlagCX connector: Prometheus KV-transfer metrics and port of #315 from release/0.2 (#418).</p></li>
-<li><p>Sunrise attention backend ported to vLLM 0.24.0 (CUSTOM registration + ptpu <code class="docutils literal notranslate"><span class="pre">memory_stats</span></code> shim) (#391); TXDA support on empty vLLM 0.24.0 (#447); Hygon workflow enabled for vLLM 0.24.0 (#436).</p></li>
-<li><p>Dispatch: support appending FlagGems blacklist entries (#439); custom throughput test cases (#426); batched MTP xGrammar masks (#414).</p></li>
-<li><p>Version documentation page (#403); CI migrated from release/0.2 to main (#415) with <code class="docutils literal notranslate"><span class="pre">/rerun-failed-ci</span></code> and <code class="docutils literal notranslate"><span class="pre">/cancel-ci</span></code> PR comment commands (#480).</p></li>
-</ul>
-</li>
-<li><p><strong>Fixed</strong></p>
-<ul>
-<li><p>GDN: keep packed decode beta in fp32 (#385).</p></li>
-<li><p>Iluvatar: consolidate Triton patches at module level and remove dead code (#406).</p></li>
-<li><p>Keep available reference fallbacks registered in dispatch (#440); inherit native MXFP8 candidates for out-of-tree backends (#441).</p></li>
-<li><p>Restore FlagGems KV cache updates from #382 (#474) and T-Head static graph support from #279 (#472).</p></li>
-</ul>
-</li>
-</ul>
-<p>The rc0 content below remains part of this release candidate:</p>
-<ul class="simple">
-<li><p><strong>Added Features</strong></p>
-<ul>
-<li><p>Upgraded vLLM compatibility from v0.20.2 to v0.24.0, including support for the official vLLM 0.24 CUDA stable-ABI wheels.</p></li>
-<li><p>Added and re-adapted vendor backends for vLLM 0.24.0:</p>
-<ul>
-<li><p>MetaX C550 backend adaptation (#294, building on the 0.20.2 adaptation in #241).</p></li>
-<li><p>Moore Threads MUSA (MTT S5000) backend adaptation (#308, building on the 0.20.2 update in #176).</p></li>
-<li><p>Iluvatar BI-V150 backend adaptation (#310).</p></li>
-<li><p>T-Head vendor attention backend (#360).</p></li>
-<li><p>PPU empty-mode support (#190).</p></li>
-</ul>
-</li>
-<li><p>Added the <code class="docutils literal notranslate"><span class="pre">weak_ref_tensor</span></code> C++ extension with a CMake build system (#231).</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">BreakableCUDAGraphWrapper</span></code> support for out-of-tree vendor backends on vLLM 0.24.0+ (#342), and enabled CUDA graph on Iluvatar (#232).</p></li>
-<li><p>Upgraded the FlagCX connector to support vLLM 0.20–0.24 (#295).</p></li>
+<li><p>Support for vLLM 0.24.0, including the official vLLM 0.24 CUDA stable-ABI wheels; the FlagCX connector now covers vLLM 0.20-0.24.</p></li>
+<li><p>Vendor backends added or re-adapted for vLLM 0.24.0: MetaX C550, Moore Threads MUSA (MTT S5000), Iluvatar BI-V150, T-Head attention backend, PPU empty mode, Sunrise attention backend, TXDA, and the Hygon workflow.</p></li>
+<li><p>Quantization inference: W8A8 adapted to vLLM 0.24, plus Arm CPU support for Qwen packed W4A8 and GDN.</p></li>
+<li><p>Qwen3.5 text-only runtime compatibility on vLLM 0.24.</p></li>
+<li><p>Out-of-tree backend support: the <code class="docutils literal notranslate"><span class="pre">weak_ref_tensor</span></code> C++ extension with a CMake build system, and <code class="docutils literal notranslate"><span class="pre">BreakableCUDAGraphWrapper</span></code> on vLLM 0.24.0+ with CUDA graph enabled on Iluvatar.</p></li>
+<li><p>Dispatch: appending FlagGems blacklist entries, batched MTP xGrammar masks, and custom throughput test cases.</p></li>
+<li><p>Tooling: version documentation page, and CI migrated from release/0.2 to main with <code class="docutils literal notranslate"><span class="pre">/rerun-failed-ci</span></code> and <code class="docutils literal notranslate"><span class="pre">/cancel-ci</span></code> PR comment commands.</p></li>
 </ul>
 </li>
 <li><p><strong>Improved Features</strong></p>
 <ul>
-<li><p>Ascend fused module refactor: reworked the fused-MoE implementation and consolidated the vendor fused modules (#240, cherry-pick of #136).</p></li>
-<li><p>Dispatch enhancements: opt-in Hopper long-context routing (#384); routed <code class="docutils literal notranslate"><span class="pre">fused_experts</span></code> through FlagGems (#230); fixed <code class="docutils literal notranslate"><span class="pre">GroupedTopKRouterFL</span></code> <code class="docutils literal notranslate"><span class="pre">valid_grouping</span></code> closure (#237); updated the NVIDIA FlagGems blacklist and supported-vendor list (#222, #228); removed direct FlagGems calls from the MUSA vendor backend (#376); improved <code class="docutils literal notranslate"><span class="pre">CachedOp</span></code> fast-path diagnostics and fallback behavior (#206).</p></li>
-<li><p>CUDA graph robustness: disable CUDA graph for non-DeepEP backends (#346); account for CUDA graph memory in KV cache sizing (#381); MTP fixes for vLLM 0.24.0 (#334, #337).</p></li>
-<li><p>Worker fixes: preserve data-parallel GPU offset for independent engines (#380); guard <code class="docutils literal notranslate"><span class="pre">kernel_warmup</span></code> against missing <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> on out-of-tree runtimes (#386); MetaX <code class="docutils literal notranslate"><span class="pre">all_reduce</span></code> now passes <code class="docutils literal notranslate"><span class="pre">group=device_group</span></code> (#348).</p></li>
+<li><p>Ascend: reworked fused-MoE implementation and consolidated vendor fused modules.</p></li>
+<li><p>Dispatch: opt-in Hopper long-context routing, <code class="docutils literal notranslate"><span class="pre">fused_experts</span></code> routed through FlagGems, updated NVIDIA FlagGems blacklist and supported-vendor list, and improved <code class="docutils literal notranslate"><span class="pre">CachedOp</span></code> fast-path diagnostics and fallback behavior.</p></li>
+<li><p>CUDA graph: disabled for non-DeepEP backends, memory accounted for in KV cache sizing, and MTP fixes for vLLM 0.24.0.</p></li>
+<li><p>Worker: data-parallel GPU offset preserved for independent engines, <code class="docutils literal notranslate"><span class="pre">kernel_warmup</span></code> guarded against missing <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> on out-of-tree runtimes, and MetaX <code class="docutils literal notranslate"><span class="pre">all_reduce</span></code> now passes <code class="docutils literal notranslate"><span class="pre">group=device_group</span></code>.</p></li>
 </ul>
 </li>
 </ul>
-<section id="flagos-2-2-rc0-cross-vendor-verification">
-<h3>FlagOS 2.2-RC0 cross-vendor verification<a class="headerlink" href="#flagos-2-2-rc0-cross-vendor-verification" title="Link to this heading">#</a></h3>
-<p>The v0.3.0 release candidate was verified across the following vendors during the FlagOS 2.2-RC0 cycle (runs used <code class="docutils literal notranslate"><span class="pre">0.3.0-rc0</span></code>; <code class="docutils literal notranslate"><span class="pre">0.3.0-rc2</span></code> carries the same vendor adaptations plus the fixes listed above). Every entry lists the components actually installed and the checks that passed; entries that did not complete are marked and reference the tracking issue.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Platform</p></th>
-<th class="head"><p>vLLM</p></th>
-<th class="head"><p>plugin</p></th>
-<th class="head"><p>FlagGems</p></th>
-<th class="head"><p>FlagTree (backend)</p></th>
-<th class="head"><p>Result</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>MetaX C550</p></td>
-<td><p>0.24.0 empty</p></td>
-<td><p>0.3.0-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.6 (metax)</p></td>
-<td><p>Components import, FlagTree builds (TRITON 3.6.0, <code class="docutils literal notranslate"><span class="pre">['metax']</span></code>); <code class="docutils literal notranslate"><span class="pre">KeyError:</span> <span class="pre">'BLOCK_M'</span></code> not reproduced</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hygon BW1000</p></td>
-<td><p>0.24.0 empty</p></td>
-<td><p>0.3.0-rc0</p></td>
-<td><p>5.4.0-rc0 + flash-attention fix</p></td>
-<td><p>0.7.0-rc0-triton3.6 (hcu)</p></td>
-<td><p>Components import; <code class="docutils literal notranslate"><span class="pre">compressed_tensors</span></code> upgrade required for vLLM 0.24.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Hygon BW1000</p></td>
-<td><p>0.20.0+das native</p></td>
-<td><p>0.3.0-rc0</p></td>
-<td><p>5.4.0-rc0 + flash-attention fix</p></td>
-<td><p>0.7.0-rc0-triton3.6 (hcu)</p></td>
-<td><p>Native-mode environment verified</p></td>
-</tr>
-<tr class="row-odd"><td><p>Iluvatar BI-V150</p></td>
-<td><p>0.24.0 empty</p></td>
-<td><p>0.3.0-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.6 (iluvatar)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vllm</span> <span class="pre">serve</span></code> starts, CUDA graph capture succeeds, first request returns 200 OK; cold-cache LM-head autotune still open</p></td>
-</tr>
-<tr class="row-even"><td><p>Moore Threads MTT S5000</p></td>
-<td><p>0.24.0 empty</p></td>
-<td><p>0.3.0</p></td>
-<td><p>5.4.0-rc0.post1</p></td>
-<td><p>0.7.0-rc0-triton3.6 (mthreads)</p></td>
-<td><p>Runs on the development stack; the rc0 standard stack (FlagGems 5.3.4 + Triton 3.2.0) stops at FlagGems autotune</p></td>
-</tr>
-<tr class="row-odd"><td><p>Alibaba PPU</p></td>
-<td><p>0.24.0 empty</p></td>
-<td><p>0.3.0-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.6 (ppu)</p></td>
-<td><p>Source build of the FlagTree PPU backend blocked by <a class="reference external" href="https://github.com/flagos-ai/FlagTree/issues/1131">FlagTree #1131</a>; the <code class="docutils literal notranslate"><span class="pre">release/0.2</span></code> plugin path with the image toolchain was verified</p></td>
-</tr>
-<tr class="row-even"><td><p>Ascend 910c</p></td>
-<td><p>0.20.2 empty</p></td>
-<td><p>0.2.0-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.5 (ascend)</p></td>
-<td><p>Components import; requires <code class="docutils literal notranslate"><span class="pre">enforce_eager</span></code> and <code class="docutils literal notranslate"><span class="pre">TRITON_ALL_BLOCKS_PARALLEL=1</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tsingmicro TX8110</p></td>
-<td><p>0.20.2 (in image)</p></td>
-<td><p>0.2.0</p></td>
-<td><p>4.2.1 (in image)</p></td>
-<td><p>0.7.0-rc0-triton3.3 (tsingmicro)</p></td>
-<td><p>Offline and online serving verified for Qwen3.6-27B and Qwen3.6-35B-A3B</p></td>
-</tr>
-<tr class="row-even"><td><p>Enflame ZIXIAOC200</p></td>
-<td><p>0.20.2 empty</p></td>
-<td><p>0.2.1</p></td>
-<td><p>5.3.1 (in image)</p></td>
-<td><p>0.7.0-rc0-triton3.6 (enflame)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vllm</span> <span class="pre">serve</span></code> starts</p></td>
-</tr>
-<tr class="row-odd"><td><p>Sunrise S2</p></td>
-<td><p>0.20.2+flagos empty</p></td>
-<td><p>0.2.2-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.6 (sunrise)</p></td>
-<td><p>Text inference verified; vision embedding numerical issue open</p></td>
-</tr>
-<tr class="row-even"><td><p>Kunlunxin P800</p></td>
-<td><p>0.20.2 empty</p></td>
-<td><p>0.2.0-rc0</p></td>
-<td><p>5.4.0-rc0</p></td>
-<td><p>0.7.0-rc0-triton3.6 (kunlunxin)</p></td>
-<td><p>Installation verified; model loading blocked by a backend architecture incompatibility</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Pre-built images for these configurations are published on the FlagOS resource download page: <a class="reference external" href="https://flagos.io/resourcedownload">https://flagos.io/resourcedownload</a>.</p>
-</section>
 </section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
@@ -818,10 +687,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2-rc0-cross-vendor-verification">FlagOS 2.2-RC0 cross-vendor verification</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -857,7 +723,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 21, 2026.
   <br/>
 </p>
   </div>

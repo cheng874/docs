@@ -1,10 +1,21 @@
 # Install software for running an inference task
 
-vllm-plugin-FL can be installed from source code or via Docker images.
+
+You can download the docker images for supported hardwares from the [FlagOS main page](https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg). Just simply click the **Download** button, use the `docker pull` command to download the docker image, and then use the `docker run` and `docker exec` commands to start the container and enter it.
+
 
 ## Install from source
 
 This section covers installing vllm-plugin-FL and its dependencies from source code.
+
+### Version compatibility
+
+Pick the branch that matches your vLLM version; the branch and the vLLM version must stay paired:
+
+| vllm-plugin-FL branch | Community vLLM version |
+|-----------------------|------------------------|
+| `release/0.2` | [v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2) |
+| `main` | [v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) |
 
 1. Install vLLM
 
@@ -41,7 +52,7 @@ This section covers installing vllm-plugin-FL and its dependencies from source c
     pip install --no-build-isolation -e .
     ```
 
-    On **NVIDIA**, set `VLLM_VENDOR=cuda` during installation to build and install the `vllm_fl._C` native C++ extension, which is required by some CUDA-graph and custom-op paths on vLLM 0.24.0+:
+    For CUDA-like devices, including CUDA and HIP/ROCm environments that use PyTorch's CUDA dispatch key, build the plugin native extension by setting `VLLM_VENDOR=cuda` during installation:
 
     ```{code-block} shell
     VLLM_VENDOR=cuda pip install --no-build-isolation .
@@ -49,7 +60,9 @@ This section covers installing vllm-plugin-FL and its dependencies from source c
     VLLM_VENDOR=cuda pip install --no-build-isolation -e .
     ```
 
-3. Install [FlagGems](https://github.com/flagos-ai/FlagGems/blob/master/docs/getting-started.md#quick-installation)
+    This builds and installs `vllm_fl._C`, which provides native C++ support required by some graph/custom-op paths, especially when vLLM is installed with `VLLM_TARGET_DEVICE=empty`. If `VLLM_VENDOR` is not set, vllm-plugin-FL is installed as a Python-only plugin and the native extension is skipped.
+
+3. Install [FlagGems](https://flagos-ai.github.io/FlagGems/getting-started/install/)
 
     3.1 Install build dependencies
 
@@ -60,7 +73,7 @@ This section covers installing vllm-plugin-FL and its dependencies from source c
     3.2 Install FlagGems
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/FlagGems
+    git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
     cd FlagGems
     pip install --no-build-isolation .
     # or editable install
@@ -77,9 +90,8 @@ This section covers installing vllm-plugin-FL and its dependencies from source c
     4.1 Clone the repository:
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/FlagCX.git
+    git clone -b v0.13.0 https://github.com/flagos-ai/FlagCX.git
     cd FlagCX
-    git checkout -b v0.9.0
     git submodule update --init --recursive
     ```
 
@@ -157,9 +169,71 @@ export USE_FLAGGEMS=0
 
 This section covers running vllm-plugin-FL using pre-built Docker images.
 
-### FlagOS 2.2 Release Images (v0.3.0-rc2)
+### Common `docker run` / `docker exec` conventions
 
-Pre-built images for the FlagOS 2.2 release (vllm-plugin-FL v0.3.0, vLLM 0.24.0) are published on the FlagOS resource download page: <https://flagos.io/resourcedownload>.
+FlagOS release images are published with a uniform tag layout:
+
+```{code-block} shell
+IMG=<registry>/<repository>/vllm<vLLM version>-<vendor>-<vendor SDK>:<FlagOS version>-<plugin branch>_g<commit>.d<build date>
+```
+
+For example:
+
+```{code-block} shell
+IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-hygon-dtk26.04:2.1.2-0.3.0rc2.post1_gc9bbcf0.d20260914
+```
+
+The `vLLM version` and the `plugin branch` must match each other (vLLM 0.24.0 with plugin 0.3.0, vLLM 0.20.2 with plugin 0.2.2); `g<commit>` and `d<build date>` identify the build. Vendor test guides may also write the image path inline instead of defining `IMG=` — the options are the same.
+
+A container is always created with `docker run` and then entered with `docker exec`:
+
+```{code-block} shell
+docker run -itd \
+  --name <vendor>-vllm-<version> \
+  --network host --ipc host \
+  --shm-size <64g|128g|512g> \
+  <device passthrough, see the table below> \
+  -e <VENDOR>_VISIBLE_DEVICES=all \
+  -v <model dir>:/models \
+  -v <vendor runtime dir>:<vendor runtime dir> \
+  $IMG <bash|sleep infinity>
+
+docker exec -it <vendor>-vllm-<version> bash
+```
+
+Device passthrough is the only part that really differs between vendors — pick exactly one form:
+
+| Vendor | Device passthrough |
+|--------|--------------------|
+| NVIDIA | `--gpus all` |
+| Iluvatar, Enflame, Tsingmicro, Kunlunxin | `--privileged` (Iluvatar additionally mounts `/dev`, `/lib/modules`, `/sys`) |
+| Moore Threads | `--privileged --runtime=mthreads` |
+| Hygon DCU | `--device /dev/kfd --device /dev/mkfd --device /dev/dri --group-add video` |
+| Ascend | `--device /dev/davinci0..N --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc` |
+| MetaX | `--device /dev/mxcd --device /dev/dri` |
+| Alibaba PPU, T-Head PPU | `--device /dev/alixpu --device /dev/alixpu_ctl --device /dev/alixpu_ppu{0..15}` |
+
+Conventions shared by all vendors:
+
+- `--network host` (`--net host`) on every vendor, `--ipc host` on most; `--shm-size` ranges from `64g` to `512g` depending on the platform.
+- `-v <model dir>:/models` exposes the weights; `-v <vendor runtime dir>:<same path>` mounts the host driver (for example `/opt/hyhal` on Hygon, `/usr/local/corex-*` on Iluvatar).
+- Container names are `<vendor>-vllm-<version>`, optionally suffixed with `-plugin-<branch>` (for example `hygon-vllm-024-plugin-030`). The name passed to `docker exec` must be identical to the `--name` given to `docker run`.
+- The command after `$IMG` decides how the container stays alive: `bash` for an interactive container, `sleep infinity` (or `tail -f /dev/null`) for a detached one. In both cases you enter it afterwards with `docker exec -it <name> bash`.
+
+Example, Hygon DCU with the image above:
+
+```{code-block} shell
+docker run -it --name vllm-hygon-0240 \
+  --device /dev/kfd --device /dev/mkfd --device /dev/dri \
+  --group-add video \
+  -v /opt/hyhal:/opt/hyhal \
+  -v /public-nvme:/public-nvme \
+  --security-opt seccomp=unconfined \
+  -e DCU_VISIBLE_DEVICES=all \
+  $IMG bash
+
+docker exec -it vllm-hygon-0240 bash
+```
 
 | Platform | Image | Contents |
 |----------|-------|----------|
