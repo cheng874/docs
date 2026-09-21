@@ -8,8 +8,6 @@ Offline batched inference loads the model directly in a Python script and genera
 
 ```python
 from vllm import LLM, SamplingParams
-import torch
-from vllm.config.compilation import CompilationConfig
 
 
 if __name__ == '__main__':
@@ -37,6 +35,7 @@ The following table lists the descriptions of the key parameters.
 | `temperature=0.0` | Makes generation deterministic (greedy decoding). |
 | `max_tokens=10` | Hard limit on output length per prompt. |
 
+(run-a-serving-inference-task)=
 ## Run a serving inference task
 
 Serving inference starts a long-running vLLM API server that keeps the model loaded in memory, accepting requests via OpenAI-compatible HTTP endpoints — ideal for online services and concurrent clients.

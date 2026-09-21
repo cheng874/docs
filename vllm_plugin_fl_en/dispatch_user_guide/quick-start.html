@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/quick-start.6ff574c1-437e-4810-97b1-7ed5306483e5.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/quick-start.7d04a6bd-6235-48c0-966e-e3281d67f9ec.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/quick-start';</script>
@@ -578,16 +578,16 @@
 </section>
 <section id="use-the-manager">
 <h2>Use the Manager<a class="headerlink" href="#use-the-manager" title="Link to this heading">#</a></h2>
-<div class="highlight-{code-block}python notranslate"><div class="highlight"><pre><span></span>from vllm_fl.dispatch import get_default_manager
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">vllm_fl.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_default_manager</span>
 
-manager = get_default_manager()
+<span class="n">manager</span> <span class="o">=</span> <span class="n">get_default_manager</span><span class="p">()</span>
 
-# Resolve operator
-fn = manager.resolve("rotary_embedding")
-result = fn(query, key, cos, sin, position_ids)
+<span class="c1"># Resolve operator</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="s2">"rotary_embedding"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">position_ids</span><span class="p">)</span>
 
-# Or call directly
-result = manager.call("silu_and_mul", x)
+<span class="c1"># Or call directly</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"silu_and_mul"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For API explanations, see <a class="reference internal" href="../reference/dispatch-api-reference.html"><span class="std std-doc">Dispatch API Reference</span></a>.</p>
@@ -699,5 +699,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../vllm_plugin_fl_zh/dispatch_user_guide/quick-start.html">中文</a></body>
 </html>

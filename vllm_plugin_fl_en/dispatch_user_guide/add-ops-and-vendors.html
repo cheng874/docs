@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/add-ops-and-vendors.840db814-e00b-4fb3-b214-0d57ddb6de7f.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/add-ops-and-vendors.a2212f85-ae65-4553-a54a-2ad1d2efe8a9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/add-ops-and-vendors';</script>
@@ -746,24 +746,65 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Vendor</p></th>
 <th class="head"><p>Device</p></th>
-<th class="head"><p>Library</p></th>
-<th class="head"><p>Attention Backend</p></th>
+<th class="head"><p>Availability probe</p></th>
+<th class="head"><p>Attention backend</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
 <td><p>NVIDIA GPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">vllm._custom_ops</span></code></p></td>
-<td><p>- (uses vLLM native)</p></td>
+<td><p>FlagGems vendor detection (excludes CUDA-like devices)</p></td>
+<td><p>vLLM native (<code class="docutils literal notranslate"><span class="pre">FLASH_ATTN</span></code>, <code class="docutils literal notranslate"><span class="pre">FLASHMLA</span></code>, <code class="docutils literal notranslate"><span class="pre">FLASHMLA_SPARSE</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
-<td><p>Huawei NPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">torch_npu</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AscendAttentionBackend</span></code></p></td>
+<td><p>Huawei Ascend NPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.npu.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AscendAttentionBackend</span></code>, <code class="docutils literal notranslate"><span class="pre">AscendMLABackend</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcu</span></code></p></td>
+<td><p>Enflame GCU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.gcu.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AttentionGCUBackend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iluvatar</span></code></p></td>
+<td><p>Iluvatar GPU</p></td>
+<td><p>vLLM platform vendor</p></td>
+<td><p>vLLM native (<code class="docutils literal notranslate"><span class="pre">FLASH_ATTN</span></code>, <code class="docutils literal notranslate"><span class="pre">FLASHMLA</span></code>, <code class="docutils literal notranslate"><span class="pre">TRITON_ATTN</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kunlunxin</span></code></p></td>
+<td><p>Kunlunxin XPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">torch_xmlir</span></code> + <code class="docutils literal notranslate"><span class="pre">torch.cuda.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KunlunxinAttentionBackend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+<td><p>MetaX (MACA)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.cuda.is_available()</span></code></p></td>
+<td><p>vLLM native, <code class="docutils literal notranslate"><span class="pre">TRITON_ATTN</span></code> with FlagGems</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">musa</span></code></p></td>
+<td><p>Moore Threads (MUSA)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.musa.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRITON_ATTN</span></code>, <code class="docutils literal notranslate"><span class="pre">TRITON_MLA</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sunrise</span></code></p></td>
+<td><p>Sunrise PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.ptpu.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AttentionFLBackend</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thead</span></code></p></td>
+<td><p>T-Head PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PPU_SDK</span></code> environment variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLASH_ATTN</span></code> (FA3 wheel)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">txda</span></code></p></td>
+<td><p>Tsingmicro TXDA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torch.txda.is_available()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AttentionFLBackend</span></code>, <code class="docutils literal notranslate"><span class="pre">MLAFLBackend</span></code>, <code class="docutils literal notranslate"><span class="pre">TritonAttentionBackend</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>The vendor name reported by a backend is what <code class="docutils literal notranslate"><span class="pre">allow_vendors</span></code>, <code class="docutils literal notranslate"><span class="pre">deny_vendors</span></code>, and the <code class="docutils literal notranslate"><span class="pre">vendor:&lt;name&gt;</span></code> tokens match. It is not always the directory name: the MetaX backend is <code class="docutils literal notranslate"><span class="pre">maca</span></code>, the Enflame backend is <code class="docutils literal notranslate"><span class="pre">gcu</span></code>, and the Tsingmicro backend is <code class="docutils literal notranslate"><span class="pre">txda</span></code>.</p>
 <p>See <code class="docutils literal notranslate"><span class="pre">backends/vendor/template/</span></code> for a template to create new vendor backends.</p>
 </section>
 </section>
@@ -896,5 +937,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../vllm_plugin_fl_zh/dispatch_user_guide/add-ops-and-vendors.html">中文</a></body>
 </html>

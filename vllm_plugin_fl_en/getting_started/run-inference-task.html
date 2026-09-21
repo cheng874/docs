@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/run-inference-task.f9806622-e0f0-4a12-8598-b95c26d5df74.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/run-inference-task.411ab5d3-f2bf-44bf-8d70-27da60700445.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/run-inference-task';</script>
@@ -568,8 +568,6 @@
 <h2>Run an offline batched inference<a class="headerlink" href="#run-an-offline-batched-inference" title="Link to this heading">#</a></h2>
 <p>Offline batched inference loads the model directly in a Python script and generates outputs for a batch of prompts in a single run — no server setup required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">vllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLM</span><span class="p">,</span> <span class="n">SamplingParams</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">vllm.config.compilation</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompilationConfig</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
@@ -613,7 +611,7 @@
 </div>
 </section>
 <section id="run-a-serving-inference-task">
-<h2>Run a serving inference task<a class="headerlink" href="#run-a-serving-inference-task" title="Link to this heading">#</a></h2>
+<span id="id1"></span><h2>Run a serving inference task<a class="headerlink" href="#run-a-serving-inference-task" title="Link to this heading">#</a></h2>
 <p>Serving inference starts a long-running vLLM API server that keeps the model loaded in memory, accepting requests via OpenAI-compatible HTTP endpoints — ideal for online services and concurrent clients.</p>
 <p>Since this is a local deployment, no API key is required. Set <code class="docutils literal notranslate"><span class="pre">api_key</span></code> to any value (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;EMPTY&quot;</span></code>) — no tokens are consumed.</p>
 <p>For multimodal models (e.g. Qwen3.6 series) or when testing the full serving stack, use the serve-and-request workflow.</p>
@@ -818,5 +816,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../vllm_plugin_fl_zh/getting_started/run-inference-task.html">中文</a></body>
 </html>

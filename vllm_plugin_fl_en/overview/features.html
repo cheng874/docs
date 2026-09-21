@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/features.fcd4c610-e994-42de-818d-dff22562c444.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/features.e686c360-8c80-4970-a9d1-0101f72779d0.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/features';</script>
@@ -559,11 +559,20 @@
 <ul class="simple">
 <li><p><strong>Platform auto-detection</strong></p></li>
 </ul>
-<p>Automatically detects hardware and loads platform-specific configuration. Supports NVIDIA GPU, Ascend NPU, T-Head, Iluvatar, MetaX, Moore Threads, Tsingmicro, Hygon DCU, and Sunrise chips.</p>
+<p>Automatically detects hardware and loads platform-specific configuration. Supports NVIDIA GPU, Ascend NPU, T-Head, Iluvatar, MetaX, Moore Threads, Tsingmicro, Hygon DCU, Sunrise, Enflame, Kunlunxin, and Alibaba PPU chips, plus CPU-only inference on ARM64 hosts.</p>
 <ul class="simple">
 <li><p><strong>Extensible vendor backend</strong></p></li>
 </ul>
 <p>Supports built-in vendor backends, external plugin packages via setuptools entry points, and environment-based plugin modules.</p>
+<ul class="simple">
+<li><p><strong>Runtime compatibility hooks</strong></p></li>
+</ul>
+<p>Registers runtime compatibility hooks through vLLM’s plugin entry points without modifying the installed vLLM package. Model-specific config and model registrations are loaded only for their corresponding architectures, so a plugin upgrade does not require a matching vLLM patch set.</p>
+<ul class="simple">
+<li><p><strong>Optional native extension</strong></p></li>
+</ul>
+<p>Building with <code class="docutils literal notranslate"><span class="pre">VLLM_VENDOR=cuda</span></code> installs the <code class="docutils literal notranslate"><span class="pre">vllm_fl._C</span></code> C++ extension required by some graph and custom-op paths, including CUDA-like devices (CUDA and HIP/ROCm) that use PyTorch’s CUDA dispatch key. Without it the plugin runs as a Python-only plugin.</p>
+<p>For the end-to-end installation flow, see <a class="reference internal" href="../getting_started/install.html"><span class="std std-doc">Install software for running an inference task</span></a>. For backend and operator selection, see <a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html"><span class="std std-doc">Operator dispatch user guide</span></a>.</p>
 </section>
 
 
@@ -653,5 +662,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../vllm_plugin_fl_zh/overview/features.html">中文</a></body>
 </html>

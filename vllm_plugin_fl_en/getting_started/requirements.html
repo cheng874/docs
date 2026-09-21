@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.cae2ff42-26a8-4626-8a71-9ec650222b37.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.fe8ad310-1b63-4278-b499-47fa70a685c6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
@@ -637,61 +637,75 @@
 <td><p>Supported</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>Ascend</p></td>
+<tr class="row-odd"><td><p>ARM64 CPU</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>Supported</p></td>
+<td><p>CPU-only inference on ARM64 hosts</p></td>
+</tr>
+<tr class="row-even"><td><p>Ascend</p></td>
 <td><p>910c</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p>Requires FlagTree and <a class="reference internal" href="install.html#additional-setup-for-huawei-ascend"><span class="std std-ref">eager execution</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p>MetaX</p></td>
+<tr class="row-odd"><td><p>MetaX</p></td>
 <td><p>MACA C550</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p>MetaX C550 adapted for vLLM 0.24.0</p></td>
 </tr>
-<tr class="row-odd"><td><p>T-Head</p></td>
+<tr class="row-even"><td><p>T-Head</p></td>
 <td><p>PPU</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>Iluvatar</p></td>
+<tr class="row-odd"><td><p>Iluvatar</p></td>
 <td><p>BI-V150</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p>BI-V150 adapted for vLLM 0.24.0; CUDA graph enabled</p></td>
 </tr>
-<tr class="row-odd"><td><p>Moore Threads</p></td>
+<tr class="row-even"><td><p>Moore Threads</p></td>
 <td><p>MTT S5000</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p>MTT S5000 adapted for vLLM 0.24.0</p></td>
 </tr>
-<tr class="row-even"><td><p>Tsingmicro</p></td>
+<tr class="row-odd"><td><p>Tsingmicro</p></td>
 <td><p>TX8110</p></td>
 <td><p>Merging</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p>In progress upstream</p></td>
 </tr>
-<tr class="row-odd"><td><p>Hygon DCU</p></td>
+<tr class="row-even"><td><p>Hygon DCU</p></td>
 <td><p>BW1000</p></td>
 <td><p>Supported</p></td>
 <td><p>Supported</p></td>
 <td><p>Supported</p></td>
 <td><p>Requires DTK container (see the <a class="reference internal" href="install.html"><span class="std std-doc">installation guide</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><p>Sunrise</p></td>
+<tr class="row-odd"><td><p>Sunrise</p></td>
 <td><p>S2</p></td>
 <td><p>Supported</p></td>
 <td><p>—</p></td>
 <td><p>Supported</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Enflame</p></td>
+<td><p>S60</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>Supported</p></td>
+<td><p>Enflame GCU backend (<code class="docutils literal notranslate"><span class="pre">gcu</span></code>); see the installation guide for the container setup</p></td>
 </tr>
 <tr class="row-odd"><td><p>Alibaba PPU</p></td>
 <td><p>PPU</p></td>
@@ -757,11 +771,12 @@
 </tr>
 <tr class="row-even"><td><p>Qwen2.5-1.5B</p></td>
 <td><p>Supported</p></td>
-<td><p><a class="reference internal" href="#example-qwen2.5-bv150.md"><span class="xref myst">Iluvatar BI-V150 example</span></a></p></td>
+<td><p><a class="reference internal" href="run-inference-task.html"><span class="std std-doc">Run an inference task</span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>For the dispatch API used by these models, see the <a class="reference internal" href="../reference/dispatch-api-reference.html"><span class="std std-doc">Dispatch API Reference</span></a>. For the version each plugin branch pairs with, see the version table in the <a class="reference internal" href="install.html"><span class="std std-doc">installation guide</span></a>.</p>
 </section>
 </section>
 
@@ -871,5 +886,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../vllm_plugin_fl_zh/getting_started/requirements.html">中文</a></body>
 </html>
