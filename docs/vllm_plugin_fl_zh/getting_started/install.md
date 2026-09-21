@@ -119,7 +119,7 @@
     [xxx] 应根据当前平台选择，例如 nvidia、ascend 等。
     ```
 
-如果当前环境中有多个插件，可以通过 VLLM_PLUGINS='fl' 指定使用 vllm-plugin-fl。
+如果当前环境中有多个插件，可以通过 VLLM_PLUGINS='fl' 选择使用 vllm-plugin-fl。
 
 ### 华为 Ascend 额外设置
 
@@ -150,8 +150,6 @@
 
 #### 使用 CUDA 通信库
 
-本节演示如何通过设置环境变量使用 CUDA 运行推理任务。
-
 ```{code-block} shell
 unset FLAGCX_PATH
 ```
@@ -167,10 +165,6 @@ export USE_FLAGGEMS=0
 ## 从 Docker 镜像安装
 
 本节介绍使用预构建的 Docker 镜像运行 vllm-plugin-FL。
-
-```{note}
-以下命令使用 vLLM 0.24.0 镜像与 FlagOS 2.2 发布技术栈。若需改用 vLLM 0.20.2 镜像，请从 FlagOS 资源下载页选择对应镜像。
-```
 
 ### docker run 与 docker exec 通用写法
 
@@ -223,29 +217,6 @@ docker exec -it <厂商>-vllm-<版本> bash
 - 容器名统一为 `<厂商>-vllm-<版本>`，可加 `-plugin-<分支>` 后缀（例如 `hygon-vllm-024-plugin-030`）。`docker exec` 使用的容器名必须与 `docker run` 的 `--name` 完全一致。
 - `$IMG` 之后的命令决定容器如何保持运行：交互式容器用 `bash`，后台容器用 `sleep infinity`（或 `tail -f /dev/null`）。两种情况都在创建后用 `docker exec -it <容器名> bash` 进入。
 
-示例，使用上述镜像的海光 DCU：
-
-```{code-block} shell
-docker run -it --name vllm-hygon-0240 \
-  --device /dev/kfd --device /dev/mkfd --device /dev/dri \
-  --group-add video \
-  -v /opt/hyhal:/opt/hyhal \
-  -v /public-nvme:/public-nvme \
-  --security-opt seccomp=unconfined \
-  -e DCU_VISIBLE_DEVICES=all \
-  $IMG bash
-
-docker exec -it vllm-hygon-0240 bash
-```
-
-启动服务前，安装验证所用的 FlagGems 版本：
-
-```{code-block} shell
-git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
-cd FlagGems
-pip install --no-build-isolation -e .
-```
-
 | 平台 | 镜像 | 内容 |
 |----------|-------|----------|
 | 阿里 PPU | `egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508` | PPU SDK 2.0.0-715aa1、torch 2.10.0、vLLM 0.19.0（指南中替换为 `empty` 0.24.0 源码编译版） |
@@ -260,7 +231,9 @@ pip install --no-build-isolation -e .
 | 沐曦 MetaX C550 | `cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64` | MACA 3.7.0 镜像、torch 2.8.0+metax、Python 3.12；镜像内 vLLM 会被 `empty` 0.24.0 源码编译版替换 |
 | 昇腾 Ascend 910c | `quay.io/ascend/vllm-ascend:v0.20.2rc1-a3` | 用于 0.20.2 `empty` 源码编译的 CANN 9.0.0 昇腾镜像 |
 
-沐曦与海光需要设备直通而非 `--gpus all`，例如沐曦：
+以下命令使用 vLLM 0.24.0 镜像与 FlagOS 2.2 发布技术栈。若需改用 vLLM 0.20.2 镜像，请从 FlagOS 资源下载页选择对应镜像。
+
+示例，沐曦 MetaX C550：
 
 ```{code-block} shell
 IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-metax-maca3.7.2.1:2.1.2-0.2.1_g5c511da.d20260901
@@ -272,10 +245,12 @@ docker run -d \
   --device /dev/mxcd:/dev/mxcd:rwm \
   -v /data/models:/models \
   $IMG sleep infinity
+
+docker exec -it metax-vllm-024-plugin-030 bash
 ```
 
 ```{note}
-这些镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布版，请按[从源代码安装](#从源代码安装)将 vLLM 替换为 `empty` v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见 FlagOS 资源下载页链接的厂商测试手册。
+这些镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布版，请按[从源代码安装](#从源代码安装)将 vLLM 替换为 `empty` v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见厂商测试手册。
 ```
 
 ### Hygon DCU
@@ -473,10 +448,6 @@ docker run -d \
     export VLLM_PLUGINS=fl
     export TRITON_ALL_BLOCKS_PARALLEL=1
     vllm serve --model /models/Qwen3-4B --served-model-name qwen --enforce-eager
-    ```
-
-    ```{note}
-    Ascend 需要 eager 执行。在 `LLM` 构造函数中添加 `enforce_eager=True` 或在命令行中传递 `--enforce-eager`。
     ```
 
 ### Iluvatar BI-V150
