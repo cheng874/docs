@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Requirements" />
+<meta property="og:title" content="Adaptation gate" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="getting_started/requirements.html" />
+<meta property="og:url" content="getting_started/adaptation-gate.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Software Requirements:,,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), v0.3.0 (vLLM 0.24.0), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, 0.24.0, From official release ..." />
+<meta property="og:description" content="The adaptation gate is a small manual test suite in the vllm-plugin-FL repository( tools/adaptation-gate-cases) for accelerator adaptation and vLLM plugin upgrades. It validates text, image, and mixed text-image requests for the required models in both eager and graph modes. The test cases themse..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Software Requirements:,,,,, Requirement, v0.1.0 (vLLM 0.13.0), v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2), v0.3.0 (vLLM 0.24.0), Notes,,, Python, 3.10 - 3.13, 3.10 - 3.13, 3.10 - 3.13, Required,, PyTorch,&gt;= 2.7.1,&gt;= 2.7.1,&gt;= 2.7.1, Required,, vLLM, 0.13.0, 0.20.2, 0.24.0, From official release ..." />
+<meta name="description" content="The adaptation gate is a small manual test suite in the vllm-plugin-FL repository( tools/adaptation-gate-cases) for accelerator adaptation and vLLM plugin upgrades. It validates text, image, and mixed text-image requests for the required models in both eager and graph modes. The test cases themse..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Requirements &#8212; VLLM-Plugin-FL Documentation</title>
+    <title>Adaptation gate &#8212; VLLM-Plugin-FL Documentation</title>
   
   
   
@@ -64,17 +64,17 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.3667164f-692b-42af-83c6-a4496a0aa321.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/adaptation-gate.00185edd-670d-436b-a194-58ffa01d5ff5.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/adaptation-gate';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="/getting_started/requirements.html" />
+    <link rel="canonical" href="/getting_started/adaptation-gate.html" />
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Install software for running an inference task" href="install.html" />
-    <link rel="prev" title="Getting Started" href="getting-started.html" />
+    <link rel="next" title="Operator dispatch user guide" href="../dispatch_user_guide/dispatch-user-guide.html" />
+    <link rel="prev" title="Run an inference task" href="run-inference-task.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -380,10 +380,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install software for running an inference task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="run-inference-task.html">Run an inference task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adaptation-gate.html">Adaptation gate</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Adaptation gate</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator dispatch user guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -473,7 +473,7 @@
       
       
       
-      <li><a href="https://github.com/flagos-ai/docs/edit/main/getting_started/requirements.md" target="_blank"
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/getting_started/adaptation-gate.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -538,7 +538,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Requirements</h1>
+    <h1>Adaptation gate</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -548,9 +548,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-matrix">Test matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-gate">Run the gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-quality-checks">Results and quality checks</a></li>
 </ul>
             </nav>
         </div>
@@ -562,205 +562,163 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="requirements">
-<h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<section id="software-requirements">
-<h2>Software Requirements<a class="headerlink" href="#software-requirements" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Requirement</p></th>
-<th class="head"><p>v0.1.0 (vLLM 0.13.0)</p></th>
-<th class="head"><p>v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2)</p></th>
-<th class="head"><p>v0.3.0 (vLLM 0.24.0)</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Python</p></td>
-<td><p>3.10 - 3.13</p></td>
-<td><p>3.10 - 3.13</p></td>
-<td><p>3.10 - 3.13</p></td>
-<td><p>Required</p></td>
-</tr>
-<tr class="row-odd"><td><p>PyTorch</p></td>
-<td><p>&gt;= 2.7.1</p></td>
-<td><p>&gt;= 2.7.1</p></td>
-<td><p>&gt;= 2.7.1</p></td>
-<td><p>Required</p></td>
-</tr>
-<tr class="row-even"><td><p>vLLM</p></td>
-<td><p>0.13.0</p></td>
-<td><p>0.20.2</p></td>
-<td><p>0.24.0</p></td>
-<td><p>From official release (NVIDIA) or source with <code class="docutils literal notranslate"><span class="pre">VLLM_TARGET_DEVICE=empty</span></code> (non-NVIDIA)</p></td>
-</tr>
-<tr class="row-odd"><td><p>FlagGems</p></td>
-<td><p>&gt;= v5.0.0</p></td>
-<td><p>&gt;= v5.0.0</p></td>
-<td><p>v5.3.4 (source install); &gt;= v5.0.0 supported</p></td>
-<td><p>Required for operator dispatch. The <a class="reference internal" href="install.html"><span class="std std-doc">Install from source</span></a> path pins <code class="docutils literal notranslate"><span class="pre">v5.3.4</span></code> (the version the upstream README installs)</p></td>
-</tr>
-<tr class="row-even"><td><p>FlagCX</p></td>
-<td><p>v0.13.0</p></td>
-<td><p>v0.13.0</p></td>
-<td><p>v0.13.0</p></td>
-<td><p>Optional, for multi-chip communication</p></td>
-</tr>
-<tr class="row-odd"><td><p>FlagTree</p></td>
-<td><p>0.4.0</p></td>
-<td><p>0.4.0</p></td>
-<td><p>0.7.0-triton3.6</p></td>
-<td><p>Built from the <code class="docutils literal notranslate"><span class="pre">0.7.0</span></code> release branch with the matching vendor backend (see <a class="reference internal" href="install.html"><span class="std std-doc">Install from source</span></a>). Ascend uses <code class="docutils literal notranslate"><span class="pre">0.7.0-triton3.5</span></code>; Tsingmicro uses <code class="docutils literal notranslate"><span class="pre">0.7.0-triton3.3</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="supported-hardware-platforms">
-<h2>Supported hardware platforms<a class="headerlink" href="#supported-hardware-platforms" title="Link to this heading">#</a></h2>
-<p>The following table summarizes supported hardware and their verification status:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Chip Vendor</p></th>
-<th class="head"><p>Chip Model</p></th>
-<th class="head"><p>v0.1.0 (vLLM 0.13.0)</p></th>
-<th class="head"><p>v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2)</p></th>
-<th class="head"><p>v0.3.0 (vLLM 0.24.0)</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>Supported</p></td>
-<td><p>Supported</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Ascend</p></td>
-<td><p>910c</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>Requires FlagTree and eager execution</p></td>
-</tr>
-<tr class="row-even"><td><p>MetaX</p></td>
-<td><p>MACA C550</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>MetaX C550 adapted for vLLM 0.24.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>T-Head</p></td>
-<td><p>PPU</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Iluvatar</p></td>
-<td><p>BI-V150</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>BI-V150 adapted for vLLM 0.24.0; CUDA graph enabled</p></td>
-</tr>
-<tr class="row-odd"><td><p>Moore Threads</p></td>
-<td><p>MTT S5000</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>MTT S5000 adapted for vLLM 0.24.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Tsingmicro</p></td>
-<td><p>TX8110</p></td>
-<td><p>Merging</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>In progress upstream</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hygon DCU</p></td>
-<td><p>BW1000</p></td>
-<td><p>Supported</p></td>
-<td><p>Supported</p></td>
-<td><p>Supported</p></td>
-<td><p>Requires DTK container (see install guide)</p></td>
-</tr>
-<tr class="row-even"><td><p>Sunrise</p></td>
-<td><p>S2</p></td>
-<td><p>Supported</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Alibaba PPU</p></td>
-<td><p>PPU</p></td>
-<td><p>—</p></td>
-<td><p>—</p></td>
-<td><p>Supported</p></td>
-<td><p>Empty-mode support; source build of the FlagTree PPU backend is still in progress</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="supported-models">
-<h2>Supported models<a class="headerlink" href="#supported-models" title="Link to this heading">#</a></h2>
-<p>In theory, vllm-plugin-FL can support all models available in vLLM if no unsupported operators are involved. The following models have been end-to-end verified:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="adaptation-gate">
+<h1>Adaptation gate<a class="headerlink" href="#adaptation-gate" title="Link to this heading">#</a></h1>
+<p>The adaptation gate is a small manual test suite in the vllm-plugin-FL repository
+(<code class="docutils literal notranslate"><span class="pre">tools/adaptation-gate-cases</span></code>) for accelerator adaptation and vLLM plugin upgrades. It validates
+text, image, and mixed text-image requests for the required models in both eager and graph modes.</p>
+<p>The test cases themselves are maintained in the repository:
+<a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/tree/main/tools/adaptation-gate-cases">tools/adaptation-gate-cases</a>.</p>
+<section id="test-matrix">
+<h2>Test matrix<a class="headerlink" href="#test-matrix" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Model</p></th>
-<th class="head"><p>Status</p></th>
-<th class="head"><p>Example</p></th>
+<th class="head"><p>Mode</p></th>
+<th class="head"><p>Single long text case</p></th>
+<th class="head"><p>Single long image case</p></th>
+<th class="head"><p>Text cases</p></th>
+<th class="head"><p>Image cases</p></th>
+<th class="head"><p>Mixed text and image cases</p></th>
+<th class="head"><p>Total cases</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Qwen3.5-397B-A17B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/qwen3_5_offline_inference.py">qwen3_5_offline_inference.py</a></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Qwen3.6-27B</span></code></p></td>
+<td><p>eager</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>4+4</p></td>
+<td><p>26</p></td>
 </tr>
-<tr class="row-odd"><td><p>Qwen3-Next-80B-A3B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/qwen3_next_offline_inference.py">qwen3_next_offline_inference.py</a></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Qwen3.6-27B</span></code></p></td>
+<td><p>graph</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>4+4</p></td>
+<td><p>26</p></td>
 </tr>
-<tr class="row-even"><td><p>Qwen3-4B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/offline_inference.py">offline_inference.py</a></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Qwen3.6-35B-A3B</span></code></p></td>
+<td><p>eager</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>4+4</p></td>
+<td><p>26</p></td>
 </tr>
-<tr class="row-odd"><td><p>MiniCPM-o 4.5</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/tree/main/examples/minicpm">examples/minicpm/</a></p></td>
-</tr>
-<tr class="row-even"><td><p>GLM-5</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/glm_5_offline_inference.py">glm_5_offline_inference.py</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Qwen3.5-35B-A3B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/qwen3_5_offline_inference.py">qwen3_5_offline_inference.py</a></p></td>
-</tr>
-<tr class="row-even"><td><p>BAAI/bge-m3</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/vllm_fl/models/bge_m3.py">bge_m3.py</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>MiniMax-M2.7</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/minimax_m27_offline_inference.py">minimax_m27_offline_inference.py</a></p></td>
-</tr>
-<tr class="row-even"><td><p>Qwen3.6-35B-A3B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference internal" href="run-inference-task.html#run-a-serving-inference-task"><span class="std std-ref">Text + image inference/serving (v0.2.0)</span></a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Qwen3.6-27B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference internal" href="run-inference-task.html#run-a-serving-inference-task"><span class="std std-ref">Text + image inference/serving (v0.2.0)</span></a></p></td>
-</tr>
-<tr class="row-even"><td><p>Qwen2.5-1.5B</p></td>
-<td><p>Supported</p></td>
-<td><p><a class="reference internal" href="#example-qwen2.5-bv150.md"><span class="xref myst">Iluvatar BI-V150 example</span></a></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Qwen3.6-35B-A3B</span></code></p></td>
+<td><p>graph</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>4+4</p></td>
+<td><p>26</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<p>The matrix counts pytest scenarios; each concurrent scenario sends eight requests.</p>
+<p>Each mode runs the following scenarios:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test file</p></th>
+<th class="head"><p>Scenarios</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_text.py</span></code></p></td>
+<td><p>Single text case; 8 concurrent text cases</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_image.py</span></code></p></td>
+<td><p>Single image case; 8 concurrent image cases</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_mix_text_image.py</span></code></p></td>
+<td><p>8 concurrent mixed text-image cases</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="run-the-gate">
+<h2>Run the gate<a class="headerlink" href="#run-the-gate" title="Link to this heading">#</a></h2>
+<p>The scripts live in <code class="docutils literal notranslate"><span class="pre">tools/adaptation-gate-cases</span></code> of the plugin repository. Start an eager service
+in terminal 1:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/vllm-workspace/vllm-plugin-FL/tools/adaptation-gate-cases
+<span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span>./run_serve_eager.sh
+</pre></div>
+</div>
+<p>Wait for the service and run every test in terminal 2:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/vllm-workspace/vllm-plugin-FL/tools/adaptation-gate-cases
+<span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span>./run_test.sh
+</pre></div>
+</div>
+<p>Then stop the eager service and repeat with graph mode on a different port:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8001</span><span class="w"> </span>./run_serve_graph.sh
+<span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8001</span><span class="w"> </span>./run_test.sh
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">run_test.sh</span></code> executes all of these commands even if an earlier file fails:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-sv<span class="w"> </span>test_text.py
+pytest<span class="w"> </span>-sv<span class="w"> </span>test_image.py
+pytest<span class="w"> </span>-sv<span class="w"> </span>test_mix_text_image.py
+</pre></div>
+</div>
+<p>Every model must be tested once with eager execution and once with graph execution; stop the
+current service before switching modes. The required combinations are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/models/Qwen3.6-27B</span></code> — <code class="docutils literal notranslate"><span class="pre">eager</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/models/Qwen3.6-35B-A3B</span></code> — <code class="docutils literal notranslate"><span class="pre">eager</span></code> and <code class="docutils literal notranslate"><span class="pre">graph</span></code></p></li>
+</ul>
+<p>The serve scripts require <code class="docutils literal notranslate"><span class="pre">MODEL_PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">PORT</span></code>. Their served model name uses
+<code class="docutils literal notranslate"><span class="pre">SERVED_MODEL_NAME</span></code> when set and otherwise falls back to <code class="docutils literal notranslate"><span class="pre">MODEL_PATH</span></code>. <code class="docutils literal notranslate"><span class="pre">run_test.sh</span></code> requires <code class="docutils literal notranslate"><span class="pre">PORT</span></code>
+plus either <code class="docutils literal notranslate"><span class="pre">SERVED_MODEL_NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">MODEL_PATH</span></code>. Useful environment overrides are
+<code class="docutils literal notranslate"><span class="pre">TENSOR_PARALLEL_SIZE</span></code>, <code class="docutils literal notranslate"><span class="pre">MAX_MODEL_LEN</span></code>, and <code class="docutils literal notranslate"><span class="pre">SERVER_PID_FILE</span></code>. <code class="docutils literal notranslate"><span class="pre">run_test.sh</span></code> also supports
+<code class="docutils literal notranslate"><span class="pre">BASE_URL</span></code>, <code class="docutils literal notranslate"><span class="pre">SERVICE_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEST_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">SERVER_PID_FILE</span></code>, and <code class="docutils literal notranslate"><span class="pre">RESULTS_DIR</span></code>.</p>
+<p>You may use a custom command instead of <code class="docutils literal notranslate"><span class="pre">run_serve.sh</span></code>. It must expose an OpenAI-compatible
+endpoint, serve the model as <code class="docutils literal notranslate"><span class="pre">qwen</span></code>, and allow local images from this directory. For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>vllm<span class="w"> </span>serve<span class="w"> </span>/models/Qwen3.6-27B<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--served-model-name<span class="w"> </span>/models/Qwen3.6-27B<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">8000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tensor-parallel-size<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-model-len<span class="w"> </span><span class="m">32768</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--allowed-local-media-path<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/images"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--trust-remote-code<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enforce-eager
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--enforce-eager</span></code> for the eager run and remove it for the graph run, then run
+<code class="docutils literal notranslate"><span class="pre">MODEL_PATH=/path/to/model</span> <span class="pre">PORT=8000</span> <span class="pre">./run_test.sh</span></code> against each service. Both runs are mandatory
+even though the test client does not need to know the execution mode.</p>
+<p>Each pytest file or individual case can also be run directly. <code class="docutils literal notranslate"><span class="pre">PORT</span></code> and at least one of
+<code class="docutils literal notranslate"><span class="pre">SERVED_MODEL_NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">MODEL_PATH</span></code> are required. The result label uses <code class="docutils literal notranslate"><span class="pre">MODEL_PATH</span></code> when available
+and otherwise uses <code class="docutils literal notranslate"><span class="pre">SERVED_MODEL_NAME</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span>pytest<span class="w"> </span>-sv<span class="w"> </span>test_text.py
+<span class="nv">MODEL_PATH</span><span class="o">=</span>/models/Qwen3.6-27B<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span>pytest<span class="w"> </span>-sv<span class="w"> </span>test_image.py::test_image_single
+</pre></div>
+</div>
+</section>
+<section id="results-and-quality-checks">
+<h2>Results and quality checks<a class="headerlink" href="#results-and-quality-checks" title="Link to this heading">#</a></h2>
+<p>Each pytest case writes one JSON file under <code class="docutils literal notranslate"><span class="pre">results/MODEL/port-PORT/SCENARIO.json</span></code>. Use different
+ports for the eager and graph services when both result sets must be retained; reusing a port
+overwrites that model and port’s previous result. A two-model, two-port matrix contains 20 JSON
+files. Every file contains the exact inputs, API outputs, timing, per-response checks, and a
+pass/fail summary. On failure, a concise request-level error summary is also printed to the
+terminal.</p>
+<p>Responses must contain the expected semantic answer and must not contain empty output, <code class="docutils literal notranslate"><span class="pre">!!!</span></code>,
+mojibake, control characters, suspicious character runs, or repeated words or phrases. The detailed
+LLM introduction must also contain at least 256 characters. Number words and digits are treated as
+equivalent.</p>
+<p>Regenerate the image fixtures with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>generate_images.py
+</pre></div>
 </div>
 </section>
 </section>
@@ -777,20 +735,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="getting-started.html"
+       href="run-inference-task.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Getting Started</p>
+        <p class="prev-next-title">Run an inference task</p>
       </div>
     </a>
     <a class="right-next"
-       href="install.html"
+       href="../dispatch_user_guide/dispatch-user-guide.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Install software for running an inference task</p>
+        <p class="prev-next-title">Operator dispatch user guide</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -812,9 +770,9 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-models">Supported models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-matrix">Test matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-gate">Run the gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-quality-checks">Results and quality checks</a></li>
 </ul>
   </nav></div>
 

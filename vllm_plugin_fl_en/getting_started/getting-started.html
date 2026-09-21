@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for installing vllm-plugin-FL and guides you through installing vllm, vllm-plugin-FL on different hardware platforms, and running a inference task. Requirements- Software Requirements, Supported hardware platforms, Verified configurations (FlagOS 2.2-RC0), Sup..." />
+<meta property="og:description" content="This section covers the requirements for installing vllm-plugin-FL and guides you through installing vllm, vllm-plugin-FL on different hardware platforms, and running a inference task. Requirements- Software Requirements, Supported hardware platforms, Supported models., Install software for runni..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for installing vllm-plugin-FL and guides you through installing vllm, vllm-plugin-FL on different hardware platforms, and running a inference task. Requirements- Software Requirements, Supported hardware platforms, Verified configurations (FlagOS 2.2-RC0), Sup..." />
+<meta name="description" content="This section covers the requirements for installing vllm-plugin-FL and guides you through installing vllm, vllm-plugin-FL on different hardware platforms, and running a inference task. Requirements- Software Requirements, Supported hardware platforms, Supported models., Install software for runni..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started &#8212; VLLM-Plugin-FL Documentation</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.1b33d773-821a-425f-8986-6315a167b184.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.b87f600c-bb85-41d2-8374-19eef9cdf6ab.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -379,7 +379,7 @@
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install software for running an inference task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="run-inference-task.html">Run an inference task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html">Qwen2.5-1.5B inference on Iluvatar BI-V150</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adaptation-gate.html">Adaptation gate</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator dispatch user guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -554,7 +554,6 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#software-requirements">Software Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#supported-hardware-platforms">Supported hardware platforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#verified-configurations-flagos-2-2-rc0">Verified configurations (FlagOS 2.2-RC0)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#supported-models">Supported models</a></li>
 </ul>
 </li>
@@ -569,17 +568,10 @@
 <li class="toctree-l2"><a class="reference internal" href="run-inference-task.html#run-a-serving-inference-task">Run a serving inference task</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="example-qwen2.5-bv150.html">Qwen2.5-1.5B inference on Iluvatar BI-V150</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#contents">Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#model-overview">1. Model overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#environment-requirements">2. Environment requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#installation">3. Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#model-download">4. Model download</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#inference-scripts">5. Inference scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#running-instructions">6. Running instructions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#parameter-tuning">7. Parameter tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#benchmark-performance">8. Benchmark performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-qwen2.5-bv150.html#faq">9. FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaptation-gate.html">Adaptation gate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adaptation-gate.html#test-matrix">Test matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adaptation-gate.html#run-the-gate">Run the gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adaptation-gate.html#results-and-quality-checks">Results and quality checks</a></li>
 </ul>
 </li>
 </ul>

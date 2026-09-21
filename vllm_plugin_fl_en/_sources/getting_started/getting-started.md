@@ -8,6 +8,7 @@ This section covers the requirements for installing vllm-plugin-FL and guides yo
 requirements.md
 install.md
 run-inference-task.md
+adaptation-gate.md
 example-qwen2.5-bv150.md
 
 ```
