@@ -35,10 +35,12 @@ Pick the branch that matches your vLLM version; the branch and the vLLM version 
 
 2. Install vllm-plugin-FL
 
-    2.1 Clone the repository:
+    2.1 Clone the repository, using the branch that matches your vLLM version (see [Version compatibility](#version-compatibility)):
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/vllm-plugin-FL
+    git clone -b main https://github.com/flagos-ai/vllm-plugin-FL
+    cd vllm-plugin-FL
+    # for vLLM 0.20.2, use: git clone -b release/0.2 https://github.com/flagos-ai/vllm-plugin-FL
     ```
 
     2.2 install
@@ -46,7 +48,6 @@ Pick the branch that matches your vLLM version; the branch and the vLLM version 
     By default vllm-plugin-FL installs as a Python-only package:
 
     ```{code-block} shell
-    cd vllm-plugin-FL
     pip install --no-build-isolation .
     # or editable install
     pip install --no-build-isolation -e .
@@ -128,7 +129,7 @@ If there are multiple plugins in the current environment, you can specify use vl
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.6.1rc1+ascend3.5 $RES
+    python3 -m pip install flagtree==0.6.1+ascend3.5 $RES
     ```
 
     For other chips, use the matching FlagTree build (e.g., `flagtree==0.6.1+iluvatar3.6`, `flagtree==0.6.1+metax3.6`).
@@ -168,6 +169,10 @@ export USE_FLAGGEMS=0
 ## Install from docker image
 
 This section covers running vllm-plugin-FL using pre-built Docker images.
+
+```{note}
+The commands below use the vLLM 0.24.0 images and the FlagOS 2.2 release stack. For the vLLM 0.20.2 images, select the matching image from the FlagOS resource download page.
+```
 
 ### Common `docker run` / `docker exec` conventions
 
@@ -235,6 +240,14 @@ docker run -it --name vllm-hygon-0240 \
 docker exec -it vllm-hygon-0240 bash
 ```
 
+Before starting a service, install the FlagGems version used for the verification:
+
+```{code-block} shell
+git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
+cd FlagGems
+pip install --no-build-isolation -e .
+```
+
 | Platform | Image | Contents |
 |----------|-------|----------|
 | Alibaba PPU | `egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508` | PPU SDK 2.0.0-715aa1, torch 2.10.0, vLLM 0.19.0 (replaced by an `empty` 0.24.0 source build in the guide) |
@@ -244,7 +257,7 @@ docker exec -it vllm-hygon-0240 bash
 | Tsingmicro TX8110 | `harbor.baai.ac.cn/plugin/tsingmicro001-gems4.2.1-treenone-triton3.6.0-cx0.1.0-plugin0.2.0-vllm0.20.2-cp310-pt211-x64-v260604163331.01:202607130736` | FlagGems 4.2.1, Triton 3.6.0, FlagCX 0.1.0, plugin 0.2.0, vLLM 0.20.2, Python 3.10, torch 2.11.0 |
 | Enflame ZIXIAOC200 | `harbor.baai.ac.cn/plugin/enflame001-gems5.3.1-treenone-triton3.6.0-cxnone-plugin0.2.1-vllm0.20.2-cp312-pt211-x64-1.10.6:202608281710` | FlagGems 5.3.1, Triton 3.6.0, plugin 0.2.1, vLLM 0.20.2, Python 3.12, torch 2.11.0 |
 | Sunrise S2 | `harbor.baai.ac.cn/plugin/sunrise001-gems5.3.4-tree0.6.0_sunrise3.6-cx0.13.0-plugin0.2.1-vllm0.20.2_flagos-cp310-pt211-x64-v0.25.0:202608311648` | FlagGems 5.3.4, FlagTree 0.6.0 (sunrise 3.6), FlagCX 0.13.0, plugin 0.2.1, vLLM 0.20.2+flagos, Python 3.10, torch 2.11.0 |
-| Kunlunxin P800 | `harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821` | xre 5.37.1 runtime base image for the vLLM 0.20.2 + plugin 0.2.0-rc0 source build |
+| Kunlunxin P800 | `harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821` | xre 5.37.1 runtime base image for the vLLM 0.20.2 + plugin 0.2.0 source build |
 | Hygon DCU | `harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6` | DTK 26.04 base image (vLLM 0.20.0 Hygon build) used for the 0.20.2/0.24.0 `empty` source builds |
 | MetaX C550 | `cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64` | MACA 3.7.0 image, torch 2.8.0+metax, Python 3.12; the image vLLM is replaced by an `empty` 0.24.0 source build |
 | Ascend 910c | `quay.io/ascend/vllm-ascend:v0.20.2rc1-a3` | CANN 9.0.0 Ascend image used for the 0.20.2 `empty` source build |
@@ -252,35 +265,19 @@ docker exec -it vllm-hygon-0240 bash
 MetaX and Hygon require device passthrough rather than `--gpus all`; for example, on MetaX:
 
 ```{code-block} shell
+IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-metax-maca3.7.2.1:2.1.2-0.2.1_g5c511da.d20260901
+
 docker run -d \
   --name metax-vllm-024-plugin-030 \
   --network host --ipc host --shm-size 64g \
   --device /dev/dri:/dev/dri:rwm \
   --device /dev/mxcd:/dev/mxcd:rwm \
   -v /data/models:/models \
-  cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64 \
-  sleep infinity
+  $IMG sleep infinity
 ```
 
 ```{note}
-These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release candidate, replace vLLM with the `empty` v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in [Install from source](#install-from-source). For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides linked from the FlagOS resource download page.
-```
-
-### SVT Full-Stack Test Images (v0.2.0-rc2)
-
-Pre-built SVT images with full FlagOS stack:
-
-| Platform | Image | Contents |
-|----------|-------|----------|
-| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt` | vllm 0.20.2, FlagGems 5.3.0-rc2.post1, FlagTree 3.6.0, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.11.0+cu130 |
-| Hygon DCU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt` | vllm 0.20.0, FlagGems 5.3.0-rc2.post1, FlagTree 0.5.0-rc2.post1+hcu, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.10.0+das |
-
-```bash
-# NVIDIA SVT
-docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt
-
-# Hygon DCU SVT
-docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt
+These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the `empty` v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in [Install from source](#install-from-source). For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides linked from the FlagOS resource download page.
 ```
 
 ### Hygon DCU

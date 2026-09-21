@@ -33,10 +33,12 @@
 
 2. 安装 vllm-plugin-FL
 
-    2.1 克隆仓库：
+    2.1 克隆仓库，分支需与 vLLM 版本匹配（见[版本兼容性](#版本兼容性)）：
 
     ```{code-block} shell
-    git clone https://github.com/flagos-ai/vllm-plugin-FL
+    git clone -b main https://github.com/flagos-ai/vllm-plugin-FL
+    cd vllm-plugin-FL
+    # 若使用 vLLM 0.20.2，请改用：git clone -b release/0.2 https://github.com/flagos-ai/vllm-plugin-FL
     ```
 
     2.2 安装
@@ -44,7 +46,6 @@
     默认情况下，vllm-plugin-FL 以纯 Python 包形式安装：
 
     ```{code-block} shell
-    cd vllm-plugin-FL
     pip install --no-build-isolation .
     # 或可编辑安装
     pip install --no-build-isolation -e .
@@ -60,15 +61,15 @@
 
     该步骤会构建并安装 `vllm_fl._C`，为部分 graph/自定义算子路径提供原生 C++ 支持，尤其适用于以 `VLLM_TARGET_DEVICE=empty` 安装 vLLM 的场景。若不设置 `VLLM_VENDOR`，vllm-plugin-FL 将以纯 Python 插件形式安装，跳过原生扩展。
 
-4. 安装 [FlagGems](https://flagos-ai.github.io/FlagGems/getting-started/install/)
+3. 安装 [FlagGems](https://flagos-ai.github.io/FlagGems/getting-started/install/)
 
-    4.1 安装构建依赖
+    3.1 安装构建依赖
 
     ```{code-block} shell
     pip install -U scikit-build-core==0.11 pybind11 ninja cmake
     ```
 
-    4.2 安装 FlagGems
+    3.2 安装 FlagGems
 
     ```{code-block} shell
     git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
@@ -83,9 +84,9 @@
     在 Hygon 平台上，依赖 FlagGems [PR #3477](https://github.com/flagos-ai/FlagGems/pull/3477)。
     ```
 
-5. （可选）安装 [FlagCX](https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation)
+4. （可选）安装 [FlagCX](https://github.com/flagos-ai/FlagCX/blob/main/docs/getting_started.md#build-and-installation)
 
-    5.1 克隆仓库：
+    4.1 克隆仓库：
 
     ```{code-block} shell
     git clone -b v0.13.0 https://github.com/flagos-ai/FlagCX.git
@@ -93,19 +94,19 @@
     git submodule update --init --recursive
     ```
 
-    5.2 使用不同标志构建库以适配不同平台：
+    4.2 使用不同标志构建库以适配不同平台：
 
     ```{code-block} shell
     make USE_NVIDIA=1
     ```
 
-    5.3 设置环境变量
+    4.3 设置环境变量
 
     ```{code-block} shell
     export FLAGCX_PATH="$PWD"
     ```
 
-    5.4 安装 FlagCX
+    4.4 安装 FlagCX
 
     ```{code-block} shell
     cd plugin/torch/
@@ -126,7 +127,7 @@
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.6.1rc1+ascend3.5 $RES
+    python3 -m pip install flagtree==0.6.1+ascend3.5 $RES
     ```
 
     其他芯片请使用对应的 FlagTree 构建（例如 `flagtree==0.6.1+iluvatar3.6`、`flagtree==0.6.1+metax3.6`）。
@@ -166,6 +167,10 @@ export USE_FLAGGEMS=0
 ## 从 Docker 镜像安装
 
 本节介绍使用预构建的 Docker 镜像运行 vllm-plugin-FL。
+
+```{note}
+以下命令使用 vLLM 0.24.0 镜像与 FlagOS 2.2 发布技术栈。若需改用 vLLM 0.20.2 镜像，请从 FlagOS 资源下载页选择对应镜像。
+```
 
 ### docker run 与 docker exec 通用写法
 
@@ -233,6 +238,14 @@ docker run -it --name vllm-hygon-0240 \
 docker exec -it vllm-hygon-0240 bash
 ```
 
+启动服务前，安装验证所用的 FlagGems 版本：
+
+```{code-block} shell
+git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
+cd FlagGems
+pip install --no-build-isolation -e .
+```
+
 | 平台 | 镜像 | 内容 |
 |----------|-------|----------|
 | 阿里 PPU | `egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508` | PPU SDK 2.0.0-715aa1、torch 2.10.0、vLLM 0.19.0（指南中替换为 `empty` 0.24.0 源码编译版） |
@@ -242,7 +255,7 @@ docker exec -it vllm-hygon-0240 bash
 | 清微智能 TX8110 | `harbor.baai.ac.cn/plugin/tsingmicro001-gems4.2.1-treenone-triton3.6.0-cx0.1.0-plugin0.2.0-vllm0.20.2-cp310-pt211-x64-v260604163331.01:202607130736` | FlagGems 4.2.1、Triton 3.6.0、FlagCX 0.1.0、plugin 0.2.0、vLLM 0.20.2、Python 3.10、torch 2.11.0 |
 | 燧原 ZIXIAOC200 | `harbor.baai.ac.cn/plugin/enflame001-gems5.3.1-treenone-triton3.6.0-cxnone-plugin0.2.1-vllm0.20.2-cp312-pt211-x64-1.10.6:202608281710` | FlagGems 5.3.1、Triton 3.6.0、plugin 0.2.1、vLLM 0.20.2、Python 3.12、torch 2.11.0 |
 | 曦望 Sunrise S2 | `harbor.baai.ac.cn/plugin/sunrise001-gems5.3.4-tree0.6.0_sunrise3.6-cx0.13.0-plugin0.2.1-vllm0.20.2_flagos-cp310-pt211-x64-v0.25.0:202608311648` | FlagGems 5.3.4、FlagTree 0.6.0（sunrise 3.6）、FlagCX 0.13.0、plugin 0.2.1、vLLM 0.20.2+flagos、Python 3.10、torch 2.11.0 |
-| 昆仑芯 P800 | `harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821` | 用于 vLLM 0.20.2 + plugin 0.2.0-rc0 源码编译的 xre 5.37.1 运行时基础镜像 |
+| 昆仑芯 P800 | `harbor.baai.ac.cn/flagos-app/vllm0.20.2-kunlunxin-xre5.37.1:2.1.2-0.2.1_g8236c0a.d20260821` | 用于 vLLM 0.20.2 + plugin 0.2.0 源码编译的 xre 5.37.1 运行时基础镜像 |
 | 海光 DCU | `harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6` | 用于 0.20.2/0.24.0 `empty` 源码编译的 DTK 26.04 基础镜像（含海光 vLLM 0.20.0 构建） |
 | 沐曦 MetaX C550 | `cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64` | MACA 3.7.0 镜像、torch 2.8.0+metax、Python 3.12；镜像内 vLLM 会被 `empty` 0.24.0 源码编译版替换 |
 | 昇腾 Ascend 910c | `quay.io/ascend/vllm-ascend:v0.20.2rc1-a3` | 用于 0.20.2 `empty` 源码编译的 CANN 9.0.0 昇腾镜像 |
@@ -250,35 +263,19 @@ docker exec -it vllm-hygon-0240 bash
 沐曦与海光需要设备直通而非 `--gpus all`，例如沐曦：
 
 ```{code-block} shell
+IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-metax-maca3.7.2.1:2.1.2-0.2.1_g5c511da.d20260901
+
 docker run -d \
   --name metax-vllm-024-plugin-030 \
   --network host --ipc host --shm-size 64g \
   --device /dev/dri:/dev/dri:rwm \
   --device /dev/mxcd:/dev/mxcd:rwm \
   -v /data/models:/models \
-  cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64 \
-  sleep infinity
+  $IMG sleep infinity
 ```
 
 ```{note}
-这些镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布候选版，请按[从源代码安装](#从源代码安装)将 vLLM 替换为 `empty` v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见 FlagOS 资源下载页链接的厂商测试手册。
-```
-
-### SVT 全栈测试镜像（v0.2.0-rc2）
-
-预构建的 SVT 全栈测试镜像：
-
-| 平台 | 镜像 | 内容 |
-|----------|-------|----------|
-| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt` | vllm 0.20.2, FlagGems 5.3.0-rc2.post1, FlagTree 3.6.0, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.11.0+cu130 |
-| 海光 DCU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt` | vllm 0.20.0, FlagGems 5.3.0-rc2.post1, FlagTree 0.5.0-rc2.post1+hcu, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.10.0+das |
-
-```bash
-# NVIDIA SVT
-docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt
-
-# 海光 DCU SVT
-docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt
+这些镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布版，请按[从源代码安装](#从源代码安装)将 vLLM 替换为 `empty` v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见 FlagOS 资源下载页链接的厂商测试手册。
 ```
 
 ### Hygon DCU
