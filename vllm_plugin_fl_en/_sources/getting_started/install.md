@@ -1,8 +1,6 @@
 # Install software for running an inference task
 
-
 You can download the docker images for supported hardwares from the [FlagOS main page](https://flagos.io/Home?spm=5176.28103460.0.0.69662988ZUbtpg). Just simply click the **Download** button, use the `docker pull` command to download the docker image, and then use the `docker run` and `docker exec` commands to start the container and enter it.
-
 
 ## Install from source
 
@@ -121,7 +119,7 @@ Pick the branch that matches your vLLM version; the branch and the vLLM version 
     [xxx] should be selected according to the current platform, e.g., nvidia, ascend, etc.
     ```
 
-If there are multiple plugins in the current environment, you can specify use vllm-plugin-fl via VLLM_PLUGINS='fl'.
+If there are multiple plugins in the current environment, you can select vllm-plugin-fl with VLLM_PLUGINS='fl'.
 
 ### Additional setup for Huawei Ascend
 
@@ -144,15 +142,13 @@ If there are multiple plugins in the current environment, you can specify use vl
 
     Ascend requires eager execution. Add `enforce_eager=True` to the `LLM` constructor or pass `--enforce-eager` on the command line.
 
-### （Optional）Additional setup for CUDA
+### (Optional) Additional setup for CUDA
 
 This section illustrates how to run an inference task with CUDA through setting environment variables.
 
 For operator dispatch environment variables, see [Environment variables](../dispatch_user_guide/configure-backend-selection.md/#environment-variables).
 
 #### Use CUDA communication library
-
-This section demonstrates how to run an inference task with CUDA by setting environment variables.
 
 ```{code-block} shell
 unset FLAGCX_PATH
@@ -169,10 +165,6 @@ export USE_FLAGGEMS=0
 ## Install from docker image
 
 This section covers running vllm-plugin-FL using pre-built Docker images.
-
-```{note}
-The commands below use the vLLM 0.24.0 images and the FlagOS 2.2 release stack. For the vLLM 0.20.2 images, select the matching image from the FlagOS resource download page.
-```
 
 ### Common `docker run` / `docker exec` conventions
 
@@ -225,29 +217,6 @@ Conventions shared by all vendors:
 - Container names are `<vendor>-vllm-<version>`, optionally suffixed with `-plugin-<branch>` (for example `hygon-vllm-024-plugin-030`). The name passed to `docker exec` must be identical to the `--name` given to `docker run`.
 - The command after `$IMG` decides how the container stays alive: `bash` for an interactive container, `sleep infinity` (or `tail -f /dev/null`) for a detached one. In both cases you enter it afterwards with `docker exec -it <name> bash`.
 
-Example, Hygon DCU with the image above:
-
-```{code-block} shell
-docker run -it --name vllm-hygon-0240 \
-  --device /dev/kfd --device /dev/mkfd --device /dev/dri \
-  --group-add video \
-  -v /opt/hyhal:/opt/hyhal \
-  -v /public-nvme:/public-nvme \
-  --security-opt seccomp=unconfined \
-  -e DCU_VISIBLE_DEVICES=all \
-  $IMG bash
-
-docker exec -it vllm-hygon-0240 bash
-```
-
-Before starting a service, install the FlagGems version used for the verification:
-
-```{code-block} shell
-git clone -b v5.3.4 https://github.com/flagos-ai/FlagGems
-cd FlagGems
-pip install --no-build-isolation -e .
-```
-
 | Platform | Image | Contents |
 |----------|-------|----------|
 | Alibaba PPU | `egslingjun-registry.cn-wulanchabu.cr.aliyuncs.com/egslingjun/inference-xpu-pytorch:26.04-v2.1.0-vllm0.19.0-torch2.10-cu130-20260508` | PPU SDK 2.0.0-715aa1, torch 2.10.0, vLLM 0.19.0 (replaced by an `empty` 0.24.0 source build in the guide) |
@@ -262,7 +231,9 @@ pip install --no-build-isolation -e .
 | MetaX C550 | `cr.metax-tech.com/public-ai-release/maca/vllm-metax:0.20.0-maca.ai3.7.0.107-torch2.8-py312-ubuntu22.04-amd64` | MACA 3.7.0 image, torch 2.8.0+metax, Python 3.12; the image vLLM is replaced by an `empty` 0.24.0 source build |
 | Ascend 910c | `quay.io/ascend/vllm-ascend:v0.20.2rc1-a3` | CANN 9.0.0 Ascend image used for the 0.20.2 `empty` source build |
 
-MetaX and Hygon require device passthrough rather than `--gpus all`; for example, on MetaX:
+The commands below use the vLLM 0.24.0 images and the FlagOS 2.2 release stack. For the vLLM 0.20.2 images, select the matching image from the FlagOS resource download page.
+
+Example, MetaX C550:
 
 ```{code-block} shell
 IMG=harbor.baai.ac.cn/flagos-app/vllm0.24.0-metax-maca3.7.2.1:2.1.2-0.2.1_g5c511da.d20260901
@@ -274,10 +245,12 @@ docker run -d \
   --device /dev/mxcd:/dev/mxcd:rwm \
   -v /data/models:/models \
   $IMG sleep infinity
+
+docker exec -it metax-vllm-024-plugin-030 bash
 ```
 
 ```{note}
-These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the `empty` v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in [Install from source](#install-from-source). For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides linked from the FlagOS resource download page.
+These images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the `empty` v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in [Install from source](#install-from-source). For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides.
 ```
 
 ### Hygon DCU
@@ -477,10 +450,6 @@ Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).
     vllm serve --model /models/Qwen3-4B --served-model-name qwen --enforce-eager
     ```
 
-    ```{note}
-    Ascend requires eager execution. Add `enforce_eager=True` to the `LLM` constructor or pass `--enforce-eager` on the command line.
-    ```
-
 ### Iluvatar BI-V150
 
 Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).
@@ -542,4 +511,3 @@ For concept related information, see [vllm-plugin-FL Overview](../overview/overv
 For configuration related information, see [Operator dispatch user guide](../dispatch_user_guide/dispatch-user-guide.md).
 
 After installation and optional operator dispatch configuration, you can proceed to [Run an inference task](run-inference-task.md).
-
