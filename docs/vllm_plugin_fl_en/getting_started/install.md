@@ -157,6 +157,7 @@ Pick the branch that matches your vLLM version; the branch and the vLLM version 
 
 If there are multiple plugins in the current environment, you can select vllm-plugin-fl with VLLM_PLUGINS='fl'.
 
+(additional-setup-for-huawei-ascend)=
 ### Additional setup for Huawei Ascend
 
 1. Install [FlagTree](https://resource.flagos.net)
@@ -182,7 +183,7 @@ If there are multiple plugins in the current environment, you can select vllm-pl
 
 This section illustrates how to run an inference task with CUDA through setting environment variables.
 
-For operator dispatch environment variables, see [Environment variables](../dispatch_user_guide/configure-backend-selection.md/#environment-variables).
+For operator dispatch environment variables, see {ref}`Environment variables <environment-variables>`.
 
 #### Use CUDA communication library
 

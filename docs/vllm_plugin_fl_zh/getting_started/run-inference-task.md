@@ -8,8 +8,6 @@
 
 ```python
 from vllm import LLM, SamplingParams
-import torch
-from vllm.config.compilation import CompilationConfig
 
 
 if __name__ == '__main__':
@@ -37,6 +35,7 @@ if __name__ == '__main__':
 | `temperature=0.0` | 使生成变为确定性（贪婪解码）。 |
 | `max_tokens=10` | 每个提示词的输出长度硬限制。 |
 
+(run-a-serving-inference-task)=
 ## 运行服务推理任务
 
 服务推理启动一个长期运行的 vLLM API 服务器，将模型保持在内存中，通过兼容 OpenAI 的 HTTP 端点接受请求——非常适合在线服务和并发客户端。

@@ -18,7 +18,8 @@
 | 芯片厂商 | 芯片型号 | v0.1.0（vLLM 0.13.0） | v0.2.0（vLLM 0.20.0 或 vLLM 0.20.2） | v0.3.0（vLLM 0.24.0） | 备注 |
 |-------------|------------|----------------------|----------------------|----------------------|-------|
 | NVIDIA | — | 支持 | 支持 | 支持 | |
-| Ascend | 910c | 支持 | — | 支持 | 需要 FlagTree 和 [eager 执行](install.md#华为-ascend-额外设置) |
+| ARM64 CPU | — | — | — | 支持 | ARM64 主机上的纯 CPU 推理 |
+| Ascend | 910c | 支持 | — | 支持 | 需要 FlagTree 和 {ref}`eager 执行 <additional-setup-for-huawei-ascend>` |
 | MetaX | MACA C550 | 支持 | — | 支持 | MetaX C550 已适配 vLLM 0.24.0 |
 | T-Head | PPU | 支持 | — | 支持 | |
 | Iluvatar | BI-V150 | 支持 | — | 支持 | BI-V150 已适配 vLLM 0.24.0；启用 CUDA graph |
@@ -26,6 +27,7 @@
 | Tsingmicro | TX8110 | 合并中 | — | 支持 | 上游仍在推进 |
 | Hygon DCU | BW1000 | 支持 | 支持 | 支持 | 需要 DTK 容器（参见[安装指南](install.md)） |
 | Sunrise | S2 | 支持 | — | 支持 | |
+| 燧原 | S60 | — | — | 支持 | 燧原 GCU 后端（`gcu`）；容器环境配置参见安装指南 |
 | 阿里 PPU | PPU | — | — | 支持 | empty-mode 支持；FlagTree PPU backend 源码编译仍在进行中 |
 
 ## 支持的模型
@@ -42,6 +44,8 @@
 | Qwen3.5-35B-A3B | 支持 | [qwen3_5_offline_inference.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/qwen3_5_offline_inference.py) |
 | BAAI/bge-m3 | 支持 | [bge_m3.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/vllm_fl/models/bge_m3.py) |
 | MiniMax-M2.7 | 支持 | [minimax_m27_offline_inference.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/minimax_m27_offline_inference.py) |
-| Qwen3.6-35B-A3B | 支持 | [文本 + 图像推理/服务](run-inference-task.md#运行服务推理任务) |
-| Qwen3.6-27B | 支持 | [文本 + 图像推理/服务](run-inference-task.md#运行服务推理任务) |
-| Qwen2.5-1.5B | 支持 | [Iluvatar BI-V150 示例](example-qwen2.5-bv150.md) |
+| Qwen3.6-35B-A3B | 支持 | {ref}`文本 + 图像推理/服务 <run-a-serving-inference-task>` |
+| Qwen3.6-27B | 支持 | {ref}`文本 + 图像推理/服务 <run-a-serving-inference-task>` |
+| Qwen2.5-1.5B | 支持 | [运行推理任务](run-inference-task.md) |
+
+这些模型使用的调度 API 参见[调度 API 参考](../reference/dispatch-api-reference.md)。插件分支与 vLLM 版本的对应关系参见[安装指南](install.md)中的版本表。

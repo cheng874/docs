@@ -5,7 +5,7 @@
 ## v0.3.0
 
 
-vllm-plugin-FL v0.3.0 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) 或 [vllm v0.20.0](https://github.com/vllm-project/vllm/tree/v0.20.0)。
+vllm-plugin-FL v0.3.0 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) 或 [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)。
 
 
 - **新增功能**
