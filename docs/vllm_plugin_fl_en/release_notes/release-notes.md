@@ -5,7 +5,7 @@ This section includes the vllm-plugin-FL release information.
 ## v0.3.0
 
 
-vllm-plugin-FL v0.3.0 requires [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) or [vllm v0.20.0](https://github.com/vllm-project/vllm/tree/v0.20.0).
+vllm-plugin-FL v0.3.0 requires [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) or [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2).
 
 
 - **Added Features**

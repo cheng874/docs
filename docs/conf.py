@@ -377,6 +377,8 @@ multiproject_projects = {
         "config": {
             "project": "VLLM-Plugin-FL Documentation",
             "html_title": "VLLM-Plugin-FL Documentation",
+            # 让 h1-h3 标题生成稳定的锚点，跨页 #anchor 引用才可解析
+            "myst_heading_anchors": 3,
         },
     },
     "transformer_engine_fl_en": {
@@ -536,6 +538,8 @@ multiproject_projects = {
         "config": {
             "project": "VLLM-Plugin-FL 文档中心",
             "html_title": "VLLM-Plugin-FL 文档中心", 
+            # 让 h1-h3 标题生成稳定的锚点，跨页 #anchor 引用才可解析
+            "myst_heading_anchors": 3,
         },
     },
     "transformer_engine_fl_zh": {

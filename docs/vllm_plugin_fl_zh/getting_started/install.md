@@ -157,6 +157,7 @@ docker exec -it <容器名> bash
 
 如果当前环境中有多个插件，可以通过 VLLM_PLUGINS='fl' 选择使用 vllm-plugin-fl。
 
+(additional-setup-for-huawei-ascend)=
 ### 华为 Ascend 额外设置
 
 1. 安装 [FlagTree](https://resource.flagos.net)
@@ -182,7 +183,7 @@ docker exec -it <容器名> bash
 
 本节说明如何通过设置环境变量使用 CUDA 运行推理任务。
 
-算子调度环境变量请参见 [环境变量](../dispatch_user_guide/configure-backend-selection.md/#environment-variables)。
+算子调度环境变量请参见 [环境变量]{ref}`environment-variables`。
 
 #### 使用 CUDA 通信库
 

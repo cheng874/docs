@@ -15,7 +15,7 @@ result = fn(x, residual, weight, epsilon)
 
 ## Use the Manager
 
-```{code-block}python
+```{code-block} python
 from vllm_fl.dispatch import get_default_manager
 
 manager = get_default_manager()
