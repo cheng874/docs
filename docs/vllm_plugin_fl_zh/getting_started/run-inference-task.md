@@ -1,6 +1,6 @@
 # 运行推理任务
 
-安装好 vLLM 和 vllm-plugin-FL 后，您可以通过两种方式运行推理：离线批量推理（在 Python 脚本中直接加载模型）或服务推理（启动 API 服务器并发送请求）。请选择适合您用例的方式。
+[安装](install.md)好 vLLM 和 vllm-plugin-FL 后，您可以通过两种方式运行推理：离线批量推理（在 Python 脚本中直接加载模型）或服务推理（启动 API 服务器并发送请求）。请选择适合您用例的方式。
 
 ## 运行离线批量推理
 
@@ -137,3 +137,5 @@ print("Chat response:", chat_response)
 ```
 
 其他模型的示例请参见 [examples 目录](https://github.com/flagos-ai/vllm-plugin-FL/tree/main/examples)。
+
+要针对所服务的模型验证加速器适配或 vLLM 插件升级，请运行[适配门禁测试](adaptation-gate.md)。

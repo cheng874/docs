@@ -1,6 +1,6 @@
 # Run an inference task
 
-With vLLM and vllm-plugin-FL installed, you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.
+With vLLM and vllm-plugin-FL [installed](install.md), you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.
 
 ## Run an offline batched inference
 
@@ -137,3 +137,5 @@ print("Chat response:", chat_response)
 ```
 
 For examples with other models, see the [examples directory](https://github.com/flagos-ai/vllm-plugin-FL/tree/main/examples).
+
+To validate accelerator adaptation or a vLLM plugin upgrade against the served models, run the [adaptation gate](adaptation-gate.md).

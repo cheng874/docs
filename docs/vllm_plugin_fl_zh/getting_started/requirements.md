@@ -7,9 +7,9 @@
 | Python | 3.10 - 3.13 | 3.10 - 3.13 | 3.10 - 3.13 | 必需 |
 | PyTorch | >= 2.7.1 | >= 2.7.1 | >= 2.7.1 | 必需 |
 | vLLM | 0.13.0 | 0.20.2 | 0.24.0 | NVIDIA 使用官方发布；非 NVIDIA 需以 `VLLM_TARGET_DEVICE=empty` 从源码安装 |
-| FlagGems | >= v5.0.0 | >= v5.0.0 | v5.3.4（源码安装）；支持 >= v5.0.0 | 算子调度必需。[从源代码安装](install.md)路径固定使用 `v5.3.4`（与上游 README 一致） |
+| FlagGems | >= v5.0.0 | >= v5.0.0 | v5.3.4（源码安装）；支持 >= v5.0.0 | 算子调度必需。[安装](install.md)步骤固定使用 `v5.3.4`（与上游 README 一致） |
 | FlagCX | v0.13.0 | v0.13.0 | v0.13.0 | 可选，用于多芯片通信 |
-| FlagTree | 0.4.0 | 0.4.0 | 0.7.0-triton3.6 | 从 `0.7.0` 发版分支配合对应厂商 backend 源码编译（见[从源代码安装](install.md)）。昇腾使用 `0.7.0-triton3.5`；清微智能使用 `0.7.0-triton3.3` |
+| FlagTree | 0.4.0 | 0.4.0 | 0.7.0-triton3.6 | 从 `0.7.0` 发版分支配合对应厂商 backend 源码编译（见[安装](install.md)步骤）。昇腾使用 `0.7.0-triton3.5`；清微智能使用 `0.7.0-triton3.3` |
 
 ## 支持的硬件平台
 
@@ -18,13 +18,13 @@
 | 芯片厂商 | 芯片型号 | v0.1.0（vLLM 0.13.0） | v0.2.0（vLLM 0.20.0 或 vLLM 0.20.2） | v0.3.0（vLLM 0.24.0） | 备注 |
 |-------------|------------|----------------------|----------------------|----------------------|-------|
 | NVIDIA | — | 支持 | 支持 | 支持 | |
-| Ascend | 910c | 支持 | — | 支持 | 需要 FlagTree 和 eager 执行 |
+| Ascend | 910c | 支持 | — | 支持 | 需要 FlagTree 和 [eager 执行](install.md#华为-ascend-额外设置) |
 | MetaX | MACA C550 | 支持 | — | 支持 | MetaX C550 已适配 vLLM 0.24.0 |
 | T-Head | PPU | 支持 | — | 支持 | |
 | Iluvatar | BI-V150 | 支持 | — | 支持 | BI-V150 已适配 vLLM 0.24.0；启用 CUDA graph |
 | Moore Threads | MTT S5000 | 支持 | — | 支持 | MTT S5000 已适配 vLLM 0.24.0 |
 | Tsingmicro | TX8110 | 合并中 | — | 支持 | 上游仍在推进 |
-| Hygon DCU | BW1000 | 支持 | 支持 | 支持 | 需要 DTK 容器（参见安装指南） |
+| Hygon DCU | BW1000 | 支持 | 支持 | 支持 | 需要 DTK 容器（参见[安装指南](install.md)） |
 | Sunrise | S2 | 支持 | — | 支持 | |
 | 阿里 PPU | PPU | — | — | 支持 | empty-mode 支持；FlagTree PPU backend 源码编译仍在进行中 |
 
@@ -42,6 +42,6 @@
 | Qwen3.5-35B-A3B | 支持 | [qwen3_5_offline_inference.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/qwen3_5_offline_inference.py) |
 | BAAI/bge-m3 | 支持 | [bge_m3.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/vllm_fl/models/bge_m3.py) |
 | MiniMax-M2.7 | 支持 | [minimax_m27_offline_inference.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/minimax_m27_offline_inference.py) |
-| Qwen3.6-35B-A3B | 支持 | [文本 + 图像推理/服务（v0.2.0）](/getting_started/run-inference-task.md#run-a-serving-inference-task) |
-| Qwen3.6-27B | 支持 | [文本 + 图像推理/服务（v0.2.0）](/getting_started/run-inference-task.md#run-a-serving-inference-task) |
+| Qwen3.6-35B-A3B | 支持 | [文本 + 图像推理/服务](run-inference-task.md#运行服务推理任务) |
+| Qwen3.6-27B | 支持 | [文本 + 图像推理/服务](run-inference-task.md#运行服务推理任务) |
 | Qwen2.5-1.5B | 支持 | [Iluvatar BI-V150 示例](example-qwen2.5-bv150.md) |

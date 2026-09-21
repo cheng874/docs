@@ -28,4 +28,4 @@ result = fn(query, key, cos, sin, position_ids)
 result = manager.call("silu_and_mul", x)
 ```
 
-For API explanations, see [Dispatch API Reference](<../reference/Dispatch API reference>).
+For API explanations, see [Dispatch API Reference](../reference/dispatch-api-reference.md).
