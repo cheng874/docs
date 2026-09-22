@@ -70,6 +70,8 @@ cd vllm
 VLLM_TARGET_DEVICE=empty pip install -v --no-build-isolation --no-deps .
 ```
 
+若使用 vLLM 0.20.2，请将上述两条命令中的 `v0.24.0` 替换为 `v0.20.2`（见{ref}`版本兼容性 <version-compatibility>`）。
+
 2.2 安装 vllm-plugin-FL
 
 克隆仓库，分支需与 vLLM 版本匹配（见{ref}`版本兼容性 <version-compatibility>`）：

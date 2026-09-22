@@ -70,6 +70,8 @@ cd vllm
 VLLM_TARGET_DEVICE=empty pip install -v --no-build-isolation --no-deps .
 ```
 
+For vLLM 0.20.2, use `v0.20.2` instead of `v0.24.0` in both commands above (see {ref}`Version compatibility <version-compatibility>`).
+
 2.2 Install vllm-plugin-FL
 
 Clone the repository, using the branch that matches your vLLM version (see {ref}`Version compatibility <version-compatibility>`):
