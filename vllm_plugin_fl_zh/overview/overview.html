@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="overview/overview.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="vllm-plugin-FL 是 vLLM 推理/服务框架的插件，构建在 FlagOS 这一统一的开源 AI 系统软件栈之上。vllm-plugin-FL 扩展了 vLLM 在多种硬件环境下的能力与性能。在不改变 vLLM 原有接口和使用方式的前提下，同一条命令即可在不同芯片上运行模型推理/服务。vllm-plugin-FL 可与 FlagOS 的其他组件配合使用，包括统一算子库 FlagGems 、统一通信库 FlagCX 和统一编译器 FlagTree 。 特性, 算子调度机制- 目录结构, 核心概念, 架构概览.." />
+<meta property="og:description" content="vllm-plugin-FL 是 vLLM 推理/服务框架的插件，构建在 FlagOS 这一统一的开源 AI 系统软件栈之上。vllm-plugin-FL 扩展了 vLLM 在多种硬件环境下的能力与性能。在不改变 vLLM 原有接口和使用方式的前提下，同一条命令即可在不同芯片上运行模型推理/服务。vllm-plugin-FL 可与 FlagOS 的其他组件配合使用，包括统一算子库 FlagGems 、统一通信库 FlagCX 和统一编译器 FlagTree 。 vllm-plugin-FL 通过 Docker 镜像安装，随后在目标芯片上把 vLLM 与 FlagOS 的算子库、通信库和编..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="vllm-plugin-FL 是 vLLM 推理/服务框架的插件，构建在 FlagOS 这一统一的开源 AI 系统软件栈之上。vllm-plugin-FL 扩展了 vLLM 在多种硬件环境下的能力与性能。在不改变 vLLM 原有接口和使用方式的前提下，同一条命令即可在不同芯片上运行模型推理/服务。vllm-plugin-FL 可与 FlagOS 的其他组件配合使用，包括统一算子库 FlagGems 、统一通信库 FlagCX 和统一编译器 FlagTree 。 特性, 算子调度机制- 目录结构, 核心概念, 架构概览.." />
+<meta name="description" content="vllm-plugin-FL 是 vLLM 推理/服务框架的插件，构建在 FlagOS 这一统一的开源 AI 系统软件栈之上。vllm-plugin-FL 扩展了 vLLM 在多种硬件环境下的能力与性能。在不改变 vLLM 原有接口和使用方式的前提下，同一条命令即可在不同芯片上运行模型推理/服务。vllm-plugin-FL 可与 FlagOS 的其他组件配合使用，包括统一算子库 FlagGems 、统一通信库 FlagCX 和统一编译器 FlagTree 。 vllm-plugin-FL 通过 Docker 镜像安装，随后在目标芯片上把 vLLM 与 FlagOS 的算子库、通信库和编..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>vllm-plugin-FL 概览 &#8212; VLLM-Plugin-FL 文档中心</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.b84f5459-0db0-4f16-80c3-a51479e3939c.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.cf1fd8eb-958d-4610-9dea-481d682c16f9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
@@ -549,6 +549,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="vllm-plugin-fl">
 <h1>vllm-plugin-FL 概览<a class="headerlink" href="#vllm-plugin-fl" title="Link to this heading">#</a></h1>
 <p>vllm-plugin-FL 是 <a class="reference external" href="https://github.com/vllm-project/vllm">vLLM</a> 推理/服务框架的插件，构建在 <a class="reference external" href="https://flagos.io">FlagOS</a> 这一统一的开源 AI 系统软件栈之上。vllm-plugin-FL 扩展了 vLLM 在多种硬件环境下的能力与性能。在不改变 vLLM 原有接口和使用方式的前提下，同一条命令即可在不同芯片上运行模型推理/服务。vllm-plugin-FL 可与 FlagOS 的其他组件配合使用，包括统一算子库 <a class="reference external" href="https://github.com/flagos-ai/FlagGems">FlagGems</a>、统一通信库 <a class="reference external" href="https://github.com/flagos-ai/FlagCX">FlagCX</a> 和统一编译器 <a class="reference external" href="https://github.com/flagos-ai/FlagTree">FlagTree</a>。</p>
+<p>vllm-plugin-FL 通过 Docker 镜像安装，随后在目标芯片上把 vLLM 与 FlagOS 的算子库、通信库和编译器栈集成起来。安装流程参见<a class="reference internal" href="../getting_started/getting-started.html"><span class="std std-doc">快速入门</span></a>，插件提供的能力参见<a class="reference internal" href="features.html"><span class="std std-doc">特性</span></a>。</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features.html">特性</a></li>
