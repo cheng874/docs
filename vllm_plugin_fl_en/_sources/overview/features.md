@@ -16,10 +16,6 @@ Automatically detects hardware and loads platform-specific configuration. Suppor
 
 Supports built-in vendor backends, external plugin packages via setuptools entry points, and environment-based plugin modules.
 
-- **Runtime compatibility hooks**
-
-Registers runtime compatibility hooks through vLLM's plugin entry points without modifying the installed vLLM package. Model-specific config and model registrations are loaded only for their corresponding architectures, so a plugin upgrade does not require a matching vLLM patch set.
-
 - **Optional native extension**
 
 Building with `VLLM_VENDOR=cuda` installs the `vllm_fl._C` C++ extension required by some graph and custom-op paths, including CUDA-like devices (CUDA and HIP/ROCm) that use PyTorch's CUDA dispatch key. Without it the plugin runs as a Python-only plugin.
