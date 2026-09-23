@@ -16,10 +16,6 @@
 
 支持内置厂商后端、通过 setuptools 入口点的外部插件包，以及基于环境变量的插件模块。
 
-- **运行时兼容钩子**
-
-通过 vLLM 的插件入口点注册运行时兼容钩子，无需修改已安装的 vLLM 包。模型相关的配置与模型注册只在对应架构下加载，因此插件升级不需要配套的 vLLM 补丁集。
-
 - **可选的原生扩展**
 
 使用 `VLLM_VENDOR=cuda` 构建时会安装 `vllm_fl._C` C++ 扩展，部分 graph 与自定义算子路径需要它，包括使用 PyTorch CUDA dispatch key 的 CUDA 类设备（CUDA 与 HIP/ROCm）。不设置时插件以纯 Python 形式安装。
