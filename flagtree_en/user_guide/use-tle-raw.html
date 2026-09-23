@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/use-tle-raw.725a31db-e75b-4766-b5a4-4e97fa4a153b.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/use-tle-raw.e4c1899f-66ce-44a4-bf60-e169987375fd.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/use-tle-raw';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 23, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -568,6 +568,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-cuda-into-llvm-for-maximum-fine-grained-control">Integrate CUDA into LLVM for maximum fine-grained control</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#llvm-route">LLVM route</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-example">Usage example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-communication-with-nvshmem">Multi-GPU communication with NVSHMEM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-flow">Processing flow</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#frontend-cuda-llvm-integration-into-triton-frontend-and-runtime">Frontend: CUDA-LLVM integration into Triton frontend and runtime</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#middle-end-python-to-c-mlir-pass-relationship-and-pass-inheritance">Middle-End: Python to C++, MLIR pass relationship and pass inheritance</a></li>
@@ -713,6 +714,54 @@
 <p><a href="../_images/cuda-side.PNG" data-lightbox="image-set">
 <img alt="alt text" src="../_images/cuda-side.PNG" /></a>
 </p>
+</section>
+<section id="multi-gpu-communication-with-nvshmem">
+<h3>Multi-GPU communication with NVSHMEM<a class="headerlink" href="#multi-gpu-communication-with-nvshmem" title="Link to this heading">#</a></h3>
+<p>NVSHMEM is NVIDIA’s PGAS (Partitioned Global Address Space) communication library for multi-GPU and multi-node programs. It gives every rank a unified address space: a region of memory on each GPU (symmetric memory) is reachable both from the local GPU and directly from other GPUs, so cross-GPU communication can be expressed with ordinary load/store or put/get semantics instead of hand-written point-to-point send/receive logic. It provides both host-side and device-side APIs, and the device-side interfaces can be called from inside a kernel, which makes it a natural fit for all-gather, all-reduce, and fused GEMM-plus-communication patterns. NVSHMEM is used only for NVIDIA GPUs; the distributed primitives of TLE-Lite and TLE-Struct use FlagCX instead of NVSHMEM.</p>
+<p>On top of the CUDA integration, <code class="docutils literal notranslate"><span class="pre">&#64;dialect</span></code> adds the <code class="docutils literal notranslate"><span class="pre">library</span></code> and <code class="docutils literal notranslate"><span class="pre">compiler</span></code> parameters so that NVSHMEM device-side interfaces can be inlined directly into a TLE-Raw kernel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dialect</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span>
+    <span class="n">library</span><span class="o">=</span><span class="s2">"nvshmem"</span><span class="p">,</span>
+    <span class="n">compiler</span><span class="o">=</span><span class="s2">"clang"</span><span class="p">,</span>
+    <span class="n">file</span><span class="o">=</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"simple-shift-device.cu"</span><span class="p">),</span>
+    <span class="n">extern_func_name</span><span class="o">=</span><span class="s2">"simple_shift"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simple_shift</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">library=&quot;nvshmem&quot;</span></code>: enables linking of the NVSHMEM device bitcode (<code class="docutils literal notranslate"><span class="pre">libnvshmem_device.bc</span></code>; for NVSHMEM 3.7 and later with per-SM bitcode the matching <code class="docutils literal notranslate"><span class="pre">.bc</span></code> is selected automatically) and registers the NVSHMEM cumodule init hook on the kernel so that device-side NVSHMEM calls initialize correctly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compiler=&quot;clang&quot;</span></code>: compiles the <code class="docutils literal notranslate"><span class="pre">.cu</span></code> source given by <code class="docutils literal notranslate"><span class="pre">file</span></code> with clang using <code class="docutils literal notranslate"><span class="pre">--cuda-device-only</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span></code> / <code class="docutils literal notranslate"><span class="pre">extern_func_name</span></code>: the same as in the CUDA integration — the device-side source file and the function symbol inside it.</p></li>
+</ul>
+<p>Calling follows the CUDA integration, using <code class="docutils literal notranslate"><span class="pre">tle_raw.call</span></code> from a Triton kernel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@triton</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simple_shift_kernel</span><span class="p">(</span><span class="n">destination_ptr</span><span class="p">):</span>
+    <span class="n">tle_raw</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">simple_shift</span><span class="p">,</span> <span class="p">[</span><span class="n">destination_ptr</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The NVSHMEM-related host-side setup is provided by <code class="docutils literal notranslate"><span class="pre">triton.experimental.tle.raw.nvshmem.utils</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">init_torch_distributed()</span></code> / <code class="docutils literal notranslate"><span class="pre">init_nvshmem_by_torch_pg(common,</span> <span class="pre">group)</span></code>: initialize torch.distributed and NVSHMEM from a PyTorch process group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_host(source)</span></code> / <code class="docutils literal notranslate"><span class="pre">load_common_host(source=None)</span></code>: compile and load a host-side <code class="docutils literal notranslate"><span class="pre">.cu</span></code> (with <code class="docutils literal notranslate"><span class="pre">nvshmem.h</span></code> and <code class="docutils literal notranslate"><span class="pre">nvshmemx.h</span></code>) and return a library object whose <code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> functions can be called directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tensor_from_pointer(pointer,</span> <span class="pre">shape,</span> <span class="pre">dtype,</span> <span class="pre">device)</span></code>: create a non-owning Torch tensor view over CUDA memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy_on_stream(dst_ptr,</span> <span class="pre">src_ptr,</span> <span class="pre">nbytes,</span> <span class="pre">stream)</span></code> and <code class="docutils literal notranslate"><span class="pre">set_signal_cuda_ptr(signal_ptr,</span> <span class="pre">signal,</span> <span class="pre">stream)</span></code>: on-stream copies and signal pointer setup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">print_perf(...)</span></code> / <code class="docutils literal notranslate"><span class="pre">print_perf_mean(...)</span></code>: aggregate and print performance data per rank.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_nvshmem_device_bc(enabled=True)</span></code> / <code class="docutils literal notranslate"><span class="pre">is_nvshmem_device_bc_enabled()</span></code> / <code class="docutils literal notranslate"><span class="pre">get_nvshmem_extern_libs(arch=None)</span></code>: device bitcode linking switch and external-library query (<code class="docutils literal notranslate"><span class="pre">library=&quot;nvshmem&quot;</span></code> enables it automatically).</p></li>
+</ul>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">NVSHMEM_HOME</span></code> environment variable (or <code class="docutils literal notranslate"><span class="pre">triton.knobs.nvidia.nvshmem_home</span></code>) so that <code class="docutils literal notranslate"><span class="pre">libnvshmem_host.so</span></code> and the device bitcode can be resolved.</p></li>
+<li><p>The examples target sm90 and newer and require <code class="docutils literal notranslate"><span class="pre">world_size</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code>; multi-GPU launches pass the topology through <code class="docutils literal notranslate"><span class="pre">RANK</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_RANK</span></code>, <code class="docutils literal notranslate"><span class="pre">WORLD_SIZE</span></code>, and <code class="docutils literal notranslate"><span class="pre">LOCAL_WORLD_SIZE</span></code>.</p></li>
+</ul>
+<p>Full examples are in <code class="docutils literal notranslate"><span class="pre">python/tutorials/tle/raw/nvshmem/</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">01-simple-shift</span></code>: the minimal NVSHMEM device-side put example, showing the dialect declaration and how host and device sides cooperate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">02-allgather-gemm</span></code>: all-gather GEMM over NVSHMEM (with a benchmark).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">03-gemm-allreduce</span></code>: GEMM plus all-reduce over NVSHMEM multimem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">04-cuda-ipc-allreduce</span></code>: all-reduce over CUDA IPC (with a benchmark), using the CUDA dialect without <code class="docutils literal notranslate"><span class="pre">library=&quot;nvshmem&quot;</span></code>.</p></li>
+</ul>
 </section>
 <section id="processing-flow">
 <h3>Processing flow<a class="headerlink" href="#processing-flow" title="Link to this heading">#</a></h3>
@@ -886,6 +935,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-cuda-into-llvm-for-maximum-fine-grained-control">Integrate CUDA into LLVM for maximum fine-grained control</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#llvm-route">LLVM route</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-example">Usage example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-communication-with-nvshmem">Multi-GPU communication with NVSHMEM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-flow">Processing flow</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#frontend-cuda-llvm-integration-into-triton-frontend-and-runtime">Frontend: CUDA-LLVM integration into Triton frontend and runtime</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#middle-end-python-to-c-mlir-pass-relationship-and-pass-inheritance">Middle-End: Python to C++, MLIR pass relationship and pass inheritance</a></li>
@@ -928,7 +978,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 23, 2026.
   <br/>
 </p>
   </div>
@@ -951,5 +1001,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagtree_zh/user_guide/use-tle-raw.html">中文</a></body>
 </html>

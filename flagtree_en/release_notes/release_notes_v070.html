@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release_notes_v070.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Added Features- TLE-Struct:- GPU buffer aliasing — added typed shared-memory views through tle.gpu.alloc(..., alias=...), with static validation of aliased views. Targeted for FlagOS 2.2 (FEP-0065). In progress — implementation tracked in the FlagTree repository., Layout control — added tle.gpu.s..." />
+<meta property="og:description" content="Added Features- 3.6.x branch:- TLE-Lite:- Added the tle.shard_id op for querying the coordinate of the current program along a device-mesh axis. Supported on NVIDIA., Added the following distributed ops: tle.signal and tle.signal_wait. Supported on NVIDIA., Extended tle.remote with the space(clus..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Added Features- TLE-Struct:- GPU buffer aliasing — added typed shared-memory views through tle.gpu.alloc(..., alias=...), with static validation of aliased views. Targeted for FlagOS 2.2 (FEP-0065). In progress — implementation tracked in the FlagTree repository., Layout control — added tle.gpu.s..." />
+<meta name="description" content="Added Features- 3.6.x branch:- TLE-Lite:- Added the tle.shard_id op for querying the coordinate of the current program along a device-mesh axis. Supported on NVIDIA., Added the following distributed ops: tle.signal and tle.signal_wait. Supported on NVIDIA., Extended tle.remote with the space(clus..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagTree 0.7.0 Release &#8212; FlagTree Documentation</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.28470869-844f-4005-b6d0-b3de578f1c81.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.c0e88e7b-4e69-4767-a2ec-d709230147bd.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v070';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 23, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -571,10 +571,31 @@
 <ul class="simple">
 <li><p><strong>Added Features</strong></p>
 <ul>
+<li><p>3.6.x branch:</p>
+<ul>
+<li><p>TLE-Lite:</p>
+<ul>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">tle.shard_id</span></code> op for querying the coordinate of the current program along a device-mesh axis. Supported on NVIDIA.</p></li>
+<li><p>Added the following distributed ops: <code class="docutils literal notranslate"><span class="pre">tle.signal</span></code> and <code class="docutils literal notranslate"><span class="pre">tle.signal_wait</span></code>. Supported on NVIDIA.</p></li>
+<li><p>Extended <code class="docutils literal notranslate"><span class="pre">tle.remote</span></code> with the <code class="docutils literal notranslate"><span class="pre">space</span></code> (cluster / device / node), <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, <code class="docutils literal notranslate"><span class="pre">offset</span></code>, <code class="docutils literal notranslate"><span class="pre">coopkind</span></code>, and <code class="docutils literal notranslate"><span class="pre">netidx</span></code> parameters, covering remote access within a thread-block cluster (DSMEM), between GPUs in a node (NVLink P2P), and across nodes (FlagCX/RDMA). Supported on NVIDIA.</p></li>
+<li><p>Extended <code class="docutils literal notranslate"><span class="pre">tle.distributed_barrier</span></code> with the <code class="docutils literal notranslate"><span class="pre">space</span></code>, <code class="docutils literal notranslate"><span class="pre">group_kind</span></code>, <code class="docutils literal notranslate"><span class="pre">barrier_kind</span></code>, and <code class="docutils literal notranslate"><span class="pre">order</span></code> parameters. Supported on NVIDIA.</p></li>
+</ul>
+</li>
 <li><p>TLE-Struct:</p>
 <ul>
-<li><p><strong>GPU buffer aliasing</strong> — added typed shared-memory views through <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc(...,</span> <span class="pre">alias=...)</span></code>, with static validation of aliased views. Targeted for FlagOS 2.2 (FEP-0065). <em>In progress — implementation tracked in the FlagTree repository.</em></p></li>
-<li><p><strong>Layout control</strong> — added <code class="docutils literal notranslate"><span class="pre">tle.gpu.set_layout</span></code> for explicit distributed-layout assignment. Targeted for FlagOS 2.2 (FEP-0065). <em>In progress.</em></p></li>
+<li><p>Added GPU buffer aliasing through <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc(...,</span> <span class="pre">alias=...)</span></code>, providing typed shared-memory views with static validation of aliased views. (FEP-0065)</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">tle.gpu.set_layout</span></code> op for explicit distributed-layout assignment, together with the <code class="docutils literal notranslate"><span class="pre">BlockEncoding</span></code>, <code class="docutils literal notranslate"><span class="pre">MmaEncoding</span></code>, <code class="docutils literal notranslate"><span class="pre">DotOperandEncoding</span></code>, and <code class="docutils literal notranslate"><span class="pre">SlicedEncoding</span></code> layout objects. (FEP-0065)</p></li>
+<li><p>Added the following barrier ops: <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barrier</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barriers</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier_wait</span></code>, and <code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier_arrive</span></code>; added the <code class="docutils literal notranslate"><span class="pre">barrier</span></code> and <code class="docutils literal notranslate"><span class="pre">mask</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">tle.gpu.copy</span></code>. Supported on NVIDIA.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">tle.gpu.wgmma</span></code> and <code class="docutils literal notranslate"><span class="pre">tle.gpu.wgmma_wait</span></code> ops. Supported on NVIDIA.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor.slot</span></code> and <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor.reshape</span></code> ops. Supported on NVIDIA.</p></li>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">init_value</span></code> and <code class="docutils literal notranslate"><span class="pre">alias_offset_bytes</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc</span></code>. Supported on NVIDIA.</p></li>
+</ul>
+</li>
+<li><p>TLE-Raw:</p>
+<ul>
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">library</span></code> and <code class="docutils literal notranslate"><span class="pre">compiler</span></code> parameters, enabling NVSHMEM device-side interfaces to be inlined into TLE-Raw kernels via <code class="docutils literal notranslate"><span class="pre">&#64;dialect(...,</span> <span class="pre">library=&quot;nvshmem&quot;,</span> <span class="pre">compiler=&quot;clang&quot;)</span></code>. Supported on NVIDIA.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -656,7 +677,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 23, 2026.
   <br/>
 </p>
   </div>
@@ -679,5 +700,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagtree_zh/release_notes/release_notes_v070.html">中文</a></body>
 </html>

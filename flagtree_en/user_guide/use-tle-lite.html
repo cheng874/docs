@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/use-tle-lite.52ee2c80-fa45-41d1-bacf-0711a7950542.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/use-tle-lite.ad4db9d0-3339-471c-b664-f62c9e843129.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/use-tle-lite';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 23, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -597,6 +597,26 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-access">Remote access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-coordinates-and-resharding">Mesh coordinates and resharding</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-shard-id">tle.shard_id</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-reshard">tle.reshard</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-domains-of-remote-access">Target domains of remote access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-path-intra-cluster-communication-dsmem">Cluster path (intra-cluster communication, DSMEM)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#device-path-intra-node-inter-gpu-communication-nvlink-p2p">Device path (intra-node inter-GPU communication, NVLink P2P)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#node-path-inter-node-communication-flagcx-rdma">Node path (inter-node communication, FlagCX/RDMA)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-signal">tle.signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-signal-wait">tle.signal_wait</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-examples">Combined examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-filtering-and-compaction">Asynchronous filtering and compaction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelined-tile-post-processing">Pipelined tile post-processing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-field-pipe-with-selective-readers">Multi-field pipe with selective readers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-exchange-and-resharding">Distributed exchange and resharding</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primitives-interactive-with-local-ptr">Primitives interactive with local_ptr</a></li>
@@ -781,6 +801,7 @@ GPU: Supports extraction into registers and shared memory.</p>
 <section id="distribution">
 <h2>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
 <p>The Triton distributed API consists of four core parts: device mesh definition, sharding specification description, synchronization, and remote access (point-to-point communication).</p>
+<p>Low-level inter-GPU and inter-node communication is provided at different levels: the distributed primitives of TLE-Lite and TLE-Struct perform cross-device communication through FlagCX, whereas TLE-Raw is lower level, sitting at the same level as Raw, and provides device-side communication interfaces directly through NVSHMEM (see <a class="reference internal" href="use-tle-raw.html"><span class="std std-doc">Use TLE-Raw</span></a>); NVSHMEM is used only for NVIDIA GPUs.</p>
 <section id="device-mesh">
 <h3>device mesh<a class="headerlink" href="#device-mesh" title="Link to this heading">#</a></h3>
 <section id="tle-device-mesh">
@@ -931,6 +952,264 @@ This API supports sub-mesh synchronization, meaning that within a large physical
 </pre></div>
 </div>
 </section>
+<section id="mesh-coordinates-and-resharding">
+<h3>Mesh coordinates and resharding<a class="headerlink" href="#mesh-coordinates-and-resharding" title="Link to this heading">#</a></h3>
+<section id="tle-shard-id">
+<h4>tle.shard_id<a class="headerlink" href="#tle-shard-id" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.shard_id(mesh,</span> <span class="pre">axis)</span></code></p></li>
+<li><p>Meaning: returns the coordinate of the current program along the given mesh axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code> can be an axis name (such as <code class="docutils literal notranslate"><span class="pre">&quot;node&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;device&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;cluster_x&quot;</span></code>) or an axis index.</p></li>
+<li><p>Typical use: constructing peer shard IDs for ring exchange, staged all-reduce, and cluster cooperative computation.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">({</span><span class="s2">"node"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"device"</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="n">node_rank</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">shard_id</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">"node"</span><span class="p">)</span>      <span class="c1"># 0..1</span>
+<span class="n">device_rank</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">shard_id</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">"device"</span><span class="p">)</span>  <span class="c1"># 0..3</span>
+</pre></div>
+</div>
+</section>
+<section id="tle-reshard">
+<h4>tle.reshard<a class="headerlink" href="#tle-reshard" title="Link to this heading">#</a></h4>
+<p>Distribution-state conversion. This interface is still a reserved entry point in the current version and is not implemented yet (calling it raises <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code>). The recommended flow is: define the topology with <code class="docutils literal notranslate"><span class="pre">tle.device_mesh</span></code>, annotate the distribution state with <code class="docutils literal notranslate"><span class="pre">tle.sharding</span></code>, perform distribution-state conversion with <code class="docutils literal notranslate"><span class="pre">tle.reshard</span></code>, and keep computation kernels on the logical tensor view.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_full</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">reshard</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spec</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">sharding</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="p">[],</span> <span class="n">partial</span><span class="o">=</span><span class="p">[]))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="target-domains-of-remote-access">
+<h3>Target domains of remote access<a class="headerlink" href="#target-domains-of-remote-access" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tle.remote</span></code> obtains an access handle to a data shard on another device, corresponding to point-to-point communication or direct memory access (RDMA/NVLink Load). The current implementation distinguishes three target domains by <code class="docutils literal notranslate"><span class="pre">space</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">remote</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shard_id</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"cluster"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coopkind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">netidx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tensor</span></code>: required. For the cluster path, a shared-memory pointer or a buffered_tensor; for the device / node paths, the <code class="docutils literal notranslate"><span class="pre">DistributedRtContext</span></code> returned by <code class="docutils literal notranslate"><span class="pre">tle.create_dist_tensor</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shard_id</span></code>: required. A compile-time int or a runtime int32 scalar; for the cluster path it is the target Block id, for the device path the intra-node peer rank, and for the node path the world rank. Compile-time mesh coordinates must be paired with <code class="docutils literal notranslate"><span class="pre">scope</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scope</span></code>: a <code class="docutils literal notranslate"><span class="pre">device_mesh</span></code>; required when <code class="docutils literal notranslate"><span class="pre">shard_id</span></code> is given in mesh-coordinate form.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;cluster&quot;</span></code> (default), <code class="docutils literal notranslate"><span class="pre">&quot;device&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;node&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: optional for the cluster path, inferred from the input when omitted; required for the device / node paths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offset</span></code>: required for the device path; unsupported for the cluster / node paths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coopkind</span></code> / <code class="docutils literal notranslate"><span class="pre">netidx</span></code>: available on the node path only.</p></li>
+</ul>
+<section id="cluster-path-intra-cluster-communication-dsmem">
+<h4>Cluster path (intra-cluster communication, DSMEM)<a class="headerlink" href="#cluster-path-intra-cluster-communication-dsmem" title="Link to this heading">#</a></h4>
+<p>Targets shared-memory access across Blocks within the same thread-block cluster (CTA cluster) on Hopper and later architectures; this is the path taken when <code class="docutils literal notranslate"><span class="pre">space</span></code> is omitted. Two kinds of input are supported:</p>
+<ul class="simple">
+<li><p>a shared-memory pointer (scalar or tensor): returns the remote pointer in the cluster address space directly, usable with <code class="docutils literal notranslate"><span class="pre">tl.load</span></code> / <code class="docutils literal notranslate"><span class="pre">tl.store</span></code>, preserving the shape when the input is a block tensor;</p></li>
+<li><p>a TLE buffered_tensor: returns a remote-marked buffer, whose remote pointer view is then materialized with <code class="docutils literal notranslate"><span class="pre">tle.gpu.local_ptr(...)</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shard_id</span></code> is the id of the target Block inside the cluster; when <code class="docutils literal notranslate"><span class="pre">scope</span></code> is passed, coordinates are linearized from the mesh and the launch cluster dimensions are inferred from the mesh (this requires <code class="docutils literal notranslate"><span class="pre">num_ctas=1</span></code>, one program mapping to one Block). For pointers already in the cluster-shared space, <code class="docutils literal notranslate"><span class="pre">shard_id=0</span></code> returns local access directly. The cluster / device paths do not support the node-specific parameters <code class="docutils literal notranslate"><span class="pre">coopkind</span></code> / <code class="docutils literal notranslate"><span class="pre">netidx</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># smem here is a buffered_tensor, for example returned by tle.gpu.alloc</span>
+<span class="n">remote_smem</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">smem</span><span class="p">,</span> <span class="n">shard_id</span><span class="o">=</span><span class="p">(</span><span class="n">node_rank</span><span class="p">,</span> <span class="n">next_device</span><span class="p">),</span> <span class="n">scope</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">remote_ptr</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">remote_smem</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">remote_ptr</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="device-path-intra-node-inter-gpu-communication-nvlink-p2p">
+<h4>Device path (intra-node inter-GPU communication, NVLink P2P)<a class="headerlink" href="#device-path-intra-node-inter-gpu-communication-nvlink-p2p" title="Link to this heading">#</a></h4>
+<p>Targets direct memory access between GPUs within the same node over a FlagCX-registered window (symmetric memory) (NVLink P2P). As with the node path, <code class="docutils literal notranslate"><span class="pre">tensor</span></code> takes the <code class="docutils literal notranslate"><span class="pre">DistributedRtContext</span></code> returned by <code class="docutils literal notranslate"><span class="pre">create_dist_tensor</span></code>, but the returned pointer is a remote pointer in the ordinary global address space and <code class="docutils literal notranslate"><span class="pre">offset</span></code> is required — it specifies the element offset within the remote window (a Python int or a scalar integer tensor, normalized to i64 internally).</p>
+<p>The key difference from the node path: the device-path remote pointer is an ordinary global pointer, so subsequent <code class="docutils literal notranslate"><span class="pre">tl.load</span></code> / <code class="docutils literal notranslate"><span class="pre">tl.store</span></code> support arbitrary tiled / multi-dimensional accesses, with no “contiguous transfers only” restriction; the offset base is fixed once by <code class="docutils literal notranslate"><span class="pre">offset</span></code>, after which pointer arithmetic behaves like ordinary global pointers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">remote_base</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">scatter_ctx</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"device"</span><span class="p">,</span>
+                         <span class="n">dtype</span><span class="o">=</span><span class="n">input_ptr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">element_ty</span><span class="p">,</span>
+                         <span class="n">shard_id</span><span class="o">=</span><span class="n">target_rank</span><span class="p">,</span>
+                         <span class="n">offset</span><span class="o">=</span><span class="n">SCATTER_NODE_SLICE_OFFSET_ELEMS</span> <span class="o">+</span> <span class="n">source_slot_offset_elems</span><span class="p">)</span>
+<span class="n">scatter_ptrs</span> <span class="o">=</span> <span class="p">(</span><span class="n">remote_base</span> <span class="o">+</span>
+                <span class="p">(</span><span class="n">scatter_row</span> <span class="o">+</span> <span class="n">row_offs</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="n">input_col</span> <span class="o">+</span> <span class="n">col_offs</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">scatter_ptrs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">scatter_row_mask</span> <span class="o">&amp;</span> <span class="n">col_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="node-path-inter-node-communication-flagcx-rdma">
+<h4>Node path (inter-node communication, FlagCX/RDMA)<a class="headerlink" href="#node-path-inter-node-communication-flagcx-rdma" title="Link to this heading">#</a></h4>
+<p>Targets point-to-point transfers across nodes, with the data plane based on FlagCX-registered memory (symmetric window). The current version supports contiguous data transfers only; note the following before use:</p>
+<ul class="simple">
+<li><p>The host side must first register the communication buffer into the FlagCX symmetric-memory window with <code class="docutils literal notranslate"><span class="pre">tle.create_dist_tensor(comm_buf)</span></code>, and pass the returned <code class="docutils literal notranslate"><span class="pre">DistributedRtContext</span></code> into the kernel as a kernel argument; inter-device scatter and inter-node P2P can share the same registered window. The buffer used on the local side must be the same buffer registered by that context, passed to the kernel directly as a global pointer argument.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> is required; the <code class="docutils literal notranslate"><span class="pre">offset</span></code> parameter is not supported — offsets must be added to the returned pointer.</p></li>
+<li><p>Transfer shapes are restricted: a scalar copy transfers one element at a time; a tensor copy must reuse the same contiguous range <code class="docutils literal notranslate"><span class="pre">tl.arange(0,</span> <span class="pre">N)</span></code> on both sides, and the mask may only be omitted or reuse the same shared-prefix mask <code class="docutils literal notranslate"><span class="pre">offsets</span> <span class="pre">&lt;</span> <span class="pre">valid_n</span></code> (<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">valid_n</span> <span class="pre">&lt;=</span> <span class="pre">N</span></code>).</p></li>
+<li><p>The amount of data in a single transfer is limited by the compiler tensor size: the element count N of one transfer must be a power of two and must not exceed <code class="docutils literal notranslate"><span class="pre">33554432</span></code> (2^25); exceeding it is a compile-time error. To transfer more data, split it into chunks and call load/store repeatedly in a loop, one chunk per iteration.</p></li>
+<li><p>The load result must be consumed directly and only by the paired store; the two must be in the same basic block, with the load before the store, and no memory access, atomic operation, barrier, or other communication operation in between; exactly one side must use a node remote pointer.</p></li>
+<li><p>Sparse access, multi-dimensional tiled load/store, strided access, ranges with a non-zero start, and mismatched ranges on the two sides are unsupported — these are rejected at compile time, and dynamic violations trigger a device assert.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coopkind</span></code> supports <code class="docutils literal notranslate"><span class="pre">thread</span></code> / <code class="docutils literal notranslate"><span class="pre">warp</span></code> / <code class="docutils literal notranslate"><span class="pre">block</span></code>, defaulting to <code class="docutils literal notranslate"><span class="pre">block</span></code> (the whole CTA convergently issues a single transfer); <code class="docutils literal notranslate"><span class="pre">netidx</span></code> is the index of an existing network context and must be a compile-time integer in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">INT32_MAX]</span></code>.</p></li>
+<li><p>The device side has no <code class="docutils literal notranslate"><span class="pre">rank()</span></code> / <code class="docutils literal notranslate"><span class="pre">num_ranks()</span></code>, so the topology is passed into the kernel by the host as constexpr; <code class="docutils literal notranslate"><span class="pre">shard_id</span></code> is best passed directly as a host-precomputed world rank int, but a mesh-coordinate tuple + <code class="docutils literal notranslate"><span class="pre">scope</span></code> also works (resolved to a world rank through <code class="docutils literal notranslate"><span class="pre">physical_ids</span></code>). On the node path <code class="docutils literal notranslate"><span class="pre">scope</span></code> does not affect the launch configuration.</p></li>
+</ul>
+<p>Usage: first obtain a remote pointer to the peer node with <code class="docutils literal notranslate"><span class="pre">tle.remote</span></code>, then complete the transfer with a pair of load/store; the transfer direction is determined by the positions of the load and store:</p>
+<ul class="simple">
+<li><p><strong>PUT (local → remote)</strong>: load from the local buffer first, then store to the remote pointer; the data is written from this node to the remote node.</p></li>
+<li><p><strong>GET (remote → local)</strong>: written exactly symmetrically to PUT with the direction reversed — load from the remote pointer, then store into the local buffer; the data is read back from the remote node.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PUT: local load + remote store</span>
+<span class="n">remote_dst</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"node"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">,</span>
+                        <span class="n">shard_id</span><span class="o">=</span><span class="n">remote_rank</span><span class="p">,</span> <span class="n">coopkind</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">GroupKind</span><span class="o">.</span><span class="n">BLOCK</span><span class="p">)</span>
+<span class="n">offsets</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">offsets</span> <span class="o">&lt;</span> <span class="n">nelems</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">comm_buf</span> <span class="o">+</span> <span class="n">src_offset</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">remote_dst</span> <span class="o">+</span> <span class="n">dst_offset</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+
+<span class="c1"># GET: remote load + local store</span>
+<span class="n">remote_src</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"node"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">,</span>
+                        <span class="n">shard_id</span><span class="o">=</span><span class="n">remote_rank</span><span class="p">,</span> <span class="n">coopkind</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">GroupKind</span><span class="o">.</span><span class="n">BLOCK</span><span class="p">)</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">remote_src</span> <span class="o">+</span> <span class="n">src_offset</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">comm_buf</span> <span class="o">+</span> <span class="n">dst_offset</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Common incorrect forms:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrong: multi-dimensional / tiled access</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">remote_dst</span> <span class="o">+</span> <span class="n">rows</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:])</span>  <span class="c1"># rejected at compile time</span>
+<span class="c1"># Reason: the node path lowers the load/store pair into a single RDMA put/get,</span>
+<span class="c1"># and the interface only supports contiguous data (1D linear ranges), so it</span>
+<span class="c1"># cannot express the discrete addresses of a 2D tile.</span>
+
+<span class="c1"># Wrong: passing the offset to remote</span>
+<span class="n">remote_dst</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"node"</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">,</span> <span class="n">shard_id</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>  <span class="c1"># error</span>
+<span class="c1"># Reason: on the node path tle.remote only resolves the target peer and returns a</span>
+<span class="c1"># pointer to the peer window base; source/destination offsets are expressed by the</span>
+<span class="c1"># src_offset / dst_offset of the subsequent load/store.</span>
+
+<span class="c1"># Wrong: mismatched ranges on the two sides, or a mask that is not a shared prefix</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">local</span> <span class="o">+</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">remote</span> <span class="o">+</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">),</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask2</span><span class="p">)</span>  <span class="c1"># rejected</span>
+<span class="c1"># Reason: the transfer length and both offsets are derived jointly from the pointer</span>
+<span class="c1"># expressions of the load and store; when the ranges / masks on the two sides differ,</span>
+<span class="c1"># how much is transferred and from where to where cannot be determined, so the</span>
+<span class="c1"># compiler rejects it.</span>
+</pre></div>
+</div>
+</section>
+<section id="tle-signal">
+<h4>tle.signal<a class="headerlink" href="#tle-signal" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">tle.signal</span></code> atomically updates the synchronization slot of a remote peer. This primitive only sends a signal; it transfers no data and does not wait for completion on the receiving side.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="n">device_dptr</span><span class="p">,</span> <span class="n">peer</span><span class="p">,</span> <span class="n">slot_id</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="s2">"inc"</span><span class="p">,</span>
+          <span class="n">space</span><span class="o">=</span><span class="s2">"intra_node"</span><span class="p">,</span> <span class="n">group_kind</span><span class="o">=</span><span class="s2">"block"</span><span class="p">,</span> <span class="n">context_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+          <span class="n">scope</span><span class="o">=</span><span class="s2">"system"</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">op=&quot;inc&quot;</span></code> increments the target signal slot by one; <code class="docutils literal notranslate"><span class="pre">op=&quot;add&quot;</span></code> adds <code class="docutils literal notranslate"><span class="pre">value</span></code> to the target signal slot, in which case <code class="docutils literal notranslate"><span class="pre">value</span></code> must be provided and must be omitted for the former. <code class="docutils literal notranslate"><span class="pre">space</span></code> selects the communication scope (<code class="docutils literal notranslate"><span class="pre">intra_node</span></code>, <code class="docutils literal notranslate"><span class="pre">inter_node</span></code>, or <code class="docutils literal notranslate"><span class="pre">world</span></code>) and <code class="docutils literal notranslate"><span class="pre">peer</span></code> is the rank within that scope. <code class="docutils literal notranslate"><span class="pre">context_idx</span></code> selects a pre-allocated network context. <code class="docutils literal notranslate"><span class="pre">scope</span></code> controls the visibility of the signal operation to threads on the node: <code class="docutils literal notranslate"><span class="pre">&quot;system&quot;</span></code> means visible to all threads on all devices, <code class="docutils literal notranslate"><span class="pre">&quot;device&quot;</span></code> means visible only to threads on the current device; <code class="docutils literal notranslate"><span class="pre">&quot;device&quot;</span></code> is only meaningful in single-node scenarios, and <code class="docutils literal notranslate"><span class="pre">&quot;system&quot;</span></code> is the right choice in most cases. With <code class="docutils literal notranslate"><span class="pre">group_kind=&quot;block&quot;</span></code> (the default), all threads in the CTA must execute the operation convergently; the whole group issues a single remote update.</p>
+</section>
+<section id="tle-signal-wait">
+<h4>tle.signal_wait<a class="headerlink" href="#tle-signal-wait" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">tle.signal_wait</span></code> waits for a local synchronization slot to reach a target value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">signal_wait</span><span class="p">(</span><span class="n">device_dptr</span><span class="p">,</span> <span class="n">slot_id</span><span class="p">,</span> <span class="n">wait_kind</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">group_kind</span><span class="o">=</span><span class="s2">"block"</span><span class="p">,</span> <span class="n">context_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"acquire"</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">wait_kind</span></code> selects the wait mode: <code class="docutils literal notranslate"><span class="pre">&quot;signal&quot;</span></code> waits for the slot value to reach <code class="docutils literal notranslate"><span class="pre">target</span></code>; <code class="docutils literal notranslate"><span class="pre">&quot;counter&quot;</span></code> waits for the counter in the slot to reach <code class="docutils literal notranslate"><span class="pre">target</span></code>; <code class="docutils literal notranslate"><span class="pre">&quot;shadow&quot;</span></code> reads the target value from the shadow buffer maintained locally at runtime and therefore requires <code class="docutils literal notranslate"><span class="pre">target</span></code> to be omitted. <code class="docutils literal notranslate"><span class="pre">slot_id</span></code> shares the same signal-slot namespace as <code class="docutils literal notranslate"><span class="pre">tle.signal</span></code>. The semantics of <code class="docutils literal notranslate"><span class="pre">group_kind</span></code> and <code class="docutils literal notranslate"><span class="pre">context_idx</span></code> match <code class="docutils literal notranslate"><span class="pre">tle.signal</span></code>. <code class="docutils literal notranslate"><span class="pre">order</span></code> constrains the memory order of the wait operation; since <code class="docutils literal notranslate"><span class="pre">tle.signal_wait</span></code> is a read operation, only <code class="docutils literal notranslate"><span class="pre">&quot;relaxed&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;acquire&quot;</span></code> are allowed, and the default <code class="docutils literal notranslate"><span class="pre">&quot;acquire&quot;</span></code> is the right choice in most cases.</p>
+</section>
+</section>
+<section id="combined-examples">
+<h3>Combined examples<a class="headerlink" href="#combined-examples" title="Link to this heading">#</a></h3>
+<section id="asynchronous-filtering-and-compaction">
+<h4>Asynchronous filtering and compaction<a class="headerlink" href="#asynchronous-filtering-and-compaction" title="Link to this heading">#</a></h4>
+<p>Combines <code class="docutils literal notranslate"><span class="pre">tle.load</span></code> and <code class="docutils literal notranslate"><span class="pre">tle.cumsum</span></code>: a tile is read in with a masked asynchronous load, active flags are derived from a predicate, and <code class="docutils literal notranslate"><span class="pre">tle.cumsum</span></code> finally produces the compact write-back offsets and the active total for the current block.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pid</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">program_id</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">offs</span> <span class="o">=</span> <span class="n">pid</span> <span class="o">*</span> <span class="n">BLOCK</span> <span class="o">+</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">offs</span> <span class="o">&lt;</span> <span class="n">n_elements</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">x_ptr</span> <span class="o">+</span> <span class="n">offs</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">other</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mask</span>
+<span class="n">active</span> <span class="o">=</span> <span class="n">keep</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+<span class="n">write_offsets</span><span class="p">,</span> <span class="n">active_total</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">active</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">block_base</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">block_offsets_ptr</span> <span class="o">+</span> <span class="n">pid</span><span class="p">)</span>
+
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">out_ptr</span> <span class="o">+</span> <span class="n">block_base</span> <span class="o">+</span> <span class="n">write_offsets</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">keep</span><span class="p">)</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">block_counts_ptr</span> <span class="o">+</span> <span class="n">pid</span><span class="p">,</span> <span class="n">active_total</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pipelined-tile-post-processing">
+<h4>Pipelined tile post-processing<a class="headerlink" href="#pipelined-tile-post-processing" title="Link to this heading">#</a></h4>
+<p>Combines <code class="docutils literal notranslate"><span class="pre">tle.pipe</span></code>, shared-memory pointer views, and tensor slicing. The producer writes global tiles into shared memory in stages; the consumer reads a ready stage, applies a local transformation to one sub-tile, and writes the updated full tile back to the output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tile_buf</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="n">BM</span><span class="p">,</span> <span class="n">BN</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">)</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">capacity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">"cta"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"post_pipe"</span><span class="p">,</span> <span class="n">tile</span><span class="o">=</span><span class="n">tile_buf</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">writer</span><span class="p">()</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">reader</span><span class="p">()</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BM</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BN</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tl</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_tiles</span><span class="p">):</span>
+    <span class="n">slot</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">x_ptr</span> <span class="o">+</span> <span class="n">tile_offset</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">mask</span><span class="o">=</span><span class="n">tile_mask</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">other</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">is_async</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">tile</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)),</span> <span class="n">vals</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tl</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_tiles</span><span class="p">):</span>
+    <span class="n">ready</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">tile</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">ready</span><span class="o">.</span><span class="n">slot</span><span class="o">.</span><span class="n">tile</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)))</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">tile</span><span class="o">.</span><span class="n">extract_tile</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">BM</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">BN</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">tile</span> <span class="o">=</span> <span class="n">tile</span><span class="o">.</span><span class="n">insert_tile</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">out_ptr</span> <span class="o">+</span> <span class="n">tile_offset</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">tile</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">tile_mask</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-field-pipe-with-selective-readers">
+<h4>Multi-field pipe with selective readers<a class="headerlink" href="#multi-field-pipe-with-selective-readers" title="Link to this heading">#</a></h4>
+<p>Combines a multi-field pipe payload with reader field subsets. A single pipe slot carries both the tile produced by TMA and a locally written scale vector; the MMA reader subscribes only to the tile, while the epilogue reader consumes both the tile and the scale.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">([</span><span class="n">PIPE_CAPACITY</span><span class="p">,</span> <span class="n">BM</span><span class="p">,</span> <span class="n">BK</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">)</span>
+<span class="n">scale</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">PIPE_CAPACITY</span><span class="p">,</span> <span class="n">BM</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">,</span>
+    <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+    <span class="n">capacity</span><span class="o">=</span><span class="n">PIPE_CAPACITY</span><span class="p">,</span>
+    <span class="n">scope</span><span class="o">=</span><span class="s2">"cta"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"multi_field_inputs"</span><span class="p">,</span>
+    <span class="n">readers</span><span class="o">=</span><span class="p">(</span><span class="s2">"mma"</span><span class="p">,</span> <span class="s2">"epilogue"</span><span class="p">),</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">writer</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">writer</span><span class="p">()</span>
+<span class="n">mma_reader</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="s2">"mma"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s2">"q"</span><span class="p">,))</span>
+<span class="n">epilogue_reader</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="s2">"epilogue"</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s2">"q"</span><span class="p">,</span> <span class="s2">"scale"</span><span class="p">))</span>
+
+<span class="n">slot</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">q_desc</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> <span class="p">[</span><span class="n">BM</span><span class="p">,</span> <span class="n">BK</span><span class="p">],</span> <span class="p">[</span><span class="n">q_block</span><span class="p">,</span> <span class="n">k_block</span><span class="p">])</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BM</span><span class="p">),)),</span> <span class="n">scale_values</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">commit</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="n">q_ready</span> <span class="o">=</span> <span class="n">mma_reader</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">slot</span>
+<span class="n">q_tile</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">q_ready</span><span class="o">.</span><span class="n">q</span><span class="p">))</span>
+<span class="n">mma_reader</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="n">epilogue_ready</span> <span class="o">=</span> <span class="n">epilogue_reader</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">slot</span>
+<span class="n">q_for_epilogue</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">epilogue_ready</span><span class="o">.</span><span class="n">q</span><span class="p">))</span>
+<span class="n">scale_tile</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">epilogue_ready</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BM</span><span class="p">),)))</span>
+<span class="n">epilogue_reader</span><span class="o">.</span><span class="n">release</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="distributed-exchange-and-resharding">
+<h4>Distributed exchange and resharding<a class="headerlink" href="#distributed-exchange-and-resharding" title="Link to this heading">#</a></h4>
+<p>Combines <code class="docutils literal notranslate"><span class="pre">tle.device_mesh</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.sharding</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.shard_id</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.remote</span></code>, <code class="docutils literal notranslate"><span class="pre">tle.distributed_barrier</span></code>, and <code class="docutils literal notranslate"><span class="pre">tle.reshard</span></code>. The current shard reads the tile of a neighboring device to complete a ring-style exchange, then constructs a replicated view for local computation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">({</span><span class="s2">"node"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"device"</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="n">x_spec</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">sharding</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="p">[</span><span class="s2">"device"</span><span class="p">],</span> <span class="n">partial</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">make_sharded_tensor</span><span class="p">(</span><span class="n">x_ptr</span><span class="p">,</span> <span class="n">sharding</span><span class="o">=</span><span class="n">x_spec</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">M</span><span class="p">,</span> <span class="n">K</span><span class="p">])</span>
+
+<span class="n">node_rank</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">shard_id</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">"node"</span><span class="p">)</span>
+<span class="n">device_rank</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">shard_id</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s2">"device"</span><span class="p">)</span>
+<span class="n">next_device</span> <span class="o">=</span> <span class="p">(</span><span class="n">device_rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">mesh</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">neighbor_x</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shard_id</span><span class="o">=</span><span class="p">(</span><span class="n">node_rank</span><span class="p">,</span> <span class="n">next_device</span><span class="p">),</span> <span class="n">scope</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">distributed_barrier</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">neighbor_vals</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">neighbor_x</span><span class="p">)</span>
+
+<span class="n">x_full</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">reshard</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spec</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">sharding</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="p">[],</span> <span class="n">partial</span><span class="o">=</span><span class="p">[]))</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">local_compute</span><span class="p">(</span><span class="n">x_full</span><span class="p">,</span> <span class="n">neighbor_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="primitives-interactive-with-local-ptr">
 <h2>Primitives interactive with local_ptr<a class="headerlink" href="#primitives-interactive-with-local-ptr" title="Link to this heading">#</a></h2>
@@ -1023,6 +1302,26 @@ This API supports sub-mesh synchronization, meaning that within a large physical
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-access">Remote access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-coordinates-and-resharding">Mesh coordinates and resharding</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-shard-id">tle.shard_id</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-reshard">tle.reshard</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-domains-of-remote-access">Target domains of remote access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-path-intra-cluster-communication-dsmem">Cluster path (intra-cluster communication, DSMEM)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#device-path-intra-node-inter-gpu-communication-nvlink-p2p">Device path (intra-node inter-GPU communication, NVLink P2P)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#node-path-inter-node-communication-flagcx-rdma">Node path (inter-node communication, FlagCX/RDMA)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-signal">tle.signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-signal-wait">tle.signal_wait</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-examples">Combined examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-filtering-and-compaction">Asynchronous filtering and compaction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelined-tile-post-processing">Pipelined tile post-processing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-field-pipe-with-selective-readers">Multi-field pipe with selective readers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-exchange-and-resharding">Distributed exchange and resharding</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primitives-interactive-with-local-ptr">Primitives interactive with local_ptr</a></li>
@@ -1059,7 +1358,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 23, 2026.
   <br/>
 </p>
   </div>
@@ -1082,5 +1381,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagtree_zh/user_guide/use-tle-lite.html">中文</a></body>
 </html>

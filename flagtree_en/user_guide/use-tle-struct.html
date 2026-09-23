@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/use-tle-struct.8b044ca4-ba9c-4932-87b3-6f15f44d96d0.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/use-tle-struct.e61b5179-a1f2-4702-9e8a-fad086b47e67.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/use-tle-struct';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 23, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -567,9 +567,16 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-memory-management">GPU memory management</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-memory-space">tle.gpu.memory_space</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-alloc">tle.gpu.alloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-buffered-tensor-slot">tle.gpu.buffered_tensor.slot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-buffered-tensor-reshape">tle.gpu.buffered_tensor.reshape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-set-layout">tle.gpu.set_layout</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-local-ptr">tle.gpu.local_ptr</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-local-ptr-for-remote">tle.gpu.local_ptr (for remote)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-copy">tle.gpu.copy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-barrier-api">tle.gpu barrier API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-wgmma-and-tle-gpu-wgmma-wait">tle.gpu.wgmma and tle.gpu.wgmma_wait</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-orchestration">Execution orchestration</a><ul class="nav section-nav flex-column">
@@ -628,6 +635,112 @@
                       <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">storage_kind</span><span class="o">.</span><span class="n">smem</span><span class="p">)</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc(shape,</span> <span class="pre">dtype,</span> <span class="pre">layout=None,</span> <span class="pre">scope=tle.gpu.smem,</span> <span class="pre">init_value=None,</span> <span class="pre">alias=None,</span> <span class="pre">alias_offset_bytes=0,</span> <span class="pre">nv_mma_shared_layout=True)</span> <span class="pre">-&gt;</span> <span class="pre">tle.gpu.buffered_tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code>: a non-empty tuple/list (or iterable); every dimension must be a positive compile-time integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: a <code class="docutils literal notranslate"><span class="pre">tl.dtype</span></code>. The semantic checker validates the type; dtypes outside the standard allocation type set produce a warning.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">layout</span></code>: an optional shared-memory layout object; when passed it must be a <code class="docutils literal notranslate"><span class="pre">tle.gpu.shared_layout</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scope</span></code>: the storage scope. The current allocation path supports <code class="docutils literal notranslate"><span class="pre">tle.gpu.smem</span></code>; <code class="docutils literal notranslate"><span class="pre">tle.gpu.tmem</span></code> is defined as a scope but is not yet supported by <code class="docutils literal notranslate"><span class="pre">alloc</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">init_value</span></code>: an optional register tensor used to initialize the newly allocated buffer; cannot be used together with <code class="docutils literal notranslate"><span class="pre">alias</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alias</span></code>: an optional source <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code>. Alias mode does not allocate new storage but creates a typed view over an existing shared-memory buffer; both the requested scope and the source buffer must be SMEM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alias_offset_bytes</span></code>: a non-negative compile-time byte offset from the base address of the source alias view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nv_mma_shared_layout</span></code>: when <code class="docutils literal notranslate"><span class="pre">layout=None</span></code> and the scope is SMEM, <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default) selects the default layout for MMA consumers and <code class="docutils literal notranslate"><span class="pre">False</span></code> selects the default swizzled shared layout. On MUSA, the automatic MMA layout is materialized by SQMMA lowering.</p></li>
+</ul>
+<p>When <code class="docutils literal notranslate"><span class="pre">layout=None</span></code>, the backend derives the layout from the scope and <code class="docutils literal notranslate"><span class="pre">nv_mma_shared_layout</span></code>; an explicit layout is converted through its <code class="docutils literal notranslate"><span class="pre">to_ir()</span></code> method. Alias allocations do not create a new allocation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A plain SMEM allocation using the default swizzled layout</span>
+<span class="n">smem</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">BLOCK</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">,</span> <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize a new buffer with a register tensor</span>
+<span class="n">init</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">BLOCK</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">initialized</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">BLOCK</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">init_value</span><span class="o">=</span><span class="n">init</span><span class="p">,</span> <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Create a typed view over an existing SMEM allocation</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">BLOCK</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="n">smem</span><span class="p">,</span> <span class="n">alias_offset_bytes</span><span class="o">=</span><span class="n">BLOCK</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="tle-gpu-buffered-tensor-slot">
+<h3>tle.gpu.buffered_tensor.slot<a class="headerlink" href="#tle-gpu-buffered-tensor-slot" title="Link to this heading">#</a></h3>
+<p>Select one stage from a staged shared-memory buffer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slot</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">slot</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor.slot(stage)</span> <span class="pre">-&gt;</span> <span class="pre">tle.gpu.buffered_tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code> must have rank &gt;= 2. The leading dimension is the stage dimension; the returned view has shape <code class="docutils literal notranslate"><span class="pre">buffer.shape[1:]</span></code>.</p></li>
+<li><p>Only SMEM buffered tensors are supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage</span></code> must be a scalar <code class="docutils literal notranslate"><span class="pre">tl.int32</span></code>; vector indexing and other integer dtypes are not supported.</p></li>
+<li><p>The return value is an alias subview selected by <code class="docutils literal notranslate"><span class="pre">ttg.memdesc_index</span></code>; it neither allocates nor copies storage.</p></li>
+<li><p>The slot layout is derived by dropping the leading dimension from the source layout; the current implementation supports <code class="docutils literal notranslate"><span class="pre">swizzled_shared_layout</span></code> and <code class="docutils literal notranslate"><span class="pre">nv_mma_shared_layout</span></code> source layouts.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">staged</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">BM</span><span class="p">,</span> <span class="n">BK</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">,</span> <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">program_id</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+<span class="n">tile</span> <span class="o">=</span> <span class="n">staged</span><span class="o">.</span><span class="n">slot</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span>
+<span class="n">tile_ptrs</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">local_ptr</span><span class="p">(</span><span class="n">tile</span><span class="p">)</span>
+<span class="n">tile_values</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tile_ptrs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="tle-gpu-buffered-tensor-reshape">
+<h3>tle.gpu.buffered_tensor.reshape<a class="headerlink" href="#tle-gpu-buffered-tensor-reshape" title="Link to this heading">#</a></h3>
+<p>Create a shared-memory alias view with a different static shape:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reshaped</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor.reshape(shape)</span> <span class="pre">-&gt;</span> <span class="pre">tle.gpu.buffered_tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> must be a non-empty sequence of static dimensions, each positive.</p></li>
+<li><p>The total number of elements of the new shape must equal that of <code class="docutils literal notranslate"><span class="pre">buffer</span></code>.</p></li>
+<li><p>The operation produces <code class="docutils literal notranslate"><span class="pre">ttg.memdesc_reshape</span></code>, preserving the underlying storage, dtype, and storage scope without copying data.</p></li>
+<li><p>The layout of the return value is re-derived from the reshaped memdesc; <code class="docutils literal notranslate"><span class="pre">shared_linear</span></code> and NVIDIA MMA encodings are currently supported, and unsupported encodings fail at compile time.</p></li>
+<li><p>For views carrying an allocation prefix (such as staged buffers), the resulting allocation metadata preserves that prefix.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">512</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">,</span> <span class="n">nv_mma_shared_layout</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">reshaped</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="tle-gpu-set-layout">
+<h3>tle.gpu.set_layout<a class="headerlink" href="#tle-gpu-set-layout" title="Link to this heading">#</a></h3>
+<p>Attach an explicit distributed layout to a block tensor value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">set_layout</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.gpu.set_layout(value,</span> <span class="pre">layout)</span> <span class="pre">-&gt;</span> <span class="pre">tl.tensor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: a block <code class="docutils literal notranslate"><span class="pre">tl.tensor</span></code>; non-tensor values are first converted to tensors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">layout</span></code>: a compile-time layout object with a <code class="docutils literal notranslate"><span class="pre">to_ir()</span></code> method.</p></li>
+<li><p>The return value preserves the shape and element type of the input and carries the requested encoding. This operation is a layout contract, not a data copy.</p></li>
+<li><p>The compiler must provide explicit TLE layout support (<code class="docutils literal notranslate"><span class="pre">ir.builder.ensure_ttg_layout_attrs</span></code>); otherwise compilation raises a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>.</p></li>
+</ul>
+<p>The built-in NVIDIA layout objects are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BlockEncoding(size_per_thread,</span> <span class="pre">threads_per_warp,</span> <span class="pre">warps_per_cta,</span> <span class="pre">order,</span> <span class="pre">cga_layout=None)</span></code>: produces a <code class="docutils literal notranslate"><span class="pre">#ttg.blocked</span></code> encoding. The per-dimension lists must have the same rank and <code class="docutils literal notranslate"><span class="pre">order</span></code> must be a permutation of that rank.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MmaEncoding(version,</span> <span class="pre">warps_per_cta,</span> <span class="pre">instr_shape,</span> <span class="pre">cga_layout=None)</span></code>: a <code class="docutils literal notranslate"><span class="pre">#ttg.nvidia_mma</span></code> encoding for dot results or accumulators.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DotOperandEncoding(operand_index,</span> <span class="pre">parent,</span> <span class="pre">k_width)</span></code>: derives a <code class="docutils literal notranslate"><span class="pre">#ttg.dot_op</span></code> encoding from a distributed parent; <code class="docutils literal notranslate"><span class="pre">operand_index</span></code> may only be <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">k_width</span></code> must be positive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SlicedEncoding(dim,</span> <span class="pre">parent)</span></code>: produces a rank-reduced <code class="docutils literal notranslate"><span class="pre">#ttg.slice</span></code> encoding of a distributed parent along the given dimension; <code class="docutils literal notranslate"><span class="pre">dim</span></code> must be within the parent rank.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">BlockEncoding</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">SlicedEncoding</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+<span class="n">offsets</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK</span><span class="p">)</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">set_layout</span><span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">x_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+<span class="n">out_ptrs</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">set_layout</span><span class="p">(</span><span class="n">out_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+<span class="n">tl</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">out_ptrs</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The MUSA backend additionally provides <code class="docutils literal notranslate"><span class="pre">MusaWmmaEncoding</span></code>, <code class="docutils literal notranslate"><span class="pre">MusaSqmmaEncoding</span></code>, and <code class="docutils literal notranslate"><span class="pre">MusaDotOperandEncoding</span></code> from <code class="docutils literal notranslate"><span class="pre">tle.gpu.mthreads</span></code>; their instruction-shape and operand restrictions are defined by the specific backend.</p>
 </section>
 <section id="tle-gpu-local-ptr">
 <h3>tle.gpu.local_ptr<a class="headerlink" href="#tle-gpu-local-ptr" title="Link to this heading">#</a></h3>
@@ -764,6 +877,170 @@
 </li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a_ptrs</span> <span class="o">+</span> <span class="n">ystride_a</span> <span class="o">*</span> <span class="n">yoffs</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">a_smem</span><span class="p">,</span> <span class="p">[</span><span class="n">XBLOCK</span><span class="p">,</span> <span class="n">YBLOCK</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tle.gpu.copy</span></code> moves data between global memory and GPU local/shared memory, covering both the ordinary tensor load/store path and the TMA descriptor path.</p>
+<ul class="simple">
+<li><p>Signature: <code class="docutils literal notranslate"><span class="pre">tle.gpu.copy(src,</span> <span class="pre">dst,</span> <span class="pre">shape,</span> <span class="pre">offsets=None,</span> <span class="pre">barrier=None,</span> <span class="pre">mask=None)</span></code></p></li>
+<li><p>The copy direction is inferred from the operand types:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tl.tensor</span></code> or TMA descriptor -&gt; <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code>: global to local/shared.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">tl.tensor</span></code> or TMA descriptor: local/shared to global.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> is the shape of the tile to copy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offsets</span></code> is used for TMA descriptor copies and gives the descriptor coordinate offsets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barrier</span></code> is an optional explicit TMA completion barrier, supported only for NVIDIA global-to-shared TMA loads (<code class="docutils literal notranslate"><span class="pre">src</span></code> is a TMA descriptor and <code class="docutils literal notranslate"><span class="pre">dst</span></code> is a shared-memory <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code>). The barrier must be allocated with <code class="docutils literal notranslate"><span class="pre">expect_bytes</span></code>, i.e. one of the indexed slots returned by <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barrier(...)</span></code> or <code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barriers(...)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask</span></code> is an optional per-element mask for ordinary pointer tensor copies. For GM to local, elements whose mask is false are written to local memory as zero; for local to GM, elements whose mask is false are not written. TMA descriptor copies do not accept <code class="docutils literal notranslate"><span class="pre">mask</span></code>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TMA load with an explicit completion barrier</span>
+<span class="n">a_bar</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc_barrier</span><span class="p">(</span><span class="n">expect_bytes</span><span class="o">=</span><span class="n">BLOCK_M</span> <span class="o">*</span> <span class="n">BLOCK_K</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="n">a_desc</span><span class="p">,</span>
+    <span class="n">a_smem</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">BLOCK_M</span><span class="p">,</span> <span class="n">BLOCK_K</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">pid_m</span> <span class="o">*</span> <span class="n">BLOCK_M</span><span class="p">,</span> <span class="n">pid_k</span> <span class="o">*</span> <span class="n">BLOCK_K</span><span class="p">],</span>
+    <span class="n">barrier</span><span class="o">=</span><span class="n">a_bar</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_wait</span><span class="p">(</span><span class="n">a_bar</span><span class="p">,</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># An ordinary pointer tensor copy may pass a per-element mask</span>
+<span class="n">offsets</span> <span class="o">=</span> <span class="n">tl</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">offsets</span> <span class="o">&lt;</span> <span class="n">n</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">smem</span><span class="p">,</span> <span class="p">[</span><span class="n">BLOCK</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tle.gpu.copy(...,</span> <span class="pre">barrier=...)</span></code> does not support ordinary copies, shared-to-global TMA stores, named barriers, or barriers allocated without <code class="docutils literal notranslate"><span class="pre">expect_bytes</span></code>.</p>
+</section>
+</section>
+<section id="tle-gpu-barrier-api">
+<h2>tle.gpu barrier API<a class="headerlink" href="#tle-gpu-barrier-api" title="Link to this heading">#</a></h2>
+<p>TLE GPU barriers express the synchronization needed by hand-written Hopper producer/consumer pipelines, including TMA completion barriers, empty/full mbarriers, and lightweight named barriers between warp groups.</p>
+<p>API overview:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barriers(num_barriers,</span> <span class="pre">arrive_count=1,</span> <span class="pre">init=tle.gpu.PENDING,</span> <span class="pre">expect_bytes=None)</span> <span class="pre">-&gt;</span> <span class="pre">tle.gpu.barrier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.alloc_barrier(arrive_count=1,</span> <span class="pre">init=tle.gpu.PENDING,</span> <span class="pre">expect_bytes=None)</span> <span class="pre">-&gt;</span> <span class="pre">tle.gpu.barrier</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier_wait(bar,</span> <span class="pre">phaseIdx=None)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier_arrive(bar,</span> <span class="pre">arrive_count=1,</span> <span class="pre">phaseIdx=None)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.PENDING</span></code>: initially not passable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.READY</span></code>: initially passable; only applies to the mbarrier path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier</span></code>: the value type returned by the allocation APIs; slots of an array are taken with <code class="docutils literal notranslate"><span class="pre">bars[i]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tle.gpu.barrier_type</span></code>: the type description of a barrier value.</p></li>
+</ul>
+<p>Allocation parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">num_barriers</span></code>: the number of barrier slots; must be a compile-time positive integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrive_count</span></code>: the pending arrival count. For an mbarrier it is the logical arrive count; for a named barrier it is the number of participating threads, usually <code class="docutils literal notranslate"><span class="pre">num_warps</span> <span class="pre">*</span> <span class="pre">32</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">init</span></code>: <code class="docutils literal notranslate"><span class="pre">tle.gpu.PENDING</span></code> or <code class="docutils literal notranslate"><span class="pre">tle.gpu.READY</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expect_bytes</span></code>: the number of bytes the TMA global-to-shared completion barrier is expected to complete; must be a compile-time positive integer, and is <code class="docutils literal notranslate"><span class="pre">None</span></code> when unused.</p></li>
+</ul>
+<p>Backend path selection:</p>
+<ul class="simple">
+<li><p>Passing <code class="docutils literal notranslate"><span class="pre">phaseIdx</span></code> to <code class="docutils literal notranslate"><span class="pre">barrier_wait</span></code> or <code class="docutils literal notranslate"><span class="pre">barrier_arrive</span></code> selects the mbarrier path.</p></li>
+<li><p>Omitting <code class="docutils literal notranslate"><span class="pre">phaseIdx</span></code> selects the named barrier path.</p></li>
+<li><p>The same barrier slot must not mix mbarrier and named barrier usage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expect_bytes</span></code> barriers and <code class="docutils literal notranslate"><span class="pre">init=tle.gpu.READY</span></code> barriers must use the mbarrier path.</p></li>
+<li><p>Named barriers require a static barrier slot index such as <code class="docutils literal notranslate"><span class="pre">sync[0]</span></code>; a dynamic slot index is an error.</p></li>
+</ul>
+<p>When reusing a ring buffer, <code class="docutils literal notranslate"><span class="pre">phaseIdx</span></code> should be passed the logical use id of that slot; lowering maps it internally to the hardware phase.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bars</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc_barriers</span><span class="p">(</span>
+    <span class="n">num_barriers</span><span class="o">=</span><span class="n">NUM_SLOTS</span><span class="p">,</span>
+    <span class="n">arrive_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">init</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">READY</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k_iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUM_ITERS</span><span class="p">):</span>
+    <span class="n">slot</span> <span class="o">=</span> <span class="n">k_iter</span> <span class="o">%</span> <span class="n">NUM_SLOTS</span>
+    <span class="n">use_id</span> <span class="o">=</span> <span class="n">k_iter</span> <span class="o">//</span> <span class="n">NUM_SLOTS</span>
+
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_wait</span><span class="p">(</span><span class="n">bars</span><span class="p">[</span><span class="n">slot</span><span class="p">],</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="n">use_id</span><span class="p">)</span>
+    <span class="c1"># Use the shared-memory slot `slot`</span>
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_arrive</span><span class="p">(</span><span class="n">bars</span><span class="p">[</span><span class="n">slot</span><span class="p">],</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="n">use_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example: named-barrier synchronization between two 4-warp worker partitions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@triton</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">consumer</span><span class="p">(</span><span class="n">sync</span><span class="p">,</span> <span class="n">CID</span><span class="p">:</span> <span class="n">tl</span><span class="o">.</span><span class="n">constexpr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">CID</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_arrive</span><span class="p">(</span><span class="n">sync</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_wait</span><span class="p">(</span><span class="n">sync</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="n">sync</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc_barriers</span><span class="p">(</span><span class="n">num_barriers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arrive_count</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">warp_specialize</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="n">producer</span><span class="p">,</span> <span class="p">(</span><span class="o">...</span><span class="p">,)),</span>
+        <span class="p">(</span><span class="n">consumer</span><span class="p">,</span> <span class="p">(</span><span class="n">sync</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">consumer</span><span class="p">,</span> <span class="p">(</span><span class="n">sync</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">168</span><span class="p">,</span> <span class="mi">168</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Example: empty/full synchronization around a TMA load.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@triton</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">producer</span><span class="p">(</span><span class="n">a_desc</span><span class="p">,</span> <span class="n">a_smem</span><span class="p">,</span> <span class="n">a_empty</span><span class="p">,</span> <span class="n">a_full</span><span class="p">):</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="n">tl</span><span class="o">.</span><span class="n">constexpr</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_wait</span><span class="p">(</span><span class="n">a_empty</span><span class="p">,</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a_desc</span><span class="p">,</span> <span class="n">a_smem</span><span class="p">,</span> <span class="p">[</span><span class="n">BLOCK_M</span><span class="p">,</span> <span class="n">BLOCK_K</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">barrier</span><span class="o">=</span><span class="n">a_full</span><span class="p">)</span>
+
+
+<span class="nd">@triton</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">consumer</span><span class="p">(</span><span class="n">a_smem</span><span class="p">,</span> <span class="n">a_empty</span><span class="p">,</span> <span class="n">a_full</span><span class="p">):</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="n">tl</span><span class="o">.</span><span class="n">constexpr</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_wait</span><span class="p">(</span><span class="n">a_full</span><span class="p">,</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+    <span class="c1"># Consume a_smem ...</span>
+    <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">barrier_arrive</span><span class="p">(</span><span class="n">a_empty</span><span class="p">,</span> <span class="n">phaseIdx</span><span class="o">=</span><span class="n">phase</span><span class="p">)</span>
+
+
+<span class="n">a_empty</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc_barrier</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">READY</span><span class="p">)</span>
+<span class="n">a_full</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc_barrier</span><span class="p">(</span><span class="n">expect_bytes</span><span class="o">=</span><span class="n">A_TILE_BYTES</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="tle-gpu-wgmma-and-tle-gpu-wgmma-wait">
+<h3>tle.gpu.wgmma and tle.gpu.wgmma_wait<a class="headerlink" href="#tle-gpu-wgmma-and-tle-gpu-wgmma-wait" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tle.gpu.wgmma</span></code> issues an asynchronous Hopper WGMMA and returns an accumulator dependency value. Ordinary tensor ops, reductions, or stores must call <code class="docutils literal notranslate"><span class="pre">tle.gpu.wgmma_wait(...)</span></code> before consuming that accumulator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma</span><span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span>
+    <span class="n">b</span><span class="p">,</span>
+    <span class="n">acc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">input_precision</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_num_imprecise_acc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">out_dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">trans_a</span><span class="p">:</span> <span class="n">tl</span><span class="o">.</span><span class="n">constexpr</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">trans_b</span><span class="p">:</span> <span class="n">tl</span><span class="o">.</span><span class="n">constexpr</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tl</span><span class="o">.</span><span class="n">tensor</span>
+
+<span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma_wait</span><span class="p">(</span><span class="n">pendings</span><span class="p">,</span> <span class="n">acc</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tl</span><span class="o">.</span><span class="n">tensor</span>
+</pre></div>
+</div>
+<p>Operand and result rules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> may be a shared-memory <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code> or a register <code class="docutils literal notranslate"><span class="pre">tl.tensor</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> must currently be a shared-memory <code class="docutils literal notranslate"><span class="pre">tle.gpu.buffered_tensor</span></code>.</p></li>
+<li><p>Shared-memory operands must use the default NVIDIA MMA shared layout and must be rank-2 tiles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trans_a</span></code> and <code class="docutils literal notranslate"><span class="pre">trans_b</span></code> must be compile-time bools.</p></li>
+<li><p>Shape constraints: <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">&gt;=</span> <span class="pre">64</span></code> and divisible by 64, <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">&gt;=</span> <span class="pre">8</span></code> and divisible by 8, <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;=</span> <span class="pre">16</span></code>, and <code class="docutils literal notranslate"><span class="pre">a.K</span> <span class="pre">==</span> <span class="pre">b.K</span></code>.</p></li>
+<li><p>Non-FP8 operands must have matching dtypes and must be one of <code class="docutils literal notranslate"><span class="pre">tl.int8</span></code>, <code class="docutils literal notranslate"><span class="pre">tl.float16</span></code>, <code class="docutils literal notranslate"><span class="pre">tl.bfloat16</span></code>, or <code class="docutils literal notranslate"><span class="pre">tl.float32</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">out_dtype</span></code> controls the accumulator dtype; <code class="docutils literal notranslate"><span class="pre">tl.bfloat16</span></code> output is not supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_num_imprecise_acc</span></code> controls FP8 imprecise accumulation and does not change the returned tensor dtype.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wgmma_wait(pendings,</span> <span class="pre">acc)</span></code> waits until at most <code class="docutils literal notranslate"><span class="pre">pendings</span></code> WGMMA groups remain outstanding; <code class="docutils literal notranslate"><span class="pre">wgmma_wait(acc)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">wgmma_wait(0,</span> <span class="pre">acc)</span></code>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_smem</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">([</span><span class="mi">64</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">)</span>
+<span class="n">b_smem</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">alloc</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">smem</span><span class="p">)</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma</span><span class="p">(</span><span class="n">a_smem</span><span class="p">,</span> <span class="n">b_smem</span><span class="p">,</span> <span class="n">out_dtype</span><span class="o">=</span><span class="n">tl</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma_wait</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Keeping one WGMMA group pending in a hand-written pipeline:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma</span><span class="p">(</span><span class="n">a0_smem</span><span class="p">,</span> <span class="n">b0_smem</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma</span><span class="p">(</span><span class="n">a1_smem</span><span class="p">,</span> <span class="n">b1_smem</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma_wait</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+<span class="c1"># Independent work can now proceed while one WGMMA group stays pending</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">tle</span><span class="o">.</span><span class="n">gpu</span><span class="o">.</span><span class="n">wgmma_wait</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1114,9 +1391,16 @@ Performs element-wise binary operations on DSA-local buffers.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-memory-management">GPU memory management</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-memory-space">tle.gpu.memory_space</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-alloc">tle.gpu.alloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-buffered-tensor-slot">tle.gpu.buffered_tensor.slot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-buffered-tensor-reshape">tle.gpu.buffered_tensor.reshape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-set-layout">tle.gpu.set_layout</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-local-ptr">tle.gpu.local_ptr</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-local-ptr-for-remote">tle.gpu.local_ptr (for remote)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-copy">tle.gpu.copy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-barrier-api">tle.gpu barrier API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tle-gpu-wgmma-and-tle-gpu-wgmma-wait">tle.gpu.wgmma and tle.gpu.wgmma_wait</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-orchestration">Execution orchestration</a><ul class="nav section-nav flex-column">
@@ -1176,7 +1460,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 23, 2026.
   <br/>
 </p>
   </div>
@@ -1199,5 +1483,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagtree_zh/user_guide/use-tle-struct.html">中文</a></body>
 </html>
