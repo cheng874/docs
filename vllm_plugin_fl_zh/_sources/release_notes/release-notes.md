@@ -5,30 +5,20 @@
 ## v0.3.0
 
 
-vllm-plugin-FL v0.3.0 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0) 或 [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)。
+vllm-plugin-FL v0.3.0 需要 [vllm v0.24.0](https://github.com/vllm-project/vllm/tree/v0.24.0)。
 
 
 - **新增功能**
 
   - 支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。
-  - 面向 vLLM 0.24.0 新增或重新适配的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head attention 后端、PPU empty mode、曦望 Sunrise attention 后端、TXDA 以及海光工作流。
+  - 面向 vLLM 0.24.0 升级的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head（PPU）attention 后端与 empty mode、曦望 Sunrise attention 后端、清微智能 TXDA 以及海光工作流。
   - 量化推理：W8A8 推理适配 vLLM 0.24；Arm CPU 支持 Qwen packed W4A8 与 GDN。
   - vLLM 0.24 上的 Qwen3.5 纯文本运行时兼容。
-  - out-of-tree 后端支持：新增 `weak_ref_tensor` C++ 扩展及 CMake 构建系统；vLLM 0.24.0+ 上支持 `BreakableCUDAGraphWrapper`，并在天数智芯 Iluvatar 上启用 CUDA graph。
-  - 调度：支持追加 FlagGems 黑名单条目、MTP xGrammar mask 批处理、自定义吞吐测试用例。
-  - 工具链：新增版本文档页；CI 从 release/0.2 迁移至 main，并支持 `/rerun-failed-ci`、`/cancel-ci` PR 评论命令。
 
-- **功能增强**
-
-  - 昇腾：重写 fused-MoE 实现并整合厂商融合模块。
-  - 调度：新增可选的 Hopper 长上下文路由；`fused_experts` 改走 FlagGems；更新 NVIDIA FlagGems 黑名单与支持厂商列表；改进 `CachedOp` 快速路径诊断与回退行为。
-  - CUDA graph：对非 DeepEP 后端禁用 CUDA graph；KV cache 容量计算计入 CUDA graph 显存；修复 vLLM 0.24.0 下的 MTP。
-  - Worker：为独立引擎保留数据并行 GPU 偏移；在 out-of-tree 运行时缺失 `torchvision` 时对 `kernel_warmup` 做保护；MetaX `all_reduce` 现传入 `group=device_group`。
-
-## v0.2.0
+## v0.2.2
 
 
-vllm-plugin-FL v0.2.0 需要 [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)。支持的平台：NVIDIA、Hygon DCU。
+vllm-plugin-FL v0.2.2 需要 [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)。支持的平台：NVIDIA、Hygon DCU。
 
 - **新增功能**
 

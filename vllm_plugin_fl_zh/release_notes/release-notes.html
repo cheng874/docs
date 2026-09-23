@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含 vllm-plugin-FL 的发布信息。 v0.3.0: vllm-plugin-FL v0.3.0 需要 vllm v0.24.0 或 vllm v0.20.2 。 新增功能- 支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。, 面向 vLLM 0.24.0 新增或重新适配的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head attention 后端、P..." />
+<meta property="og:description" content="本节包含 vllm-plugin-FL 的发布信息。 v0.3.0: vllm-plugin-FL v0.3.0 需要 vllm v0.24.0 。 新增功能- 支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。, 面向 vLLM 0.24.0 升级的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head（PPU）attention 后端与 empty mode、曦望 Su..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含 vllm-plugin-FL 的发布信息。 v0.3.0: vllm-plugin-FL v0.3.0 需要 vllm v0.24.0 或 vllm v0.20.2 。 新增功能- 支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。, 面向 vLLM 0.24.0 新增或重新适配的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head attention 后端、P..." />
+<meta name="description" content="本节包含 vllm-plugin-FL 的发布信息。 v0.3.0: vllm-plugin-FL v0.3.0 需要 vllm v0.24.0 。 新增功能- 支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。, 面向 vLLM 0.24.0 升级的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head（PPU）attention 后端与 empty mode、曦望 Su..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; VLLM-Plugin-FL 文档中心</title>
@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.6be5b4da-ba56-4148-9406-f802d5a4bdab.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.1a6b4cbc-01f1-43e8-a60b-cb1a2fadc029.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -78,7 +78,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 22, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 23, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -549,7 +549,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-2">v0.2.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -567,32 +567,21 @@
 <p>本节包含 vllm-plugin-FL 的发布信息。</p>
 <section id="v0-3-0">
 <h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
-<p>vllm-plugin-FL v0.3.0 需要 <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">vllm v0.24.0</a> 或 <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.2">vllm v0.20.2</a>。</p>
+<p>vllm-plugin-FL v0.3.0 需要 <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.24.0">vllm v0.24.0</a>。</p>
 <ul class="simple">
 <li><p><strong>新增功能</strong></p>
 <ul>
 <li><p>支持 vLLM 0.24.0，包括官方 vLLM 0.24 CUDA stable-ABI wheel；FlagCX connector 的兼容范围扩展至 vLLM 0.20–0.24。</p></li>
-<li><p>面向 vLLM 0.24.0 新增或重新适配的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head attention 后端、PPU empty mode、曦望 Sunrise attention 后端、TXDA 以及海光工作流。</p></li>
+<li><p>面向 vLLM 0.24.0 升级的厂商后端：沐曦 MetaX C550、摩尔线程 MUSA（MTT S5000）、天数智芯 Iluvatar BI-V150、T-Head（PPU）attention 后端与 empty mode、曦望 Sunrise attention 后端、清微智能 TXDA 以及海光工作流。</p></li>
 <li><p>量化推理：W8A8 推理适配 vLLM 0.24；Arm CPU 支持 Qwen packed W4A8 与 GDN。</p></li>
 <li><p>vLLM 0.24 上的 Qwen3.5 纯文本运行时兼容。</p></li>
-<li><p>out-of-tree 后端支持：新增 <code class="docutils literal notranslate"><span class="pre">weak_ref_tensor</span></code> C++ 扩展及 CMake 构建系统；vLLM 0.24.0+ 上支持 <code class="docutils literal notranslate"><span class="pre">BreakableCUDAGraphWrapper</span></code>，并在天数智芯 Iluvatar 上启用 CUDA graph。</p></li>
-<li><p>调度：支持追加 FlagGems 黑名单条目、MTP xGrammar mask 批处理、自定义吞吐测试用例。</p></li>
-<li><p>工具链：新增版本文档页；CI 从 release/0.2 迁移至 main，并支持 <code class="docutils literal notranslate"><span class="pre">/rerun-failed-ci</span></code>、<code class="docutils literal notranslate"><span class="pre">/cancel-ci</span></code> PR 评论命令。</p></li>
-</ul>
-</li>
-<li><p><strong>功能增强</strong></p>
-<ul>
-<li><p>昇腾：重写 fused-MoE 实现并整合厂商融合模块。</p></li>
-<li><p>调度：新增可选的 Hopper 长上下文路由；<code class="docutils literal notranslate"><span class="pre">fused_experts</span></code> 改走 FlagGems；更新 NVIDIA FlagGems 黑名单与支持厂商列表；改进 <code class="docutils literal notranslate"><span class="pre">CachedOp</span></code> 快速路径诊断与回退行为。</p></li>
-<li><p>CUDA graph：对非 DeepEP 后端禁用 CUDA graph；KV cache 容量计算计入 CUDA graph 显存；修复 vLLM 0.24.0 下的 MTP。</p></li>
-<li><p>Worker：为独立引擎保留数据并行 GPU 偏移；在 out-of-tree 运行时缺失 <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> 时对 <code class="docutils literal notranslate"><span class="pre">kernel_warmup</span></code> 做保护；MetaX <code class="docutils literal notranslate"><span class="pre">all_reduce</span></code> 现传入 <code class="docutils literal notranslate"><span class="pre">group=device_group</span></code>。</p></li>
 </ul>
 </li>
 </ul>
 </section>
-<section id="v0-2-0">
-<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
-<p>vllm-plugin-FL v0.2.0 需要 <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.2">vllm v0.20.2</a>。支持的平台：NVIDIA、Hygon DCU。</p>
+<section id="v0-2-2">
+<h2>v0.2.2<a class="headerlink" href="#v0-2-2" title="Link to this heading">#</a></h2>
+<p>vllm-plugin-FL v0.2.2 需要 <a class="reference external" href="https://github.com/vllm-project/vllm/tree/v0.20.2">vllm v0.20.2</a>。支持的平台：NVIDIA、Hygon DCU。</p>
 <ul class="simple">
 <li><p><strong>新增功能</strong></p>
 <ul>
@@ -688,7 +677,7 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-2">v0.2.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -723,7 +712,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 22, 2026.
+  Last updated on Sep 23, 2026.
   <br/>
 </p>
   </div>
