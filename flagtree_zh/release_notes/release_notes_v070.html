@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.bca150e7-f947-425a-a348-ce6c9dfc5b28.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.522085b1-f325-4928-a3a6-7793071d18a0.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v070';</script>
@@ -564,10 +564,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagtree-0-7-0">
 <h1>FlagTree 0.7.0 发布<a class="headerlink" href="#flagtree-0-7-0" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>本版本面向 FlagOS 2.2（计划 GA 日期 2026-09-28）。以下条目反映已纳入 2.2 的 FEP 范围。实现尚未合入的特性标注为“进行中”，将在特性冻结（2026-08-31）前随对应 PR 合入而更新。</p>
-</div>
 <ul class="simple">
 <li><p><strong>新增特性</strong></p>
 <ul>
@@ -600,9 +596,9 @@
 </li>
 </ul>
 </li>
-<li><p><strong>DevTools（调试器与性能分析器）—— 进行中</strong></p>
+<li><p><strong>DevTools（调试器与性能分析器）</strong></p>
 <ul>
-<li><p><strong>FlagTree DevTools</strong> —— 由 FEP-0068 提出（目标 FlagOS 2.2）。专用仓库已创建为 <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a>（2026-08-04 建仓，MIT），集中维护 <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code>，由 FlagTree 作为 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块消费。FEP 追踪 issue（community#76）仍将 Owner 指定以及 FlagTree 侧前置项（<code class="docutils literal notranslate"><span class="pre">triton.debugger</span></code>/<code class="docutils literal notranslate"><span class="pre">triton.profiler</span></code> facade、可选组件注册、compiler/runtime hooks）列为未完成项。FlagPrism 正处于活跃开发中，尚无 tag release；当前状态见 <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">FlagPrism 仓库</a>。</p></li>
+<li><p><strong>FlagTree DevTools</strong> —— 由 FEP-0068 提出（目标 FlagOS 2.2）。专用仓库为 <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a>（2026-08-04 建仓，MIT），集中维护 <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code>，由 FlagTree 作为 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块消费。FlagPrism 先支持部分后端：华为昇腾、天数智芯、摩尔线程。</p></li>
 </ul>
 </li>
 <li><p><strong>打包</strong></p>

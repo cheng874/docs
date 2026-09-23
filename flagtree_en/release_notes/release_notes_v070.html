@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.94801aa6-fd67-4eaa-90bd-1d01913cadb4.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.b746c0c7-fc40-464d-ab9f-11b22946c0f1.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v070';</script>
@@ -564,10 +564,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagtree-0-7-0-release">
 <h1>FlagTree 0.7.0 Release<a class="headerlink" href="#flagtree-0-7-0-release" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This release targets FlagOS 2.2 (GA scheduled for 2026-09-28). The items below reflect the FEP scope accepted for 2.2. Features whose implementation has not yet landed are marked <em>In progress</em> and will be updated as the corresponding PRs merge before the Feature Freeze (2026-08-31).</p>
-</div>
 <ul class="simple">
 <li><p><strong>Added Features</strong></p>
 <ul>
@@ -600,9 +596,9 @@
 </li>
 </ul>
 </li>
-<li><p><strong>DevTools (Debugger &amp; Profiler) — in progress</strong></p>
+<li><p><strong>DevTools (Debugger &amp; Profiler)</strong></p>
 <ul>
-<li><p><strong>FlagTree DevTools</strong> — proposed in FEP-0068 (target FlagOS 2.2). The dedicated repository now exists as <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a> (created 2026-08-04, MIT), which centrally maintains <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> and <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code> and is consumed by FlagTree as the <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> submodule. The FEP tracking issue (community#76) still lists the Owner assignment and FlagTree-side prerequisites (<code class="docutils literal notranslate"><span class="pre">triton.debugger</span></code>/<code class="docutils literal notranslate"><span class="pre">triton.profiler</span></code> facades, optional-component registration, compiler/runtime hooks) as open items. FlagPrism is under active development with no tagged release yet; see the <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">FlagPrism repository</a> for the current state.</p></li>
+<li><p><strong>FlagTree DevTools</strong> — proposed in FEP-0068 (target FlagOS 2.2). The dedicated repository is <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a> (created 2026-08-04, MIT), which centrally maintains <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> and <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code> and is consumed by FlagTree as the <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> submodule. FlagPrism initially supports a subset of backends: Huawei Ascend, Iluvatar, and Moore Threads.</p></li>
 </ul>
 </li>
 <li><p><strong>Packaging</strong></p>
