@@ -4,7 +4,7 @@
 
 The following table summarizes the required software and the version supported by each release of vllm-plugin-FL:
 
-| Requirement | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
+| Requirement | v0.1.0 (vLLM 0.13.0) | v0.2.2 (vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
 |-------------|----------------------|----------------------|----------------------|-------|
 | Python | 3.10 - 3.13 | 3.10 - 3.13 | 3.10 - 3.13 | Required |
 | PyTorch | >= 2.7.1 | >= 2.7.1 | >= 2.7.1 | Required |
@@ -17,7 +17,7 @@ The following table summarizes the required software and the version supported b
 
 The following table summarizes supported hardware and their verification status:
 
-| Chip Vendor | Chip Model | v0.1.0 (vLLM 0.13.0) | v0.2.0 (vLLM 0.20.0 or vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
+| Chip Vendor | Chip Model | v0.1.0 (vLLM 0.13.0) | v0.2.2 (vLLM 0.20.2) | v0.3.0 (vLLM 0.24.0) | Notes |
 |-------------|------------|----------------------|----------------------|----------------------|-------|
 | NVIDIA | — | Supported | Supported | Supported | |
 | ARM64 CPU | — | — | — | Supported | CPU-only inference on ARM64 hosts |
