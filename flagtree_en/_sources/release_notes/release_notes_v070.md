@@ -18,7 +18,4 @@
       - Added the `library` and `compiler` parameters, enabling NVSHMEM device-side interfaces to be inlined into TLE-Raw kernels via `@dialect(..., library="nvshmem", compiler="clang")`. Supported on NVIDIA.
 
 - **DevTools (Debugger & Profiler)**
-  - **FlagTree DevTools** — proposed in FEP-0068 (target FlagOS 2.2). The dedicated repository is [flagos-ai/FlagPrism](https://github.com/flagos-ai/FlagPrism) (created 2026-08-04, MIT), which centrally maintains `flagtree.debugger` and `flagtree.profiler` and is consumed by FlagTree as the `third_party/FlagPrism` submodule. FlagPrism initially supports a subset of backends: Huawei Ascend, Iluvatar, and Moore Threads.
-
-- **Packaging**
-  - Wave 1 unified package integration (FEP-0019): Debian `.deb` and RPM `.rpm` packages published to the FlagOS Nexus repository. _Merged in FlagTree#607._
+  - FlagPrism ([flagos-ai/FlagPrism](https://github.com/flagos-ai/FlagPrism)) provides debugging and performance-analysis tools for Triton programs, containing `flagtree.debugger` and `flagtree.profiler`, and is integrated into FlagTree as the `third_party/FlagPrism` submodule. It initially supports a subset of backends: Huawei Ascend, Iluvatar, and Moore Threads.

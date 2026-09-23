@@ -18,7 +18,4 @@
       - 新增 `library` 与 `compiler` 参数，支持通过 `@dialect(..., library="nvshmem", compiler="clang")` 将 NVSHMEM 设备端接口内联进 TLE-Raw kernel。在 NVIDIA 上支持。
 
 - **DevTools（调试器与性能分析器）**
-  - **FlagTree DevTools** —— 由 FEP-0068 提出（目标 FlagOS 2.2）。专用仓库为 [flagos-ai/FlagPrism](https://github.com/flagos-ai/FlagPrism)（2026-08-04 建仓，MIT），集中维护 `flagtree.debugger` 与 `flagtree.profiler`，由 FlagTree 作为 `third_party/FlagPrism` 子模块消费。FlagPrism 先支持部分后端：华为昇腾、天数智芯、摩尔线程。
-
-- **打包**
-  - Wave 1 统一打包集成（FEP-0019）：Debian `.deb` 与 RPM `.rpm` 包发布至 FlagOS Nexus 仓库。**已在 FlagTree#607 合入**。
+  - FlagPrism（[flagos-ai/FlagPrism](https://github.com/flagos-ai/FlagPrism)）为 Triton 程序提供调试与性能分析工具，包含 `flagtree.debugger` 与 `flagtree.profiler`，以 `third_party/FlagPrism` 子模块集成在 FlagTree 中。先支持部分后端：华为昇腾、天数智芯、摩尔线程。

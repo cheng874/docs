@@ -64,7 +64,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.3d648386-fc4e-4405-aed1-b01d94e28d7e.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v070.5fd384e9-7542-4467-b55e-a5dd8c3a7f16.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v070';</script>
@@ -598,12 +598,7 @@
 </li>
 <li><p><strong>DevTools（调试器与性能分析器）</strong></p>
 <ul>
-<li><p><strong>FlagTree DevTools</strong> —— 由 FEP-0068 提出（目标 FlagOS 2.2）。专用仓库为 <a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a>（2026-08-04 建仓，MIT），集中维护 <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code>，由 FlagTree 作为 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块消费。FlagPrism 先支持部分后端：华为昇腾、天数智芯、摩尔线程。</p></li>
-</ul>
-</li>
-<li><p><strong>打包</strong></p>
-<ul>
-<li><p>Wave 1 统一打包集成（FEP-0019）：Debian <code class="docutils literal notranslate"><span class="pre">.deb</span></code> 与 RPM <code class="docutils literal notranslate"><span class="pre">.rpm</span></code> 包发布至 FlagOS Nexus 仓库。<strong>已在 FlagTree#607 合入</strong>。</p></li>
+<li><p>FlagPrism（<a class="reference external" href="https://github.com/flagos-ai/FlagPrism">flagos-ai/FlagPrism</a>）为 Triton 程序提供调试与性能分析工具，包含 <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code>，以 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块集成在 FlagTree 中。先支持部分后端：华为昇腾、天数智芯、摩尔线程。</p></li>
 </ul>
 </li>
 </ul>
