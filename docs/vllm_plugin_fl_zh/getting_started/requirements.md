@@ -11,7 +11,7 @@
 | vLLM | 0.13.0 | 0.20.2 | 0.24.0 | NVIDIA 使用官方发布；非 NVIDIA 需以 `VLLM_TARGET_DEVICE=empty` 从源码安装 |
 | FlagGems | >= v5.0.0 | >= v5.0.0 | v5.3.4；支持 >= v5.0.0 | 算子调度必需。[安装](install.md)步骤固定使用 `v5.3.4`（与上游 README 一致） |
 | FlagCX | v0.13.0 | v0.13.0 | v0.13.0 | 可选，用于多芯片通信 |
-| FlagTree | 0.4.0 | 0.4.0 | 0.7.0-triton3.6 | 从 `0.7.0` 发版分支配合对应厂商 backend 源码编译（见[安装](install.md)步骤）。昇腾使用 `0.7.0-triton3.5`；清微智能使用 `0.7.0-triton3.3` |
+| FlagTree | 0.4.0 | 0.4.0 | 0.7.0 | 从 `0.7.0` 发版分支配合对应厂商 backend 源码编译（见[安装](install.md)步骤） |
 
 ## 支持的硬件平台
 

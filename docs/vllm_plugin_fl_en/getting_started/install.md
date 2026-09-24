@@ -167,10 +167,10 @@ If there are multiple plugins in the current environment, you can select vllm-pl
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.6.1+ascend3.5 $RES
+    python3 -m pip install flagtree==0.7.0+ascend3.5 $RES
     ```
 
-    For other chips, use the matching FlagTree build (e.g., `flagtree==0.6.1+iluvatar3.6`, `flagtree==0.6.1+metax3.6`).
+    For other chips, use the matching FlagTree build (e.g., `flagtree==0.7.0+iluvatar3.6`, `flagtree==0.7.0+metax3.6`).
 
 2. Set required environment variable
 

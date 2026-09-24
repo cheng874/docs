@@ -167,10 +167,10 @@ FLAGCX_ADAPTOR=[xxx] pip install -e . --no-build-isolation
 
     ```{code-block} shell
     RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple --trusted-host=https://resource.flagos.net"
-    python3 -m pip install flagtree==0.6.1+ascend3.5 $RES
+    python3 -m pip install flagtree==0.7.0+ascend3.5 $RES
     ```
 
-    其他芯片请使用对应的 FlagTree 构建（例如 `flagtree==0.6.1+iluvatar3.6`、`flagtree==0.6.1+metax3.6`）。
+    其他芯片请使用对应的 FlagTree 构建（例如 `flagtree==0.7.0+iluvatar3.6`、`flagtree==0.7.0+metax3.6`）。
 
 2. 设置必需的环境变量
 
