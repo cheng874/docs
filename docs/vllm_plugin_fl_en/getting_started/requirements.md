@@ -11,7 +11,7 @@ The following table summarizes the required software and the version supported b
 | vLLM | 0.13.0 | 0.20.2 | 0.24.0 | From official release (NVIDIA) or source with `VLLM_TARGET_DEVICE=empty` (non-NVIDIA) |
 | FlagGems | >= v5.0.0 | >= v5.0.0 | v5.3.4; >= v5.0.0 supported | Required for operator dispatch. The [installation](install.md) step pins `v5.3.4` (the version the upstream README installs) |
 | FlagCX | v0.13.0 | v0.13.0 | v0.13.0 | Optional, for multi-chip communication |
-| FlagTree | 0.4.0 | 0.4.0 | 0.7.0-triton3.6 | Built from the `0.7.0` release branch with the matching vendor backend (see the [installation](install.md) step). Ascend uses `0.7.0-triton3.5`; Tsingmicro uses `0.7.0-triton3.3` |
+| FlagTree | 0.4.0 | 0.4.0 | 0.7.0 | Built from the `0.7.0` release branch with the matching vendor backend (see the [installation](install.md) step) |
 
 ## Supported hardware platforms
 
