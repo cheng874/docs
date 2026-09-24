@@ -8,8 +8,8 @@
       - Extended `tle.remote` with the `space` (cluster / device / node), `dtype`, `offset`, `coopkind`, and `netidx` parameters, covering remote access within a thread-block cluster (DSMEM), between GPUs in a node (NVLink P2P), and across nodes (FlagCX/RDMA). Supported on NVIDIA.
       - Extended `tle.distributed_barrier` with the `space`, `group_kind`, `barrier_kind`, and `order` parameters. Supported on NVIDIA.
     - TLE-Struct:
-      - Added GPU buffer aliasing through `tle.gpu.alloc(..., alias=...)`, providing typed shared-memory views with static validation of aliased views. (FEP-0065)
-      - Added the `tle.gpu.set_layout` op for explicit distributed-layout assignment, together with the `BlockEncoding`, `MmaEncoding`, `DotOperandEncoding`, and `SlicedEncoding` layout objects. (FEP-0065)
+      - Added GPU buffer aliasing through `tle.gpu.alloc(..., alias=...)`, providing typed shared-memory views with static validation of aliased views.
+      - Added the `tle.gpu.set_layout` op for explicit distributed-layout assignment, together with the `BlockEncoding`, `MmaEncoding`, `DotOperandEncoding`, and `SlicedEncoding` layout objects.
       - Added the following barrier ops: `tle.gpu.alloc_barrier`, `tle.gpu.alloc_barriers`, `tle.gpu.barrier_wait`, and `tle.gpu.barrier_arrive`; added the `barrier` and `mask` parameters to `tle.gpu.copy`. Supported on NVIDIA.
       - Added the `tle.gpu.wgmma` and `tle.gpu.wgmma_wait` ops. Supported on NVIDIA.
       - Added the `tle.gpu.buffered_tensor.slot` and `tle.gpu.buffered_tensor.reshape` ops. Supported on NVIDIA.
