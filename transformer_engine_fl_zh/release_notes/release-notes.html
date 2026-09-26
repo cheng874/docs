@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含 TransformerEngine-FL 的发布信息。 v0.2.0: 新增特性- TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14（304 个提交，v2.9.0 → v2.14.0），纳入 MXFP8/NVFP4 量化、Blackwell（sm120）架构支持、FSDP2 与 DTensor 感知优化器状态、融合 RMSNorm dLN 与 add-through，以及 MoE 分组 MLP 算子。FlagOS 插件系统完全保留，同步了 OP API 签名和多后端兼容补丁。, KunlunXin 供应商后端 — 新增百度..." />
+<meta property="og:description" content="本节包含 TransformerEngine-FL 的发布信息。 v0.3.0: TransformerEngine-FL v0.3.0 已同步上游 NVIDIA TransformerEngine v2.17。 新增特性- FlagOS Triton 融合 RoPE kernel。, FlagOS 层归一化算子。, generic_gemm 支持 bias。, 新增厂商后端：清微 TXDA、昇腾与昆仑芯。.. v0.2.0: 新增特性- TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14，纳入 MXFP8/NVFP4 量化、Blac..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含 TransformerEngine-FL 的发布信息。 v0.2.0: 新增特性- TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14（304 个提交，v2.9.0 → v2.14.0），纳入 MXFP8/NVFP4 量化、Blackwell（sm120）架构支持、FSDP2 与 DTensor 感知优化器状态、融合 RMSNorm dLN 与 add-through，以及 MoE 分组 MLP 算子。FlagOS 插件系统完全保留，同步了 OP API 签名和多后端兼容补丁。, KunlunXin 供应商后端 — 新增百度..." />
+<meta name="description" content="本节包含 TransformerEngine-FL 的发布信息。 v0.3.0: TransformerEngine-FL v0.3.0 已同步上游 NVIDIA TransformerEngine v2.17。 新增特性- FlagOS Triton 融合 RoPE kernel。, FlagOS 层归一化算子。, generic_gemm 支持 bias。, 新增厂商后端：清微 TXDA、昇腾与昆仑芯。.. v0.2.0: 新增特性- TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14，纳入 MXFP8/NVFP4 量化、Blac..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; Transformer-Engine-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.2360c55f-c5b7-4249-9143-26baf3d36bc8.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.fc0facfe-f7a4-4e9b-99bd-816917983d18.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -391,6 +391,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">多平台构建与测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL 自定义后端示例</a></li>
 </ul>
 </details></li>
@@ -549,6 +550,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -565,16 +567,29 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节包含 TransformerEngine-FL 的发布信息。</p>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL v0.3.0 已同步上游 NVIDIA TransformerEngine v2.17。</p>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p>FlagOS Triton 融合 RoPE kernel。</p></li>
+<li><p>FlagOS 层归一化算子。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generic_gemm</span></code> 支持 bias。</p></li>
+<li><p>新增厂商后端：清微 TXDA、昇腾与昆仑芯。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>新增特性</strong></p>
 <ul>
-<li><p>TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14（304 个提交，v2.9.0 → v2.14.0），纳入 MXFP8/NVFP4 量化、Blackwell（sm120）架构支持、FSDP2 与 DTensor 感知优化器状态、融合 RMSNorm dLN 与 add-through，以及 MoE 分组 MLP 算子。FlagOS 插件系统完全保留，同步了 OP API 签名和多后端兼容补丁。</p></li>
-<li><p>KunlunXin 供应商后端 — 新增百度昆仑芯片供应商算子支持，包含 flash attention 和算子注册。</p></li>
-<li><p>ENFLAME 供应商后端 — 新增 ENFLAME 芯片供应商算子支持，包含 flash attention 和算子注册。</p></li>
-<li><p>FlagOS 分组 GEMM 算子 — 基于 FlagGems Triton 内核为 flagos 后端实现了 <code class="docutils literal notranslate"><span class="pre">te_general_grouped_gemm</span></code>，支持前向和后向计算。</p></li>
-<li><p>CI/CD 增强 — 新增 MetaX MACA CI 工作流，向 FlagCICD 平台上报覆盖率，以及工作流重构和集成测试。</p></li>
+<li><p>TE V2.14 上游同步 — 集成 NVIDIA TransformerEngine 上游 v2.14，纳入 MXFP8/NVFP4 量化、Blackwell（sm120）架构支持、FSDP2 与 DTensor 感知优化器状态、融合 RMSNorm dLN 与 add-through，以及 MoE 分组 MLP 算子。FlagOS 插件系统完全保留，同步了 OP API 签名和多后端兼容补丁。</p></li>
+<li><p>昆仑芯供应商后端 — 新增昆仑芯芯片供应商算子支持，包含 flash attention 和算子注册。</p></li>
+<li><p>燧原供应商后端 — 新增燧原（Enflame）芯片供应商算子支持，包含 flash attention 和算子注册。</p></li>
+<li><p>FlagOS 分组 GEMM 算子 — 基于 FlagGems Triton 内核为 FlagOS 后端实现了 <code class="docutils literal notranslate"><span class="pre">te_general_grouped_gemm</span></code>，支持前向和后向计算。</p></li>
 </ul>
 </li>
 </ul>
@@ -586,10 +601,9 @@
 <li><p><strong>新增特性</strong></p>
 <ul>
 <li><p>多后端插件架构 — 基于插件的算子调度系统（<code class="docutils literal notranslate"><span class="pre">OpRegistry</span></code>、<code class="docutils literal notranslate"><span class="pre">OpManager</span></code>、<code class="docutils literal notranslate"><span class="pre">SelectionPolicy</span></code>），包含三层后端：FlagOS（默认/Triton）、Vendor（硬件特定）和 Reference（纯 PyTorch）。</p></li>
-<li><p>供应商后端 — 新增五个硬件供应商后端：Hygon（DCU）、METAX（GPU 含 flash attention）、KunlunXin（百度昆仑含 flash attention）、Iluvatar（Corex GPU）和 MUSA（Moore Threads S 系列 GPU）。</p></li>
+<li><p>供应商后端 — 新增五个硬件供应商后端：海光（DCU）、沐曦（GPU 含 flash attention）、昆仑芯（含 flash attention）、天数智芯（Corex GPU）和 MUSA（摩尔线程 S 系列 GPU）。</p></li>
 <li><p>FlagOS 后端 — 基于 FlagGems 的统一算子调度，集成 FlagCX 通信库。</p></li>
 <li><p>注意力系统 — 多供应商注意力后端框架，集成 flash attention。</p></li>
-<li><p>CI/CD 流水线 — GitHub Actions 工作流，多供应商测试矩阵。</p></li>
 </ul>
 </li>
 </ul>
@@ -643,6 +657,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

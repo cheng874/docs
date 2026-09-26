@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Docker Images (Recommended): TransformerEngine-FL shares the same Docker image with Megatron-LM-FL:,,, Platform, Image, Contents,,, NVIDIA GPU, harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia, torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0,,,, Suitable for 100B+ parameter mo..." />
+<meta property="og:description" content="Docker (Recommended): TransformerEngine-FL runs in a pre-built Docker image shared with Megatron-LM-FL. Go to the FlagOS main page, pick the image for your hardware from the download list in the middle of the page, and follow the on-page instructions to pull the image, enter the container, and st..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Docker Images (Recommended): TransformerEngine-FL shares the same Docker image with Megatron-LM-FL:,,, Platform, Image, Contents,,, NVIDIA GPU, harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia, torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0,,,, Suitable for 100B+ parameter mo..." />
+<meta name="description" content="Docker (Recommended): TransformerEngine-FL runs in a pre-built Docker image shared with Megatron-LM-FL. Go to the FlagOS main page, pick the image for your hardware from the download list in the middle of the page, and follow the on-page instructions to pull the image, enter the container, and st..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install TransformerEngine-FL &#8212; Transformer-Engine-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.208c8e04-68e4-48fc-90be-7bb59dd0ddf7.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.e20f0ec7-72e6-4cd7-8367-14a63fb3b1e8.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -391,6 +391,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -549,9 +550,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images-recommended">Docker Images (Recommended)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-recommended">Docker (Recommended)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-install-from-flagos-repository">Direct install from FlagOS Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
 </ul>
             </nav>
         </div>
@@ -565,27 +567,9 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="install-transformerengine-fl">
 <h1>Install TransformerEngine-FL<a class="headerlink" href="#install-transformerengine-fl" title="Link to this heading">#</a></h1>
-<section id="docker-images-recommended">
-<h2>Docker Images (Recommended)<a class="headerlink" href="#docker-images-recommended" title="Link to this heading">#</a></h2>
-<p>TransformerEngine-FL shares the same Docker image with Megatron-LM-FL:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Platform</p></th>
-<th class="head"><p>Image</p></th>
-<th class="head"><p>Contents</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA GPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia</span></code></p></td>
-<td><p>torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia
-</pre></div>
-</div>
+<section id="docker-recommended">
+<h2>Docker (Recommended)<a class="headerlink" href="#docker-recommended" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL runs in a pre-built Docker image shared with Megatron-LM-FL. Go to the <a class="reference external" href="https://flagos.io/Home">FlagOS main page</a>, pick the image for your hardware from the download list in the middle of the page, and follow the on-page instructions to pull the image, enter the container, and start it.</p>
 <p>Suitable for 100B+ parameter model pre-training.</p>
 <p>You can install TransformerEngine-FL through one of the following methods:</p>
 </section>
@@ -604,11 +588,23 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
 <span class="nv">MAX_JOBS</span><span class="o">=</span>xxx<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
+</section>
+<section id="non-nvidia-platforms">
+<h2>Non-NVIDIA platforms<a class="headerlink" href="#non-nvidia-platforms" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL v0.3.0 has been validated on MetaX, Hygon, Ascend, and T-Head PPU. Non-NVIDIA builds must skip the CUDA extension:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/TransformerEngine-FL.git
+<span class="nb">cd</span><span class="w"> </span>TransformerEngine-FL
+git<span class="w"> </span>checkout<span class="w"> </span>v0.3.0
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<span class="nv">TE_FL_SKIP_CUDA</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">64</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This requires the image from the vendors.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TE_FL_SKIP_CUDA=1</span></code> is mandatory on non-NVIDIA platforms — without it the build tries to compile the CUDA kernels and fails.</p>
 </div>
-<p>For an end-to-end training workflow using TransformerEngine-FL, Megatron-LM-FL, and FlagScale, see <a class="reference internal" href="#/e2e-use-case.md"><span class="xref myst">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</span></a>.</p>
+<p>The FlagOS operator tier (<code class="docutils literal notranslate"><span class="pre">te_fl_prefer:</span> <span class="pre">flagos</span></code>) additionally requires FlagTree and FlagGems. See <a class="reference internal" href="../user_guide/multi-platform-testing.html"><span class="std std-doc">Multi-Platform Build and Testing</span></a> for the full procedure.</p>
+<p>For an end-to-end training workflow using TransformerEngine-FL, Megatron-LM-FL, and FlagScale, see <a class="reference internal" href="../user_guide/e2e-use-case.html"><span class="std std-doc">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</span></a>.</p>
 </section>
 </section>
 
@@ -659,9 +655,10 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images-recommended">Docker Images (Recommended)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-recommended">Docker (Recommended)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-install-from-flagos-repository">Direct install from FlagOS Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-source">Install from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
 </ul>
   </nav></div>
 

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section includes the TransformerEngine-FL release information. v0.2.0: Added Features- TE V2.14 Upstream Synchronization — Integrated NVIDIA TransformerEngine upstream v2.14 (304 commits, v2.9.0 → v2.14.0), incorporating MXFP8/NVFP4 quantization, Blackwell (sm120) architecture support, FSDP2..." />
+<meta property="og:description" content="This section includes the TransformerEngine-FL release information. v0.3.0: TransformerEngine-FL v0.3.0 synchronizes with upstream NVIDIA TransformerEngine v2.17. Added Features- FlagOS Triton fused RoPE kernels., FlagOS layer normalization operator., Bias support for generic_gemm., New vendor ba..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section includes the TransformerEngine-FL release information. v0.2.0: Added Features- TE V2.14 Upstream Synchronization — Integrated NVIDIA TransformerEngine upstream v2.14 (304 commits, v2.9.0 → v2.14.0), incorporating MXFP8/NVFP4 quantization, Blackwell (sm120) architecture support, FSDP2..." />
+<meta name="description" content="This section includes the TransformerEngine-FL release information. v0.3.0: TransformerEngine-FL v0.3.0 synchronizes with upstream NVIDIA TransformerEngine v2.17. Added Features- FlagOS Triton fused RoPE kernels., FlagOS layer normalization operator., Bias support for generic_gemm., New vendor ba..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; Transformer-Engine-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.bbad344e-fa2f-4218-9e2e-da0843ac76d5.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.eb922475-80b0-4bca-a00e-5f2c19e6fd57.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -391,6 +391,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -549,6 +550,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -565,16 +567,29 @@
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
 <p>This section includes the TransformerEngine-FL release information.</p>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL v0.3.0 synchronizes with upstream NVIDIA TransformerEngine v2.17.</p>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>FlagOS Triton fused RoPE kernels.</p></li>
+<li><p>FlagOS layer normalization operator.</p></li>
+<li><p>Bias support for <code class="docutils literal notranslate"><span class="pre">generic_gemm</span></code>.</p></li>
+<li><p>New vendor backends: Tsingmicro TXDA, Ascend, and KunlunXin.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Added Features</strong></p>
 <ul>
-<li><p>TE V2.14 Upstream Synchronization — Integrated NVIDIA TransformerEngine upstream v2.14 (304 commits, v2.9.0 → v2.14.0), incorporating MXFP8/NVFP4 quantization, Blackwell (sm120) architecture support, FSDP2 with DTensor-aware optimizer states, fused RMSNorm dLN with add-through, and MoE grouped MLP ops. The FlagOS plugin system is fully preserved with synced OP API signatures and multi-backend compatibility patches.</p></li>
+<li><p>TE V2.14 Upstream Synchronization — Integrated NVIDIA TransformerEngine upstream v2.14, incorporating MXFP8/NVFP4 quantization, Blackwell (sm120) architecture support, FSDP2 with DTensor-aware optimizer states, fused RMSNorm dLN with add-through, and MoE grouped MLP ops. The FlagOS plugin system is fully preserved with synced OP API signatures and multi-backend compatibility patches.</p></li>
 <li><p>KunlunXin Vendor Backend — Added KunlunXin chip vendor operator support with flash attention and operator registration.</p></li>
-<li><p>ENFLAME Vendor Backend — Added ENFLAME chip vendor operator support with flash attention and operator registration.</p></li>
-<li><p>FlagOS Grouped GEMM Operator — Implemented <code class="docutils literal notranslate"><span class="pre">te_general_grouped_gemm</span></code> for the flagos backend based on FlagGems Triton kernels, supporting both forward and backward computation.</p></li>
-<li><p>CI/CD Enhancements — Added MetaX MACA CI workflow, coverage reporting to FlagCICD platform, and workflow refactoring with integration tests.</p></li>
+<li><p>Enflame Vendor Backend — Added Enflame chip vendor operator support with flash attention and operator registration.</p></li>
+<li><p>FlagOS Grouped GEMM Operator — Implemented <code class="docutils literal notranslate"><span class="pre">te_general_grouped_gemm</span></code> for the FlagOS backend based on FlagGems Triton kernels, supporting both forward and backward computation.</p></li>
 </ul>
 </li>
 </ul>
@@ -586,10 +601,9 @@
 <li><p><strong>Added Features</strong></p>
 <ul>
 <li><p>Multi-Backend Plugin Architecture — Plugin-based operator dispatch system (<code class="docutils literal notranslate"><span class="pre">OpRegistry</span></code>, <code class="docutils literal notranslate"><span class="pre">OpManager</span></code>, <code class="docutils literal notranslate"><span class="pre">SelectionPolicy</span></code>) with three backend tiers: FlagOS (default/Triton), Vendor (hardware-specific), and Reference (pure PyTorch).</p></li>
-<li><p>Vendor Backends — Added five hardware vendor backends: Hygon (DCU), METAX (GPU with flash attention), KunlunXin (Baidu Kunlun with flash attention), Iluvatar (Corex GPU), and MUSA (Moore Threads S-series GPU).</p></li>
+<li><p>Vendor Backends — Added five hardware vendor backends: Hygon (DCU), MetaX (GPU with flash attention), KunlunXin (flash attention), Iluvatar (Corex GPU), and MUSA (Moore Threads S-series GPU).</p></li>
 <li><p>FlagOS Backend — FlagGems-based unified operator dispatch with FlagCX communication library integration.</p></li>
 <li><p>Attention System — Multi-vendor attention backend framework with flash attention integration.</p></li>
-<li><p>CI/CD Pipeline — GitHub Actions workflow with multi-vendor test matrix.</p></li>
 </ul>
 </li>
 </ul>
@@ -643,6 +657,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

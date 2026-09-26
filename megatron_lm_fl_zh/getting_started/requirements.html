@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/requirements.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="支持的硬件:,,, 平台, 设备, 描述,,, NVIDIA, CUDA GPU, 完整功能支持（默认）,, MetaX, MetaX GPU, MetaX 平台,, Moore Threads, MUSA GPU, Moore Threads MUSA 平台,, TXDA, Tsingmicro GPU, Tsingmicro TXDA 平台,, NPU, Ascend NPU, Ascend 910B / CANN 8.0+,,,, 操作系统: Linux（官方），WSL2（有限支持） 软件: Python &gt;= 3.10（推荐 3.12）, PyTorch &gt;= 2.3..." />
+<meta property="og:description" content="支持的硬件:,,, 平台, 设备, 描述,,, NVIDIA, CUDA GPU, 完整功能支持（默认）,, MetaX, MetaX GPU, MetaX 平台,, Moore Threads, MUSA GPU, Moore Threads MUSA 平台,, TXDA, Tsingmicro GPU, Tsingmicro TXDA 平台,, NPU, Ascend NPU, Ascend 910B / CANN 8.0+,,,, 训练与推理还已在以下平台上完成端到端验证：,,,, 平台, 设备检查命令, 可见设备环境变量, FlagTree 后端,,, 沐曦 MetaX, mx-..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="支持的硬件:,,, 平台, 设备, 描述,,, NVIDIA, CUDA GPU, 完整功能支持（默认）,, MetaX, MetaX GPU, MetaX 平台,, Moore Threads, MUSA GPU, Moore Threads MUSA 平台,, TXDA, Tsingmicro GPU, Tsingmicro TXDA 平台,, NPU, Ascend NPU, Ascend 910B / CANN 8.0+,,,, 操作系统: Linux（官方），WSL2（有限支持） 软件: Python &gt;= 3.10（推荐 3.12）, PyTorch &gt;= 2.3..." />
+<meta name="description" content="支持的硬件:,,, 平台, 设备, 描述,,, NVIDIA, CUDA GPU, 完整功能支持（默认）,, MetaX, MetaX GPU, MetaX 平台,, Moore Threads, MUSA GPU, Moore Threads MUSA 平台,, TXDA, Tsingmicro GPU, Tsingmicro TXDA 平台,, NPU, Ascend NPU, Ascend 910B / CANN 8.0+,,,, 训练与推理还已在以下平台上完成端到端验证：,,,, 平台, 设备检查命令, 可见设备环境变量, FlagTree 后端,,, 沐曦 MetaX, mx-..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>要求 &#8212; Megatron-LM-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.db041e7d-aa63-4beb-b43d-3c149d91973b.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.7a4118a8-5e46-4772-b1a6-74d09e752c49.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
@@ -388,6 +388,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">Megatron-LM-FL 用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/override-usage.html">Override 插件机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">多平台训练与测试</a></li>
 </ul>
 </details></li>
 </ul>
@@ -591,6 +592,40 @@
 </tbody>
 </table>
 </div>
+<p>训练与推理还已在以下平台上完成端到端验证：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>平台</p></th>
+<th class="head"><p>设备检查命令</p></th>
+<th class="head"><p>可见设备环境变量</p></th>
+<th class="head"><p>FlagTree 后端</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>沐曦 MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mx-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MACA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>海光 Hygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hy-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hcu</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>昇腾 Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCEND_RT_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>平头哥 PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>分步操作请参见<a class="reference internal" href="../user_guide/multi-platform-training.html"><span class="std std-doc">多平台训练与测试</span></a>。</p>
 </section>
 <section id="id3">
 <h2>操作系统<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>

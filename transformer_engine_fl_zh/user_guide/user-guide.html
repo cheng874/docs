@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., TE-FL 自定义后端示例- 两种方式, 快速开始, In-tree 方式（3 步）, Out-of-tree 方式（插件包）, 环境变量, 示例, 预期输出.." />
+<meta property="og:description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., 多平台构建与测试- 1. 后端分层, 2. 平台前置条件, 3. 从源码构建, 4. 安装 FlagOS 编译器与算子库, 5. 算子选择, 6. 运行训练测试, 7. 已知问题与规避方式, 8. ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., TE-FL 自定义后端示例- 两种方式, 快速开始, In-tree 方式（3 步）, Out-of-tree 方式（插件包）, 环境变量, 示例, 预期输出.." />
+<meta name="description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., 多平台构建与测试- 1. 后端分层, 2. 平台前置条件, 3. 从源码构建, 4. 安装 FlagOS 编译器与算子库, 5. 算子选择, 6. 运行训练测试, 7. 已知问题与规避方式, 8. ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>用户指南 &#8212; Transformer-Engine-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.8a3c3181-5db4-4935-93f8-fbfc248e62e1.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.c5551099-827b-4935-8dc5-76c9c3e7c72c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -387,6 +387,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html">多平台构建与测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html">TE-FL 自定义后端示例</a></li>
 </ul>
 </details></li>
@@ -560,6 +561,17 @@
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#qwen3">6. Qwen3 训练测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#deepseek-v3">7. DeepSeek-V3 训练测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#id4">8. 注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-platform-testing.html">多平台构建与测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id2">1. 后端分层</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id3">2. 平台前置条件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id4">3. 从源码构建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#flagos">4. 安装 FlagOS 编译器与算子库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id5">5. 算子选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id6">6. 运行训练测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id8">7. 已知问题与规避方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id9">8. 注意事项</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="custom-backend-registration.html">TE-FL 自定义后端示例</a><ul>

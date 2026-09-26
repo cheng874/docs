@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节提供使用 Megatron-LM-FL 的详细指导。端到端训练工作流请参见 端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale 。 Override 插件机制- 核心概念, 1. 替换类方法, 2. 替换模块级函数, 3. 替换整个类, 多供应商支持, method_key 生成规则, 快速入门清单.." />
+<meta property="og:description" content="本节提供使用 Megatron-LM-FL 的详细指导。端到端训练工作流请参见 端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale 。 Override 插件机制- 核心概念, 1. 替换类方法, 2. 替换模块级函数, 3. 替换整个类, 多供应商支持, method_key 生成规则, 快速入门清单., 多平台训练与测试- 1. 支持平台, 2. 环境准备, 3. 安装 Megatron-LM-FL, 4. 准备数据集与分词器, 5. 运行训练测试, 6. 更换底层编译器和算子库, 7. 已知问题与规避方式, 8. 注意事项.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节提供使用 Megatron-LM-FL 的详细指导。端到端训练工作流请参见 端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale 。 Override 插件机制- 核心概念, 1. 替换类方法, 2. 替换模块级函数, 3. 替换整个类, 多供应商支持, method_key 生成规则, 快速入门清单.." />
+<meta name="description" content="本节提供使用 Megatron-LM-FL 的详细指导。端到端训练工作流请参见 端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale 。 Override 插件机制- 核心概念, 1. 替换类方法, 2. 替换模块级函数, 3. 替换整个类, 多供应商支持, method_key 生成规则, 快速入门清单., 多平台训练与测试- 1. 支持平台, 2. 环境准备, 3. 安装 Megatron-LM-FL, 4. 准备数据集与分词器, 5. 运行训练测试, 6. 更换底层编译器和算子库, 7. 已知问题与规避方式, 8. 注意事项.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Megatron-LM-FL 用户指南 &#8212; Megatron-LM-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.d52f477e-5386-460e-bd9f-fe7eddfd0da5.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.31a46311-cbe4-419d-a0ca-d241c8483b18.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -384,6 +384,7 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Megatron-LM-FL 用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html">Override 插件机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a></li>
 </ul>
 </details></li>
 </ul>
@@ -552,6 +553,17 @@
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html#id14">多供应商支持</a></li>
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html#method-key">method_key 生成规则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="override-usage.html#id15">快速入门清单</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id2">1. 支持平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id3">2. 环境准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#megatron-lm-fl">3. 安装 Megatron-LM-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id6">4. 准备数据集与分词器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id7">5. 运行训练测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id12">6. 更换底层编译器和算子库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id13">7. 已知问题与规避方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id14">8. 注意事项</a></li>
 </ul>
 </li>
 </ul>

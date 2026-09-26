@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Docker 镜像（推荐）: TransformerEngine-FL 与 Megatron-LM-FL 共用同一 Docker 镜像：,,, 平台, 镜像, 内容,,, NVIDIA GPU, harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia, torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0,,,, 适用于千亿参数模型预训练。 您可以通过以下方法之一安装 TransformerEngine-FL： 从 FlagOS 仓库直接安装: 从源码安装: 有关使..." />
+<meta property="og:description" content="Docker（推荐）: TransformerEngine-FL 运行在与 Megatron-LM-FL 共用的预构建 Docker 镜像中。打开 FlagOS 主页面 ，在页面正中间的下载列表中选择与你的硬件对应的镜像，按页面上的说明拉取镜像、进入容器并启动。 适用于千亿参数模型预训练。 您可以通过以下方法之一安装 TransformerEngine-FL： 从 FlagOS 仓库直接安装: 从源码安装: 非 NVIDIA 平台: TransformerEngine-FL v0.3.0 已在沐曦、海光、昇腾与平头哥 PPU 上完成验证。非 NVIDIA 平台构建时必须跳过 CUDA 扩..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Docker 镜像（推荐）: TransformerEngine-FL 与 Megatron-LM-FL 共用同一 Docker 镜像：,,, 平台, 镜像, 内容,,, NVIDIA GPU, harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia, torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0,,,, 适用于千亿参数模型预训练。 您可以通过以下方法之一安装 TransformerEngine-FL： 从 FlagOS 仓库直接安装: 从源码安装: 有关使..." />
+<meta name="description" content="Docker（推荐）: TransformerEngine-FL 运行在与 Megatron-LM-FL 共用的预构建 Docker 镜像中。打开 FlagOS 主页面 ，在页面正中间的下载列表中选择与你的硬件对应的镜像，按页面上的说明拉取镜像、进入容器并启动。 适用于千亿参数模型预训练。 您可以通过以下方法之一安装 TransformerEngine-FL： 从 FlagOS 仓库直接安装: 从源码安装: 非 NVIDIA 平台: TransformerEngine-FL v0.3.0 已在沐曦、海光、昇腾与平头哥 PPU 上完成验证。非 NVIDIA 平台构建时必须跳过 CUDA 扩..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>安装 TransformerEngine-FL &#8212; Transformer-Engine-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.0d874fbf-bcaf-4c0b-9bb1-4bbd7660c51e.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.1ee904bb-7432-4b0c-b8e4-727531332f1c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -391,6 +391,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">多平台构建与测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL 自定义后端示例</a></li>
 </ul>
 </details></li>
@@ -549,9 +550,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker 镜像（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker（推荐）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">从 FlagOS 仓库直接安装</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">从源码安装</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">非 NVIDIA 平台</a></li>
 </ul>
             </nav>
         </div>
@@ -566,26 +568,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="transformerengine-fl">
 <h1>安装 TransformerEngine-FL<a class="headerlink" href="#transformerengine-fl" title="Link to this heading">#</a></h1>
 <section id="docker">
-<h2>Docker 镜像（推荐）<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
-<p>TransformerEngine-FL 与 Megatron-LM-FL 共用同一 Docker 镜像：</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>平台</p></th>
-<th class="head"><p>镜像</p></th>
-<th class="head"><p>内容</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA GPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia</span></code></p></td>
-<td><p>torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia
-</pre></div>
-</div>
+<h2>Docker（推荐）<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL 运行在与 Megatron-LM-FL 共用的预构建 Docker 镜像中。打开 <a class="reference external" href="https://flagos.io/Home">FlagOS 主页面</a>，在页面正中间的下载列表中选择与你的硬件对应的镜像，按页面上的说明拉取镜像、进入容器并启动。</p>
 <p>适用于千亿参数模型预训练。</p>
 <p>您可以通过以下方法之一安装 TransformerEngine-FL：</p>
 </section>
@@ -604,11 +588,23 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
 <span class="nv">MAX_JOBS</span><span class="o">=</span>xxx<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
+</section>
+<section id="nvidia">
+<h2>非 NVIDIA 平台<a class="headerlink" href="#nvidia" title="Link to this heading">#</a></h2>
+<p>TransformerEngine-FL v0.3.0 已在沐曦、海光、昇腾与平头哥 PPU 上完成验证。非 NVIDIA 平台构建时必须跳过 CUDA 扩展：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/TransformerEngine-FL.git
+<span class="nb">cd</span><span class="w"> </span>TransformerEngine-FL
+git<span class="w"> </span>checkout<span class="w"> </span>v0.3.0
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<span class="nv">TE_FL_SKIP_CUDA</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">64</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>--root-user-action<span class="o">=</span>ignore
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>此方式需要使用厂商提供的镜像。</p>
+<p>非 NVIDIA 平台必须加 <code class="docutils literal notranslate"><span class="pre">TE_FL_SKIP_CUDA=1</span></code>——不加会尝试编译 CUDA kernel 并失败。</p>
 </div>
-<p>有关使用 TransformerEngine-FL、Megatron-LM-FL 和 FlagScale 的端到端训练工作流，请参见<a class="reference internal" href="#/e2e-use-case.md"><span class="xref myst">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</span></a>。</p>
+<p>FlagOS 算子层（<code class="docutils literal notranslate"><span class="pre">te_fl_prefer:</span> <span class="pre">flagos</span></code>）还需要 FlagTree 与 FlagGems。完整流程请参见<a class="reference internal" href="../user_guide/multi-platform-testing.html"><span class="std std-doc">多平台构建与测试</span></a>。</p>
+<p>有关使用 TransformerEngine-FL、Megatron-LM-FL 和 FlagScale 的端到端训练工作流，请参见<a class="reference internal" href="../user_guide/e2e-use-case.html"><span class="std std-doc">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</span></a>。</p>
 </section>
 </section>
 
@@ -659,9 +655,10 @@ git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker 镜像（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker（推荐）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">从 FlagOS 仓库直接安装</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">从源码安装</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia">非 NVIDIA 平台</a></li>
 </ul>
   </nav></div>
 

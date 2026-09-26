@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含 Megatron-LM-FL 的发布信息。 v0.2.0: 新增特性- DeepSeek V4 模型支持 — 完整的 DeepSeek V4 架构训练支持，包括 CSA/HCA 注意力变体、用于 MoE token 路由的 Hash Router、多头超连接（mHC）、Engram 辅助记忆模块和多 Token 预测（MTP）增强。新增融合内核： fused_mhc_kernels 、扩展的 fused_mla_yarn_rope_apply 。, TXDA 平台后端 — 通过 platform_txda.py 新增 Tsingmicro 芯片支持，包括针对 TXDA 硬件的优..." />
+<meta property="og:description" content="本节包含 Megatron-LM-FL 的发布信息。 v0.3.0: Megatron-LM-FL v0.3.0 已同步上游 Megatron-LM v0.18.2，要求 Python &gt;= 3.12。 新增特性- 新增平台后端：燧原（Enflame）、昆仑芯（KunlunXin）与 MUSA。, 支持 GLM5/ GLM5.1/ GLM5.2 系列的 DSA 结构。, 支持分块 cross-entropy 以降低显存占用。, MegatronAdaptor 模块的昇腾原生集成。., 改进特性- Override 机制升级。.. v0.2.0: 新增特性- DeepSeek V4 ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含 Megatron-LM-FL 的发布信息。 v0.2.0: 新增特性- DeepSeek V4 模型支持 — 完整的 DeepSeek V4 架构训练支持，包括 CSA/HCA 注意力变体、用于 MoE token 路由的 Hash Router、多头超连接（mHC）、Engram 辅助记忆模块和多 Token 预测（MTP）增强。新增融合内核： fused_mhc_kernels 、扩展的 fused_mla_yarn_rope_apply 。, TXDA 平台后端 — 通过 platform_txda.py 新增 Tsingmicro 芯片支持，包括针对 TXDA 硬件的优..." />
+<meta name="description" content="本节包含 Megatron-LM-FL 的发布信息。 v0.3.0: Megatron-LM-FL v0.3.0 已同步上游 Megatron-LM v0.18.2，要求 Python &gt;= 3.12。 新增特性- 新增平台后端：燧原（Enflame）、昆仑芯（KunlunXin）与 MUSA。, 支持 GLM5/ GLM5.1/ GLM5.2 系列的 DSA 结构。, 支持分块 cross-entropy 以降低显存占用。, MegatronAdaptor 模块的昇腾原生集成。., 改进特性- Override 机制升级。.. v0.2.0: 新增特性- DeepSeek V4 ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; Megatron-LM-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.fbbea295-2b22-40ef-b9ad-2732e9184f66.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.126c5334-43a7-4b54-a6ed-0b33dfbb441c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -388,6 +388,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">Megatron-LM-FL 用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/override-usage.html">Override 插件机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">多平台训练与测试</a></li>
 </ul>
 </details></li>
 </ul>
@@ -541,6 +542,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -557,17 +559,35 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节包含 Megatron-LM-FL 的发布信息。</p>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<p>Megatron-LM-FL v0.3.0 已同步上游 Megatron-LM v0.18.2，要求 Python &gt;= 3.12。</p>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p>新增平台后端：燧原（Enflame）、昆仑芯（KunlunXin）与 MUSA。</p></li>
+<li><p>支持 <code class="docutils literal notranslate"><span class="pre">GLM5</span></code> / <code class="docutils literal notranslate"><span class="pre">GLM5.1</span></code> / <code class="docutils literal notranslate"><span class="pre">GLM5.2</span></code> 系列的 DSA 结构。</p></li>
+<li><p>支持分块 cross-entropy 以降低显存占用。</p></li>
+<li><p>MegatronAdaptor 模块的昇腾原生集成。</p></li>
+</ul>
+</li>
+<li><p><strong>改进特性</strong></p>
+<ul>
+<li><p>Override 机制升级。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>新增特性</strong></p>
 <ul>
 <li><p>DeepSeek V4 模型支持 — 完整的 DeepSeek V4 架构训练支持，包括 CSA/HCA 注意力变体、用于 MoE token 路由的 Hash Router、多头超连接（mHC）、Engram 辅助记忆模块和多 Token 预测（MTP）增强。新增融合内核：<code class="docutils literal notranslate"><span class="pre">fused_mhc_kernels</span></code>、扩展的 <code class="docutils literal notranslate"><span class="pre">fused_mla_yarn_rope_apply</span></code>。</p></li>
-<li><p>TXDA 平台后端 — 通过 <code class="docutils literal notranslate"><span class="pre">platform_txda.py</span></code> 新增 Tsingmicro 芯片支持，包括针对 TXDA 硬件的优化器和流水线调度适配。</p></li>
+<li><p>TXDA 平台后端 — 通过 <code class="docutils literal notranslate"><span class="pre">platform_txda.py</span></code> 新增清微芯片支持，包括针对 TXDA 硬件的优化器和流水线调度适配。</p></li>
 <li><p>NPU 平台后端 — 通过 <code class="docutils literal notranslate"><span class="pre">platform_npu.py</span></code> 新增 Ascend NPU 支持，遵循现有的 CUDA/MUSA 平台模式。</p></li>
 <li><p>多供应商插件调度 — 扩展了 <code class="docutils literal notranslate"><span class="pre">&#64;override</span></code> 装饰器系统，通过 <code class="docutils literal notranslate"><span class="pre">MG_FL_PREFER</span></code> 环境变量进行运行时供应商选择。四级回退：首选供应商 → 默认供应商 → 唯一供应商 → 无。</p></li>
 <li><p>Core 0.17.0 升级 — 同步上游 Megatron-LM Core 0.17.0，保留 FlagScale 特定补丁，包括 Engram DDP 缓冲区分离、异构流水线支持、<code class="docutils literal notranslate"><span class="pre">qk_layernorm_hidden_dim</span></code> 支持和 <code class="docutils literal notranslate"><span class="pre">cur_platform</span></code> 抽象。</p></li>
-<li><p>CI/CD 增强 — 多平台单元和功能测试（CUDA + MetaX），Qwen3 基准测试门禁使用 A100 黄金值，pylint &gt;= 9.0 lint 门禁，以及向 FlagCICD 平台上报覆盖率。</p></li>
 </ul>
 </li>
 </ul>
@@ -579,7 +599,7 @@
 <li><p><strong>新增特性</strong></p>
 <ul>
 <li><p>插件系统 — <code class="docutils literal notranslate"><span class="pre">&#64;overridable</span></code> / <code class="docutils literal notranslate"><span class="pre">&#64;override</span></code> 装饰器机制，用于平台特定的方法替换，无需修改上游代码。</p></li>
-<li><p>多平台支持 — 通过 <code class="docutils literal notranslate"><span class="pre">PlatformBase</span></code> 进行硬件抽象，支持 NVIDIA（CUDA）、MetaX、Moore Threads（MUSA）、TXDA（Tsingmicro）和 NPU（Ascend）的实现。</p></li>
+<li><p>多平台支持 — 通过 <code class="docutils literal notranslate"><span class="pre">PlatformBase</span></code> 进行硬件抽象，支持 NVIDIA（CUDA）、沐曦（MetaX）、摩尔线程（MUSA）、清微（TXDA）和昇腾（Ascend NPU）的实现。</p></li>
 <li><p>完整上游兼容性 — 保留所有上游 Megatron-LM 功能，包括高级并行策略（TP、PP、DP、EP、CP）、混合精度（FP16、BF16、FP8）和 GPU 优化内核。</p></li>
 </ul>
 </li>
@@ -634,6 +654,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
