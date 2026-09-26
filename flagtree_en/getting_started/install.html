@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Option 1: Install from prebuilt Docker image: For installing FlagTree on different backends from prebuilt Docker image, see the following list: ARM China, Huawei Ascend, Enflame, HYGON, ILUVATAR, MetaX, Moore Threads, NVIDIA &amp; AMD, Sunrise, Tsingmicro, KLX. Option 2: Install from source: Clon..." />
+<meta property="og:description" content="Environment setup: The best practice to avoid environment compatibility issues is to use the image recommended in the User Manual. Option 1: Install from prebuilt Docker image: For installing FlagTree on different backends from prebuilt Docker image, see the following list: NVIDIA, NVIDIA TileIR,..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Option 1: Install from prebuilt Docker image: For installing FlagTree on different backends from prebuilt Docker image, see the following list: ARM China, Huawei Ascend, Enflame, HYGON, ILUVATAR, MetaX, Moore Threads, NVIDIA &amp; AMD, Sunrise, Tsingmicro, KLX. Option 2: Install from source: Clon..." />
+<meta name="description" content="Environment setup: The best practice to avoid environment compatibility issues is to use the image recommended in the User Manual. Option 1: Install from prebuilt Docker image: For installing FlagTree on different backends from prebuilt Docker image, see the following list: NVIDIA, NVIDIA TileIR,..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install FlagTree &#8212; FlagTree Documentation</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.b48b1f33-2425-4251-98cd-ff7f744104b5.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.f8c10c0d-7a01-477e-91f1-66b6a030015f.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -73,12 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="User Guide" href="../user_guide/user-guide.html" />
+    <link rel="next" title="Install on Arm64 CPU" href="install-arm64-cpu.html" />
     <link rel="prev" title="Requirements" href="requirements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -398,6 +404,34 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Install FlagTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html">Install on Arm64 CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html">💫 NVIDIA nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html">💫 NVIDIA TileIR tileir3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html">💫 AMD amd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html">💫 ARM China（安谋科技）aipu3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html">💫 Enflame（燧原）enflame3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html">💫 Huawei Ascend（华为昇腾）ascend3.5</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html">💫 Huixi Intelligence（辉羲智能）rpu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html">💫 HYGON（海光信息）hcu3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html">💫 ILUVATAR（天数智芯）iluvatar3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html">💫 MetaX（沐曦股份）metax3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html">💫 Moore Threads（摩尔线程）mthreads3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html">💫 SpacemiT（进迭时空）spacemit3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html">💫 Sunrise（曦望芯科）sunrise3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html">💫 T-Head（平头哥）ppu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html">💫 Tsingmicro（清微智能）tsingmicro3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html">💫 KLX xpu3.6</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -563,6 +597,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-install-from-prebuilt-docker-image">Option 1: Install from prebuilt Docker image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-install-from-source">Option 2: Install from source</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-install-wheel-package">Option 3: Install wheel package</a></li>
@@ -581,19 +616,28 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="install-flagtree">
 <h1>Install FlagTree<a class="headerlink" href="#install-flagtree" title="Link to this heading">#</a></h1>
+<section id="environment-setup">
+<h2>Environment setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<p>The best practice to avoid environment compatibility issues is to use the image recommended in the <a class="reference external" href="https://github.com/flagos-ai/FlagTree/wiki/User-Manual">User Manual</a>.</p>
+</section>
 <section id="option-1-install-from-prebuilt-docker-image">
 <h2>Option 1: Install from prebuilt Docker image<a class="headerlink" href="#option-1-install-from-prebuilt-docker-image" title="Link to this heading">#</a></h2>
 <p>For installing FlagTree on different backends from prebuilt Docker image, see the following list:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html"><span class="std std-doc">NVIDIA</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html"><span class="std std-doc">NVIDIA TileIR</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html"><span class="std std-doc">AMD</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html"><span class="std std-doc">ARM China</span></a></p></li>
-<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html"><span class="std std-doc">Huawei Ascend</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html"><span class="std std-doc">Enflame</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html"><span class="std std-doc">Huawei Ascend</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html"><span class="std std-doc">Huixi</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html"><span class="std std-doc">HYGON</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html"><span class="std std-doc">ILUVATAR</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html"><span class="std std-doc">MetaX</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html"><span class="std std-doc">Moore Threads</span></a></p></li>
-<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html"><span class="std std-doc">NVIDIA &amp; AMD</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html"><span class="std std-doc">SpacemiT</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html"><span class="std std-doc">Sunrise</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html"><span class="std std-doc">T-Head</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html"><span class="std std-doc">Tsingmicro</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html"><span class="std std-doc">KLX</span></a></p></li>
 </ul>
@@ -623,11 +667,11 @@ Below are the common commands used to build and install FlagTree. However, diffe
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set FLAGTREE_BACKEND using the backend name from the table above</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span><span class="si">${</span><span class="nv">backend_name</span><span class="si">}</span><span class="w">  </span><span class="c1"># Do not set it on nvidia/amd/triton-shared</span>
 
-<span class="c1"># For Triton 3.1/3.2/3.3 (branch: main, triton_v3.2.x, triton_v3.3.x)</span>
+<span class="c1"># For Triton 3.1/3.2/3.3 (branch: triton_v3.1.x, triton_v3.2.x, triton_v3.3.x)</span>
 <span class="nb">cd</span><span class="w"> </span>python
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w">  </span><span class="c1"># Install flagtree and uninstall triton</span>
 
-<span class="c1"># For Triton 3.4/3.5/3.6 (branch: triton_v3.4.x, triton_v3.5.x, triton_v3.6.x)</span>
+<span class="c1"># For Triton 3.4/3.5/3.6 (branch: triton_v3.4.x, triton_v3.5.x, main)</span>
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w">  </span><span class="c1"># Install flagtree and uninstall triton</span>
 </pre></div>
 </div>
@@ -641,18 +685,23 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 </ol>
 <p>For installing FlagTree on different backends from source, see the following list:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html"><span class="std std-doc">NVIDIA</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html"><span class="std std-doc">NVIDIA TileIR</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html"><span class="std std-doc">AMD</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html"><span class="std std-doc">ARM China</span></a></p></li>
-<li><p><a class="reference internal" href="install-arm64-cpu.html"><span class="std std-doc">ARM64 CPU</span></a></p></li>
-<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html"><span class="std std-doc">Huawei Ascend</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html"><span class="std std-doc">Enflame</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html"><span class="std std-doc">Huawei Ascend</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html"><span class="std std-doc">Huixi</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html"><span class="std std-doc">HYGON</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html"><span class="std std-doc">ILUVATAR</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html"><span class="std std-doc">MetaX</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html"><span class="std std-doc">Moore Threads</span></a></p></li>
-<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html"><span class="std std-doc">NVIDIA &amp; AMD</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html"><span class="std std-doc">SpacemiT</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html"><span class="std std-doc">Sunrise</span></a></p></li>
+<li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html"><span class="std std-doc">T-Head</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html"><span class="std std-doc">Tsingmicro</span></a></p></li>
 <li><p><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html"><span class="std std-doc">KLX</span></a></p></li>
+<li><p><a class="reference internal" href="install-arm64-cpu.html"><span class="std std-doc">ARM64 CPU</span></a></p></li>
 </ul>
 </section>
 <section id="option-3-install-wheel-package">
@@ -667,6 +716,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 </div>
 </li>
 <li><p>Install FlagTree and Triton</p>
+<p>The wheel list is maintained in the <a class="reference external" href="https://github.com/flagos-ai/FlagTree/wiki/User-Manual">User Manual</a>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Backend</p></th>
@@ -677,109 +727,39 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p>nvidia</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.6.0rc1 $RES</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0 $RES</p></td>
 <td class="text-left"><p>3.6</p></td>
 <td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>nvidia</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1 $RES</p></td>
+<tr class="row-odd"><td class="text-left"><p>tileir</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.6.1+tileir3.6 $RES</p></td>
 <td class="text-left"><p>3.6</p></td>
 <td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>nvidia</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.0+3.5 $RES</p></td>
-<td class="text-left"><p>3.5</p></td>
+<tr class="row-even"><td class="text-left"><p>amd</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0rc1+amd3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
 <td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>nvidia</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.4.0+3.3 $RES</p></td>
-<td class="text-left"><p>3.3</p></td>
-<td class="text-left"><p>GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>nvidia</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1+3.1 $RES</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>iluvatar</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1+iluvatar3.1 $RES</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>iluvatar</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+iluvatar3.1 $RES</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>mthreads</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.6.0rc1+mthreads3.6 $RES</p></td>
-<td class="text-left"><p>3.6</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>mthreads</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+mthreads3.1 $RES</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>mthreads</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+mthreads3.2 $RES</p></td>
-<td class="text-left"><p>3.2</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>xpu</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+xpu3.0 $RES</p></td>
-<td class="text-left"><p>3.0</p></td>
-<td class="text-left"><p>GLIBC_2.31<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>metax</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1+metax3.0 $RES</p></td>
-<td class="text-left"><p>3.0</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>hcu</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.6.0rc1+hcu3.6 $RES</p></td>
-<td class="text-left"><p>3.6</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>hcu</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+hcu3.1 $RES</p></td>
-<td class="text-left"><p>3.1</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>hcu</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+hcu3.6 $RES</p></td>
-<td class="text-left"><p>3.6</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>ascend</p></td>
-<td class="text-left"><p>python3.11 -m pip install flagtree===0.6.0rc1+ascend3.2 $RES</p></td>
-<td class="text-left"><p>3.2</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>ascend</p></td>
-<td class="text-left"><p>python3.11 -m pip install flagtree===0.5.0+ascend3.2 $RES</p></td>
-<td class="text-left"><p>3.2</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>tsingmicro</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.0+tsingmicro3.3 $RES</p></td>
-<td class="text-left"><p>3.3</p></td>
-<td class="text-left"><p>GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>aipu</p></td>
+<tr class="row-odd"><td class="text-left"><p>aipu</p></td>
 <td class="text-left"><p>python3.10 -m pip install flagtree===0.5.0+aipu3.3 $RES</p></td>
 <td class="text-left"><p>3.3</p></td>
 <td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>sunrise</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.4.0+sunrise3.4 $RES</p></td>
-<td class="text-left"><p>3.4</p></td>
-<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+<tr class="row-even"><td class="text-left"><p>ascend</p></td>
+<td class="text-left"><p>python3.11 -m pip install flagtree===0.7.0+ascend3.5 $RES</p></td>
+<td class="text-left"><p>3.5</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ascend</p></td>
+<td class="text-left"><p>python3.11 -m pip install flagtree===0.6.0+ascend3.2 $RES</p></td>
+<td class="text-left"><p>3.2</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>enflame</p></td>
-<td class="text-left"><p>python3.10 -m pip install flagtree===0.4.0+enflame3.3 $RES</p></td>
-<td class="text-left"><p>3.3</p></td>
-<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0rc2+enflame3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>enflame</p></td>
 <td class="text-left"><p>python3.12 -m pip install flagtree===0.5.0+enflame3.5 $RES</p></td>
@@ -787,16 +767,101 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 <td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>enflame</p></td>
-<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.0+enflame3.6 $RES</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.4.0+enflame3.3 $RES</p></td>
+<td class="text-left"><p>3.3</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>hcu</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.7.0+hcu3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>hcu</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+hcu3.1 $RES</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>iluvatar</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0+iluvatar3.6 $RES</p></td>
 <td class="text-left"><p>3.6</p></td>
 <td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>iluvatar</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1+iluvatar3.1 $RES</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>iluvatar</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+iluvatar3.1 $RES</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>metax</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0rc3+metax3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>metax</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.5.1+metax3.0 $RES</p></td>
+<td class="text-left"><p>3.0</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>mthreads</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.7.0+mthreads3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>mthreads</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+mthreads3.2 $RES</p></td>
+<td class="text-left"><p>3.2</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>mthreads</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+mthreads3.1 $RES</p></td>
+<td class="text-left"><p>3.1</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ppu</p></td>
+<td class="text-left"><p>python3.12 -m pip install flagtree===0.7.0+ppu3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>sunrise</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.6.0+sunrise3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>sunrise</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.4.0+sunrise3.4 $RES</p></td>
+<td class="text-left"><p>3.4</p></td>
+<td class="text-left"><p>GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>tsingmicro</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.7.0+tsingmicro3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>tsingmicro</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.6.0+tsingmicro3.3 $RES</p></td>
+<td class="text-left"><p>3.3</p></td>
+<td class="text-left"><p>GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>xpu</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.7.0rc3+xpu3.6 $RES</p></td>
+<td class="text-left"><p>3.6</p></td>
+<td class="text-left"><p>GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>xpu</p></td>
+<td class="text-left"><p>python3.10 -m pip install flagtree===0.5.1+xpu3.0 $RES</p></td>
+<td class="text-left"><p>3.0</p></td>
+<td class="text-left"><p>GLIBC_2.31<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </li>
 </ol>
-<p>Historical versions of flagtree can be found at <a class="reference external" href="https://resource.flagos.net/#browse/search/pypi/=assets.attributes.pypi.description%3Dflagtree">https://resource.flagos.net/#browse/search/pypi/=assets.attributes.pypi.description%3Dflagtree</a></p>
+<p>Historical versions of flagtree can be found at https://resource.flagos.net/#browse/search/pypi/=repository_name%3Dflagos-pypi-hosted%20AND%20name.raw%3Dflagtree</p>
 </section>
 <section id="running-tests">
 <h2>Running tests<a class="headerlink" href="#running-tests" title="Link to this heading">#</a></h2>
@@ -849,11 +914,11 @@ strings<span class="w"> </span>/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30<spa
       </div>
     </a>
     <a class="right-next"
-       href="../user_guide/user-guide.html"
+       href="install-arm64-cpu.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">User Guide</p>
+        <p class="prev-next-title">Install on Arm64 CPU</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -875,6 +940,7 @@ strings<span class="w"> </span>/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30<spa
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-install-from-prebuilt-docker-image">Option 1: Install from prebuilt Docker image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-install-from-source">Option 2: Install from source</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-install-wheel-package">Option 3: Install wheel package</a></li>
@@ -904,7 +970,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -913,7 +979,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 24, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>

@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="💫 燧原（Enflame）enflame（Triton 3.6）" />
+<meta property="og:title" content="💫 Enflame（燧原）enflame3.6" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 GCU300、GCU400（L300/L600）. 1. 构建与运行环境: 1.1 使用镜像（Triton 3.6，GCU300/GCU400）: 如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。 1.2 手动下载 FlagTree 依赖项: 1.3 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。 执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一..." />
+<meta property="og:description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 GCU300 (S60), GCU400 (L300/L600). 1. 快速开始: 1.1 使用镜像（GCU300|GCU400）: 提示：下载大文件时，可用 apt install aria2; aria2c -c ... 替代 wget ... ，支持断点续传。 1.2 免源码安装: 2. 从源码构建: 2.1 手动下载 FlagTree 依赖项: 如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。 2.2 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果网络连接可用，..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 GCU300、GCU400（L300/L600）. 1. 构建与运行环境: 1.1 使用镜像（Triton 3.6，GCU300/GCU400）: 如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。 1.2 手动下载 FlagTree 依赖项: 1.3 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。 执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一..." />
+<meta name="description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 GCU300 (S60), GCU400 (L300/L600). 1. 快速开始: 1.1 使用镜像（GCU300|GCU400）: 提示：下载大文件时，可用 apt install aria2; aria2c -c ... 替代 wget ... ，支持断点续传。 1.2 免源码安装: 2. 从源码构建: 2.1 手动下载 FlagTree 依赖项: 如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。 2.2 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果网络连接可用，..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>💫 燧原（Enflame）enflame（Triton 3.6） &#8212; FlagTree 文档中心</title>
+    <title>💫 Enflame（燧原）enflame3.6 &#8212; FlagTree 文档中心</title>
   
   
   
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.eabd6e3f-1bf4-4c88-adfe-25a70c2e64a5.js"></script>
+    <script defer="defer" src="../../_static/tippy/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.773610ab-dfc4-4ded-8f88-810a3033e8f2.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/multi-backend-prebuilt-docker-image-install/install-enflame';</script>
@@ -73,10 +79,12 @@
     <link rel="icon" href="../../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="💫 Huawei Ascend（华为昇腾）ascend3.5" href="install-ascend.html" />
+    <link rel="prev" title="💫 ARM China（安谋科技）aipu3.3" href="install-aipu.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -244,8 +252,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -382,7 +388,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 指南</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../FlagTree_overview/FlagTree-overview.html">FlagTree 概述</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../FlagTree_overview/features.html">特性</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../FlagTree_overview/compilation_architecture/compilation-architecture.html">FlagTree 编译架构</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -395,9 +401,37 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started.html">开始使用</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../getting-started.html">开始使用</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../requirements.html">系统要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html">安装 FlagTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-arm64-cpu.html">在 Arm64 CPU 上安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-nv.html">💫 NVIDIA nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-tileir.html">💫 NVIDIA TileIR tileir3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-amd.html">💫 AMD amd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-aipu.html">💫 ARM China（安谋科技）aipu3.3</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">💫 Enflame（燧原）enflame3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="install-ascend.html">💫 Huawei Ascend（华为昇腾）ascend3.5</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-rpu.html">💫 Huixi Intelligence（辉羲智能）rpu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-hcu.html">💫 HYGON（海光信息）hcu3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-iluvatar.html">💫 ILUVATAR（天数智芯）iluvatar3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-metax.html">💫 MetaX（沐曦股份）metax3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-mthreads.html">💫 Moore Threads（摩尔线程）mthreads3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="install-spacemit.html">💫 SpacemiT（进迭时空）spacemit3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-sunrise.html">💫 Sunrise（曦望芯科）sunrise3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-ppu.html">💫 T-Head（平头哥）ppu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-tsingmicro.html">💫 Tsingmicro（清微智能）tsingmicro3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-xpu.html">💫 KLX xpu3.6</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -553,7 +587,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>💫 燧原（Enflame）enflame（Triton 3.6）</h1>
+    <h1>💫 Enflame（燧原）enflame3.6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -563,49 +597,49 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 燧原（Enflame）enflame（Triton 3.6）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-6-gcu300-gcu400">1.1 使用镜像（Triton 3.6，GCU300/GCU400）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 Enflame（燧原）enflame3.6</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcu300-gcu400">1.1 使用镜像（GCU300|GCU400）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3 构建命令</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. 测试与验证</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame-triton-3-5">💫 燧原（Enflame）enflame（Triton 3.5）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-5-gcu300-gcu400">1.1 使用镜像（Triton 3.5，GCU300/GCU400）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame3-5">💫 Enflame（燧原）enflame3.5</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1 使用镜像（GCU300|GCU400）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3 构建命令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3. 测试与验证</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame-triton-3-3">💫 燧原（Enflame）enflame（Triton 3.3）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-3-gcu300">1.1 使用镜像（Triton 3.3，GCU300）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame3-3">💫 Enflame（燧原）enflame3.3</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcu300">1.1 使用镜像（GCU300）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.3 构建命令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">3. 测试与验证</a></li>
 </ul>
 </li>
 </ul>
@@ -620,32 +654,35 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>[<a class="reference internal" href="#./install_enflame.md"><span class="xref myst">英文版</span></a>|中文版]</p>
-<section id="enflame-enflame-triton-3-6">
-<h1>💫 燧原（Enflame）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/enflame/">enflame</a>（Triton 3.6）<a class="headerlink" href="#enflame-enflame-triton-3-6" title="Link to this heading">#</a></h1>
+  <p>[<a href="../../../flagtree_en/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.html">英文版</a>|中文版]</p>
+<section id="enflame-enflame3-6">
+<h1>💫 Enflame（燧原）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/third_party/enflame/">enflame</a>3.6<a class="headerlink" href="#enflame-enflame3-6" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>基于 Triton 3.6，x64</p></li>
-<li><p>适用于 GCU300、GCU400（L300/L600）</p></li>
+<li><p>适用于 GCU300 (S60), GCU400 (L300/L600)</p></li>
 </ul>
 <section id="id1">
-<h2>1. 构建与运行环境<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="triton-3-6-gcu300-gcu400">
-<h3>1.1 使用镜像（Triton 3.6，GCU300/GCU400）<a class="headerlink" href="#triton-3-6-gcu300-gcu400" title="Link to this heading">#</a></h3>
-<p>如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 方案 A：docker pull（18.9GB）</span>
-<span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202605-1.9.7-base
+<h2>1. 快速开始<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="gcu300-gcu400">
+<h3>1.1 使用镜像（GCU300|GCU400）<a class="headerlink" href="#gcu300-gcu400" title="Link to this heading">#</a></h3>
+<p>提示：下载大文件时，可用 <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span> <span class="pre">aria2;</span> <span class="pre">aria2c</span> <span class="pre">-c</span> <span class="pre">...</span></code> 替代 <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">...</span></code>，支持断点续传。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202607-base
+<span class="c1"># 方案 A：docker pull（19.2GB）</span>
 docker<span class="w"> </span>pull<span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span>
 <span class="c1"># 方案 B：docker load（4.0GB）</span>
-<span class="nv">IMAGE</span><span class="o">=</span>flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202605-1.9.7-base
-wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202605-1.9.7-base.tar.gz
-docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202605-1.9.7-base.tar.gz
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202607-base.tar.gz
+docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202607-base.tar.gz
 </pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/sys/module/enflame/version
-<span class="w">    </span><span class="c1"># 如果版本 &lt; 1.9.10，请终止使用 GCU 的进程，并在宿主机上执行以下命令：</span>
-<span class="w">    </span><span class="c1"># wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/TopsRider_Triton_gcu-3.6.0_1.0.20260521.cc.1.9.10_deb_amd64.run  # 3.7GB</span>
-<span class="w">    </span><span class="c1"># bash TopsRider_Triton_gcu-3.6.0_1.0.20260521.cc.1.9.10_deb_amd64.run --driver -y</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">TopsRider</span><span class="o">=</span>TopsRider_Triton_gcu-3.6.0-1.0.20260826.cc.1.10.25_deb_amd64.run<span class="w">    </span><span class="c1"># gcu400</span>
+<span class="nv">TopsRider</span><span class="o">=</span>TopsRider_Triton_gcu-3.6.0-1.0.20260826.cc.1.9.29_deb_amd64.run<span class="w">     </span><span class="c1"># gcu300</span>
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/<span class="si">${</span><span class="nv">TopsRider</span><span class="si">}</span><span class="w">        </span><span class="c1"># 2.0GB</span>
+
+<span class="c1"># 宿主机</span>
+sh<span class="w"> </span><span class="si">${</span><span class="nv">TopsRider</span><span class="si">}</span><span class="w"> </span>--driver<span class="w"> </span>-y<span class="w">    </span><span class="c1"># on the host: restart the container after installing driver</span>
+cat<span class="w"> </span>/sys/module/enflame/version
 efsmi
+
 <span class="nv">CONTAINER</span><span class="o">=</span>flagtree-dev-xxx
 docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
@@ -653,11 +690,28 @@ docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </
 <span class="w">    </span>-v<span class="w"> </span>/home:/home<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-w<span class="w"> </span>/root<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span><span class="w"> </span>bash
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span>/bin/bash
+
+<span class="c1"># 容器</span>
+sh<span class="w"> </span><span class="si">${</span><span class="nv">TopsRider</span><span class="si">}</span><span class="w"> </span>--container<span class="w"> </span>-y<span class="w">    </span><span class="c1"># in the container</span>
+dpkg<span class="w"> </span>-s<span class="w"> </span>triton-gcu
 </pre></div>
 </div>
 </section>
+<section id="id2">
+<h3>1.2 免源码安装<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w"> </span>--break-system-packages<span class="w">  </span><span class="c1"># Repeat the cmd until fully uninstalled</span>
+<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
+python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.7.0rc2+enflame3.6<span class="w"> </span>--break-system-packages<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>2. 从源码构建<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="flagtree">
-<h3>1.2 手动下载 FlagTree 依赖项<a class="headerlink" href="#flagtree" title="Link to this heading">#</a></h3>
+<h3>2.1 手动下载 FlagTree 依赖项<a class="headerlink" href="#flagtree" title="Link to this heading">#</a></h3>
+<p>如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.flagtree/enflame<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.flagtree/enflame
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/enflame-llvm23-fc83c68-gcc9-x64_v0.4.0.tar.gz
 tar<span class="w"> </span>zxvf<span class="w"> </span>enflame-llvm23-fc83c68-gcc9-x64_v0.4.0.tar.gz
@@ -665,9 +719,9 @@ tar<span class="w"> </span>zxvf<span class="w"> </span>enflame-llvm23-fc83c68-gc
 </div>
 </section>
 <section id="triton">
-<h3>1.3 手动下载 Triton 依赖项<a class="headerlink" href="#triton" title="Link to this heading">#</a></h3>
+<h3>2.2 手动下载 Triton 依赖项<a class="headerlink" href="#triton" title="Link to this heading">#</a></h3>
 <p>Triton 依赖项已在镜像中下载并安装完毕。
-如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。</p>
+如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
 <span class="c1"># 适用于 Triton 3.6（x64）</span>
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.6.x-linux-x64.tar.gz
@@ -677,26 +731,10 @@ sh<span class="w"> </span>python/scripts/unpack_triton_build_deps.sh<span class=
 <p>执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。
 请注意，脚本执行过程中会提示手动确认。</p>
 </section>
-</section>
-<section id="id2">
-<h2>2. 安装命令<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="id3">
-<h3>2.1 免源码安装<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w"> </span>--break-system-packages<span class="w">  </span><span class="c1"># 重复执行该命令直到完全卸载</span>
-<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
-python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.6.0rc1+enflame3.6<span class="w"> </span>--break-system-packages<span class="w"> </span><span class="nv">$RES</span>
-</pre></div>
-</div>
-<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
-</pre></div>
-</div>
-</section>
 <section id="id4">
-<h3>2.2 从源码构建<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>2.3 构建命令<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
-git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>triton_v3.6.x<span class="w"> </span>origin/triton_v3.6.x
+git<span class="w"> </span>checkout<span class="w"> </span>main
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span>enflame
 <span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">8</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v<span class="w"> </span>--break-system-packages
 </pre></div>
@@ -705,21 +743,25 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 </section>
 <section id="id5">
 <h2>3. 测试与验证<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.6.x/.github/workflows/enflame-gcu400-build-and-test.yml">Enflame 3.6 后端测试</a></p>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/.github/workflows/enflame3.6-gcu400-build-and-test.yml">enflame3.6 后端测试</a></p>
+<!-- legacy generation: previous FlagTree release -->
 <hr class="docutils" />
 </section>
 </section>
-<section id="enflame-enflame-triton-3-5">
-<h1>💫 燧原（Enflame）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.5.x/third_party/enflame/">enflame</a>（Triton 3.5）<a class="headerlink" href="#enflame-enflame-triton-3-5" title="Link to this heading">#</a></h1>
+<section id="enflame-enflame3-5">
+<h1>💫 Enflame（燧原）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.5.x/third_party/enflame/">enflame</a>3.5<a class="headerlink" href="#enflame-enflame3-5" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>基于 Triton 3.5，x64</p></li>
-<li><p>适用于 GCU300、GCU400（L300/L600）</p></li>
+<li><p>适用于 GCU300 (S60), GCU400 (L300/L600)</p></li>
 </ul>
 <section id="id6">
-<h2>1. 构建与运行环境<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<section id="triton-3-5-gcu300-gcu400">
-<h3>1.1 使用镜像（Triton 3.5，GCU300/GCU400）<a class="headerlink" href="#triton-3-5-gcu300-gcu400" title="Link to this heading">#</a></h3>
-<p>如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。</p>
+<h2>1. 快速开始<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3>1.1 使用镜像（GCU300|GCU400）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 方案 A：docker pull（13.3GB）</span>
 <span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-enflame3.5-py312-torch2.9.1-ubuntu24.04:202603
 docker<span class="w"> </span>pull<span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span>
@@ -729,33 +771,51 @@ wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans
 docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>flagtree-enflame3.5-py312-torch2.9.1-ubuntu24.04.202603.tar.gz
 </pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">CONTAINER</span><span class="o">=</span>flagtree-dev-xxx
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 宿主机</span>
+<span class="nv">CONTAINER</span><span class="o">=</span>flagtree-dev-xxx
 docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>/home:/home<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-w<span class="w"> </span>/root<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span><span class="w"> </span>bash
-docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>:/enflame<span class="w"> </span>enflame<span class="w">    </span><span class="c1"># 将在当前目录创建 ./enflame 目录</span>
+docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>:/enflame<span class="w"> </span>enflame<span class="w">    </span><span class="c1"># Will create ./enflame dir</span>
 bash<span class="w"> </span>enflame/driver/enflame-x86_64-gcc-1.7.2.14-20260302150833.run
 efsmi
 docker<span class="w"> </span>stop<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>
 docker<span class="w"> </span>start<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span>/bin/bash
+
+<span class="c1"># 容器</span>
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/topsruntime_1.10.25-1_amd64.deb
+dpkg<span class="w"> </span>-i<span class="w"> </span>topsruntime_1.10.25-1_amd64.deb<span class="w">    </span><span class="c1"># If efsmi shows 1.10.25 on the host</span>
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h3>1.2 手动下载 FlagTree 依赖项<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h3>1.2 免源码安装<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w"> </span>--break-system-packages<span class="w">  </span><span class="c1"># Repeat the cmd until fully uninstalled</span>
+<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
+python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.5.0+enflame3.5<span class="w"> </span>--break-system-packages<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2>2. 从源码构建<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h3>2.1 手动下载 FlagTree 依赖项<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.flagtree/enflame<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.flagtree/enflame
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/enflame-llvm22-189e06b-gcc9-x64_v0.4.0.tar.gz
 tar<span class="w"> </span>zxvf<span class="w"> </span>enflame-llvm22-189e06b-gcc9-x64_v0.4.0.tar.gz
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h3>1.3 手动下载 Triton 依赖项<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h3>2.2 手动下载 Triton 依赖项<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>Triton 依赖项已在镜像中下载并安装完毕。
-如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。</p>
+如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
 <span class="c1"># 适用于 Triton 3.5（x64）</span>
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.5.x-linux-x64.tar.gz
@@ -765,24 +825,8 @@ sh<span class="w"> </span>python/scripts/unpack_triton_build_deps.sh<span class=
 <p>执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。
 请注意，脚本执行过程中会提示手动确认。</p>
 </section>
-</section>
-<section id="id9">
-<h2>2. 安装命令<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<section id="id10">
-<h3>2.1 免源码安装<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w"> </span>--break-system-packages<span class="w">  </span><span class="c1"># 重复执行该命令直到完全卸载</span>
-<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
-python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.5.0+enflame3.5<span class="w"> </span>--break-system-packages<span class="w"> </span><span class="nv">$RES</span>
-</pre></div>
-</div>
-<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
-</pre></div>
-</div>
-</section>
-<section id="id11">
-<h3>2.2 从源码构建<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id12">
+<h3>2.3 构建命令<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
 git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>triton_v3.5.x<span class="w"> </span>origin/triton_v3.5.x
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span>enflame
@@ -791,23 +835,27 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 </div>
 </section>
 </section>
-<section id="id12">
-<h2>3. 测试与验证<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.5.x/.github/workflows/enflame-gcu400-build-and-test.yml">Enflame 3.5 后端测试</a></p>
+<section id="id13">
+<h2>3. 测试与验证<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.5.x/.github/workflows/enflame3.5-gcu400-build-and-test.yml">enflame3.5 后端测试</a></p>
+<!-- legacy generation: previous FlagTree release -->
 <hr class="docutils" />
 </section>
 </section>
-<section id="enflame-enflame-triton-3-3">
-<h1>💫 燧原（Enflame）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/enflame/">enflame</a>（Triton 3.3）<a class="headerlink" href="#enflame-enflame-triton-3-3" title="Link to this heading">#</a></h1>
+<section id="enflame-enflame3-3">
+<h1>💫 Enflame（燧原）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/enflame/">enflame</a>3.3<a class="headerlink" href="#enflame-enflame3-3" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>基于 Triton 3.3，x64</p></li>
-<li><p>适用于 GCU300</p></li>
+<li><p>适用于 GCU300 (S60)</p></li>
 </ul>
-<section id="id13">
-<h2>1. 构建与运行环境<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
-<section id="triton-3-3-gcu300">
-<h3>1.1 使用镜像（Triton 3.3，GCU300）<a class="headerlink" href="#triton-3-3-gcu300" title="Link to this heading">#</a></h3>
-<p>如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。</p>
+<section id="id14">
+<h2>1. 快速开始<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<section id="gcu300">
+<h3>1.1 使用镜像（GCU300）<a class="headerlink" href="#gcu300" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 方案 A：docker pull（12.5GB）</span>
 <span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-enflame3.3-py310-torch2.7.0-ubuntu22.04:202603
 docker<span class="w"> </span>pull<span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span>
@@ -823,7 +871,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </
 <span class="w">    </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>/home:/home<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-w<span class="w"> </span>/root<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span><span class="w"> </span>bash
-docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>:/enflame<span class="w"> </span>enflame<span class="w">    </span><span class="c1"># 将在当前目录创建 ./enflame 目录</span>
+docker<span class="w"> </span>cp<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>:/enflame<span class="w"> </span>enflame<span class="w">    </span><span class="c1"># Will create ./enflame dir</span>
 bash<span class="w"> </span>enflame/driver/enflame-x86_64-gcc-1.6.3.12-20251115104629.run
 efsmi
 docker<span class="w"> </span>stop<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span>
@@ -832,18 +880,31 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 </pre></div>
 </div>
 </section>
-<section id="id14">
-<h3>1.2 手动下载 FlagTree 依赖项<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>1.2 免源码安装<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w">  </span><span class="c1"># Repeat the cmd until fully uninstalled</span>
+<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
+python3.10<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.4.0+enflame3.3<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2>2. 从源码构建<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="id17">
+<h3>2.1 手动下载 FlagTree 依赖项<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.flagtree/enflame<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.flagtree/enflame
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/enflame-llvm21-d752c5b-gcc9-x64_v0.3.0.tar.gz
 tar<span class="w"> </span>zxvf<span class="w"> </span>enflame-llvm21-d752c5b-gcc9-x64_v0.3.0.tar.gz
 </pre></div>
 </div>
 </section>
-<section id="id15">
-<h3>1.3 手动下载 Triton 依赖项<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id18">
+<h3>2.2 手动下载 Triton 依赖项<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>Triton 依赖项已在镜像中下载并安装完毕。
-如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。</p>
+如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
 <span class="c1"># 适用于 Triton 3.3（x64）</span>
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.3.x-linux-x64.tar.gz
@@ -853,24 +914,8 @@ sh<span class="w"> </span>python/scripts/unpack_triton_build_deps.sh<span class=
 <p>执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。
 请注意，脚本执行过程中会提示手动确认。</p>
 </section>
-</section>
-<section id="id16">
-<h2>2. 安装命令<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
-<section id="id17">
-<h3>2.1 免源码安装<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w">  </span><span class="c1"># 重复执行该命令直到完全卸载</span>
-<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
-python3.10<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.4.0+enflame3.3<span class="w"> </span><span class="nv">$RES</span>
-</pre></div>
-</div>
-<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
-</pre></div>
-</div>
-</section>
-<section id="id18">
-<h3>2.2 从源码构建<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id19">
+<h3>2.3 构建命令<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree/python
 git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>triton_v3.3.x<span class="w"> </span>origin/triton_v3.3.x
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span>enflame
@@ -879,9 +924,13 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 </div>
 </section>
 </section>
-<section id="id19">
-<h2>3. 测试与验证<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
-<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.3.x/.github/workflows/enflame-gcu300-3.3-build-and-test.yml">Enflame 3.3 后端测试</a></p>
+<section id="id20">
+<h2>3. 测试与验证<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.3.x/.github/workflows/enflame-gcu300-3.3-build-and-test.yml">enflame3.3 后端测试</a></p>
 </section>
 </section>
 
@@ -896,6 +945,24 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="install-aipu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">💫 ARM China（安谋科技）aipu3.3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="install-ascend.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">💫 Huawei Ascend（华为昇腾）ascend3.5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -914,49 +981,49 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 燧原（Enflame）enflame（Triton 3.6）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-6-gcu300-gcu400">1.1 使用镜像（Triton 3.6，GCU300/GCU400）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 Enflame（燧原）enflame3.6</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcu300-gcu400">1.1 使用镜像（GCU300|GCU400）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3 构建命令</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. 测试与验证</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame-triton-3-5">💫 燧原（Enflame）enflame（Triton 3.5）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-5-gcu300-gcu400">1.1 使用镜像（Triton 3.5，GCU300/GCU400）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame3-5">💫 Enflame（燧原）enflame3.5</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.1 使用镜像（GCU300|GCU400）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3 构建命令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3. 测试与验证</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame-triton-3-3">💫 燧原（Enflame）enflame（Triton 3.3）</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton-3-3-gcu300">1.1 使用镜像（Triton 3.3，GCU300）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enflame-enflame3-3">💫 Enflame（燧原）enflame3.3</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcu300">1.1 使用镜像（GCU300）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.3 构建命令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">3. 测试与验证</a></li>
 </ul>
 </li>
 </ul>
@@ -984,7 +1051,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -993,7 +1060,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 24, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>

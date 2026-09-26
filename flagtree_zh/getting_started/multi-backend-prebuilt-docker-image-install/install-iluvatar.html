@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="💫 天数智芯（ILUVATAR）iluvatar" />
+<meta property="og:title" content="💫 ILUVATAR（天数智芯）iluvatar3.6" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="[ 英文版|中文版] 基于 Triton 3.1，x64, 适用于 MR-V100、BI-V150. 1. 构建与运行环境: 1.1 使用镜像（BI-V150）: 如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。 1.2 手动下载 FlagTree 依赖项: 1.3 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。 执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。..." />
+<meta property="og:description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 MR-V100, BI-V150. 1. 快速开始: 1.1 使用镜像（BI-V150）: 1.2 免源码安装: 2. 从源码构建: 2.1 手动下载 FlagTree 依赖项: 如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。 关于 FlagPrism 应检出哪个 commit，请参考 https://github.com/flagos-ai/FlagTree/blob/main/python/setup_tools/utils/ init.py 2.2 手动下载 Triton 依赖项: Triton 依赖项..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="[ 英文版|中文版] 基于 Triton 3.1，x64, 适用于 MR-V100、BI-V150. 1. 构建与运行环境: 1.1 使用镜像（BI-V150）: 如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。 1.2 手动下载 FlagTree 依赖项: 1.3 手动下载 Triton 依赖项: Triton 依赖项已在镜像中下载并安装完毕。 如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。 执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。..." />
+<meta name="description" content="[ 英文版|中文版] 基于 Triton 3.6，x64, 适用于 MR-V100, BI-V150. 1. 快速开始: 1.1 使用镜像（BI-V150）: 1.2 免源码安装: 2. 从源码构建: 2.1 手动下载 FlagTree 依赖项: 如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。 关于 FlagPrism 应检出哪个 commit，请参考 https://github.com/flagos-ai/FlagTree/blob/main/python/setup_tools/utils/ init.py 2.2 手动下载 Triton 依赖项: Triton 依赖项..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>💫 天数智芯（ILUVATAR）iluvatar &#8212; FlagTree 文档中心</title>
+    <title>💫 ILUVATAR（天数智芯）iluvatar3.6 &#8212; FlagTree 文档中心</title>
   
   
   
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.6e31e013-321a-4719-8805-af6fbc88d5b7.js"></script>
+    <script defer="defer" src="../../_static/tippy/getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.82d70831-cdcc-4d25-b92d-37a5e9c1f344.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar';</script>
@@ -73,10 +79,12 @@
     <link rel="icon" href="../../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="💫 MetaX（沐曦股份）metax3.6" href="install-metax.html" />
+    <link rel="prev" title="💫 HYGON（海光信息）hcu3.6" href="install-hcu.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -244,8 +252,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -382,7 +388,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 指南</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../FlagTree_overview/FlagTree-overview.html">FlagTree 概述</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../FlagTree_overview/features.html">特性</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../FlagTree_overview/compilation_architecture/compilation-architecture.html">FlagTree 编译架构</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -395,9 +401,37 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started.html">开始使用</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../getting-started.html">开始使用</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../requirements.html">系统要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html">安装 FlagTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-arm64-cpu.html">在 Arm64 CPU 上安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-nv.html">💫 NVIDIA nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-tileir.html">💫 NVIDIA TileIR tileir3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-amd.html">💫 AMD amd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-aipu.html">💫 ARM China（安谋科技）aipu3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-enflame.html">💫 Enflame（燧原）enflame3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="install-ascend.html">💫 Huawei Ascend（华为昇腾）ascend3.5</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-rpu.html">💫 Huixi Intelligence（辉羲智能）rpu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-hcu.html">💫 HYGON（海光信息）hcu3.6</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">💫 ILUVATAR（天数智芯）iluvatar3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-metax.html">💫 MetaX（沐曦股份）metax3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-mthreads.html">💫 Moore Threads（摩尔线程）mthreads3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="install-spacemit.html">💫 SpacemiT（进迭时空）spacemit3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-sunrise.html">💫 Sunrise（曦望芯科）sunrise3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-ppu.html">💫 T-Head（平头哥）ppu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-tsingmicro.html">💫 Tsingmicro（清微智能）tsingmicro3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="install-xpu.html">💫 KLX xpu3.6</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -553,7 +587,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>💫 天数智芯（ILUVATAR）iluvatar</h1>
+    <h1>💫 ILUVATAR（天数智芯）iluvatar3.6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -563,19 +597,44 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 ILUVATAR（天数智芯）iluvatar3.6</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 快速开始</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bi-v150">1.1 使用镜像（BI-V150）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3 构建命令</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen-vllm">4. 运行 Qwen vLLM 基准测试</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">4.1 安装 FlagOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2 下载模型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3 运行基准测试</a></li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-iluvatar3-1">💫 ILUVATAR（天数智芯）iluvatar3.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.1 使用镜像（BI-V150）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.2 免源码安装</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.3 构建命令</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3. 测试与验证</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -586,18 +645,158 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>[<a class="reference internal" href="#./install_iluvatar.md"><span class="xref myst">英文版</span></a>|中文版]</p>
-<section id="iluvatar-iluvatar">
-<h1>💫 天数智芯（ILUVATAR）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/third_party/iluvatar/">iluvatar</a><a class="headerlink" href="#iluvatar-iluvatar" title="Link to this heading">#</a></h1>
+  <p>[<a href="../../../flagtree_en/getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.html">英文版</a>|中文版]</p>
+<section id="iluvatar-iluvatar3-6">
+<h1>💫 ILUVATAR（天数智芯）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/third_party/iluvatar/">iluvatar</a>3.6<a class="headerlink" href="#iluvatar-iluvatar3-6" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>基于 Triton 3.1，x64</p></li>
-<li><p>适用于 MR-V100、BI-V150</p></li>
+<li><p>基于 Triton 3.6，x64</p></li>
+<li><p>适用于 MR-V100, BI-V150</p></li>
 </ul>
 <section id="id1">
-<h2>1. 构建与运行环境<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>1. 快速开始<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="bi-v150">
 <h3>1.1 使用镜像（BI-V150）<a class="headerlink" href="#bi-v150" title="Link to this heading">#</a></h3>
-<p>如果网络连接可用，则无需执行后续步骤 1.x，因为构建过程中会自动获取依赖项。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modinfo<span class="w"> </span>iluvatar<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"description"</span><span class="w">  </span><span class="c1"># 6384f0db</span>
+ixsmi<span class="w">  </span><span class="c1"># IX-ML: 4.4.0  Driver Version: 4.5.0  CUDA Version: 10.2</span>
+<span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-iluvatar-py312-torch2.10.0-corex4.5.0-cu10.2-ubuntu24.04:202609-3.6-vllm0.24.0
+<span class="c1"># 方案 A：docker pull（55.3GB）</span>
+docker<span class="w"> </span>pull<span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span>
+<span class="c1"># 方案 B：docker load（20GB）</span>
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/flagtree-iluvatar-py312-torch2.10.0-corex4.5.0-cu10.2-ubuntu24.04.202609-3.6-vllm0.24.0.tar.gz
+docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>flagtree-iluvatar-py312-torch2.10.0-corex4.5.0-cu10.2-ubuntu24.04.202609-3.6-vllm0.24.0.tar.gz
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">CONTAINER</span><span class="o">=</span>flagtree-dev-xxx
+docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--net<span class="o">=</span>host<span class="w"> </span>--pid<span class="o">=</span>host<span class="w"> </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cap-add<span class="o">=</span>ALL<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/corex-4.5.0/bin/ixsmi:/usr/local/corex-4.5.0/bin/ixsmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/lib/modules:/lib/modules<span class="w"> </span>-v<span class="w"> </span>/dev:/dev<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/data1:/data1<span class="w"> </span>-v<span class="w"> </span>/home:/home<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/root<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span><span class="w"> </span>bash
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>1.2 免源码安装<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w">  </span><span class="c1"># Repeat the cmd until fully uninstalled</span>
+<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
+python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.7.0+iluvatar3.6<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>2. 从源码构建<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="flagtree">
+<h3>2.1 手动下载 FlagTree 依赖项<a class="headerlink" href="#flagtree" title="Link to this heading">#</a></h3>
+<p>如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.flagtree/iluvatar<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.flagtree/iluvatar
+<span class="c1"># llvm</span>
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/iluvatar-llvm22-x86_64_v0.6.1.tar.gz
+tar<span class="w"> </span>zxvf<span class="w"> </span>iluvatar-llvm22-x86_64_v0.6.1.tar.gz
+</pre></div>
+</div>
+<p>关于 FlagPrism 应检出哪个 commit，请参考 https://github.com/flagos-ai/FlagTree/blob/main/python/setup_tools/utils/<strong>init</strong>.py</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree/third_party
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagPrism.git
+</pre></div>
+</div>
+</section>
+<section id="triton">
+<h3>2.2 手动下载 Triton 依赖项<a class="headerlink" href="#triton" title="Link to this heading">#</a></h3>
+<p>Triton 依赖项已在镜像中下载并安装完毕。
+如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
+<span class="c1"># 适用于 Triton 3.6（x64）</span>
+wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.6.x-linux-x64.tar.gz
+sh<span class="w"> </span>python/scripts/unpack_triton_build_deps.sh<span class="w"> </span>./build-deps-triton_3.6.x-linux-x64.tar.gz
+</pre></div>
+</div>
+<p>执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。
+请注意，脚本执行过程中会提示手动确认。</p>
+</section>
+<section id="id4">
+<h3>2.3 构建命令<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
+git<span class="w"> </span>checkout<span class="w"> </span>main
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span>iluvatar
+<span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">32</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>3. 测试与验证<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/.github/workflows/iluvatar3.6-build-and-test.yml">iluvatar3.6 后端测试</a></p>
+</section>
+<section id="qwen-vllm">
+<h2>4. 运行 Qwen vLLM 基准测试<a class="headerlink" href="#qwen-vllm" title="Link to this heading">#</a></h2>
+<section id="flagos">
+<h3>4.1 安装 FlagOS<a class="headerlink" href="#flagos" title="Link to this heading">#</a></h3>
+<p>按上述步骤安装 flagtree。</p>
+<p>按以下方式安装 flag_gems 与 vllm-plugin-fl。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagGems.git
+<span class="nb">cd</span><span class="w"> </span>FlagGems<span class="p">;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v5.3.5
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/vllm-plugin-FL.git
+<span class="nb">cd</span><span class="w"> </span>vllm-plugin-FL<span class="p">;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>13eb9be69
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>4.2 下载模型<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>modelscope.cli.cli<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--local_dir<span class="w"> </span><span class="si">${</span><span class="nv">MODEL_DIR</span><span class="si">}</span>/Qwen3.6-27B
+python3<span class="w"> </span>-m<span class="w"> </span>modelscope.cli.cli<span class="w"> </span>download<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3.6-35B-A3B<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--local_dir<span class="w"> </span><span class="si">${</span><span class="nv">MODEL_DIR</span><span class="si">}</span>/Qwen3.6-35B-A3B
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>4.3 运行基准测试<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/env.sh</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1,2,3<span class="w">  </span><span class="c1"># BI-V150 * 4 for Qwen3.6-27B</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_QWEN3_PORT</span><span class="o">=</span><span class="m">8000</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">BENCH_SCRIPT_DIR</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">GIT_DIR</span><span class="si">}</span><span class="s2">/FlagTree/.github/workflows/benchmark/iluvatar/iluvatar3.6-qwen3.6"</span>
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">MODEL_DIR</span><span class="si">}</span>
+vim<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/start.sh<span class="w">  </span><span class="c1"># Edit vllm serve Qwen3.6-27B or Qwen3.6-35B-A3B</span>
+bash<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/start.sh
+bash<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/test.sh
+vim<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/all_perf.py<span class="w">  </span><span class="c1"># Edit TOKENIZER_PATH</span>
+bash<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/perf.sh
+bash<span class="w"> </span><span class="si">${</span><span class="nv">BENCH_SCRIPT_DIR</span><span class="si">}</span>/stop.sh
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/main/.github/workflows/iluvatar3.6-qwen-benchmark.yml">iluvatar3.6 后端 Qwen 基准测试</a></p>
+<!-- legacy generation: previous FlagTree release -->
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="iluvatar-iluvatar3-1">
+<h1>💫 ILUVATAR（天数智芯）<a class="reference external" href="https://github.com/flagos-ai/FlagTree/tree/triton_v3.1.x/third_party/iluvatar/">iluvatar</a>3.1<a class="headerlink" href="#iluvatar-iluvatar3-1" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>基于 Triton 3.1，x64</p></li>
+<li><p>适用于 MR-V100, BI-V150</p></li>
+</ul>
+<section id="id8">
+<h2>1. 快速开始<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3>1.1 使用镜像（BI-V150）<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modinfo<span class="w"> </span>iluvatar<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"description"</span><span class="w">  </span><span class="c1"># f65d8ac7</span>
 <span class="c1"># 方案 A：docker pull（17.9GB）</span>
 <span class="nv">IMAGE</span><span class="o">=</span>harbor.baai.ac.cn/flagtree/flagtree-iluvatar-py312-torch2.7.1-4.4.0release_f65d8ac7-ubuntu24.04:202604-base
@@ -615,14 +814,27 @@ docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </
 <span class="w">    </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>/lib/modules:/lib/modules<span class="w"> </span>-v<span class="w"> </span>/dev:/dev<span class="w">  </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>/data1:/data1<span class="w"> </span>-v<span class="w"> </span>/home:/home<span class="w"> </span>-v<span class="w"> </span>/tmp:/tmp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/data1:/data1<span class="w"> </span>-v<span class="w"> </span>/home:/home<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-w<span class="w"> </span>/root<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">IMAGE</span><span class="si">}</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span><span class="si">${</span><span class="nv">CONTAINER</span><span class="si">}</span><span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 </section>
-<section id="flagtree">
-<h3>1.2 手动下载 FlagTree 依赖项<a class="headerlink" href="#flagtree" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>1.2 免源码安装<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w">  </span><span class="c1"># Repeat the cmd until fully uninstalled</span>
+<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
+python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.5.1+iluvatar3.1<span class="w"> </span><span class="nv">$RES</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>2. 从源码构建<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h3>2.1 手动下载 FlagTree 依赖项<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.flagtree/iluvatar<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.flagtree/iluvatar
 <span class="c1"># llvm</span>
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/iluvatar-llvm18-x86_64_v0.5.0.tar.gz
@@ -630,25 +842,25 @@ tar<span class="w"> </span>zxvf<span class="w"> </span>iluvatar-llvm18-x86_64_v0
 
 <span class="c1"># iluvatarTritonPlugin</span>
 <span class="nv">ABI</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>g++<span class="w"> </span>-dM<span class="w"> </span>-E<span class="w"> </span>-x<span class="w"> </span>c++<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'/__GXX_ABI_VERSION/{print $3}'</span><span class="k">)</span>
-<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="c1"># 适用于镜像中的 python3.12</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="c1"># For python3.12 in the image</span>
 <span class="w">  </span><span class="m">1018</span><span class="o">)</span><span class="w"> </span><span class="nv">PLUGIN_TGZ</span><span class="o">=</span>iluvatarTritonPlugin-cpython3.12-glibc2.39-glibcxx3.4.33-cxxabi1.3.15-ubuntu-x86_64_v0.5.0.tar.gz<span class="w"> </span><span class="p">;;</span>
-<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"不支持的 __GXX_ABI_VERSION=</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Unsupported __GXX_ABI_VERSION=</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">;;</span>
 <span class="k">esac</span>
-<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="c1"># 适用于 python3.10，不适用于此镜像</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="c1"># For python3.10, not suitable for this image</span>
 <span class="w">  </span><span class="m">1013</span><span class="o">)</span><span class="w"> </span><span class="nv">PLUGIN_TGZ</span><span class="o">=</span>iluvatarTritonPlugin-cpython3.10-glibc2.17-glibcxx3.4.19-cxxabi1.3.12-linux-x86_64_v0.5.0.tar.gz<span class="w"> </span><span class="p">;;</span>
 <span class="w">  </span><span class="m">1016</span><span class="o">)</span><span class="w"> </span><span class="nv">PLUGIN_TGZ</span><span class="o">=</span>iluvatarTritonPlugin-cpython3.10-glibc2.35-glibcxx3.4.30-cxxabi1.3.13-ubuntu-x86_64_v0.5.0.tar.gz<span class="w"> </span><span class="p">;;</span>
 <span class="w">  </span><span class="m">1018</span><span class="o">)</span><span class="w"> </span><span class="nv">PLUGIN_TGZ</span><span class="o">=</span>iluvatarTritonPlugin-cpython3.10-glibc2.39-glibcxx3.4.33-cxxabi1.3.15-ubuntu-x86_64_v0.5.0.tar.gz<span class="w"> </span><span class="p">;;</span>
-<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"不支持的 __GXX_ABI_VERSION=</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Unsupported __GXX_ABI_VERSION=</span><span class="si">${</span><span class="nv">ABI</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">;;</span>
 <span class="k">esac</span>
 wget<span class="w"> </span><span class="s2">"https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/</span><span class="si">${</span><span class="nv">PLUGIN_TGZ</span><span class="si">}</span><span class="s2">"</span>
 tar<span class="w"> </span>zxvf<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">PLUGIN_TGZ</span><span class="si">}</span><span class="s2">"</span>
 </pre></div>
 </div>
 </section>
-<section id="triton">
-<h3>1.3 手动下载 Triton 依赖项<a class="headerlink" href="#triton" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3>2.2 手动下载 Triton 依赖项<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>Triton 依赖项已在镜像中下载并安装完毕。
-如果不需要从源码构建 FlagTree 或 Triton，则无需下载 Triton 依赖项。</p>
+如果网络连接可用，则无需下载依赖项，构建过程中会自动获取。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree
 <span class="c1"># 适用于 Triton 3.1（x64）</span>
 wget<span class="w"> </span>https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.1.x-linux-x64.tar.gz
@@ -658,34 +870,23 @@ sh<span class="w"> </span>python/scripts/unpack_triton_build_deps.sh<span class=
 <p>执行上述脚本后，原有的 ~/.triton 目录将被重命名，并创建一个新的 ~/.triton 目录用于存放预下载的包。
 请注意，脚本执行过程中会提示手动确认。</p>
 </section>
-</section>
-<section id="id2">
-<h2>2. 安装命令<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="id3">
-<h3>2.1 免源码安装<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意：请先安装 PyTorch，再执行以下命令</span>
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>triton<span class="w">  </span><span class="c1"># 重复执行该命令直到完全卸载</span>
-<span class="nv">RES</span><span class="o">=</span><span class="s2">"--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"</span>
-python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">flagtree</span><span class="o">===</span><span class="m">0</span>.5.1+iluvatar3.1<span class="w"> </span><span class="nv">$RES</span>
-</pre></div>
-</div>
-<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
-</pre></div>
-</div>
-</section>
-<section id="id4">
-<h3>2.2 从源码构建<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3>2.3 构建命令<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_CODE_DIR</span><span class="si">}</span>/FlagTree/python
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>triton_v3.1.x<span class="w"> </span>origin/triton_v3.1.x
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGTREE_BACKEND</span><span class="o">=</span>iluvatar
 <span class="nv">MAX_JOBS</span><span class="o">=</span><span class="m">32</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation<span class="w"> </span>-v
 </pre></div>
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>3. 测试与验证<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>参考 <a class="reference internal" href="#/.github/workflows/iluvatar-build-and-test.yml"><span class="xref myst">Iluvatar 后端测试</span></a></p>
+<section id="id15">
+<h2>3. 测试与验证<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">flagtree</span></code> 后，可通过以下命令检查：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>flagtree
+</pre></div>
+</div>
+<p>参考 <a class="reference external" href="https://github.com/flagos-ai/FlagTree/blob/triton_v3.1.x/.github/workflows/iluvatar3.1-build-and-test.yml">iluvatar3.1 后端测试</a></p>
 </section>
 </section>
 
@@ -700,6 +901,24 @@ python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="install-hcu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">💫 HYGON（海光信息）hcu3.6</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="install-metax.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">💫 MetaX（沐曦股份）metax3.6</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -718,19 +937,44 @@ python3.12<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> 
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 构建与运行环境</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💫 ILUVATAR（天数智芯）iluvatar3.6</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 快速开始</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bi-v150">1.1 使用镜像（BI-V150）</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">1.2 手动下载 FlagTree 依赖项</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">1.3 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2 免源码安装</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 安装命令</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1 免源码安装</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2 从源码构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagtree">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triton">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3 构建命令</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. 测试与验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen-vllm">4. 运行 Qwen vLLM 基准测试</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">4.1 安装 FlagOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2 下载模型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3 运行基准测试</a></li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iluvatar-iluvatar3-1">💫 ILUVATAR（天数智芯）iluvatar3.1</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1. 快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.1 使用镜像（BI-V150）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.2 免源码安装</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2. 从源码构建</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.1 手动下载 FlagTree 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2 手动下载 Triton 依赖项</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.3 构建命令</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3. 测试与验证</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -754,7 +998,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -763,7 +1007,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 24, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>

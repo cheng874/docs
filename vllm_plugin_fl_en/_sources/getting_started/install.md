@@ -2,47 +2,11 @@
 
 ## Install from docker image
 
-vllm-plugin-FL is installed from a pre-built Docker image. Pull and start the image first, then install the components inside the container. The supported versions and hardware platforms are listed in [Requirements](requirements.md).
+vllm-plugin-FL is installed from a pre-built Docker image. The supported versions and hardware platforms are listed in [Requirements](requirements.md).
 
-1. Pull and start the image
+1. Select the image
 
-Go to the [FlagOS main page](https://flagos.io/Home), click **Download** in the middle of the page, and select the image for your hardware; the page then shows the `docker pull` command for that image.
-
-```{code-block} shell
-docker pull <image>
-
-docker run -itd \
-  --name <container name> \
-  --network host --ipc host \
-  --shm-size <shared memory> \
-  <device passthrough, see the table below> \
-  -v <model dir>:/models \
-  <image> sleep infinity
-```
-
-`docker run` creates the container and runs in the current terminal, so keep that terminal open; open a second terminal to enter the running container:
-
-```{code-block} shell
-docker exec -it <container name> bash
-```
-
-Use the same container name in `docker exec` as the `--name` given to `docker run` (`<vendor>-vllm-<version>`, optionally suffixed with `-plugin-<branch>`). Only the parameters below differ between backends; `—` means the vendor guide does not set that parameter.
-
-| Backend | Device passthrough | Extra mounts | Shared memory | Environment variables |
-|---------|--------------------|--------------|---------------|-----------------------|
-| NVIDIA | `--gpus all` | — | `512g` | — |
-| Hygon DCU | `--device /dev/kfd --device /dev/mkfd --device /dev/dri --group-add video` | `/opt/hyhal:/opt/hyhal` | — | `-e DCU_VISIBLE_DEVICES=all` |
-| Iluvatar | `--privileged` | `/dev:/dev`, `/usr/src:/usr/src`, `/lib/modules:/lib/modules` | `32g` | — |
-| Enflame, Tsingmicro, Sunrise | `--privileged` | — | — | `-e ENFLAME_VISIBLE_DEVICES=0` (Enflame only) |
-| Kunlunxin | `--privileged` | — | `128G` | — |
-| Moore Threads | `--privileged --runtime=mthreads` | — | `64g` | `-e MTHREADS_VISIBLE_DEVICES=all` |
-| Ascend | `--device /dev/davinci0..N --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc` | `/usr/local/dcmi:/usr/local/dcmi`, `/usr/local/bin/npu-smi:/usr/local/bin/npu-smi`, `/usr/local/Ascend/driver:/usr/local/Ascend/driver` | `512g` | — |
-| MetaX | `--device /dev/mxcd --device /dev/dri` | — | `100gb` | — |
-| Alibaba PPU, T-Head PPU | `--device /dev/alixpu --device /dev/alixpu_ctl --device /dev/alixpu_ppu{0..15}` | — | — | — |
-
-```{note}
-The release images ship the vendor runtime and a base vLLM build. To run the FlagOS 2.2 release, replace vLLM with the `empty` v0.24.0 source build and install vllm-plugin-FL v0.3.0 as described in step 2 below. For the full per-vendor command sequence (proxy setup, FlagGems flash-attention fix, FlagTree backend selection, autotune warm-up), see the vendor test guides.
-```
+Go to the [FlagOS main page](https://flagos.io/Home), click **Download** in the middle of the page, and select the Docker image for your hardware.
 
 2. Install the components in the container
 

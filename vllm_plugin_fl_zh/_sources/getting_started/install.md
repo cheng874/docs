@@ -2,47 +2,11 @@
 
 ## 从 Docker 镜像安装
 
-vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见[要求](requirements.md)。
+vllm-plugin-FL 通过预构建的 Docker 镜像安装。受支持的版本与硬件平台见[要求](requirements.md)。
 
-1. 拉取并启动镜像
+1. 选择镜像
 
-打开 [FlagOS 主页面](https://flagos.io/Home)，点击页面正中间的 **下载**，选择与你的硬件对应的镜像，页面会给出该镜像的 `docker pull` 命令。
-
-```{code-block} shell
-docker pull <镜像>
-
-docker run -itd \
-  --name <容器名> \
-  --network host --ipc host \
-  --shm-size <共享内存> \
-  <设备直通，见下表> \
-  -v <模型目录>:/models \
-  <镜像> sleep infinity
-```
-
-`docker run` 创建容器并在当前终端运行，请保持该终端不关闭；另开一个终端进入已运行的容器：
-
-```{code-block} shell
-docker exec -it <容器名> bash
-```
-
-`docker exec` 使用的容器名要与 `docker run` 的 `--name` 一致（`<厂商>-vllm-<版本>`，可加 `-plugin-<分支>` 后缀）。各后端只有下列参数不同；`—` 表示厂商手册未设置该参数。
-
-| 后端 | 设备直通 | 额外挂载 | 共享内存 | 环境变量 |
-|---------|--------------------|--------------|---------------|-----------------------|
-| NVIDIA | `--gpus all` | — | `512g` | — |
-| 海光 DCU | `--device /dev/kfd --device /dev/mkfd --device /dev/dri --group-add video` | `/opt/hyhal:/opt/hyhal` | — | `-e DCU_VISIBLE_DEVICES=all` |
-| 天数智芯 | `--privileged` | `/dev:/dev`、`/usr/src:/usr/src`、`/lib/modules:/lib/modules` | `32g` | — |
-| 燧原、清微智能、曦望 | `--privileged` | — | — | `-e ENFLAME_VISIBLE_DEVICES=0`（仅燧原） |
-| 昆仑芯 | `--privileged` | — | `128G` | — |
-| 摩尔线程 | `--privileged --runtime=mthreads` | — | `64g` | `-e MTHREADS_VISIBLE_DEVICES=all` |
-| 昇腾 | `--device /dev/davinci0..N --device /dev/davinci_manager --device /dev/devmm_svm --device /dev/hisi_hdc` | `/usr/local/dcmi:/usr/local/dcmi`、`/usr/local/bin/npu-smi:/usr/local/bin/npu-smi`、`/usr/local/Ascend/driver:/usr/local/Ascend/driver` | `512g` | — |
-| 沐曦 MetaX | `--device /dev/mxcd --device /dev/dri` | — | `100gb` | — |
-| 阿里 PPU、T-Head PPU | `--device /dev/alixpu --device /dev/alixpu_ctl --device /dev/alixpu_ppu{0..15}` | — | — | — |
-
-```{note}
-以上镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布版，请按下文第 2 步将 vLLM 替换为 `empty` v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见厂商测试手册。
-```
+打开 [FlagOS 主页面](https://flagos.io/Home)，点击页面正中间的 **下载**，选择与你的硬件对应的 Docker 镜像。
 
 2. 在容器内安装各组件
 

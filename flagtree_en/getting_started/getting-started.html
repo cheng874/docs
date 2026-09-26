@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for installing and running FlagTree and guides you through installing FlagTree. Requirements- System software requirements, Backends, Triton versions, and branches, Features on different branches, Backend integrations., Install FlagTree- Option 1: Install from..." />
+<meta property="og:description" content="This section covers the requirements for installing and running FlagTree and guides you through installing FlagTree. Requirements- System software requirements, Backends, Triton versions, and branches, Features on different branches, Backend integrations., Install FlagTree- Environment setup, Opt..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for installing and running FlagTree and guides you through installing FlagTree. Requirements- System software requirements, Backends, Triton versions, and branches, Features on different branches, Backend integrations., Install FlagTree- Option 1: Install from..." />
+<meta name="description" content="This section covers the requirements for installing and running FlagTree and guides you through installing FlagTree. Requirements- System software requirements, Backends, Triton versions, and branches, Features on different branches, Backend integrations., Install FlagTree- Environment setup, Opt..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started &#8212; FlagTree Documentation</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.ce05970d-6741-4b9d-89b9-0ac1d22c8d84.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.32d49dc7-84f5-40e9-ba5d-8c78de1b9123.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -78,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -394,6 +400,34 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install FlagTree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html">Install on Arm64 CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html">💫 NVIDIA nvidia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html">💫 NVIDIA TileIR tileir3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html">💫 AMD amd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html">💫 ARM China（安谋科技）aipu3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html">💫 Enflame（燧原）enflame3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html">💫 Huawei Ascend（华为昇腾）ascend3.5</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html">💫 Huixi Intelligence（辉羲智能）rpu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html">💫 HYGON（海光信息）hcu3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html">💫 ILUVATAR（天数智芯）iluvatar3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html">💫 MetaX（沐曦股份）metax3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html">💫 Moore Threads（摩尔线程）mthreads3.6</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html">💫 SpacemiT（进迭时空）spacemit3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html">💫 Sunrise（曦望芯科）sunrise3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html">💫 T-Head（平头哥）ppu3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html">💫 Tsingmicro（清微智能）tsingmicro3.6</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html">💫 KLX xpu3.6</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -574,11 +608,188 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install FlagTree</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#environment-setup">Environment setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#option-1-install-from-prebuilt-docker-image">Option 1: Install from prebuilt Docker image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#option-2-install-from-source">Option 2: Install from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#option-3-install-wheel-package">Option 3: Install wheel package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#running-tests">Running tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#q-a">Q&amp;A</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install-arm64-cpu.html">Install on Arm64 CPU</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html#environment-for-build-and-run">1. Environment for build and run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html#installation-commands">2. Installation Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-arm64-cpu.html#q-a">Q&amp;A</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html">💫 NVIDIA nvidia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-nv.html#q-a">Q&amp;A</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html">💫 NVIDIA TileIR tileir3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tileir.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html">💫 AMD amd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-amd.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html">💫 ARM China（安谋科技）aipu3.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-aipu.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html">💫 Enflame（燧原）enflame3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#enflame-enflame3-5">💫 Enflame（燧原）enflame3.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id4">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id8">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#enflame-enflame3-3">💫 Enflame（燧原）enflame3.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id9">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id11">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-enflame.html#id15">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html">💫 Huawei Ascend（华为昇腾）ascend3.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#huawei-ascend-ascend3-2">💫 Huawei Ascend（华为昇腾）ascend3.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#id3">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ascend.html#id8">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html">💫 Huixi Intelligence（辉羲智能）rpu3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html#build-and-run-environment">1. Build and run environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html#installation-commands">2. Installation Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-rpu.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html">💫 HYGON（海光信息）hcu3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#hygon-hcu3-1">💫 HYGON（海光信息）hcu3.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#id3">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-hcu.html#id7">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html">💫 ILUVATAR（天数智芯）iluvatar3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#iluvatar-iluvatar3-1">💫 ILUVATAR（天数智芯）iluvatar3.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#id4">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-iluvatar.html#id8">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html">💫 MetaX（沐曦股份）metax3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#metax-metax3-0">💫 MetaX（沐曦股份）metax3.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#id3">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-metax.html#id7">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html">💫 Moore Threads（摩尔线程）mthreads3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#moore-threads-mthreads3-2">💫 Moore Threads（摩尔线程）mthreads3.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id3">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id7">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#moore-threads-mthreads3-1">💫 Moore Threads（摩尔线程）mthreads3.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id8">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id10">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-mthreads.html#id14">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html">💫 SpacemiT（进迭时空）spacemit3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-spacemit.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html">💫 Sunrise（曦望芯科）sunrise3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#sunrise-sunrise3-4">💫 Sunrise（曦望芯科）sunrise3.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#id4">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-sunrise.html#id8">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html">💫 T-Head（平头哥）ppu3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html#testing-and-validation">3. Testing and validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-ppu.html#run-qwen-vllm-benchmark">4. Run Qwen vLLM benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html">💫 Tsingmicro（清微智能）tsingmicro3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#tsingmicro-tsingmicro3-3">💫 Tsingmicro（清微智能）tsingmicro3.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#id4">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-tsingmicro.html#id8">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html">💫 KLX xpu3.6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#quick-start">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#build-from-source">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#testing-and-validation">3. Testing and validation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#klx-xpu3-0">💫 KLX xpu3.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#id1">1. Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#id4">2. Build from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-backend-prebuilt-docker-image-install/install-xpu.html#id8">3. Testing and validation</a></li>
 </ul>
 </li>
 </ul>
@@ -640,7 +851,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -649,7 +860,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 24, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>

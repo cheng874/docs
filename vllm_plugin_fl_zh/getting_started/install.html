@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="从 Docker 镜像安装: vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见 要求 。 拉取并启动镜像. 打开 FlagOS 主页面 ，点击页面正中间的 下载 ，选择与你的硬件对应的镜像，页面会给出该镜像的 docker pull 命令。 docker run 创建容器并在当前终端运行，请保持该终端不关闭；另开一个终端进入已运行的容器： docker exec 使用的容器名要与 docker run 的--name 一致（&lt;厂商&gt;-vllm-&lt;版本&gt; ，可加-plugin-&l..." />
+<meta property="og:description" content="从 Docker 镜像安装: vllm-plugin-FL 通过预构建的 Docker 镜像安装。受支持的版本与硬件平台见 要求 。 选择镜像. 打开 FlagOS 主页面 ，点击页面正中间的 下载 ，选择与你的硬件对应的 Docker 镜像。 在容器内安装各组件. 请选择与 vLLM 版本匹配的分支，分支与 vLLM 版本必须成对使用：,, vllm-plugin-FL 分支, 社区 vLLM 版本,,, release/0.2, v0.20.2,, main, v0.24.0,,,, 2.1 安装 vLLM 对于 NVIDIA GPU，从官方 v0.24.0 版本安装 vLLM（如果..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="从 Docker 镜像安装: vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见 要求 。 拉取并启动镜像. 打开 FlagOS 主页面 ，点击页面正中间的 下载 ，选择与你的硬件对应的镜像，页面会给出该镜像的 docker pull 命令。 docker run 创建容器并在当前终端运行，请保持该终端不关闭；另开一个终端进入已运行的容器： docker exec 使用的容器名要与 docker run 的--name 一致（&lt;厂商&gt;-vllm-&lt;版本&gt; ，可加-plugin-&l..." />
+<meta name="description" content="从 Docker 镜像安装: vllm-plugin-FL 通过预构建的 Docker 镜像安装。受支持的版本与硬件平台见 要求 。 选择镜像. 打开 FlagOS 主页面 ，点击页面正中间的 下载 ，选择与你的硬件对应的 Docker 镜像。 在容器内安装各组件. 请选择与 vLLM 版本匹配的分支，分支与 vLLM 版本必须成对使用：,, vllm-plugin-FL 分支, 社区 vLLM 版本,,, release/0.2, v0.20.2,, main, v0.24.0,,,, 2.1 安装 vLLM 对于 NVIDIA GPU，从官方 v0.24.0 版本安装 vLLM（如果..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>安装运行推理任务所需的软件 &#8212; VLLM-Plugin-FL 文档中心</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.b35803bd-4b22-43b1-9a35-c18b8a6e2cb0.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.bce13e96-9fac-489a-bc4f-daf76f586df6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -78,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -573,98 +579,11 @@
 <h1>安装运行推理任务所需的软件<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="docker">
 <h2>从 Docker 镜像安装<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
-<p>vllm-plugin-FL 通过预构建的 Docker 镜像安装。请先拉取并启动镜像，再在容器内安装各组件。受支持的版本与硬件平台见<a class="reference internal" href="requirements.html"><span class="std std-doc">要求</span></a>。</p>
+<p>vllm-plugin-FL 通过预构建的 Docker 镜像安装。受支持的版本与硬件平台见<a class="reference internal" href="requirements.html"><span class="std std-doc">要求</span></a>。</p>
 <ol class="arabic simple">
-<li><p>拉取并启动镜像</p></li>
+<li><p>选择镜像</p></li>
 </ol>
-<p>打开 <a class="reference external" href="https://flagos.io/Home">FlagOS 主页面</a>，点击页面正中间的 <strong>下载</strong>，选择与你的硬件对应的镜像，页面会给出该镜像的 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span></code> 命令。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>&lt;镜像&gt;
-
-docker<span class="w"> </span>run<span class="w"> </span>-itd<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--name<span class="w"> </span>&lt;容器名&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>--ipc<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--shm-size<span class="w"> </span>&lt;共享内存&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>&lt;设备直通，见下表&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>&lt;模型目录&gt;:/models<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>&lt;镜像&gt;<span class="w"> </span>sleep<span class="w"> </span>infinity
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 创建容器并在当前终端运行，请保持该终端不关闭；另开一个终端进入已运行的容器：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;容器名&gt;<span class="w"> </span>bash
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> 使用的容器名要与 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 的 <code class="docutils literal notranslate"><span class="pre">--name</span></code> 一致（<code class="docutils literal notranslate"><span class="pre">&lt;厂商&gt;-vllm-&lt;版本&gt;</span></code>，可加 <code class="docutils literal notranslate"><span class="pre">-plugin-&lt;分支&gt;</span></code> 后缀）。各后端只有下列参数不同；<code class="docutils literal notranslate"><span class="pre">—</span></code> 表示厂商手册未设置该参数。</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>后端</p></th>
-<th class="head"><p>设备直通</p></th>
-<th class="head"><p>额外挂载</p></th>
-<th class="head"><p>共享内存</p></th>
-<th class="head"><p>环境变量</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--gpus</span> <span class="pre">all</span></code></p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">512g</span></code></p></td>
-<td><p>—</p></td>
-</tr>
-<tr class="row-odd"><td><p>海光 DCU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/kfd</span> <span class="pre">--device</span> <span class="pre">/dev/mkfd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span> <span class="pre">--group-add</span> <span class="pre">video</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/opt/hyhal:/opt/hyhal</span></code></p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">DCU_VISIBLE_DEVICES=all</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>天数智芯</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/dev:/dev</span></code>、<code class="docutils literal notranslate"><span class="pre">/usr/src:/usr/src</span></code>、<code class="docutils literal notranslate"><span class="pre">/lib/modules:/lib/modules</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">32g</span></code></p></td>
-<td><p>—</p></td>
-</tr>
-<tr class="row-odd"><td><p>燧原、清微智能、曦望</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
-<td><p>—</p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">ENFLAME_VISIBLE_DEVICES=0</span></code>（仅燧原）</p></td>
-</tr>
-<tr class="row-even"><td><p>昆仑芯</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span></code></p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">128G</span></code></p></td>
-<td><p>—</p></td>
-</tr>
-<tr class="row-odd"><td><p>摩尔线程</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--privileged</span> <span class="pre">--runtime=mthreads</span></code></p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">64g</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">MTHREADS_VISIBLE_DEVICES=all</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>昇腾</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/davinci0..N</span> <span class="pre">--device</span> <span class="pre">/dev/davinci_manager</span> <span class="pre">--device</span> <span class="pre">/dev/devmm_svm</span> <span class="pre">--device</span> <span class="pre">/dev/hisi_hdc</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/usr/local/dcmi:/usr/local/dcmi</span></code>、<code class="docutils literal notranslate"><span class="pre">/usr/local/bin/npu-smi:/usr/local/bin/npu-smi</span></code>、<code class="docutils literal notranslate"><span class="pre">/usr/local/Ascend/driver:/usr/local/Ascend/driver</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">512g</span></code></p></td>
-<td><p>—</p></td>
-</tr>
-<tr class="row-odd"><td><p>沐曦 MetaX</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/mxcd</span> <span class="pre">--device</span> <span class="pre">/dev/dri</span></code></p></td>
-<td><p>—</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100gb</span></code></p></td>
-<td><p>—</p></td>
-</tr>
-<tr class="row-even"><td><p>阿里 PPU、T-Head PPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/alixpu</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ctl</span> <span class="pre">--device</span> <span class="pre">/dev/alixpu_ppu{0..15}</span></code></p></td>
-<td><p>—</p></td>
-<td><p>—</p></td>
-<td><p>—</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>以上镜像自带厂商运行时与基础 vLLM 构建。要运行 FlagOS 2.2 发布版，请按下文第 2 步将 vLLM 替换为 <code class="docutils literal notranslate"><span class="pre">empty</span></code> v0.24.0 源码编译版并安装 vllm-plugin-FL v0.3.0。各厂商完整命令序列（代理设置、FlagGems flash attention 修复、FlagTree backend 选择、autotune 预热）请参见厂商测试手册。</p>
-</div>
+<p>打开 <a class="reference external" href="https://flagos.io/Home">FlagOS 主页面</a>，点击页面正中间的 <strong>下载</strong>，选择与你的硬件对应的 Docker 镜像。</p>
 <ol class="arabic simple" start="2">
 <li><p>在容器内安装各组件</p></li>
 </ol>
@@ -891,7 +810,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -900,7 +819,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 24, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>
