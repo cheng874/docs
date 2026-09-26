@@ -1,9 +1,5 @@
 # FlagFFT Release Notes
 
-## Unreleased (FlagOS 2.2 in development)
-
-- **Packaging (FEP-0019, Wave 1)** — Debian `.deb` and RPM `.rpm` packaging for the NVIDIA backend is in progress in FlagFFT#12. The first release ships the NVIDIA backend only; MThreads support awaits a public build image and the PPU backend is pending upstreaming.
-
 ## v0.1.0
 
 

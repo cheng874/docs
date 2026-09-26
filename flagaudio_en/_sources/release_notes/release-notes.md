@@ -1,10 +1,5 @@
 # FlagAudio Release Notes
 
-## Unreleased (FlagOS 2.2 in development)
-
-- **Packaging (FEP-0019, Wave 1)** — Debian `.deb` and RPM `.rpm` packaging is in progress in FlagAudio#2 (awaiting first-contributor CI approval). Python wheels will be published to PyPI and binary packages to the FlagOS Nexus repository.
-- Added Apache-2.0 copyright headers across all source files.
-
 ## v0.2.0
 
 

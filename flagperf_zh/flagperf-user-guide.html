@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="FlagPerf 用户指南" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="flagperf-user-guide.html" />
+<meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="概述: FlagPerf 是由 BAAI（北京智源人工智能研究院）与 AI 硬件厂商共建的集成化 AI 硬件评测引擎。旨在建立一套面向行业实践的指标体系，用于评估 AI 硬件在软件栈组合（模型+框架+编译器）下的能力。 FlagPerf 提供全面的评测框架，涵盖 AI 硬件性能的多个维度，包括算力、内存带宽、互联能力和能耗。 主要特性: 多维度评测指标 ：除了测量”时间消耗”，FlagPerf 还包括：- 性能指标, 资源使用指标, 生态适配能力指标., 多样化场景和任务 ：覆盖 30+ 经典模型：- 计算机视觉（ResNet、ViT、Swin Transformer 等）, 自然语言处..." />
+<meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
+<meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="概述: FlagPerf 是由 BAAI（北京智源人工智能研究院）与 AI 硬件厂商共建的集成化 AI 硬件评测引擎。旨在建立一套面向行业实践的指标体系，用于评估 AI 硬件在软件栈组合（模型+框架+编译器）下的能力。 FlagPerf 提供全面的评测框架，涵盖 AI 硬件性能的多个维度，包括算力、内存带宽、互联能力和能耗。 主要特性: 多维度评测指标 ：除了测量”时间消耗”，FlagPerf 还包括：- 性能指标, 资源使用指标, 生态适配能力指标., 多样化场景和任务 ：覆盖 30+ 经典模型：- 计算机视觉（ResNet、ViT、Swin Transformer 等）, 自然语言处..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>FlagPerf 用户指南 &#8212; FlagPerf 文档中心</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/lightbox.min.css?v=6e7d0de0" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=538fca1d" />
+    <link rel="stylesheet" type="text/css" href="_static/homepage.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
+    <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="_static/tippy/flagperf-user-guide.1b1f1cc5-a111-43f3-bf9a-8f9d9f28f44b.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'flagperf-user-guide';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="/flagperf-user-guide.html" />
+    <link rel="icon" href="_static/favicon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="FlagPerf 文档" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  <!--preview-badge-css--><style>html{scroll-padding-top:36px}body{padding-top:36px !important}</style></head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/zh-cn/latest/" 
+   class="return-to-main-link"
+   aria-label="返回 FlagOS 文档"
+   title="返回 FlagOS 文档">
+  ← 返回 FlagOS 文档
+</a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- docs/_templates/return_to_main.html -->
+<!-- Minimal text link version -->
+<style>
+  .return-to-main-link {
+    display: inline-block;
+    margin-left: 16px;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    font-style: italic; /* Add italic style */
+  }
+  
+  .return-to-main-link:hover {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  
+  .return-to-main-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2b6cb0;
+    transition: width 0.3s ease;
+  }
+  
+  .return-to-main-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Dark mode support */
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .return-to-main-link {
+      margin-left: 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<a href="https://docs.flagos.io/zh-cn/latest/" 
+   class="return-to-main-link"
+   aria-label="返回 FlagOS 文档"
+   title="返回 FlagOS 文档">
+  ← 返回 FlagOS 文档
+</a></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-en-light.svg" class="logo__image only-light" alt="FlagPerf 文档中心 - Home"/>
+    <img src="_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="FlagPerf 文档中心 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    FlagPerf 文档
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FlagPerf 用户指南</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/flagos-ai/docs/edit/main/flagperf-user-guide.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>FlagPerf 用户指南</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">概述</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主要特性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">支持的评测模块</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基础规格列表</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">快速入门（训练示例）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">安装</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系统要求</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">硬件环境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">基础规格评测配置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">训练评测配置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">推理评测配置</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">配置参考</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">测试配置格式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">环境变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">模块详情</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">基础规格</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">训练模块</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">推理模块</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">生成模块</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">查看结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">贡献</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">标准用例开发</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">厂商适配</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">合作伙伴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">许可证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">联系方式</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="flagperf">
+<h1>FlagPerf 用户指南<a class="headerlink" href="#flagperf" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p><strong>FlagPerf</strong> 是由 BAAI（北京智源人工智能研究院）与 AI 硬件厂商共建的集成化 AI 硬件评测引擎。旨在建立一套面向行业实践的指标体系，用于评估 AI 硬件在软件栈组合（模型+框架+编译器）下的能力。</p>
+<p>FlagPerf 提供全面的评测框架，涵盖 AI 硬件性能的多个维度，包括算力、内存带宽、互联能力和能耗。</p>
+<section id="id2">
+<h3>主要特性<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>多维度评测指标</strong>：除了测量”时间消耗”，FlagPerf 还包括：</p>
+<ul class="simple">
+<li><p>性能指标</p></li>
+<li><p>资源使用指标</p></li>
+<li><p>生态适配能力指标</p></li>
+</ul>
+</li>
+<li><p><strong>多样化场景和任务</strong>：覆盖 30+ 经典模型：</p>
+<ul class="simple">
+<li><p>计算机视觉（ResNet、ViT、Swin Transformer 等）</p></li>
+<li><p>自然语言处理（BERT、GPT、LLaMA 等）</p></li>
+<li><p>语音（Tacotron2、WaveGlow、Wav2Vec2）</p></li>
+<li><p>多模态（LLaVA、Stable Diffusion）</p></li>
+<li><p>80+ 训练示例</p></li>
+</ul>
+</li>
+<li><p><strong>多种训练框架和推理引擎</strong>：</p>
+<ul class="simple">
+<li><p>训练：PyTorch、TensorFlow、PaddlePaddle、MindSpore</p></li>
+<li><p>推理：TensorRT、XTCL、IxRT、TorchInductor</p></li>
+</ul>
+</li>
+<li><p><strong>多种测试环境</strong>：</p>
+<ul class="simple">
+<li><p>单卡</p></li>
+<li><p>单机（通常 8 卡）</p></li>
+<li><p>多机</p></li>
+</ul>
+</li>
+<li><p><strong>公平透明的评测</strong>：所有测试代码开源，测试过程和数据可复现。</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>支持的评测模块<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>模块</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>位置</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>基础规格</strong></p></td>
+<td><p>算力、内存、互联、能耗</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">base/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>训练</strong></p></td>
+<td><p>模型训练基准测试</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>推理</strong></p></td>
+<td><p>离线批量推理评测</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">inference/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>算子</strong></p></td>
+<td><p>算子基准测试</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">operation/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>生成</strong></p></td>
+<td><p>生成式推理（LLM）评测</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">generate/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id4">
+<h3>基础规格列表<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>基础规格评测涵盖 4 类 13 项：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>序号</p></th>
+<th class="head"><p>规格</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>NVIDIA</p></th>
+<th class="head"><p>Metax</p></th>
+<th class="head"><p>昇腾</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>FP64 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>FP32 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>TF32 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>FP16 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>BF16 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>INT8 计算</p></td>
+<td><p>计算</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>主存带宽</p></td>
+<td><p>内存</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>主存容量</p></td>
+<td><p>内存</p></td>
+<td><p>支持</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>CPU-芯片互联</p></td>
+<td><p>互联</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>机内 P2P</p></td>
+<td><p>互联</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>支持</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>机内 MPI</p></td>
+<td><p>互联</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>机间 P2P</p></td>
+<td><p>互联</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>机间 MPI</p></td>
+<td><p>互联</p></td>
+<td><p>支持</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>快速开始<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3>快速入门（训练示例）<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 克隆 FlagPerf</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FlagOpen/FlagPerf.git
+<span class="nb">cd</span><span class="w"> </span>FlagPerf/training/
+
+<span class="c1"># 2. 安装依赖</span>
+pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 3. 配置集群</span>
+vim<span class="w"> </span>run_benchmarks/config/cluster_conf.py
+<span class="c1"># 设置 HOSTS 和 SSH_PORT</span>
+
+<span class="c1"># 4. 配置测试用例</span>
+vim<span class="w"> </span>run_benchmarks/config/test_conf.py
+<span class="c1"># 设置 VENDOR、FLAGPERF_PATH 和 CASES</span>
+
+<span class="c1"># 5. 运行基准测试</span>
+python3<span class="w"> </span>./run_benchmarks/run.py
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>安装<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>系统要求<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">操作系统</span><span class="p">:</span> <span class="n">Ubuntu</span> <span class="mf">20.04</span>
+<span class="n">内核</span><span class="p">:</span> <span class="mf">5.4.0</span><span class="o">-</span><span class="mi">52</span><span class="o">-</span><span class="n">generic</span>
+<span class="n">Docker</span><span class="p">:</span> <span class="mf">20.10.9</span>
+<span class="n">Python</span><span class="p">:</span> <span class="mf">3.8</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>硬件环境<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>物理机部署（默认）：</p>
+<ol class="arabic simple">
+<li><p>安装 Docker 和 Python</p></li>
+<li><p>确保硬件驱动、网络和硬件虚拟化已正确配置</p></li>
+<li><p>配置服务器之间的 SSH 信任关系和 sudo 免密</p></li>
+<li><p>安装监控工具：</p>
+<ul class="simple">
+<li><p>CPU：sysstat</p></li>
+<li><p>内存：free</p></li>
+<li><p>功耗：ipmitool</p></li>
+<li><p>系统信息：加速器状态命令</p></li>
+</ul>
+</li>
+</ol>
+<p>容器部署：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">EXEC_IN_CONTAINER</span><span class="o">=</span>True
+</pre></div>
+</div>
+<p>确保容器具有：</p>
+<ul class="simple">
+<li><p>硬件驱动和网络已配置</p></li>
+<li><p>容器镜像和软件包正确安装</p></li>
+<li><p>容器内可访问硬件</p></li>
+<li><p>SSH 信任关系已配置</p></li>
+<li><p>监控工具已安装</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>基础规格评测配置<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 克隆并部署</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FlagOpen/FlagPerf.git
+<span class="nb">cd</span><span class="w"> </span>FlagPerf/base/
+
+<span class="c1"># 配置主机</span>
+vim<span class="w"> </span>configs/host.yaml
+
+<span class="c1"># 运行评测</span>
+sudo<span class="w"> </span>python3<span class="w"> </span>run.py
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3>训练评测配置<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 克隆并部署</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FlagOpen/FlagPerf.git
+<span class="nb">cd</span><span class="w"> </span>FlagPerf/training/
+pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 配置集群</span>
+vim<span class="w"> </span>run_benchmarks/config/cluster_conf.py
+</pre></div>
+</div>
+<p>集群配置示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">'''集群配置'''</span>
+<span class="n">HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"10.1.2.3"</span><span class="p">,</span> <span class="s2">"10.1.2.4"</span><span class="p">,</span> <span class="s2">"10.1.2.5"</span><span class="p">,</span> <span class="s2">"10.1.2.6"</span><span class="p">]</span>
+<span class="n">SSH_PORT</span> <span class="o">=</span> <span class="s2">"22"</span>
+</pre></div>
+</div>
+<p>配置测试用例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">VENDOR</span> <span class="o">=</span> <span class="s2">"nvidia"</span>
+<span class="n">FLAGPERF_PATH</span> <span class="o">=</span> <span class="s2">"/home/FlagPerf/training"</span>
+<span class="n">CASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"bert:pytorch:A100:1:8:1"</span><span class="p">:</span> <span class="s2">"/path/to/bert/dataset/"</span><span class="p">,</span>
+    <span class="s2">"glm:pytorch:A100:1:8:1"</span><span class="p">:</span> <span class="s2">"/path/to/glm/dataset/"</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>运行训练：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>./run_benchmarks/run.py
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3>推理评测配置<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>FlagPerf/inference/
+
+<span class="c1"># 配置主机</span>
+vim<span class="w"> </span>configs/host.yaml
+</pre></div>
+</div>
+<p>主机配置示例：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">FLAGPERF_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"/home/FlagPerf/inference"</span>
+<span class="nt">FLAGPERF_LOG_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"result"</span>
+<span class="nt">VENDOR</span><span class="p">:</span><span class="w"> </span><span class="s">"nvidia"</span>
+<span class="nt">HOSTS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"10.1.2.155"</span><span class="p p-Indicator">]</span>
+<span class="nt">SSH_PORT</span><span class="p">:</span><span class="w"> </span><span class="s">"22"</span>
+<span class="nt">CASES</span><span class="p">:</span>
+<span class="w">    </span><span class="s">"resnet50:pytorch_1.13"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/path/to/dataset/"</span>
+</pre></div>
+</div>
+<p>运行推理：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>python3<span class="w"> </span>run.py
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>配置参考<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="id14">
+<h3>测试配置格式<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"模型:框架:硬件ID:节点数:进程数:重复次数"</span><span class="p">:</span> <span class="s2">"数据集路径"</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>示例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>模型</p></td>
+<td><p>模型名称</p></td>
+<td><p>bert、glm、resnet50</p></td>
+</tr>
+<tr class="row-odd"><td><p>框架</p></td>
+<td><p>框架版本</p></td>
+<td><p>pytorch、pytorch_1.8</p></td>
+</tr>
+<tr class="row-even"><td><p>硬件ID</p></td>
+<td><p>硬件型号</p></td>
+<td><p>A100</p></td>
+</tr>
+<tr class="row-odd"><td><p>节点数</p></td>
+<td><p>节点数量</p></td>
+<td><p>1、2</p></td>
+</tr>
+<tr class="row-even"><td><p>进程数</p></td>
+<td><p>每节点进程数</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>重复次数</p></td>
+<td><p>测试重复次数</p></td>
+<td><p>1、3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id15">
+<h3>环境变量<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>变量</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXEC_IN_CONTAINER</span></code></p></td>
+<td><p>容器部署时设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGPERF_PATH</span></code></p></td>
+<td><p>FlagPerf 安装路径</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ACCE_CONTAINER_OPT</span></code></p></td>
+<td><p>加速器容器选项（如 <code class="docutils literal notranslate"><span class="pre">--gpus</span> <span class="pre">all</span></code>）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ACCE_VISIBLE_DEVICE_ENV_NAME</span></code></p></td>
+<td><p>设备可见性环境变量（如 <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code>）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>模块详情<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<section id="id17">
+<h3>基础规格<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>基础规格评测模块提供 AI 硬件能力的全面测试：</p>
+<p><strong>算力</strong>：FP64、FP32、TF32、FP16、BF16、INT8
+<strong>内存</strong>：主存带宽和容量
+<strong>互联</strong>：CPU-芯片、机内 P2P/MPI、机间 P2P/MPI
+<strong>能耗</strong>：功耗监控</p>
+<p>两种评测方法：</p>
+<ol class="arabic simple">
+<li><p><strong>PyTorch 算子/原语</strong>：基于标准 PyTorch 的测试</p></li>
+<li><p><strong>厂商特定工具</strong>：厂商提供的基准测试工具</p></li>
+</ol>
+</section>
+<section id="id18">
+<h3>训练模块<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>支持 44+ 模型，包括：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>模型</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>框架</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LLaMA3-70B</p></td>
+<td><p>LLM</p></td>
+<td><p>Megatron</p></td>
+</tr>
+<tr class="row-odd"><td><p>LLaMA2-7B/70B</p></td>
+<td><p>LLM</p></td>
+<td><p>DeepSpeed、Megatron</p></td>
+</tr>
+<tr class="row-even"><td><p>GPT3</p></td>
+<td><p>LLM</p></td>
+<td><p>Paddle</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aquila2</p></td>
+<td><p>LLM</p></td>
+<td><p>FlagScale</p></td>
+</tr>
+<tr class="row-even"><td><p>ResNet50</p></td>
+<td><p>CV</p></td>
+<td><p>PyTorch、TensorFlow</p></td>
+</tr>
+<tr class="row-odd"><td><p>BERT</p></td>
+<td><p>NLP</p></td>
+<td><p>PyTorch、Paddle</p></td>
+</tr>
+<tr class="row-even"><td><p>ViT</p></td>
+<td><p>CV</p></td>
+<td><p>PyTorch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>标准用例实现路径：<code class="docutils literal notranslate"><span class="pre">training/benchmarks/&lt;模型&gt;/&lt;框架&gt;/</span></code></p>
+</section>
+<section id="id19">
+<h3>推理模块<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>支持 11 个模型：</p>
+<ul class="simple">
+<li><p>ResNet50</p></li>
+<li><p>BERT-Large</p></li>
+<li><p>Vision Transformer</p></li>
+<li><p>YOLOv5</p></li>
+<li><p>Stable Diffusion v1.4</p></li>
+<li><p>Swin Transformer</p></li>
+<li><p>LLaMA2-7B MMLU</p></li>
+<li><p>Aquila-7B MMLU</p></li>
+<li><p>Segment Anything</p></li>
+<li><p>DeepSeek-7B MMLU</p></li>
+<li><p>LLaMA3-8B MMLU</p></li>
+</ul>
+</section>
+<section id="id20">
+<h3>生成模块<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>用于大语言模型生成式推理评测：</p>
+<ul class="simple">
+<li><p>吞吐量测量</p></li>
+<li><p>TTFT（首令牌时间）测量</p></li>
+<li><p>ROUGE 分数评测</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>查看结果<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<p>训练日志位于：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">/</span><span class="n">run</span><span class="o">&lt;</span><span class="n">时间戳</span><span class="o">&gt;/&lt;</span><span class="n">模型</span><span class="o">&gt;/</span><span class="nb">round</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;/&lt;</span><span class="n">ip</span><span class="o">&gt;</span><span class="n">_noderank</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p>主要日志文件：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rank0.out.log</span></code>：训练输出和结果</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpu_monitor.log</span></code>：CPU 使用情况</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_monitor.log</span></code>：GPU 指标（温度、功耗、内存）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mem_monitor.log</span></code>：内存使用情况</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pwr_monitor.log</span></code>：功耗</p></li>
+</ul>
+<p>日志中完成的示例信息：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"e2e_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1661.61</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"training_sequences_per_second"</span><span class="p">:</span><span class="w"> </span><span class="mf">579.09</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"converged"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"final_loss"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.07</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"raw_train_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1501.71</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h2>贡献<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<p>FlagPerf 采用开源协作方式：</p>
+<ol class="arabic simple">
+<li><p>Fork <a class="reference external" href="https://github.com/FlagOpen/FlagPerf">FlagPerf 仓库</a></p></li>
+<li><p>进行修改并验证</p></li>
+<li><p>向 FlagPerf 项目提交 PR</p></li>
+</ol>
+<section id="id23">
+<h3>标准用例开发<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<p>标准用例是作为参考实现的模型-框架组合，它们：</p>
+<ul class="simple">
+<li><p>在 NVIDIA GPU 上作为参考运行</p></li>
+<li><p>与硬件无关（无厂商特定代码）</p></li>
+<li><p>遵循标准代码结构</p></li>
+</ul>
+<p>关键文件：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">run_pretraining.py</span></code>：训练入口</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/_base.py</span></code>：基础配置</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/mutable_params.py</span></code>：可覆盖参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readme.md</span></code>：用例文档</p></li>
+</ul>
+</section>
+<section id="id24">
+<h3>厂商适配<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<p>厂商可通过以下方式为硬件适配 FlagPerf：</p>
+<ol class="arabic simple">
+<li><p>实现厂商特定配置</p></li>
+<li><p>提供硬件特定优化</p></li>
+<li><p>扩展标准用例接口</p></li>
+</ol>
+<p>详见<a class="reference external" href="https://github.com/FlagOpen/FlagPerf/blob/main/docs/training/specifications/case-adatpion-spec.md">用例适配规范</a>。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id25">
+<h2>合作伙伴<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<p>FlagPerf 与以下 AI 硬件厂商共建：</p>
+<ul class="simple">
+<li><p>NVIDIA</p></li>
+<li><p>Metax</p></li>
+<li><p>昆仑芯（百度）</p></li>
+<li><p>天数智芯</p></li>
+<li><p>摩尔线程</p></li>
+<li><p>昇腾（华为）</p></li>
+<li><p>海光（DCU）</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id26">
+<h2>许可证<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<p>FlagPerf 基于 Apache 2.0 许可证发布。</p>
+</section>
+<section id="id27">
+<h2>联系方式<a class="headerlink" href="#id27" title="Link to this heading">#</a></h2>
+<p>如有问题和支持需求：</p>
+<ul class="simple">
+<li><p>GitHub Issues：<a class="reference external" href="https://github.com/FlagOpen/FlagPerf">FlagOpen/FlagPerf</a></p></li>
+<li><p>项目主页：<a class="github reference external" href="https://github.com/FlagOpen/FlagPerf">FlagOpen/FlagPerf</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FlagPerf 文档</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">概述</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">主要特性</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">支持的评测模块</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基础规格列表</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">快速开始</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">快速入门（训练示例）</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">安装</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系统要求</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">硬件环境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">基础规格评测配置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">训练评测配置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">推理评测配置</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">配置参考</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">测试配置格式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">环境变量</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">模块详情</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">基础规格</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">训练模块</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">推理模块</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">生成模块</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">查看结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">贡献</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">标准用例开发</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">厂商适配</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">合作伙伴</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">许可证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">联系方式</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By FlagOS Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, FlagOS Community.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Sep 26, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../flagperf_en/flagperf-user-guide.html">English</a></body>
+</html>

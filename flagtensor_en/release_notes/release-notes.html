@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.3.0-rc2 (release candidate): Added Features- New hardware backends: T-Head PPU (#10), Iluvatar CoreX with BI-V150 contraction GEMM tuning and a published performance report (36 ops, 2158 measurements) (#11, #13, #16), Huawei Ascend (#12), MetaX C550 (muxi) with PyTorch-native baseline support ..." />
+<meta property="og:description" content="v0.2.0: Added Features- Unary Operators — abs, acos, acosh, asin, asinh, atan, atanh, ceil, conj, cos, cosh, exp, floor, identity, log, mish, neg, rcp, relu, sigmoid, sin, sinh, soft_plus, soft_sign, sqrt, swish, tan, tanh (28 operators)., Binary Operators — add, max, min, mul., Contraction Opera..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.3.0-rc2 (release candidate): Added Features- New hardware backends: T-Head PPU (#10), Iluvatar CoreX with BI-V150 contraction GEMM tuning and a published performance report (36 ops, 2158 measurements) (#11, #13, #16), Huawei Ascend (#12), MetaX C550 (muxi) with PyTorch-native baseline support ..." />
+<meta name="description" content="v0.2.0: Added Features- Unary Operators — abs, acos, acosh, asin, asinh, atan, atanh, ceil, conj, cos, cosh, exp, floor, identity, log, mish, neg, rcp, relu, sigmoid, sin, sinh, soft_plus, soft_sign, sqrt, swish, tan, tanh (28 operators)., Binary Operators — add, max, min, mul., Contraction Opera..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagTensor Release Notes &#8212; FlagTensor Documentation</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.56a5c8fc-bb27-421a-8c72-085dff6b000a.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.1e65075f-7b41-48d8-ba4f-7fe587bc8b62.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -78,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -547,7 +553,6 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -563,34 +568,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagtensor-release-notes">
 <h1>FlagTensor Release Notes<a class="headerlink" href="#flagtensor-release-notes" title="Link to this heading">#</a></h1>
-<section id="v0-3-0-rc2-release-candidate">
-<h2>v0.3.0-rc2 (release candidate)<a class="headerlink" href="#v0-3-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is the FlagOS 2.2 release candidate (tag <code class="docutils literal notranslate"><span class="pre">v0.3.0-rc2.post1</span></code>, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. The packaging work tracked under FEP-0019 Wave 1 continues in FlagTensor#4 (backend-neutral Python packages plus native NVIDIA runtime/development/CPython packages depending on <code class="docutils literal notranslate"><span class="pre">libtriton-jit-nvidia</span> <span class="pre">&gt;=</span> <span class="pre">0.1.0-3</span></code>, to be published to PyPI and the FlagOS Nexus repository).</p>
-</div>
-<ul class="simple">
-<li><p><strong>Added Features</strong></p>
-<ul>
-<li><p>New hardware backends: T-Head PPU (#10), Iluvatar CoreX with BI-V150 contraction GEMM tuning and a published performance report (36 ops, 2158 measurements) (#11, #13, #16), Huawei Ascend (#12), MetaX C550 (muxi) with PyTorch-native baseline support (#15, #17), and Hygon DCU + Kunlunxin XPU.</p></li>
-<li><p>C++ wrapper with TritonJIT support for all 36 operators (#7, #8).</p></li>
-<li><p>New contraction and trinary operators with a fused trinary prototype; six additional binary ops registered into <code class="docutils literal notranslate"><span class="pre">_FULL_CONFIG</span></code>; <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter added to <code class="docutils literal notranslate"><span class="pre">add()</span></code> for <code class="docutils literal notranslate"><span class="pre">aten::add.Tensor</span></code> compatibility.</p></li>
-<li><p>FlagOS plugin and vendor-gated operator selection for non-production backends.</p></li>
-<li><p>Operator naming fully aligned with the official cuTensor naming scheme.</p></li>
-<li><p>Unified multi-backend <code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> (<code class="docutils literal notranslate"><span class="pre">--backend</span> <span class="pre">metax</span></code>, nvidia/ppu/iluvatar) and a production, GPU-agnostic Dockerfile.</p></li>
-</ul>
-</li>
-<li><p><strong>Improved / Fixed</strong></p>
-<ul>
-<li><p>Acceptance-ready restructuring with FlagGems-style documentation and spec-compliant CI paths; CI consolidated to 4 core workflows with org-level runner labels.</p></li>
-<li><p>block-sparse contraction and CuTensor workspace fixes; benchmark dtype alignment; dual-key performance-data parsing fix (#5).</p></li>
-<li><p>Triton 3.6 compatibility (flagtree 0.6.1+iluvatar3.6) with Iluvatar tune configs.</p></li>
-<li><p>Vendor-native baseline resolution restored on Iluvatar (#16); benchmark pass/fail decoupled from matplotlib.</p></li>
-<li><p>Apache-2.0 copyright headers added across all source files (#6).</p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -679,7 +656,6 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0-rc2-release-candidate">v0.3.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -706,7 +682,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -715,7 +691,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>
@@ -738,5 +714,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagtensor_zh/release_notes/release-notes.html">中文</a></body>
 </html>

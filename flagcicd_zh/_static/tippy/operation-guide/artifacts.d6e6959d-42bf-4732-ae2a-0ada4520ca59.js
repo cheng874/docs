@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"../glossary/index.html#term-Tag\"]": "<dt id=\"term-Tag\">Tag</dt><dd><p>\u955c\u50cf\u6216\u5236\u54c1\u7684\u7248\u672c\u6807\u7b7e\u3002</p></dd>", "a[href=\"#id7\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u641c\u7d22\u529f\u80fd<a class=\"headerlink\" href=\"#id7\" title=\"Link to this heading\">#</a></h3><p>\u652f\u6301\u6309\u5305\u540d\u6a21\u7cca\u641c\u7d22\u3002</p>", "a[href=\"#id6\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u8bbf\u95ee\u8def\u5f84<a class=\"headerlink\" href=\"#id6\" title=\"Link to this heading\">#</a></h3><p>\u5de6\u4fa7\u5bfc\u822a\u680f \u2192 <strong>\u5236\u54c1\u7ba1\u7406</strong> \u2192 <strong>Python \u5305</strong></p><p><a data-lightbox=\"image-set\" href=\"../_images/10-artifacts-python.png\">\n<img alt=\"Python \u5305\u5217\u8868\" src=\"../_images/10-artifacts-python.png\"/></a>\n</p>", "a[href=\"#id3\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u8bbf\u95ee\u8def\u5f84<a class=\"headerlink\" href=\"#id3\" title=\"Link to this heading\">#</a></h3><p>\u5de6\u4fa7\u5bfc\u822a\u680f \u2192 <strong>\u5236\u54c1\u7ba1\u7406</strong> \u2192 <strong>\u5bb9\u5668\u955c\u50cf</strong></p><p><a data-lightbox=\"image-set\" href=\"../_images/14-artifact-images.png\">\n<img alt=\"\u5bb9\u5668\u955c\u50cf\u5217\u8868\" src=\"../_images/14-artifact-images.png\"/></a>\n</p>", "a[href=\"#id4\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u641c\u7d22\u529f\u80fd<a class=\"headerlink\" href=\"#id4\" title=\"Link to this heading\">#</a></h3><p>\u652f\u6301\u6309\u955c\u50cf\u540d\u79f0\u641c\u7d22\uff0c\u8f93\u5165\u5173\u952e\u8bcd\u540e\u6309\u56de\u8f66\u6216\u70b9\u51fb\u641c\u7d22\u56fe\u6807\u3002</p>", "a[href=\"#python\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Python \u5305<a class=\"headerlink\" href=\"#python\" title=\"Link to this heading\">#</a></h2><h3>\u8bbf\u95ee\u8def\u5f84<a class=\"headerlink\" href=\"#id6\" title=\"Link to this heading\">#</a></h3><p>\u5de6\u4fa7\u5bfc\u822a\u680f \u2192 <strong>\u5236\u54c1\u7ba1\u7406</strong> \u2192 <strong>Python \u5305</strong></p><p><a data-lightbox=\"image-set\" href=\"../_images/10-artifacts-python.png\">\n<img alt=\"Python \u5305\u5217\u8868\" src=\"../_images/10-artifacts-python.png\"/></a>\n</p>", "a[href=\"#id8\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u5217\u8868\u5b57\u6bb5<a class=\"headerlink\" href=\"#id8\" title=\"Link to this heading\">#</a></h3>", "a[href=\"#id2\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">\u5bb9\u5668\u955c\u50cf<a class=\"headerlink\" href=\"#id2\" title=\"Link to this heading\">#</a></h2><p>\u5bb9\u5668\u955c\u50cf\u9875\u9762\u5c55\u793a\u5e73\u53f0\u6258\u7ba1\u7684\u6240\u6709 Docker \u955c\u50cf\u3002</p>", "a[href=\"../glossary/index.html#term-0\"]": "<dt id=\"term-0\">\u955c\u50cf</dt><dd><p>Docker \u5bb9\u5668\u955c\u50cf\u3002</p></dd>", "a[href=\"#id5\"]": "<h3 class=\"tippy-header\" style=\"margin-top: 0;\">\u5217\u8868\u5b57\u6bb5<a class=\"headerlink\" href=\"#id5\" title=\"Link to this heading\">#</a></h3>", "a[href=\"../glossary/index.html#term-Wheel\"]": "<dt id=\"term-Wheel\">Wheel</dt><dd><p>Python \u5305\u7684\u5206\u53d1\u683c\u5f0f\u3002</p></dd>", "a[href=\"#id1\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u5236\u54c1\u7ba1\u7406<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u5236\u54c1\u7ba1\u7406\u6a21\u5757\u7528\u4e8e\u7ba1\u7406\u5e73\u53f0\u4e2d\u7684\u6784\u5efa\u4ea7\u7269\uff0c\u5305\u62ec\u5bb9\u5668 <a class=\"reference internal\" href=\"../glossary/index.html#term-0\"><span class=\"xref std std-term\">\u955c\u50cf</span></a> \u548c Python <a class=\"reference internal\" href=\"../glossary/index.html#term-Wheel\"><span class=\"xref std std-term\">Wheel</span></a> \u5305\u3002</p>"}
+skip_classes = ["headerlink", "sd-stretched-link"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(` ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};

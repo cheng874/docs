@@ -1,24 +1,5 @@
 # FlagDNN Release Notes
 
-## v0.3.0-rc2 (release candidate)
-
-```{note}
-This is the FlagOS 2.2 release candidate (tag `v0.3.0-rc2.post1`, published 2026-09). Version numbers and supported-platform lists will be finalized at GA. The packaging work tracked under FEP-0019 Wave 1 continues in FlagDNN#1 (native NVIDIA runtime/development packages consuming `libtriton-jit-nvidia >= 0.1.0-3`, to be published to the FlagOS Nexus repository).
-```
-
-- **Added Features**
-
-  - New hardware backends: Ascend (with dedicated tests and performance tuning), Hygon DCU (with CPU reference ops), Moore Threads (MUSA), Iluvatar (WIP adaptation synced 2026-08-24), and an updated T-Head backend — each with a backend README (#5, #8, #9, #10).
-  - New operators: `conv_dgrad`, `conv_wgrad`, and an `sdpa_fp8_backward` draft.
-  - CI/CD workflow for FlagDNN (#2), including `run_op.sh`-based per-operator runs.
-
-- **Improved / Fixed**
-
-  - Architecture refactoring of the testing framework (adapted to both NVIDIA and Ascend) with fixes for batch test collection.
-  - Long causal SDPA performance work: host descriptors, bounded ids in the backward pass, and owner-compute causal d128 backward.
-  - Performance fixes for `add_square`, `matmul`, `conv2d`, binary-related ops, `batchnorm`, and NVIDIA/Ascend tuning rounds (#6, #7, #8).
-  - Apache-2.0 copyright headers added across all source files (#3, #4).
-
 ## v0.2.0
 
 

@@ -1,4 +1,4 @@
 # Operator List
 
-```{operator-list}
+```{operator-category-list}
 ```

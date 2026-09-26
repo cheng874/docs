@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0-rc2 (release candidate): Added Features- New out-of-tree vendor backends: MUSA (#6), TXDA (#33), Kunlunxin KLX (#41), Iluvatar (#34), Hygon (#35, renamed from hcu in #78), Enflame GCU (#42), and T-Head/PPU CUDA-compatible vendor routing (#27) with a default PPU attention backend (#63) and ..." />
+<meta property="og:description" content="v0.1.0: Initial release of sglang-plugin-FL. Added features- Three-layer operator replacement architecture for SGLang:- Layer 1: ATen operator replacement via FlagGems Triton kernels, Layer 2: SGLang fused kernel dispatch (SiluAndMul, RMSNorm, RotaryEmbedding), Layer 3: Distributed communication ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0-rc2 (release candidate): Added Features- New out-of-tree vendor backends: MUSA (#6), TXDA (#33), Kunlunxin KLX (#41), Iluvatar (#34), Hygon (#35, renamed from hcu in #78), Enflame GCU (#42), and T-Head/PPU CUDA-compatible vendor routing (#27) with a default PPU attention backend (#63) and ..." />
+<meta name="description" content="v0.1.0: Initial release of sglang-plugin-FL. Added features- Three-layer operator replacement architecture for SGLang:- Layer 1: ATen operator replacement via FlagGems Triton kernels, Layer 2: SGLang fused kernel dispatch (SiluAndMul, RMSNorm, RotaryEmbedding), Layer 3: Distributed communication ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; sglang-Plugin-FL Documentation</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.1a4f9473-9557-4db5-8eb2-79ee4aada633.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.90e07c1d-1d61-4b40-97ef-f68fe3ae4ef1.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -78,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 19, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -543,7 +549,6 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0-rc2-release-candidate">v0.2.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -558,36 +563,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
-<section id="v0-2-0-rc2-release-candidate">
-<h2>v0.2.0-rc2 (release candidate)<a class="headerlink" href="#v0-2-0-rc2-release-candidate" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is the FlagOS 2.2 release candidate (tag <code class="docutils literal notranslate"><span class="pre">v0.2.0-rc2.post1</span></code>, published 2026-09). Version numbers and supported-platform lists will be finalized at GA.</p>
-</div>
-<ul class="simple">
-<li><p><strong>Added Features</strong></p>
-<ul>
-<li><p>New out-of-tree vendor backends: MUSA (#6), TXDA (#33), Kunlunxin KLX (#41), Iluvatar (#34), Hygon (#35, renamed from hcu in #78), Enflame GCU (#42), and T-Head/PPU CUDA-compatible vendor routing (#27) with a default PPU attention backend (#63) and T-Head PPU-ZW810E CI (#64).</p></li>
-<li><p>Multi-platform attention backend support (#28) and CUDA graph enablement on Ascend and MUSA (#31).</p></li>
-<li><p>FlagCX full communication replacement for pipeline parallelism (#26), with FlagCX comm enabled on Ascend/MUSA and platform-aware multi-node examples (#32); multi-node inference examples for Qwen3.6 models (#16) with pipeline-parallel support (#23).</p></li>
-<li><p>FlagCX KV transfer backend for PD disaggregation (#59).</p></li>
-<li><p>MTP (Multi-Token Prediction) support for Qwen3.6-27B (#58).</p></li>
-<li><p>Engine overrides (#62) and empty-device support for national-platform deployment (#43).</p></li>
-<li><p>End-to-end throughput benchmark script for the SGLang server (#40); end-to-end CI for MUSA (#54), Ascend NPU (#57), and CUDA (#45, #37).</p></li>
-</ul>
-</li>
-<li><p><strong>Improved / Fixed</strong></p>
-<ul>
-<li><p>Dispatch cache for strict-mode <code class="docutils literal notranslate"><span class="pre">call()</span></code> to eliminate L2 overhead (#21); <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_STRICT</span></code> semantics aligned (#69).</p></li>
-<li><p>Compatibility with the FlagGems 5.3.0-rc2 DeviceDetector path change (#29, #30).</p></li>
-<li><p>DeviceInfo service class refactor with a vendor early-patches mechanism (#73); device compatibility fix (#66).</p></li>
-<li><p>YAML-based FlagGems blacklist maintenance for NPU (#55) and MUSA layer1 configs (#56); Ascend vendor patch for PP comm and Qwen3-VL (#49).</p></li>
-<li><p>MUSA PP multi-request hang fix (#36); torch_musa <code class="docutils literal notranslate"><span class="pre">isin</span></code> bypass and VL accuracy fix (#79); multi-node prime-sequence validation (#80).</p></li>
-<li><p>Apache-2.0 license and copyright headers added (#46, #47).</p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <p>Initial release of sglang-plugin-FL.</p>
@@ -663,7 +638,6 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0-rc2-release-candidate">v0.2.0-rc2 (release candidate)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -689,7 +663,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -698,7 +672,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 19, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>
@@ -721,5 +695,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../sglang_plugin_fl_zh/release_notes/release-notes.html">中文</a></body>
 </html>

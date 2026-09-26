@@ -6,5 +6,4 @@ This section provides detailed guidance on using Megatron-LM-FL. For end-to-end 
 :maxdepth: 2
 
 override-usage.md
-multi-platform-training.md
 ```

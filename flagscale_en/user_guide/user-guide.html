@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks. Multi-Platform Training and Testing- 1. Component versions used, 2. Platform environment variables, 3. Install FlagScale, 4. Configure the training task, 5. Run the training test, ..." />
+<meta property="og:description" content="This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks. Step 1: Configure YAML files: FlagScale uses Hydra for configuration management. Every task is driven by two YAML files that work together: an experiment-level file and a task-leve..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks. Multi-Platform Training and Testing- 1. Component versions used, 2. Platform environment variables, 3. Install FlagScale, 4. Configure the training task, 5. Run the training test, ..." />
+<meta name="description" content="This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks. Step 1: Configure YAML files: FlagScale uses Hydra for configuration management. Every task is driven by two YAML files that work together: an experiment-level file and a task-leve..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>User Guide &#8212; FlagScale Documentation</title>
@@ -42,6 +42,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/lightbox.min.css?v=6e7d0de0" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=538fca1d" />
@@ -58,13 +59,18 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/lightbox-plus-jquery.min.js?v=f0ca4bb6"></script>
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.97745d7f-360b-455d-ac89-b7a3d640e1e9.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.4c4b4783-4533-4fa1-b299-e0719c3a22d0.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -73,12 +79,11 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multi-Platform Training and Testing" href="multi-platform-training.html" />
     <link rel="prev" title="Install FlagScale" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 21, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 26, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -370,9 +375,6 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v210.html">FlagScale v2.1.0-rc2 Release Notes</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v200.html">FlagScale v2.0.0 Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v100.html">FlagScale v1.0.0 Release Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
@@ -387,10 +389,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">User Guide</a></li>
 </ul>
 
     </div>
@@ -568,21 +567,6 @@
   <section class="tex2jax_ignore mathjax_ignore" id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h1>
 <p>This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#component-versions-used">1. Component versions used</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#platform-environment-variables">2. Platform environment variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#install-flagscale">3. Install FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#configure-the-training-task">4. Configure the training task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#run-the-training-test">5. Run the training test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#run-on-the-flagos-operator-stack">6. Run on the FlagOS operator stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#known-issues-and-workarounds">7. Known issues and workarounds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#notes">8. Notes</a></li>
-</ul>
-</li>
-</ul>
-</div>
 <section id="step-1-configure-yaml-files">
 <h2>Step 1: Configure YAML files<a class="headerlink" href="#step-1-configure-yaml-files" title="Link to this heading">#</a></h2>
 <p>FlagScale uses <a class="reference external" href="https://hydra.cc/">Hydra</a> for configuration management. Every task is driven by two YAML files that work together: an experiment-level file and a task-level file, both in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory. Before running the task, you need to configure these files first.</p>
@@ -900,15 +884,6 @@ flagscale<span class="w"> </span>rl<span class="w"> </span>qwen3<span class="w">
         <p class="prev-next-title">Install FlagScale</p>
       </div>
     </a>
-    <a class="right-next"
-       href="multi-platform-training.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multi-Platform Training and Testing</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -963,7 +938,7 @@ By FlagOS Community
 
   <p class="copyright">
     
-      © Copyright 2025-2026, FlagOS Community.
+      © Copyright 2026, FlagOS Community.
       <br/>
     
   </p>
@@ -972,7 +947,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 21, 2026.
+  Last updated on Sep 26, 2026.
   <br/>
 </p>
   </div>
@@ -995,5 +970,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flagscale_zh/user_guide/user-guide.html">中文</a></body>
 </html>
