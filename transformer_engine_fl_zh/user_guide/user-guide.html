@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., 多平台构建与测试- 1. 后端分层, 2. 平台前置条件, 3. 从源码构建, 4. 安装 FlagOS 编译器与算子库, 5. 算子选择, 6. 运行训练测试, 7. 已知问题与规避方式, 8. ..." />
+<meta property="og:description" content="TE-FL 自定义后端示例- 两种方式, 快速开始, In-tree 方式（3 步）, Out-of-tree 方式（插件包）, 环境变量, 示例, 预期输出.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker 环境, 2. 准备 FlagScale, 3. 准备 Megatron-LM-FL, 4. 准备 TransformerEngine-FL, 5. 准备数据集和分词器, 6. Qwen3 训练测试, 7. DeepSeek-V3 训练测试, 8. 注意事项., 多平台构建与测试- 1. 后端分层, 2. 平台前置条件, 3. 从源码构建, 4. 安装 FlagOS 编译器与算子库, 5. 算子选择, 6. 运行训练测试, 7. 已知问题与规避方式, 8. ..." />
+<meta name="description" content="TE-FL 自定义后端示例- 两种方式, 快速开始, In-tree 方式（3 步）, Out-of-tree 方式（插件包）, 环境变量, 示例, 预期输出.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>用户指南 &#8212; Transformer-Engine-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.8794a279-165e-455f-ab7b-4a4ad19b9d5f.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.9a9f2deb-75eb-4916-9891-c289f3eeb428.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale" href="e2e-use-case.html" />
+    <link rel="next" title="TE-FL 自定义后端示例" href="custom-backend-registration.html" />
     <link rel="prev" title="安装 TransformerEngine-FL" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -386,8 +386,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html">多平台构建与测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html">TE-FL 自定义后端示例</a></li>
 </ul>
 </details></li>
@@ -552,28 +550,6 @@
 <h1>用户指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#docker">1. Docker 环境</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#flagscale">2. 准备 FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#megatron-lm-fl">3. 准备 Megatron-LM-FL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#transformerengine-fl">4. 准备 TransformerEngine-FL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#id1">5. 准备数据集和分词器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#qwen3">6. Qwen3 训练测试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#deepseek-v3">7. DeepSeek-V3 训练测试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#id4">8. 注意事项</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="multi-platform-testing.html">多平台构建与测试</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id2">1. 后端分层</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id3">2. 平台前置条件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id4">3. 从源码构建</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#flagos">4. 安装 FlagOS 编译器与算子库</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id5">5. 算子选择</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id6">6. 运行训练测试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id8">7. 已知问题与规避方式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#id9">8. 注意事项</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="custom-backend-registration.html">TE-FL 自定义后端示例</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#id1">两种方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#id2">快速开始</a></li>
@@ -609,11 +585,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="e2e-use-case.html"
+       href="custom-backend-registration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</p>
+        <p class="prev-next-title">TE-FL 自定义后端示例</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

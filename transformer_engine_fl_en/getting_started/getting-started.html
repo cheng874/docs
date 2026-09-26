@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for installing TransformerEngine-FL and guides you through installing TransformerEngine-FL on different hardware platforms. Requirements- Supported hardwares, Operating system, Software, Source Build Requirements., Install TransformerEngine-FL- Docker (Recomme..." />
+<meta property="og:description" content="This section covers the requirements for installing TransformerEngine-FL and guides you through installing TransformerEngine-FL on different hardware platforms. Requirements- Supported hardwares, Operating system, FlagOS components and versions., Install TransformerEngine-FL- 1. Backend layout, 2..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for installing TransformerEngine-FL and guides you through installing TransformerEngine-FL on different hardware platforms. Requirements- Supported hardwares, Operating system, Software, Source Build Requirements., Install TransformerEngine-FL- Docker (Recomme..." />
+<meta name="description" content="This section covers the requirements for installing TransformerEngine-FL and guides you through installing TransformerEngine-FL on different hardware platforms. Requirements- Supported hardwares, Operating system, FlagOS components and versions., Install TransformerEngine-FL- 1. Backend layout, 2..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started with TransformerEngine-FL &#8212; Transformer-Engine-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.ba385398-46fc-4c00-bc61-0f53014ddba0.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.69fc6c38-f52d-4942-884a-8abef7ac533e.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -386,8 +386,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -556,15 +554,21 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#supported-hardwares">Supported hardwares</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#operating-system">Operating system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#source-build-requirements">Source Build Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#flagos-components-and-versions">FlagOS components and versions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install TransformerEngine-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#docker-recommended">Docker (Recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#direct-install-from-flagos-repository">Direct install from FlagOS Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#install-from-source">Install from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#backend-layout">1. Backend layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#supported-platforms">2. Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#get-the-image-and-start-the-container">3. Get the image and start the container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#clone-the-repositories">4. Clone the repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-the-components">5. Install the components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prepare-the-dataset-and-tokenizer">6. Prepare the dataset and tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-and-run-the-training">7. Configure and run the training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#switch-to-the-flagos-compiler-and-operator-library">8. Switch to the FlagOS compiler and operator library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#expected-output">9. Expected output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#known-issues-and-workarounds">10. Known issues and workarounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#notes">11. Notes</a></li>
 </ul>
 </li>
 </ul>

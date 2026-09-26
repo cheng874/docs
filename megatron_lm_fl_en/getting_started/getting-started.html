@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for installing Megatron-LM-FL and guides you through installing Megatron-LM-FL on different hardware platforms. Requirements- Supported Hardwares, Operating system, Software, Source Build Requirements., Install Megatron-LM-FL- Docker (Recommended), Install fro..." />
+<meta property="og:description" content="This section covers the requirements for installing Megatron-LM-FL and guides you through installing Megatron-LM-FL on different hardware platforms. Requirements- Supported Hardwares, Operating system, FlagOS components and versions., Install Megatron-LM-FL- 1. Supported platforms, 2. Get the ima..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for installing Megatron-LM-FL and guides you through installing Megatron-LM-FL on different hardware platforms. Requirements- Supported Hardwares, Operating system, Software, Source Build Requirements., Install Megatron-LM-FL- Docker (Recommended), Install fro..." />
+<meta name="description" content="This section covers the requirements for installing Megatron-LM-FL and guides you through installing Megatron-LM-FL on different hardware platforms. Requirements- Supported Hardwares, Operating system, FlagOS components and versions., Install Megatron-LM-FL- 1. Supported platforms, 2. Get the ima..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started with Megatron-LM-FL &#8212; Megatron-LM-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.a723f018-8343-4d1d-b5f0-100b185428b4.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.404f49b8-838b-4a9a-9676-47b1985908ab.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -384,7 +384,6 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">Megatron-LM-FL User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/override-usage.html">Override Plugin Mechanism</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
 </ul>
 </details></li>
 </ul>
@@ -548,14 +547,20 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#supported-hardwares">Supported Hardwares</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#operating-system">Operating system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#software">Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#source-build-requirements">Source Build Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#flagos-components-and-versions">FlagOS components and versions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install Megatron-LM-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#docker-recommended">Docker (Recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#install-from-source">Install from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#non-nvidia-platforms">Non-NVIDIA platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#supported-platforms">1. Supported platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#get-the-image-and-start-the-container">2. Get the image and start the container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#clone-the-repositories">3. Clone the repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-the-components">4. Install the components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prepare-the-dataset-and-tokenizer">5. Prepare the dataset and tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-and-run-the-training">6. Configure and run the training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#switch-to-the-flagos-compiler-and-operator-library">7. Switch to the FlagOS compiler and operator library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#expected-output">8. Expected output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#known-issues-and-workarounds">9. Known issues and workarounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#notes">10. Notes</a></li>
 </ul>
 </li>
 </ul>

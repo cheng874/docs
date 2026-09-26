@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., Multi-Platform Build ..." />
+<meta property="og:description" content="TE-FL Custom Backend Examples- Two Approaches, Quick Start, In-tree Approach (3 Steps), Out-of-tree Approach (Plugin Package), Environment Variables, Examples, Expected Output.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale- 1. Docker Environment, 2. Prepare FlagScale, 3. Prepare Megatron-LM-FL, 4. Prepare TransformerEngine-FL, 5. Prepare Dataset and Tokenizer, 6. Qwen3 Training Test, 7. DeepSeek-V3 Training Test, 8. Notes., Multi-Platform Build ..." />
+<meta name="description" content="TE-FL Custom Backend Examples- Two Approaches, Quick Start, In-tree Approach (3 Steps), Out-of-tree Approach (Plugin Package), Environment Variables, Examples, Expected Output.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>User Guide &#8212; Transformer-Engine-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.6e208a07-1cda-452d-acb4-06ce1bca0f4c.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.c3471c0c-49e5-492b-b9c1-d15e5517febf.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale" href="e2e-use-case.html" />
+    <link rel="next" title="TE-FL Custom Backend Examples" href="custom-backend-registration.html" />
     <link rel="prev" title="Install TransformerEngine-FL" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -386,8 +386,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html">Multi-Platform Build and Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html">TE-FL Custom Backend Examples</a></li>
 </ul>
 </details></li>
@@ -552,30 +550,6 @@
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="e2e-use-case.html">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#docker-environment">1. Docker Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#prepare-flagscale">2. Prepare FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#prepare-megatron-lm-fl">3. Prepare Megatron-LM-FL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#prepare-transformerengine-fl">4. Prepare TransformerEngine-FL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#prepare-dataset-and-tokenizer">5. Prepare Dataset and Tokenizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#qwen3-training-test">6. Qwen3 Training Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#deepseek-v3-training-test">7. DeepSeek-V3 Training Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#notes">8. Notes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="multi-platform-testing.html">Multi-Platform Build and Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#backend-layout">1. Backend layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#platform-prerequisites">2. Platform prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#prepare-the-environment">3. Prepare the environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#build-and-install-transformerengine-fl">4. Build and install TransformerEngine-FL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#install-the-flagos-compiler-and-operator-library">5. Install the FlagOS compiler and operator library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#operator-selection">6. Operator selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#run-the-qwen3-training-test">7. Run the Qwen3 training test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#run-the-deepseek-v3-training-test">8. Run the DeepSeek-V3 training test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#known-issues-and-workarounds">9. Known issues and workarounds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi-platform-testing.html#notes">10. Notes</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="custom-backend-registration.html">TE-FL Custom Backend Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#two-approaches">Two Approaches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-backend-registration.html#quick-start">Quick Start</a></li>
@@ -611,11 +585,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="e2e-use-case.html"
+       href="custom-backend-registration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale</p>
+        <p class="prev-next-title">TE-FL Custom Backend Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

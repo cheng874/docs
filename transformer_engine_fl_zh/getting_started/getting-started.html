@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节介绍安装 TransformerEngine-FL 的要求，并指导您在不同硬件平台上安装 TransformerEngine-FL。 要求- 支持的硬件, 操作系统, 软件, 源码构建要求., 安装 TransformerEngine-FL- Docker（推荐）, 从 FlagOS 仓库直接安装, 从源码安装, 非 NVIDIA 平台.." />
+<meta property="og:description" content="本节介绍安装 TransformerEngine-FL 的要求，并指导您在不同硬件平台上安装 TransformerEngine-FL。 要求- 支持的硬件, 操作系统, FlagOS 组件及版本., 安装 TransformerEngine-FL- 1. 后端分层, 2. 支持平台, 3. 获取镜像并启动容器, 4. 拉取代码, 5. 安装组件, 6. 准备数据集与分词器, 7. 配置并运行训练, 8. 切换 FlagOS 编译器与算子库, 9. 正常输出, 10. 已知问题与规避方式, 11. 注意事项.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节介绍安装 TransformerEngine-FL 的要求，并指导您在不同硬件平台上安装 TransformerEngine-FL。 要求- 支持的硬件, 操作系统, 软件, 源码构建要求., 安装 TransformerEngine-FL- Docker（推荐）, 从 FlagOS 仓库直接安装, 从源码安装, 非 NVIDIA 平台.." />
+<meta name="description" content="本节介绍安装 TransformerEngine-FL 的要求，并指导您在不同硬件平台上安装 TransformerEngine-FL。 要求- 支持的硬件, 操作系统, FlagOS 组件及版本., 安装 TransformerEngine-FL- 1. 后端分层, 2. 支持平台, 3. 获取镜像并启动容器, 4. 拉取代码, 5. 安装组件, 6. 准备数据集与分词器, 7. 配置并运行训练, 8. 切换 FlagOS 编译器与算子库, 9. 正常输出, 10. 已知问题与规避方式, 11. 注意事项.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>TransformerEngine-FL 快速入门 &#8212; Transformer-Engine-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.54d26509-63b8-4efd-8ab0-d9678886b9ae.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.2b797670-d998-43e0-a45c-a2c342a9ec1d.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -386,8 +386,6 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-testing.html">多平台构建与测试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user_guide/custom-backend-registration.html">TE-FL 自定义后端示例</a></li>
 </ul>
 </details></li>
@@ -556,15 +554,21 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">要求</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#id2">支持的硬件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#id3">操作系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#id4">软件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#id5">源码构建要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#flagos">FlagOS 组件及版本</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">安装 TransformerEngine-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#docker">Docker（推荐）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#flagos">从 FlagOS 仓库直接安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id1">从源码安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#nvidia">非 NVIDIA 平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id1">1. 后端分层</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id2">2. 支持平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id3">3. 获取镜像并启动容器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id4">4. 拉取代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id5">5. 安装组件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id7">6. 准备数据集与分词器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id8">7. 配置并运行训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#flagos">8. 切换 FlagOS 编译器与算子库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id10">9. 正常输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id11">10. 已知问题与规避方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id12">11. 注意事项</a></li>
 </ul>
 </li>
 </ul>
