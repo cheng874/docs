@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"basic-usage.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u57fa\u672c\u4f7f\u7528<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u521b\u5efa\u5206\u5e03\u5f0f\u91cf\u5b50\u8bbe\u5907\u5e76\u4f7f\u7528\u51fd\u6570\u5f0f API \u5e94\u7528\u95e8\uff1a</p>", "a[href=\"custom-gates.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u6ce8\u518c\u81ea\u5b9a\u4e49\u95e8<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u4f7f\u7528\u60a8\u81ea\u5df1\u7684\u95e8\u5b9a\u4e49\u6269\u5c55 FlagQuantum\uff1a</p>", "a[href=\"#id1\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u7528\u6237\u6307\u5357<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u672c\u6307\u5357\u6db5\u76d6\u5982\u4f55\u4f7f\u7528 FlagQuantum \u8fdb\u884c\u91cf\u5b50\u7535\u8def\u6a21\u62df\uff0c\u5305\u62ec\u57fa\u672c\u4f7f\u7528\u3001\u5e26\u53ef\u8bad\u7ec3\u53c2\u6570\u7684\u53c2\u6570\u5316\u95e8\u3001\u91cf\u5b50\u7f16\u7801\u3001\u6ce8\u518c\u81ea\u5b9a\u4e49\u95e8\u3001\u5206\u5e03\u5f0f\u591a GPU \u6267\u884c\u4ee5\u53ca\u5185\u5b58\u53ef\u9006\u6a21\u5f0f\u3002</p>", "a[href=\"tutorials.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u6559\u7a0b<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u60a8\u53ef\u4ee5\u5728 <code class=\"docutils literal notranslate\"><span class=\"pre\">examples/tutorials</span></code> \u4e2d\u63a2\u7d22\u6211\u4eec\u7684 Jupyter Notebook\uff08<code class=\"docutils literal notranslate\"><span class=\"pre\">.ipynb</span></code>\uff09\u6559\u7a0b\u7cfb\u5217\uff0c\u9ad8\u6548\u5b66\u4e60\u5982\u4f55\u4f7f\u7528 FlagQuantum\uff1a</p>", "a[href=\"parameterized-gates.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u53c2\u6570\u5316\u95e8<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>FlagQuantum \u652f\u6301\u5e26\u68af\u5ea6\u8ba1\u7b97\u7684\u53ef\u8bad\u7ec3\u91cf\u5b50\u7535\u8def\uff1a</p>", "a[href=\"distributed-execution.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u5206\u5e03\u5f0f\u591a GPU \u6267\u884c<a class=\"headerlink\" href=\"#gpu\" title=\"Link to this heading\">#</a></h1><p>\u8de8\u591a\u4e2a GPU \u8fd0\u884c\u91cf\u5b50\u6a21\u62df\uff1a</p>", "a[href=\"invertible-mode.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u53ef\u9006\u6a21\u5f0f<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u5bf9\u4e8e\u9700\u8981\u68af\u5ea6\u8ba1\u7b97\u7684\u5927\u578b\u7535\u8def\uff0c\u4f7f\u7528\u53ef\u9006\u6a21\u5f0f\u4ee5\u51cf\u5c11\u5185\u5b58\u4f7f\u7528\uff1a</p>", "a[href=\"export-to-real-quantum-hardware.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u5bfc\u51fa\u5230\u771f\u5b9e\u91cf\u5b50\u786c\u4ef6<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>FlagQuantum \u7535\u8def\u53ef\u4ee5\u5bfc\u51fa\u4e3a OpenQASM 3.0 \u683c\u5f0f\uff0c\u5e76\u5728\u6240\u6709\u4e3b\u6d41\u91cf\u5b50\u8ba1\u7b97\u5e73\u53f0\u4e0a\u8fd0\u884c\uff1a</p>", "a[href=\"quantum-encoding.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u91cf\u5b50\u7f16\u7801<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>FlagQuantum \u63d0\u4f9b\u4e86\u591a\u79cd\u7f16\u7801\u65b9\u6848\uff0c\u7528\u4e8e\u5c06\u7ecf\u5178\u6570\u636e\u5d4c\u5165\u91cf\u5b50\u6001\uff1a</p>", "a[href=\"run-tests.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u8fd0\u884c\u6d4b\u8bd5<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u60a8\u53ef\u4ee5\u4f7f\u7528\u4ee5\u4e0b\u4ee3\u7801\u5757\u6765\u8fd0\u884c\u6d4b\u8bd5\u3002</p>"}
+skip_classes = ["headerlink", "sd-stretched-link"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(` ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};
