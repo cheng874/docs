@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release_notes_v100.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Highlights: Unified FlagScale CLI: Introduced a unified FlagScale CLI as the single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA., VeRL-FL &amp; Expanded Model Support: Replaced third-party verl with VeRL-FL and expanded model suppor..." />
+<meta property="og:description" content="Highlights: Unified FlagScale CLI — a single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA., VeRL-FL &amp; expanded model support — replaced third-party verl with VeRL-FL and expanded model support to include Qwen3-VL, Qwen2.5-VL, GR0..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Highlights: Unified FlagScale CLI: Introduced a unified FlagScale CLI as the single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA., VeRL-FL &amp; Expanded Model Support: Replaced third-party verl with VeRL-FL and expanded model suppor..." />
+<meta name="description" content="Highlights: Unified FlagScale CLI — a single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA., VeRL-FL &amp; expanded model support — replaced third-party verl with VeRL-FL and expanded model support to include Qwen3-VL, Qwen2.5-VL, GR0..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagScale v1.0.0 Release Notes &#8212; FlagScale Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v100.d17efd9d-a025-4c96-9915-f1ab9f34b769.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v100.038da1b2-08ee-48a2-9ce5-8b7df984a598.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v100';</script>
@@ -80,7 +80,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FlagScale Overview" href="../FlagScale_overview/FlagScale-overview.html" />
-    <link rel="prev" title="FlagScale Documentation" href="../index.html" />
+    <link rel="prev" title="FlagScale v2.0.0 Release Notes" href="release_notes_v200.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -376,6 +376,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="release_notes_v210.html">FlagScale v2.1.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes_v200.html">FlagScale v2.0.0 Release Notes</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">FlagScale v1.0.0 Release Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
@@ -390,7 +392,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -559,9 +564,8 @@
 <section id="highlights">
 <h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Unified FlagScale CLI</strong>: Introduced a unified FlagScale CLI as the single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA.</p></li>
-<li><p><strong>VeRL-FL &amp; Expanded Model Support</strong>: Replaced third-party verl with <a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a> and expanded model support to include Qwen3-VL, Qwen2.5-VL, GR00T N1.5, and DeepSeek Engram.</p></li>
-<li><p><strong>Enhanced CI/CD</strong>: Enhanced CI/CD coverage with Megatron-LM-FL integration tests and automated CLI validation workflows.</p></li>
+<li><p><strong>Unified FlagScale CLI</strong> — a single entry point for all operations, with unified multi-chip training support across NVIDIA GPU, Ascend, and MUSA.</p></li>
+<li><p><strong>VeRL-FL &amp; expanded model support</strong> — replaced third-party verl with <a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a> and expanded model support to include Qwen3-VL, Qwen2.5-VL, GR00T N1.5, and DeepSeek Engram.</p></li>
 </ul>
 </section>
 </section>
@@ -578,12 +582,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="release_notes_v200.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">FlagScale Documentation</p>
+        <p class="prev-next-title">FlagScale v2.0.0 Release Notes</p>
       </div>
     </a>
     <a class="right-next"

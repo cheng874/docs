@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/requirements.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含硬件平台和模型的相关信息。 硬件平台: FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 Megatron-LM-FL 、 TransformerEngine-FL 、 VeRL-FL 和 vllm-plugin-FL 。 支持的模型: 训练:,, 模型, 示例配置文件,,, DeepSeek-V3, 16b_a3b.yaml,, Qwen2/2.5/3, 235b_a22b.yaml,, Qwen2.5-VL, 7b.yaml,, QwQ, 32..." />
+<meta property="og:description" content="本节包含硬件平台和模型的相关信息。 硬件平台: FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 Megatron-LM-FL 、 TransformerEngine-FL 、 VeRL-FL 和 vllm-plugin-FL 。 训练已在以下平台上与 Megatron-LM-FL、TransformerEngine-FL 一起完成端到端验证：,,,, 平台, 设备检查命令, 可见设备环境变量, FlagTree 后端,,, NVIDIA, nvidia-..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含硬件平台和模型的相关信息。 硬件平台: FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 Megatron-LM-FL 、 TransformerEngine-FL 、 VeRL-FL 和 vllm-plugin-FL 。 支持的模型: 训练:,, 模型, 示例配置文件,,, DeepSeek-V3, 16b_a3b.yaml,, Qwen2/2.5/3, 235b_a22b.yaml,, Qwen2.5-VL, 7b.yaml,, QwQ, 32..." />
+<meta name="description" content="本节包含硬件平台和模型的相关信息。 硬件平台: FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 Megatron-LM-FL 、 TransformerEngine-FL 、 VeRL-FL 和 vllm-plugin-FL 。 训练已在以下平台上与 Megatron-LM-FL、TransformerEngine-FL 一起完成端到端验证：,,,, 平台, 设备检查命令, 可见设备环境变量, FlagTree 后端,,, NVIDIA, nvidia-..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>要求 &#8212; FlagScale 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.bec526bb-4f49-4399-81ac-7414ecacb93b.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.edb072f2-3d2b-47be-8ad6-4463e84fd00c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
@@ -376,6 +376,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 发布说明</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v210.html">FlagScale v2.1.0 发布说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v200.html">FlagScale v2.0.0 发布说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v100.html">FlagScale v1.0.0 发布说明</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 指南</span></p>
@@ -390,7 +392,10 @@
 <li class="toctree-l2"><a class="reference internal" href="install.html">安装 FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">多平台训练与测试</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -565,6 +570,45 @@
 <section id="id2">
 <h2>硬件平台<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 <a class="reference external" href="https://github.com/flagos-ai/Megatron-LM-FL">Megatron-LM-FL</a>、<a class="reference external" href="https://github.com/flagos-ai/TransformerEngine-FL">TransformerEngine-FL</a>、<a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a> 和 <a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL">vllm-plugin-FL</a>。</p>
+<p>训练已在以下平台上与 Megatron-LM-FL、TransformerEngine-FL 一起完成端到端验证：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>平台</p></th>
+<th class="head"><p>设备检查命令</p></th>
+<th class="head"><p>可见设备环境变量</p></th>
+<th class="head"><p>FlagTree 后端</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NVIDIA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>沐曦 MetaX</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mx-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MACA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metax</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>海光 Hygon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hy-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hcu</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>昇腾 Ascend</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCEND_RT_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ascend</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>平头哥 PPU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu-smi</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ppu</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>分步操作请参见<a class="reference internal" href="../user_guide/multi-platform-training.html"><span class="std std-doc">多平台训练与测试</span></a>。</p>
 </section>
 <section id="id3">
 <h2>支持的模型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。 第一步：配置 YAML 文件: FlagScale 使用 Hydra 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 examples/ 目录下。运行任务前，需要先配置这些文件。 实验级 YAML: 以 examples/qwen3/conf/serve.yaml 为例说明此配置文件。 实验级文件是 flagscale 命令的入口。它定义了运行的全局上下文： 输出存储位置： exp_dir: outputs/${experiment.exp_name}..." />
+<meta property="og:description" content="本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。 多平台训练与测试- 1. 使用的组件版本, 2. 平台环境变量, 3. 安装 FlagScale, 4. 配置训练任务, 5. 运行训练测试, 6. 使用 FlagOS 算子栈运行, 7. 已知问题与规避方式, 8. 注意事项.. 第一步：配置 YAML 文件: FlagScale 使用 Hydra 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 examples/ 目录下。运行任务前，需要先配置这些文件。 实验级 YAML: 以 examples/q..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。 第一步：配置 YAML 文件: FlagScale 使用 Hydra 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 examples/ 目录下。运行任务前，需要先配置这些文件。 实验级 YAML: 以 examples/qwen3/conf/serve.yaml 为例说明此配置文件。 实验级文件是 flagscale 命令的入口。它定义了运行的全局上下文： 输出存储位置： exp_dir: outputs/${experiment.exp_name}..." />
+<meta name="description" content="本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。 多平台训练与测试- 1. 使用的组件版本, 2. 平台环境变量, 3. 安装 FlagScale, 4. 配置训练任务, 5. 运行训练测试, 6. 使用 FlagOS 算子栈运行, 7. 已知问题与规避方式, 8. 注意事项.. 第一步：配置 YAML 文件: FlagScale 使用 Hydra 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 examples/ 目录下。运行任务前，需要先配置这些文件。 实验级 YAML: 以 examples/q..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>用户指南 &#8212; FlagScale 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.3677c6d2-6945-43e6-a889-2fdade28cbba.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.eb65ad16-62c6-4844-91f3-92962dcfa8d7.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,6 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="多平台训练与测试" href="multi-platform-training.html" />
     <link rel="prev" title="安装 FlagScale" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -375,6 +376,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 发布说明</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v210.html">FlagScale v2.1.0 发布说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v200.html">FlagScale v2.0.0 发布说明</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release_notes_v100.html">FlagScale v1.0.0 发布说明</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 指南</span></p>
@@ -389,7 +392,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">用户指南</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -567,6 +573,21 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>用户指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id2">1. 使用的组件版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id3">2. 平台环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#flagscale">3. 安装 FlagScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id4">4. 配置训练任务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id6">5. 运行训练测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#flagos">6. 使用 FlagOS 算子栈运行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id8">7. 已知问题与规避方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html#id9">8. 注意事项</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <section id="yaml">
 <h2>第一步：配置 YAML 文件<a class="headerlink" href="#yaml" title="Link to this heading">#</a></h2>
 <p>FlagScale 使用 <a class="reference external" href="https://hydra.cc/">Hydra</a> 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 <code class="docutils literal notranslate"><span class="pre">examples/</span></code> 目录下。运行任务前，需要先配置这些文件。</p>
@@ -883,6 +904,15 @@ flagscale<span class="w"> </span>rl<span class="w"> </span>qwen3<span class="w">
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">安装 FlagScale</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="multi-platform-training.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">多平台训练与测试</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

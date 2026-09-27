@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release_notes_v100.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="亮点: 统一 FlagScale CLI ：引入统一的 FlagScale CLI 作为所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。, VeRL-FL 与扩展模型支持 ：将第三方 verl 替换为 VeRL-FL ，并扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。, 增强的 CI/CD ：通过 Megatron-LM-FL 集成测试和自动化 CLI 验证工作流，增强了 CI/CD 覆盖范围。." />
+<meta property="og:description" content="亮点: 统一 FlagScale CLI —— 所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。, VeRL-FL 与扩展模型支持 —— 将第三方 verl 替换为 VeRL-FL ，扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="亮点: 统一 FlagScale CLI ：引入统一的 FlagScale CLI 作为所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。, VeRL-FL 与扩展模型支持 ：将第三方 verl 替换为 VeRL-FL ，并扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。, 增强的 CI/CD ：通过 Megatron-LM-FL 集成测试和自动化 CLI 验证工作流，增强了 CI/CD 覆盖范围。." />
+<meta name="description" content="亮点: 统一 FlagScale CLI —— 所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。, VeRL-FL 与扩展模型支持 —— 将第三方 verl 替换为 VeRL-FL ，扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagScale v1.0.0 发布说明 &#8212; FlagScale 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v100.2fd669e1-8e0b-4c8c-9739-82d5ea42aa9a.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release_notes_v100.a08fa201-30d7-481b-b790-337a6b2ad988.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release_notes_v100';</script>
@@ -80,7 +80,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FlagScale 概览" href="../FlagScale_overview/FlagScale-overview.html" />
-    <link rel="prev" title="FlagScale 文档" href="../index.html" />
+    <link rel="prev" title="FlagScale v2.0.0 发布说明" href="release_notes_v200.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -376,6 +376,8 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 发布说明</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="release_notes_v210.html">FlagScale v2.1.0 发布说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes_v200.html">FlagScale v2.0.0 发布说明</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">FlagScale v1.0.0 发布说明</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 指南</span></p>
@@ -390,7 +392,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 FlagScale</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">多平台训练与测试</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -559,9 +564,8 @@
 <section id="id1">
 <h2>亮点<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>统一 FlagScale CLI</strong>：引入统一的 FlagScale CLI 作为所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。</p></li>
-<li><p><strong>VeRL-FL 与扩展模型支持</strong>：将第三方 verl 替换为 <a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a>，并扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。</p></li>
-<li><p><strong>增强的 CI/CD</strong>：通过 Megatron-LM-FL 集成测试和自动化 CLI 验证工作流，增强了 CI/CD 覆盖范围。</p></li>
+<li><p><strong>统一 FlagScale CLI</strong> —— 所有操作的唯一入口，提供跨 NVIDIA GPU、昇腾和 MUSA 的统一多芯片训练支持。</p></li>
+<li><p><strong>VeRL-FL 与扩展模型支持</strong> —— 将第三方 verl 替换为 <a class="reference external" href="https://github.com/flagos-ai/verl-FL">VeRL-FL</a>，扩展模型支持至 Qwen3-VL、Qwen2.5-VL、GR00T N1.5 和 DeepSeek Engram。</p></li>
 </ul>
 </section>
 </section>
@@ -578,12 +582,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="release_notes_v200.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">FlagScale 文档</p>
+        <p class="prev-next-title">FlagScale v2.0.0 发布说明</p>
       </div>
     </a>
     <a class="right-next"
