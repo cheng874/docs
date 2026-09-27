@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.1d44754a-4d35-4cf7-b3ab-0e32a5d5cfd9.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.aa38f3c5-e253-4482-a96e-ed98ed1a1a8c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -390,10 +390,10 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install FlagScale</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">Multi-Platform Training and Testing</a></li>
 </ul>
 </details></li>
 </ul>
@@ -569,7 +569,7 @@
 <li><p>The task-level YAML file specifies the model, dataset, and parameters for specific tasks such as training or inference.</p></li>
 </ul>
 <p>All valid configurations in the task-level YAML file correspond to the arguments used in backend engines such as Megatron-LM and vllm, with hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>) replaced by underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>). For a complete list of available configurations, please refer to the backend engine documentation. You can simply copy and modify the existing YAML files in the <a class="reference external" href="https://github.com/flagos-ai/FlagScale/tree/main/examples">examples</a> folder to get started.</p>
-<p>This section covers the requirements for installing and running FlagScale and guides you through installing FlagScale.</p>
+<p>This section covers the requirements for installing and running FlagScale, guides you through installing FlagScale, and shows how to run training, inference, serving, and reinforcement learning tasks.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
@@ -579,6 +579,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install FlagScale</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">Multi-Platform Training and Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide.html#step-1-configure-yaml-files">Step 1: Configure YAML files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide.html#step-2-run-tasks">Step 2： Run tasks</a></li>
 </ul>
 </li>
 </ul>

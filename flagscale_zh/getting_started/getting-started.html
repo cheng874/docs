@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.3984b8e5-e24c-438c-87b2-16168fa1e186.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.1dbf11ee-c958-49ca-9f53-910a0c483f7e.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -390,10 +390,10 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">快速入门</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">安装 FlagScale</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/multi-platform-training.html">多平台训练与测试</a></li>
 </ul>
 </details></li>
 </ul>
@@ -569,7 +569,7 @@
 <li><p>任务级 YAML 文件指定模型、数据集以及训练或推理等具体任务的参数。</p></li>
 </ul>
 <p>任务级 YAML 文件中的所有有效配置均对应 Megatron-LM、vllm 等后端引擎所使用的参数，其中连字符（<code class="docutils literal notranslate"><span class="pre">-</span></code>）替换为下划线（<code class="docutils literal notranslate"><span class="pre">_</span></code>）。完整的可用配置列表请参阅后端引擎文档。您可以直接复制并修改 <a class="reference external" href="https://github.com/flagos-ai/FlagScale/tree/main/examples">examples</a> 文件夹中的现有 YAML 文件即可开始使用。</p>
-<p>本节涵盖安装和运行 FlagScale 的要求，并指导您完成 FlagScale 的安装。</p>
+<p>本节涵盖安装和运行 FlagScale 的要求，指导您完成 FlagScale 的安装，并演示如何运行训练、推理、服务和强化学习任务。</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">要求</a><ul>
@@ -578,7 +578,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">安装 FlagScale</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id1">环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id1">安装步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">用户指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-platform-training.html">多平台训练与测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide.html#yaml">第一步：配置 YAML 文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide.html#id4">第二步：运行任务</a></li>
 </ul>
 </li>
 </ul>
