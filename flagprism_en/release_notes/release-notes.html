@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Unreleased (FlagOS 2.2 in development): FlagPrism is introduced as FlagTree’s optional debugging and profiling tool suite for Triton programs. It is under active development with no tagged release yet, and ships as part of the FlagTree wheel through the third_party/FlagPrism submodule; standalone..." />
+<meta property="og:description" content="FlagPrism is FlagTree’s debugging and profiling tool suite for Triton programs. It ships as part of the FlagTree wheel through the third_party/FlagPrism submodule; standalone debugger/profiler wheels are not published. Debugger — inspect values, memory access, and op execution inside@triton.jit k..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Unreleased (FlagOS 2.2 in development): FlagPrism is introduced as FlagTree’s optional debugging and profiling tool suite for Triton programs. It is under active development with no tagged release yet, and ships as part of the FlagTree wheel through the third_party/FlagPrism submodule; standalone..." />
+<meta name="description" content="FlagPrism is FlagTree’s debugging and profiling tool suite for Triton programs. It ships as part of the FlagTree wheel through the third_party/FlagPrism submodule; standalone debugger/profiler wheels are not published. Debugger — inspect values, memory access, and op execution inside@triton.jit k..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; FlagPrism Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.7f05fe87-3839-4efe-b6a2-c446fcb14a1c.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.6e397653-7178-4b31-afc8-ed91913f7a39.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -79,7 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Reference" href="../references/reference.html" />
+    <link rel="next" title="Overview" href="../overview/overview.html" />
+    <link rel="prev" title="FlagPrism" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -237,10 +238,6 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
-  
 </div>
 
     </header>
@@ -373,14 +370,18 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 Release Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Release Notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/debugger.html">Debugger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/profiler.html">Profiler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/vendor-adaptation.html">Chip Vendor Adaptation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/reference.html">Reference</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Release Notes</a></li>
 </ul>
 
     </div>
@@ -509,9 +510,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -527,14 +526,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -546,15 +537,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
-<section id="unreleased-flagos-2-2-in-development">
-<h2>Unreleased (FlagOS 2.2 in development)<a class="headerlink" href="#unreleased-flagos-2-2-in-development" title="Link to this heading">#</a></h2>
-<p>FlagPrism is introduced as FlagTree’s optional debugging and profiling tool suite for Triton programs. It is under active development with no tagged release yet, and ships as part of the FlagTree wheel through the <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> submodule; standalone debugger/profiler wheels are no longer published.</p>
+<p>FlagPrism is FlagTree’s debugging and profiling tool suite for Triton programs. It ships as part of the FlagTree wheel through the <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> submodule; standalone debugger/profiler wheels are not published.</p>
 <ul class="simple">
 <li><p><strong>Debugger</strong> — inspect values, memory access, and op execution inside <code class="docutils literal notranslate"><span class="pre">&#64;triton.jit</span></code> kernels via <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> and in-kernel <code class="docutils literal notranslate"><span class="pre">ftl.debug_collect_start/end</span></code> markers. Exports statement-level reports, IR op-level reports, and NumPy tensor artifacts, with optional device timelines.</p></li>
 <li><p><strong>Profiler</strong> — profile functions or code regions with <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code>, annotated scopes, and custom metrics. Supports NVIDIA, AMD, Ascend, Moore Threads, and Tianshu backends, provides <code class="docutils literal notranslate"><span class="pre">flagtree-profiler</span></code> and <code class="docutils literal notranslate"><span class="pre">flagtree-profiler-viewer</span></code> CLI tools, and writes Hatchet-compatible JSON (plus Chrome trace output).</p></li>
 <li><p><strong>Vendor adaptation</strong> — documented interfaces and requirements for bringing the Debugger and Profiler to new chip vendors.</p></li>
 </ul>
-</section>
 </section>
 
 
@@ -569,13 +557,22 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../references/reference.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Reference</p>
+        <p class="prev-next-title">FlagPrism</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../overview/overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -583,23 +580,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased-flagos-2-2-in-development">Unreleased (FlagOS 2.2 in development)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

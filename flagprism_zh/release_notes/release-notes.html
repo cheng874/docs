@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="未发布（FlagOS 2.2 开发中）: FlagPrism 作为 FlagTree 面向 Triton 程序的可选调试与性能分析工具套件首次推出。目前处于活跃开发中，尚无正式版本发布，通过 third_party/FlagPrism 子模块随 FlagTree wheel 一起交付，不再单独发布调试器/性能分析器 wheel。 Debugger —— 通过 flagtree.debugger 与 kernel 内的 ftl.debug_collect_start/end marker，检查@triton.jit kernel 内部的数值、访存与 op 执行情况；可导出语句级报告、IR ..." />
+<meta property="og:description" content="FlagPrism 是 FlagTree 面向 Triton 程序的调试与性能分析工具套件，通过 third_party/FlagPrism 子模块随 FlagTree wheel 一起交付，不单独发布调试器/性能分析器 wheel。 Debugger —— 通过 flagtree.debugger 与 kernel 内的 ftl.debug_collect_start/end marker，检查@triton.jit kernel 内部的数值、访存与 op 执行情况；可导出语句级报告、IR op 级报告和 NumPy 张量数据文件，并支持可选的设备时间线。, Profiler —— 通..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="未发布（FlagOS 2.2 开发中）: FlagPrism 作为 FlagTree 面向 Triton 程序的可选调试与性能分析工具套件首次推出。目前处于活跃开发中，尚无正式版本发布，通过 third_party/FlagPrism 子模块随 FlagTree wheel 一起交付，不再单独发布调试器/性能分析器 wheel。 Debugger —— 通过 flagtree.debugger 与 kernel 内的 ftl.debug_collect_start/end marker，检查@triton.jit kernel 内部的数值、访存与 op 执行情况；可导出语句级报告、IR ..." />
+<meta name="description" content="FlagPrism 是 FlagTree 面向 Triton 程序的调试与性能分析工具套件，通过 third_party/FlagPrism 子模块随 FlagTree wheel 一起交付，不单独发布调试器/性能分析器 wheel。 Debugger —— 通过 flagtree.debugger 与 kernel 内的 ftl.debug_collect_start/end marker，检查@triton.jit kernel 内部的数值、访存与 op 执行情况；可导出语句级报告、IR op 级报告和 NumPy 张量数据文件，并支持可选的设备时间线。, Profiler —— 通..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; FlagPrism 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.320562e6-bd42-4535-8be5-8061b460c89a.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.577873b7-40d2-46c3-90c3-827c112b3c3d.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -79,7 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="参考" href="../references/reference.html" />
+    <link rel="next" title="概览" href="../overview/overview.html" />
+    <link rel="prev" title="FlagPrism" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -237,10 +238,6 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
-  
 </div>
 
     </header>
@@ -373,14 +370,18 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📑 发布说明</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">发布说明</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 使用指南</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">概览</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">安装</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/debugger.html">Debugger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/profiler.html">Profiler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/vendor-adaptation.html">芯片厂商适配</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/reference.html">参考</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">发布说明</a></li>
 </ul>
 
     </div>
@@ -509,9 +510,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -527,14 +526,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2">未发布（FlagOS 2.2 开发中）</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -546,15 +537,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="flagos-2-2">
-<h2>未发布（FlagOS 2.2 开发中）<a class="headerlink" href="#flagos-2-2" title="Link to this heading">#</a></h2>
-<p>FlagPrism 作为 FlagTree 面向 Triton 程序的可选调试与性能分析工具套件首次推出。目前处于活跃开发中，尚无正式版本发布，通过 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块随 FlagTree wheel 一起交付，不再单独发布调试器/性能分析器 wheel。</p>
+<p>FlagPrism 是 FlagTree 面向 Triton 程序的调试与性能分析工具套件，通过 <code class="docutils literal notranslate"><span class="pre">third_party/FlagPrism</span></code> 子模块随 FlagTree wheel 一起交付，不单独发布调试器/性能分析器 wheel。</p>
 <ul class="simple">
 <li><p><strong>Debugger</strong> —— 通过 <code class="docutils literal notranslate"><span class="pre">flagtree.debugger</span></code> 与 kernel 内的 <code class="docutils literal notranslate"><span class="pre">ftl.debug_collect_start/end</span></code> marker，检查 <code class="docutils literal notranslate"><span class="pre">&#64;triton.jit</span></code> kernel 内部的数值、访存与 op 执行情况；可导出语句级报告、IR op 级报告和 NumPy 张量数据文件，并支持可选的设备时间线。</p></li>
 <li><p><strong>Profiler</strong> —— 通过 <code class="docutils literal notranslate"><span class="pre">flagtree.profiler</span></code> 分析函数或代码区域，支持标注 scope 与自定义指标；支持 NVIDIA、AMD、昇腾、摩尔线程、天数等后端，提供 <code class="docutils literal notranslate"><span class="pre">flagtree-profiler</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagtree-profiler-viewer</span></code> 命令行工具，输出 Hatchet 兼容的 JSON（也支持 Chrome trace 输出）。</p></li>
 <li><p><strong>厂商适配</strong> —— 提供将 Debugger 与 Profiler 接入新芯片厂商所需的接口文档与适配要求。</p></li>
 </ul>
-</section>
 </section>
 
 
@@ -569,13 +557,22 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../references/reference.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">参考</p>
+        <p class="prev-next-title">FlagPrism</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../overview/overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">概览</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -583,23 +580,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-2-2">未发布（FlagOS 2.2 开发中）</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
