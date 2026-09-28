@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: 新增功能- 图执行引擎 —— 新增图模式执行路径，支持 IR 捕获、内核融合、自动调优和多节点规划。支持图级算子调度和内存优化。, 神经网络算子 —— conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgrad, causal_conv1d, max_pool2d, max_pool3d, avg_pool1d, avg_pool2d, avg_pool3d, adaptive_avg_pool2d, adaptive_avg_pool3d, adaptive_max_pool2d, adaptive_max_po..." />
+<meta property="og:description" content="v0.3.0: 新增特性- 新增硬件后端：昇腾、海光 DCU、摩尔线程（MUSA）与 Iluvatar，并更新平头哥后端。, 新增卷积算子： conv_dgrad 、 conv_wgrad 。., 增强特性- 长序列 causal SDPA 性能优化，包含 causal d128 反向路径。, 卷积、matmul、归一化与 binary 类算子的性能调优。.. v0.2.0: 新增功能- 图执行引擎 —— 新增图模式执行路径，支持 IR 捕获、内核融合、自动调优和多节点规划。支持图级算子调度和内存优化。, 神经网络算子 —— conv1d, conv2d, conv3d, conv_fp..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: 新增功能- 图执行引擎 —— 新增图模式执行路径，支持 IR 捕获、内核融合、自动调优和多节点规划。支持图级算子调度和内存优化。, 神经网络算子 —— conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgrad, causal_conv1d, max_pool2d, max_pool3d, avg_pool1d, avg_pool2d, avg_pool3d, adaptive_avg_pool2d, adaptive_avg_pool3d, adaptive_max_pool2d, adaptive_max_po..." />
+<meta name="description" content="v0.3.0: 新增特性- 新增硬件后端：昇腾、海光 DCU、摩尔线程（MUSA）与 Iluvatar，并更新平头哥后端。, 新增卷积算子： conv_dgrad 、 conv_wgrad 。., 增强特性- 长序列 causal SDPA 性能优化，包含 causal d128 反向路径。, 卷积、matmul、归一化与 binary 类算子的性能调优。.. v0.2.0: 新增功能- 图执行引擎 —— 新增图模式执行路径，支持 IR 捕获、内核融合、自动调优和多节点规划。支持图级算子调度和内存优化。, 神经网络算子 —— conv1d, conv2d, conv3d, conv_fp..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagDNN 发布说明 &#8212; FlagDNN 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.dd8cbce0-4aeb-428e-b6e9-085d103274a2.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.289c65c0-694a-41b6-9ef2-3cf0dbd8ffba.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -540,6 +540,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -555,6 +556,23 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagdnn">
 <h1>FlagDNN 发布说明<a class="headerlink" href="#flagdnn" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p>新增硬件后端：昇腾、海光 DCU、摩尔线程（MUSA）与 Iluvatar，并更新平头哥后端。</p></li>
+<li><p>新增卷积算子：<code class="docutils literal notranslate"><span class="pre">conv_dgrad</span></code>、<code class="docutils literal notranslate"><span class="pre">conv_wgrad</span></code>。</p></li>
+</ul>
+</li>
+<li><p><strong>增强特性</strong></p>
+<ul>
+<li><p>长序列 causal SDPA 性能优化，包含 causal d128 反向路径。</p></li>
+<li><p>卷积、matmul、归一化与 binary 类算子的性能调优。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -648,6 +666,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

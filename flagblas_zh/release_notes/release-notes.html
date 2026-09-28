@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: 新增功能- 算子注册表 —— 新增 conf/operators.yaml ，包含完整的算子元数据。, CI/CD 流水线 —— GitHub Actions 工作流，包含正确性测试、性能基准测试和 pre-commit 钩子。, libtuner 自动调优 —— 集成 libtuner 实现内核配置的自动调优。., 增强功能- hgemm 通过 block-pointer 和 TMA 内核变体进行优化。, amax 小 N 路径优化，提升性能。, asum 算子经过深度性能调优。, sgemm 和 hgemm 自动调优从硬编码配置迁移至 libtuner。, GEMV ..." />
+<meta property="og:description" content="v0.3.0: 新增特性- 新增 Level-1 旋转算子： rotg 、 rotm 、 rotmg 。, Level-2 覆盖范围扩展至 packed、带状、三角、对称/厄米及 rank-1/rank-2 更新等算子族，包含 hpmv 、 trsv 、 tpsv 、 tbsv 、 ger 、 syr 、 her 以及 packed 形式的 sspr/ sspr2/ dspr/ dspr2 更新。, 新增 GEMM 算子： dgemm 、 cgemm 、 zgemm ，以及 NVIDIA 后端的 Group GEMM。, 新增硬件后端：昇腾与海光 DCU，与 NVIDIA、Iluvata..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: 新增功能- 算子注册表 —— 新增 conf/operators.yaml ，包含完整的算子元数据。, CI/CD 流水线 —— GitHub Actions 工作流，包含正确性测试、性能基准测试和 pre-commit 钩子。, libtuner 自动调优 —— 集成 libtuner 实现内核配置的自动调优。., 增强功能- hgemm 通过 block-pointer 和 TMA 内核变体进行优化。, amax 小 N 路径优化，提升性能。, asum 算子经过深度性能调优。, sgemm 和 hgemm 自动调优从硬编码配置迁移至 libtuner。, GEMV ..." />
+<meta name="description" content="v0.3.0: 新增特性- 新增 Level-1 旋转算子： rotg 、 rotm 、 rotmg 。, Level-2 覆盖范围扩展至 packed、带状、三角、对称/厄米及 rank-1/rank-2 更新等算子族，包含 hpmv 、 trsv 、 tpsv 、 tbsv 、 ger 、 syr 、 her 以及 packed 形式的 sspr/ sspr2/ dspr/ dspr2 更新。, 新增 GEMM 算子： dgemm 、 cgemm 、 zgemm ，以及 NVIDIA 后端的 Group GEMM。, 新增硬件后端：昇腾与海光 DCU，与 NVIDIA、Iluvata..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagBLAS 发布说明 &#8212; FlagBLAS 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.72fc5bff-f6fb-4d58-a916-49ff7e578795.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.3d142722-006c-4493-858e-bc1e24667c3b.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -540,6 +540,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -555,6 +556,25 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagblas">
 <h1>FlagBLAS 发布说明<a class="headerlink" href="#flagblas" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p>新增 Level-1 旋转算子：<code class="docutils literal notranslate"><span class="pre">rotg</span></code>、<code class="docutils literal notranslate"><span class="pre">rotm</span></code>、<code class="docutils literal notranslate"><span class="pre">rotmg</span></code>。</p></li>
+<li><p>Level-2 覆盖范围扩展至 packed、带状、三角、对称/厄米及 rank-1/rank-2 更新等算子族，包含 <code class="docutils literal notranslate"><span class="pre">hpmv</span></code>、<code class="docutils literal notranslate"><span class="pre">trsv</span></code>、<code class="docutils literal notranslate"><span class="pre">tpsv</span></code>、<code class="docutils literal notranslate"><span class="pre">tbsv</span></code>、<code class="docutils literal notranslate"><span class="pre">ger</span></code>、<code class="docutils literal notranslate"><span class="pre">syr</span></code>、<code class="docutils literal notranslate"><span class="pre">her</span></code> 以及 packed 形式的 <code class="docutils literal notranslate"><span class="pre">sspr</span></code>/<code class="docutils literal notranslate"><span class="pre">sspr2</span></code>/<code class="docutils literal notranslate"><span class="pre">dspr</span></code>/<code class="docutils literal notranslate"><span class="pre">dspr2</span></code> 更新。</p></li>
+<li><p>新增 GEMM 算子：<code class="docutils literal notranslate"><span class="pre">dgemm</span></code>、<code class="docutils literal notranslate"><span class="pre">cgemm</span></code>、<code class="docutils literal notranslate"><span class="pre">zgemm</span></code>，以及 NVIDIA 后端的 Group GEMM。</p></li>
+<li><p>新增硬件后端：昇腾与海光 DCU，与 NVIDIA、Iluvatar 并列支持。</p></li>
+</ul>
+</li>
+<li><p><strong>增强特性</strong></p>
+<ul>
+<li><p>全部 Level-2、Level-3 算子均已达 stable 阶段。</p></li>
+<li><p>GEMM、三角求解与秩更新类算子进一步优化。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -638,6 +658,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

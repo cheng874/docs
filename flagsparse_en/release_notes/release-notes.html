@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- SpMM Operators — SpMM COO, SpMM CSR-opt, SpMM CSR-opt-alg2, AlphaSparse SpMM alg1 (with TLE and TLE-opt variants).- Supported on NVIDIA.., SpGEMM Operator — Sparse matrix-sparse matrix multiplication for CSR inputs.- Supported on NVIDIA.., SDDMM Operator — Sampled dense-de..." />
+<meta property="og:description" content="v0.3.0: Added Features- New sparse operators and formats: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR, SpMV CSC/BSR and BSR-optimized variants, and SpSV SELL., Backend coverage extended to Hygon DCU, MetaX (MACA), Moore Threads (MUSA) and Ascend (CANN), with backend sel..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- SpMM Operators — SpMM COO, SpMM CSR-opt, SpMM CSR-opt-alg2, AlphaSparse SpMM alg1 (with TLE and TLE-opt variants).- Supported on NVIDIA.., SpGEMM Operator — Sparse matrix-sparse matrix multiplication for CSR inputs.- Supported on NVIDIA.., SDDMM Operator — Sampled dense-de..." />
+<meta name="description" content="v0.3.0: Added Features- New sparse operators and formats: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR, SpMV CSC/BSR and BSR-optimized variants, and SpSV SELL., Backend coverage extended to Hygon DCU, MetaX (MACA), Moore Threads (MUSA) and Ascend (CANN), with backend sel..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagSparse Release Notes &#8212; FlagSparse Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.65ff2596-b98d-4abc-a50c-b4ed94ea9d6a.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.afffd00a-0da4-4dd8-85e5-de47ba0bc938.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -544,6 +544,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -559,6 +560,22 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagsparse-release-notes">
 <h1>FlagSparse Release Notes<a class="headerlink" href="#flagsparse-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New sparse operators and formats: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR, SpMV CSC/BSR and BSR-optimized variants, and SpSV SELL.</p></li>
+<li><p>Backend coverage extended to Hygon DCU, MetaX (MACA), Moore Threads (MUSA) and Ascend (CANN), with backend selection through environment variables.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced Features</strong></p>
+<ul>
+<li><p>SpMV CSR, SpGEMM and SDDMM performance.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -682,6 +699,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

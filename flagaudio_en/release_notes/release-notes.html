@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_DB, spectral_centroid., Audio signal processing operators with multi-backend support., Complete processing chain from raw audio to model input.., Enhanced Features- Operators underwent d..." />
+<meta property="og:description" content="v0.3.0: Enhanced Features- The gain operator treats 0 dB as identity gain., flag_audio can be imported without installing torchaudio; torchaudio is only required by the test helpers... v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_D..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_DB, spectral_centroid., Audio signal processing operators with multi-backend support., Complete processing chain from raw audio to model input.., Enhanced Features- Operators underwent d..." />
+<meta name="description" content="v0.3.0: Enhanced Features- The gain operator treats 0 dB as identity gain., flag_audio can be imported without installing torchaudio; torchaudio is only required by the test helpers... v0.2.0: Added Features- Audio Effects — add_noise, dcshift, mu_law_encoding., Spectral Analysis — amplitude_to_D..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagAudio Release Notes &#8212; FlagAudio Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.ab451209-55ee-4a5b-b347-65d0090b7d4a.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.034acd69-d060-44c7-871c-b6c4a8f245d6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -537,6 +537,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -552,6 +553,17 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagaudio-release-notes">
 <h1>FlagAudio Release Notes<a class="headerlink" href="#flagaudio-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Enhanced Features</strong></p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">gain</span></code> operator treats <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">dB</span></code> as identity gain.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flag_audio</span></code> can be imported without installing torchaudio; torchaudio is only required by the test helpers.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -632,6 +644,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

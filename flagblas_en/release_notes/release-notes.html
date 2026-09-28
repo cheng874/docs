@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Operator Registry — Added conf/operators.yaml with full operator metadata., CI/CD Pipeline — GitHub Actions workflow with correctness tests, performance benchmarks, and pre-commit hooks., libtuner Autotuning — Integrated libtuner for automatic kernel configuration tuning....." />
+<meta property="og:description" content="v0.3.0: Added Features- New Level-1 rotation operators: rotg, rotm, rotmg., Level-2 coverage extended across the packed, banded, triangular, symmetric/Hermitian and rank-1/rank-2 update families, including hpmv, trsv, tpsv, tbsv, ger, syr, her and the packed sspr/ sspr2/ dspr/ dspr2 updates., New..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Operator Registry — Added conf/operators.yaml with full operator metadata., CI/CD Pipeline — GitHub Actions workflow with correctness tests, performance benchmarks, and pre-commit hooks., libtuner Autotuning — Integrated libtuner for automatic kernel configuration tuning....." />
+<meta name="description" content="v0.3.0: Added Features- New Level-1 rotation operators: rotg, rotm, rotmg., Level-2 coverage extended across the packed, banded, triangular, symmetric/Hermitian and rank-1/rank-2 update families, including hpmv, trsv, tpsv, tbsv, ger, syr, her and the packed sspr/ sspr2/ dspr/ dspr2 updates., New..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagBLAS Release Notes &#8212; FlagBLAS Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.0923a6f5-69db-461f-b981-eb84dc924f95.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.2b1b40f1-ce5d-4696-9f81-8cc88e8b50d9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -540,6 +540,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -555,6 +556,25 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagblas-release-notes">
 <h1>FlagBLAS Release Notes<a class="headerlink" href="#flagblas-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New Level-1 rotation operators: <code class="docutils literal notranslate"><span class="pre">rotg</span></code>, <code class="docutils literal notranslate"><span class="pre">rotm</span></code>, <code class="docutils literal notranslate"><span class="pre">rotmg</span></code>.</p></li>
+<li><p>Level-2 coverage extended across the packed, banded, triangular, symmetric/Hermitian and rank-1/rank-2 update families, including <code class="docutils literal notranslate"><span class="pre">hpmv</span></code>, <code class="docutils literal notranslate"><span class="pre">trsv</span></code>, <code class="docutils literal notranslate"><span class="pre">tpsv</span></code>, <code class="docutils literal notranslate"><span class="pre">tbsv</span></code>, <code class="docutils literal notranslate"><span class="pre">ger</span></code>, <code class="docutils literal notranslate"><span class="pre">syr</span></code>, <code class="docutils literal notranslate"><span class="pre">her</span></code> and the packed <code class="docutils literal notranslate"><span class="pre">sspr</span></code>/<code class="docutils literal notranslate"><span class="pre">sspr2</span></code>/<code class="docutils literal notranslate"><span class="pre">dspr</span></code>/<code class="docutils literal notranslate"><span class="pre">dspr2</span></code> updates.</p></li>
+<li><p>New GEMM operators: <code class="docutils literal notranslate"><span class="pre">dgemm</span></code>, <code class="docutils literal notranslate"><span class="pre">cgemm</span></code> and <code class="docutils literal notranslate"><span class="pre">zgemm</span></code>, plus Group GEMM on the NVIDIA backend.</p></li>
+<li><p>New hardware backends: Ascend and Hygon DCU, alongside NVIDIA and Iluvatar.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced Features</strong></p>
+<ul>
+<li><p>All Level-2 and Level-3 operators are now at the stable stage.</p></li>
+<li><p>GEMM, triangular-solve and rank-update operators have been further optimized.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -638,6 +658,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

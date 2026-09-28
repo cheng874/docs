@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: 新增功能- SpMM 算子 —— SpMM COO、SpMM CSR-opt、SpMM CSR-opt-alg2、AlphaSparse SpMM alg1（含 TLE 和 TLE-opt 变体）。- 在 NVIDIA 上支持。., SpGEMM 算子 —— CSR 输入的稀疏矩阵-稀疏矩阵乘法。- 在 NVIDIA 上支持。., SDDMM 算子 —— 基于 CSR 稀疏模式的采样稠密-稠密矩阵乘法。- 在 NVIDIA 上支持。., SpSM 算子 —— 带稠密矩阵右侧的稀疏三角求解（CSR 和 COO）。- 在 NVIDIA 上支持。., SpSV 描述符 API ..." />
+<meta property="og:description" content="v0.3.0: 新增特性- 新增稀疏算子与格式：SpMM CSR 扩展、col-major 与 COO 优化变体、SpMM CSC/BSR、SpMV CSC/BSR 及 BSR 优化变体、SpSV SELL。, 后端覆盖扩展至海光 DCU、MetaX（MACA）、摩尔线程（MUSA）与昇腾（CANN），可通过环境变量选择后端。., 增强特性- SpMV CSR、SpGEMM 与 SDDMM 性能优化。.. v0.2.0: 新增功能- SpMM 算子 —— SpMM COO、SpMM CSR-opt、SpMM CSR-opt-alg2、AlphaSparse SpMM alg1（含 TLE..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: 新增功能- SpMM 算子 —— SpMM COO、SpMM CSR-opt、SpMM CSR-opt-alg2、AlphaSparse SpMM alg1（含 TLE 和 TLE-opt 变体）。- 在 NVIDIA 上支持。., SpGEMM 算子 —— CSR 输入的稀疏矩阵-稀疏矩阵乘法。- 在 NVIDIA 上支持。., SDDMM 算子 —— 基于 CSR 稀疏模式的采样稠密-稠密矩阵乘法。- 在 NVIDIA 上支持。., SpSM 算子 —— 带稠密矩阵右侧的稀疏三角求解（CSR 和 COO）。- 在 NVIDIA 上支持。., SpSV 描述符 API ..." />
+<meta name="description" content="v0.3.0: 新增特性- 新增稀疏算子与格式：SpMM CSR 扩展、col-major 与 COO 优化变体、SpMM CSC/BSR、SpMV CSC/BSR 及 BSR 优化变体、SpSV SELL。, 后端覆盖扩展至海光 DCU、MetaX（MACA）、摩尔线程（MUSA）与昇腾（CANN），可通过环境变量选择后端。., 增强特性- SpMV CSR、SpGEMM 与 SDDMM 性能优化。.. v0.2.0: 新增功能- SpMM 算子 —— SpMM COO、SpMM CSR-opt、SpMM CSR-opt-alg2、AlphaSparse SpMM alg1（含 TLE..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagSparse 发布说明 &#8212; FlagSparse 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.bdb480e7-ca2e-4613-b08b-e77953fbe4a2.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.dc401e3d-5342-4cfc-b0fb-1e5b99f73cb6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -544,6 +544,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -559,6 +560,22 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagsparse">
 <h1>FlagSparse 发布说明<a class="headerlink" href="#flagsparse" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p>新增稀疏算子与格式：SpMM CSR 扩展、col-major 与 COO 优化变体、SpMM CSC/BSR、SpMV CSC/BSR 及 BSR 优化变体、SpSV SELL。</p></li>
+<li><p>后端覆盖扩展至海光 DCU、MetaX（MACA）、摩尔线程（MUSA）与昇腾（CANN），可通过环境变量选择后端。</p></li>
+</ul>
+</li>
+<li><p><strong>增强特性</strong></p>
+<ul>
+<li><p>SpMV CSR、SpGEMM 与 SDDMM 性能优化。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -682,6 +699,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

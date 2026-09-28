@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.2.0: Added Features- Graph Execution Engine — New graph-mode execution path with IR capture, kernel fusion, auto-tuning, and multi-node planning. Supports graph-level operator dispatch and memory optimization., Neural Network Operators — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgr..." />
+<meta property="og:description" content="v0.3.0: Added Features- New hardware backends: Ascend, Hygon DCU, Moore Threads (MUSA) and Iluvatar, plus an updated T-Head backend., New convolution operators: conv_dgrad and conv_wgrad.., Enhanced Features- Long-context causal SDPA performance, including the causal d128 backward path., Performa..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.2.0: Added Features- Graph Execution Engine — New graph-mode execution path with IR capture, kernel fusion, auto-tuning, and multi-node planning. Supports graph-level operator dispatch and memory optimization., Neural Network Operators — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgr..." />
+<meta name="description" content="v0.3.0: Added Features- New hardware backends: Ascend, Hygon DCU, Moore Threads (MUSA) and Iluvatar, plus an updated T-Head backend., New convolution operators: conv_dgrad and conv_wgrad.., Enhanced Features- Long-context causal SDPA performance, including the causal d128 backward path., Performa..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagDNN Release Notes &#8212; FlagDNN Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.77547d91-6c63-4816-8c0b-1b5a40a7f576.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.2611e1d6-34f3-4dfe-9b70-b8551a01b2e9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -540,6 +540,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
@@ -555,6 +556,23 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagdnn-release-notes">
 <h1>FlagDNN Release Notes<a class="headerlink" href="#flagdnn-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>New hardware backends: Ascend, Hygon DCU, Moore Threads (MUSA) and Iluvatar, plus an updated T-Head backend.</p></li>
+<li><p>New convolution operators: <code class="docutils literal notranslate"><span class="pre">conv_dgrad</span></code> and <code class="docutils literal notranslate"><span class="pre">conv_wgrad</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced Features</strong></p>
+<ul>
+<li><p>Long-context causal SDPA performance, including the causal d128 backward path.</p></li>
+<li><p>Performance tuning across convolution, matmul, normalization and binary operators.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -648,6 +666,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-3-0">v0.3.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>

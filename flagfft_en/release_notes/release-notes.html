@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.1.0: Initial release of FlagFFT. Added Features- Experimental C++ FFT library with cuFFT-style C API., Triton/TLE-generated CUDA kernels with JIT compilation at plan creation time., 1D Complex-to-Complex — C2C, Z2Z (complex64 and complex128)., 1D Real-to-Complex — R2C, D2Z (float and double).,..." />
+<meta property="og:description" content="v0.2.0: Added Features- Rank-2 and rank-3 transforms for all six transform types (C2C, Z2Z, R2C, D2Z, C2R, Z2D)., Prime-length and large rank-1 transform acceleration., MUSA and PPU backends, selected in the build with-DBACKEND=MUSA|PPU., flagfft-cli benchmark and plan-inspection tool.., Enhanced..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.1.0: Initial release of FlagFFT. Added Features- Experimental C++ FFT library with cuFFT-style C API., Triton/TLE-generated CUDA kernels with JIT compilation at plan creation time., 1D Complex-to-Complex — C2C, Z2Z (complex64 and complex128)., 1D Real-to-Complex — R2C, D2Z (float and double).,..." />
+<meta name="description" content="v0.2.0: Added Features- Rank-2 and rank-3 transforms for all six transform types (C2C, Z2Z, R2C, D2Z, C2R, Z2D)., Prime-length and large rank-1 transform acceleration., MUSA and PPU backends, selected in the build with-DBACKEND=MUSA|PPU., flagfft-cli benchmark and plan-inspection tool.., Enhanced..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagFFT Release Notes &#8212; FlagFFT Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.b281cf68-5731-4b54-af73-fae053019f62.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.8e3ceeb5-77a6-46cb-be1b-0000a99a5f6c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -545,6 +545,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -559,6 +560,24 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagfft-release-notes">
 <h1>FlagFFT Release Notes<a class="headerlink" href="#flagfft-release-notes" title="Link to this heading">#</a></h1>
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Added Features</strong></p>
+<ul>
+<li><p>Rank-2 and rank-3 transforms for all six transform types (C2C, Z2Z, R2C, D2Z, C2R, Z2D).</p></li>
+<li><p>Prime-length and large rank-1 transform acceleration.</p></li>
+<li><p>MUSA and PPU backends, selected in the build with <code class="docutils literal notranslate"><span class="pre">-DBACKEND=MUSA|PPU</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flagfft-cli</span></code> benchmark and plan-inspection tool.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced Features</strong></p>
+<ul>
+<li><p>Plan selection and mixed-radix/four-step routes for large rank-1 transforms.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <p>Initial release of FlagFFT.</p>
@@ -635,6 +654,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
