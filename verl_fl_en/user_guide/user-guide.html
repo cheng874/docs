@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section provides detailed guidance on using verl-FL for end-to-end GRPO training across different hardware platforms. End-to-End Use Case: GRPO Training with verl-FL- NVIDIA E2E GRPO Training, MetaX E2E GRPO Training.." />
+<meta property="og:description" content="This section provides detailed guidance on using verl-FL for end-to-end GRPO training across different hardware platforms. Platform Abstraction and Multi-Chip Training- Platform Abstraction Layer, Engine Plugin Architecture, Heterogeneous Training with FlagCX, What a Validated Run Looks Like, Add..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section provides detailed guidance on using verl-FL for end-to-end GRPO training across different hardware platforms. End-to-End Use Case: GRPO Training with verl-FL- NVIDIA E2E GRPO Training, MetaX E2E GRPO Training.." />
+<meta name="description" content="This section provides detailed guidance on using verl-FL for end-to-end GRPO training across different hardware platforms. Platform Abstraction and Multi-Chip Training- Platform Abstraction Layer, Engine Plugin Architecture, Heterogeneous Training with FlagCX, What a Validated Run Looks Like, Add..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>verl-FL User Guide &#8212; verl-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.06551c1f-6263-4cc8-9e01-6110e85c0a98.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.011152d8-af63-4a21-8cbe-d1d2eeb137ae.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,12 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="End-to-End Use Case: GRPO Training with verl-FL" href="e2e-use-case.html" />
+    <link rel="next" title="Platform Abstraction and Multi-Chip Training" href="platform-abstraction.html" />
     <link rel="prev" title="Quick Setup" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 27, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -383,7 +383,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">verl-FL User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html">End-to-End Use Case: GRPO Training with verl-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html">Platform Abstraction and Multi-Chip Training</a></li>
 </ul>
 </details></li>
 </ul>
@@ -548,9 +548,12 @@
 <p>This section provides detailed guidance on using verl-FL for end-to-end GRPO training across different hardware platforms.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="e2e-use-case.html">End-to-End Use Case: GRPO Training with verl-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#nvidia-e2e-grpo-training">NVIDIA E2E GRPO Training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e2e-use-case.html#metax-e2e-grpo-training">MetaX E2E GRPO Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform-abstraction.html">Platform Abstraction and Multi-Chip Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#platform-abstraction-layer">Platform Abstraction Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#engine-plugin-architecture">Engine Plugin Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#heterogeneous-training-with-flagcx">Heterogeneous Training with FlagCX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#what-a-validated-run-looks-like">What a Validated Run Looks Like</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#adding-a-new-backend">Adding a New Backend</a></li>
 </ul>
 </li>
 </ul>
@@ -578,11 +581,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="e2e-use-case.html"
+       href="platform-abstraction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">End-to-End Use Case: GRPO Training with verl-FL</p>
+        <p class="prev-next-title">Platform Abstraction and Multi-Chip Training</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -621,7 +624,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 27, 2026.
+  Last updated on Sep 28, 2026.
   <br/>
 </p>
   </div>

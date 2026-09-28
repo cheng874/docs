@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.6afaea79-2471-4a5a-b2f8-a61c8d2eb6e7.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.51cb8b7e-ee28-4de3-86e9-b97cb8d75c83.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 27, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -386,7 +386,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">快速安装</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">verl-FL 用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">verl-FL 用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/platform-abstraction.html">平台抽象与多芯片训练</a></li>
 </ul>
 </details></li>
 </ul>
@@ -563,10 +564,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="verl-fl">
 <h1>verl-FL 概述<a class="headerlink" href="#verl-fl" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>这是一个预览版本。显示的版本号是预发布标识，最终发布时可能会更改。此预览中的内容仅供参考，不构成对最终产品的承诺或保证。</p>
-</div>
 <p>verl-FL 是 <a class="reference external" href="https://github.com/volcengine/verl">verl</a> 的一个分支，旨在支持多种 AI 加速器。它基于 <a class="reference external" href="https://github.com/flagos-ai">FlagOS</a> 构建，FlagOS 是一个统一的开源 AI 系统软件栈，集成了训练引擎 <a class="reference external" href="https://github.com/flagos-ai/Megatron-LM-FL">Megatron-LM-FL</a> 和 <a class="reference external" href="https://github.com/flagos-ai/TransformerEngine-FL">Transformer-Engine-FL</a>，以及推理引擎 <a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL">vllm-plugin-FL</a> 等关键组件。</p>
 <p>上游 verl 与 CUDA 紧密耦合，而 verl-FL 引入了平台抽象层并集成了 FlagOS 生态组件，从而在不修改上游业务逻辑的情况下实现异构分布式训练。</p>
 <section id="id1">
@@ -700,7 +697,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 27, 2026.
+  Last updated on Sep 28, 2026.
   <br/>
 </p>
   </div>

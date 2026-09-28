@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.2fae38a5-9378-464b-a8fe-b751f551dd3c.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.56732cdf-602d-4f94-a1ba-11ac826ea59f.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 27, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -387,7 +387,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">verl-FL User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/e2e-use-case.html">End-to-End Use Case: GRPO Training with verl-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/platform-abstraction.html">Platform Abstraction and Multi-Chip Training</a></li>
 </ul>
 </details></li>
 </ul>
@@ -564,10 +564,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="verl-fl-overview">
 <h1>verl-FL Overview<a class="headerlink" href="#verl-fl-overview" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.</p>
-</div>
 <p>verl-FL is a fork of verl designed to support diverse AI accelerators. It is built on top of <a class="reference external" href="https://github.com/flagos-ai">FlagOS</a>, a unified open-source AI system software stack, and integrates key components including the training engines <a class="reference external" href="https://github.com/flagos-ai/Megatron-LM-FL">Megatron-LM-FL</a> and <a class="reference external" href="https://github.com/flagos-ai/TransformerEngine-FL">Transformer-Engine-FL</a>, as well as the inference engine <a class="reference external" href="https://github.com/flagos-ai/vllm-plugin-FL">vllm-plugin-FL</a>.</p>
 <p>While upstream verl is tightly coupled to CUDA, verl-FL introduces a platform abstraction layer and integrates FlagOS ecosystem components to enable heterogeneous distributed training without modifying upstream business logic.</p>
 <section id="architecture">
@@ -701,7 +697,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 27, 2026.
+  Last updated on Sep 28, 2026.
   <br/>
 </p>
   </div>

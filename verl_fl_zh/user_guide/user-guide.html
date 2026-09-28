@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节提供使用 verl-FL 在不同硬件平台上进行端到端 GRPO 训练的详细指导。" />
+<meta property="og:description" content="本节提供使用 verl-FL 在不同硬件平台上进行端到端 GRPO 训练的详细指导。 平台抽象与多芯片训练- 平台抽象层, 引擎插件架构, 基于 FlagCX 的异构训练, 验证通过的表现, 新增后端.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节提供使用 verl-FL 在不同硬件平台上进行端到端 GRPO 训练的详细指导。" />
+<meta name="description" content="本节提供使用 verl-FL 在不同硬件平台上进行端到端 GRPO 训练的详细指导。 平台抽象与多芯片训练- 平台抽象层, 引擎插件架构, 基于 FlagCX 的异构训练, 验证通过的表现, 新增后端.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>verl-FL 用户指南 &#8212; verl-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.1de1549d-d5a3-458f-96ba-f4e44edbf6b8.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.70c32095-f780-41b5-bd91-48550691c416.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,12 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="参考资料" href="../references/reference.html" />
+    <link rel="next" title="平台抽象与多芯片训练" href="platform-abstraction.html" />
     <link rel="prev" title="快速安装" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 27, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -382,7 +382,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">快速安装</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">verl-FL 用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">verl-FL 用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html">平台抽象与多芯片训练</a></li>
 </ul>
 </details></li>
 </ul>
@@ -546,6 +547,16 @@
 <h1>verl-FL 用户指南<a class="headerlink" href="#verl-fl" title="Link to this heading">#</a></h1>
 <p>本节提供使用 verl-FL 在不同硬件平台上进行端到端 GRPO 训练的详细指导。</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="platform-abstraction.html">平台抽象与多芯片训练</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#id2">平台抽象层</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#id3">引擎插件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#flagcx">基于 FlagCX 的异构训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#id6">验证通过的表现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform-abstraction.html#id7">新增后端</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 
@@ -570,11 +581,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../references/reference.html"
+       href="platform-abstraction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">参考资料</p>
+        <p class="prev-next-title">平台抽象与多芯片训练</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -613,7 +624,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 27, 2026.
+  Last updated on Sep 28, 2026.
   <br/>
 </p>
   </div>
