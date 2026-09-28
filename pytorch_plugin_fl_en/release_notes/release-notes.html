@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section includes the release information for PyTorch-Plugin-FL. v0.1.0: Added features:- Initial release of PyTorch-Plugin-FL as part of FlagOS., PrivateUse1-based custom device plugin registering flagos as a first-class PyTorch device., Automatic FlagGems Triton operator registration for th..." />
+<meta property="og:description" content="This section includes the release information for PyTorch-Plugin-FL. v0.1.0: Initial release of PyTorch-Plugin-FL as part of FlagOS. One flagos device — a PrivateUse1-based PyTorch device plugin; standard PyTorch APIs, tensor methods and storage work unchanged., Per-operator backend routing — Fla..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section includes the release information for PyTorch-Plugin-FL. v0.1.0: Added features:- Initial release of PyTorch-Plugin-FL as part of FlagOS., PrivateUse1-based custom device plugin registering flagos as a first-class PyTorch device., Automatic FlagGems Triton operator registration for th..." />
+<meta name="description" content="This section includes the release information for PyTorch-Plugin-FL. v0.1.0: Initial release of PyTorch-Plugin-FL as part of FlagOS. One flagos device — a PrivateUse1-based PyTorch device plugin; standard PyTorch APIs, tensor methods and storage work unchanged., Per-operator backend routing — Fla..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; PyTorch-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.a0608bde-e5ea-4f53-8777-b6f437be291b.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.cd2a4c3b-e65d-4647-a8e2-af200f6d1682.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -80,7 +80,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PyTorch-Plugin-FL Overview" href="../overview/overview.html" />
-    <link rel="prev" title="PyTorch-Plugin-FL Documentation" href="../index.html" />
+    <link rel="prev" title="PyTorch-Plugin-FL" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -370,7 +370,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    PyTorch-Plugin-FL Documentation
+                    PyTorch-Plugin-FL
                 </a>
             </li>
         </ul>
@@ -382,22 +382,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../overview/overview.html">PyTorch-Plugin-FL Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview/architecture.html">Architecture overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview/project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/architecture.html">Architecture</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/operator-dispatch-guide.html">Operator dispatch user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/query-device-and-ops.html">Query device and operator information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/testing.html">Run tests</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/distributed.html">Distributed Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/profiler.html">Profiler Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/torch-compile.html">torch.compile Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/compatibility.html">Compatibility and Platform Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environment-variables.html">Environment Variables</a></li>
 </ul>
 
     </div>
@@ -566,23 +561,14 @@
 <p>This section includes the release information for PyTorch-Plugin-FL.</p>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
+<p>Initial release of PyTorch-Plugin-FL as part of FlagOS.</p>
 <ul class="simple">
-<li><p><strong>Added features</strong>:</p>
-<ul>
-<li><p>Initial release of PyTorch-Plugin-FL as part of FlagOS.</p></li>
-<li><p>PrivateUse1-based custom device plugin registering <code class="docutils literal notranslate"><span class="pre">flagos</span></code> as a first-class PyTorch device.</p></li>
-<li><p>Automatic FlagGems Triton operator registration for the <code class="docutils literal notranslate"><span class="pre">flagos</span></code> backend.</p></li>
-<li><p>Per-operator configurable backend routing via <code class="docutils literal notranslate"><span class="pre">backends.conf</span></code> with environment variable overrides.</p></li>
-<li><p>Multi-platform support: NVIDIA CUDA, MetaX MACA, Huawei Ascend.</p></li>
-<li><p>Complete device management API: stream, event, RNG, AMP, memory allocator, DeviceGuard.</p></li>
-<li><p>Lightweight C++ dispatch stub replacing PyTorch’s heavier DispatchStub.</p></li>
-<li><p>C++ stub-only mode (<code class="docutils literal notranslate"><span class="pre">FLAGOS_DISABLE_FLAGGEMS_PY=1</span></code>) for minimal overhead.</p></li>
-<li><p>Distributed training support via <code class="docutils literal notranslate"><span class="pre">torch_fl.distributed</span></code> (DDP/FSDP patch).</p></li>
-<li><p>MACA cu-bridge ABI shim for symbol version compatibility.</p></li>
-<li><p>Ascend NPU support with ACL NN API kernels.</p></li>
-<li><p>Integration test suite with factory ops, dispatch routing, CPU fallback tracing, and Qwen3 inference/training tests.</p></li>
-</ul>
-</li>
+<li><p><strong>One <code class="docutils literal notranslate"><span class="pre">flagos</span></code> device</strong> — a <code class="docutils literal notranslate"><span class="pre">PrivateUse1</span></code>-based PyTorch device plugin; standard PyTorch APIs, tensor methods and storage work unchanged.</p></li>
+<li><p><strong>Per-operator backend routing</strong> — FlagGems Triton kernels, vendor-native operator libraries, CUDA compatibility boxing and explicit CPU fallback behind one device name, with a per-platform routing table and per-operator overrides.</p></li>
+<li><p><strong>Multi-platform support</strong> — NVIDIA CUDA, MetaX, Huawei Ascend, PPU, Hygon DCU, Enflame GCU, Moore Threads MUSA and D-Robotics BPU, each with its own build selector.</p></li>
+<li><p><strong>Training stack</strong> — eager execution and autograd, <code class="docutils literal notranslate"><span class="pre">torch.autocast(&quot;flagos&quot;)</span></code> and <code class="docutils literal notranslate"><span class="pre">torch.amp.GradScaler(&quot;flagos&quot;)</span></code>, <code class="docutils literal notranslate"><span class="pre">torch.compile</span></code> integration, and DDP/FSDP support through <code class="docutils literal notranslate"><span class="pre">ProcessGroupFlagOS</span></code>.</p></li>
+<li><p><strong>Observability</strong> — <code class="docutils literal notranslate"><span class="pre">torch.profiler</span></code> integration with a device timeline and flow arrows, per-operator dispatch and fallback logging, and a wheel compatibility manifest with the <code class="docutils literal notranslate"><span class="pre">torch-fl-preflight</span></code> inspector.</p></li>
+<li><p><strong>Platform compatibility</strong> — CUDA boxing, native ACLNN and topsaten backends, and the FlagGems Python and C++ dispatch paths, with status levels recorded per platform.</p></li>
 </ul>
 </section>
 </section>
@@ -604,7 +590,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PyTorch-Plugin-FL Documentation</p>
+        <p class="prev-next-title">PyTorch-Plugin-FL</p>
       </div>
     </a>
     <a class="right-next"

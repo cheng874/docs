@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含 PyTorch-Plugin-FL 的发布信息。 v0.1.0: 新增功能 ：- PyTorch-Plugin-FL 作为 FlagOS 的一部分首次发布。, 基于 PrivateUse1 的自定义设备插件，将 flagos 注册为一流的 PyTorch 设备。, 为 flagos 后端自动注册 FlagGems Triton 算子。, 通过 backends.conf 实现逐算子可配置的后端路由，支持环境变量覆盖。, 多平台支持：NVIDIA CUDA、MetaX MACA、华为昇腾。, 完整的设备管理 API：流、事件、RNG、AMP、内存分配器、DeviceGuard。,..." />
+<meta property="og:description" content="本节包含 PyTorch-Plugin-FL 的发布信息。 v0.1.0: PyTorch-Plugin-FL 作为 FlagOS 一部分的初始版本。 统一的 flagos 设备 — 基于 PrivateUse1 的 PyTorch 设备插件；标准 PyTorch API、张量方法与存储无需修改即可使用。, 按算子路由后端 — 在同一设备名称下整合 FlagGems Triton 内核、厂商原生算子库、CUDA 兼容性 boxing 与显式 CPU 回退，并提供分平台路由表与逐算子覆盖。, 多平台支持 — NVIDIA CUDA、MetaX、华为 Ascend、PPU、海光 DCU、燧原..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含 PyTorch-Plugin-FL 的发布信息。 v0.1.0: 新增功能 ：- PyTorch-Plugin-FL 作为 FlagOS 的一部分首次发布。, 基于 PrivateUse1 的自定义设备插件，将 flagos 注册为一流的 PyTorch 设备。, 为 flagos 后端自动注册 FlagGems Triton 算子。, 通过 backends.conf 实现逐算子可配置的后端路由，支持环境变量覆盖。, 多平台支持：NVIDIA CUDA、MetaX MACA、华为昇腾。, 完整的设备管理 API：流、事件、RNG、AMP、内存分配器、DeviceGuard。,..." />
+<meta name="description" content="本节包含 PyTorch-Plugin-FL 的发布信息。 v0.1.0: PyTorch-Plugin-FL 作为 FlagOS 一部分的初始版本。 统一的 flagos 设备 — 基于 PrivateUse1 的 PyTorch 设备插件；标准 PyTorch API、张量方法与存储无需修改即可使用。, 按算子路由后端 — 在同一设备名称下整合 FlagGems Triton 内核、厂商原生算子库、CUDA 兼容性 boxing 与显式 CPU 回退，并提供分平台路由表与逐算子覆盖。, 多平台支持 — NVIDIA CUDA、MetaX、华为 Ascend、PPU、海光 DCU、燧原..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; PyTorch-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.289a094e-9c01-4868-928b-19139b4c34ed.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.3b60f839-ba9e-478b-98cf-2a7b2ac50511.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -80,7 +80,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PyTorch-Plugin-FL 概览" href="../overview/overview.html" />
-    <link rel="prev" title="PyTorch-Plugin-FL 文档" href="../index.html" />
+    <link rel="prev" title="PyTorch-Plugin-FL" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -370,7 +370,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    PyTorch-Plugin-FL 文档
+                    PyTorch-Plugin-FL
                 </a>
             </li>
         </ul>
@@ -382,22 +382,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../overview/overview.html">PyTorch-Plugin-FL 概览</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/features.html">功能特性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview/architecture.html">架构概览</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview/project-structure.html">项目结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/architecture.html">架构</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">基本用法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/operator-dispatch-guide.html">算子调度用户指南</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/query-device-and-ops.html">查询设备和算子信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../user_guide/testing.html">运行测试</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">功能特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/distributed.html">分布式集合通信</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/profiler.html">Profiler 集成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/torch-compile.html">torch.compile 集成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/compatibility.html">兼容性与平台支持</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/environment-variables.html">环境变量</a></li>
 </ul>
 
     </div>
@@ -566,23 +561,14 @@
 <p>本节包含 PyTorch-Plugin-FL 的发布信息。</p>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
+<p>PyTorch-Plugin-FL 作为 FlagOS 一部分的初始版本。</p>
 <ul class="simple">
-<li><p><strong>新增功能</strong>：</p>
-<ul>
-<li><p>PyTorch-Plugin-FL 作为 FlagOS 的一部分首次发布。</p></li>
-<li><p>基于 PrivateUse1 的自定义设备插件，将 <code class="docutils literal notranslate"><span class="pre">flagos</span></code> 注册为一流的 PyTorch 设备。</p></li>
-<li><p>为 <code class="docutils literal notranslate"><span class="pre">flagos</span></code> 后端自动注册 FlagGems Triton 算子。</p></li>
-<li><p>通过 <code class="docutils literal notranslate"><span class="pre">backends.conf</span></code> 实现逐算子可配置的后端路由，支持环境变量覆盖。</p></li>
-<li><p>多平台支持：NVIDIA CUDA、MetaX MACA、华为昇腾。</p></li>
-<li><p>完整的设备管理 API：流、事件、RNG、AMP、内存分配器、DeviceGuard。</p></li>
-<li><p>轻量级 C++ 调度存根，替代 PyTorch 较重的 DispatchStub。</p></li>
-<li><p>C++ 纯存根模式（<code class="docutils literal notranslate"><span class="pre">FLAGOS_DISABLE_FLAGGEMS_PY=1</span></code>），实现最小开销。</p></li>
-<li><p>通过 <code class="docutils literal notranslate"><span class="pre">torch_fl.distributed</span></code> 支持分布式训练（DDP/FSDP 补丁）。</p></li>
-<li><p>MACA cu-bridge ABI shim，用于符号版本兼容。</p></li>
-<li><p>昇腾 NPU 支持，使用 ACL NN API 内核。</p></li>
-<li><p>集成测试套件，包含工厂算子、调度路由、CPU 回退追踪以及 Qwen3 推理/训练测试。</p></li>
-</ul>
-</li>
+<li><p><strong>统一的 <code class="docutils literal notranslate"><span class="pre">flagos</span></code> 设备</strong> — 基于 <code class="docutils literal notranslate"><span class="pre">PrivateUse1</span></code> 的 PyTorch 设备插件；标准 PyTorch API、张量方法与存储无需修改即可使用。</p></li>
+<li><p><strong>按算子路由后端</strong> — 在同一设备名称下整合 FlagGems Triton 内核、厂商原生算子库、CUDA 兼容性 boxing 与显式 CPU 回退，并提供分平台路由表与逐算子覆盖。</p></li>
+<li><p><strong>多平台支持</strong> — NVIDIA CUDA、MetaX、华为 Ascend、PPU、海光 DCU、燧原 GCU、摩尔线程 MUSA 与地平线 BPU，各自拥有独立的构建选择器。</p></li>
+<li><p><strong>训练栈</strong> — eager 执行与 autograd、<code class="docutils literal notranslate"><span class="pre">torch.autocast(&quot;flagos&quot;)</span></code> 与 <code class="docutils literal notranslate"><span class="pre">torch.amp.GradScaler(&quot;flagos&quot;)</span></code>、<code class="docutils literal notranslate"><span class="pre">torch.compile</span></code> 集成，以及通过 <code class="docutils literal notranslate"><span class="pre">ProcessGroupFlagOS</span></code> 的 DDP/FSDP 支持。</p></li>
+<li><p><strong>可观测性</strong> — 带设备时间线与流向箭头的 <code class="docutils literal notranslate"><span class="pre">torch.profiler</span></code> 集成、逐算子调度与回退日志，以及带 <code class="docutils literal notranslate"><span class="pre">torch-fl-preflight</span></code> 检查工具的 wheel 兼容性清单。</p></li>
+<li><p><strong>平台兼容性</strong> — CUDA boxing、原生 ACLNN 与 topsaten 后端，以及 FlagGems Python 与 C++ 调度路径，并按平台记录状态等级。</p></li>
 </ul>
 </section>
 </section>
@@ -604,7 +590,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PyTorch-Plugin-FL 文档</p>
+        <p class="prev-next-title">PyTorch-Plugin-FL</p>
       </div>
     </a>
     <a class="right-next"
