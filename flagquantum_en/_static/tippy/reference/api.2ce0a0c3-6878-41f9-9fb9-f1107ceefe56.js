@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"#result-contract\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Result contract<a class=\"headerlink\" href=\"#result-contract\" title=\"Link to this heading\">#</a></h2><p><code class=\"docutils literal notranslate\"><span class=\"pre\">ExecutionResult.diagnostics()</span></code> returns a versioned envelope with <code class=\"docutils literal notranslate\"><span class=\"pre\">metrics</span></code>,\n<code class=\"docutils literal notranslate\"><span class=\"pre\">provenance</span></code>, <code class=\"docutils literal notranslate\"><span class=\"pre\">runtime</span></code>, and <code class=\"docutils literal notranslate\"><span class=\"pre\">compatibility</span></code> sections whose keys may grow\ncompatibly. <code class=\"docutils literal notranslate\"><span class=\"pre\">TrainingResult.final_loss</span></code> and its versioned <code class=\"docutils literal notranslate\"><span class=\"pre\">summary()</span></code> provide\nstable training output access. Result summaries carry schema and version fields,\nand backend-native attributes are not forwarded implicitly: use\n<code class=\"docutils literal notranslate\"><span class=\"pre\">result.native()</span></code> when intentionally depending on one.</p>", "a[href=\"operator-capabilities.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">Operator Capabilities<a class=\"headerlink\" href=\"#operator-capabilities\" title=\"Link to this heading\">#</a></h1><p>An executable registered lowering for an operator on a given backend is not a\nrelease or scalability claim. <code class=\"docutils literal notranslate\"><span class=\"pre\">yes</span></code> means the operator can be lowered on that\nbackend today; the support level of the execution path itself is published in\n<a class=\"reference internal\" href=\"capabilities.html\"><span class=\"std std-doc\">Capabilities</span></a>.</p>", "a[href=\"#api-reference\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">API Reference<a class=\"headerlink\" href=\"#api-reference\" title=\"Link to this heading\">#</a></h1><p>FlagQuantum exposes one curated Python interface: <code class=\"docutils literal notranslate\"><span class=\"pre\">import</span> <span class=\"pre\">flagquantum</span> <span class=\"pre\">as</span> <span class=\"pre\">fq</span></code>.\nBuild a circuit, inspect its runtime plan, execute it through a stable result\ncontract, and train parameterized programs with PyTorch.</p><p>Exact stable names are defined by the repository\u2019s <code class=\"docutils literal notranslate\"><span class=\"pre\">public_api_v1.json</span></code>, verified\nby executable contract tests, and rendered in the stable API inventory below.</p>", "a[href=\"#stable-api-inventory\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Stable API inventory<a class=\"headerlink\" href=\"#stable-api-inventory\" title=\"Link to this heading\">#</a></h2><p><code class=\"docutils literal notranslate\"><span class=\"pre\">fq.experimental</span></code> is a stable import path, but its contents carry no\ncompatibility guarantee. Compatibility imports are migration aids and are not\nimplied stable.</p>", "a[href=\"#stability-boundaries\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Stability boundaries<a class=\"headerlink\" href=\"#stability-boundaries\" title=\"Link to this heading\">#</a></h2>", "a[href=\"#errors\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Errors<a class=\"headerlink\" href=\"#errors\" title=\"Link to this heading\">#</a></h2><p>Catch stable lifecycle categories from <code class=\"docutils literal notranslate\"><span class=\"pre\">flagquantum.errors</span></code>:</p>", "a[href=\"#api-map\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">API map<a class=\"headerlink\" href=\"#api-map\" title=\"Link to this heading\">#</a></h2>"}
+skip_classes = ["headerlink", "sd-stretched-link"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(` ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};
