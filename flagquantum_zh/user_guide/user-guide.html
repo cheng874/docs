@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本指南介绍如何用 FlagQuantum 构建、规划、训练并运行量子程序。 第一个量子模型 只依赖基础安装，端到端训练一个小模型。 了解更多 » first-quantum-model 构建与运行 构建线路、规划、请求测量、处理错误与回放。 了解更多 » build-and-run 运行时规划 执行前查看表示、策略、阻塞项与回退。 了解更多 » 运行时规划 本地工作流 零配置的本地模拟、测量、绘制与精度配置。 了解更多 » 本地工作流 选择模拟器 态向量、密度矩阵、MPS 与张量网络的取舍与边界。 了解更多 » choose-a-simulator 使用 PyTorch 训练 模块、命名..." />
+<meta property="og:description" content="本指南介绍如何用 FlagQuantum 做量子线路的模拟与训练：构建程序、规划与运行、使用 PyTorch 训练、选择模拟表示、加入噪声与测量、跨 rank 扩展，并把同一份程序迁移到硬件上。 基本用法 构建线路、规划、执行并读取结果。 了解更多 » 基本用法 线路与 IR 线路构建、FlagQuantum IR、编译与路由。 了解更多 » 线路与 FlagQuantum IR 使用 PyTorch 训练 可训练线路、优化器、命名参数与检查点。 了解更多 » 使用 PyTorch 训练 测量与噪声 可观测量、结果访问、噪声模型与动态线路。 了解更多 » 测量与噪声 模拟表示 态向量、M..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本指南介绍如何用 FlagQuantum 构建、规划、训练并运行量子程序。 第一个量子模型 只依赖基础安装，端到端训练一个小模型。 了解更多 » first-quantum-model 构建与运行 构建线路、规划、请求测量、处理错误与回放。 了解更多 » build-and-run 运行时规划 执行前查看表示、策略、阻塞项与回退。 了解更多 » 运行时规划 本地工作流 零配置的本地模拟、测量、绘制与精度配置。 了解更多 » 本地工作流 选择模拟器 态向量、密度矩阵、MPS 与张量网络的取舍与边界。 了解更多 » choose-a-simulator 使用 PyTorch 训练 模块、命名..." />
+<meta name="description" content="本指南介绍如何用 FlagQuantum 做量子线路的模拟与训练：构建程序、规划与运行、使用 PyTorch 训练、选择模拟表示、加入噪声与测量、跨 rank 扩展，并把同一份程序迁移到硬件上。 基本用法 构建线路、规划、执行并读取结果。 了解更多 » 基本用法 线路与 IR 线路构建、FlagQuantum IR、编译与路由。 了解更多 » 线路与 FlagQuantum IR 使用 PyTorch 训练 可训练线路、优化器、命名参数与检查点。 了解更多 » 使用 PyTorch 训练 测量与噪声 可观测量、结果访问、噪声模型与动态线路。 了解更多 » 测量与噪声 模拟表示 态向量、M..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>用户指南 &#8212; FlagQuantum 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.ed69a148-1dd3-4e52-8764-8cc5cab2b927.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.94d307c4-8932-42fc-9780-9335d775e7aa.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="运行时规划" href="runtime-planning.html" />
-    <link rel="prev" title="快速开始" href="../getting_started/quick-start.html" />
+    <link rel="next" title="基本用法" href="basic-usage.html" />
+    <link rel="prev" title="安装 FlagQuantum" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -376,41 +376,50 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 概览</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">概览</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">特性</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum 概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">架构</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 快速入门</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">FlagQuantum 快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 用户指南</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">用户指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runtime-planning.html">运行时规划</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local-workflows.html">本地工作流</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiler-and-remote.html">编译器与远程目标</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">含噪模拟</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qpu-digital-twin.html">QPU 数字孪生</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qec.html">量子纠错</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">基本用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">线路与 FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">使用 PyTorch 训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">测量与噪声</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">模拟表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">分布式执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">硬件与远程目标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">算法、纠错与数字孪生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">运行测试</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">基本用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">线路与 FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">使用 PyTorch 训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">测量与噪声</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">模拟表示</a></li>
 <li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">分布式执行</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic-circuits.html">动态线路</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">硬件与远程目标</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法、纠错与数字孪生</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run-tests.html">运行测试</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考资料</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">参考资料</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">接口参考</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">扩展 SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">能力参考</a></li>
 </ul>
 
     </div>
@@ -566,183 +575,75 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>用户指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>本指南介绍如何用 FlagQuantum 构建、规划、训练并运行量子程序。</p>
+<p>本指南介绍如何用 FlagQuantum 做量子线路的模拟与训练：构建程序、规划与运行、使用 PyTorch 训练、选择模拟表示、加入噪声与测量、跨 rank 扩展，并把同一份程序迁移到硬件上。</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-2 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-play sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z"></path><path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5Z"></path></svg> 第一个量子模型</div>
-<p class="sd-card-text">只依赖基础安装，端到端训练一个小模型。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-play sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z"></path><path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5Z"></path></svg> 基本用法</div>
+<p class="sd-card-text">构建线路、规划、执行并读取结果。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#first-quantum-model.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="basic-usage.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">first-quantum-model</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="basic-usage.html"><span class="doc">基本用法</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-tools sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.875 2.292a.114.114 0 0 0-.032.018A7.239 7.239 0 0 0 4.75 8.25a7.248 7.248 0 0 0 3.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 1 1-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.749 8.749 0 0 1 3.25 8.25a8.738 8.738 0 0 1 3.732-7.169 1.547 1.547 0 0 1 1.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 0 0 .119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 0 0 .119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 0 1 1.708.064 8.741 8.741 0 0 1 3.732 7.17 8.747 8.747 0 0 1-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 1 1-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0 0 19.25 8.25a7.239 7.239 0 0 0-3.093-5.94.114.114 0 0 0-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19c0 .608-.315 1.172-.833 1.49l-2.25 1.385a1.75 1.75 0 0 1-1.834 0l-2.25-1.384A1.752 1.752 0 0 1 8 7.192V2.477c0-.098-.048-.155-.084-.176a.068.068 0 0 0-.031-.011l-.01.001Z"></path></svg> 构建与运行</div>
-<p class="sd-card-text">构建线路、规划、请求测量、处理错误与回放。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-code sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.22 4.97a.75.75 0 0 1 1.06 0l6.5 6.5a.75.75 0 0 1 0 1.06l-6.5 6.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L21.19 12l-5.97-5.97a.75.75 0 0 1 0-1.06Zm-6.44 0a.75.75 0 0 1 0 1.06L2.81 12l5.97 5.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-6.5-6.5a.75.75 0 0 1 0-1.06l6.5-6.5a.75.75 0 0 1 1.06 0Z"></path></svg> 线路与 IR</div>
+<p class="sd-card-text">线路构建、FlagQuantum IR、编译与路由。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#build-and-run.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="circuits-and-ir.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">build-and-run</span></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-graph sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 2.75a.75.75 0 0 0-1.5 0v18.5c0 .414.336.75.75.75H20a.75.75 0 0 0 0-1.5H2.5V2.75Z"></path><path d="M22.28 7.78a.75.75 0 0 0-1.06-1.06l-5.72 5.72-3.72-3.72a.75.75 0 0 0-1.06 0l-6 6a.75.75 0 1 0 1.06 1.06l5.47-5.47 3.72 3.72a.75.75 0 0 0 1.06 0l6.25-6.25Z"></path></svg> 运行时规划</div>
-<p class="sd-card-text">执行前查看表示、策略、阻塞项与回退。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="runtime-planning.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="runtime-planning.html"><span class="doc">运行时规划</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-cpu sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.75 8h6.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-6.5a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 8.75 8Zm.75 6.5h5v-5h-5Z"></path><path d="M15.25 1a.75.75 0 0 1 .75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 0 1 0 1.5H20v5h2.25a.75.75 0 0 1 0 1.5H20v2.25A1.75 1.75 0 0 1 18.25 20H16v2.25a.75.75 0 0 1-1.5 0V20h-5v2.25a.75.75 0 0 1-1.5 0V20H5.75A1.75 1.75 0 0 1 4 18.25V16H1.75a.75.75 0 0 1 0-1.5H4v-5H1.75a.75.75 0 0 1 0-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 0 1 1.5 0V4h5V1.75a.75.75 0 0 1 .75-.75Zm3 17.5a.25.25 0 0 0 .25-.25V5.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25Z"></path></svg> 本地工作流</div>
-<p class="sd-card-text">零配置的本地模拟、测量、绘制与精度配置。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="local-workflows.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="local-workflows.html"><span class="doc">本地工作流</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-server sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.75 6.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM6 7.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 6 7.25Zm4 9a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm-3.25-.75a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5Z"></path><path d="M3.25 2h17.5c.966 0 1.75.784 1.75 1.75v7c0 .372-.116.716-.314 1 .198.284.314.628.314 1v7a1.75 1.75 0 0 1-1.75 1.75H3.25a1.75 1.75 0 0 1-1.75-1.75v-7c0-.358.109-.707.314-1a1.741 1.741 0 0 1-.314-1v-7C1.5 2.784 2.284 2 3.25 2Zm0 10.5a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25Zm0-1.5h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25H3.25a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25Z"></path></svg> 选择模拟器</div>
-<p class="sd-card-text">态向量、密度矩阵、MPS 与张量网络的取舍与边界。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#choose-a-simulator.md"><span class="xref myst">了解更多 »</span></a></p>
-</div>
-<span class="sd-stretched-link sd-hide-link-text">choose-a-simulator</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="circuits-and-ir.html"><span class="doc">线路与 FlagQuantum IR</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-gear sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path><path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"></path></svg> 使用 PyTorch 训练</div>
-<p class="sd-card-text">模块、命名参数分组、可观测量、检查点与混合模型。</p>
+<p class="sd-card-text">可训练线路、优化器、命名参数与检查点。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#training-with-pytorch.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="training-with-pytorch.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">training-with-pytorch</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="training-with-pytorch.html"><span class="doc">使用 PyTorch 训练</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-pencil sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.263 2.177a1.75 1.75 0 0 1 2.474 0l2.586 2.586a1.75 1.75 0 0 1 0 2.474L19.53 10.03l-.012.013L8.69 20.378a1.753 1.753 0 0 1-.699.409l-5.523 1.68a.748.748 0 0 1-.747-.188.748.748 0 0 1-.188-.747l1.673-5.5a1.75 1.75 0 0 1 .466-.756L14.476 4.963ZM4.708 16.361a.26.26 0 0 0-.067.108l-1.264 4.154 4.177-1.271a.253.253 0 0 0 .1-.059l10.273-9.806-2.94-2.939-10.279 9.813ZM19 8.44l2.263-2.262a.25.25 0 0 0 0-.354l-2.586-2.586a.25.25 0 0 0-.354 0L16.061 5.5Z"></path></svg> 自定义操作</div>
-<p class="sd-card-text">自定义酉矩阵、算子注册表与扩展。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-graph sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 2.75a.75.75 0 0 0-1.5 0v18.5c0 .414.336.75.75.75H20a.75.75 0 0 0 0-1.5H2.5V2.75Z"></path><path d="M22.28 7.78a.75.75 0 0 0-1.06-1.06l-5.72 5.72-3.72-3.72a.75.75 0 0 0-1.06 0l-6 6a.75.75 0 1 0 1.06 1.06l5.47-5.47 3.72 3.72a.75.75 0 0 0 1.06 0l6.25-6.25Z"></path></svg> 测量与噪声</div>
+<p class="sd-card-text">可观测量、结果访问、噪声模型与动态线路。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#custom-operations.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="measurement-and-noise.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">custom-operations</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="measurement-and-noise.html"><span class="doc">测量与噪声</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-tools sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.875 2.292a.114.114 0 0 0-.032.018A7.239 7.239 0 0 0 4.75 8.25a7.248 7.248 0 0 0 3.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 1 1-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.749 8.749 0 0 1 3.25 8.25a8.738 8.738 0 0 1 3.732-7.169 1.547 1.547 0 0 1 1.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 0 0 .119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 0 0 .119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 0 1 1.708.064 8.741 8.741 0 0 1 3.732 7.17 8.747 8.747 0 0 1-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 1 1-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0 0 19.25 8.25a7.239 7.239 0 0 0-3.093-5.94.114.114 0 0 0-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19c0 .608-.315 1.172-.833 1.49l-2.25 1.385a1.75 1.75 0 0 1-1.834 0l-2.25-1.384A1.752 1.752 0 0 1 8 7.192V2.477c0-.098-.048-.155-.084-.176a.068.068 0 0 0-.031-.011l-.01.001Z"></path></svg> 编译与目标</div>
-<p class="sd-card-text">与目标无关的优化、面向拓扑的编译与导出格式。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-cpu sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.75 8h6.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-6.5a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 8.75 8Zm.75 6.5h5v-5h-5Z"></path><path d="M15.25 1a.75.75 0 0 1 .75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 0 1 0 1.5H20v5h2.25a.75.75 0 0 1 0 1.5H20v2.25A1.75 1.75 0 0 1 18.25 20H16v2.25a.75.75 0 0 1-1.5 0V20h-5v2.25a.75.75 0 0 1-1.5 0V20H5.75A1.75 1.75 0 0 1 4 18.25V16H1.75a.75.75 0 0 1 0-1.5H4v-5H1.75a.75.75 0 0 1 0-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 0 1 1.5 0V4h5V1.75a.75.75 0 0 1 .75-.75Zm3 17.5a.25.25 0 0 0 .25-.25V5.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25Z"></path></svg> 模拟表示</div>
+<p class="sd-card-text">态向量、MPS、张量网络与 JAX 内核。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#compile-and-target.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="simulation-representations.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">compile-and-target</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="simulation-representations.html"><span class="doc">模拟表示</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-globe sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1Zm3.241 10.5v-.001c-.1-2.708-.992-4.904-1.89-6.452a13.919 13.919 0 0 0-1.304-1.88L12 3.11l-.047.059c-.354.425-.828 1.06-1.304 1.88-.898 1.547-1.79 3.743-1.89 6.451Zm-12.728 0h4.745c.1-3.037 1.1-5.49 2.093-7.204.39-.672.78-1.233 1.119-1.673C6.11 3.329 2.746 7 2.513 11.5Zm18.974 0C21.254 7 17.89 3.329 13.53 2.623c.339.44.729 1.001 1.119 1.673.993 1.714 1.993 4.167 2.093 7.204ZM8.787 13c.182 2.478 1.02 4.5 1.862 5.953.382.661.818 1.29 1.304 1.88l.047.057.047-.059c.354-.425.828-1.06 1.304-1.88.842-1.451 1.679-3.471 1.862-5.951Zm-1.504 0H2.552a9.505 9.505 0 0 0 7.918 8.377 15.773 15.773 0 0 1-1.119-1.673C8.413 18.085 7.47 15.807 7.283 13Zm9.434 0c-.186 2.807-1.13 5.085-2.068 6.704-.39.672-.78 1.233-1.118 1.673A9.506 9.506 0 0 0 21.447 13Z"></path></svg> 编译器与远程目标</div>
-<p class="sd-card-text">面向提供方编译、硬件上测量哈密顿量、非阻塞投递与打包。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="compiler-and-remote.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="compiler-and-remote.html"><span class="doc">编译器与远程目标</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-zap sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.716 1.329a1.341 1.341 0 0 1 2.109 1.55L15.147 9h4.161c1.623 0 2.372 2.016 1.143 3.075L8.102 22.721a1.148 1.148 0 0 1-1.81-1.317L8.996 15H4.674c-1.619 0-2.37-2.008-1.148-3.07l12.19-10.6Zm.452 1.595L4.51 13.061a.25.25 0 0 0 .164.439h5.45a.749.749 0 0 1 .692 1.041l-2.559 6.066 11.215-9.668a.25.25 0 0 0-.164-.439H14a.75.75 0 0 1-.687-1.05Z"></path></svg> 含噪模拟</div>
-<p class="sd-card-text">一个后端中立的噪声模型，覆盖精确与轨迹执行。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="noisy-simulation.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="noisy-simulation.html"><span class="doc">含噪模拟</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-telescope sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M.408 15.13a2 2 0 0 1 .59-2.642L17.038 1.33a1.999 1.999 0 0 1 2.85.602l2.828 4.644a2 2 0 0 1-.851 2.847l-17.762 8.43a2 2 0 0 1-2.59-.807Zm5.263-4.066 1.987 3.44 8.712-4.135-2.857-4.76Zm12.06-1.34.001-.001 3.49-1.656a.498.498 0 0 0 .212-.712l-2.826-4.644a.503.503 0 0 0-.713-.151l-3.148 2.19Zm-13.295 2.2L1.854 13.72a.5.5 0 0 0-.147.66l1.105 1.915a.5.5 0 0 0 .648.201l2.838-1.347ZM17.155 22.87a.75.75 0 0 0 .226-1.036l-4-6.239a.75.75 0 0 0-.941-.278l-2.75 1.25a.75.75 0 0 0-.318.274l-3.25 4.989a.75.75 0 0 0 1.256.819l3.131-4.806.51-.232v5.64a.75.75 0 1 0 1.5 0v-6.22l3.6 5.613a.75.75 0 0 0 1.036.226Z"></path></svg> 数字孪生与纠错</div>
-<p class="sd-card-text">标定条件下的 QPU 模型，以及重复码存储实验。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#digital-twin-and-qec.md"><span class="xref myst">了解更多 »</span></a></p>
-</div>
-<span class="sd-stretched-link sd-hide-link-text">digital-twin-and-qec</span></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-telescope sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M.408 15.13a2 2 0 0 1 .59-2.642L17.038 1.33a1.999 1.999 0 0 1 2.85.602l2.828 4.644a2 2 0 0 1-.851 2.847l-17.762 8.43a2 2 0 0 1-2.59-.807Zm5.263-4.066 1.987 3.44 8.712-4.135-2.857-4.76Zm12.06-1.34.001-.001 3.49-1.656a.498.498 0 0 0 .212-.712l-2.826-4.644a.503.503 0 0 0-.713-.151l-3.148 2.19Zm-13.295 2.2L1.854 13.72a.5.5 0 0 0-.147.66l1.105 1.915a.5.5 0 0 0 .648.201l2.838-1.347ZM17.155 22.87a.75.75 0 0 0 .226-1.036l-4-6.239a.75.75 0 0 0-.941-.278l-2.75 1.25a.75.75 0 0 0-.318.274l-3.25 4.989a.75.75 0 0 0 1.256.819l3.131-4.806.51-.232v5.64a.75.75 0 1 0 1.5 0v-6.22l3.6 5.613a.75.75 0 0 0 1.036.226Z"></path></svg> QPU 数字孪生</div>
-<p class="sd-card-text">预测、证据包络、硬件验证与漂移跟踪。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="qpu-digital-twin.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="qpu-digital-twin.html"><span class="doc">QPU 数字孪生</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-shield sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 15.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8.25a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0v-4.5Z"></path><path d="M11.46.637a1.748 1.748 0 0 1 1.08 0l8.25 2.675A1.75 1.75 0 0 1 22 4.976V10c0 6.19-3.77 10.705-9.401 12.83a1.704 1.704 0 0 1-1.198 0C5.771 20.704 2 16.19 2 10V4.976c0-.76.49-1.43 1.21-1.664Zm.617 1.426a.253.253 0 0 0-.154 0L3.673 4.74a.25.25 0 0 0-.173.237V10c0 5.461 3.28 9.483 8.43 11.426a.199.199 0 0 0 .14 0C17.22 19.483 20.5 15.46 20.5 10V4.976a.25.25 0 0 0-.173-.237Z"></path></svg> 量子纠错</div>
-<p class="sd-card-text">症状提取、译码、纠正与逻辑结果分析。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="qec.html"><span class="std std-doc">了解更多 »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="qec.html"><span class="doc">量子纠错</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-cloud sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.103 10.107c0-4.244 3.445-7.607 7.733-7.607 3.19 0 5.912 1.858 7.099 4.563l.01.022.001.006C21.348 7.345 24 10.095 24 13.536 24 17.148 21.076 20 17.431 20H5.017C2.23 20 0 17.83 0 15.06a4.899 4.899 0 0 1 3.112-4.581 7.696 7.696 0 0 1-.009-.372ZM10.836 4c-3.485 0-6.233 2.717-6.233 6.107 0 .284.022.602.052.756a.75.75 0 0 1-.552.869c-1.52.385-2.603 1.712-2.603 3.328 0 1.917 1.532 3.44 3.517 3.44h12.414c2.843 0 5.069-2.206 5.069-4.964 0-2.759-2.226-4.965-5.069-4.965a.75.75 0 0 1-.696-.47l-.179-.446C15.606 5.5 13.424 4 10.836 4Z"></path></svg> 在硬件上运行</div>
-<p class="sd-card-text">编译、提交、恢复任务，以及面向提供方的打包。</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#run-on-hardware.md"><span class="xref myst">了解更多 »</span></a></p>
-</div>
-<span class="sd-stretched-link sd-hide-link-text">run-on-hardware</span></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-stack sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.063 1.456a1.749 1.749 0 0 1 1.874 0l8.383 5.316a1.751 1.751 0 0 1 0 2.956l-8.383 5.316a1.749 1.749 0 0 1-1.874 0L2.68 9.728a1.751 1.751 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"></path><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path></svg> 分布式执行</div>
-<p class="sd-card-text">跨卡切分的态向量与按 rank 拥有的 MPS 负载。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-server sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.75 6.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM6 7.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 6 7.25Zm4 9a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm-3.25-.75a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5Z"></path><path d="M3.25 2h17.5c.966 0 1.75.784 1.75 1.75v7c0 .372-.116.716-.314 1 .198.284.314.628.314 1v7a1.75 1.75 0 0 1-1.75 1.75H3.25a1.75 1.75 0 0 1-1.75-1.75v-7c0-.358.109-.707.314-1a1.741 1.741 0 0 1-.314-1v-7C1.5 2.784 2.284 2 3.25 2Zm0 10.5a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25Zm0-1.5h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25H3.25a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25Z"></path></svg> 分布式执行</div>
+<p class="sd-card-text">分片态向量与按 rank 拥有的 MPS 训练。</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="distributed-execution.html"><span class="std std-doc">了解更多 »</span></a></p>
@@ -753,44 +654,44 @@
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-git-branch sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4.75a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM2.5 19.25a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0Zm0-14.5a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0ZM5.75 6.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 6.5Zm0 14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 21Zm12.5-14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 18.25 6.5Z"></path><path d="M5.75 16.75A.75.75 0 0 1 5 16V8a.75.75 0 0 1 1.5 0v8a.75.75 0 0 1-.75.75Z"></path><path d="M17.5 8.75v-1H19v1a3.75 3.75 0 0 1-3.75 3.75h-7a1.75 1.75 0 0 0-1.75 1.75H5A3.25 3.25 0 0 1 8.25 11h7a2.25 2.25 0 0 0 2.25-2.25Z"></path></svg> 动态线路</div>
-<p class="sd-card-text">线路中测量、条件操作与后端评估。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-plug sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5H2.938c-.794 0-1.438.644-1.438 1.437v8.313a.75.75 0 0 1-1.5 0v-8.312A2.939 2.939 0 0 1 2.937 10H7V6.151c0-.897.678-1.648 1.57-1.74l6.055-.626 1.006-1.174A1.752 1.752 0 0 1 16.96 2h1.29c.966 0 1.75.784 1.75 1.75V6h3.25a.75.75 0 0 1 0 1.5H20V14h3.25a.75.75 0 0 1 0 1.5H20v2.25a1.75 1.75 0 0 1-1.75 1.75h-1.29a1.75 1.75 0 0 1-1.329-.611l-1.006-1.174-6.055-.627A1.749 1.749 0 0 1 7 15.348Zm9.77-7.913v.001l-1.201 1.4a.75.75 0 0 1-.492.258l-6.353.657a.25.25 0 0 0-.224.249v9.196a.25.25 0 0 0 .224.249l6.353.657c.191.02.368.112.493.258l1.2 1.401a.252.252 0 0 0 .19.087h1.29a.25.25 0 0 0 .25-.25v-14a.25.25 0 0 0-.25-.25h-1.29a.252.252 0 0 0-.19.087Z"></path></svg> 硬件与远程目标</div>
+<p class="sd-card-text">FlagOS 加速器、远程任务与部署包。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="dynamic-circuits.html"><span class="std std-doc">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="hardware-and-remote.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="dynamic-circuits.html"><span class="doc">动态线路</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="hardware-and-remote.html"><span class="doc">硬件与远程目标</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-stack sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.063 1.456a1.749 1.749 0 0 1 1.874 0l8.383 5.316a1.751 1.751 0 0 1 0 2.956l-8.383 5.316a1.749 1.749 0 0 1-1.874 0L2.68 9.728a1.751 1.751 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"></path><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.749 1.749 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035Z"></path></svg> 算法</div>
-<p class="sd-card-text">演示规模的算法单元及其优势前提。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-beaker sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8.807V3.5h-.563a.75.75 0 0 1 0-1.5h9.125a.75.75 0 0 1 0 1.5H16v5.307l5.125 9.301c.964 1.75-.302 3.892-2.299 3.892H5.174c-1.998 0-3.263-2.142-2.3-3.892ZM4.189 18.832a1.123 1.123 0 0 0 .985 1.668h13.652a1.123 1.123 0 0 0 .985-1.668L17.7 15H6.3ZM14.5 3.5h-5V9a.75.75 0 0 1-.093.362L7.127 13.5h9.746l-2.28-4.138A.75.75 0 0 1 14.5 9Z"></path></svg> 算法与纠错</div>
+<p class="sd-card-text">算法单元、纠错实验与数字孪生。</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="algorithms.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="algorithms.html"><span class="doc">算法</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="algorithms.html"><span class="doc">算法、纠错与数字孪生</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-file-code sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0Zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5Z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04Zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45Z"></path></svg> 示例与教程</div>
-<p class="sd-card-text">教程笔记本、脚本示例与冒烟运行。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-book sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"></path></svg> 教程</div>
+<p class="sd-card-text">教程系列与示例目录。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#examples-and-tutorials.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="tutorials.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">examples-and-tutorials</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="tutorials.html"><span class="doc">教程</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-checklist sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.75a.25.25 0 0 1 .25-.25h13.5a.25.25 0 0 1 .25.25v10a.75.75 0 0 0 1.5 0v-10A1.75 1.75 0 0 0 17.25 2H3.75A1.75 1.75 0 0 0 2 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 0 0 0-1.5h-7a.25.25 0 0 1-.25-.25V3.75Z"></path><path d="M6.25 7a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm-.75 4.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm16.28 4.53a.75.75 0 1 0-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5.5-5.5Z"></path></svg> 运行测试</div>
-<p class="sd-card-text">正确性分层、设备通道与发布边界。</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-flame sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.265 1.627c0 3.545 1.869 5.327 3.479 7.021 1.54 1.62 3.006 3.163 3.006 6.102 0 4.812-3.753 8.25-8.565 8.25-4.813 0-8.935-3.421-8.935-8.25 0-2.039.962-4.011 2.509-4.899.305-.175.672.007.803.334C7.563 12.684 8.797 12.64 9.437 12c.388-.387.47-1.116-.004-2.062-2.405-4.812 1.863-8.279 4.2-8.854.336-.082.615.198.632.543ZM12.185 21.5c4.059 0 7.065-2.84 7.065-6.75 0-2.337-1.093-3.489-2.678-5.158l-.021-.023c-1.44-1.517-3.139-3.351-3.649-6.557a6.148 6.148 0 0 0-1.911 1.76c-.787 1.144-1.147 2.633-.216 4.495.603 1.205.777 2.74-.277 3.794-.657.657-1.762 1.1-2.956.586-.752-.324-1.353-.955-1.838-1.79-.567.706-.954 1.74-.954 2.893 0 3.847 3.288 6.75 7.435 6.75Z"></path></svg> 运行测试</div>
+<p class="sd-card-text">测试分层与标记命令。</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="run-tests.html"><span class="std std-doc">了解更多 »</span></a></p>
@@ -798,6 +699,8 @@
 <a class="sd-stretched-link sd-hide-link-text reference internal" href="run-tests.html"><span class="doc">运行测试</span></a></div>
 </div>
 </div>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -813,20 +716,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../getting_started/quick-start.html"
+       href="../getting_started/install.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">快速开始</p>
+        <p class="prev-next-title">安装 FlagQuantum</p>
       </div>
     </a>
     <a class="right-next"
-       href="runtime-planning.html"
+       href="basic-usage.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">运行时规划</p>
+        <p class="prev-next-title">基本用法</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

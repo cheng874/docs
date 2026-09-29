@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/distributed-execution.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="分布式执行保持一个逻辑负载，并把它切分到多个 rank 上。 跨卡切分的态向量: 已初始化的多 rank 进程组改变的是运行时，而不是程序： 此后，同一个模块与结果接口会使用原生跨卡态向量运行时，振幅归属保持在本地 rank。 该路径禁止物化完整态，仅前向训练的阻塞项会被显式报告，分布式拓扑取自执行环境。 按 rank 拥有的 MPS: MPS 执行同样可以把一个态分布到多个 rank： 在已复核的证据中，针对已入库的 all-rank 与 all-boundary 负载，一次 batch-one、complex64 的 MPS 训练步在键维数 768、16 个 rank 上达到 131..." />
+<meta property="og:description" content="分布式执行把同一套编程模型扩展到真正切分的负载上。同一份逻辑负载被切到多个 rank，复制式执行永远不会被当作容量扩展来呈现。 分片态向量: 在已初始化的多 rank 进程组下，同一态向量模块与结果面会自动使用原生分片态向量运行时。分布式拓扑来自执行环境，而不是另一套模式词汇。 分片态向量训练让优化器状态与检查点都归所声明的分布所有，因此前向执行、梯度、优化器更新与重启都保持同一套语义。 按 rank 拥有的 MPS: 分布式 MPS 训练让前向、反向与优化器状态都由 rank 拥有。它是单设备放不下、纠缠又较低的大系统的路径，并支持语义匹配的检查点与恢复。面向有键结构的系统，还可以使用..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="分布式执行保持一个逻辑负载，并把它切分到多个 rank 上。 跨卡切分的态向量: 已初始化的多 rank 进程组改变的是运行时，而不是程序： 此后，同一个模块与结果接口会使用原生跨卡态向量运行时，振幅归属保持在本地 rank。 该路径禁止物化完整态，仅前向训练的阻塞项会被显式报告，分布式拓扑取自执行环境。 按 rank 拥有的 MPS: MPS 执行同样可以把一个态分布到多个 rank： 在已复核的证据中，针对已入库的 all-rank 与 all-boundary 负载，一次 batch-one、complex64 的 MPS 训练步在键维数 768、16 个 rank 上达到 131..." />
+<meta name="description" content="分布式执行把同一套编程模型扩展到真正切分的负载上。同一份逻辑负载被切到多个 rank，复制式执行永远不会被当作容量扩展来呈现。 分片态向量: 在已初始化的多 rank 进程组下，同一态向量模块与结果面会自动使用原生分片态向量运行时。分布式拓扑来自执行环境，而不是另一套模式词汇。 分片态向量训练让优化器状态与检查点都归所声明的分布所有，因此前向执行、梯度、优化器更新与重启都保持同一套语义。 按 rank 拥有的 MPS: 分布式 MPS 训练让前向、反向与优化器状态都由 rank 拥有。它是单设备放不下、纠缠又较低的大系统的路径，并支持语义匹配的检查点与恢复。面向有键结构的系统，还可以使用..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>分布式执行 &#8212; FlagQuantum 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.c5da39cc-f054-4722-a89f-00f206dedec5.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.380651a6-8e21-45fa-bfd3-2e2582ed19fb.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/distributed-execution';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="动态线路" href="dynamic-circuits.html" />
-    <link rel="prev" title="量子纠错" href="qec.html" />
+    <link rel="next" title="硬件与远程目标" href="hardware-and-remote.html" />
+    <link rel="prev" title="模拟表示" href="simulation-representations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -380,41 +380,50 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 概览</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">概览</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">特性</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum 概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">架构</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 快速入门</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">FlagQuantum 快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 用户指南</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">用户指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runtime-planning.html">运行时规划</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local-workflows.html">本地工作流</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiler-and-remote.html">编译器与远程目标</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">含噪模拟</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qpu-digital-twin.html">QPU 数字孪生</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qec.html">量子纠错</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">基本用法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">线路与 FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">使用 PyTorch 训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">测量与噪声</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">模拟表示</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">分布式执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">硬件与远程目标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">算法、纠错与数字孪生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">运行测试</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">基本用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">线路与 FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">使用 PyTorch 训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">测量与噪声</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">模拟表示</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">分布式执行</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic-circuits.html">动态线路</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">硬件与远程目标</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法、纠错与数字孪生</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">教程</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run-tests.html">运行测试</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考资料</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">参考资料</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">接口参考</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">扩展 SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">能力参考</a></li>
 </ul>
 
     </div>
@@ -566,10 +575,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">跨卡切分的态向量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">分片态向量</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-mps">按 rank 拥有的 MPS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">分布式训练</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">必须说明的语义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">这里的分布式证据意味着什么</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">FlagOS 加速器</a></li>
 </ul>
             </nav>
         </div>
@@ -583,47 +592,44 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>分布式执行<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>分布式执行保持一个逻辑负载，并把它切分到多个 rank 上。</p>
+<p>分布式执行把同一套编程模型扩展到真正切分的负载上。同一份逻辑负载被切到多个 rank，复制式执行永远不会被当作容量扩展来呈现。</p>
 <section id="id2">
-<h2>跨卡切分的态向量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>已初始化的多 rank 进程组改变的是运行时，而不是程序：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span>your_script.py
+<h2>分片态向量<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在已初始化的多 rank 进程组下，同一态向量模块与结果面会自动使用原生分片态向量运行时。分布式拓扑来自执行环境，而不是另一套模式词汇。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span>your_script.py
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
 
-<span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">build_circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>此后，同一个模块与结果接口会使用原生跨卡态向量运行时，振幅归属保持在本地 rank。
-该路径禁止物化完整态，仅前向训练的阻塞项会被显式报告，分布式拓扑取自执行环境。</p>
+<p>分片态向量训练让优化器状态与检查点都归所声明的分布所有，因此前向执行、梯度、优化器更新与重启都保持同一套语义。</p>
 </section>
 <section id="rank-mps">
 <h2>按 rank 拥有的 MPS<a class="headerlink" href="#rank-mps" title="Link to this heading">#</a></h2>
-<p>MPS 执行同样可以把一个态分布到多个 rank：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/distributed_mps/variable_bond_capacity_8gpu.py
+<p>分布式 MPS 训练让前向、反向与优化器状态都由 rank 拥有。它是单设备放不下、纠缠又较低的大系统的路径，并支持语义匹配的检查点与恢复。面向有键结构的系统，还可以使用带 owner 本地有限内存历史的实验性 <code class="docutils literal notranslate"><span class="pre">adam_lbfgs</span></code> 调度。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/distributed_mps/variable_bond_capacity_8gpu.py
+python<span class="w"> </span>examples/distributed_statevector_topologies/run.sh
 </pre></div>
 </div>
-<p>在已复核的证据中，针对已入库的 all-rank 与 all-boundary 负载，一次 batch-one、complex64
-的 MPS 训练步在键维数 768、16 个 rank 上达到 131,072 个格点，单 rank 峰值分配内存
-最大 72.41 GiB，累计丢弃权重 8.39e-06。这是一次确切负载的结果，不是固定计划的强
-扩展性结论。</p>
 </section>
 <section id="id3">
-<h2>分布式训练<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>按 rank 拥有的态向量与 MPS 训练，可通过 <code class="docutils literal notranslate"><span class="pre">flagquantum.experimental.distributed</span></code> 下显式
-的实验性入口使用，具备按 rank 拥有的优化器状态、检查点／恢复、取消与进度上报。它们
-不会因调用 <code class="docutils literal notranslate"><span class="pre">fq.train</span></code> 而被隐式启用；并且只有当前向执行、梯度、优化器更新与检查点
-归属都保持声明的分布式语义时，分布式训练才算完成。</p>
-</section>
-<section id="id4">
-<h2>必须说明的语义<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>这里的分布式证据意味着什么<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>数据并行复制属于吞吐，而不是容量扩展。</p></li>
-<li><p>rank 本地内核与手工张量切片按各自语义报告。</p></li>
-<li><p>CPU 分布式运行只能证明语义与失败即拒行为，绝不能替代真实加速卡的容量证据。</p></li>
-<li><p>多机发布认证需要获得提升的、经审计的硬件证据。</p></li>
+<li><p>主张分布式可扩展性，必须把同一份逻辑负载切分到多个 rank。</p></li>
+<li><p>CPU 分布式分层只证明语义与失败即拒绝的行为，不是容量证据。</p></li>
+<li><p>运行时记录会报告自身的 <code class="docutils literal notranslate"><span class="pre">distribution_semantics</span></code>，从而把分片容量与复制吞吐区分开。</p></li>
+<li><p>在受支持的分片态向量与 MPS 配置之外，分布式训练仍明确属于实验性。</p></li>
 </ul>
+</section>
+<section id="flagos">
+<h2>FlagOS 加速器<a class="headerlink" href="#flagos" title="Link to this heading">#</a></h2>
+<p>在 FlagOS 支持的加速器上，同一份程序通过 Torch-FL 运行在逻辑设备 <code class="docutils literal notranslate"><span class="pre">flagos:0</span></code> 上，因此分布式传输与集合通信都走 FlagOS 路由。详见<a class="reference internal" href="hardware-and-remote.html"><span class="std std-doc">硬件与远程目标</span></a>。</p>
 </section>
 </section>
 
@@ -639,20 +645,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="qec.html"
+       href="simulation-representations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">量子纠错</p>
+        <p class="prev-next-title">模拟表示</p>
       </div>
     </a>
     <a class="right-next"
-       href="dynamic-circuits.html"
+       href="hardware-and-remote.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">动态线路</p>
+        <p class="prev-next-title">硬件与远程目标</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -674,10 +680,10 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">跨卡切分的态向量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">分片态向量</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-mps">按 rank 拥有的 MPS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">分布式训练</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">必须说明的语义</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">这里的分布式证据意味着什么</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos">FlagOS 加速器</a></li>
 </ul>
   </nav></div>
 
