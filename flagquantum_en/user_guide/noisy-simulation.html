@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/noisy-simulation.51a985a3-b69f-4fd0-8f15-78a60abba123.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/noisy-simulation.ed9a0014-52c9-48d6-8ea1-5e70f6a88e39.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/noisy-simulation';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Digital Twins and Error Correction" href="digital-twin-and-qec.html" />
-    <link rel="prev" title="Compiler and Remote Targets" href="compiler-and-remote.html" />
+    <link rel="next" title="Compilation" href="compilation.html" />
+    <link rel="prev" title="Distributed Execution" href="distributed-execution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -380,51 +380,42 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">Architecture</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started with FlagQuantum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first-quantum-model.html">First Quantum Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build-and-run.html">Build and Run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runtime-planning.html">Runtime Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local-workflows.html">Local Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="choose-a-simulator.html">Choose a Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Train with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom-operations.html">Custom Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compile-and-target.html">Compile and Target</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compiler-and-remote.html">Compiler and Remote Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-twin-and-qec.html">Digital Twins and Error Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qpu-digital-twin.html">QPU Digital Twin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qec.html">Quantum Error Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-on-hardware.html">Run on Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic-circuits.html">Dynamic circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples-and-tutorials.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability Catalog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extension SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
 </ul>
 
     </div>
@@ -576,11 +567,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-noise-model">Define a noise model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-simulation">Trajectory simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-channels">Built-in channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-under-a-memory-budget">Selection under a memory budget</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-evolution">Continuous-time evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundaries">Boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundary">Support boundary</a></li>
 </ul>
             </nav>
         </div>
@@ -594,12 +584,13 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="noisy-simulation">
 <h1>Noisy Simulation<a class="headerlink" href="#noisy-simulation" title="Link to this heading">#</a></h1>
-<p>FlagQuantum uses one backend-neutral <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> for exact density-matrix evolution, batched statevector trajectories, and MPS quantum trajectories. The exact path is the small-system correctness oracle; trajectory paths report sampling statistics, and the MPS path additionally reports truncation data.</p>
-<section id="define-a-noise-model">
-<h2>Define a noise model<a class="headerlink" href="#define-a-noise-model" title="Link to this heading">#</a></h2>
+<p>FlagQuantum uses one backend-neutral <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> for exact density-matrix
+evolution, batched statevector trajectories, and MPS quantum trajectories. The
+exact path is the small-system correctness oracle; trajectory paths report
+sampling statistics, and the MPS path additionally reports truncation data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum.runtime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fqr</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum.noise</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fqn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum.runtime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fqr</span>
 
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="p">(</span>
@@ -616,43 +607,49 @@
     <span class="n">outputs</span><span class="o">=</span><span class="n">fq</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">fq</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">exact</span><span class="o">.</span><span class="n">expectation</span><span class="p">())</span>
-</pre></div>
-</div>
-<p>Built-in channels include depolarizing, bit flip, phase flip, amplitude damping, thermal relaxation, and readout error. A device profile can additionally supply gate durations and idle-time noise, which the runtime lowers into channels on the gates and idle windows that actually occur.</p>
-</section>
-<section id="trajectory-simulation">
-<h2>Trajectory simulation<a class="headerlink" href="#trajectory-simulation" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sampled</span> <span class="o">=</span> <span class="n">fqr</span><span class="o">.</span><span class="n">run_noisy_mps</span><span class="p">(</span>
+
+<span class="n">sampled</span> <span class="o">=</span> <span class="n">fqr</span><span class="o">.</span><span class="n">run_noisy_mps</span><span class="p">(</span>
     <span class="n">circuit</span><span class="p">,</span>
     <span class="n">noise</span><span class="p">,</span>
     <span class="n">trajectories</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
     <span class="n">min_trajectories</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
     <span class="n">target_standard_error</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-    <span class="n">retain_trajectories</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sampled</span><span class="o">.</span><span class="n">expectation_z_mean</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sampled</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">standard_error</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sampled</span><span class="o">.</span><span class="n">expectation_z_mean</span><span class="p">,</span> <span class="n">sampled</span><span class="o">.</span><span class="n">statistics</span><span class="o">.</span><span class="n">standard_error</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sampled</span><span class="o">.</span><span class="n">converged</span><span class="p">,</span> <span class="n">sampled</span><span class="o">.</span><span class="n">stopped_early</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Adaptive stopping is available on a single rank; when the exact density matrix would exceed an explicit memory budget, the stable <code class="docutils literal notranslate"><span class="pre">fq.run</span></code> entry point can select noisy MPS trajectories instead, but only if the caller opts in to approximation — otherwise planning fails rather than changing the semantics of the program silently.</p>
+<section id="built-in-channels">
+<h2>Built-in channels<a class="headerlink" href="#built-in-channels" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">bit_flip</span></code>, <code class="docutils literal notranslate"><span class="pre">phase_flip</span></code>, <code class="docutils literal notranslate"><span class="pre">depolarizing</span></code>, and <code class="docutils literal notranslate"><span class="pre">amplitude_damping</span></code> channels,
+thermal relaxation with gate timing, readout confusion matrices, and
+calibration-conditioned device profiles with gate and idle noise lowering.</p>
+</section>
+<section id="selection-under-a-memory-budget">
+<h2>Selection under a memory budget<a class="headerlink" href="#selection-under-a-memory-budget" title="Link to this heading">#</a></h2>
+<p>The stable <code class="docutils literal notranslate"><span class="pre">fq.run(...)</span></code> entry point can select noisy MPS trajectories when the
+exact density matrix would exceed an explicit memory budget. Approximation is
+opt-in: without that budget, planning fails rather than silently changing the
+semantics of the request.</p>
 </section>
 <section id="reproducibility">
 <h2>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h2>
-<p>A <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> carries a versioned identity, and that identity is part of the plan. A plan round trip re-verifies the model payload and its digest, so a noisy result can be reproduced from the stored plan instead of from a re-typed noise definition.</p>
+<p>A noise model has an identity that participates in plan verification, so a
+versioned model survives a plan JSON round trip and a changed model is detected
+instead of being applied silently. Trajectory runs accept an explicit seed and
+report their sampling statistics.</p>
 </section>
-<section id="continuous-time-evolution">
-<h2>Continuous-time evolution<a class="headerlink" href="#continuous-time-evolution" title="Link to this heading">#</a></h2>
-<p>Time-independent Markovian systems can be evolved with a dense Hamiltonian and Lindblad collapse operators on a fixed time grid:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/lindblad_evolution.py
-</pre></div>
-</div>
-<p>This path is CPU-only for complex64 and complex128, and the grid controls the accuracy of the fixed-step fourth-order Runge-Kutta integrator.</p>
-</section>
-<section id="boundaries">
-<h2>Boundaries<a class="headerlink" href="#boundaries" title="Link to this heading">#</a></h2>
-<p>Pulse overlap, crosstalk, leakage, provider calibration adapters, distributed adaptive stopping, batched statevector trajectories, and noisy gradients are not supported. Multi-wire MPS channels use an explicit dense correctness fallback instead of a silent approximation, and the exact supported scope of each noisy path is recorded in the capability catalog.</p>
+<section id="support-boundary">
+<h2>Support boundary<a class="headerlink" href="#support-boundary" title="Link to this heading">#</a></h2>
+<p>Validated Markovian Kraus channels, timestamped device profiles, ASAP gate and
+idle thermal lowering, classical readout confusion, exact density execution, and
+reproducible MPS trajectories with single-rank adaptive stopping are available.
+Pulse overlap, crosstalk, leakage, provider calibration adapters, distributed
+adaptive stopping, batched statevector trajectories, production multi-GPU
+scheduling, and noisy gradients are unsupported. Multi-wire MPS channels use an
+explicit dense correctness fallback.</p>
 </section>
 </section>
 
@@ -668,20 +665,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="compiler-and-remote.html"
+       href="distributed-execution.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Compiler and Remote Targets</p>
+        <p class="prev-next-title">Distributed Execution</p>
       </div>
     </a>
     <a class="right-next"
-       href="digital-twin-and-qec.html"
+       href="compilation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Digital Twins and Error Correction</p>
+        <p class="prev-next-title">Compilation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -703,11 +700,10 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-noise-model">Define a noise model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-simulation">Trajectory simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-channels">Built-in channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-under-a-memory-budget">Selection under a memory budget</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-evolution">Continuous-time evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundaries">Boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundary">Support boundary</a></li>
 </ul>
   </nav></div>
 

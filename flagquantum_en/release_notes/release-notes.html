@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Release notes describe user-visible behaviour and support-boundary changes. Benchmark claims require audited artifacts and are not inferred from this page. v0.2.0: Release date: 2026-09-11 Added Features- Unified program model — fq.Circuit, fq.Module, fq.run, fq.train, and fq.plan form one curate..." />
+<meta property="og:description" content="v0.2.0: Release date: 2026-09-11 Added features- Established FlagQuantum IR, fq.Circuit, fq.Module, fq.run, runtime planning, explicit sharded statevector and MPS execution, distributed training, deployment packaging, and versioned result contracts as the maintained product architecture., PyTorch..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Release notes describe user-visible behaviour and support-boundary changes. Benchmark claims require audited artifacts and are not inferred from this page. v0.2.0: Release date: 2026-09-11 Added Features- Unified program model — fq.Circuit, fq.Module, fq.run, fq.train, and fq.plan form one curate..." />
+<meta name="description" content="v0.2.0: Release date: 2026-09-11 Added features- Established FlagQuantum IR, fq.Circuit, fq.Module, fq.run, runtime planning, explicit sharded statevector and MPS execution, distributed training, deployment packaging, and versioned result contracts as the maintained product architecture., PyTorch..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.5ccfe97a-8f90-4181-9f5c-0ae7321d7002.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.e81d62a4-b3f6-408c-89e4-d37befccb920.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview" href="../overview/overview.html" />
+    <link rel="next" title="FlagQuantum Overview" href="../FlagQuantum_overview/FlagQuantum-overview.html" />
     <link rel="prev" title="FlagQuantum Documentation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -380,51 +380,42 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">Architecture</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started with FlagQuantum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/first-quantum-model.html">First Quantum Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/build-and-run.html">Build and Run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/runtime-planning.html">Runtime Planning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/local-workflows.html">Local Workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/choose-a-simulator.html">Choose a Simulator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Train with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/custom-operations.html">Custom Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compile-and-target.html">Compile and Target</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compiler-and-remote.html">Compiler and Remote Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/digital-twin-and-qec.html">Digital Twins and Error Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/qpu-digital-twin.html">QPU Digital Twin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/qec.html">Quantum Error Correction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-on-hardware.html">Run on Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/dynamic-circuits.html">Dynamic circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples-and-tutorials.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability Catalog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extension SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
 </ul>
 
     </div>
@@ -577,7 +568,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased">Unreleased</a></li>
 </ul>
             </nav>
         </div>
@@ -591,51 +582,77 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
-<p>Release notes describe user-visible behaviour and support-boundary changes.
-Benchmark claims require audited artifacts and are not inferred from this page.</p>
 <section id="v0-2-0">
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
 <p><strong>Release date</strong>: 2026-09-11</p>
 <ul class="simple">
-<li><p><strong>Added Features</strong></p>
+<li><p><strong>Added features</strong></p>
 <ul>
-<li><p><strong>Unified program model</strong> — <code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.run</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>, and <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code> form one curated public interface over versioned FlagQuantum IR, with an inspectable execution plan, typed results, and fail-closed validation.</p></li>
-<li><p><strong>Representation choice per run</strong> — local statevector, MPS, and tensor-network execution are selected from the same program, with optional JAX kernels available behind the PyTorch interface.</p></li>
-<li><p><strong>Distributed execution</strong> — owner-sharded statevector and rank-owned MPS forward, gradient, and training paths run one logical workload across ranks, with explicit distribution semantics.</p></li>
-<li><p><strong>Noise and precision options</strong> — one backend-neutral noise model drives exact density-matrix evolution, batched statevector trajectories, and MPS trajectories, and software-expanded Double-Single arithmetic extends precision on FP32-only devices.</p></li>
-<li><p><strong>Hardware execution paths</strong> — explicit compiler and provider selection compiles, packages, submits, and returns results through the same <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> contract, including grouped Pauli measurements for shot-based hardware.</p></li>
-<li><p><strong>Ecosystem adapters</strong> — framework-neutral conversion for PennyLane, Qiskit, Cirq, and CUDA-Q, plus explicit execution bridges for local PennyLane Lightning, Qiskit Aer, and Cirq simulators.</p></li>
-<li><p><strong>Deployment and extension surface</strong> — sealed deployment packages bind trained parameters to a target, and an extension SDK supports backend, kernel, operator, compiler-pass, device, provider, measurement-collector, and planner plugins with capability negotiation.</p></li>
-<li><p><strong>Evidence discipline</strong> — every capability carries a maturity level, and public performance claims require a checked-in artifact with a digest and a recorded environment.</p></li>
-</ul>
-</li>
-<li><p><strong>Changed</strong></p>
-<ul>
-<li><p>The stable root API is bounded by a checked manifest; experimental and compatibility imports no longer silently expand the supported surface.</p></li>
-<li><p>Runtime configuration is immutable, task-scoped, and carried through compile, plan, and execution boundaries instead of process-global state.</p></li>
+<li><p>Established FlagQuantum IR, <code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.run</span></code>, runtime
+planning, explicit sharded statevector and MPS execution, distributed
+training, deployment packaging, and versioned result contracts as the
+maintained product architecture.</p></li>
+<li><p>PyTorch-native training with flat, named, and symbolic parameter groups,
+per-module precision policy, and module checkpoint and restore.</p></li>
+<li><p>Choice of statevector, matrix product state, and tensor-network execution
+from one program, with an explainable runtime plan and no silent fallback.</p></li>
+<li><p>Explicitly selectable compiler journeys: target-independent optimization,
+target-aware compilation with a coupling map, and compiler-plugin selection
+for a named provider target.</p></li>
+<li><p>Sealed deployment packages, Pauli measurement plans for shot-based hardware,
+and remote execution against Quafu hardware and Jiuding managed compute.</p></li>
+<li><p>Backend-neutral noise models with exact density-matrix evolution and
+reproducible trajectory execution, plus a memory-bounded selection path.</p></li>
+<li><p>Stable error categories for validation, planning, capability, and execution
+failures.</p></li>
 </ul>
 </li>
 <li><p><strong>Removed</strong></p>
 <ul>
-<li><p>The pre-release v0.1 device-oriented interface — <code class="docutils literal notranslate"><span class="pre">DistributedQuantumDevice</span></code>, <code class="docutils literal notranslate"><span class="pre">GeneralEncoder</span></code>, the invertible-unitary helper, DTensor interchange helpers, and the device-oriented gate and measurement paths — is not part of the v0.2 product and was removed without a compatibility layer.</p></li>
+<li><p>The pre-release v0.1 <code class="docutils literal notranslate"><span class="pre">DistributedQuantumDevice</span></code>, <code class="docutils literal notranslate"><span class="pre">GeneralEncoder</span></code>,
+<code class="docutils literal notranslate"><span class="pre">InvertibleUnitary</span></code>, DTensor interchange helpers, device-oriented gates, and
+the device-oriented measurement path, without a compatibility layer. They
+are not part of the v0.2 product or its capability evidence.</p></li>
+</ul>
+</li>
+<li><p><strong>Enhanced features</strong></p>
+<ul>
+<li><p>Distributed statevector training with owner-sharded optimizer state,
+checkpoint/resume, cancellation, and structured lifecycle progress.</p></li>
+<li><p>Rank-owned MPS training with variable bond dimension, boundary transport,
+and matched checkpoint/restart equivalence.</p></li>
+<li><p>Compiler plugins discovered as independently installed packages with
+entry-point identity, capability negotiation, and fail-closed errors.</p></li>
+<li><p>FlagOS platform runtime behind an explicit provider selection, with the
+CUDA path unchanged and no vendor branches inside FlagQuantum.</p></li>
 </ul>
 </li>
 </ul>
 </section>
-<section id="v0-1-0">
-<h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
-<p><strong>Release date</strong>: 2026-06-24</p>
+<section id="unreleased">
+<h2>Unreleased<a class="headerlink" href="#unreleased" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Added Features</strong></p>
-<ul>
-<li><p>Initial release of FlagQuantum: a PyTorch-based distributed quantum statevector simulator.</p></li>
-<li><p>Multi-GPU statevector simulation with automatic resharding during gate operations.</p></li>
-<li><p>Gate set covering Pauli, Clifford, rotation, and controlled gates, with trainable parameters.</p></li>
-<li><p>Memory-efficient invertible backpropagation and custom gate registration.</p></li>
-<li><p>Post-selection and depolarising noise models, plus angle, amplitude, and basis encodings.</p></li>
-<li><p>Circuit visualisation in text and Matplotlib modes, and an OpenQASM exporter for real hardware platforms.</p></li>
-</ul>
-</li>
+<li><p>QPU digital twins: calibration-conditioned, provider-neutral models with
+validation series, drift comparison, frozen evidence envelopes, exact-circuit
+regional composition, and prospective incumbent-versus-candidate comparison.</p></li>
+<li><p>Detached remote jobs: <code class="docutils literal notranslate"><span class="pre">fq.submit()</span></code> and <code class="docutils literal notranslate"><span class="pre">fq.restore_job()</span></code> for Quafu counts and
+Jiuding managed programs, with credential-free receipts and unchanged
+synchronous <code class="docutils literal notranslate"><span class="pre">fq.run()</span></code> behaviour.</p></li>
+<li><p>Direct Quafu hardware execution without a local compiler dependency, with
+service compilation by default and explicit local precompilation on request.</p></li>
+<li><p>Interoperability adapters for Qiskit, PennyLane, Cirq, and CUDA-Q, plus
+explicit local execution bridges for PennyLane Lightning, Cirq Simulator, and
+Qiskit Aer.</p></li>
+<li><p>Extension SDK for backends, compilers, compiler passes, kernels, operators,
+devices, providers, measurement collectors, and planners.</p></li>
+<li><p>Quantum algorithm units at demonstration scale, each recording the premise its
+advantage statement depends on, together with staged hybrid VQE and ADAPT-VQE
+optimization helpers.</p></li>
+<li><p>Noisy simulation beyond the exact density path: batched and MPS quantum
+trajectories, readout confusion, and calibration-derived timing and idle
+noise.</p></li>
+<li><p>Continuous-time Lindblad evolution and a repetition-code memory experiment
+connecting syndrome extraction, decoding, and correction.</p></li>
 </ul>
 </section>
 </section>
@@ -661,11 +678,11 @@ Benchmark claims require audited artifacts and are not inferred from this page.<
       </div>
     </a>
     <a class="right-next"
-       href="../overview/overview.html"
+       href="../FlagQuantum_overview/FlagQuantum-overview.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">FlagQuantum Overview</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -688,7 +705,7 @@ Benchmark claims require audited artifacts and are not inferred from this page.<
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unreleased">Unreleased</a></li>
 </ul>
   </nav></div>
 
