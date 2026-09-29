@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Train with PyTorch" />
+<meta property="og:title" content="Training with PyTorch" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/training-with-pytorch.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Execution and training are deliberately separate. fq.Module owns trainable quantum parameters and behaves like an ordinary PyTorch module, and fq.train provides a minimal optimizer loop when you do not need a custom one. A trainable module: module(inputs) and module.forward(inputs) always return ..." />
+<meta property="og:description" content="Execution and training are intentionally separate. A trainable program is an fq.Module inside an ordinary PyTorch training loop. Module behaviour: module(inputs) and module.forward(inputs) return an autograd-compatible tensor, so gradients flow into quantum and classical parameters from the same ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Execution and training are deliberately separate. fq.Module owns trainable quantum parameters and behaves like an ordinary PyTorch module, and fq.train provides a minimal optimizer loop when you do not need a custom one. A trainable module: module(inputs) and module.forward(inputs) always return ..." />
+<meta name="description" content="Execution and training are intentionally separate. A trainable program is an fq.Module inside an ordinary PyTorch training loop. Module behaviour: module(inputs) and module.forward(inputs) return an autograd-compatible tensor, so gradients flow into quantum and classical parameters from the same ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Train with PyTorch &#8212; FlagQuantum Documentation</title>
+    <title>Training with PyTorch &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/training-with-pytorch.e3cf5667-908e-44a1-a219-2b859d5f2dcb.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/training-with-pytorch.72d36cae-d988-492d-aea4-adb69db89d9c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/training-with-pytorch';</script>
@@ -79,6 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Measurement and noise" href="measurement-and-noise.html" />
+    <link rel="prev" title="Circuits and FlagQuantum IR" href="circuits-and-ir.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -250,8 +252,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -395,27 +395,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -557,7 +565,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Train with PyTorch</h1>
+    <h1>Training with PyTorch</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -567,11 +575,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-trainable-module">A trainable module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-behaviour">Module behaviour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-parameter-groups">Named parameter groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observables">Observables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoints-and-precision">Checkpoints and precision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-models">Hybrid models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoints">Checkpoints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training">Distributed training</a></li>
 </ul>
             </nav>
@@ -584,13 +591,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="train-with-pytorch">
-<h1>Train with PyTorch<a class="headerlink" href="#train-with-pytorch" title="Link to this heading">#</a></h1>
-<p>Execution and training are deliberately separate. <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> owns trainable quantum parameters and behaves like an ordinary PyTorch module, and <code class="docutils literal notranslate"><span class="pre">fq.train</span></code> provides a minimal optimizer loop when you do not need a custom one.</p>
-<section id="a-trainable-module">
-<h2>A trainable module<a class="headerlink" href="#a-trainable-module" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="training-with-pytorch">
+<h1>Training with PyTorch<a class="headerlink" href="#training-with-pytorch" title="Link to this heading">#</a></h1>
+<p>Execution and training are intentionally separate. A trainable program is an
+<code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> inside an ordinary PyTorch training loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+
 
 <span class="k">def</span><span class="w"> </span><span class="nf">build_circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span>
@@ -599,6 +606,7 @@
         <span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="p">)</span>
+
 
 <span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span>
     <span class="n">build_circuit</span><span class="p">,</span>
@@ -613,13 +621,37 @@
     <span class="n">objective</span><span class="o">=</span><span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
     <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">training</span><span class="o">.</span><span class="n">final_loss</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">training</span><span class="o">.</span><span class="n">losses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">module(inputs)</span></code> and <code class="docutils literal notranslate"><span class="pre">module.forward(inputs)</span></code> always return an autograd-compatible tensor. <code class="docutils literal notranslate"><span class="pre">module.execute(inputs)</span></code> returns <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> when the caller needs provenance, runtime diagnostics, or explicit backend information. <code class="docutils literal notranslate"><span class="pre">fq.run</span></code> accepts a circuit, IR, or plan — not a module — and never updates parameters.</p>
+<section id="module-behaviour">
+<h2>Module behaviour<a class="headerlink" href="#module-behaviour" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">module(inputs)</span></code> and <code class="docutils literal notranslate"><span class="pre">module.forward(inputs)</span></code> return an autograd-compatible
+tensor, so gradients flow into quantum and classical parameters from the same
+backward call.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module.execute(inputs)</span></code> returns <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> when the caller needs
+provenance, runtime diagnostics or explicit backend information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fq.run</span></code> accepts a circuit, IR or execution plan — not a module — and never
+updates parameters.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">fq.train</span></code> is deliberately a minimal, caller-owned optimizer loop: it performs
+<code class="docutils literal notranslate"><span class="pre">zero_grad</span></code>, <code class="docutils literal notranslate"><span class="pre">backward</span></code> and <code class="docutils literal notranslate"><span class="pre">step</span></code>, then returns <code class="docutils literal notranslate"><span class="pre">fq.TrainingResult</span></code>. Use an
+ordinary PyTorch loop when the quantum module is part of a larger classical
+model.</p>
+</section>
+<section id="precision">
+<h2>Precision<a class="headerlink" href="#precision" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> owns one end-to-end precision choice through <code class="docutils literal notranslate"><span class="pre">PrecisionPolicy</span></code>,
+which determines the real parameter dtype and the complex circuit/execution
+dtype. Circuit builders that omit <code class="docutils literal notranslate"><span class="pre">dtype</span></code> inherit that choice, and an explicit
+<code class="docutils literal notranslate"><span class="pre">ExecutionOptions.precision</span></code> or circuit dtype must agree with it. The module
+fails before execution instead of silently casting.</p>
 </section>
 <section id="named-parameter-groups">
 <h2>Named parameter groups<a class="headerlink" href="#named-parameter-groups" title="Link to this heading">#</a></h2>
+<p>Named groups remove positional-index bookkeeping for larger circuits:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">named_circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="s2">"encoder"</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
@@ -633,27 +665,24 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">init=&quot;uniform&quot;</span></code> samples angles from [0, 2π), <code class="docutils literal notranslate"><span class="pre">init=&quot;normal&quot;</span></code> samples from a zero-mean normal distribution with standard deviation 0.01, and <code class="docutils literal notranslate"><span class="pre">seed</span></code> uses a module-local generator so PyTorch’s global random state is untouched.</p>
+<p><code class="docutils literal notranslate"><span class="pre">init=&quot;uniform&quot;</span></code> samples angles from <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2π)</span></code>, while <code class="docutils literal notranslate"><span class="pre">init=&quot;normal&quot;</span></code> samples
+from a zero-mean normal distribution with standard deviation <code class="docutils literal notranslate"><span class="pre">0.01</span></code>. <code class="docutils literal notranslate"><span class="pre">seed</span></code>
+uses a module-local generator and does not reset PyTorch’s global random state.</p>
 </section>
-<section id="observables">
-<h2>Observables<a class="headerlink" href="#observables" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">RuntimePolicy(observable=&quot;z&quot;,</span> <span class="pre">observable_wires=(0,</span> <span class="pre">1))</span></code> keeps one value per requested wire instead of reducing the observable axis; <code class="docutils literal notranslate"><span class="pre">observable=&quot;z_sum&quot;</span></code> sums that axis. Vector-valued Z execution is supported by the local PyTorch statevector, MPS, and tensor-network paths. JAX and distributed statevector execution are single-observable and fail closed when fallback is disabled.</p>
-</section>
-<section id="checkpoints-and-precision">
-<h2>Checkpoints and precision<a class="headerlink" href="#checkpoints-and-precision" title="Link to this heading">#</a></h2>
-<p>Module parameters and policy participate in <code class="docutils literal notranslate"><span class="pre">state_dict()</span></code> save and load; the circuit builder stays application code and must be supplied when the module is reconstructed. <code class="docutils literal notranslate"><span class="pre">Module.save_checkpoint()</span></code> and <code class="docutils literal notranslate"><span class="pre">Module.load_checkpoint()</span></code> own resume semantics, and the precision policy travels with them. Checkpointing is not a hidden option of <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>.</p>
-</section>
-<section id="hybrid-models">
-<h2>Hybrid models<a class="headerlink" href="#hybrid-models" title="Link to this heading">#</a></h2>
-<p>The repository’s quick-start example trains a <code class="docutils literal notranslate"><span class="pre">torch.nn.Linear</span></code> encoder together with an <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> quantum layer in one optimizer loop and reports correctness against an analytically known target:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/quick_start.py<span class="w"> </span>--mode<span class="w"> </span>sv<span class="w"> </span>--steps<span class="w"> </span><span class="m">40</span>
-</pre></div>
-</div>
-<p>Training with an optional JAX kernel behind the PyTorch interface is shown in <code class="docutils literal notranslate"><span class="pre">examples/single_machine_quantum_ai/04_jax_kernel_torch_layer.py</span></code>. First-order gradients are supported across that bridge; double backward is not, and raises instead of returning an approximate value.</p>
+<section id="checkpoints">
+<h2>Checkpoints<a class="headerlink" href="#checkpoints" title="Link to this heading">#</a></h2>
+<p>Module parameters and policy participate in <code class="docutils literal notranslate"><span class="pre">state_dict()</span></code> save and load, and
+checkpoint and resume stay on <code class="docutils literal notranslate"><span class="pre">Module.save_checkpoint()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Module.load_checkpoint()</span></code> rather than becoming hidden options of <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>.
+The circuit builder remains application code and must be supplied when
+reconstructing the module, matching normal PyTorch module construction.</p>
 </section>
 <section id="distributed-training">
 <h2>Distributed training<a class="headerlink" href="#distributed-training" title="Link to this heading">#</a></h2>
-<p>Owner-sharded statevector and MPS training are separate experimental entry points under <code class="docutils literal notranslate"><span class="pre">flagquantum.experimental.distributed</span></code>. They are not implied by calling <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>, and they are complete only when forward execution, gradients, optimizer updates, and checkpoint ownership all preserve the declared distribution. See <a class="reference internal" href="distributed-execution.html"><span class="std std-doc">Distributed Execution</span></a>.</p>
+<p>Under an initialized multi-rank process group, the same module and result
+surface automatically use the native sharded statevector runtime. Owner-sharded
+statevector and MPS training also expose separate distributed entry points,
+which remain experimental. See <a class="reference internal" href="distributed-execution.html"><span class="std std-doc">Distributed execution</span></a>.</p>
 </section>
 </section>
 
@@ -668,6 +697,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="circuits-and-ir.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Circuits and FlagQuantum IR</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="measurement-and-noise.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measurement and noise</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -686,11 +733,10 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-trainable-module">A trainable module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-behaviour">Module behaviour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-parameter-groups">Named parameter groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observables">Observables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoints-and-precision">Checkpoints and precision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-models">Hybrid models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoints">Checkpoints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training">Distributed training</a></li>
 </ul>
   </nav></div>

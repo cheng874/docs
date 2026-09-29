@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Read Requirements before proceeding. 1. Install FlagQuantum: The released version from PyPI: The development version from source, with development tooling: Add the optional groups you need in the same command, for example python -m pip install -e &quot;.[dev,viz]&quot; or, on a released install, ..." />
+<meta property="og:description" content="Read Requirements before proceeding. Steps: Install FlagQuantum- Install the released package, Install a development checkout with the development tools., Add the optional dependencies you need Use the group names in Requirements instead of installing external frameworks by hand, so that pinned c..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Read Requirements before proceeding. 1. Install FlagQuantum: The released version from PyPI: The development version from source, with development tooling: Add the optional groups you need in the same command, for example python -m pip install -e &quot;.[dev,viz]&quot; or, on a released install, ..." />
+<meta name="description" content="Read Requirements before proceeding. Steps: Install FlagQuantum- Install the released package, Install a development checkout with the development tools., Add the optional dependencies you need Use the group names in Requirements instead of installing external frameworks by hand, so that pinned c..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install FlagQuantum &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.22b15454-1329-4ddd-976d-45e3dde53a59.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.8d30b13f-7f3e-481a-b290-2c26deded5bb.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -567,11 +575,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Install FlagQuantum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-installation">2. Verify the installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-first-execution">3. Run a first execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-development-containers">4. Optional development containers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migrating-from-the-pre-release-v0-1-api">Migrating from the pre-release v0.1 API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-containers">Development containers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next steps</a></li>
 </ul>
             </nav>
         </div>
@@ -586,61 +592,65 @@
   <section class="tex2jax_ignore mathjax_ignore" id="install-flagquantum">
 <h1>Install FlagQuantum<a class="headerlink" href="#install-flagquantum" title="Link to this heading">#</a></h1>
 <p>Read <a class="reference internal" href="requirements.html"><span class="std std-doc">Requirements</span></a> before proceeding.</p>
-<section id="id1">
-<h2>1. Install FlagQuantum<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>The released version from PyPI:</p>
+<section id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Install FlagQuantum</p>
+<ul>
+<li><p>Install the released package</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flagquantum
 </pre></div>
 </div>
-<p>The development version from source, with development tooling:</p>
+</li>
+<li><p>Install a development checkout with the development tools</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/flagos-ai/FlagQuantum.git
 <span class="nb">cd</span><span class="w"> </span>FlagQuantum
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
 </pre></div>
 </div>
-<p>Add the optional groups you need in the same command, for example
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">&quot;.[dev,viz]&quot;</span></code> or, on a released install,
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;flagquantum[qiskit,pennylane]&quot;</span></code>.</p>
-</section>
-<section id="verify-the-installation">
-<h2>2. Verify the installation<a class="headerlink" href="#verify-the-installation" title="Link to this heading">#</a></h2>
+</li>
+</ul>
+</li>
+<li><p>Add the optional dependencies you need</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[jax,cuda,viz]"</span>
+</pre></div>
+</div>
+<p>Use the group names in <a class="reference internal" href="requirements.html"><span class="std std-doc">Requirements</span></a> instead of installing
+external frameworks by hand, so that pinned compatibility windows are kept.</p>
+</li>
+<li><p>Verify the installation</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="run-a-first-execution">
-<h2>3. Run a first execution<a class="headerlink" href="#run-a-first-execution" title="Link to this heading">#</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>examples.cpu_statevector
-</pre></div>
-</div>
-<p>The example runs one complete local journey: build a circuit, create an
-inspectable plan, execute that plan on the CPU statevector engine, and compare
-the result with an analytical reference. The three smallest maintained programs
-are:</p>
+</li>
+<li><p>Verify a local execution path</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>examples.local.simulate
 python<span class="w"> </span>-m<span class="w"> </span>examples.local.measure
 python<span class="w"> </span>-m<span class="w"> </span>examples.local.train
 </pre></div>
 </div>
+<p>These three examples cover local statevector simulation, measurements, and
+PyTorch-native training without credentials, remote resources or optional
+backends.</p>
+</li>
+</ol>
 </section>
-<section id="optional-development-containers">
-<h2>4. Optional development containers<a class="headerlink" href="#optional-development-containers" title="Link to this heading">#</a></h2>
-<p>The repository ships development container definitions for a CPU image, a
-CUDA image, and variants without JAX that carry QSteed and the compiler plugin
-in one environment. They are the recommended way to reproduce the tutorial and
-interoperability dependency sets. See the container guide in the repository for
-the image list and launch commands.</p>
+<section id="development-containers">
+<h2>Development containers<a class="headerlink" href="#development-containers" title="Link to this heading">#</a></h2>
+<p>The repository also ships development container definitions for CPU and CUDA
+environments, with and without JAX and the QSteed compiler. Follow the
+container guide in the repository when you prefer a prepared environment; the
+images install FlagQuantum from the checkout and include JupyterLab, and none
+of them contain provider credentials.</p>
 </section>
-<section id="migrating-from-the-pre-release-v0-1-api">
-<h2>Migrating from the pre-release v0.1 API<a class="headerlink" href="#migrating-from-the-pre-release-v0-1-api" title="Link to this heading">#</a></h2>
-<p>The v0.1 <code class="docutils literal notranslate"><span class="pre">DistributedQuantumDevice</span></code>, <code class="docutils literal notranslate"><span class="pre">GeneralEncoder</span></code>, <code class="docutils literal notranslate"><span class="pre">InvertibleUnitary</span></code>,
-DTensor interchange helpers, device-oriented gates, and the device-oriented
-measurement path are not part of the v0.2 product and have no compatibility
-layer. Port those programs to <code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">fq.run</span></code>; see <a class="reference internal" href="../user_guide/basic-usage.html"><span class="std std-doc">Basic Usage</span></a> and
-<a class="reference internal" href="../user_guide/training.html"><span class="std std-doc">Training</span></a>.</p>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../user_guide/basic-usage.html"><span class="std std-doc">Build and run your first program</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/training-with-pytorch.html"><span class="std std-doc">Train with PyTorch</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/simulation-representations.html"><span class="std std-doc">Choose a simulation representation</span></a></p></li>
+</ul>
 </section>
 </section>
 
@@ -691,11 +701,9 @@ layer. Port those programs to <code class="docutils literal notranslate"><span c
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Install FlagQuantum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-installation">2. Verify the installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-first-execution">3. Run a first execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-development-containers">4. Optional development containers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migrating-from-the-pre-release-v0-1-api">Migrating from the pre-release v0.1 API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-containers">Development containers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next steps</a></li>
 </ul>
   </nav></div>
 

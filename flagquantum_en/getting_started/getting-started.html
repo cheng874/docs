@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for running FlagQuantum and walks through installation, verification, and a first execution. Requirements- Software requirements, Optional extras, Execution targets., Install FlagQuantum- 1. Install FlagQuantum, 2. Verify the installation, 3. Run a first execu..." />
+<meta property="og:description" content="This section covers the requirements for installing FlagQuantum and guides you through the installation process. Your first quantum model: FlagQuantum is a PyTorch-first framework, so the shortest path to a working program is a small trainable circuit. The example below builds a two-qubit circuit..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for running FlagQuantum and walks through installation, verification, and a first execution. Requirements- Software requirements, Optional extras, Execution targets., Install FlagQuantum- 1. Install FlagQuantum, 2. Verify the installation, 3. Run a first execu..." />
+<meta name="description" content="This section covers the requirements for installing FlagQuantum and guides you through the installation process. Your first quantum model: FlagQuantum is a PyTorch-first framework, so the shortest path to a working program is a small trainable circuit. The example below builds a two-qubit circuit..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.9aa8623f-66eb-4b26-8516-167a7d7bfd39.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.104f4e9f-587c-4e46-b67b-80f4a542e0c9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -238,6 +238,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -392,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -540,7 +552,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -556,6 +570,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-quantum-model">Your first quantum model</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -567,34 +589,49 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
-<p>This section covers the requirements for running FlagQuantum and walks through
-installation, verification, and a first execution.</p>
+<p>This section covers the requirements for installing FlagQuantum and guides you
+through the installation process.</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#software-requirements">Software requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#optional-extras">Optional extras</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.html#execution-targets">Execution targets</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install FlagQuantum</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id1">1. Install FlagQuantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#verify-the-installation">2. Verify the installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#run-a-first-execution">3. Run a first execution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#optional-development-containers">4. Optional development containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#migrating-from-the-pre-release-v0-1-api">Migrating from the pre-release v0.1 API</a></li>
-</ul>
-</li>
-</ul>
 </div>
-<p>The fastest path from a source checkout is the local execution example, which
-needs no accelerator or provider account:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>examples.cpu_statevector
+<section id="your-first-quantum-model">
+<h2>Your first quantum model<a class="headerlink" href="#your-first-quantum-model" title="Link to this heading">#</a></h2>
+<p>FlagQuantum is a PyTorch-first framework, so the shortest path to a working
+program is a small trainable circuit. The example below builds a two-qubit
+circuit, learns its rotation angle by minimizing the measured expectation
+value, and prints the trained measurement. It needs no GPU, no credentials and
+no optional backend.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.25</span><span class="p">]))</span>
+<span class="n">training</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+    <span class="n">objective</span><span class="o">=</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">trained_circuit</span> <span class="o">=</span> <span class="n">circuit</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+<span class="n">measurement</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">trained_circuit</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">measurement</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">expectation</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>It builds a Bell-state circuit, creates an inspectable plan, runs that exact plan
-on the CPU statevector engine, and checks the double-precision result against
-its analytical state.</p>
+<p>Continue with:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="requirements.html"><span class="std std-doc">Requirements</span></a> for the supported Python, PyTorch and
+hardware platforms (including the optional dependency groups);</p></li>
+<li><p><a class="reference internal" href="install.html"><span class="std std-doc">Install FlagQuantum</span></a> to install the released package or a
+development checkout and verify it;</p></li>
+<li><p>the <a class="reference internal" href="../user_guide/user-guide.html"><span class="std std-doc">User Guide</span></a> for circuits, training,
+representations, distributed execution and hardware targets.</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -632,6 +669,23 @@ its analytical state.</p>
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-quantum-model">Your first quantum model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

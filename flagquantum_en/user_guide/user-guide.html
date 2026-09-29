@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This guide covers how to build and execute quantum programs with FlagQuantum, train them with PyTorch, choose a simulation representation, scale across ranks, model noise, compile for a target, deploy to hardware, and extend the framework. Basic Usage Build a circuit, create a plan, execute it, a..." />
+<meta property="og:description" content="This guide covers how to use FlagQuantum for quantum circuit simulation and training: building programs, planning and running them, training with PyTorch, choosing a simulation representation, adding noise and measurement, scaling across ranks, and moving the same program to hardware. Basic Usage..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This guide covers how to build and execute quantum programs with FlagQuantum, train them with PyTorch, choose a simulation representation, scale across ranks, model noise, compile for a target, deploy to hardware, and extend the framework. Basic Usage Build a circuit, create a plan, execute it, a..." />
+<meta name="description" content="This guide covers how to use FlagQuantum for quantum circuit simulation and training: building programs, planning and running them, training with PyTorch, choosing a simulation representation, adding noise and measurement, scaling across ranks, and moving the same program to hardware. Basic Usage..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>User Guide &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/user-guide.acdfff9e-a769-4a69-99ba-e239167178c1.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/user-guide.e5e4a02c-6d4a-4f14-9367-f50680b5d3f9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/user-guide';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basic Usage" href="basic-usage.html" />
+    <link rel="next" title="Basic usage" href="basic-usage.html" />
     <link rel="prev" title="Install FlagQuantum" href="../getting_started/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -392,26 +392,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -567,9 +575,10 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h1>
-<p>This guide covers how to build and execute quantum programs with FlagQuantum,
-train them with PyTorch, choose a simulation representation, scale across ranks,
-model noise, compile for a target, deploy to hardware, and extend the framework.</p>
+<p>This guide covers how to use FlagQuantum for quantum circuit simulation and
+training: building programs, planning and running them, training with PyTorch,
+choosing a simulation representation, adding noise and measurement, scaling
+across ranks, and moving the same program to hardware.</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-2 docutils">
 <div class="sd-col sd-d-flex-row docutils">
@@ -577,158 +586,124 @@ model noise, compile for a target, deploy to hardware, and extend the framework.
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-play sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.583a.5.5 0 0 1 0 .842l-5.576 3.584a.5.5 0 0 1-.77-.42Z"></path><path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Zm11-9.5A9.5 9.5 0 0 0 2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5Z"></path></svg> Basic Usage</div>
-<p class="sd-card-text">Build a circuit, create a plan, execute it, and read a typed result.</p>
+<p class="sd-card-text">Build a circuit, plan it, run it and read the result.</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="basic-usage.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="basic-usage.html"><span class="doc">Basic Usage</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="basic-usage.html"><span class="doc">Basic usage</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-code sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.22 4.97a.75.75 0 0 1 1.06 0l6.5 6.5a.75.75 0 0 1 0 1.06l-6.5 6.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L21.19 12l-5.97-5.97a.75.75 0 0 1 0-1.06Zm-6.44 0a.75.75 0 0 1 0 1.06L2.81 12l5.97 5.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-6.5-6.5a.75.75 0 0 1 0-1.06l6.5-6.5a.75.75 0 0 1 1.06 0Z"></path></svg> Circuits and IR</div>
+<p class="sd-card-text">Circuit construction, FlagQuantum IR, compilation and routing.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><a class="reference internal" href="circuits-and-ir.html"><span class="std std-doc">Learn more »</span></a></p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="circuits-and-ir.html"><span class="doc">Circuits and FlagQuantum IR</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-gear sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm-1.5 0a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path><path d="M12 1c.266 0 .532.009.797.028.763.055 1.345.617 1.512 1.304l.352 1.45c.019.078.09.171.225.221.247.089.49.19.728.302.13.061.246.044.315.002l1.275-.776c.603-.368 1.411-.353 1.99.147.402.349.78.726 1.128 1.129.501.578.515 1.386.147 1.99l-.776 1.274c-.042.069-.058.185.002.315.112.238.213.481.303.728.048.135.142.205.22.225l1.45.352c.687.167 1.249.749 1.303 1.512.038.531.038 1.063 0 1.594-.054.763-.616 1.345-1.303 1.512l-1.45.352c-.078.019-.171.09-.221.225-.089.248-.19.491-.302.728-.061.13-.044.246-.002.315l.776 1.275c.368.603.353 1.411-.147 1.99-.349.402-.726.78-1.129 1.128-.578.501-1.386.515-1.99.147l-1.274-.776c-.069-.042-.185-.058-.314.002a8.606 8.606 0 0 1-.729.303c-.135.048-.205.142-.225.22l-.352 1.45c-.167.687-.749 1.249-1.512 1.303-.531.038-1.063.038-1.594 0-.763-.054-1.345-.616-1.512-1.303l-.352-1.45c-.019-.078-.09-.171-.225-.221a8.138 8.138 0 0 1-.728-.302c-.13-.061-.246-.044-.315-.002l-1.275.776c-.603.368-1.411.353-1.99-.147-.402-.349-.78-.726-1.128-1.129-.501-.578-.515-1.386-.147-1.99l.776-1.274c.042-.069.058-.185-.002-.314a8.606 8.606 0 0 1-.303-.729c-.048-.135-.142-.205-.22-.225l-1.45-.352c-.687-.167-1.249-.749-1.304-1.512a11.158 11.158 0 0 1 0-1.594c.055-.763.617-1.345 1.304-1.512l1.45-.352c.078-.019.171-.09.221-.225.089-.248.19-.491.302-.728.061-.13.044-.246.002-.315l-.776-1.275c-.368-.603-.353-1.411.147-1.99.349-.402.726-.78 1.129-1.128.578-.501 1.386-.515 1.99-.147l1.274.776c.069.042.185.058.315-.002.238-.112.481-.213.728-.303.135-.048.205-.142.225-.22l.352-1.45c.167-.687.749-1.249 1.512-1.304C11.466 1.01 11.732 1 12 1Zm-.69 1.525c-.055.004-.135.05-.161.161l-.353 1.45a1.832 1.832 0 0 1-1.172 1.277 7.147 7.147 0 0 0-.6.249 1.833 1.833 0 0 1-1.734-.074l-1.274-.776c-.098-.06-.186-.036-.228 0a9.774 9.774 0 0 0-.976.976c-.036.042-.06.131 0 .228l.776 1.274c.314.529.342 1.18.074 1.734a7.147 7.147 0 0 0-.249.6 1.831 1.831 0 0 1-1.278 1.173l-1.45.351c-.11.027-.156.107-.16.162a9.63 9.63 0 0 0 0 1.38c.004.055.05.135.161.161l1.45.353a1.832 1.832 0 0 1 1.277 1.172c.074.204.157.404.249.6.268.553.24 1.204-.074 1.733l-.776 1.275c-.06.098-.036.186 0 .228.301.348.628.675.976.976.042.036.131.06.228 0l1.274-.776a1.83 1.83 0 0 1 1.734-.075c.196.093.396.176.6.25a1.831 1.831 0 0 1 1.173 1.278l.351 1.45c.027.11.107.156.162.16a9.63 9.63 0 0 0 1.38 0c.055-.004.135-.05.161-.161l.353-1.45a1.834 1.834 0 0 1 1.172-1.278 6.82 6.82 0 0 0 .6-.248 1.831 1.831 0 0 1 1.733.074l1.275.776c.098.06.186.036.228 0 .348-.301.675-.628.976-.976.036-.042.06-.131 0-.228l-.776-1.275a1.834 1.834 0 0 1-.075-1.733c.093-.196.176-.396.25-.6a1.831 1.831 0 0 1 1.278-1.173l1.45-.351c.11-.027.156-.107.16-.162a9.63 9.63 0 0 0 0-1.38c-.004-.055-.05-.135-.161-.161l-1.45-.353c-.626-.152-1.08-.625-1.278-1.172a6.576 6.576 0 0 0-.248-.6 1.833 1.833 0 0 1 .074-1.734l.776-1.274c.06-.098.036-.186 0-.228a9.774 9.774 0 0 0-.976-.976c-.042-.036-.131-.06-.228 0l-1.275.776a1.831 1.831 0 0 1-1.733.074 6.88 6.88 0 0 0-.6-.249 1.835 1.835 0 0 1-1.173-1.278l-.351-1.45c-.027-.11-.107-.156-.162-.16a9.63 9.63 0 0 0-1.38 0Z"></path></svg> Training with PyTorch</div>
-<p class="sd-card-text">Trainable quantum layers, parameter groups, checkpoints, and hybrid models.</p>
+<p class="sd-card-text">Trainable circuits, optimizers, named parameters and checkpoints.</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="training.html"><span class="std std-doc">Learn more »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="training-with-pytorch.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="training.html"><span class="doc">Training with PyTorch</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="training-with-pytorch.html"><span class="doc">Training with PyTorch</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-graph sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 2.75a.75.75 0 0 0-1.5 0v18.5c0 .414.336.75.75.75H20a.75.75 0 0 0 0-1.5H2.5V2.75Z"></path><path d="M22.28 7.78a.75.75 0 0 0-1.06-1.06l-5.72 5.72-3.72-3.72a.75.75 0 0 0-1.06 0l-6 6a.75.75 0 1 0 1.06 1.06l5.47-5.47 3.72 3.72a.75.75 0 0 0 1.06 0l6.25-6.25Z"></path></svg> Measurement</div>
-<p class="sd-card-text">Pauli observables, expectation values, probabilities, samples, and counts.</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-graph sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 2.75a.75.75 0 0 0-1.5 0v18.5c0 .414.336.75.75.75H20a.75.75 0 0 0 0-1.5H2.5V2.75Z"></path><path d="M22.28 7.78a.75.75 0 0 0-1.06-1.06l-5.72 5.72-3.72-3.72a.75.75 0 0 0-1.06 0l-6 6a.75.75 0 1 0 1.06 1.06l5.47-5.47 3.72 3.72a.75.75 0 0 0 1.06 0l6.25-6.25Z"></path></svg> Measurement and Noise</div>
+<p class="sd-card-text">Observables, result accessors, noise models and dynamic circuits.</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="measurement.html"><span class="std std-doc">Learn more »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="measurement-and-noise.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="measurement.html"><span class="doc">Measurement</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="measurement-and-noise.html"><span class="doc">Measurement and noise</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-cpu sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.75 8h6.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-6.5a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 8.75 8Zm.75 6.5h5v-5h-5Z"></path><path d="M15.25 1a.75.75 0 0 1 .75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 0 1 0 1.5H20v5h2.25a.75.75 0 0 1 0 1.5H20v2.25A1.75 1.75 0 0 1 18.25 20H16v2.25a.75.75 0 0 1-1.5 0V20h-5v2.25a.75.75 0 0 1-1.5 0V20H5.75A1.75 1.75 0 0 1 4 18.25V16H1.75a.75.75 0 0 1 0-1.5H4v-5H1.75a.75.75 0 0 1 0-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 0 1 1.5 0V4h5V1.75a.75.75 0 0 1 .75-.75Zm3 17.5a.25.25 0 0 0 .25-.25V5.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25Z"></path></svg> Simulation Modes</div>
-<p class="sd-card-text">Statevector, MPS, tensor network, and density-matrix execution from one program.</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-cpu sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.75 8h6.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-6.5a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 8.75 8Zm.75 6.5h5v-5h-5Z"></path><path d="M15.25 1a.75.75 0 0 1 .75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 0 1 0 1.5H20v5h2.25a.75.75 0 0 1 0 1.5H20v2.25A1.75 1.75 0 0 1 18.25 20H16v2.25a.75.75 0 0 1-1.5 0V20h-5v2.25a.75.75 0 0 1-1.5 0V20H5.75A1.75 1.75 0 0 1 4 18.25V16H1.75a.75.75 0 0 1 0-1.5H4v-5H1.75a.75.75 0 0 1 0-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 0 1 1.5 0V4h5V1.75a.75.75 0 0 1 .75-.75Zm3 17.5a.25.25 0 0 0 .25-.25V5.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25Z"></path></svg> Simulation Representations</div>
+<p class="sd-card-text">Statevector, MPS, tensor network and JAX kernels.</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="simulation-modes.html"><span class="std std-doc">Learn more »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="simulation-representations.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="simulation-modes.html"><span class="doc">Simulation Modes</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="simulation-representations.html"><span class="doc">Simulation representations</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-server sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.75 6.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5ZM6 7.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 6 7.25Zm4 9a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm-3.25-.75a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5Z"></path><path d="M3.25 2h17.5c.966 0 1.75.784 1.75 1.75v7c0 .372-.116.716-.314 1 .198.284.314.628.314 1v7a1.75 1.75 0 0 1-1.75 1.75H3.25a1.75 1.75 0 0 1-1.75-1.75v-7c0-.358.109-.707.314-1a1.741 1.741 0 0 1-.314-1v-7C1.5 2.784 2.284 2 3.25 2Zm0 10.5a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25Zm0-1.5h17.5a.25.25 0 0 0 .25-.25v-7a.25.25 0 0 0-.25-.25H3.25a.25.25 0 0 0-.25.25v7c0 .138.112.25.25.25Z"></path></svg> Distributed Execution</div>
-<p class="sd-card-text">Sharded statevector and rank-owned MPS training across ranks.</p>
+<p class="sd-card-text">Sharded statevector and rank-owned MPS training.</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="distributed-execution.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="distributed-execution.html"><span class="doc">Distributed Execution</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="distributed-execution.html"><span class="doc">Distributed execution</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-zap sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.716 1.329a1.341 1.341 0 0 1 2.109 1.55L15.147 9h4.161c1.623 0 2.372 2.016 1.143 3.075L8.102 22.721a1.148 1.148 0 0 1-1.81-1.317L8.996 15H4.674c-1.619 0-2.37-2.008-1.148-3.07l12.19-10.6Zm.452 1.595L4.51 13.061a.25.25 0 0 0 .164.439h5.45a.749.749 0 0 1 .692 1.041l-2.559 6.066 11.215-9.668a.25.25 0 0 0-.164-.439H14a.75.75 0 0 1-.687-1.05Z"></path></svg> Noisy Simulation</div>
-<p class="sd-card-text">Noise models, exact density evolution, and quantum trajectories.</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-plug sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5H2.938c-.794 0-1.438.644-1.438 1.437v8.313a.75.75 0 0 1-1.5 0v-8.312A2.939 2.939 0 0 1 2.937 10H7V6.151c0-.897.678-1.648 1.57-1.74l6.055-.626 1.006-1.174A1.752 1.752 0 0 1 16.96 2h1.29c.966 0 1.75.784 1.75 1.75V6h3.25a.75.75 0 0 1 0 1.5H20V14h3.25a.75.75 0 0 1 0 1.5H20v2.25a1.75 1.75 0 0 1-1.75 1.75h-1.29a1.75 1.75 0 0 1-1.329-.611l-1.006-1.174-6.055-.627A1.749 1.749 0 0 1 7 15.348Zm9.77-7.913v.001l-1.201 1.4a.75.75 0 0 1-.492.258l-6.353.657a.25.25 0 0 0-.224.249v9.196a.25.25 0 0 0 .224.249l6.353.657c.191.02.368.112.493.258l1.2 1.401a.252.252 0 0 0 .19.087h1.29a.25.25 0 0 0 .25-.25v-14a.25.25 0 0 0-.25-.25h-1.29a.252.252 0 0 0-.19.087Z"></path></svg> Hardware and Remote Targets</div>
+<p class="sd-card-text">FlagOS accelerators, remote jobs, deployment packages.</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="noisy-simulation.html"><span class="std std-doc">Learn more »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="hardware-and-remote.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="noisy-simulation.html"><span class="doc">Noisy Simulation</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-tools sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.875 2.292a.114.114 0 0 0-.032.018A7.239 7.239 0 0 0 4.75 8.25a7.248 7.248 0 0 0 3.654 6.297c.57.327.982.955.941 1.682v.002l-.317 6.058a.75.75 0 1 1-1.498-.078l.317-6.062v-.004c.006-.09-.047-.215-.188-.296A8.749 8.749 0 0 1 3.25 8.25a8.738 8.738 0 0 1 3.732-7.169 1.547 1.547 0 0 1 1.709-.064c.484.292.809.835.809 1.46v4.714a.25.25 0 0 0 .119.213l2.25 1.385c.08.05.182.05.262 0l2.25-1.385a.25.25 0 0 0 .119-.213V2.478c0-.626.325-1.169.81-1.461a1.547 1.547 0 0 1 1.708.064 8.741 8.741 0 0 1 3.732 7.17 8.747 8.747 0 0 1-4.41 7.598c-.14.081-.193.206-.188.296v.004l.318 6.062a.75.75 0 1 1-1.498.078l-.317-6.058v-.002c-.041-.727.37-1.355.94-1.682A7.247 7.247 0 0 0 19.25 8.25a7.239 7.239 0 0 0-3.093-5.94.114.114 0 0 0-.032-.018l-.01-.001c-.003 0-.014 0-.031.01-.036.022-.084.079-.084.177V7.19c0 .608-.315 1.172-.833 1.49l-2.25 1.385a1.75 1.75 0 0 1-1.834 0l-2.25-1.384A1.752 1.752 0 0 1 8 7.192V2.477c0-.098-.048-.155-.084-.176a.068.068 0 0 0-.031-.011l-.01.001Z"></path></svg> Compilation</div>
-<p class="sd-card-text">Optimize a program, legalize it for a topology, and select a compiler plugin.</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="compilation.html"><span class="std std-doc">Learn more »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="compilation.html"><span class="doc">Compilation</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="hardware-and-remote.html"><span class="doc">Hardware and remote targets</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-rocket sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.322.75h1.176a1.75 1.75 0 0 1 1.75 1.749v1.177a10.75 10.75 0 0 1-2.925 7.374l-1.228 1.304a23.699 23.699 0 0 1-1.596 1.542v5.038c0 .615-.323 1.184-.85 1.5l-4.514 2.709a.75.75 0 0 1-1.12-.488l-.963-4.572a1.305 1.305 0 0 1-.14-.129L8.04 15.96l-1.994-1.873a1.305 1.305 0 0 1-.129-.14l-4.571-.963a.75.75 0 0 1-.49-1.12l2.71-4.514c.316-.527.885-.85 1.5-.85h5.037a23.668 23.668 0 0 1 1.542-1.594l1.304-1.23A10.753 10.753 0 0 1 20.321.75Zm-6.344 4.018v-.001l-1.304 1.23a22.275 22.275 0 0 0-3.255 3.851l-2.193 3.29 1.859 1.744a.545.545 0 0 1 .034.034l1.743 1.858 3.288-2.192a22.263 22.263 0 0 0 3.854-3.257l1.228-1.303a9.251 9.251 0 0 0 2.517-6.346V2.5a.25.25 0 0 0-.25-.25h-1.177a9.252 9.252 0 0 0-6.344 2.518ZM6.5 21c-1.209 1.209-3.901 1.445-4.743 1.49a.236.236 0 0 1-.18-.067.236.236 0 0 1-.067-.18c.045-.842.281-3.534 1.49-4.743.9-.9 2.6-.9 3.5 0 .9.9.9 2.6 0 3.5Zm-.592-8.588L8.17 9.017c.23-.346.47-.685.717-1.017H5.066a.25.25 0 0 0-.214.121l-2.167 3.612ZM16 15.112c-.333.248-.672.487-1.018.718l-3.393 2.262.678 3.223 3.612-2.167a.25.25 0 0 0 .121-.214ZM17.5 8a1.5 1.5 0 1 1-3.001-.001A1.5 1.5 0 0 1 17.5 8Z"></path></svg> Deployment and Hardware</div>
-<p class="sd-card-text">Sealed packages, remote jobs, Pauli measurement plans, and digital twins.</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="deployment.html"><span class="std std-doc">Learn more »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="deployment.html"><span class="doc">Deployment and Hardware</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-beaker sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8.807V3.5h-.563a.75.75 0 0 1 0-1.5h9.125a.75.75 0 0 1 0 1.5H16v5.307l5.125 9.301c.964 1.75-.302 3.892-2.299 3.892H5.174c-1.998 0-3.263-2.142-2.3-3.892ZM4.189 18.832a1.123 1.123 0 0 0 .985 1.668h13.652a1.123 1.123 0 0 0 .985-1.668L17.7 15H6.3ZM14.5 3.5h-5V9a.75.75 0 0 1-.093.362L7.127 13.5h9.746l-2.28-4.138A.75.75 0 0 1 14.5 9Z"></path></svg> Algorithms</div>
-<p class="sd-card-text">Quantum machine learning and algorithm units at demonstration scale.</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-beaker sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8.807V3.5h-.563a.75.75 0 0 1 0-1.5h9.125a.75.75 0 0 1 0 1.5H16v5.307l5.125 9.301c.964 1.75-.302 3.892-2.299 3.892H5.174c-1.998 0-3.263-2.142-2.3-3.892ZM4.189 18.832a1.123 1.123 0 0 0 .985 1.668h13.652a1.123 1.123 0 0 0 .985-1.668L17.7 15H6.3ZM14.5 3.5h-5V9a.75.75 0 0 1-.093.362L7.127 13.5h9.746l-2.28-4.138A.75.75 0 0 1 14.5 9Z"></path></svg> Algorithms and QEC</div>
+<p class="sd-card-text">Algorithm units, error-correction experiments and digital twins.</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="algorithms.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="algorithms.html"><span class="doc">Algorithms</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="algorithms.html"><span class="doc">Algorithms, error correction and digital twins</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-plug sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5H2.938c-.794 0-1.438.644-1.438 1.437v8.313a.75.75 0 0 1-1.5 0v-8.312A2.939 2.939 0 0 1 2.937 10H7V6.151c0-.897.678-1.648 1.57-1.74l6.055-.626 1.006-1.174A1.752 1.752 0 0 1 16.96 2h1.29c.966 0 1.75.784 1.75 1.75V6h3.25a.75.75 0 0 1 0 1.5H20V14h3.25a.75.75 0 0 1 0 1.5H20v2.25a1.75 1.75 0 0 1-1.75 1.75h-1.29a1.75 1.75 0 0 1-1.329-.611l-1.006-1.174-6.055-.627A1.749 1.749 0 0 1 7 15.348Zm9.77-7.913v.001l-1.201 1.4a.75.75 0 0 1-.492.258l-6.353.657a.25.25 0 0 0-.224.249v9.196a.25.25 0 0 0 .224.249l6.353.657c.191.02.368.112.493.258l1.2 1.401a.252.252 0 0 0 .19.087h1.29a.25.25 0 0 0 .25-.25v-14a.25.25 0 0 0-.25-.25h-1.29a.252.252 0 0 0-.19.087Z"></path></svg> Interoperability</div>
-<p class="sd-card-text">Qiskit, PennyLane, Cirq, and CUDA-Q conversion and execution bridges.</p>
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-book sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"></path></svg> Tutorials</div>
+<p class="sd-card-text">The tutorial series and the example catalog.</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="interoperability.html"><span class="std std-doc">Learn more »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="tutorials.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="interoperability.html"><span class="doc">Interoperability</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-pencil sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.263 2.177a1.75 1.75 0 0 1 2.474 0l2.586 2.586a1.75 1.75 0 0 1 0 2.474L19.53 10.03l-.012.013L8.69 20.378a1.753 1.753 0 0 1-.699.409l-5.523 1.68a.748.748 0 0 1-.747-.188.748.748 0 0 1-.188-.747l1.673-5.5a1.75 1.75 0 0 1 .466-.756L14.476 4.963ZM4.708 16.361a.26.26 0 0 0-.067.108l-1.264 4.154 4.177-1.271a.253.253 0 0 0 .1-.059l10.273-9.806-2.94-2.939-10.279 9.813ZM19 8.44l2.263-2.262a.25.25 0 0 0 0-.354l-2.586-2.586a.25.25 0 0 0-.354 0L16.061 5.5Z"></path></svg> Extensions</div>
-<p class="sd-card-text">Register backends, compilers, kernels, operators, and providers as packages.</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="extensions.html"><span class="std std-doc">Learn more »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="extensions.html"><span class="doc">Extensions</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-book sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"></path></svg> Examples and Tutorials</div>
-<p class="sd-card-text">Notebook learning path and maintained runnable examples.</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="examples.html"><span class="std std-doc">Learn more »</span></a></p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="examples.html"><span class="doc">Examples and Tutorials</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="tutorials.html"><span class="doc">Tutorials</span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-flame sd-mr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.265 1.627c0 3.545 1.869 5.327 3.479 7.021 1.54 1.62 3.006 3.163 3.006 6.102 0 4.812-3.753 8.25-8.565 8.25-4.813 0-8.935-3.421-8.935-8.25 0-2.039.962-4.011 2.509-4.899.305-.175.672.007.803.334C7.563 12.684 8.797 12.64 9.437 12c.388-.387.47-1.116-.004-2.062-2.405-4.812 1.863-8.279 4.2-8.854.336-.082.615.198.632.543ZM12.185 21.5c4.059 0 7.065-2.84 7.065-6.75 0-2.337-1.093-3.489-2.678-5.158l-.021-.023c-1.44-1.517-3.139-3.351-3.649-6.557a6.148 6.148 0 0 0-1.911 1.76c-.787 1.144-1.147 2.633-.216 4.495.603 1.205.777 2.74-.277 3.794-.657.657-1.762 1.1-2.956.586-.752-.324-1.353-.955-1.838-1.79-.567.706-.954 1.74-.954 2.893 0 3.847 3.288 6.75 7.435 6.75Z"></path></svg> Run Tests</div>
-<p class="sd-card-text">Testing tiers, what each tier proves, and the no-progress policy.</p>
+<p class="sd-card-text">Test tiers and marker commands.</p>
 </div>
 <div class="sd-card-footer docutils">
 <p class="sd-card-text"><a class="reference internal" href="run-tests.html"><span class="std std-doc">Learn more »</span></a></p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference internal" href="run-tests.html"><span class="doc">Run Tests</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="run-tests.html"><span class="doc">Run tests</span></a></div>
 </div>
 </div>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -757,7 +732,7 @@ model noise, compile for a target, deploy to hardware, and extend the framework.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Basic Usage</p>
+        <p class="prev-next-title">Basic usage</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

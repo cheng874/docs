@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/requirements.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Software requirements:,, Item, Requirement,,, Python, 3.10, 3.11, or 3.12,, PyTorch,&gt;=2.5,&lt;2.14,,,, Only PyTorch is required for the local PyTorch path. Every integration is an optional extra, so the minimal installation stays small and imports lazily. Optional extras:,, Extra, Adds,,, dev,..." />
+<meta property="og:description" content="This section includes information about the hardware platforms and software requirements for FlagQuantum. Software requirements: Python 3.10, 3.11 or 3.12, PyTorch 2.5 or higher, below 2.14. The released package depends on PyTorch only. Everything else is optional. Supported hardware platforms:,,..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Software requirements:,, Item, Requirement,,, Python, 3.10, 3.11, or 3.12,, PyTorch,&gt;=2.5,&lt;2.14,,,, Only PyTorch is required for the local PyTorch path. Every integration is an optional extra, so the minimal installation stays small and imports lazily. Optional extras:,, Extra, Adds,,, dev,..." />
+<meta name="description" content="This section includes information about the hardware platforms and software requirements for FlagQuantum. Software requirements: Python 3.10, 3.11 or 3.12, PyTorch 2.5 or higher, below 2.14. The released package depends on PyTorch only. Everything else is optional. Supported hardware platforms:,,..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Requirements &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.aced3076-3ad1-477f-ad45-58e766afe694.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.0252c4a8-2a02-44fd-8247-8d147ddb3034.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -568,8 +576,9 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extras">Optional extras</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-targets">Execution targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dependency-groups">Optional dependency groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundaries-to-read-before-choosing-a-target">Support boundaries to read before choosing a target</a></li>
 </ul>
             </nav>
         </div>
@@ -583,126 +592,102 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
+<p>This section includes information about the hardware platforms and software
+requirements for FlagQuantum.</p>
 <section id="software-requirements">
 <h2>Software requirements<a class="headerlink" href="#software-requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Python 3.10, 3.11 or 3.12</p></li>
+<li><p>PyTorch 2.5 or higher, below 2.14</p></li>
+</ul>
+<p>The released package depends on PyTorch only. Everything else is optional.</p>
+</section>
+<section id="supported-hardware-platforms">
+<h2>Supported hardware platforms<a class="headerlink" href="#supported-hardware-platforms" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Item</p></th>
-<th class="head"><p>Requirement</p></th>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>How it is reached</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Python</p></td>
-<td><p>3.10, 3.11, or 3.12</p></td>
+<tr class="row-even"><td><p>CPU</p></td>
+<td><p>Default local statevector, MPS and tensor-network execution</p></td>
 </tr>
-<tr class="row-odd"><td><p>PyTorch</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=2.5,&lt;2.14</span></code></p></td>
+<tr class="row-odd"><td><p>NVIDIA GPU</p></td>
+<td><p>CUDA device selected through <code class="docutils literal notranslate"><span class="pre">fq.ExecutionOptions(device=&quot;cuda:0&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FlagOS-supported accelerators</p></td>
+<td><p>The logical <code class="docutils literal notranslate"><span class="pre">flagos:0</span></code> device, reached through Torch-FL</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Only PyTorch is required for the local PyTorch path. Every integration is an
-optional extra, so the minimal installation stays small and imports lazily.</p>
+<p>FlagQuantum does not detect or dispatch a specific domestic accelerator by
+device name. Torch-FL owns vendor detection, runtime activation and the
+compatibility route, and exposes it through the <code class="docutils literal notranslate"><span class="pre">flagos</span></code> contract.</p>
 </section>
-<section id="optional-extras">
-<h2>Optional extras<a class="headerlink" href="#optional-extras" title="Link to this heading">#</a></h2>
+<section id="optional-dependency-groups">
+<h2>Optional dependency groups<a class="headerlink" href="#optional-dependency-groups" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Extra</p></th>
+<tr class="row-odd"><th class="head"><p>Group</p></th>
 <th class="head"><p>Adds</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dev</span></code></p></td>
-<td><p>Test, lint, type-check, packaging, and notebook tooling</p></td>
+<td><p>pytest, coverage, xdist, ruff, black, mypy, build, pre-commit</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jax</span></code></p></td>
-<td><p>JAX-backed simulation kernels behind the PyTorch interface</p></td>
+<td><p>JAX-backed kernels</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
-<td><p>Triton kernels for local GPU execution</p></td>
+<td><p>Triton</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cotengra</span></code></p></td>
-<td><p>Contraction-path search for tensor-network workloads</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qiskit</span></code></p></td>
+<td><p>Qiskit and Aer interoperability</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qiskit</span></code></p></td>
-<td><p>Qiskit Python IR and Qiskit Aer bridges</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pennylane</span></code></p></td>
+<td><p>PennyLane interoperability</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pennylane</span></code></p></td>
-<td><p>PennyLane QuantumScript conversion and Lightning execution</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cirq</span></code></p></td>
+<td><p>Cirq interoperability</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cirq</span></code></p></td>
-<td><p>Cirq conversion and Simulator execution</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">braket</span></code></p></td>
+<td><p>Amazon Braket interoperability</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">braket</span></code></p></td>
-<td><p>Amazon Braket conversion</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cudaq</span></code></p></td>
+<td><p>CUDA-Q kernel export</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cudaq</span></code></p></td>
-<td><p>CUDA-Q kernel export (Linux only)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quafu</span></code></p></td>
+<td><p>Quafu submission support</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quafu</span></code></p></td>
-<td><p>Direct Quafu hardware submission without a local compiler</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">azure</span></code></p></td>
-<td><p>Azure Quantum target packaging</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">interop-all</span></code></p></td>
-<td><p>All interoperability adapters in one command</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">azure</span></code></p></td>
+<td><p>Azure Quantum submission support</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viz</span></code></p></td>
-<td><p>Matplotlib-based circuit drawing</p></td>
+<td><p>Matplotlib circuit drawing</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">examples</span></code></p></td>
-<td><p>Dependencies used by the tutorial notebooks and example scripts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">datasets</span></code> and <code class="docutils literal notranslate"><span class="pre">transformers</span></code> for the example workflows</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">all</span></code></p></td>
+<td><p>Every optional dependency above</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>On Python 3.10 the <code class="docutils literal notranslate"><span class="pre">cirq</span></code>, <code class="docutils literal notranslate"><span class="pre">braket</span></code>, <code class="docutils literal notranslate"><span class="pre">cudaq</span></code>, <code class="docutils literal notranslate"><span class="pre">pennylane</span></code>, and <code class="docutils literal notranslate"><span class="pre">quafu</span></code> extras
-are unavailable because the upstream packages require a newer interpreter.</p>
+<p>Interoperability adapters are optional control-plane boundaries: importing
+<code class="docutils literal notranslate"><span class="pre">flagquantum</span></code> never imports Qiskit, PennyLane, Cirq or another external
+framework.</p>
 </section>
-<section id="execution-targets">
-<h2>Execution targets<a class="headerlink" href="#execution-targets" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Target</p></th>
-<th class="head"><p>Selection</p></th>
-<th class="head"><p>Support level</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Local CPU</p></td>
-<td><p>Default</p></td>
-<td><p>Production supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>One CUDA GPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">fq.ExecutionOptions(device=&quot;cuda:0&quot;)</span></code></p></td>
-<td><p>Local correctness evidence</p></td>
-</tr>
-<tr class="row-even"><td><p>Several ranks</p></td>
-<td><p>Initialized process group plus <code class="docutils literal notranslate"><span class="pre">torchrun</span></code></p></td>
-<td><p>Sharded statevector training is production supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>FlagOS logical device</p></td>
-<td><p>Explicit provider selection through Torch-FL</p></td>
-<td><p>Development evidence</p></td>
-</tr>
-<tr class="row-even"><td><p>Remote compute (Jiuding)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">target=&quot;jiuding:gpu&quot;</span></code></p></td>
-<td><p>Experimental</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quantum hardware (Quafu)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">target=&quot;quafu:&lt;backend&gt;&quot;</span></code></p></td>
-<td><p>Experimental</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>CUDA is the only accelerator selected automatically. The FlagOS logical device
-is never chosen implicitly, and no domestic accelerator is certified by
-FlagQuantum alone: the current CUDA-backed reference records the joint
-integration path, not vendor hardware quality. See
-<a class="reference internal" href="../reference/capabilities.html"><span class="std std-doc">Capabilities</span></a> for the exact scope of every path.</p>
+<section id="support-boundaries-to-read-before-choosing-a-target">
+<h2>Support boundaries to read before choosing a target<a class="headerlink" href="#support-boundaries-to-read-before-choosing-a-target" title="Link to this heading">#</a></h2>
+<p>The maturity of every capability, and what each target has actually been
+executed with, is published in the
+<a class="reference internal" href="../reference/capabilities.html"><span class="std std-doc">capability reference</span></a>. An implemented API is not
+automatically production support.</p>
 </section>
 </section>
 
@@ -754,8 +739,9 @@ integration path, not vendor hardware quality. See
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extras">Optional extras</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-targets">Execution targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-hardware-platforms">Supported hardware platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dependency-groups">Optional dependency groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundaries-to-read-before-choosing-a-target">Support boundaries to read before choosing a target</a></li>
 </ul>
   </nav></div>
 

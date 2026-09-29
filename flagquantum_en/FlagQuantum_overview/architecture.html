@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="FlagQuantum_overview/architecture.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="FlagQuantum gives quantum AI programs one public model across local development, accelerated kernels, distributed simulation, and deployment: The invariant behind this layout: backend selection may change execution, but it must not change the meaning of the program or the result contract. Core la..." />
+<meta property="og:description" content="FlagQuantum gives quantum AI programs one public model across local development, accelerated kernels, distributed simulation and deployment. It is organized so that a backend change never changes the meaning of a program. Core layers:,,, Layer, Responsibility, Entry point,,, User API, Circuit con..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="FlagQuantum gives quantum AI programs one public model across local development, accelerated kernels, distributed simulation, and deployment: The invariant behind this layout: backend selection may change execution, but it must not change the meaning of the program or the result contract. Core la..." />
+<meta name="description" content="FlagQuantum gives quantum AI programs one public model across local development, accelerated kernels, distributed simulation and deployment. It is organized so that a backend change never changes the meaning of a program. Core layers:,,, Layer, Responsibility, Entry point,,, User API, Circuit con..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Architecture &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/architecture.75f83229-ab76-441d-88f5-f575d51364de.js"></script>
+    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/architecture.2391d6b6-4fe2-4180-839b-c9392cf5503a.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'FlagQuantum_overview/architecture';</script>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -586,21 +594,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
 <p>FlagQuantum gives quantum AI programs one public model across local
-development, accelerated kernels, distributed simulation, and deployment:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fq.Circuit / fq.Module
-          |
-          v
-   FlagQuantum IR
-          |
-          +-- compile and export
-          +-- local statevector, MPS, and tensor-network runtimes
-          +-- optional JAX kernels behind the PyTorch interface
-          +-- sharded statevector and MPS execution
-          +-- deployment packages for provider and hardware targets
-</pre></div>
-</div>
-<p>The invariant behind this layout: backend selection may change execution, but it
-must not change the meaning of the program or the result contract.</p>
+development, accelerated kernels, distributed simulation and deployment. It is
+organized so that a backend change never changes the meaning of a program.</p>
 <section id="core-layers">
 <h2>Core layers<a class="headerlink" href="#core-layers" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -612,7 +607,7 @@ must not change the meaning of the program or the result contract.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>User API</p></td>
-<td><p>Circuit construction, PyTorch modules, planning, execution, training, deployment</p></td>
+<td><p>Circuit construction, PyTorch modules, planning, execution, training and deployment</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">flagquantum</span> <span class="pre">as</span> <span class="pre">fq</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Compilation</p></td>
@@ -620,7 +615,7 @@ must not change the meaning of the program or the result contract.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">fq.compile</span></code>, <code class="docutils literal notranslate"><span class="pre">flagquantum.compiler</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>FlagQuantum IR</p></td>
-<td><p>Versioned operators, measurements, metadata, serialization, validation</p></td>
+<td><p>Versioned operators, measurements, metadata, serialization and validation</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fq.CircuitIR</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Planning</p></td>
@@ -636,96 +631,80 @@ must not change the meaning of the program or the result contract.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.train</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Deployment</p></td>
-<td><p>Bind trained parameters, compile for a target, seal an auditable package</p></td>
+<td><p>Bind trained parameters, compile for a target and seal an auditable package</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">flagquantum.deployment.create_deployment_package</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Planning is not execution evidence: a plan describes intent and estimates,
-while runtime records describe what actually ran.</p>
 </section>
 <section id="source-map">
 <h2>Source map<a class="headerlink" href="#source-map" title="Link to this heading">#</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>flagquantum/
-+-- __init__.py             # lazy stable `fq` facade
-+-- _api.py                 # root compile, plan, and run composition
-+-- circuit.py              # circuit construction
-+-- core/                   # backend-neutral IR and shared semantics
-+-- compiler/               # validation, optimization, lowering, code generation
-+-- runtime/                # planning, execution lifecycle, results, coordination
-+-- simulation/             # numerical methods and kernels
-+-- noise/                  # backend-neutral noise models and channels
-+-- observables/            # user-facing measurement construction
-+-- qec/                    # error-correction workflows and domain models
-+-- twin/                   # hardware digital-twin models
-+-- compute/                # resources controlled by the current process
-+-- remote/                 # external task systems and result retrieval
-+-- ecosystem/              # framework and format adapters
-+-- deployment/             # sealed target-neutral execution packages
-+-- services/               # reusable multi-step application workflows
-+-- algorithms/             # user-facing algorithm composition
-+-- benchmarking/           # reproducible measurement and evidence generation
-+-- drawer/                 # circuit visualization
-+-- testing/                # reusable correctness and conformance helpers
-+-- experimental/           # explicitly unstable APIs
+├── _api.py                 # root compile, plan and run composition
+├── circuit.py              # circuit construction
+├── core/                   # backend-neutral IR and shared semantics
+├── compiler/               # validation, optimization, lowering, code generation
+├── runtime/                # planning, execution lifecycle, results, coordination
+├── simulation/             # numerical methods and kernels
+├── noise/                  # backend-neutral noise models and channels
+├── observables/            # user-facing measurement construction
+├── qec/                    # error-correction workflows and domain models
+├── twin/                   # hardware digital-twin models
+├── compute/                # resources controlled by the current process
+├── remote/                 # external task systems and result retrieval
+├── ecosystem/              # framework and format adapters
+├── deployment/             # sealed target-neutral execution packages
+├── services/               # reusable multi-step application workflows
+├── algorithms/             # user-facing algorithm composition
+├── benchmarking/           # reproducible measurement and evidence generation
+├── drawer/                 # circuit visualization
+└── experimental/           # explicitly unstable APIs
 </pre></div>
 </div>
 </section>
 <section id="dependency-direction">
 <h2>Dependency direction<a class="headerlink" href="#dependency-direction" title="Link to this heading">#</a></h2>
-<p>Dependencies point inward:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>User facade -&gt; Compiler / Runtime / application workflows -&gt; Core
-                         |
-                         +-- Simulation numerical methods
-                         +-- Compute adapters for local resources
-                         +-- Remote adapters for external task systems
+<p>Dependencies point inward, so optional integrations stay outside the mandatory
+local PyTorch path:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>User facade → Compiler / Runtime / application workflows → Core
+                         │
+                         ├── Simulation numerical methods
+                         ├── Compute adapters for local resources
+                         └── Remote adapters for external task systems
 </pre></div>
 </div>
-<p>Core does not import orchestration, numerical engines, or vendor integrations.
-Compiler transforms programs but does not execute them. Runtime organizes
-execution but does not implement numerical kernels. Simulation consumes Core
-semantics but does not select resources. Compute and Remote isolate hardware and
-external-system details from the other domains, and optional integrations stay
-outside the mandatory local PyTorch path.</p>
-<p><code class="docutils literal notranslate"><span class="pre">simulation</span></code> is a numerical-method domain, not a second public runtime: Runtime
-calls its engines through explicit entry points, while backend choice,
-distributed ownership, recovery, and evidence assembly remain Runtime concerns.</p>
+<p>Core imports neither orchestration, nor numerical engines, nor vendor
+integrations. The compiler transforms programs but does not execute them.
+Runtime organizes execution but does not implement numerical kernels.
+Simulation consumes core semantics but does not select resources. Compute and
+Remote isolate hardware and external-system details from the other domains.</p>
 </section>
 <section id="execution-and-training-contracts">
 <h2>Execution and training contracts<a class="headerlink" href="#execution-and-training-contracts" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">fq.run</span></code> is the canonical execution entry point and returns
 <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> for supported local and distributed modes. Specialized
-native functions such as <code class="docutils literal notranslate"><span class="pre">flagquantum.runtime.run_native</span></code>,
-<code class="docutils literal notranslate"><span class="pre">flagquantum.simulation.mps.run_mps</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">flagquantum.simulation.tensor_network.run_tensor_network</span></code> are advanced
-interfaces for callers that need backend-specific objects or controls.</p>
+native functions are advanced interfaces and may expose backend-specific
+objects.</p>
 <p><code class="docutils literal notranslate"><span class="pre">fq.train</span></code> owns the ordinary PyTorch optimization loop. Owner-sharded
-statevector and MPS training have separate entry points under
-<code class="docutils literal notranslate"><span class="pre">flagquantum.experimental.distributed</span></code>; they are not implied by calling
-<code class="docutils literal notranslate"><span class="pre">fq.train</span></code>. Distributed training counts as complete only when forward execution,
-gradients, optimizer updates, and checkpoint ownership all preserve the declared
-distribution semantics.</p>
+statevector and MPS training have separate experimental distributed entry
+points; they are not implied by calling <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>. Distributed training is
+complete only when forward execution, gradients, optimizer updates and
+checkpoint ownership preserve the declared distribution semantics.</p>
 <p>For a claim of distributed scalability, one logical workload must be sharded
-across ranks. Replicated data parallelism, rank-local kernels, and manual tensor
-slicing are reported under their own semantics and are never relabelled as
+across ranks. Replicated data parallelism, rank-local kernels and manual tensor
+slicing are reported under their own semantics and are never relabeled as
 capacity expansion.</p>
 </section>
 <section id="public-versus-internal-interfaces">
 <h2>Public versus internal interfaces<a class="headerlink" href="#public-versus-internal-interfaces" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Public examples use <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">flagquantum</span> <span class="pre">as</span> <span class="pre">fq</span></code>.</p></li>
-<li><p>Stable names are listed in the generated stable API inventory; everything else
-is experimental, internal, or a migration aid.</p></li>
+<li><p>Stable names are bounded by a checked manifest that tests verify.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fq.experimental</span></code> carries no compatibility guarantee.</p></li>
 <li><p>Compatibility modules support migration; they do not define new stable API.</p></li>
-<li><p>Benchmark and research utilities are never runtime dependencies.</p></li>
+<li><p>Benchmark and research utilities never become runtime dependencies.</p></li>
 </ul>
-<p>Package-root ownership is closed: the Python files directly under
-<code class="docutils literal notranslate"><span class="pre">flagquantum/</span></code> (<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>, <code class="docutils literal notranslate"><span class="pre">_api.py</span></code>, <code class="docutils literal notranslate"><span class="pre">circuit.py</span></code>, <code class="docutils literal notranslate"><span class="pre">dynamic.py</span></code>,
-<code class="docutils literal notranslate"><span class="pre">errors.py</span></code>, <code class="docutils literal notranslate"><span class="pre">gradients.py</span></code>, <code class="docutils literal notranslate"><span class="pre">models.py</span></code>, <code class="docutils literal notranslate"><span class="pre">operators.py</span></code>, <code class="docutils literal notranslate"><span class="pre">training.py</span></code>,
-<code class="docutils literal notranslate"><span class="pre">version.py</span></code>) are the reviewed public facade, and new implementations belong in
-their owning domain.</p>
 </section>
 </section>
 

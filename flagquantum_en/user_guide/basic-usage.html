@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Basic Usage" />
+<meta property="og:title" content="Basic usage" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/basic-usage.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Build a circuit: n_qubits is the preferred public name for circuit size. Positional Circuit(2), n_wires=2, and the legacy nqubits=2 remain compatible, and conflicting aliases fail during construction. Internal IR, compiler, and runtime mappings continue to use wire for logical mappings. Generated..." />
+<meta property="og:description" content="Create a circuit, inspect its plan, execute it and read the result. This is the shortest complete journey through the stable API. Plan, then execute the same plan: Planning explains what will run and why. Passing the plan to fq.run executes that exact plan without replanning or recompiling, and r..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Build a circuit: n_qubits is the preferred public name for circuit size. Positional Circuit(2), n_wires=2, and the legacy nqubits=2 remain compatible, and conflicting aliases fail during construction. Internal IR, compiler, and runtime mappings continue to use wire for logical mappings. Generated..." />
+<meta name="description" content="Create a circuit, inspect its plan, execute it and read the result. This is the shortest complete journey through the stable API. Plan, then execute the same plan: Planning explains what will run and why. Passing the plan to fq.run executes that exact plan without replanning or recompiling, and r..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Basic Usage &#8212; FlagQuantum Documentation</title>
+    <title>Basic usage &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/basic-usage.a2379053-6bc2-46b7-a386-b808e22b66b8.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/basic-usage.d44e868d-e776-407a-86d8-dc834ff48750.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/basic-usage';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Training with PyTorch" href="training.html" />
+    <link rel="next" title="Circuits and FlagQuantum IR" href="circuits-and-ir.html" />
     <link rel="prev" title="User Guide" href="user-guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -557,7 +565,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Basic Usage</h1>
+    <h1>Basic usage</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -567,12 +575,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-circuit">Build a circuit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-run">Plan, then run</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducible-plans">Reproducible plans</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-result">Read the result</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-device-or-target">Select a device or target</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-interfaces">Advanced interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-execute-the-same-plan">Plan, then execute the same plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-without-executing">Inspect without executing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-options-and-remote-targets">Local options and remote targets</a></li>
 </ul>
             </nav>
         </div>
@@ -585,27 +590,9 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="basic-usage">
-<h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">#</a></h1>
-<section id="build-a-circuit">
-<h2>Build a circuit<a class="headerlink" href="#build-a-circuit" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
-
-<span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">n_qubits</span></code> is the preferred public name for circuit size. Positional
-<code class="docutils literal notranslate"><span class="pre">Circuit(2)</span></code>, <code class="docutils literal notranslate"><span class="pre">n_wires=2</span></code>, and the legacy <code class="docutils literal notranslate"><span class="pre">nqubits=2</span></code> remain compatible, and
-conflicting aliases fail during construction. Internal IR, compiler, and runtime
-mappings continue to use <em>wire</em> for logical mappings.</p>
-<p>Generated gate methods keep their concise positional form and also accept
-semantic qubit keywords: <code class="docutils literal notranslate"><span class="pre">h(0)</span></code> and <code class="docutils literal notranslate"><span class="pre">h(qubit=0)</span></code> are equivalent, <code class="docutils literal notranslate"><span class="pre">cx(0,</span> <span class="pre">1)</span></code> and
-<code class="docutils literal notranslate"><span class="pre">cx(control=0,</span> <span class="pre">target=1)</span></code> are equivalent, symmetric two-qubit gates use
-<code class="docutils literal notranslate"><span class="pre">qubit1=</span></code> and <code class="docutils literal notranslate"><span class="pre">qubit2=</span></code>, and the generic <code class="docutils literal notranslate"><span class="pre">Circuit.gate(...)</span></code> keeps <code class="docutils literal notranslate"><span class="pre">wires=</span></code>.
-Duplicate, conflicting, or missing qubit arguments fail before an instruction is
-added.</p>
-</section>
-<section id="plan-then-run">
-<h2>Plan, then run<a class="headerlink" href="#plan-then-run" title="Link to this heading">#</a></h2>
+<h1>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading">#</a></h1>
+<p>Create a circuit, inspect its plan, execute it and read the result. This is the
+shortest complete journey through the stable API.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
 
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -619,20 +606,13 @@ added.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">fq.run(...)</span> <span class="pre">-&gt;</span> <span class="pre">fq.ExecutionResult</span></code> is the single recommended execution entry
-point, and <code class="docutils literal notranslate"><span class="pre">Circuit.run(...)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">fq.run(circuit,</span> <span class="pre">...)</span></code>.
-<code class="docutils literal notranslate"><span class="pre">ExecutionOptions</span></code> owns backend-neutral configuration; measurement requests and
-an optional <code class="docutils literal notranslate"><span class="pre">flagquantum.noise.NoiseModel</span></code> are semantic program inputs. Unknown
-keyword arguments fail before planning.</p>
-</section>
-<section id="reproducible-plans">
-<h2>Reproducible plans<a class="headerlink" href="#reproducible-plans" title="Link to this heading">#</a></h2>
-<p>Pass a plan straight to <code class="docutils literal notranslate"><span class="pre">fq.run</span></code> for an inspectable, reproducible execution: the
-supplied plan is validated and executed without replanning or recompiling, and
-<code class="docutils literal notranslate"><span class="pre">result.plan</span> <span class="pre">is</span> <span class="pre">plan</span></code> holds in the same process. Plan identity covers the
-canonical IR, resolved execution semantics, compiler pipeline, required
-environment, and the selected decision, and a JSON round trip verifies every
-fingerprint before execution:</p>
+<section id="plan-then-execute-the-same-plan">
+<h2>Plan, then execute the same plan<a class="headerlink" href="#plan-then-execute-the-same-plan" title="Link to this heading">#</a></h2>
+<p>Planning explains what will run and why. Passing the plan to <code class="docutils literal notranslate"><span class="pre">fq.run</span></code> executes
+that exact plan without replanning or recompiling, and <code class="docutils literal notranslate"><span class="pre">result.plan</span> <span class="pre">is</span> <span class="pre">plan</span></code>
+holds in the same process. Plan identity covers the canonical IR, resolved
+execution semantics, compiler pipeline, required environment and the selected
+decision, and it survives a JSON round trip:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
 <span class="n">restored</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">ExecutionPlan</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">restored</span><span class="p">)</span>
@@ -640,47 +620,32 @@ fingerprint before execution:</p>
 </pre></div>
 </div>
 <p>An existing plan is closed to semantic overrides: passing <code class="docutils literal notranslate"><span class="pre">options</span></code>,
-<code class="docutils literal notranslate"><span class="pre">measurements</span></code>, or <code class="docutils literal notranslate"><span class="pre">noise_model</span></code> alongside it raises <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, and an
-environment or world-size incompatibility fails before kernel launch rather than
+<code class="docutils literal notranslate"><span class="pre">measurements</span></code> or <code class="docutils literal notranslate"><span class="pre">noise_model</span></code> alongside it raises <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>. Environment or
+world-size incompatibility fails before kernel launch rather than silently
 replanning or falling back.</p>
 </section>
-<section id="read-the-result">
-<h2>Read the result<a class="headerlink" href="#read-the-result" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">statevector</span><span class="p">()</span>
-<span class="n">energy</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fq</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span><span class="o">.</span><span class="n">expectation</span><span class="p">()</span>
-<span class="n">diagnostics</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">()</span>   <span class="c1"># versioned metrics, provenance, runtime, compatibility</span>
-</pre></div>
-</div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">result.measurement(index_or_name)</span></code> for a specific request and
-<code class="docutils literal notranslate"><span class="pre">result.native()</span></code> only when intentionally depending on an unstable
-backend-native object; backend attributes are not forwarded implicitly.</p>
-</section>
-<section id="select-a-device-or-target">
-<h2>Select a device or target<a class="headerlink" href="#select-a-device-or-target" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">ExecutionOptions.device</span></code> describes a device controlled by the current process,
-while <code class="docutils literal notranslate"><span class="pre">target</span></code> names an external execution destination:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">local</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">fq</span><span class="o">.</span><span class="n">ExecutionOptions</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">"cuda:0"</span><span class="p">))</span>
-
-<span class="n">remote</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">circuit</span><span class="p">,</span>
-    <span class="n">compiler</span><span class="o">=</span><span class="s2">"qsteed"</span><span class="p">,</span>
-    <span class="n">target</span><span class="o">=</span><span class="s2">"quafu:Baihua"</span><span class="p">,</span>
-    <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"bell calibration"</span><span class="p">,</span>
+<section id="inspect-without-executing">
+<h2>Inspect without executing<a class="headerlink" href="#inspect-without-executing" title="Link to this heading">#</a></h2>
+<p>When you only need the decision, use the circuit-level planner:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rzz</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">measurement</span><span class="p">(</span><span class="s2">"counts"</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plan</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">runtime_plan</span><span class="p">(</span><span class="n">prefer_jax</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">require_gradients</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>The remote journey compiles, packages, submits, and waits for the result without
-changing the <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> return type, and it never selects a compiler,
-provider, or fallback implicitly.</p>
+<p>A plan is an explanation of intended execution, not benchmark evidence.</p>
 </section>
-<section id="advanced-interfaces">
-<h2>Advanced interfaces<a class="headerlink" href="#advanced-interfaces" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">flagquantum.runtime.run_native</span></code>, <code class="docutils literal notranslate"><span class="pre">flagquantum.simulation.mps.run_mps</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">flagquantum.simulation.tensor_network.run_tensor_network</span></code> exist for callers that
-explicitly need native backend result objects or backend-specific controls.
-Prefer <code class="docutils literal notranslate"><span class="pre">fq.run</span></code> unless one of those is required.</p>
+<section id="local-options-and-remote-targets">
+<h2>Local options and remote targets<a class="headerlink" href="#local-options-and-remote-targets" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">fq.ExecutionOptions</span></code> describes resources controlled by the current process,
+such as <code class="docutils literal notranslate"><span class="pre">device=&quot;cuda:0&quot;</span></code> or a simulation <code class="docutils literal notranslate"><span class="pre">mode</span></code>. The <code class="docutils literal notranslate"><span class="pre">target</span></code> argument is
+reserved for external execution destinations such as a Jiuding workspace or a
+Quafu backend. See <a class="reference internal" href="hardware-and-remote.html"><span class="std std-doc">Hardware and remote targets</span></a>.</p>
 </section>
 </section>
 
@@ -705,11 +670,11 @@ Prefer <code class="docutils literal notranslate"><span class="pre">fq.run</span
       </div>
     </a>
     <a class="right-next"
-       href="training.html"
+       href="circuits-and-ir.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training with PyTorch</p>
+        <p class="prev-next-title">Circuits and FlagQuantum IR</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -731,12 +696,9 @@ Prefer <code class="docutils literal notranslate"><span class="pre">fq.run</span
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-circuit">Build a circuit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-run">Plan, then run</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducible-plans">Reproducible plans</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-result">Read the result</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-device-or-target">Select a device or target</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-interfaces">Advanced interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-then-execute-the-same-plan">Plan, then execute the same plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-without-executing">Inspect without executing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-options-and-remote-targets">Local options and remote targets</a></li>
 </ul>
   </nav></div>
 

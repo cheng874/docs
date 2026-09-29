@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="reference/reference.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Stable interfaces, capability maturity, runtime contracts, and current support boundaries. Stable API and interfaces: API reference — the curated import flagquantum as fq surface, with runnable examples., Capability catalog — what is released, production-supported, development evidence, or experi..." />
+<meta property="og:description" content="Stable interfaces, configuration and support boundaries. Stable API: FlagQuantum exposes one curated Python interface, import flagquantum as fq. The stable names are bounded by a checked manifest, verified by executable contract tests.,, API, Stability,,, fq.Circuit, fq.CircuitIR, fq.Instruction,..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Stable interfaces, capability maturity, runtime contracts, and current support boundaries. Stable API and interfaces: API reference — the curated import flagquantum as fq surface, with runnable examples., Capability catalog — what is released, production-supported, development evidence, or experi..." />
+<meta name="description" content="Stable interfaces, configuration and support boundaries. Stable API: FlagQuantum exposes one curated Python interface, import flagquantum as fq. The stable names are bounded by a checked manifest, verified by executable contract tests.,, API, Stability,,, fq.Circuit, fq.CircuitIR, fq.Instruction,..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Reference &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/reference.ac33144a-6b1e-478b-a60a-fb7309aaf974.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/reference.25e7cebf-8299-49cf-a84b-4f3827283777.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/reference';</script>
@@ -79,6 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Capability reference" href="capabilities.html" />
+    <link rel="prev" title="Run tests" href="../user_guide/run-tests.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -250,8 +252,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -567,10 +575,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-api-and-interfaces">Stable API and interfaces</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contracts-and-policies">Contracts and policies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#claim-boundaries">Claim boundaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upstream-references">Upstream references</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-api">Stable API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-map">API map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-configuration">Runtime configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors">Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-boundaries">Stability boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
             </nav>
         </div>
@@ -584,50 +595,181 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
-<p>Stable interfaces, capability maturity, runtime contracts, and current support boundaries.</p>
-<section id="stable-api-and-interfaces">
-<h2>Stable API and interfaces<a class="headerlink" href="#stable-api-and-interfaces" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="api.html"><span class="std std-doc">API reference</span></a> — the curated <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">flagquantum</span> <span class="pre">as</span> <span class="pre">fq</span></code> surface, with runnable examples.</p></li>
-<li><p><a class="reference internal" href="capabilities.html"><span class="std std-doc">Capability catalog</span></a> — what is released, production-supported, development evidence, or experimental.</p></li>
-</ul>
-</section>
-<section id="contracts-and-policies">
-<h2>Contracts and policies<a class="headerlink" href="#contracts-and-policies" title="Link to this heading">#</a></h2>
+<p>Stable interfaces, configuration and support boundaries.</p>
+<section id="stable-api">
+<h2>Stable API<a class="headerlink" href="#stable-api" title="Link to this heading">#</a></h2>
+<p>FlagQuantum exposes one curated Python interface, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">flagquantum</span> <span class="pre">as</span> <span class="pre">fq</span></code>.
+The stable names are bounded by a checked manifest, verified by executable
+contract tests.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Topic</p></th>
-<th class="head"><p>Where it is defined</p></th>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>Stability</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Stable names</p></td>
-<td><p>A checked API manifest, rendered in the API reference</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.CircuitIR</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Instruction</span></code></p></td>
+<td><p>Stable</p></td>
 </tr>
-<tr class="row-odd"><td><p>Operator and backend lowering</p></td>
-<td><p>One typed operator registry, rendered as a generated capability table</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.ExecutionOptions</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.ExecutionPlan</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code></p></td>
+<td><p>Stable</p></td>
 </tr>
-<tr class="row-even"><td><p>Runtime evidence fields</p></td>
-<td><p>Versioned runtime contracts; the vocabulary is a contract, not proof a run occurred</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.MeasurementResult</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Observable</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.OutputRequest</span></code></p></td>
+<td><p>Stable</p></td>
 </tr>
-<tr class="row-odd"><td><p>Measured benchmark evidence</p></td>
-<td><p>Audited artifacts with provenance; plans and fixtures are excluded</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.Parameter</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.ParameterExpression</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.RuntimePolicy</span></code></p></td>
+<td><p>Stable</p></td>
 </tr>
-<tr class="row-even"><td><p>Supported Python and dependencies</p></td>
-<td><p>The package metadata: Python 3.10–3.12, PyTorch 2.5–2.13</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.TrainingResult</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.I</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.X</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Y</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Z</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.IR_VERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.IRSerializationError</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.IRValidationError</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.compile</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.run</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.train</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.counts</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.expectation</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.probabilities</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.samples</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.submit</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.restore_job</span></code></p></td>
+<td><p>Stable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.experimental</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.twin</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.__version__</span></code></p></td>
+<td><p>Stable</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="claim-boundaries">
-<h2>Claim boundaries<a class="headerlink" href="#claim-boundaries" title="Link to this heading">#</a></h2>
-<p>Local execution, registered lowering support, distributed development probes, and release-grade scalability are separate claims. A registered lowering proves that an operator can be executed on a path, not that the path is production-supported at scale. Distributed and accelerator claims additionally require runtime-generated evidence accepted by the repository’s benchmark audit and release policy.</p>
-<p>Planned capabilities belong in roadmap documents and are not listed as supported until executable manifests and tests exist.</p>
+<section id="api-map">
+<h2>API map<a class="headerlink" href="#api-map" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Primary interface</p></th>
+<th class="head"><p>Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Build a program</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code></p></td>
+<td><p>Circuit backed by FlagQuantum IR</p></td>
+</tr>
+<tr class="row-odd"><td><p>Optimize a program</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flagquantum.compiler.optimize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.CircuitIR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Compile for a selected tool and target</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.compile</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.CircuitIR</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Inspect execution</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.plan</span></code>, <code class="docutils literal notranslate"><span class="pre">Circuit.runtime_plan</span></code></p></td>
+<td><p>Explainable runtime plan</p></td>
+</tr>
+<tr class="row-even"><td><p>Execute locally or remotely</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.run</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Define a trainable quantum layer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.Module</span></code></p></td>
+<td><p>PyTorch module</p></td>
+</tr>
+<tr class="row-even"><td><p>Train</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.train</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fq.TrainingResult</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Package for a target</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flagquantum.deployment.create_deployment_package</span></code></p></td>
+<td><p>Sealed deployment package</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
-<section id="upstream-references">
-<h2>Upstream references<a class="headerlink" href="#upstream-references" title="Link to this heading">#</a></h2>
-<p>The FlagQuantum repository keeps the full reference set: the API reference, the runtime architecture and configuration references, the known-limitations catalog, the testing manual, and the roadmap. Values published here are taken from that source of truth; where a support boundary changes, the upstream reference and this docset are updated together.</p>
+<section id="runtime-configuration">
+<h2>Runtime configuration<a class="headerlink" href="#runtime-configuration" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">RuntimeConfig</span></code> is FlagQuantum’s immutable execution policy: backend, device,
+real and complex precision, JAX precision, matrix multiplication policy and
+drawing style. A <code class="docutils literal notranslate"><span class="pre">Circuit</span></code> captures a configuration when constructed and embeds
+a versioned manifest in IR and execution plans, so distributed workers rebuild
+the same policy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flagquantum.runtime.configuration</span><span class="w"> </span><span class="kn">import</span> <span class="n">RuntimeConfig</span><span class="p">,</span> <span class="n">runtime_config</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RuntimeConfig</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">runtime_config</span><span class="p">(</span><span class="n">complex_dtype</span><span class="o">=</span><span class="s2">"complex128"</span><span class="p">):</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># captures complex128</span>
+</pre></div>
+</div>
+<p>Each execution resolves complex precision once: <code class="docutils literal notranslate"><span class="pre">complex64</span></code> implies float32
+parameters and real components, <code class="docutils literal notranslate"><span class="pre">complex128</span></code> implies float64. The resolved value
+governs planning bytes, state allocation, parameter tensors, gate matrices and
+distributed simulation, and the stages never consult process defaults
+independently. Conflicting dtypes fail before gate application.</p>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h2>
+<p>Circuit operations and backend lowering availability derive from one typed
+operator registry. A registered lowering means the operator can be lowered for
+that backend — not that it is release evidence. The generated operator table in
+the repository is authoritative for the registered set, which covers Pauli,
+Clifford, rotation, controlled, symmetric two-qubit and phase gates, plus the
+noise channels used by the stable noise model.</p>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></p></td>
+<td><p>Invalid semantic input</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PlanningError</span></code></p></td>
+<td><p>Stale, tampered or incompatible plan</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CapabilityError</span></code></p></td>
+<td><p>The requested capability is unavailable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ExecutionError</span></code></p></td>
+<td><p>Execution or training failure</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All categories inherit <code class="docutils literal notranslate"><span class="pre">FlagQuantumError</span></code> and a compatible Python built-in
+exception. Wrong Python types and unknown keyword arguments raise <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+</section>
+<section id="stability-boundaries">
+<h2>Stability boundaries<a class="headerlink" href="#stability-boundaries" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fq.experimental</span></code> has no compatibility guarantee.</p></li>
+<li><p>Compatibility imports are migration aids and are not implied stable.</p></li>
+<li><p>A planner result describes intent and estimates; it is never runtime or
+benchmark evidence.</p></li>
+<li><p>Runtime evidence must satisfy the typed, versioned runtime contracts.</p></li>
+<li><p>New public names must first be importable, snapshot-tested and added to the
+stable API manifest.</p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="capabilities.html"><span class="std std-doc">Capability reference</span></a> — maturity and support boundaries per
+capability.</p></li>
+<li><p><a class="reference internal" href="../FlagQuantum_overview/architecture.html"><span class="std std-doc">Architecture</span></a> — layers, dependency
+direction and contracts.</p></li>
+</ul>
 </section>
 </section>
 
@@ -642,6 +784,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../user_guide/run-tests.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Run tests</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="capabilities.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Capability reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -660,10 +820,13 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-api-and-interfaces">Stable API and interfaces</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contracts-and-policies">Contracts and policies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#claim-boundaries">Claim boundaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upstream-references">Upstream references</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-api">Stable API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-map">API map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-configuration">Runtime configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors">Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-boundaries">Stability boundaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
   </nav></div>
 

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="FlagQuantum_overview/features.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Program model: Unified circuit API and FlagQuantum IR(release certified). fq.Circuit, fq.CircuitIR, fq.ExecutionPlan, and fq.ExecutionResult share one versioned representation across construction, compilation, planning, execution, and deployment., PyTorch-native training(production supported). fq..." />
+<meta property="og:description" content="PyTorch-native quantum training: Trainable circuits as PyTorch modules: fq.Module exposes the quantum model to PyTorch, so loss.backward() and ordinary optimizers train quantum and classical layers in one loop., Flat or named parameter groups: positional parameters and named groups such as{&quot;..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Program model: Unified circuit API and FlagQuantum IR(release certified). fq.Circuit, fq.CircuitIR, fq.ExecutionPlan, and fq.ExecutionResult share one versioned representation across construction, compilation, planning, execution, and deployment., PyTorch-native training(production supported). fq..." />
+<meta name="description" content="PyTorch-native quantum training: Trainable circuits as PyTorch modules: fq.Module exposes the quantum model to PyTorch, so loss.backward() and ordinary optimizers train quantum and classical layers in one loop., Flat or named parameter groups: positional parameters and named groups such as{&quot;..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Features &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/features.eccdcccd-6bce-407f-bd05-332c614ea711.js"></script>
+    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/features.f63ff0ee-7096-4022-a5a0-c214ae943524.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'FlagQuantum_overview/features';</script>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -567,14 +575,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-model">Program model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-and-training">Simulation and training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-numerical-trust">Precision and numerical trust</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noise">Noise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-execution">distributed execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-and-deployment">Compilation and deployment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-integration">Hardware integration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecosystems-and-extensibility">Ecosystems and extensibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-native-quantum-training">PyTorch-native quantum training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#several-simulation-representations-one-program">Several simulation representations, one program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-and-export">Compilation and export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measurement-noise-and-error-correction">Measurement, noise and error correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-and-accelerator-execution">Distributed and accelerator execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-interop-and-ecosystem">Deployment, interop and ecosystem</a></li>
 </ul>
             </nav>
         </div>
@@ -588,130 +594,91 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="features">
 <h1>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h1>
-<section id="program-model">
-<h2>Program model<a class="headerlink" href="#program-model" title="Link to this heading">#</a></h2>
+<section id="pytorch-native-quantum-training">
+<h2>PyTorch-native quantum training<a class="headerlink" href="#pytorch-native-quantum-training" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Unified circuit API and FlagQuantum IR</strong> (release certified). <code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>,
-<code class="docutils literal notranslate"><span class="pre">fq.CircuitIR</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.ExecutionPlan</span></code>, and <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> share one
-versioned representation across construction, compilation, planning,
-execution, and deployment.</p></li>
-<li><p><strong>PyTorch-native training</strong> (production supported). <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> owns trainable
-parameters and returns an autograd tensor from <code class="docutils literal notranslate"><span class="pre">forward()</span></code>, so ordinary
-PyTorch optimizers and hybrid classical-quantum models work without adapters.
-Flat, named, and symbolic parameter groups are supported, along with
-checkpoint and restore.</p></li>
-<li><p><strong>Explainable planning.</strong> <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code> records the selected representation,
-required environment, and blockers. Plans carry a SHA-256 identity, survive
-JSON round trips, and are executed exactly as supplied, without replanning,
-recompilation, or silent fallback.</p></li>
+<li><p><strong>Trainable circuits as PyTorch modules</strong>: <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code> exposes the quantum
+model to PyTorch, so <code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code> and ordinary optimizers train quantum
+and classical layers in one loop.</p></li>
+<li><p><strong>Flat or named parameter groups</strong>: positional parameters and named groups
+such as <code class="docutils literal notranslate"><span class="pre">{&quot;encoder&quot;:</span> <span class="pre">(4,),</span> <span class="pre">&quot;readout&quot;:</span> <span class="pre">()}</span></code> are both supported, with
+reproducible initialization and a module-local seed.</p></li>
+<li><p><strong>Stable training results</strong>: <code class="docutils literal notranslate"><span class="pre">fq.train</span></code> returns <code class="docutils literal notranslate"><span class="pre">fq.TrainingResult</span></code> with
+versioned summaries, and checkpoint and resume stay on <code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>.</p></li>
 </ul>
 </section>
-<section id="simulation-and-training">
-<h2>Simulation and training<a class="headerlink" href="#simulation-and-training" title="Link to this heading">#</a></h2>
+<section id="several-simulation-representations-one-program">
+<h2>Several simulation representations, one program<a class="headerlink" href="#several-simulation-representations-one-program" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Local statevector simulation and training</strong> (production supported) — the
-zero-configuration path, exact by default for probabilities and expectations.</p></li>
-<li><p><strong>Sharded statevector training</strong> (production supported) — one logical
-statevector distributed across ranks, with owner-sharded forward execution,
-reverse-mode gradients, optimizer state, and checkpoint/resume.</p></li>
-<li><p><strong>Differentiable and sharded MPS training</strong> (development evidence) — rank-owned
-matrix product states for low-entanglement systems, with variable bond
-dimension, checkpointing, and matched restart evidence.</p></li>
-<li><p><strong>Tensor-network execution and training</strong> (experimental) — slicing,
-contraction, and differentiable reverse contraction for structured circuits.</p></li>
-<li><p><strong>Constrained local MPS TEBD</strong> (experimental) — second-order imaginary-time
-evolution for static one-site and adjacent two-site Pauli terms on an open
-chain.</p></li>
-<li><p><strong>Continuous-time Lindblad evolution</strong> (production supported) — dense
-time-independent Hamiltonians on finite grids, CPU complex64/complex128.</p></li>
-<li><p><strong>Multiple gradient paths.</strong> Autograd for supported representations, a
-memory-bounded adjoint path for local Z/ZZ Hamiltonian gradients, and an
-explicit parameter-shift path on the split FP32 experimental line.</p></li>
+<li><p><strong>Statevector</strong>: the exact local path, on CPU or one GPU, with automatic
+dense reference reporting for small systems.</p></li>
+<li><p><strong>Matrix product state (MPS)</strong>: low-entanglement systems at far larger wire
+counts than a dense statevector allows, including constrained TEBD.</p></li>
+<li><p><strong>Tensor networks</strong>: slicing and contraction for circuit structures where
+neither dense statevector nor MPS fits.</p></li>
+<li><p><strong>Optional JAX kernels</strong> behind the same PyTorch interface, with first-order
+gradient support across the bridge.</p></li>
+<li><p><strong>One command to switch</strong>: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/quick_start.py</span> <span class="pre">--mode</span> <span class="pre">sv|mps|tn</span></code>
+runs the same hybrid model on three representations without editing code.</p></li>
 </ul>
 </section>
-<section id="precision-and-numerical-trust">
-<h2>Precision and numerical trust<a class="headerlink" href="#precision-and-numerical-trust" title="Link to this heading">#</a></h2>
+<section id="compilation-and-export">
+<h2>Compilation and export<a class="headerlink" href="#compilation-and-export" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>One resolved precision per execution.</strong> <code class="docutils literal notranslate"><span class="pre">complex64</span></code> implies float32
-parameters, <code class="docutils literal notranslate"><span class="pre">complex128</span></code> implies float64, and planning, state allocation, gate
-matrices, and parameter tensors all follow that decision.</p></li>
-<li><p><strong>Double-Single FP32 arithmetic</strong> (experimental) — a software-extended
-precision ladder for devices without native FP64, with explicit acceptance
-contracts and fail-closed accuracy requirements.</p></li>
-<li><p><strong>Fail-closed accuracy requirements.</strong> A requested accuracy that exceeds the
-certified evidence is rejected during planning instead of returning an
-unverified result.</p></li>
+<li><p><strong>Target-independent optimization</strong>: <code class="docutils literal notranslate"><span class="pre">flagquantum.compiler.optimize</span></code> applies
+canonical rewrites to a fixed point and returns new IR.</p></li>
+<li><p><strong>Target-aware compilation</strong>: <code class="docutils literal notranslate"><span class="pre">fq.compile(...,</span> <span class="pre">coupling_map=...,</span> <span class="pre">routing_strategy=...)</span></code>
+emits only topology-valid two-qubit operations and records the routing
+decision.</p></li>
+<li><p><strong>Compiler plugins</strong>: independently installed packages may register a
+compiler through the extension registry, for example the QSteed plugin used
+for Quafu submission.</p></li>
+<li><p><strong>OpenQASM and framework export</strong>: circuit export to OpenQASM 3.0 and
+adapters for Qiskit, PennyLane, Cirq, Braket and CUDA-Q.</p></li>
 </ul>
 </section>
-<section id="noise">
-<h2>Noise<a class="headerlink" href="#noise" title="Link to this heading">#</a></h2>
+<section id="measurement-noise-and-error-correction">
+<h2>Measurement, noise and error correction<a class="headerlink" href="#measurement-noise-and-error-correction" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Backend-neutral <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code></strong> (experimental) — Markovian Kraus channels,
-readout confusion, thermal relaxation, depolarizing and other built-in
-channels, plus calibration-conditioned device profiles.</p></li>
-<li><p><strong>Two execution styles</strong> — exact density-matrix evolution as the small-system
-correctness oracle, and batched statevector or MPS quantum trajectories with
-sampling statistics and truncation reporting.</p></li>
+<li><p><strong>Observables and outputs</strong>: <code class="docutils literal notranslate"><span class="pre">fq.X</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Y</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.Z</span></code> with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> products and
+ordinary arithmetic build Hamiltonians; <code class="docutils literal notranslate"><span class="pre">fq.expectation</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fq.probabilities</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.samples</span></code> and <code class="docutils literal notranslate"><span class="pre">fq.counts</span></code> request results.</p></li>
+<li><p><strong>Backend-neutral noise</strong>: one <code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> drives exact density-matrix
+evolution, batched statevector trajectories and MPS quantum trajectories,
+with thermal relaxation, depolarizing, bit/phase flip and readout errors.</p></li>
+<li><p><strong>Hardware Pauli measurement planning</strong>: qubit-wise-commuting grouping with
+one sealed deployment package per group.</p></li>
+<li><p><strong>Dynamic circuits</strong>: mid-circuit measurement and classical feedback, with a
+read-only backend preflight.</p></li>
+<li><p><strong>Quantum error correction</strong>: a repetition-code memory experiment connecting
+syndrome extraction, decoding and correction.</p></li>
 </ul>
 </section>
-<section id="distributed-execution">
-<h2>distributed execution<a class="headerlink" href="#distributed-execution" title="Link to this heading">#</a></h2>
+<section id="distributed-and-accelerator-execution">
+<h2>Distributed and accelerator execution<a class="headerlink" href="#distributed-and-accelerator-execution" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Sharded runtime semantics.</strong> Distribution topology comes from the execution
-environment; results report their <code class="docutils literal notranslate"><span class="pre">distribution_semantics</span></code>, and replicated,
-sliced, or rank-local execution is never relabelled as capacity expansion.</p></li>
-<li><p><strong>FlagOS distributed workloads</strong> (development evidence) — complex64/complex128
-forward, reverse, and bounded training trajectories on one CUDA-backed A800
-node at 2, 4, and 8 cards, with explicit negative results recorded.</p></li>
-<li><p><strong>Transport observability</strong> (development evidence) — collective-level
-correctness and logical residency checks for the tested collective matrix.</p></li>
+<li><p><strong>Sharded statevector training</strong>: one logical statevector across ranks, with
+distributed forward, backward and optimizer state.</p></li>
+<li><p><strong>Rank-owned MPS</strong>: distributed MPS forward, backward and optimizer state for
+workloads that do not fit one device.</p></li>
+<li><p><strong>PyTorch-native under a process group</strong>: the same module and result surface
+uses the sharded runtime once a multi-rank process group is initialized.</p></li>
+<li><p><strong>FlagOS accelerators through Torch-FL</strong>: the logical <code class="docutils literal notranslate"><span class="pre">flagos:0</span></code> device is
+reached through Torch-FL, which owns vendor detection and dispatch.</p></li>
 </ul>
 </section>
-<section id="compilation-and-deployment">
-<h2>Compilation and deployment<a class="headerlink" href="#compilation-and-deployment" title="Link to this heading">#</a></h2>
+<section id="deployment-interop-and-ecosystem">
+<h2>Deployment, interop and ecosystem<a class="headerlink" href="#deployment-interop-and-ecosystem" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Compiler optimization and target-aware compilation.</strong> <code class="docutils literal notranslate"><span class="pre">compiler.optimize</span></code>
-applies target-independent canonicalization to a fixed point;
-<code class="docutils literal notranslate"><span class="pre">compiler.compile</span></code> legalizes two-qubit operations for a concrete coupling map
-and records its routing decision.</p></li>
-<li><p><strong>Sealed deployment packages.</strong> <code class="docutils literal notranslate"><span class="pre">flagquantum.deployment</span></code> binds trained
-parameters, compiles for a target, and produces an identity-checked package
-that can be submitted later.</p></li>
-<li><p><strong>Pauli measurement plans.</strong> <code class="docutils literal notranslate"><span class="pre">create_pauli_measurement_plan</span></code> groups
-qubit-wise-commuting Hamiltonian terms and emits one sealed package per group.</p></li>
-<li><p><strong>Remote execution.</strong> <code class="docutils literal notranslate"><span class="pre">fq.run(...,</span> <span class="pre">target=...)</span></code>, <code class="docutils literal notranslate"><span class="pre">fq.submit()</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">fq.restore_job()</span></code> cover synchronous and detached Quafu hardware tasks and
-Jiuding managed compute jobs, all returning the canonical result contract.</p></li>
-</ul>
-</section>
-<section id="hardware-integration">
-<h2>Hardware integration<a class="headerlink" href="#hardware-integration" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>QPU digital twins</strong> (development evidence) — calibration-conditioned,
-provider-neutral models with validation series, drift comparison, frozen
-evidence envelopes, exact-circuit regional composition, and prospective
-candidate comparison.</p></li>
-<li><p><strong>Repetition-code memory experiment</strong> (development evidence) — a local
-reference circuit connecting syndrome extraction, decoding, correction, and
-logical-result analysis.</p></li>
-<li><p><strong>FlagOS accelerator route</strong> (development evidence) — a Torch-FL-backed
-platform runtime with no vendor branches inside FlagQuantum, plus a
-provisioner-attested single-card certification harness.</p></li>
-</ul>
-</section>
-<section id="ecosystems-and-extensibility">
-<h2>Ecosystems and extensibility<a class="headerlink" href="#ecosystems-and-extensibility" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Interoperability adapters</strong> (experimental) — Qiskit, PennyLane, Cirq, and
-CUDA-Q conversion, with local PennyLane Lightning, Cirq Simulator, and Qiskit
-Aer execution bridges.</p></li>
-<li><p><strong>Extension SDK</strong> (experimental) — backends, circuit compilers, compiler
-passes, kernels, operators, devices, providers, measurement collectors, and
-planners as independently installed packages.</p></li>
-<li><p><strong>Quantum algorithm units</strong> (experimental, demonstration scale) — QUBO/Ising
-mapping, state preparation, oracle synthesis, Grover search, amplitude
-estimation, quantum PCA, quantum k-medians, quantum kernel methods, and
-feature selection, each with its advantage premise recorded.</p></li>
+<li><p><strong>Sealed deployment packages</strong>: bind trained parameters, compile for a
+target and produce an auditable package before submission.</p></li>
+<li><p><strong>QPU digital twins</strong>: calibration-conditioned models that predict a device’s
+measurement distribution and carry explicit evidence boundaries.</p></li>
+<li><p><strong>Algorithm units</strong>: Grover search, amplitude estimation, quantum PCA,
+quantum k-medians, quantum kernel estimation and kernel ridge
+classification, feature selection as a QUBO, and QUBO-to-Ising mapping.</p></li>
+<li><p><strong>Circuit visualization</strong>: a text drawer for terminals and a Matplotlib
+drawer for publication figures.</p></li>
 </ul>
 </section>
 </section>
@@ -763,14 +730,12 @@ feature selection, each with its advantage premise recorded.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-model">Program model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-and-training">Simulation and training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-numerical-trust">Precision and numerical trust</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noise">Noise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-execution">distributed execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-and-deployment">Compilation and deployment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-integration">Hardware integration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecosystems-and-extensibility">Ecosystems and extensibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-native-quantum-training">PyTorch-native quantum training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#several-simulation-representations-one-program">Several simulation representations, one program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-and-export">Compilation and export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measurement-noise-and-error-correction">Measurement, noise and error correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-and-accelerator-execution">Distributed and accelerator execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-interop-and-ecosystem">Deployment, interop and ecosystem</a></li>
 </ul>
   </nav></div>
 

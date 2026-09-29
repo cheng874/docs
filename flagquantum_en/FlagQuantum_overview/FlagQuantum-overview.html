@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="FlagQuantum_overview/FlagQuantum-overview.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="FlagQuantum is sharded, differentiable quantum simulation and training in PyTorch, reaching domestic accelerators through FlagOS. It is a PyTorch-first framework for differentiable quantum computing and quantum AI: circuits become trainable models, and the same program can be executed locally, sh..." />
+<meta property="og:description" content="FlagQuantum is a sharded, differentiable quantum simulation and training framework built on PyTorch. It turns quantum circuits into trainable models, offers several simulation representations behind one program, and reaches domestic accelerators through FlagOS. It is part of the FlagOS ecosystem ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="FlagQuantum is sharded, differentiable quantum simulation and training in PyTorch, reaching domestic accelerators through FlagOS. It is a PyTorch-first framework for differentiable quantum computing and quantum AI: circuits become trainable models, and the same program can be executed locally, sh..." />
+<meta name="description" content="FlagQuantum is a sharded, differentiable quantum simulation and training framework built on PyTorch. It turns quantum circuits into trainable models, offers several simulation representations behind one program, and reaches domestic accelerators through FlagOS. It is part of the FlagOS ecosystem ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagQuantum Overview &#8212; FlagQuantum Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/FlagQuantum-overview.c0e2c765-c400-4789-8fc1-71a40412494d.js"></script>
+    <script defer="defer" src="../_static/tippy/FlagQuantum_overview/FlagQuantum-overview.2a65c166-d2ee-47a8-b954-6cded069fada.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'FlagQuantum_overview/FlagQuantum-overview';</script>
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../user_guide/user-guide.html">User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -568,10 +576,10 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-flagquantum">Why FlagQuantum?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-programming-model">One programming model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-a-program-can-run">Where a program can run</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-term-direction">Long-term direction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-program-several-execution-targets">One program, several execution targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-it-is-for">Who it is for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundaries">Support boundaries</a></li>
 </ul>
             </nav>
         </div>
@@ -585,131 +593,95 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flagquantum-overview">
 <h1>FlagQuantum Overview<a class="headerlink" href="#flagquantum-overview" title="Link to this heading">#</a></h1>
-<p>FlagQuantum is sharded, differentiable quantum simulation and training in
-PyTorch, reaching domestic accelerators through FlagOS. It is a PyTorch-first
-framework for differentiable quantum computing and quantum AI: circuits become
-trainable models, and the same program can be executed locally, sharded across
-ranks, or evaluated on quantum hardware.</p>
-<p>FlagQuantum is part of the FlagOS ecosystem, an open-source AI system software
-stack that integrates models, systems, and chips behind one software layer.</p>
+<p>FlagQuantum is a sharded, differentiable quantum simulation and training
+framework built on PyTorch. It turns quantum circuits into trainable models,
+offers several simulation representations behind one program, and reaches
+domestic accelerators through FlagOS. It is part of the FlagOS ecosystem — a
+unified, open-source AI system software stack that fosters an open technology
+ecosystem by seamlessly integrating various models, systems, and chips.</p>
 <section id="why-flagquantum">
 <h2>Why FlagQuantum?<a class="headerlink" href="#why-flagquantum" title="Link to this heading">#</a></h2>
-<p>As quantum circuits grow in qubit count and depth, exact classical simulation
-becomes expensive, and the useful question shifts from “how large a state can I
-hold” to “which representation fits this circuit, and what evidence do I have
-for this execution path”. FlagQuantum addresses both:</p>
+<p>As quantum circuits grow in qubit count and depth, exact simulation becomes
+prohibitively expensive, and moving a working model onto real hardware usually
+means rewriting it. FlagQuantum addresses both problems with one public model:</p>
 <ul class="simple">
-<li><p><strong>Train with PyTorch.</strong> Quantum layers are ordinary <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code> modules with
-autograd and familiar optimizers; classical and quantum layers train in one
-loop.</p></li>
-<li><p><strong>Choose the representation from one program.</strong> Statevector, matrix product
-state (MPS), and tensor-network execution are selected from the same circuit
-without rewriting the model.</p></li>
-<li><p><strong>Plan before executing.</strong> <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code> explains the representation, gradient
-support, and blockers, and execution does not silently fall back to a
-different path.</p></li>
-<li><p><strong>Keep support claims explicit.</strong> Implemented APIs, passing correctness
-checks, development evidence, and release-certified capabilities are separate
-levels, and each capability is published with its own scope.</p></li>
+<li><p>build a circuit once and train it with ordinary PyTorch autograd and
+optimizers;</p></li>
+<li><p>choose the simulation representation that fits the workload instead of the
+framework;</p></li>
+<li><p>keep the circuit and the requested observable explicit when moving between
+local, distributed and hardware execution targets.</p></li>
 </ul>
 </section>
-<section id="one-programming-model">
-<h2>One programming model<a class="headerlink" href="#one-programming-model" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.25</span><span class="p">]))</span>
-<span class="n">training</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
-    <span class="n">objective</span><span class="o">=</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-    <span class="n">steps</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">trained_circuit</span> <span class="o">=</span> <span class="n">circuit</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">trained_circuit</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fq</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Z</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">expectation</span><span class="p">())</span>
+<section id="one-program-several-execution-targets">
+<h2>One program, several execution targets<a class="headerlink" href="#one-program-several-execution-targets" title="Link to this heading">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fq.Circuit / fq.Module
+          │
+          ▼
+   FlagQuantum IR
+          │
+          ├── compile and export
+          ├── local statevector, MPS and tensor-network runtimes
+          ├── optional JAX kernels behind the PyTorch interface
+          ├── sharded statevector and MPS execution
+          └── deployment packages for provider and hardware targets
 </pre></div>
 </div>
 <p>The architectural invariant is simple: backend selection may change execution,
 but it must not change the meaning of the program or the result contract.</p>
 </section>
-<section id="where-a-program-can-run">
-<h2>Where a program can run<a class="headerlink" href="#where-a-program-can-run" title="Link to this heading">#</a></h2>
+<section id="who-it-is-for">
+<h2>Who it is for<a class="headerlink" href="#who-it-is-for" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Quantum machine learning and VQE users</strong> who want trainable circuits inside
+a normal PyTorch training loop.</p></li>
+<li><p><strong>Algorithm researchers</strong> who need to move between representations and
+compare them on the same program.</p></li>
+<li><p><strong>Accelerator users</strong> who need a domestic-accelerator path with explicit,
+auditable evidence instead of hidden fallbacks.</p></li>
+</ul>
+</section>
+<section id="key-concepts">
+<h2>Key concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Execution target</p></th>
-<th class="head"><p>How it is selected</p></th>
-<th class="head"><p>Current support</p></th>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>What it means</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Local CPU statevector</p></td>
-<td><p>Default</p></td>
-<td><p>Production supported</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code></p></td>
+<td><p>Circuit construction and circuit-facing convenience methods, backed by FlagQuantum IR</p></td>
 </tr>
-<tr class="row-odd"><td><p>One CUDA GPU</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">fq.ExecutionOptions(device=&quot;cuda:0&quot;)</span></code></p></td>
-<td><p>Local correctness evidence</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.Module</span></code></p></td>
+<td><p>The PyTorch-native owner of trainable quantum parameters</p></td>
 </tr>
-<tr class="row-even"><td><p>Several ranks, sharded statevector</p></td>
-<td><p>Initialized multi-rank process group</p></td>
-<td><p>Production supported</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.plan</span></code></p></td>
+<td><p>An explainable runtime plan: intended representation, policy and blockers</p></td>
 </tr>
-<tr class="row-odd"><td><p>Sharded MPS training</p></td>
-<td><p>Rank-owned MPS entry points</p></td>
-<td><p>Development evidence</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fq.run</span></code></p></td>
+<td><p>The single recommended execution entry point, returning <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>FlagOS logical device (<code class="docutils literal notranslate"><span class="pre">flagos</span></code>)</p></td>
-<td><p>Explicit provider selection through Torch-FL</p></td>
-<td><p>Development evidence</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fq.train</span></code></p></td>
+<td><p>A minimal, caller-owned PyTorch optimizer loop returning <code class="docutils literal notranslate"><span class="pre">fq.TrainingResult</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Remote compute (Jiuding workspace)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">target=&quot;jiuding:gpu&quot;</span></code></p></td>
-<td><p>Experimental</p></td>
-</tr>
-<tr class="row-even"><td><p>Quantum hardware (Quafu)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">target=&quot;quafu:&lt;backend&gt;&quot;</span></code></p></td>
-<td><p>Experimental, one recorded hardware check</p></td>
+<tr class="row-odd"><td><p>FlagQuantum IR</p></td>
+<td><p>The versioned operator, measurement and metadata representation shared by compilation, execution and deployment</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Support is specific to each backend and workload. The CUDA reference and the
-distributed workloads are development evidence, not production or general
-scalability claims, and FlagQuantum does not certify any domestic accelerator
-by itself. See <a class="reference internal" href="../reference/capabilities.html"><span class="std std-doc">Capabilities</span></a> for the current
-boundary of each path.</p>
+<p>Planning is not execution evidence. A plan describes intent and estimates;
+runtime records describe what actually ran.</p>
 </section>
-<section id="long-term-direction">
-<h2>Long-term direction<a class="headerlink" href="#long-term-direction" title="Link to this heading">#</a></h2>
-<p>The roadmap moves toward one durable workflow: build once, train with PyTorch,
-choose statevector, MPS, or tensor-network execution, scale across chips when
-the workload requires it, and deploy the trained program to quantum hardware.
-Near-term work covers local development, the FlagOS multi-chip backend, sharded
-training, and the training-to-hardware loop; fault-tolerant quantum computing
-research is a longer-term goal.</p>
-</section>
-<section id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
-<p>FlagQuantum references the following projects and organizations:</p>
-<ul class="simple">
-<li><p><strong><a class="reference external" href="https://github.com/NVIDIA/cuda-quantum">NVIDIA CUDA-Q</a></strong> — GPU-accelerated
-quantum circuit simulation and distributed quantum computing.</p></li>
-<li><p><strong><a class="reference external" href="https://github.com/mit-han-lab/torchquantum">MIT TorchQuantum</a></strong> —
-PyTorch-native quantum circuit representations.</p></li>
-<li><p><strong><a class="reference external" href="https://github.com/ionq/torchquantum-dist">IonQ TQD</a></strong> — efficient state
-representations.</p></li>
-<li><p><strong><a class="reference external" href="https://github.com/PennyLaneAI/pennylane">Xanadu PennyLane</a></strong> — functional
-API design and integration with classical machine learning frameworks.</p></li>
-<li><p><strong><a class="reference external" href="https://github.com/Qiskit/qiskit">IBM Qiskit</a></strong> — quantum circuit
-construction and statevector simulation concepts.</p></li>
-</ul>
+<section id="support-boundaries">
+<h2>Support boundaries<a class="headerlink" href="#support-boundaries" title="Link to this heading">#</a></h2>
+<p>Implementing a feature is not the same as supporting it in production.
+FlagQuantum publishes the maturity of every capability — release certified,
+production supported, development evidence, or experimental — in the
+<a class="reference internal" href="../reference/capabilities.html"><span class="std std-doc">capability reference</span></a>, and the tested workflows
+and remaining research goals are listed there rather than implied by an
+example.</p>
 </section>
 </section>
 
@@ -761,10 +733,10 @@ construction and statevector simulation concepts.</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-flagquantum">Why FlagQuantum?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-programming-model">One programming model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-a-program-can-run">Where a program can run</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-term-direction">Long-term direction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-program-several-execution-targets">One program, several execution targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-it-is-for">Who it is for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-boundaries">Support boundaries</a></li>
 </ul>
   </nav></div>
 

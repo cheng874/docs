@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Distributed Execution" />
+<meta property="og:title" content="Distributed execution" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/distributed-execution.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="FlagQuantum distributes one logical workload, not copies of it. Distribution topology comes from the execution environment, and every result reports its distribution_semantics so replicated, rank-local, sliced, and sharded execution stay distinguishable. Sharded statevector: Under an initialized ..." />
+<meta property="og:description" content="Distributed execution extends the same programming model to genuinely sharded workloads. One logical workload is split across ranks; replicated execution is never presented as capacity scaling. Sharded statevector: Under an initialized multi-rank process group, the same statevector module and res..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="FlagQuantum distributes one logical workload, not copies of it. Distribution topology comes from the execution environment, and every result reports its distribution_semantics so replicated, rank-local, sliced, and sharded execution stay distinguishable. Sharded statevector: Under an initialized ..." />
+<meta name="description" content="Distributed execution extends the same programming model to genuinely sharded workloads. One logical workload is split across ranks; replicated execution is never presented as capacity scaling. Sharded statevector: Under an initialized multi-rank process group, the same statevector module and res..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Distributed Execution &#8212; FlagQuantum Documentation</title>
+    <title>Distributed execution &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.dbb531e7-275d-4bbd-9e3f-d17587275bc4.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.5fc24691-1a5b-47d1-9bb9-23d4d9d3eaeb.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/distributed-execution';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Noisy Simulation" href="noisy-simulation.html" />
-    <link rel="prev" title="Simulation Modes" href="simulation-modes.html" />
+    <link rel="next" title="Hardware and remote targets" href="hardware-and-remote.html" />
+    <link rel="prev" title="Simulation representations" href="simulation-representations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -557,7 +565,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Distributed Execution</h1>
+    <h1>Distributed execution</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -568,9 +576,9 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharded-statevector">Sharded statevector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps-training">Rank-owned MPS training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training-entry-points">Distributed training entry points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-and-claim-boundary">Evidence and claim boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps">Rank-owned MPS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-distributed-evidence-means-here">What distributed evidence means here</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-accelerators">FlagOS accelerators</a></li>
 </ul>
             </nav>
         </div>
@@ -583,82 +591,63 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="distributed-execution">
-<h1>Distributed Execution<a class="headerlink" href="#distributed-execution" title="Link to this heading">#</a></h1>
-<p>FlagQuantum distributes one logical workload, not copies of it. Distribution
-topology comes from the execution environment, and every result reports its
-<code class="docutils literal notranslate"><span class="pre">distribution_semantics</span></code> so replicated, rank-local, sliced, and sharded
-execution stay distinguishable.</p>
+<h1>Distributed execution<a class="headerlink" href="#distributed-execution" title="Link to this heading">#</a></h1>
+<p>Distributed execution extends the same programming model to genuinely sharded
+workloads. One logical workload is split across ranks; replicated execution is
+never presented as capacity scaling.</p>
 <section id="sharded-statevector">
 <h2>Sharded statevector<a class="headerlink" href="#sharded-statevector" title="Link to this heading">#</a></h2>
-<p>Under an initialized multi-rank process group, the same circuit, module, and
-result surface use the native sharded statevector runtime:</p>
+<p>Under an initialized multi-rank process group, the same statevector module and
+result surface automatically use the native sharded statevector runtime.
+Distribution topology comes from the execution environment, not from a second
+mode vocabulary.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span>your_script.py
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="n">n_qubits</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">bsz</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">circuit</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">policy</span><span class="o">=</span><span class="n">fq</span><span class="o">.</span><span class="n">RuntimePolicy</span><span class="p">(</span><span class="n">observable</span><span class="o">=</span><span class="s2">"z"</span><span class="p">))</span>
-<span class="n">training</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span> <span class="n">steps</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The sharded runtime owns amplitude ownership, cross-rank reduction for
-gradients, rank-local rematerialization for shared-parameter circuits, and
-checkpoint/resume. Full-state materialization is forbidden on this path, and
-forward-only training or release blockers are reported explicitly.</p>
+<p>Sharded statevector training keeps optimizer state and checkpoints owned by the
+declared distribution, so forward execution, gradients, optimizer updates and
+restart all preserve the same semantics.</p>
 </section>
-<section id="rank-owned-mps-training">
-<h2>Rank-owned MPS training<a class="headerlink" href="#rank-owned-mps-training" title="Link to this heading">#</a></h2>
-<p>Long, low-entanglement circuits are the MPS case: one state is sharded across
-ranks with owner-local boundaries, backward execution, optimizer state, and
-matched checkpoint/restart equivalence.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>examples/distributed_statevector_topologies/run.sh
-python<span class="w"> </span>examples/distributed_mps/variable_bond_capacity_8gpu.py
+<section id="rank-owned-mps">
+<h2>Rank-owned MPS<a class="headerlink" href="#rank-owned-mps" title="Link to this heading">#</a></h2>
+<p>Distributed MPS training keeps forward, backward and optimizer state
+rank-owned. It is the path for large low-entanglement systems that do not fit
+on one device, and it supports checkpoint and resume with matched restart
+semantics. An experimental <code class="docutils literal notranslate"><span class="pre">adam_lbfgs</span></code> schedule with owner-local
+limited-memory histories is available for bonded systems.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/distributed_mps/variable_bond_capacity_8gpu.py
+python<span class="w"> </span>examples/distributed_statevector_topologies/run.sh
 </pre></div>
 </div>
 </section>
-<section id="distributed-training-entry-points">
-<h2>Distributed training entry points<a class="headerlink" href="#distributed-training-entry-points" title="Link to this heading">#</a></h2>
-<p>Owner-sharded statevector and MPS training have their own entry points and are
-not implied by <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">flagquantum.experimental.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_distributed_statevector</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">train_distributed_statevector</span><span class="p">(</span>
-    <span class="n">module</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
-    <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">checkpoint_dir</span><span class="o">=</span><span class="s2">"./checkpoints"</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>These paths add multi-step native PyTorch training with owner-sharded optimizer
-state, structured lifecycle progress, memory preflight, and cancellation.
-Distributed training counts as complete only when forward execution, gradients,
-optimizer updates, and checkpoint ownership all preserve the declared
-distribution semantics.</p>
-</section>
-<section id="evidence-and-claim-boundary">
-<h2>Evidence and claim boundary<a class="headerlink" href="#evidence-and-claim-boundary" title="Link to this heading">#</a></h2>
+<section id="what-distributed-evidence-means-here">
+<h2>What distributed evidence means here<a class="headerlink" href="#what-distributed-evidence-means-here" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The recorded distributed workloads are development evidence: complex64 and
-complex128 forward, reverse, and bounded training trajectories on one
-CUDA-backed A800 node at 2, 4, and 8 cards, plus single-node MPS scale,
-boundary transport, and checkpoint/restart checks. Multi-node execution was
-probed with two nodes and one A800 per node over NCCL/TCP.</p></li>
-<li><p>Communication attribution is incomplete in the recorded evidence: the inner
-transport route and host staging remain unattributed, and FlagCX use is not
-established.</p></li>
-<li><p>CPU distributed tests prove semantics and fail-closed behaviour only. They are
-never scalability evidence.</p></li>
-<li><p>Release-grade scalability evidence requires a promoted benchmark payload that
-passes the distributed release-policy audit.</p></li>
-<li><p>Capacity expansion means one logical workload that does not fit on one device.
-Replicated data parallelism and manual slicing are reported under their own
-semantics.</p></li>
+<li><p>A distributed scalability claim requires one logical workload sharded across
+ranks.</p></li>
+<li><p>CPU distributed tiers prove semantics and fail-closed behaviour only; they are
+not capacity evidence.</p></li>
+<li><p>Runtime records report their <code class="docutils literal notranslate"><span class="pre">distribution_semantics</span></code>, so sharded capacity
+can be distinguished from replicated throughput.</p></li>
+<li><p>Distributed training remains explicitly experimental outside the supported
+sharded statevector and MPS profiles.</p></li>
 </ul>
+</section>
+<section id="flagos-accelerators">
+<h2>FlagOS accelerators<a class="headerlink" href="#flagos-accelerators" title="Link to this heading">#</a></h2>
+<p>On a FlagOS-supported accelerator, the same program runs on the logical
+<code class="docutils literal notranslate"><span class="pre">flagos:0</span></code> device through Torch-FL, so distributed transports and collectives
+follow the FlagOS route. See
+<a class="reference internal" href="hardware-and-remote.html"><span class="std std-doc">Hardware and remote targets</span></a>.</p>
 </section>
 </section>
 
@@ -674,20 +663,20 @@ semantics.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="simulation-modes.html"
+       href="simulation-representations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simulation Modes</p>
+        <p class="prev-next-title">Simulation representations</p>
       </div>
     </a>
     <a class="right-next"
-       href="noisy-simulation.html"
+       href="hardware-and-remote.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Noisy Simulation</p>
+        <p class="prev-next-title">Hardware and remote targets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -710,9 +699,9 @@ semantics.</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharded-statevector">Sharded statevector</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps-training">Rank-owned MPS training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training-entry-points">Distributed training entry points</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-and-claim-boundary">Evidence and claim boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps">Rank-owned MPS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-distributed-evidence-means-here">What distributed evidence means here</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagos-accelerators">FlagOS accelerators</a></li>
 </ul>
   </nav></div>
 

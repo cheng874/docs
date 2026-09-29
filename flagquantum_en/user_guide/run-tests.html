@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Run Tests" />
+<meta property="og:title" content="Run tests" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/run-tests.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Install the test dependencies: Run the suite: Tiered commands: The repository’s tier runner selects a meaningful subset for the change at hand:,,,, Situation, Command, What it proves, What it does not prove,,, Daily development or any issue baseline, python tools/ci_tier.py pr-default, Fast smoke..." />
+<meta property="og:description" content="Install the development dependencies, then run the smallest meaningful tier first and expand by blast radius. Plain pytest entry points work as well: What each tier proves:,,, Tier, Proves, Does not prove,,, Push gate, Imports, minimal circuits, autograd, pure planner and audit helpers, Runtime i..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Install the test dependencies: Run the suite: Tiered commands: The repository’s tier runner selects a meaningful subset for the change at hand:,,,, Situation, Command, What it proves, What it does not prove,,, Daily development or any issue baseline, python tools/ci_tier.py pr-default, Fast smoke..." />
+<meta name="description" content="Install the development dependencies, then run the smallest meaningful tier first and expand by blast radius. Plain pytest entry points work as well: What each tier proves:,,, Tier, Proves, Does not prove,,, Push gate, Imports, minimal circuits, autograd, pure planner and audit helpers, Runtime i..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Run Tests &#8212; FlagQuantum Documentation</title>
+    <title>Run tests &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/run-tests.6d8cf990-86f0-489e-80b4-ff84e57db698.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/run-tests.0134b97e-727b-418d-adf8-553a26ef871d.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/run-tests';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API Reference" href="../reference/api.html" />
-    <link rel="prev" title="Examples and Tutorials" href="examples.html" />
+    <link rel="next" title="Reference" href="../reference/reference.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run Tests</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -557,7 +565,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Run Tests</h1>
+    <h1>Run tests</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -567,11 +575,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-test-dependencies">Install the test dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-suite">Run the suite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiered-commands">Tiered commands</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-integration-suites">Optional integration suites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-certification-and-the-no-progress-policy">Correctness certification and the no-progress policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-each-tier-proves">What each tier proves</a></li>
 </ul>
             </nav>
         </div>
@@ -584,82 +588,62 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="run-tests">
-<h1>Run Tests<a class="headerlink" href="#run-tests" title="Link to this heading">#</a></h1>
-<section id="install-the-test-dependencies">
-<h2>Install the test dependencies<a class="headerlink" href="#install-the-test-dependencies" title="Link to this heading">#</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">".[dev]"</span>
+<h1>Run tests<a class="headerlink" href="#run-tests" title="Link to this heading">#</a></h1>
+<p>Install the development dependencies, then run the smallest meaningful tier
+first and expand by blast radius.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
+
+<span class="c1"># Daily development baseline</span>
+python<span class="w"> </span>tools/ci_tier.py<span class="w"> </span>pr-default
+
+<span class="c1"># Local API, runtime, planner and compiler changes</span>
+python<span class="w"> </span>tools/ci_tier.py<span class="w"> </span>pr-runtime
+
+<span class="c1"># Distributed planner, audit and benchmark contracts on CPU</span>
+python<span class="w"> </span>tools/ci_tier.py<span class="w"> </span>pr-distributed
+
+<span class="c1"># Accelerator-backed and device-bound Triton tests</span>
+python<span class="w"> </span>tools/ci_tier.py<span class="w"> </span>gpu-scheduled
 </pre></div>
 </div>
-</section>
-<section id="run-the-suite">
-<h2>Run the suite<a class="headerlink" href="#run-the-suite" title="Link to this heading">#</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>run_tests.py
+<p>Plain pytest entry points work as well:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/unit<span class="w"> </span>-q
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/qec<span class="w"> </span>-q
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>qiskit
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>pennylane
 </pre></div>
 </div>
-</section>
-<section id="tiered-commands">
-<h2>Tiered commands<a class="headerlink" href="#tiered-commands" title="Link to this heading">#</a></h2>
-<p>The repository’s tier runner selects a meaningful subset for the change at hand:</p>
+<section id="what-each-tier-proves">
+<h2>What each tier proves<a class="headerlink" href="#what-each-tier-proves" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Situation</p></th>
-<th class="head"><p>Command</p></th>
-<th class="head"><p>What it proves</p></th>
-<th class="head"><p>What it does not prove</p></th>
+<tr class="row-odd"><th class="head"><p>Tier</p></th>
+<th class="head"><p>Proves</p></th>
+<th class="head"><p>Does not prove</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Daily development or any issue baseline</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/ci_tier.py</span> <span class="pre">pr-default</span></code></p></td>
-<td><p>Fast smoke and unit health for imports, minimal circuits, autograd, and planner helpers</p></td>
-<td><p>Runtime integration, distributed behaviour, performance, or release readiness</p></td>
+<tr class="row-even"><td><p>Push gate</p></td>
+<td><p>Imports, minimal circuits, autograd, pure planner and audit helpers</p></td>
+<td><p>Runtime integration, distributed behaviour, performance, release readiness</p></td>
 </tr>
-<tr class="row-odd"><td><p>Local API, runtime, planner, or compiler changes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/ci_tier.py</span> <span class="pre">pr-runtime</span></code></p></td>
+<tr class="row-odd"><td><p>Local runtime</p></td>
 <td><p>Seeded integration coverage for local runtime and API behaviour</p></td>
-<td><p>Multi-process transport, GPU execution, or scalability</p></td>
+<td><p>Multi-process transport, GPU execution, scalability</p></td>
 </tr>
-<tr class="row-even"><td><p>Distributed planner, audit, or benchmark contract changes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/ci_tier.py</span> <span class="pre">pr-distributed</span></code></p></td>
-<td><p>CPU distributed semantics, fail-closed gates, benchmark JSON contracts, release-gate validation</p></td>
+<tr class="row-even"><td><p>Distributed CPU</p></td>
+<td><p>CPU distributed semantics, fail-closed gates, benchmark contracts, release-gate validation</p></td>
 <td><p>Real multi-GPU or multi-node capacity expansion</p></td>
 </tr>
-<tr class="row-odd"><td><p>Real multi-GPU or accelerator work</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/ci_tier.py</span> <span class="pre">gpu-scheduled</span></code></p></td>
-<td><p>Accelerator-backed tests plus device-bound Triton kernels</p></td>
+<tr class="row-odd"><td><p>GPU scheduled</p></td>
+<td><p>Accelerator-backed and device-bound kernel tests</p></td>
 <td><p>Multi-node transport or release scalability by itself</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The core rule is to run the smallest meaningful tier first and expand by blast
-radius. CPU distributed tests prove semantics and fail-closed behaviour only;
-they are never scalability evidence, and an empty marker selection is not
-verification.</p>
-</section>
-<section id="optional-integration-suites">
-<h2>Optional integration suites<a class="headerlink" href="#optional-integration-suites" title="Link to this heading">#</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-m<span class="w"> </span>qiskit
-pytest<span class="w"> </span>-m<span class="w"> </span>pennylane
-pytest<span class="w"> </span>-m<span class="w"> </span>braket
-</pre></div>
-</div>
-</section>
-<section id="correctness-certification-and-the-no-progress-policy">
-<h2>Correctness certification and the no-progress policy<a class="headerlink" href="#correctness-certification-and-the-no-progress-policy" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">docs/correctness_certification.json</span></code> is generated from the operator and
-lowering registry: every supported operator/backend pair must have a versioned
-generated case, and distributed implementation changes must run the required
-local GPU lane because CPU simulation cannot replace it.</p>
-<p>Long-running jobs report phase, last operation, completed work, memory,
-collective state, and rank. A no-progress watchdog classifies stalled input,
-collective and participant stalls, rank desynchronization, and memory growth,
-preserves diagnostics, terminates the stale job, and verifies process-group
-cleanup. Explicit compile and checkpoint budgets keep bounded legitimate work
-from being mistaken for a hang.</p>
-<p>Release-grade scalability evidence requires a promoted benchmark payload that
-passes the distributed release-policy audit, which is a separate gate from the
-tiers above.</p>
+<p>An empty marker selection is not verification. CPU distributed tests prove
+semantics only and are never used as scalability release evidence.</p>
 </section>
 </section>
 
@@ -675,20 +659,20 @@ tiers above.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="examples.html"
+       href="tutorials.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Examples and Tutorials</p>
+        <p class="prev-next-title">Tutorials</p>
       </div>
     </a>
     <a class="right-next"
-       href="../reference/api.html"
+       href="../reference/reference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">API Reference</p>
+        <p class="prev-next-title">Reference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -710,11 +694,7 @@ tiers above.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-test-dependencies">Install the test dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-suite">Run the suite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiered-commands">Tiered commands</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-integration-suites">Optional integration suites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correctness-certification-and-the-no-progress-policy">Correctness certification and the no-progress policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-each-tier-proves">What each tier proves</a></li>
 </ul>
   </nav></div>
 

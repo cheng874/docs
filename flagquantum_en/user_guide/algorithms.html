@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Algorithms" />
+<meta property="og:title" content="Algorithms, error correction and digital twins" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/algorithms.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="flagquantum.algorithms composes the runtime into runnable algorithm units. They are demonstration-scale teaching and reference implementations: each unit records the premise its advantage statement depends on, and none of them certifies performance, convergence, or hardware behaviour. Units:,,, U..." />
+<meta property="og:description" content="Algorithm units: flagquantum.algorithms composes user-facing algorithm units on top of the stable circuit and runtime API. They are exported from the subpackage surface rather than the fq alias.,, Unit, What it does,,, Grover search, Synthesizes an oracle from a truth table and runs the search,, ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="flagquantum.algorithms composes the runtime into runnable algorithm units. They are demonstration-scale teaching and reference implementations: each unit records the premise its advantage statement depends on, and none of them certifies performance, convergence, or hardware behaviour. Units:,,, U..." />
+<meta name="description" content="Algorithm units: flagquantum.algorithms composes user-facing algorithm units on top of the stable circuit and runtime API. They are exported from the subpackage surface rather than the fq alias.,, Unit, What it does,,, Grover search, Synthesizes an oracle from a truth table and runs the search,, ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Algorithms &#8212; FlagQuantum Documentation</title>
+    <title>Algorithms, error correction and digital twins &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/algorithms.95c8b5c1-880d-4f0c-8b4c-e9824b1e7f48.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/algorithms.bad0fd2f-5526-4068-8a26-a3d8e51b9c2d.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/algorithms';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interoperability" href="interoperability.html" />
-    <link rel="prev" title="Deployment and Hardware" href="deployment.html" />
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="Hardware and remote targets" href="hardware-and-remote.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -396,26 +396,34 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training.html">Training with PyTorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="measurement.html">Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="simulation-modes.html">Simulation Modes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compilation.html">Compilation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deployment.html">Deployment and Hardware</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interoperability.html">Interoperability</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run Tests</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="user-guide.html">User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-tests.html">Run tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuits-and-ir.html">Circuits and FlagQuantum IR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Training with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measurement-and-noise.html">Measurement and noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-representations.html">Simulation representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-execution.html">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-and-remote.html">Hardware and remote targets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algorithms, error correction and digital twins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/operator-capabilities.html">Operator Capabilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability reference</a></li>
 </ul>
 
     </div>
@@ -557,7 +565,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Algorithms</h1>
+    <h1>Algorithms, error correction and digital twins</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -567,9 +575,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-training">Variational training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-boundary">Read the boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-units">Algorithm units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-hamiltonian-gradients">Local Hamiltonian gradients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-error-correction">Quantum error correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qpu-digital-twins">QPU digital twins</a></li>
 </ul>
             </nav>
         </div>
@@ -581,98 +590,121 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="algorithms">
-<h1>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">flagquantum.algorithms</span></code> composes the runtime into runnable algorithm units.
-They are demonstration-scale teaching and reference implementations: each unit
-records the premise its advantage statement depends on, and none of them
-certifies performance, convergence, or hardware behaviour.</p>
-<section id="units">
-<h2>Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithms-error-correction-and-digital-twins">
+<h1>Algorithms, error correction and digital twins<a class="headerlink" href="#algorithms-error-correction-and-digital-twins" title="Link to this heading">#</a></h1>
+<section id="algorithm-units">
+<h2>Algorithm units<a class="headerlink" href="#algorithm-units" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">flagquantum.algorithms</span></code> composes user-facing algorithm units on top of the
+stable circuit and runtime API. They are exported from the subpackage surface
+rather than the <code class="docutils literal notranslate"><span class="pre">fq</span></code> alias.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Unit</p></th>
-<th class="head"><p>Entry point</p></th>
-<th class="head"><p>Advantage premise recorded</p></th>
+<th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p>Grover search</p></td>
+<td><p>Synthesizes an oracle from a truth table and runs the search</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amplitude estimation</p></td>
+<td><p>Estimates an amplitude on the register’s own grid</p></td>
+</tr>
+<tr class="row-even"><td><p>Quantum PCA</p></td>
+<td><p>Builds the density matrix of a data set and reads out its dominant eigenvalues</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quantum k-medians</p></td>
+<td><p>Samples centroid assignments through Grover search</p></td>
+</tr>
+<tr class="row-even"><td><p>Quantum kernel estimation</p></td>
+<td><p>Estimates kernel entries and trains a kernel ridge classifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>Feature selection as a QUBO</p></td>
+<td><p>Builds the objective of a feature-selection instance</p></td>
+</tr>
 <tr class="row-even"><td><p>QUBO to Ising mapping</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">flagquantum.algorithms.qubo</span></code></p></td>
-<td><p>Polynomial classical transformation; any advantage belongs to the consuming solver</p></td>
+<td><p>Converts a QUBO into an Ising Hamiltonian and back</p></td>
 </tr>
-<tr class="row-odd"><td><p>Quantum state preparation</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">state_preparation</span></code></p></td>
-<td><p>Input is already exponential, so efficiency is shown given the amplitudes</p></td>
-</tr>
-<tr class="row-even"><td><p>Oracle building blocks and truth-table synthesis</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">primitives.oracle</span></code></p></td>
-<td><p>Reversible classical logic; a truth table is enumerated classically</p></td>
-</tr>
-<tr class="row-odd"><td><p>Grover search</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">grover</span></code></p></td>
-<td><p>Query-complexity improvement against a synthesized oracle</p></td>
-</tr>
-<tr class="row-even"><td><p>Quantum amplitude estimation</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">amplitude_estimation</span></code></p></td>
-<td><p>Quadratic speed-up only when state preparation is free</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quantum PCA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">pca</span></code></p></td>
-<td><p>Low effective rank only; the density matrix is materialized classically</p></td>
-</tr>
-<tr class="row-even"><td><p>Quantum k-medians</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">kmedians</span></code></p></td>
-<td><p>Requires a free oracle; distances are computed classically</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quantum kernel estimation and kernel ridge classification</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">quantum_kernel</span></code></p></td>
-<td><p>Assumes the feature states are available; sampling cost is the paper’s own</p></td>
-</tr>
-<tr class="row-even"><td><p>Feature selection as a QUBO</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">feature_selection</span></code></p></td>
-<td><p>Builds an objective; the solver owns any advantage</p></td>
-</tr>
-<tr class="row-odd"><td><p>Frequent-item fractions by amplitude estimation</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">qarm</span></code></p></td>
-<td><p>Requires coherent database access, which is not exercised</p></td>
-</tr>
-<tr class="row-even"><td><p>Singular values by phase estimation</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">svd</span></code></p></td>
-<td><p>Assumes an input model; the decomposition is computed classically here</p></td>
+<tr class="row-odd"><td><p>Hamiltonian helpers</p></td>
+<td><p>Pauli terms, exact ground-state references and VQE helpers</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>These units are demonstration scale. Each one records its advantage premise
+explicitly: several require a qRAM or a free oracle that the unit does not
+supply, and the classical cost of building the problem is paid rather than
+assumed away. Read the advantage premise before quoting a unit’s speedup.
+Optimizer selection for the VQE and ADAPT-VQE units uses the
+<code class="docutils literal notranslate"><span class="pre">optimizer_factory</span></code> protocol, with Adam as the default.</p>
 </section>
-<section id="variational-training">
-<h2>Variational training<a class="headerlink" href="#variational-training" title="Link to this heading">#</a></h2>
-<p>The optimization helpers drive local VQE and ADAPT-VQE workflows with staged
-hybrid parameter groups: combinations of Adam/AdamW/SGD/L-BFGS, exact full or
-block quantum natural gradient, and Rotosolve, with per-step gradient, update,
-and evaluation diagnostics. Heisenberg helpers provide phase-augmented,
-bond-resolved HVA ansatze, dimer-singlet initialization, and exact small-system
-energy references, so a run can report an explicit exact-energy convergence
-decision instead of treating a decreasing loss as convergence.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">algorithms</span> <span class="k">as</span> <span class="n">fqa</span>
+<section id="local-hamiltonian-gradients">
+<h2>Local Hamiltonian gradients<a class="headerlink" href="#local-hamiltonian-gradients" title="Link to this heading">#</a></h2>
+<p>For batch-size-one statevector circuits with real, constant-coefficient Z and
+ZZ terms, <code class="docutils literal notranslate"><span class="pre">Hamiltonian.expectation</span></code> exposes a memory-bounded adjoint path:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">algorithms</span> <span class="k">as</span> <span class="n">fqa</span>
 
+<span class="n">theta</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">fqa</span><span class="o">.</span><span class="n">Hamiltonian</span><span class="p">((</span>
     <span class="n">fqa</span><span class="o">.</span><span class="n">pauli_term</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="s2">"ZZ"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
     <span class="n">fqa</span><span class="o">.</span><span class="n">pauli_term</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
 <span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">hamiltonian</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">circuit</span><span class="p">))</span>
+
+<span class="n">energy</span> <span class="o">=</span> <span class="n">hamiltonian</span><span class="o">.</span><span class="n">expectation</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">differentiation</span><span class="o">=</span><span class="s2">"adjoint"</span><span class="p">)</span>
+<span class="n">energy</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>The default remains <code class="docutils literal notranslate"><span class="pre">differentiation=&quot;autograd&quot;</span></code>. Adjoint mode rejects X/Y
+terms, trainable or complex coefficients and batched circuits instead of
+silently switching algorithm.</p>
 </section>
-<section id="read-the-boundary">
-<h2>Read the boundary<a class="headerlink" href="#read-the-boundary" title="Link to this heading">#</a></h2>
-<p>Every unit documents what its speed-up or capability statement assumes, and
-several of them require oracles, qRAM, or input models that the unit does not
-supply, so no end-to-end advantage follows at demonstration scale. Where a unit
-publishes a narrower limit, respect it: phase oracles above three evaluation
-wires need caller-supplied ancillas that must enter in |0&gt;, and a dirty ancilla
-produces a silently wrong answer. Treat the recorded premises as part of the
-interface, not as fine print.</p>
+<section id="quantum-error-correction">
+<h2>Quantum error correction<a class="headerlink" href="#quantum-error-correction" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">flagquantum.qec</span></code> connects syndrome extraction, decoding, correction and
+logical-result analysis. The reference experiment is a three-data-qubit
+repetition-code memory experiment with an injected error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">flagquantum.qec</span><span class="w"> </span><span class="kn">import</span> <span class="n">ErrorEvent</span><span class="p">,</span> <span class="n">ErrorSchedule</span><span class="p">,</span> <span class="n">run_repetition_memory_experiment</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">run_repetition_memory_experiment</span><span class="p">(</span>
+    <span class="n">error_schedule</span><span class="o">=</span><span class="n">ErrorSchedule</span><span class="p">((</span><span class="n">ErrorEvent</span><span class="p">(</span><span class="n">round_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wire</span><span class="o">=</span><span class="mi">1</span><span class="p">),)),</span>
+    <span class="n">rounds</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">shots</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">logical_error_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sweeps report finite-shot observations only, not logical suppression or
+thresholds, and the temporal rule is not maximum-likelihood decoding. General
+codes, correlated noise and hard-real-time hardware feedback remain research
+goals.</p>
+</section>
+<section id="qpu-digital-twins">
+<h2>QPU digital twins<a class="headerlink" href="#qpu-digital-twins" title="Link to this heading">#</a></h2>
+<p>A digital twin is a calibration-conditioned model of one device, built from a
+<code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> carrying a device profile. The execution target and ordered
+physical mapping become part of the immutable twin identity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+
+<span class="n">twin</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">twin</span><span class="o">.</span><span class="n">from_noise_model</span><span class="p">(</span>
+    <span class="n">device_noise_model</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="s2">"your-provider:your-qpu"</span><span class="p">,</span>
+    <span class="n">qubits</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">twin</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Twin predictions are total-variation agreement over classical measurement
+distributions, not quantum-state fidelity. Evidence stays specific to declared
+circuits, operations, mappings, physical couplers, depth, calibration snapshots
+and confidence bounds: <code class="docutils literal notranslate"><span class="pre">TwinCircuitSupport</span></code> narrows an envelope to the directed
+couplers and depth actually validated, and composition never infers cross-cell
+correlated noise or combines local bounds into a regional accuracy claim.
+Models, validation histories and submissions can be persisted and restored
+without credentials, and loading never submits or polls a task.</p>
 </section>
 </section>
 
@@ -688,20 +720,20 @@ interface, not as fine print.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="deployment.html"
+       href="hardware-and-remote.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Deployment and Hardware</p>
+        <p class="prev-next-title">Hardware and remote targets</p>
       </div>
     </a>
     <a class="right-next"
-       href="interoperability.html"
+       href="tutorials.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interoperability</p>
+        <p class="prev-next-title">Tutorials</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -723,9 +755,10 @@ interface, not as fine print.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-training">Variational training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-boundary">Read the boundary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-units">Algorithm units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-hamiltonian-gradients">Local Hamiltonian gradients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-error-correction">Quantum error correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qpu-digital-twins">QPU digital twins</a></li>
 </ul>
   </nav></div>
 
