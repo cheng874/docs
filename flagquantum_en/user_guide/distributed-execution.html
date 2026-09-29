@@ -7,17 +7,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Distributed multi-GPU execution" />
+<meta property="og:title" content="Distributed execution" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/distributed-execution.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Run quantum simulations across multiple GPUs:" />
+<meta property="og:description" content="Distributed execution keeps one logical workload and shards it across ranks. Sharded statevector: An initialised multi-rank process group changes the runtime, not the program: The same module and result surface then use the native sharded statevector runtime, with amplitude ownership kept local t..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Run quantum simulations across multiple GPUs:" />
+<meta name="description" content="Distributed execution keeps one logical workload and shards it across ranks. Sharded statevector: An initialised multi-rank process group changes the runtime, not the program: The same module and result surface then use the native sharded statevector runtime, with amplitude ownership kept local t..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Distributed multi-GPU execution &#8212; FlagQuantum Documentation</title>
+    <title>Distributed execution &#8212; FlagQuantum Documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.4f0d8e93-973e-4569-bd99-5e9add1690e3.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/distributed-execution.1b57b284-31cb-4e8c-81ef-1b8b5e303c8b.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/distributed-execution';</script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Invertible mode" href="invertible-mode.html" />
-    <link rel="prev" title="Register custom gates" href="custom-gates.html" />
+    <link rel="next" title="Dynamic circuits" href="dynamic-circuits.html" />
+    <link rel="prev" title="Run on Hardware" href="run-on-hardware.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -238,6 +238,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -376,31 +380,51 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">Architecture</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started with FlagQuantum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Install FlagQuantum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">Quick start</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 User Guide</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parameterized-gates.html">Parameterized gates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantum-encoding.html">Quantum encoding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom-gates.html">Register custom gates</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed multi-GPU execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invertible-mode.html">Invertible mode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-quantum-model.html">First Quantum Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build-and-run.html">Build and Run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtime-planning.html">Runtime Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local-workflows.html">Local Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="choose-a-simulator.html">Choose a Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training-with-pytorch.html">Train with PyTorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-operations.html">Custom Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compile-and-target.html">Compile and Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler-and-remote.html">Compiler and Remote Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noisy-simulation.html">Noisy Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-twin-and-qec.html">Digital Twins and Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qpu-digital-twin.html">QPU Digital Twin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qec.html">Quantum Error Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-on-hardware.html">Run on Hardware</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-circuits.html">Dynamic circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples-and-tutorials.html">Examples and Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run-tests.html">Run tests</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 Reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/capabilities.html">Capability Catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">Extension SDK</a></li>
 </ul>
 
     </div>
@@ -529,7 +553,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -540,11 +566,22 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Distributed multi-GPU execution</h1>
+    <h1>Distributed execution</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharded-statevector">Sharded statevector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps">Rank-owned MPS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training">Distributed training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-that-must-be-stated">Semantics that must be stated</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -554,17 +591,58 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="distributed-multi-gpu-execution">
-<h1>Distributed multi-GPU execution<a class="headerlink" href="#distributed-multi-gpu-execution" title="Link to this heading">#</a></h1>
-<p>Run quantum simulations across multiple GPUs:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with 4 GPUs</span>
-torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span>your_script.py
+  <section class="tex2jax_ignore mathjax_ignore" id="distributed-execution">
+<h1>Distributed execution<a class="headerlink" href="#distributed-execution" title="Link to this heading">#</a></h1>
+<p>Distributed execution keeps one logical workload and shards it across ranks.</p>
+<section id="sharded-statevector">
+<h2>Sharded statevector<a class="headerlink" href="#sharded-statevector" title="Link to this heading">#</a></h2>
+<p>An initialised multi-rank process group changes the runtime, not the program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">4</span><span class="w"> </span>your_script.py
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In your script, world_sz is set automatically via torchrun</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">DistributedQuantumDevice</span><span class="p">(</span><span class="n">n_wires</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">bsz</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">world_sz</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flagquantum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fq</span>
+
+<span class="n">module</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="n">build_circuit</span><span class="p">,</span> <span class="n">n_parameters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>The same module and result surface then use the native sharded statevector
+runtime, with amplitude ownership kept local to each rank. Full-state
+materialisation is forbidden on that path, forward-only training blockers are
+reported explicitly, and the distribution topology is taken from the execution
+environment.</p>
+</section>
+<section id="rank-owned-mps">
+<h2>Rank-owned MPS<a class="headerlink" href="#rank-owned-mps" title="Link to this heading">#</a></h2>
+<p>MPS execution can also distribute one state across ranks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>examples/distributed_mps/variable_bond_capacity_8gpu.py
+</pre></div>
+</div>
+<p>In the reviewed evidence, one batch-one complex64 MPS training step for the
+checked-in all-rank and all-boundary workload reached 131,072 sites at bond
+dimension 768 across 16 ranks, with a maximum of 72.41 GiB peak allocated memory
+per rank and a cumulative discarded weight of 8.39e-06. That is one exact
+workload, not a fixed-plan strong-scaling result.</p>
+</section>
+<section id="distributed-training">
+<h2>Distributed training<a class="headerlink" href="#distributed-training" title="Link to this heading">#</a></h2>
+<p>Owner-sharded statevector and MPS training are available through explicit
+experimental entry points under <code class="docutils literal notranslate"><span class="pre">flagquantum.experimental.distributed</span></code>, with
+owner-sharded optimizer state, checkpoint/resume, cancellation, and progress
+reporting. They are not implied by calling <code class="docutils literal notranslate"><span class="pre">fq.train</span></code>, and distributed training
+counts as complete only when forward execution, gradients, optimizer updates,
+and checkpoint ownership all preserve the declared distribution semantics.</p>
+</section>
+<section id="semantics-that-must-be-stated">
+<h2>Semantics that must be stated<a class="headerlink" href="#semantics-that-must-be-stated" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Replicated data parallelism is throughput, not capacity expansion.</p></li>
+<li><p>Rank-local kernels and manual tensor slicing are reported under their own
+semantics.</p></li>
+<li><p>CPU distributed runs prove semantics and fail-closed behaviour; they never
+stand in for real accelerator capacity evidence.</p></li>
+<li><p>Multi-node release certification requires promoted audited hardware evidence.</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -579,20 +657,20 @@ torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span cl
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="custom-gates.html"
+       href="run-on-hardware.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Register custom gates</p>
+        <p class="prev-next-title">Run on Hardware</p>
       </div>
     </a>
     <a class="right-next"
-       href="invertible-mode.html"
+       href="dynamic-circuits.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Invertible mode</p>
+        <p class="prev-next-title">Dynamic circuits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -602,6 +680,26 @@ torchrun<span class="w"> </span>--nproc_per_node<span class="o">=</span><span cl
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharded-statevector">Sharded statevector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-owned-mps">Rank-owned MPS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-training">Distributed training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-that-must-be-stated">Semantics that must be stated</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

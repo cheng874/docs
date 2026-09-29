@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.1.0: 新增功能- FlagQuantum 初始版本发布，一个基于 PyTorch 构建的高性能分布式量子状态向量模拟器。, 使用 torch.distributed 中的 DTensor 实现分布式状态向量模拟，支持多 GPU 执行。, 自动重新分片，以最小化门操作期间的通信开销。, 全面的门集合，包括泡利门、克利福德门、旋转门和受控门，支持参数化。, 可逆反向传播，用于内存高效的梯度计算。, 自定义门注册系统，用于扩展库。, 后选择和噪声模型，包括去极化噪声。, 灵活的数据编码，支持角度编码、振幅编码和基态编码方案。, 专业的量子电路可视化功能。, OpenQASM 2.0/..." />
+<meta property="og:description" content="发布说明记录用户可见的行为变化与支持边界变化。性能数字必须有审计产物作为依据， 不能由本页推断。 v0.2.0: 发布日期 ：2026-09-11 新增特性- 统一程序模型 —— fq.Circuit 、 fq.Module 、 fq.run 、 fq.train 与 fq.plan 构成一个覆盖带版本 FlagQuantum IR 的公开接口，具备可查看的执行计划、带类型的结果与失败即拒的校验。, 每次运行可选表示 ——本地态向量、MPS 与张量网络执行都从同一个程序出发选择，可选 JAX 内核运行在 PyTorch 接口之后。, 分布式执行 ——按 rank 拥有的态向量与 MPS ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.1.0: 新增功能- FlagQuantum 初始版本发布，一个基于 PyTorch 构建的高性能分布式量子状态向量模拟器。, 使用 torch.distributed 中的 DTensor 实现分布式状态向量模拟，支持多 GPU 执行。, 自动重新分片，以最小化门操作期间的通信开销。, 全面的门集合，包括泡利门、克利福德门、旋转门和受控门，支持参数化。, 可逆反向传播，用于内存高效的梯度计算。, 自定义门注册系统，用于扩展库。, 后选择和噪声模型，包括去极化噪声。, 灵活的数据编码，支持角度编码、振幅编码和基态编码方案。, 专业的量子电路可视化功能。, OpenQASM 2.0/..." />
+<meta name="description" content="发布说明记录用户可见的行为变化与支持边界变化。性能数字必须有审计产物作为依据， 不能由本页推断。 v0.2.0: 发布日期 ：2026-09-11 新增特性- 统一程序模型 —— fq.Circuit 、 fq.Module 、 fq.run 、 fq.train 与 fq.plan 构成一个覆盖带版本 FlagQuantum IR 的公开接口，具备可查看的执行计划、带类型的结果与失败即拒的校验。, 每次运行可选表示 ——本地态向量、MPS 与张量网络执行都从同一个程序出发选择，可选 JAX 内核运行在 PyTorch 接口之后。, 分布式执行 ——按 rank 拥有的态向量与 MPS ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; FlagQuantum 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.a3654c72-ef48-4cf2-a007-74b3ddb0e5e1.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.a2fa7b80-9d26-4d6e-b522-b2b8da4822e8.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FlagQuantum 概览" href="../FlagQuantum_overview/FlagQuantum-overview.html" />
+    <link rel="next" title="概览" href="../overview/overview.html" />
     <link rel="prev" title="FlagQuantum 文档" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -380,31 +380,41 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 概览</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/FlagQuantum-overview.html">FlagQuantum 概览</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/features.html">特性</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FlagQuantum_overview/architecture.html">架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overview.html">概览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/features.html">特性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/architecture.html">架构</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 快速入门</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">系统要求</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">FlagQuantum 快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/requirements.html">环境要求</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">安装 FlagQuantum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/quick-start.html">快速开始</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 用户指南</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/user-guide.html">用户指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/basic-usage.html">基本使用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/parameterized-gates.html">参数化门</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/quantum-encoding.html">量子编码</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/custom-gates.html">注册自定义门</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">分布式多 GPU 执行</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/invertible-mode.html">可逆模式</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/tutorials.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/runtime-planning.html">运行时规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/local-workflows.html">本地工作流</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/compiler-and-remote.html">编译器与远程目标</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/noisy-simulation.html">含噪模拟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/qpu-digital-twin.html">QPU 数字孪生</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/qec.html">量子纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/distributed-execution.html">分布式执行</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/dynamic-circuits.html">动态线路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/algorithms.html">算法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests.html">运行测试</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考资料</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考资料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/reference.html">参考资料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/api.html">接口参考</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/extensions.html">扩展 SDK</a></li>
 </ul>
 
     </div>
@@ -556,6 +566,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -570,21 +581,49 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>发布说明记录用户可见的行为变化与支持边界变化。性能数字必须有审计产物作为依据，
+不能由本页推断。</p>
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
+<p><strong>发布日期</strong>：2026-09-11</p>
+<ul class="simple">
+<li><p><strong>新增特性</strong></p>
+<ul>
+<li><p><strong>统一程序模型</strong>——<code class="docutils literal notranslate"><span class="pre">fq.Circuit</span></code>、<code class="docutils literal notranslate"><span class="pre">fq.Module</span></code>、<code class="docutils literal notranslate"><span class="pre">fq.run</span></code>、<code class="docutils literal notranslate"><span class="pre">fq.train</span></code> 与 <code class="docutils literal notranslate"><span class="pre">fq.plan</span></code> 构成一个覆盖带版本 FlagQuantum IR 的公开接口，具备可查看的执行计划、带类型的结果与失败即拒的校验。</p></li>
+<li><p><strong>每次运行可选表示</strong>——本地态向量、MPS 与张量网络执行都从同一个程序出发选择，可选 JAX 内核运行在 PyTorch 接口之后。</p></li>
+<li><p><strong>分布式执行</strong>——按 rank 拥有的态向量与 MPS 前向、梯度与训练路径把同一个逻辑负载切分到多个 rank，并显式声明分布式语义。</p></li>
+<li><p><strong>噪声与精度选项</strong>——一个与后端无关的噪声模型同时驱动精确密度矩阵演化、批量态向量轨迹与 MPS 轨迹；在仅有 FP32 的设备上可用 Double-Single 软件扩展精度。</p></li>
+<li><p><strong>硬件执行路径</strong>——显式选择编译器与厂商，完成编译、打包、提交，并通过同一个 <code class="docutils literal notranslate"><span class="pre">fq.ExecutionResult</span></code> 返回结果，其中包含面向采样硬件的分组泡利测量。</p></li>
+<li><p><strong>生态适配器</strong>——与框架无关的 PennyLane、Qiskit、Cirq、CUDA-Q 互转，并提供本地 PennyLane Lightning、Qiskit Aer 与 Cirq 模拟器的显式执行桥接。</p></li>
+<li><p><strong>部署与扩展接口</strong>——密封部署包把训练好的参数绑定到目标；扩展 SDK 支持后端、内核、算子、编译 pass、设备、厂商、测量收集器与规划器插件，并具备能力协商。</p></li>
+<li><p><strong>证据纪律</strong>——每项能力都有成熟度等级，对外性能结论必须有带摘要与环境记录的入库产物。</p></li>
+</ul>
+</li>
+<li><p><strong>变更</strong></p>
+<ul>
+<li><p>稳定根 API 由一个受校验的清单限定；实验性与兼容性导入不再静默扩张受支持的接口面。</p></li>
+<li><p>运行时配置变为不可变、任务作用域，并贯穿编译、规划与执行边界，而不再依赖进程全局状态。</p></li>
+</ul>
+</li>
+<li><p><strong>移除</strong></p>
+<ul>
+<li><p>预发布 v0.1 的面向设备接口——<code class="docutils literal notranslate"><span class="pre">DistributedQuantumDevice</span></code>、<code class="docutils literal notranslate"><span class="pre">GeneralEncoder</span></code>、可逆酉辅助、DTensor 交换辅助，以及面向门的设备接口与面向设备的测量路径——不属于 v0.2 产品，已在不提供兼容层的情况下移除。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
+<p><strong>发布日期</strong>：2026-06-24</p>
 <ul class="simple">
-<li><p><strong>新增功能</strong></p>
+<li><p><strong>新增特性</strong></p>
 <ul>
-<li><p>FlagQuantum 初始版本发布，一个基于 PyTorch 构建的高性能分布式量子状态向量模拟器。</p></li>
-<li><p>使用 <code class="docutils literal notranslate"><span class="pre">torch.distributed</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">DTensor</span></code> 实现分布式状态向量模拟，支持多 GPU 执行。</p></li>
-<li><p>自动重新分片，以最小化门操作期间的通信开销。</p></li>
-<li><p>全面的门集合，包括泡利门、克利福德门、旋转门和受控门，支持参数化。</p></li>
-<li><p>可逆反向传播，用于内存高效的梯度计算。</p></li>
-<li><p>自定义门注册系统，用于扩展库。</p></li>
-<li><p>后选择和噪声模型，包括去极化噪声。</p></li>
-<li><p>灵活的数据编码，支持角度编码、振幅编码和基态编码方案。</p></li>
-<li><p>专业的量子电路可视化功能。</p></li>
-<li><p>OpenQASM 2.0/3.0 导出器，用于真实量子硬件和跨框架执行。</p></li>
+<li><p>FlagQuantum 首个版本：基于 PyTorch 的分布式量子态向量模拟器。</p></li>
+<li><p>多 GPU 态向量模拟，门操作期间自动重分片。</p></li>
+<li><p>覆盖泡利、Clifford、旋转与受控门的门集合，并支持可训练参数。</p></li>
+<li><p>内存高效的可逆反向传播与自定义门注册。</p></li>
+<li><p>后选择与去极化噪声模型，以及角度、振幅与基编码。</p></li>
+<li><p>文本与 Matplotlib 两种线路可视化模式，以及面向真实硬件平台的 OpenQASM 导出。</p></li>
 </ul>
 </li>
 </ul>
@@ -612,11 +651,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../FlagQuantum_overview/FlagQuantum-overview.html"
+       href="../overview/overview.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">FlagQuantum 概览</p>
+        <p class="prev-next-title">概览</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -638,6 +677,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
