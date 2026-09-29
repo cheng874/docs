@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="reference/operator_list.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This page lists the operators exported by FlagGems-vLLM, sourced from src/flaggems_vllm/ops/__init__.py. FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 75 operators are currently exported: Activation and Gating:,, Ope..." />
+<meta property="og:description" content="This page lists the operators exported by FlagGems-vLLM, sourced from src/flaggems_vllm/ops/__init__.py. FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 109 operators are currently exported: Activation and Gating:,, Op..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This page lists the operators exported by FlagGems-vLLM, sourced from src/flaggems_vllm/ops/__init__.py. FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 75 operators are currently exported: Activation and Gating:,, Ope..." />
+<meta name="description" content="This page lists the operators exported by FlagGems-vLLM, sourced from src/flaggems_vllm/ops/__init__.py. FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 109 operators are currently exported: Activation and Gating:,, Op..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Operator List &#8212; FlagGems-vLLM Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/operator_list.176adf4e-5002-4b2c-8b68-aff31c4f2fee.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/operator_list.481809ba-f7dc-4e74-a3bd-d013287f57df.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/operator_list';</script>
@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -556,9 +556,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-and-utility">Reduction and Utility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization">Quantization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa-deep-sparse-attention">DSA — Deep Sparse Attention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash-linear-attention">FLA — Flash Linear Attention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc-multi-head-compatibility">MHC — Multi-Head Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa-deep-sparse-attention">DSA - Deep Sparse Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash-linear-attention">FLA - Flash Linear Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc-manifold-constrained-hyper-connections">MHC - Manifold-Constrained Hyper-Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen4">Qwen4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rwkv">RWKV</a></li>
 </ul>
             </nav>
@@ -574,7 +575,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="operator-list">
 <h1>Operator List<a class="headerlink" href="#operator-list" title="Link to this heading">#</a></h1>
 <p>This page lists the operators exported by FlagGems-vLLM, sourced from <code class="docutils literal notranslate"><span class="pre">src/flaggems_vllm/ops/__init__.py</span></code>.</p>
-<p>FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 75 operators are currently exported:</p>
+<p>FlagGems-vLLM provides optimized implementations of common vLLM operators using the Triton programming language. The following 109 operators are currently exported:</p>
 <section id="activation-and-gating">
 <h2>Activation and Gating<a class="headerlink" href="#activation-and-gating" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -633,14 +634,20 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apply_rotary_pos_emb</span></code></p></td>
 <td><p>Apply rotary position embeddings</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">concat_and_cache_mla</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chunk_kda</span></code></p></td>
+<td><p>Inference-only chunk Kimi Delta Attention (KDA) with Flash Linear Attention</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">concat_and_cache_mla</span></code></p></td>
 <td><p>Concatenate and cache for MLA (Multi-Latent Attention)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attention_forward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attention_forward</span></code></p></td>
 <td><p>FlashAttention forward pass</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func</span></code></p></td>
 <td><p>FlashAttention with variable-length sequences</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func_w8a8_fp8</span></code></p></td>
+<td><p>Block-wise FP8 variable-length FlashAttention-2 with per-block descales</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_opt_func</span></code></p></td>
 <td><p>Optimized FlashAttention with variable-length sequences</p></td>
@@ -654,14 +661,38 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_mla_with_kvcache</span></code></p></td>
 <td><p>Flash MLA with KV cache support</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_einsum</span></code></p></td>
+<td><p>Block-scaled FP8 bhr,hdr-&gt;bhd contraction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_fp4_mqa_logits</span></code></p></td>
+<td><p>Weighted MQA logits with FP8 or MXFP4 quantized Q and FP8 K</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_fp4_paged_mqa_logits</span></code></p></td>
+<td><p>Paged MQA logits from FP8 queries against an FP8/FP4 paged KV cache</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mrope</span></code></p></td>
+<td><p>Multi-resolution rotary position embedding (M-RoPE)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallel_nsa</span></code></p></td>
+<td><p>Native Sparse Attention (NSA), parallel implementation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallel_nsa_compression</span></code></p></td>
+<td><p>NSA-style parallel compression forward with backward support</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">persistent_topk</span></code></p></td>
+<td><p>vLLM-compatible persistent top-K decode with tiered dispatch</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache</span></code></p></td>
 <td><p>Reshape and cache KV cache</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache_flash</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache_flash</span></code></p></td>
 <td><p>Reshape and cache for FlashAttention</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sparse_attn_triton</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sparse_attn_triton</span></code></p></td>
 <td><p>Sparse attention computation via Triton</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">triton_unified_attention</span></code></p></td>
+<td><p>Paged attention with GQA, causal mask, and optional softcap</p></td>
 </tr>
 </tbody>
 </table>
@@ -691,6 +722,9 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert</span></code></p></td>
 <td><p>Fused Q-norm, RoPE, KV-RoPE, quantize, and insert for DeepSeek V4</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stage_deepseek_v4_mega_moe_inputs</span></code></p></td>
+<td><p>Stage DeepSeek V4 Mega-MoE inputs: FP8 quantization of hidden states plus top-K index and weight copy</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -710,17 +744,23 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_experts_impl</span></code></p></td>
 <td><p>Fused MoE experts implementation</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">grouped_topk</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_marlin_moe</span></code></p></td>
+<td><p>Fused MoE with GPTQ INT4/MXFP4 weights and 16-bit activations</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grouped_topk</span></code></p></td>
 <td><p>Grouped top-K selection for MoE routing</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inplace_fused_experts</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inplace_fused_experts</span></code></p></td>
 <td><p>In-place fused MoE experts</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invoke_fused_moe_triton_kernel</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invoke_fused_moe_triton_kernel</span></code></p></td>
 <td><p>Invoke fused MoE Triton kernel</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size</span></code></p></td>
 <td><p>MoE block size alignment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size_no_tle</span></code></p></td>
+<td><p>MoE block size alignment without the TLE cooperative kernels</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size_triton</span></code></p></td>
 <td><p>MoE block size alignment (Triton variant)</p></td>
@@ -731,16 +771,19 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">outplace_fused_experts</span></code></p></td>
 <td><p>Out-of-place fused MoE experts</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_decode</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">router_gemm</span></code></p></td>
+<td><p>BF16 x BF16 -&gt; FP32 GEMM for the MoE router gate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_decode</span></code></p></td>
 <td><p>Top-K per row for decode phase</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_prefill</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_prefill</span></code></p></td>
 <td><p>Top-K per row for prefill phase</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softmax</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softmax</span></code></p></td>
 <td><p>Top-K with softmax for MoE gating</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softplus_sqrt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softplus_sqrt</span></code></p></td>
 <td><p>Top-K with softplus and sqrt for MoE gating</p></td>
 </tr>
 </tbody>
@@ -771,6 +814,12 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">outer</span></code></p></td>
 <td><p>Outer product of two vectors</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">permute_copy</span></code></p></td>
+<td><p>Copy a tensor with permuted dimensions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">triton_scaled_mm</span></code></p></td>
+<td><p>Block-scaled quantized matrix multiplication</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -790,19 +839,22 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_add_rms_norm</span></code></p></td>
 <td><p>Fused addition with RMSNorm</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance_norm</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gemma_rms_norm</span></code></p></td>
+<td><p>Gemma variant of RMSNorm, with the learnable weight offset by one</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance_norm</span></code></p></td>
 <td><p>Instance normalization</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">skip_layer_norm</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">skip_layer_norm</span></code></p></td>
 <td><p>Skip connection with LayerNorm</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm</span></code></p></td>
 <td><p>Weight normalization</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface</span></code></p></td>
 <td><p>Weight normalization interface</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface_backward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface_backward</span></code></p></td>
 <td><p>Weight normalization interface backward pass</p></td>
 </tr>
 </tbody>
@@ -821,6 +873,12 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apply_repetition_penalties</span></code></p></td>
 <td><p>Apply repetition penalties during generation</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">beam_search_score</span></code></p></td>
+<td><p>Add cumulative log probabilities and new token scores for beam search</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">beam_search_score_</span></code></p></td>
+<td><p>In-place variant of <code class="docutils literal notranslate"><span class="pre">beam_search_score</span></code></p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bincount</span></code></p></td>
 <td><p>Count frequency of each value</p></td>
 </tr>
@@ -830,7 +888,10 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack_seq_triton</span></code></p></td>
 <td><p>Pack sequences</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unpack_seq_triton</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SUPPORTED_FP8_DTYPE</span></code></p></td>
+<td><p>FP8 dtype used by the quantization operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unpack_seq_triton</span></code></p></td>
 <td><p>Unpack sequences</p></td>
 </tr>
 </tbody>
@@ -846,21 +907,27 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_indexer_q_rope_quant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">act_quant_triton</span></code></p></td>
+<td><p>Block-wise activation quantization</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_indexer_q_rope_quant</span></code></p></td>
 <td><p>Fused indexer Q with RoPE and quantization</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_inv_rope_fp8_quant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_inv_rope_fp8_quant</span></code></p></td>
 <td><p>Fused inverse RoPE with FP8 quantization</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">per_token_group_quant_fp8</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">per_token_group_quant_fp8</span></code></p></td>
 <td><p>Per-token group FP8 quantization</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scaled_int8_quant</span></code></p></td>
+<td><p>Scaled INT8 quantization with single-read dynamic quantization</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="dsa-deep-sparse-attention">
-<h2>DSA — Deep Sparse Attention<a class="headerlink" href="#dsa-deep-sparse-attention" title="Link to this heading">#</a></h2>
+<h2>DSA - Deep Sparse Attention<a class="headerlink" href="#dsa-deep-sparse-attention" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
@@ -882,7 +949,7 @@
 </div>
 </section>
 <section id="fla-flash-linear-attention">
-<h2>FLA — Flash Linear Attention<a class="headerlink" href="#fla-flash-linear-attention" title="Link to this heading">#</a></h2>
+<h2>FLA - Flash Linear Attention<a class="headerlink" href="#fla-flash-linear-attention" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
@@ -903,8 +970,8 @@
 </table>
 </div>
 </section>
-<section id="mhc-multi-head-compatibility">
-<h2>MHC — Multi-Head Compatibility<a class="headerlink" href="#mhc-multi-head-compatibility" title="Link to this heading">#</a></h2>
+<section id="mhc-manifold-constrained-hyper-connections">
+<h2>MHC - Manifold-Constrained Hyper-Connections<a class="headerlink" href="#mhc-manifold-constrained-hyper-connections" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
@@ -912,26 +979,75 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel</span></code></p></td>
-<td><p>Head-channel fused kernel</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MixLayout</span></code></p></td>
+<td><p>Layout of the combined residual mix tensor accepted by <code class="docutils literal notranslate"><span class="pre">mhc_post</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel_ref</span></code></p></td>
-<td><p>Head-channel fused kernel (reference)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel</span></code></p></td>
+<td><p>Head fusion kernel</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel_ref</span></code></p></td>
+<td><p>Head fusion kernel (reference)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd</span></code></p></td>
 <td><p>MHC backward pass</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd_ref</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd_ref</span></code></p></td>
 <td><p>MHC backward pass (reference)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_post</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_post</span></code></p></td>
 <td><p>MHC post-processing</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_pre</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_pre</span></code></p></td>
 <td><p>MHC pre-processing</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sinkhorn_forward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sinkhorn_forward</span></code></p></td>
 <td><p>Sinkhorn forward computation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="qwen4">
+<h2>Qwen4<a class="headerlink" href="#qwen4" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ple_state_gather</span></code></p></td>
+<td><p>Gather rows from the PLE state cache, mapping invalid indices to zero rows</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ple_state_scatter_</span></code></p></td>
+<td><p>Write rows through an explicit NULL/padding/duplicate write mask</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_compress_norm_mrope_store_groups</span></code></p></td>
+<td><p>Fused QSA group pooling, Gemma RMSNorm, interleaved MRoPE, and cache store</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_grouped_gemma_rmsnorm</span></code></p></td>
+<td><p>Grouped Gemma RMSNorm for Qwen4 hyper-connections</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_hc_gate_reduce</span></code></p></td>
+<td><p>Hyper-connection gate reduction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_hc_inject_combine</span></code></p></td>
+<td><p>Hyper-connection injection and combination with the residual stream</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_qsa_mqa_paged_dot</span></code></p></td>
+<td><p>QSA indexer scores computed from a paged compressed-key cache</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_store_qsa_kv_rows</span></code></p></td>
+<td><p>Store paired QSA K/V rows in one stride-aware launch</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_compress_qsa_groups</span></code></p></td>
+<td><p>Model-vendor QSA group-pooling and position-load kernel</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_qsa_mqa_paged</span></code></p></td>
+<td><p>Model-vendor scalar-reduction QSA paged-MQA kernel</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_store_qsa_rows</span></code></p></td>
+<td><p>Model-vendor single-cache-row QSA store kernel</p></td>
 </tr>
 </tbody>
 </table>
@@ -1004,9 +1120,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-and-utility">Reduction and Utility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization">Quantization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa-deep-sparse-attention">DSA — Deep Sparse Attention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash-linear-attention">FLA — Flash Linear Attention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc-multi-head-compatibility">MHC — Multi-Head Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa-deep-sparse-attention">DSA - Deep Sparse Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash-linear-attention">FLA - Flash Linear Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc-manifold-constrained-hyper-connections">MHC - Manifold-Constrained Hyper-Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen4">Qwen4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rwkv">RWKV</a></li>
 </ul>
   </nav></div>
@@ -1041,7 +1158,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 28, 2026.
+  Last updated on Sep 29, 2026.
   <br/>
 </p>
   </div>

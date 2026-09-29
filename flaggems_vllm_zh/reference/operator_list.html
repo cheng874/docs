@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="reference/operator_list.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本页列出了 FlagGems-vLLM 导出的算子，来源于 src/flaggems_vllm/ops/__init__.py 。 FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 75 个算子： 激活与门控:,, 算子, 描述,,, dgeglu, GEGLU 激活的反向传播,, dreglu, ReGLU 激活的反向传播,, dswiglu, SwiGLU 激活的反向传播,, geglu, GEGLU（带 GELU 的门控线性单元）激活,, gelu_and_mul, GELU 激活与逐元素乘法组合,, reglu, ReG..." />
+<meta property="og:description" content="本页列出了 FlagGems-vLLM 导出的算子，来源于 src/flaggems_vllm/ops/__init__.py 。 FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 109 个算子： 激活与门控:,, 算子, 描述,,, dgeglu, GEGLU 激活的反向传播,, dreglu, ReGLU 激活的反向传播,, dswiglu, SwiGLU 激活的反向传播,, geglu, GEGLU（带 GELU 的门控线性单元）激活,, gelu_and_mul, GELU 激活与逐元素乘法组合,, reglu, Re..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本页列出了 FlagGems-vLLM 导出的算子，来源于 src/flaggems_vllm/ops/__init__.py 。 FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 75 个算子： 激活与门控:,, 算子, 描述,,, dgeglu, GEGLU 激活的反向传播,, dreglu, ReGLU 激活的反向传播,, dswiglu, SwiGLU 激活的反向传播,, geglu, GEGLU（带 GELU 的门控线性单元）激活,, gelu_and_mul, GELU 激活与逐元素乘法组合,, reglu, ReG..." />
+<meta name="description" content="本页列出了 FlagGems-vLLM 导出的算子，来源于 src/flaggems_vllm/ops/__init__.py 。 FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 109 个算子： 激活与门控:,, 算子, 描述,,, dgeglu, GEGLU 激活的反向传播,, dreglu, ReGLU 激活的反向传播,, dswiglu, SwiGLU 激活的反向传播,, geglu, GEGLU（带 GELU 的门控线性单元）激活,, gelu_and_mul, GELU 激活与逐元素乘法组合,, reglu, Re..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>算子列表 &#8212; FlagGems-vLLM 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/operator_list.6caeccf1-197b-47c0-84f2-8c02e2ec5cb8.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/operator_list.c16be3dc-dd95-414f-a307-c83162e7d961.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/operator_list';</script>
@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -558,7 +558,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">量化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa">DSA — 深度稀疏注意力</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash">FLA — Flash 线性注意力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc">MHC — 多头兼容性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc">MHC — 流形约束超连接</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen4">Qwen4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rwkv">RWKV</a></li>
 </ul>
             </nav>
@@ -574,7 +575,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>算子列表<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本页列出了 FlagGems-vLLM 导出的算子，来源于 <code class="docutils literal notranslate"><span class="pre">src/flaggems_vllm/ops/__init__.py</span></code>。</p>
-<p>FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 75 个算子：</p>
+<p>FlagGems-vLLM 使用 Triton 编程语言提供了常用 vLLM 算子的优化实现。目前共导出以下 109 个算子：</p>
 <section id="id2">
 <h2>激活与门控<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -633,14 +634,20 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apply_rotary_pos_emb</span></code></p></td>
 <td><p>应用旋转位置编码</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">concat_and_cache_mla</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chunk_kda</span></code></p></td>
+<td><p>仅推理的 chunk Kimi Delta Attention（KDA，结合 Flash 线性注意力）</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">concat_and_cache_mla</span></code></p></td>
 <td><p>MLA（多潜在注意力）的拼接与缓存</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attention_forward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attention_forward</span></code></p></td>
 <td><p>FlashAttention 前向传播</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func</span></code></p></td>
 <td><p>变长序列的 FlashAttention</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_func_w8a8_fp8</span></code></p></td>
+<td><p>分块 FP8 的变长 FlashAttention-2，带逐块反量化缩放</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">flash_attn_varlen_opt_func</span></code></p></td>
 <td><p>变长序列的优化 FlashAttention</p></td>
@@ -654,14 +661,38 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flash_mla_with_kvcache</span></code></p></td>
 <td><p>带 KV 缓存支持的 Flash MLA</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_einsum</span></code></p></td>
+<td><p>块缩放 FP8 的 bhr,hdr-&gt;bhd 收缩运算</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_fp4_mqa_logits</span></code></p></td>
+<td><p>FP8 或 MXFP4 量化的 Q 与 FP8 的 K 计算加权 MQA logits</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fp8_fp4_paged_mqa_logits</span></code></p></td>
+<td><p>由 FP8 查询对 FP8/FP4 分页 KV 缓存计算分页 MQA logits</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mrope</span></code></p></td>
+<td><p>多分辨率旋转位置编码（M-RoPE）</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parallel_nsa</span></code></p></td>
+<td><p>原生稀疏注意力（NSA）并行实现</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parallel_nsa_compression</span></code></p></td>
+<td><p>NSA 风格的并行压缩前向，支持反向</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">persistent_topk</span></code></p></td>
+<td><p>兼容 vLLM 的 persistent top-K 解码，按序列长度分级调度</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache</span></code></p></td>
 <td><p>KV 缓存的重塑与缓存</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache_flash</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reshape_and_cache_flash</span></code></p></td>
 <td><p>FlashAttention 的重塑与缓存</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sparse_attn_triton</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sparse_attn_triton</span></code></p></td>
 <td><p>通过 Triton 实现的稀疏注意力计算</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">triton_unified_attention</span></code></p></td>
+<td><p>支持 GQA、因果掩码与可选 softcap 的分页注意力</p></td>
 </tr>
 </tbody>
 </table>
@@ -691,6 +722,9 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert</span></code></p></td>
 <td><p>DeepSeek V4 的融合 Q-norm、RoPE、KV-RoPE、量化与插入</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stage_deepseek_v4_mega_moe_inputs</span></code></p></td>
+<td><p>准备 DeepSeek V4 Mega-MoE 输入：隐藏态 FP8 量化并拷贝 top-K 索引与权重</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -710,17 +744,23 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_experts_impl</span></code></p></td>
 <td><p>融合 MoE 专家实现</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">grouped_topk</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_marlin_moe</span></code></p></td>
+<td><p>GPTQ INT4/MXFP4 权重与 16 位激活的融合 MoE</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grouped_topk</span></code></p></td>
 <td><p>MoE 路由的分组 top-K 选择</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inplace_fused_experts</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inplace_fused_experts</span></code></p></td>
 <td><p>原地融合 MoE 专家</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invoke_fused_moe_triton_kernel</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invoke_fused_moe_triton_kernel</span></code></p></td>
 <td><p>调用融合 MoE Triton 内核</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size</span></code></p></td>
 <td><p>MoE 块大小对齐</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size_no_tle</span></code></p></td>
+<td><p>不使用 TLE 协作内核的 MoE 块大小对齐</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moe_align_block_size_triton</span></code></p></td>
 <td><p>MoE 块大小对齐（Triton 变体）</p></td>
@@ -731,16 +771,19 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">outplace_fused_experts</span></code></p></td>
 <td><p>非原地融合 MoE 专家</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_decode</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">router_gemm</span></code></p></td>
+<td><p>MoE 路由门控的 BF16 x BF16 -&gt; FP32 GEMM</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_decode</span></code></p></td>
 <td><p>解码阶段的逐行 top-K</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_prefill</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_k_per_row_prefill</span></code></p></td>
 <td><p>预填充阶段的逐行 top-K</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softmax</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softmax</span></code></p></td>
 <td><p>MoE 门控的 top-K softmax</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softplus_sqrt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">topk_softplus_sqrt</span></code></p></td>
 <td><p>MoE 门控的 top-K softplus 与 sqrt</p></td>
 </tr>
 </tbody>
@@ -771,6 +814,12 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">outer</span></code></p></td>
 <td><p>两个向量的外积</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">permute_copy</span></code></p></td>
+<td><p>按置换维度复制张量</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">triton_scaled_mm</span></code></p></td>
+<td><p>分块缩放的量化矩阵乘法</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -790,19 +839,22 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_add_rms_norm</span></code></p></td>
 <td><p>融合加法与 RMSNorm</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance_norm</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gemma_rms_norm</span></code></p></td>
+<td><p>Gemma 版 RMSNorm，可学习权重偏移 1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance_norm</span></code></p></td>
 <td><p>实例归一化</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">skip_layer_norm</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">skip_layer_norm</span></code></p></td>
 <td><p>跳跃连接与 LayerNorm</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm</span></code></p></td>
 <td><p>权重归一化</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface</span></code></p></td>
 <td><p>权重归一化接口</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface_backward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_norm_interface_backward</span></code></p></td>
 <td><p>权重归一化接口反向传播</p></td>
 </tr>
 </tbody>
@@ -821,6 +873,12 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apply_repetition_penalties</span></code></p></td>
 <td><p>在生成过程中应用重复惩罚</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">beam_search_score</span></code></p></td>
+<td><p>波束搜索：累加对数概率与新 token 分数</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">beam_search_score_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">beam_search_score</span></code> 的原地变体</p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bincount</span></code></p></td>
 <td><p>统计每个值的频率</p></td>
 </tr>
@@ -830,7 +888,10 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack_seq_triton</span></code></p></td>
 <td><p>打包序列</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unpack_seq_triton</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SUPPORTED_FP8_DTYPE</span></code></p></td>
+<td><p>量化算子使用的 FP8 数据类型</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unpack_seq_triton</span></code></p></td>
 <td><p>解包序列</p></td>
 </tr>
 </tbody>
@@ -846,14 +907,20 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_indexer_q_rope_quant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">act_quant_triton</span></code></p></td>
+<td><p>分块激活量化</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_indexer_q_rope_quant</span></code></p></td>
 <td><p>融合索引器 Q 与 RoPE 和量化</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fused_inv_rope_fp8_quant</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fused_inv_rope_fp8_quant</span></code></p></td>
 <td><p>融合逆 RoPE 与 FP8 量化</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">per_token_group_quant_fp8</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">per_token_group_quant_fp8</span></code></p></td>
 <td><p>逐 token 分组 FP8 量化</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scaled_int8_quant</span></code></p></td>
+<td><p>带单次读取动态量化的缩放 INT8 量化</p></td>
 </tr>
 </tbody>
 </table>
@@ -904,7 +971,7 @@
 </div>
 </section>
 <section id="mhc">
-<h2>MHC — 多头兼容性<a class="headerlink" href="#mhc" title="Link to this heading">#</a></h2>
+<h2>MHC — 流形约束超连接<a class="headerlink" href="#mhc" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>算子</p></th>
@@ -912,26 +979,75 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel</span></code></p></td>
-<td><p>头-通道融合内核</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MixLayout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mhc_post</span></code> 接受的合并残差混合张量布局</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel_ref</span></code></p></td>
-<td><p>头-通道融合内核（参考实现）</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel</span></code></p></td>
+<td><p>头融合内核</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hc_head_fused_kernel_ref</span></code></p></td>
+<td><p>头融合内核（参考实现）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd</span></code></p></td>
 <td><p>MHC 反向传播</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd_ref</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_bwd_ref</span></code></p></td>
 <td><p>MHC 反向传播（参考实现）</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_post</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_post</span></code></p></td>
 <td><p>MHC 后处理</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_pre</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mhc_pre</span></code></p></td>
 <td><p>MHC 预处理</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sinkhorn_forward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sinkhorn_forward</span></code></p></td>
 <td><p>Sinkhorn 前向计算</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="qwen4">
+<h2>Qwen4<a class="headerlink" href="#qwen4" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>算子</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ple_state_gather</span></code></p></td>
+<td><p>从 PLE 状态缓存收集行，无效索引映射为零行</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ple_state_scatter_</span></code></p></td>
+<td><p>通过显式 NULL/填充/重复写掩码写回行</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_compress_norm_mrope_store_groups</span></code></p></td>
+<td><p>融合 QSA 分组池化、Gemma RMSNorm、交错 MRoPE 与缓存写入</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_grouped_gemma_rmsnorm</span></code></p></td>
+<td><p>Qwen4 超连接的分组 Gemma RMSNorm</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_hc_gate_reduce</span></code></p></td>
+<td><p>超连接门控归约</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_hc_inject_combine</span></code></p></td>
+<td><p>超连接注入与残差流合并</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_qsa_mqa_paged_dot</span></code></p></td>
+<td><p>由分页压缩键缓存计算 QSA 索引器分数</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_store_qsa_kv_rows</span></code></p></td>
+<td><p>一次跨步感知启动写入成对 QSA K/V 行</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_compress_qsa_groups</span></code></p></td>
+<td><p>模型厂商的 QSA 分组池化与位置加载内核</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_qsa_mqa_paged</span></code></p></td>
+<td><p>模型厂商的标量归约 QSA 分页 MQA 内核</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qwen4_vendor_store_qsa_rows</span></code></p></td>
+<td><p>模型厂商的单缓存行 QSA 写入内核</p></td>
 </tr>
 </tbody>
 </table>
@@ -1006,7 +1122,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">量化</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dsa">DSA — 深度稀疏注意力</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fla-flash">FLA — Flash 线性注意力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc">MHC — 多头兼容性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mhc">MHC — 流形约束超连接</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen4">Qwen4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rwkv">RWKV</a></li>
 </ul>
   </nav></div>
@@ -1041,7 +1158,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 28, 2026.
+  Last updated on Sep 29, 2026.
   <br/>
 </p>
   </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section includes the release information for FlagGems-vLLM. v0.1.0: Added features:- Initial release of FlagGems-vLLM as part of FlagOS., Implemented over 78 optimized operators for vLLM inference acceleration. For more information, see Operator List..." />
+<meta property="og:description" content="This section includes the release information for FlagGems-vLLM. v0.2.0: Added features:- DeepSeek V4 sparse attention operators: Mega-MoE input staging, fused indexer Q with RoPE and quantization, and sparse attention forward., Qwen4 model operators, including QSA paged attention kernels, groupe..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section includes the release information for FlagGems-vLLM. v0.1.0: Added features:- Initial release of FlagGems-vLLM as part of FlagOS., Implemented over 78 optimized operators for vLLM inference acceleration. For more information, see Operator List..." />
+<meta name="description" content="This section includes the release information for FlagGems-vLLM. v0.2.0: Added features:- DeepSeek V4 sparse attention operators: Mega-MoE input staging, fused indexer Q with RoPE and quantization, and sparse attention forward., Qwen4 model operators, including QSA paged attention kernels, groupe..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; FlagGems-vLLM Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.739aed2a-ded2-43a5-8dab-6eb3c55c4135.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.2cc69334-89d5-4088-a38b-8865d47e84d9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -549,6 +549,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -564,13 +565,34 @@
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
 <p>This section includes the release information for FlagGems-vLLM.</p>
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Added features</strong>:</p>
+<ul>
+<li><p>DeepSeek V4 sparse attention operators: Mega-MoE input staging, fused indexer Q with RoPE and quantization, and sparse attention forward.</p></li>
+<li><p>Qwen4 model operators, including QSA paged attention kernels, grouped Gemma RMSNorm, and hyper-connection operators.</p></li>
+<li><p>Flash Linear Attention operators: chunk Kimi Delta Attention (KDA), chunk gated delta rule, and parallel native sparse attention (NSA) with its compression variant.</p></li>
+<li><p>MoE operators: a generic fused MoE interface, GPTQ INT4/MXFP4 fused MoE, router GEMM, and persistent top-K decoding.</p></li>
+<li><p>Quantization and linear algebra operators: scaled INT8 quantization and scaled matrix multiplication, with scaled INT8 quantization extended to MetaX, Hygon, Moore Threads, Iluvatar, Enflame, Ascend, and Kunlunxin.</p></li>
+<li><p>Attention operators: FP8 variable-length FlashAttention-2 with block-wise descales, paged FP8/FP4 multi-query attention logits, and a unified paged attention kernel supporting GQA.</p></li>
+<li><p>The exported operator set now covers 109 operators. For more information, see <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">Operator List</span></a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Improved features</strong>:</p>
+<ul>
+<li><p>Performance tuning for chunk gated delta rule, chunk KDA, grouped top-K, fused add-RMSNorm, MoE summation, FP8 MQA logits, and scaled matrix multiplication.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Added features</strong>:</p>
 <ul>
 <li><p>Initial release of FlagGems-vLLM as part of FlagOS.</p></li>
-<li><p>Implemented over 78 optimized operators for vLLM inference acceleration. For more information, see <a class="reference internal" href="#docs/flaggems_vllm_en/release_notes/release-notes.md"><span class="xref myst">Operator List</span></a>.</p></li>
+<li><p>Implemented the first set of optimized operators for vLLM inference acceleration. For more information, see <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">Operator List</span></a>.</p></li>
 </ul>
 </li>
 </ul>
@@ -624,6 +646,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -658,7 +681,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 28, 2026.
+  Last updated on Sep 29, 2026.
   <br/>
 </p>
   </div>

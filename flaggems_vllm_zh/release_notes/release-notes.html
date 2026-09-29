@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节包含 FlagGems-vLLM 的发布信息。 v0.1.0: 新增特性 ：- FlagGems-vLLM 作为 FlagOS 的一部分首次发布。, 实现了超过 78 个用于 vLLM 推理加速的优化算子。更多信息请参见 算子列表 。.." />
+<meta property="og:description" content="本节包含 FlagGems-vLLM 的发布信息。 v0.2.0: 新增特性 ：- DeepSeek V4 稀疏注意力算子：Mega-MoE 输入准备、融合索引器 Q 的 RoPE 与量化，以及稀疏注意力前向。, Qwen4 模型算子：包括 QSA 分页注意力内核、分组 Gemma RMSNorm 和超连接算子。, Flash 线性注意力算子：chunk Kimi Delta Attention（KDA）、chunk 门控 delta 规则，以及并行原生稀疏注意力（NSA）及其压缩变体。, MoE 算子：通用融合 MoE 接口、GPTQ INT4/MXFP4 融合 MoE、路由 GEMM..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节包含 FlagGems-vLLM 的发布信息。 v0.1.0: 新增特性 ：- FlagGems-vLLM 作为 FlagOS 的一部分首次发布。, 实现了超过 78 个用于 vLLM 推理加速的优化算子。更多信息请参见 算子列表 。.." />
+<meta name="description" content="本节包含 FlagGems-vLLM 的发布信息。 v0.2.0: 新增特性 ：- DeepSeek V4 稀疏注意力算子：Mega-MoE 输入准备、融合索引器 Q 的 RoPE 与量化，以及稀疏注意力前向。, Qwen4 模型算子：包括 QSA 分页注意力内核、分组 Gemma RMSNorm 和超连接算子。, Flash 线性注意力算子：chunk Kimi Delta Attention（KDA）、chunk 门控 delta 规则，以及并行原生稀疏注意力（NSA）及其压缩变体。, MoE 算子：通用融合 MoE 接口、GPTQ INT4/MXFP4 融合 MoE、路由 GEMM..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; FlagGems-vLLM 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.9d70c750-ca86-439a-bdc8-8e3086c73438.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.1664635c-7815-433d-9a78-f28185b9afaa.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 28, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -549,6 +549,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -564,13 +565,34 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节包含 FlagGems-vLLM 的发布信息。</p>
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>新增特性</strong>：</p>
+<ul>
+<li><p>DeepSeek V4 稀疏注意力算子：Mega-MoE 输入准备、融合索引器 Q 的 RoPE 与量化，以及稀疏注意力前向。</p></li>
+<li><p>Qwen4 模型算子：包括 QSA 分页注意力内核、分组 Gemma RMSNorm 和超连接算子。</p></li>
+<li><p>Flash 线性注意力算子：chunk Kimi Delta Attention（KDA）、chunk 门控 delta 规则，以及并行原生稀疏注意力（NSA）及其压缩变体。</p></li>
+<li><p>MoE 算子：通用融合 MoE 接口、GPTQ INT4/MXFP4 融合 MoE、路由 GEMM 和 persistent top-K 解码。</p></li>
+<li><p>量化与线性代数算子：缩放 INT8 量化与缩放矩阵乘法，其中缩放 INT8 量化已扩展到 MetaX、海光、摩尔线程、天数智芯（Iluvatar）、燧原、昇腾和昆仑芯。</p></li>
+<li><p>注意力算子：带分块反量化缩放的分块 FP8 变长 FlashAttention-2、分页 FP8/FP4 多查询注意力 logits，以及支持 GQA 的统一分页注意力内核。</p></li>
+<li><p>导出的算子集合现已覆盖 109 个算子。更多信息请参见 <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">算子列表</span></a>。</p></li>
+</ul>
+</li>
+<li><p><strong>改进特性</strong>：</p>
+<ul>
+<li><p>对 chunk 门控 delta 规则、chunk KDA、分组 top-K、融合加法 RMSNorm、MoE 求和、FP8 MQA logits 和缩放矩阵乘法进行了性能调优。</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>新增特性</strong>：</p>
 <ul>
 <li><p>FlagGems-vLLM 作为 FlagOS 的一部分首次发布。</p></li>
-<li><p>实现了超过 78 个用于 vLLM 推理加速的优化算子。更多信息请参见 <a class="reference internal" href="#docs/flaggems_vllm_en/release_notes/release-notes.md"><span class="xref myst">算子列表</span></a>。</p></li>
+<li><p>实现了首批用于 vLLM 推理加速的优化算子。更多信息请参见 <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">算子列表</span></a>。</p></li>
 </ul>
 </li>
 </ul>
@@ -624,6 +646,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -658,7 +681,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 28, 2026.
+  Last updated on Sep 29, 2026.
   <br/>
 </p>
   </div>
