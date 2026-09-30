@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="环境配置: 参见 快速开始 页面中的环境配置部分。 安装与编译: 参见 快速开始 了解 FlagCX 编译和安装。 API 参考: 设备句柄管理: FlagCX 引入了设备句柄 API，将设备/CCL 适配器生命周期与通信器管理分离。之前的 flagcxHandlerGroup 方式现已弃用。 新 API（推荐）: 使用模式： 弃用的 API: 以下 API 已弃用，将在未来版本中移除： 变更的 API: 注意：调用者必须提供指向 flagcxUniqueId 结构体的有效指针。 移除的 API: 以下 API 已从公共接口中移除： flagcxCommFifoBuffer() — 不再..." />
+<meta property="og:description" content="环境配置: 参见 快速开始 页面中的环境配置部分。 安装与编译: 参见 快速开始 了解 FlagCX 编译和安装。 面向初学者的关键概念: Device API（设备端 API） ：用于从设备端内核发起或配合通信的较低层接口。与主要由 CPU 侧程序调用的 Host API 相比，Device API 更接近设备内存、设备内核和底层通信路径。相关测试通常需要使用 COMPILE_KERNEL=1 构建 FlagCX。, 内存注册 ：在通信前向 FlagCX 声明一个缓冲区，使通信运行时能够检查并使用该缓冲区。注册完成后，应按照对应 API 的生命周期调用注销或释放操作。, 窗口注册 ：把..." />
 <meta property="og:image" content="_images/correct_performance_test_output.png" />
 <meta property="og:image:alt" content="correct_performance_test_output.png" />
-<meta name="description" content="环境配置: 参见 快速开始 页面中的环境配置部分。 安装与编译: 参见 快速开始 了解 FlagCX 编译和安装。 API 参考: 设备句柄管理: FlagCX 引入了设备句柄 API，将设备/CCL 适配器生命周期与通信器管理分离。之前的 flagcxHandlerGroup 方式现已弃用。 新 API（推荐）: 使用模式： 弃用的 API: 以下 API 已弃用，将在未来版本中移除： 变更的 API: 注意：调用者必须提供指向 flagcxUniqueId 结构体的有效指针。 移除的 API: 以下 API 已从公共接口中移除： flagcxCommFifoBuffer() — 不再..." />
+<meta name="description" content="环境配置: 参见 快速开始 页面中的环境配置部分。 安装与编译: 参见 快速开始 了解 FlagCX 编译和安装。 面向初学者的关键概念: Device API（设备端 API） ：用于从设备端内核发起或配合通信的较低层接口。与主要由 CPU 侧程序调用的 Host API 相比，Device API 更接近设备内存、设备内核和底层通信路径。相关测试通常需要使用 COMPILE_KERNEL=1 构建 FlagCX。, 内存注册 ：在通信前向 FlagCX 声明一个缓冲区，使通信运行时能够检查并使用该缓冲区。注册完成后，应按照对应 API 的生命周期调用注销或释放操作。, 窗口注册 ：把..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>用户指南 &#8212; FlagCX 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/user-guide.da7e7734-404b-4bc7-aef4-7c1ee51389fc.js"></script>
+    <script defer="defer" src="_static/tippy/user-guide.c2fee688-4aae-4607-9f48-f7440498ff82.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user-guide';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -556,9 +556,9 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">环境配置</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安装与编译</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">设备句柄管理</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">新 API（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">面向初学者的关键概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">设备句柄管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api">新 API（推荐）</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">弃用的 API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">变更的 API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">移除的 API</a></li>
@@ -606,19 +606,28 @@
 <h1>用户指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>环境配置<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 页面中的环境配置部分。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>页面中的环境配置部分。</p>
 </section>
 <section id="id3">
 <h2>安装与编译<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 了解 FlagCX 编译和安装。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>了解 FlagCX 编译和安装。</p>
 </section>
-<section id="api">
-<h2>API 参考<a class="headerlink" href="#api" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>设备句柄管理<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>FlagCX 引入了设备句柄 API，将设备/CCL 适配器生命周期与通信器管理分离。之前的 <code class="docutils literal notranslate"><span class="pre">flagcxHandlerGroup</span></code> 方式现已弃用。</p>
+<h2>面向初学者的关键概念<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Device API（设备端 API）</strong>：用于从设备端内核发起或配合通信的较低层接口。与主要由 CPU 侧程序调用的 Host API 相比，Device API 更接近设备内存、设备内核和底层通信路径。相关测试通常需要使用 <code class="docutils literal notranslate"><span class="pre">COMPILE_KERNEL=1</span></code> 构建 FlagCX。</p></li>
+<li><p><strong>内存注册</strong>：在通信前向 FlagCX 声明一个缓冲区，使通信运行时能够检查并使用该缓冲区。注册完成后，应按照对应 API 的生命周期调用注销或释放操作。</p></li>
+<li><p><strong>窗口注册</strong>：把一段已分配的内存注册为可重复使用的通信窗口，常用于单边通信和 Device API 路径。使用窗口时，应配对调用 <code class="docutils literal notranslate"><span class="pre">flagcxCommWindowRegister</span></code> 与 <code class="docutils literal notranslate"><span class="pre">flagcxCommWindowDeregister</span></code>，并通过匹配的内存分配/释放 API 管理缓冲区。</p></li>
+<li><p><strong>P2P（点对点通信）引擎</strong>：负责建立对等连接、注册内存并执行 RDMA 读写；它可以向传输框架提供单边数据传输能力，但不是集合通信 API。</p></li>
+<li><p><strong>RMA / 单边通信</strong>：允许一方读取或写入远端已注册内存，远端不必像传统双边通信那样同时调用对应的数据传输函数。FlagCX 的单边操作包括 <code class="docutils literal notranslate"><span class="pre">Get</span></code>、<code class="docutils literal notranslate"><span class="pre">Put</span></code> 和信号/计数器同步。</p></li>
+<li><p><strong>PD（Prefill/Decode 分离）</strong>：在大模型推理中，将处理输入提示词的 Prefill 阶段与生成输出 token 的 Decode 阶段拆分到不同服务或工作进程。FlagCX 可作为这类异构部署中的通信组件；PD 本身不是 FlagCX 的一个 API。</p></li>
+<li><p><strong>PTD（Prefill-Transfer-Decode）</strong>：用于观察或分析 Prefill、其中间数据传输以及 Decode 三个阶段的性能流程。PTD 是 profiling/可观测性工作流，不是 FlagCX 通信 API；具体指标和可视化由相应的部署工具链提供。</p></li>
+</ul>
 <section id="id5">
-<h4>新 API（推荐）<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<h3>设备句柄管理<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>FlagCX 引入了设备句柄 API，将设备/CCL 适配器生命周期与通信器管理分离。之前的 <code class="docutils literal notranslate"><span class="pre">flagcxHandlerGroup</span></code> 方式现已弃用。</p>
+<section id="api">
+<h4>新 API（推荐）<a class="headerlink" href="#api" title="Link to this heading">#</a></h4>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 初始化设备句柄 — 加载设备/CCL 适配器插件</span>
 <span class="n">flagcxResult_t</span><span class="w"> </span><span class="nf">flagcxDeviceHandleInit</span><span class="p">(</span><span class="n">flagcxDeviceHandle_t</span><span class="w"> </span><span class="o">*</span><span class="n">devHandle</span><span class="p">);</span>
 
@@ -676,7 +685,7 @@
 <h3>通信 API 测试<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>构建与安装</p>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 中的通信 API 测试构建与安装部分。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>中的通信 API 测试构建与安装部分。</p>
 </li>
 <li><p>通信 API 测试</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>--allow-run-as-root<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span><span class="w"> </span>./test_allreduce<span class="w"> </span>-b<span class="w"> </span>128K<span class="w"> </span>-e<span class="w"> </span>4G<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
@@ -744,7 +753,7 @@ cd openmpi-4.1.6
 <h3>Torch API 测试<a class="headerlink" href="#torch-api" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>构建与安装</p>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 了解 Torch API 测试的构建与安装说明。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>了解 Torch API 测试的构建与安装说明。</p>
 </li>
 <li><p>Torch API 测试执行</p>
 <p>测试用例位于构建/安装目录中。</p>
@@ -795,7 +804,7 @@ cd openmpi-4.1.6
 <li><p><code class="docutils literal notranslate"><span class="pre">master_port</span></code>：主节点用于建立进程组的端口。
 所有节点必须使用相同的端口，且该端口在所有节点上必须可用。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example.py</span></code>：Torch API 测试脚本。</p></li>
-<li><p>参见 <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX 环境变量</span></a> 了解各种 <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> 环境变量的用法。</p></li>
+<li><p>参见<a class="reference internal" href="environment-variables.html"><span class="std std-doc">环境变量</span></a>了解各种 <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> 环境变量的用法。</p></li>
 </ul>
 </li>
 <li><p>正确性能测试的示例截图</p>
@@ -811,7 +820,7 @@ cd openmpi-4.1.6
 <p>以下步骤展示了在 NVIDIA A800 GPU 上运行 LLaMA3-8B 模型的示例。</p>
 <ol class="arabic">
 <li><p>构建与安装</p>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 页面中的环境配置和构建安装部分。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>页面中的环境配置和构建安装部分。</p>
 </li>
 <li><p>数据准备</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">FlagScale</span>
@@ -953,7 +962,7 @@ python<span class="w"> </span>run.py<span class="w"> </span>--config-path<span c
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_MEM_ENABLE</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<p>参见 <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX 环境变量</span></a> 获取 UniRunner 特定配置变量的完整列表（前缀为 <code class="docutils literal notranslate"><span class="pre">FLAGCX_UNIRUNNER_*</span></code>）。</p>
+<p>参见<a class="reference internal" href="environment-variables.html"><span class="std std-doc">环境变量</span></a>获取 UniRunner 特定配置变量的完整列表（前缀为 <code class="docutils literal notranslate"><span class="pre">FLAGCX_UNIRUNNER_*</span></code>）。</p>
 </section>
 <section id="rdma">
 <h3>单边 RDMA 操作<a class="headerlink" href="#rdma" title="Link to this heading">#</a></h3>
@@ -1128,13 +1137,13 @@ make<span class="w"> </span><span class="nv">NCCL_HOME</span><span class="o">=</
 </pre></div>
 </div>
 <p>该包装器拦截 NCCL API 调用并通过 FlagCX 路由它们。线程本地递归保护可防止 FlagCX 内部 NCCL 适配器回调 NCCL 时出现无限递归。</p>
-<p>前置条件：FlagCX 已构建并安装、CUDA 工具包、真实 NCCL &gt;= 2.21.0（支持 2.21 到 2.27 版本）。详见 <code class="docutils literal notranslate"><span class="pre">plugin/nccl/README.md</span></code>。</p>
+<p>前置条件：FlagCX 已构建并安装、CUDA 工具包以及真实 NCCL &gt;= 2.27。详见 <code class="docutils literal notranslate"><span class="pre">plugin/nccl/README.md</span></code>。</p>
 </section>
 <section id="id18">
 <h3>通信 API 测试<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>构建与安装</p>
-<p>参见 <a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a> 文档，了解环境配置、创建符号链接以及如何构建和安装软件的说明。</p>
+<p>参见<a class="reference internal" href="getting-started.html"><span class="std std-doc">快速开始</span></a>文档，了解环境配置、创建符号链接以及如何构建和安装软件的说明。</p>
 </li>
 <li><p>验证 MPICH 安装</p>
 <p>检查是否已安装 MPICH：</p>
@@ -1183,7 +1192,7 @@ export LD_LIBRARY_PATH=/workspace/mpich-4.2.3/build/lib:$LD_LIBRARY_PATH
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>参见 <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX 环境变量</span></a> 了解 <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> 环境变量的含义和用法。</p></li>
+<li><p>参见<a class="reference internal" href="environment-variables.html"><span class="std std-doc">环境变量</span></a>了解 <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> 环境变量的含义和用法。</p></li>
 </ul>
 </li>
 <li><p><strong>注意：</strong> 在异构通信 API 测试中，当每个节点使用 2 个 GPU 时，某些警告可能指示每个节点只有 1 个 GPU 处于活动状态。在这种情况下，FlagCX 将跳过 GPU 到 GPU 的 AllReduce，回退到基于主机的通信。</p>
@@ -1253,9 +1262,9 @@ export LD_LIBRARY_PATH=/workspace/mpich-4.2.3/build/lib:$LD_LIBRARY_PATH
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">环境配置</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安装与编译</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">设备句柄管理</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">新 API（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">面向初学者的关键概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">设备句柄管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api">新 API（推荐）</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">弃用的 API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">变更的 API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">移除的 API</a></li>
@@ -1321,7 +1330,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

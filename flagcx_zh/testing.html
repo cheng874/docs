@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/testing.714cefa1-d566-4aef-be1f-aafffd730e9c.js"></script>
+    <script defer="defer" src="_static/tippy/testing.24884543-2293-42ef-a015-e778c09a148b.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'testing';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -586,7 +586,7 @@
 <section id="host-api">
 <h3>Host API 性能测试<a class="headerlink" href="#host-api" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>test/perf/host_api
-make<span class="w"> </span><span class="o">[</span>USE_NVIDIA<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ILUVATAR_COREX<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_CAMBRICON<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_METAX<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_MUSA<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_KUNLUNXIN<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_DU<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ASCEND<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_AMD<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_TSM<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ENFLAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_SUNRISE<span class="o">]=</span><span class="m">1</span>
+make<span class="w"> </span><span class="o">[</span>USE_NVIDIA<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ILUVATAR<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_CAMBRICON<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_METAX<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_MUSA<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_KUNLUNXIN<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_DU<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ASCEND<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_AMD<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_TSM<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_ENFLAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>USE_SUNRISE<span class="o">]=</span><span class="m">1</span>
 mpirun<span class="w"> </span>--allow-run-as-root<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>./test_allreduce<span class="w"> </span>-b<span class="w"> </span>128K<span class="w"> </span>-e<span class="w"> </span>4G<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span>
 </pre></div>
 </div>
@@ -659,10 +659,25 @@ mpirun<span class="w"> </span>--allow-run-as-root<span class="w"> </span>-np<spa
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_api</span></code></p></td>
-<td><p>10 个单边 Device API 内核的正确性测试套件</p></td>
+<td><p>单边 Device API 内核的正确性测试套件</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_ir</span></code></p></td>
-<td><p>IR 包装层正确性测试</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_api_intra</span></code></p></td>
+<td><p>节点内 Device API 正确性测试</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_api_inter</span></code></p></td>
+<td><p>节点间 Device API 正确性测试</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_ir_intra</span></code></p></td>
+<td><p>节点内 Scalar IR 正确性测试</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_ir_inter</span></code></p></td>
+<td><p>节点间 Scalar IR 正确性测试</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_ir_unified_intra</span></code></p></td>
+<td><p>节点内 Unified IR 正确性测试</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_device_ir_unified_inter</span></code></p></td>
+<td><p>节点间 Unified IR 正确性测试</p></td>
 </tr>
 </tbody>
 </table>
@@ -791,7 +806,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

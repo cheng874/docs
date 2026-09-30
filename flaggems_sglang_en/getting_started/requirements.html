@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/requirements.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Before installing FlagGems-sglang, ensure your environment meets the following requirements. Software requirements: Python 3.8 or higher, PyTorch with CUDA support, Triton compatible with your GPU architecture, pip for package installation. Build dependencies: The following packages are required ..." />
+<meta property="og:description" content="Before installing FlagGems-sglang, ensure your environment meets the following requirements. Software requirements: Python 3.8 or higher, PyTorch 2.6.0 or higher, with support for your accelerator, Triton compatible with your GPU architecture, PyYAML and SQLAlchemy, required by the operator regis..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Before installing FlagGems-sglang, ensure your environment meets the following requirements. Software requirements: Python 3.8 or higher, PyTorch with CUDA support, Triton compatible with your GPU architecture, pip for package installation. Build dependencies: The following packages are required ..." />
+<meta name="description" content="Before installing FlagGems-sglang, ensure your environment meets the following requirements. Software requirements: Python 3.8 or higher, PyTorch 2.6.0 or higher, with support for your accelerator, Triton compatible with your GPU architecture, PyYAML and SQLAlchemy, required by the operator regis..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Requirements &#8212; FlagGems-sglang Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/requirements.6468951b-8c5b-4e57-9439-e751ec9882bd.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/requirements.f1d5f62d-ca2f-4612-93a3-01ab4f7e0676.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/requirements';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -396,6 +396,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests-and-benchmark.html">Run tests and benchmark</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator_list.html">Operator List</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -548,6 +552,7 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-dependencies">Build dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-dependencies">Test dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-requirements">Hardware requirements</a></li>
 </ul>
             </nav>
@@ -567,8 +572,9 @@
 <h2>Software requirements<a class="headerlink" href="#software-requirements" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Python</strong> 3.8 or higher</p></li>
-<li><p><strong>PyTorch</strong> with CUDA support</p></li>
+<li><p><strong>PyTorch</strong> 2.6.0 or higher, with support for your accelerator</p></li>
 <li><p><strong>Triton</strong> compatible with your GPU architecture</p></li>
+<li><p><strong>PyYAML</strong> and <strong>SQLAlchemy</strong>, required by the operator registry at runtime</p></li>
 <li><p><strong>pip</strong> for package installation</p></li>
 </ul>
 </section>
@@ -576,17 +582,26 @@
 <h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">#</a></h2>
 <p>The following packages are required to build FlagGems-sglang from source:</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setuptools</span></code> &gt;= 64.0</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scikit-build-core</span></code> &gt;= 0.11</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pybind11</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ninja</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">ninja</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake</span></code> are only needed when a vendor extension is compiled, which is why the installation guide installs them up front.</p>
+</section>
+<section id="test-dependencies">
+<h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> extra installs what the test and benchmark suites need:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> &gt;= 7.1.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> &gt;= 1.26</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code> &gt;= 1.14</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cupy-cuda12x</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cupy-cuda12x</span></code> targets CUDA devices. On other accelerators, install the CuPy wheel matching that platform.</p>
 </section>
 <section id="hardware-requirements">
 <h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>A CUDA-capable GPU is required for running most operators.</p></li>
-</ul>
+<p>A supported accelerator is required to run most operators. The test suite can compare against a CPU reference with <code class="docutils literal notranslate"><span class="pre">--ref</span> <span class="pre">cpu</span></code> for the operators that support it.</p>
 </section>
 </section>
 
@@ -639,6 +654,7 @@
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-requirements">Software requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-dependencies">Build dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-dependencies">Test dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-requirements">Hardware requirements</a></li>
 </ul>
   </nav></div>
@@ -673,7 +689,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
@@ -696,5 +712,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flaggems_sglang_zh/getting_started/requirements.html">中文</a></body>
 </html>

@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/features.476067e1-d56a-4699-987c-a8368c5f0c8d.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/features.c6edfa95-e9e7-43db-bdc1-d7f73ed2ee7e.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/features';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -237,6 +237,10 @@
     </div>
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -392,6 +396,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests-and-benchmark.html">Run tests and benchmark</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator_list.html">Operator List</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -519,7 +527,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -535,6 +545,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-backends">Supported backends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-with-flaggems-and-sglang-plugin-fl">Relationship with FlagGems and sglang-plugin-FL</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -550,9 +569,75 @@
 <ul class="simple">
 <li><p><strong>Operators have undergone deep performance tuning</strong> — Each operator is carefully optimized for throughput and latency across multiple hardware backends.</p></li>
 <li><p><strong>Triton kernel call optimization</strong> — Kernel launch overhead is minimized through specialized Triton kernel patterns and autotuning.</p></li>
-<li><p><strong>Flexible multi-backend support mechanism</strong> — The library supports a variety of GPU hardware platforms, allowing operators to run efficiently regardless of the underlying device.</p></li>
-<li><p><strong>Support for common SGLang operators</strong> — Includes optimized implementations of operators frequently used in SGLang inference, such as <code class="docutils literal notranslate"><span class="pre">relu</span></code>, <code class="docutils literal notranslate"><span class="pre">outer</span></code>, and flashinfer-related operators.</p></li>
+<li><p><strong>Flexible multi-backend support mechanism</strong> — Operator implementations are resolved at import time by a three-level registrar (generic, vendor, architecture), so the same call site selects the best available kernel for the device in use.</p></li>
+<li><p><strong>Support for common SGLang operators</strong> — Includes optimized implementations of operators frequently used in SGLang inference, such as <code class="docutils literal notranslate"><span class="pre">silu_and_mul</span></code>, <code class="docutils literal notranslate"><span class="pre">apply_token_bitmask</span></code>, <code class="docutils literal notranslate"><span class="pre">fused_rmsnorm</span></code>, and the Mamba and Mixture-of-Experts families.</p></li>
 </ul>
+<section id="supported-backends">
+<h2>Supported backends<a class="headerlink" href="#supported-backends" title="Link to this heading">#</a></h2>
+<p>Vendors ship their specializations under <code class="docutils literal notranslate"><span class="pre">src/flaggems_sglang/runtime/backend/_&lt;vendor&gt;/</span></code>. Each vendor folder declares the device it serves:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Vendor folder</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Specialized operators</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_kunlunxin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>37</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_ascend</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">npu</span></code></p></td>
+<td><p>33</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_enflame</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcu</span></code></p></td>
+<td><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_iluvatar</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_metax</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>27</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_hygon</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_mthreads</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">musa</span></code></p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_nvidia</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>1, plus <code class="docutils literal notranslate"><span class="pre">hopper/</span></code> and <code class="docutils literal notranslate"><span class="pre">ampere/</span></code> architecture folders</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">_thead</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>descriptor only</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_amd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p></td>
+<td><p>descriptor only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A vendor that does not specialize an operator still runs it: routing falls back to the generic Triton implementation in <code class="docutils literal notranslate"><span class="pre">flaggems_sglang.ops</span></code>.</p>
+<p>The device is detected at import time from a per-vendor query command: <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code>, <code class="docutils literal notranslate"><span class="pre">mx-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">ixsmi</span></code>, <code class="docutils literal notranslate"><span class="pre">hy-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">efsmi</span> <span class="pre">-L</span></code>, <code class="docutils literal notranslate"><span class="pre">xpu-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">rocm-smi</span></code>, <code class="docutils literal notranslate"><span class="pre">mthreads-gmi</span></code>, <code class="docutils literal notranslate"><span class="pre">ppu-smi</span></code>. Setting the <code class="docutils literal notranslate"><span class="pre">DNN_VENDOR</span></code> environment variable overrides detection and forces a specific backend, which is how the test suites are pointed at a particular vendor.</p>
+</section>
+<section id="relationship-with-flaggems-and-sglang-plugin-fl">
+<h2>Relationship with FlagGems and sglang-plugin-FL<a class="headerlink" href="#relationship-with-flaggems-and-sglang-plugin-fl" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>FlagGems</strong>: the general-purpose operator library. It replaces ATen operators globally in PyTorch through <code class="docutils literal notranslate"><span class="pre">flag_gems.enable()</span></code>.</p></li>
+<li><p><strong>FlagGems-sglang</strong>: this repository. It provides SGLang-oriented operator implementations together with the tests and benchmarks that validate them, exposed through the <code class="docutils literal notranslate"><span class="pre">flaggems_sglang</span></code> Python package.</p></li>
+<li><p><strong>sglang-plugin-FL</strong>: the SGLang plugin layer. It hooks SGLang’s operator dispatch and routes framework calls to the selected backend implementation, using FlagGems for general ATen coverage and FlagGems-sglang operators for the SGLang-specific fused kernels.</p></li>
+</ul>
+<p>Vendors bringing up a new backend should start from the bring-up guide kept in the upstream repository at <code class="docutils literal notranslate"><span class="pre">src/flaggems_sglang/runtime/backend/README.md</span></code>.</p>
+</section>
 </section>
 
 
@@ -591,6 +676,24 @@
             
             
               
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-backends">Supported backends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-with-flaggems-and-sglang-plugin-fl">Relationship with FlagGems and sglang-plugin-FL</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -619,7 +722,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
@@ -642,5 +745,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flaggems_sglang_zh/overview/features.html">中文</a></body>
 </html>

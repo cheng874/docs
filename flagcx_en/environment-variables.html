@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/environment-variables.4819a120-3d46-46b3-9db1-6fc0d132debb.js"></script>
+    <script defer="defer" src="_static/tippy/environment-variables.8f98f5af-c89a-4124-a3be-e4684b2d67c0.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'environment-variables';</script>
@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -558,7 +558,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-mode">Communication Mode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buffer-and-memory">Buffer and Memory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-and-runtime">Proxy and Runtime</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2p-engine-configuration">P2P Engine Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2p-engine-configuration">P2P Engine Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-transport">ACCL/Barex transport</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-configuration">Topology Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuner-configuration">Tuner Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybridrunner-configuration">HybridRunner Configuration</a></li>
@@ -569,6 +572,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socket-network">Socket Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ucx-network">UCX Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gloo-network">Gloo Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-and-ppu-integration">ACCL/Barex and PPU Integration</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-configuration">Plugin Configuration</a></li>
@@ -609,6 +613,7 @@
 <li><p><a class="reference internal" href="#socket-network"><span class="xref myst">Socket Network</span></a></p></li>
 <li><p><a class="reference internal" href="#ucx-network"><span class="xref myst">UCX Network</span></a></p></li>
 <li><p><a class="reference internal" href="#gloo-network"><span class="xref myst">Gloo Network</span></a></p></li>
+<li><p><a class="reference internal" href="#acclbarex-and-ppu-integration"><span class="xref myst">ACCL/Barex and PPU Integration</span></a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#plugin-configuration"><span class="xref myst">Plugin Configuration</span></a></p></li>
@@ -869,6 +874,30 @@
 </table>
 </div>
 <p><strong>Note</strong>: These variables configure the FlagCX P2P Engine for one-sided RDMA operations, primarily used when integrating with transfer frameworks like NIXL.</p>
+<section id="accl-barex-transport">
+<h3>ACCL/Barex transport<a class="headerlink" href="#accl-barex-transport" title="Link to this heading">#</a></h3>
+<p>Environment variables change runtime behavior without rebuilding the library. The following settings apply only to deployments that build and use the ACCL/Barex transport adaptor:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_P2P_TRANSPORT</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">accl</span></code> to select the ACCL/Barex path when the adaptor is available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_ACCL_MAX_MR_MB</span></code></p></td>
+<td><p>Limits ACCL/Barex registered-memory chunking. <code class="docutils literal notranslate"><span class="pre">0</span></code> disables this limit.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_VMM_ENABLE</span></code></p></td>
+<td><p>The current ACCL/Barex integration path requires <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Build the adaptor with <code class="docutils literal notranslate"><span class="pre">USE_ACCL_BAREX=1</span></code>. These are deployment-specific settings, not universal defaults.</p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="topology-configuration">
@@ -1253,11 +1282,15 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_GLOO_IB_DISABLE</span></code></p></td>
 <td><p>0</p></td>
-<td><p>When set to 1, disables IB for Gloo transport</p></td>
+<td><p>When set to 1, disables IB support for Gloo transport</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
+<section id="accl-barex-and-ppu-integration">
+<h3>ACCL/Barex and PPU Integration<a class="headerlink" href="#accl-barex-and-ppu-integration" title="Link to this heading">#</a></h3>
+<p>Build the ACCL/Barex network adaptor with <code class="docutils literal notranslate"><span class="pre">USE_ACCL_BAREX=1</span></code>. The PPU integration commonly uses <code class="docutils literal notranslate"><span class="pre">USE_PPU=1</span> <span class="pre">USE_ACCL_BAREX=1</span></code>; integration environments may also select <code class="docutils literal notranslate"><span class="pre">FLAGCX_P2P_TRANSPORT=accl</span></code>, enable <code class="docutils literal notranslate"><span class="pre">FLAGCX_MEM_ENABLE=1</span></code>, and disable virtual memory with <code class="docutils literal notranslate"><span class="pre">FLAGCX_VMM_ENABLE=0</span></code>. These settings are integration prerequisites, not universal defaults.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -1362,7 +1395,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-mode">Communication Mode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buffer-and-memory">Buffer and Memory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-and-runtime">Proxy and Runtime</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2p-engine-configuration">P2P Engine Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2p-engine-configuration">P2P Engine Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-transport">ACCL/Barex transport</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-configuration">Topology Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuner-configuration">Tuner Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybridrunner-configuration">HybridRunner Configuration</a></li>
@@ -1373,6 +1409,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socket-network">Socket Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ucx-network">UCX Network</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gloo-network">Gloo Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-and-ppu-integration">ACCL/Barex and PPU Integration</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-configuration">Plugin Configuration</a></li>
@@ -1411,7 +1448,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

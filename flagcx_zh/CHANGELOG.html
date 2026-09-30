@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="CHANGELOG.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="[2026/06] 发布 v0.13:- 引入 FlagCX P2P 引擎，用于单边 RDMA 操作，专为与 NIXL 等传输框架集成而设计。, 添加 IBRC P2P 适配器，支持基于 InfiniBand 的 P2P 通信。, 重构 Device API，增加对称内存（symmem）和多播支持。, 为 Device API 操作添加多 FIFO 支持。, 引入设备指针 API，用于 Triton 集成。, 弃用 flagcxHandlerGroup ，改用独立的 flagcxDeviceHandle 生命周期管理。, 添加新的单边 RDMA 操作： flagcxPut 、 flagc..." />
+<meta property="og:description" content="[2026/09] 发布 v.0.14.0:- 添加 SHMEM Device API 支持，并提供 USE_SHMEM 和 SHMEM_HOME 构建控制项。, 添加 Scalar IR 和 Unified IR 的 Device API 测试覆盖，包括拆分后的节点内和节点间测试目标。, 添加 ACCL/Barex 网络适配器支持和 PPU 后端集成控制项。, 扩展 PyTorch 插件构建检测，支持 PPU 和规范的 USE_ILUVATAR 后端标志。, 更新 Iluvatar 构建标志文档：新构建应使用 USE_ILUVATAR ； USE_ILUVATAR_COREX 仅作为弃..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="[2026/06] 发布 v0.13:- 引入 FlagCX P2P 引擎，用于单边 RDMA 操作，专为与 NIXL 等传输框架集成而设计。, 添加 IBRC P2P 适配器，支持基于 InfiniBand 的 P2P 通信。, 重构 Device API，增加对称内存（symmem）和多播支持。, 为 Device API 操作添加多 FIFO 支持。, 引入设备指针 API，用于 Triton 集成。, 弃用 flagcxHandlerGroup ，改用独立的 flagcxDeviceHandle 生命周期管理。, 添加新的单边 RDMA 操作： flagcxPut 、 flagc..." />
+<meta name="description" content="[2026/09] 发布 v.0.14.0:- 添加 SHMEM Device API 支持，并提供 USE_SHMEM 和 SHMEM_HOME 构建控制项。, 添加 Scalar IR 和 Unified IR 的 Device API 测试覆盖，包括拆分后的节点内和节点间测试目标。, 添加 ACCL/Barex 网络适配器支持和 PPU 后端集成控制项。, 扩展 PyTorch 插件构建检测，支持 PPU 和规范的 USE_ILUVATAR 后端标志。, 更新 Iluvatar 构建标志文档：新构建应使用 USE_ILUVATAR ； USE_ILUVATAR_COREX 仅作为弃..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>发布说明 &#8212; FlagCX 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/CHANGELOG.856a319a-7389-448d-b653-09ef464aea7d.js"></script>
+    <script defer="defer" src="_static/tippy/CHANGELOG.f6ff161f-7598-4657-9049-076a96ff16d9.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'CHANGELOG';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -555,7 +555,18 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>发布说明<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><strong>[2026/06]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.13.0-rc2.post1">v0.13</a>:</p>
+<li><p><strong>[2026/09]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.14.0">v.0.14.0</a>:</p>
+<ul>
+<li><p>添加 SHMEM Device API 支持，并提供 <code class="docutils literal notranslate"><span class="pre">USE_SHMEM</span></code> 和 <code class="docutils literal notranslate"><span class="pre">SHMEM_HOME</span></code> 构建控制项。</p></li>
+<li><p>添加 Scalar IR 和 Unified IR 的 Device API 测试覆盖，包括拆分后的节点内和节点间测试目标。</p></li>
+<li><p>添加 ACCL/Barex 网络适配器支持和 PPU 后端集成控制项。</p></li>
+<li><p>扩展 PyTorch 插件构建检测，支持 PPU 和规范的 <code class="docutils literal notranslate"><span class="pre">USE_ILUVATAR</span></code> 后端标志。</p></li>
+<li><p>更新 Iluvatar 构建标志文档：新构建应使用 <code class="docutils literal notranslate"><span class="pre">USE_ILUVATAR</span></code>；<code class="docutils literal notranslate"><span class="pre">USE_ILUVATAR_COREX</span></code> 仅作为弃用的兼容别名保留。</p></li>
+<li><p>将 Device IR 路径中的 lane-mask ABI 扩展为 64 位。</p></li>
+<li><p>更新打包和依赖处理，包括 NVIDIA/NCCL 包装器使用场景下的 NCCL 2.27 文档版本下限。</p></li>
+</ul>
+</li>
+<li><p><strong>[2026/06]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.13.0">v.0.13.0</a>:</p>
 <ul>
 <li><p>引入 FlagCX P2P 引擎，用于单边 RDMA 操作，专为与 NIXL 等传输框架集成而设计。</p></li>
 <li><p>添加 IBRC P2P 适配器，支持基于 InfiniBand 的 P2P 通信。</p></li>
@@ -567,7 +578,7 @@
 <li><p>优化 RMA 代理，通过批量单边 PUT 操作提高 RDMA 吞吐量。</p></li>
 </ul>
 </li>
-<li><p><strong>[2026/05]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.12.0">v0.12</a>:</p>
+<li><p><strong>[2026/05]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.12.0">v.0.12.0</a>:</p>
 <ul>
 <li><p>添加 Sunrise AI 加速器支持，包括设备适配器 <code class="docutils literal notranslate"><span class="pre">ptpuAdaptor</span></code> 和 CCL 适配器 <code class="docutils literal notranslate"><span class="pre">pcclAdaptor</span></code>。</p></li>
 <li><p>扩展 PyTorch 插件对 PCCL 后端的支持。</p></li>
@@ -580,21 +591,21 @@
 <li><p>将 C++17 特性替换为 C++11 等效实现，提高兼容性。</p></li>
 </ul>
 </li>
-<li><p><strong>[2026/03]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.11.0">v0.11</a>:</p>
+<li><p><strong>[2026/03]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.11.0">v.0.11.0</a>:</p>
 <ul>
 <li><p>在异构平台上启用基于内核的通信，包括 NVIDIA 和 Hygon。</p></li>
 <li><p>添加主机端和设备端单边通信语义支持。</p></li>
 <li><p>引入适配器插件支持，支持动态加载用户定义的 Device、CCL 和 Net 适配器实现。</p></li>
 </ul>
 </li>
-<li><p><strong>[2026/02]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.10.0">v0.10</a>:</p>
+<li><p><strong>[2026/02]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.10.0">v.0.10.0</a>:</p>
 <ul>
 <li><p>在 uniRunner 模式下实现 11 个芯片解耦的集合通信算法。</p></li>
 <li><p>重构设备节点内/节点间 API，并在 NVIDIA 平台上集成 NCCL Device API 支持。</p></li>
 <li><p>增强易用性，支持 pip 安装 FlagCX，并提供 NCCL 包装插件以便在 NVIDIA 平台上无缝采用。</p></li>
 </ul>
 </li>
-<li><p><strong>[2026/01]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.9.0">v0.9</a>:</p>
+<li><p><strong>[2026/01]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.9.0">v.0.9.0</a>:</p>
 <ul>
 <li><p>添加 Enflame 支持，包括 <code class="docutils literal notranslate"><span class="pre">topsAdaptor</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ecclAdaptor</span></code>。</p></li>
 <li><p>扩展 flagcxCCLAdaptor 以支持对称操作。</p></li>
@@ -602,14 +613,14 @@
 <li><p>重构 <code class="docutils literal notranslate"><span class="pre">glooAdaptor</span></code>，支持 TCP 和 IB 传输，并自动检测网卡。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/12]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.8.0">v0.8</a>:</p>
+<li><p><strong>[2025/12]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.8.0">v.0.8.0</a>:</p>
 <ul>
 <li><p>启用节点内零拷贝，提高小消息数据传输效率。</p></li>
 <li><p>在 uniRunner 模式下支持朴素的 AllReduce 实现，采用以 CPU 为中心、设备辅助的算法。</p></li>
 <li><p>通过新 API flagcxHeteroPut 和 flagcxHeteroPutSignal 添加单边通信原语。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/11]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.7.0">v0.7</a>:</p>
+<li><p><strong>[2025/11]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.7.0">v.0.7.0</a>:</p>
 <ul>
 <li><p>添加 TsingMicro 支持，包括设备适配器 <code class="docutils literal notranslate"><span class="pre">tsmicroAdaptor</span></code> 和 CCL 适配器 <code class="docutils literal notranslate"><span class="pre">tcclAdaptor</span></code>。</p></li>
 <li><p>实现实验性的无内核非归约集合通信（<em>SendRecv</em>、<em>AlltoAll</em>、<em>AlltoAllv</em>、<em>Broadcast</em>、<em>Gather</em>、<em>Scatter</em>、<em>AllGather</em>），使用设备缓冲区 IPC/RDMA。</p></li>
@@ -617,14 +628,14 @@
 <li><p>增强 <code class="docutils literal notranslate"><span class="pre">flagcxNetAdaptor</span></code>，添加单边原语（<code class="docutils literal notranslate"><span class="pre">put</span></code>、<code class="docutils literal notranslate"><span class="pre">putSignal</span></code>、<code class="docutils literal notranslate"><span class="pre">waitValue</span></code>）和重传支持，提高可靠性。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/10]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.6.0">v0.6</a>:</p>
+<li><p><strong>[2025/10]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.6.0">v.0.6.0</a>:</p>
 <ul>
 <li><p>实现设备缓冲区 IPC 通信，支持节点内 <em>SendRecv</em> 操作。</p></li>
 <li><p>引入设备发起、主机启动的设备端原语，支持直接从设备进行基于内核的通信。</p></li>
 <li><p>增强自动调优，MetaX 平台上 <em>AllReduce</em> 操作性能提升 50%。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/09]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.5.0">v0.5</a>:</p>
+<li><p><strong>[2025/09]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.5.0">v.0.5.0</a>:</p>
 <ul>
 <li><p>添加 AMD GPU 支持，包括设备适配器 <code class="docutils literal notranslate"><span class="pre">hipAdaptor</span></code> 和 CCL 适配器 <code class="docutils literal notranslate"><span class="pre">rcclAdaptor</span></code>。</p></li>
 <li><p>引入 <code class="docutils literal notranslate"><span class="pre">flagcxNetAdaptor</span></code> 统一网络后端，目前支持 socket、IBRC、UCX 和 IBUC（实验性）。</p></li>
@@ -633,7 +644,7 @@
 <li><p>在 CI/CD 中添加 PyTorch API 测试自动化。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/08]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.4.0">v0.4</a>:</p>
+<li><p><strong>[2025/08]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.4.0">v.0.4.0</a>:</p>
 <ul>
 <li><p>支持 ERNIE4.5（百度）在 NVIDIA 和 Iluvatar GPU 上使用 Paddle + FlagCX 进行异构训练。</p></li>
 <li><p>改进任意网卡配置下的异构通信，部署更加稳健灵活。</p></li>
@@ -642,7 +653,7 @@
 <li><p>在 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 下提供用户文档。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/07]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.3.0">v0.3</a>:</p>
+<li><p><strong>[2025/07]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.3.0">v.0.3.0</a>:</p>
 <ul>
 <li><p>集成三个额外的原生通信库：HCCL（华为）、MUSACCL（摩尔线程）和 MPI。</p></li>
 <li><p>通过流水线优化增强异构集合通信操作。</p></li>
@@ -650,13 +661,13 @@
 <li><p>提供全栈开源解决方案 FlagScale + FlagCX，实现高效的异构预填充-解码分离。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/05]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.2.0">v0.2</a>:</p>
+<li><p><strong>[2025/05]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.2.0">v.0.2.0</a>:</p>
 <ul>
 <li><p>集成 3 个额外的原生通信库，包括 MCCL（摩尔线程）、XCCL（Mellanox）和 DUCCL（BAAI）。</p></li>
 <li><p>改进 11 个异构集合通信操作，支持自动拓扑检测和单网卡/多网卡环境。</p></li>
 </ul>
 </li>
-<li><p><strong>[2025/04]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.1.0">v0.1</a>:</p>
+<li><p><strong>[2025/04]</strong> 发布 <a class="reference external" href="https://github.com/flagos-ai/FlagCX/releases/tag/v0.1.0">v.0.1.0</a>:</p>
 <ul>
 <li><p>添加 5 个原生通信库，包括 NCCL（NVIDIA）、IXCCL（Iluvatar）和 CNCL（寒武纪）的 CCL 适配器，以及主机 CCL 适配器 GLOO 和 Bootstrap。</p></li>
 <li><p>使用 C2C（集群到集群）算法支持 11 个异构集合通信操作。</p></li>
@@ -731,7 +742,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

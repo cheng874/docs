@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/user-guide.1c7d9f59-24e3-45bb-8bac-34eee5c69ef5.js"></script>
+    <script defer="defer" src="_static/tippy/user-guide.81b38183-5b94-44ab-abe6-236f61a4ed7e.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user-guide';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -799,7 +799,7 @@ It is assumed that the address is reachable from all nodes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">master_port</span></code>: Port used by the master node to establish the process group.
 All nodes must use the same port, and the port has to be available on all nodes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example.py</span></code>: Torch API test script.</p></li>
-<li><p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX Environment Variables</span></a> for the usage of the various <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> environment variables.</p></li>
+<li><p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">Environment Variables</span></a> for the usage of the various <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> environment variables.</p></li>
 </ul>
 </li>
 <li><p>Sample screenshot from a correct performance test</p>
@@ -959,7 +959,7 @@ and a run script will be generated at:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_MEM_ENABLE</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX Environment Variables</span></a> for the full list of UniRunner-specific configuration variables (prefixed with <code class="docutils literal notranslate"><span class="pre">FLAGCX_UNIRUNNER_*</span></code>).</p>
+<p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">Environment Variables</span></a> for the full list of UniRunner-specific configuration variables (prefixed with <code class="docutils literal notranslate"><span class="pre">FLAGCX_UNIRUNNER_*</span></code>).</p>
 </section>
 <section id="one-sided-rdma-operations">
 <h3>One-sided RDMA operations<a class="headerlink" href="#one-sided-rdma-operations" title="Link to this heading">#</a></h3>
@@ -1134,7 +1134,7 @@ make<span class="w"> </span><span class="nv">NCCL_HOME</span><span class="o">=</
 </pre></div>
 </div>
 <p>The wrapper intercepts NCCL API calls and routes them through FlagCX. A thread-local recursive guard prevents infinite recursion when FlagCX’s internal NCCL adaptor calls back into NCCL.</p>
-<p>Prerequisites: FlagCX built and installed, CUDA toolkit, real NCCL &gt;= 2.21.0 (versions 2.21 through 2.27 supported). See <code class="docutils literal notranslate"><span class="pre">plugin/nccl/README.md</span></code> for full details.</p>
+<p>Prerequisites: FlagCX built and installed, CUDA toolkit, and real NCCL &gt;= 2.27. See <code class="docutils literal notranslate"><span class="pre">plugin/nccl/README.md</span></code> for full details.</p>
 </section>
 <section id="id1">
 <h3>Communication API test<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -1192,7 +1192,7 @@ configure the port number environment variable:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">FlagCX Environment Variables</span></a> for the meaning and usage of <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> environment variables.</p></li>
+<li><p>Refer to <a class="reference internal" href="environment-variables.html"><span class="std std-doc">Environment Variables</span></a> for the meaning and usage of <code class="docutils literal notranslate"><span class="pre">FLAGCX_XXX</span></code> environment variables.</p></li>
 </ul>
 </li>
 <li><p><strong>Note:</strong> When using two GPUs per node in the heterogeneous Communication API test, some warnings may indicate that each node only has 1 GPU active. In this case, FlagCX will skip GPU-to-GPU AllReduce and fall back to host-based communication.</p>
@@ -1330,7 +1330,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/run-tests-and-benchmark.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers how to run tests and benchmarks for FlagGems-sglang to validate correctness and measure operator performance. The following commands are verified in the FlagGems-sglang repository and can be used for quick validation after installation. Run tests: Run benchmark:" />
+<meta property="og:description" content="This section covers how to run tests and benchmarks for FlagGems-sglang to validate correctness and measure operator performance. The following commands are verified in the FlagGems-sglang repository and can be used for quick validation after installation. Run tests: To check an operator against ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers how to run tests and benchmarks for FlagGems-sglang to validate correctness and measure operator performance. The following commands are verified in the FlagGems-sglang repository and can be used for quick validation after installation. Run tests: Run benchmark:" />
+<meta name="description" content="This section covers how to run tests and benchmarks for FlagGems-sglang to validate correctness and measure operator performance. The following commands are verified in the FlagGems-sglang repository and can be used for quick validation after installation. Run tests: To check an operator against ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Run tests and benchmark &#8212; FlagGems-sglang Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/run-tests-and-benchmark.e5f4485e-c3a3-4581-b1a2-4fca5698e2fd.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/run-tests-and-benchmark.a7086583-6bda-4a26-831f-c52ee57a361d.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/run-tests-and-benchmark';</script>
@@ -79,11 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operator List" href="../reference/operator_list.html" />
     <link rel="prev" title="Use operators" href="usage.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -395,6 +396,10 @@
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Run tests and benchmark</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator_list.html">Operator List</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -564,24 +569,34 @@
 <p>The following commands are verified in the FlagGems-sglang repository and can be used for quick validation after installation.</p>
 <section id="run-tests">
 <h2>Run tests<a class="headerlink" href="#run-tests" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace/FlagGems-sglang
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>FlagGems-sglang
 pytest<span class="w"> </span>-q<span class="w"> </span>tests<span class="w"> </span>--collect-only
-pytest<span class="w"> </span>-q<span class="w"> </span>tests/test_outer.py<span class="w"> </span>--quick
+pytest<span class="w"> </span>-q<span class="w"> </span>tests/test_silu_and_mul.py<span class="w"> </span>--quick
+</pre></div>
+</div>
+<p>To check an operator against the CPU reference instead of the device reference:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-q<span class="w"> </span>tests/test_silu_and_mul.py<span class="w"> </span>--ref<span class="w"> </span>cpu<span class="w"> </span>--quick
 </pre></div>
 </div>
 </section>
 <section id="run-benchmark">
 <h2>Run benchmark<a class="headerlink" href="#run-benchmark" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workspace/FlagGems-sglang
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>FlagGems-sglang
 pytest<span class="w"> </span>-q<span class="w"> </span>benchmark<span class="w"> </span>--collect-only
-pytest<span class="w"> </span>-q<span class="w"> </span>benchmark/test_outer.py::test_outer<span class="w"> </span>--level<span class="w"> </span>core<span class="w"> </span>--iter<span class="w"> </span><span class="m">1</span><span class="w"> </span>--warmup<span class="w"> </span><span class="m">1</span>
+pytest<span class="w"> </span>-q<span class="w"> </span>benchmark/test_silu_and_mul.py<span class="w"> </span>--level<span class="w"> </span>core<span class="w"> </span>--iter<span class="w"> </span><span class="m">1</span><span class="w"> </span>--warmup<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>The benchmark suite records accuracy alongside performance. Passing <code class="docutils literal notranslate"><span class="pre">--record</span> <span class="pre">log</span></code> writes a per-run log, and <code class="docutils literal notranslate"><span class="pre">--record</span> <span class="pre">json</span></code> writes <code class="docutils literal notranslate"><span class="pre">accuracy_result.json</span></code> instead.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-q<span class="w"> </span>benchmark/test_silu_and_mul.py<span class="w"> </span>--level<span class="w"> </span>core<span class="w"> </span>--record<span class="w"> </span>log
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Most tests/benchmarks require a CUDA-capable GPU runtime.</p></li>
+<li><p>Most tests/benchmarks require an accelerator runtime; the reference implementation can run on CPU with <code class="docutils literal notranslate"><span class="pre">--ref</span> <span class="pre">cpu</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--collect-only</span></code> is recommended first to quickly check import and discovery.</p></li>
+<li><p>To point the run at a specific vendor backend, set <code class="docutils literal notranslate"><span class="pre">DNN_VENDOR</span></code> before invoking pytest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--level</span> <span class="pre">core</span></code> runs the core shape set; the default level is more comprehensive and takes longer.</p></li>
 </ul>
 </div>
 </section>
@@ -606,6 +621,15 @@ pytest<span class="w"> </span>-q<span class="w"> </span>benchmark/test_outer.py:
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Use operators</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../reference/operator_list.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Operator List</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -660,7 +684,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
@@ -683,5 +707,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flaggems_sglang_zh/user_guide/run-tests-and-benchmark.html">中文</a></body>
 </html>

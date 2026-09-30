@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="environment-variables.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本文档提供 FlagCX 中使用的所有环境变量的综合参考。 目录: FlagCX 环境变量- 目录, 调试与日志, 通信模式, 缓冲区与内存, 代理与运行时, P2P 引擎配置, 拓扑配置, 调优器配置, HybridRunner 配置, UniRunner 配置, 网络配置- InfiniBand (IB) 设置, IB 重传, Socket 网络, UCX 网络, Gloo 网络., 插件配置, 其他, 注意事项.. 调试与日志:,,, 变量, 默认值, 描述,,, FLAGCX_DEBUG, 无, 设置调试日志级别。可选值：VERSION、WARN、INFO、ABORT、TRACE..." />
+<meta property="og:description" content="本文档提供 FlagCX 中使用的所有环境变量的综合参考。 目录: FlagCX 环境变量- 目录, 调试与日志, 通信模式, 缓冲区与内存, 代理与运行时, P2P 引擎配置, 拓扑配置, 调优器配置, HybridRunner 配置, UniRunner 配置, 网络配置- InfiniBand (IB) 设置, IB 重传, Socket 网络, UCX 网络, Gloo 网络, ACCL/Barex 和 PPU 集成., 插件配置, 其他, 注意事项.. 调试与日志:,,, 变量, 默认值, 描述,,, FLAGCX_DEBUG, 无, 设置调试日志级别。可选值：VERSION、..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本文档提供 FlagCX 中使用的所有环境变量的综合参考。 目录: FlagCX 环境变量- 目录, 调试与日志, 通信模式, 缓冲区与内存, 代理与运行时, P2P 引擎配置, 拓扑配置, 调优器配置, HybridRunner 配置, UniRunner 配置, 网络配置- InfiniBand (IB) 设置, IB 重传, Socket 网络, UCX 网络, Gloo 网络., 插件配置, 其他, 注意事项.. 调试与日志:,,, 变量, 默认值, 描述,,, FLAGCX_DEBUG, 无, 设置调试日志级别。可选值：VERSION、WARN、INFO、ABORT、TRACE..." />
+<meta name="description" content="本文档提供 FlagCX 中使用的所有环境变量的综合参考。 目录: FlagCX 环境变量- 目录, 调试与日志, 通信模式, 缓冲区与内存, 代理与运行时, P2P 引擎配置, 拓扑配置, 调优器配置, HybridRunner 配置, UniRunner 配置, 网络配置- InfiniBand (IB) 设置, IB 重传, Socket 网络, UCX 网络, Gloo 网络, ACCL/Barex 和 PPU 集成., 插件配置, 其他, 注意事项.. 调试与日志:,,, 变量, 默认值, 描述,,, FLAGCX_DEBUG, 无, 设置调试日志级别。可选值：VERSION、..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagCX 环境变量 &#8212; FlagCX 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/environment-variables.5e2044b8-7626-44ce-878b-541b2fd5070a.js"></script>
+    <script defer="defer" src="_static/tippy/environment-variables.de78f170-6af6-423d-a29e-36900b35d3d6.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'environment-variables';</script>
@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -569,6 +569,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socket">Socket 网络</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ucx">UCX 网络</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gloo">Gloo 网络</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-ppu">ACCL/Barex 和 PPU 集成</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">插件配置</a></li>
@@ -610,6 +611,7 @@
 <li><p><a class="reference internal" href="#socket-%E7%BD%91%E7%BB%9C"><span class="xref myst">Socket 网络</span></a></p></li>
 <li><p><a class="reference internal" href="#ucx-%E7%BD%91%E7%BB%9C"><span class="xref myst">UCX 网络</span></a></p></li>
 <li><p><a class="reference internal" href="#gloo-%E7%BD%91%E7%BB%9C"><span class="xref myst">Gloo 网络</span></a></p></li>
+<li><p><a class="reference internal" href="#acclbarex-%E5%92%8C-ppu-%E9%9B%86%E6%88%90"><span class="xref myst">ACCL/Barex 和 PPU 集成</span></a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="xref myst">插件配置</span></a></p></li>
@@ -1260,6 +1262,10 @@
 </table>
 </div>
 </section>
+<section id="accl-barex-ppu">
+<h3>ACCL/Barex 和 PPU 集成<a class="headerlink" href="#accl-barex-ppu" title="Link to this heading">#</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">USE_ACCL_BAREX=1</span></code> 构建 ACCL/Barex 网络适配器。PPU 集成通常使用 <code class="docutils literal notranslate"><span class="pre">USE_PPU=1</span> <span class="pre">USE_ACCL_BAREX=1</span></code>；具体集成环境还可能选择 <code class="docutils literal notranslate"><span class="pre">FLAGCX_P2P_TRANSPORT=accl</span></code>、启用 <code class="docutils literal notranslate"><span class="pre">FLAGCX_MEM_ENABLE=1</span></code>，并通过 <code class="docutils literal notranslate"><span class="pre">FLAGCX_VMM_ENABLE=0</span></code> 禁用虚拟内存。这些设置是特定集成环境的前置条件，并非通用默认值。</p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="id9">
@@ -1374,6 +1380,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#socket">Socket 网络</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ucx">UCX 网络</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gloo">Gloo 网络</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accl-barex-ppu">ACCL/Barex 和 PPU 集成</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">插件配置</a></li>
@@ -1412,7 +1419,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

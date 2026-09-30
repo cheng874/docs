@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"#id1\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">\u591a\u7ea7\u7b97\u5b50\u8def\u7531<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h2><p>\u6bcf\u4e2a\u7b97\u5b50\u90fd\u4f1a\u9488\u5bf9\u5f53\u524d\u8bbe\u5907\u7ecf\u4e09\u7ea7\u6ce8\u518c\u5668\u89e3\u6790\uff0c\u540c\u540d\u51b2\u7a81\u65f6\u540e\u4e00\u7ea7\u8986\u76d6\u524d\u4e00\u7ea7\uff1a</p>", "a[href=\"features.html#id2\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">\u652f\u6301\u7684\u540e\u7aef<a class=\"headerlink\" href=\"#id2\" title=\"Link to this heading\">#</a></h2><p>\u5404\u5382\u5546\u7684\u7279\u5316\u5b9e\u73b0\u4f4d\u4e8e <code class=\"docutils literal notranslate\"><span class=\"pre\">src/flaggems_sglang/runtime/backend/_&lt;vendor&gt;/</span></code>\u3002\u6bcf\u4e2a\u5382\u5546\u76ee\u5f55\u90fd\u58f0\u660e\u4e86\u81ea\u5df1\u670d\u52a1\u7684\u8bbe\u5907\uff1a</p>", "a[href=\"#flaggems-sglang\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">FlagGems-sglang \u6982\u89c8<a class=\"headerlink\" href=\"#flaggems-sglang\" title=\"Link to this heading\">#</a></h1><p>FlagGems-sglang \u662f <a class=\"reference external\" href=\"https://flagos.io/\">FlagOS</a> \u7684\u4e00\u90e8\u5206\uff0c\u662f\u4e00\u4e2a\u9762\u5411\u591a\u79cd\u786c\u4ef6\u540e\u7aef\u7684\u9ad8\u6027\u80fd\u7b97\u5b50\u5e93\u3002\u5b83\u63d0\u4f9b\u4e86\u5e38\u89c1 SGLang \u7b97\u5b50\u7684\u4f18\u5316\u5b9e\u73b0\uff0c\u5e76\u652f\u6301\u591a\u79cd\u5e7f\u6cdb\u4f7f\u7528\u7684\u6a21\u578b\u8fdb\u884c\u9ad8\u6027\u80fd\u63a8\u7406\u4e0e\u90e8\u7f72\u3002</p><p>FlagGems-sglang \u662f\u4e00\u4e2a\u4f7f\u7528 OpenAI \u63a8\u51fa\u7684 <a class=\"reference external\" href=\"https://github.com/openai/triton\">Triton \u7f16\u7a0b\u8bed\u8a00</a> \u5b9e\u73b0\u7684\u9ad8\u6027\u80fd\u6df1\u5ea6\u5b66\u4e60\u7b97\u5b50\u5e93\u3002</p>", "a[href=\"../reference/operator_list.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u7b97\u5b50\u5217\u8868<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>\u672c\u9875\u5217\u51fa FlagGems-sglang \u5bfc\u51fa\u7684\u7b97\u5b50\uff0c\u6765\u6e90\u4e8e <code class=\"docutils literal notranslate\"><span class=\"pre\">conf/operators.yaml</span></code> \u4ee5\u53ca <code class=\"docutils literal notranslate\"><span class=\"pre\">src/flaggems_sglang/ops/*.py</span></code> \u7684 <code class=\"docutils literal notranslate\"><span class=\"pre\">__all__</span></code>\u3002</p><p>\u901a\u7528\u7b97\u5b50\u96c6\u5171 40 \u4e2a\uff0c\u4e24\u4e2a\u6765\u6e90\u7684\u7b97\u5b50\u540d\u5b8c\u5168\u4e00\u81f4\u3002\u6bcf\u4e2a\u7b97\u5b50\u5747\u4ee5 Triton \u5b9e\u73b0\uff0c\u5e76\u901a\u8fc7\u6982\u89c8\u4e2d\u6240\u8ff0\u7684\u4e09\u7ea7\u6ce8\u518c\u5668\u6309\u5f53\u524d\u8bbe\u5907\u89e3\u6790\u3002</p>", "a[href=\"features.html\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">\u7279\u6027<a class=\"headerlink\" href=\"#id1\" title=\"Link to this heading\">#</a></h1><p>FlagGems-sglang \u63d0\u4f9b\u4ee5\u4e0b\u5173\u952e\u7279\u6027\uff1a</p>", "a[href=\"features.html#flaggemssglang-plugin-fl\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">\u4e0e FlagGems\u3001sglang-plugin-FL \u7684\u5173\u7cfb<a class=\"headerlink\" href=\"#flaggemssglang-plugin-fl\" title=\"Link to this heading\">#</a></h2><p>\u5382\u5546\u63a5\u5165\u65b0\u540e\u7aef\u65f6\uff0c\u53ef\u4ece\u4e0a\u6e38\u4ed3\u5e93\u7684 <code class=\"docutils literal notranslate\"><span class=\"pre\">src/flaggems_sglang/runtime/backend/README.md</span></code> \u5f00\u59cb\uff0c\u5176\u4e2d\u8bf4\u660e\u4e86\u76ee\u5f55\u7ed3\u6784\u4e0e <code class=\"docutils literal notranslate\"><span class=\"pre\">VendorDescriptor</span></code> \u5b57\u6bb5\u3002</p>"}
+skip_classes = ["headerlink", "sd-stretched-link"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(` ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};

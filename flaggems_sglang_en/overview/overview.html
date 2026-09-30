@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="overview/overview.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="FlagGems-sglang is part of FlagOS. FlagGems-sglang is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models. FlagGems-..." />
+<meta property="og:description" content="FlagGems-sglang is part of FlagOS. It is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models. FlagGems-sglang is a h..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="FlagGems-sglang is part of FlagOS. FlagGems-sglang is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models. FlagGems-..." />
+<meta name="description" content="FlagGems-sglang is part of FlagOS. It is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models. FlagGems-sglang is a h..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>FlagGems-sglang Overview &#8212; FlagGems-sglang Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.54b39dbb-f649-46da-98ac-b0e11c9a691d.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.93ab773e-3692-45a4-9b14-4468b1383a75.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -237,6 +237,10 @@
     </div>
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -392,6 +396,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/run-tests-and-benchmark.html">Run tests and benchmark</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator_list.html">Operator List</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -519,7 +527,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -535,6 +545,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-level-operator-routing">Multi-level operator routing</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -546,14 +564,57 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="flaggems-sglang-overview">
 <h1>FlagGems-sglang Overview<a class="headerlink" href="#flaggems-sglang-overview" title="Link to this heading">#</a></h1>
-<p>FlagGems-sglang is part of <a class="reference external" href="https://flagos.io/">FlagOS</a>. FlagGems-sglang is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models.</p>
+<p>FlagGems-sglang is part of <a class="reference external" href="https://flagos.io/">FlagOS</a>. It is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models.</p>
 <p>FlagGems-sglang is a high-performance deep learning operator library implemented using the <a class="reference external" href="https://github.com/openai/triton">Triton programming language</a> launched by OpenAI.</p>
 <p>By integrating with SGLang, FlagGems-sglang accelerates inference workloads through optimized Triton kernels that replace default operator implementations, delivering significant performance gains across diverse hardware platforms.</p>
+<p>The library ships 40 generic operators. They cover activation and gating, attention, Mamba and SSM chunks and scans, chunked cumulative sums, Mixture-of-Experts routing and reduction, LoRA projections, normalization, INT8 quantization, rotary positional embedding, sampling and speculative decoding. See <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">Operator List</span></a> for the full set.</p>
+<section id="multi-level-operator-routing">
+<h2>Multi-level operator routing<a class="headerlink" href="#multi-level-operator-routing" title="Link to this heading">#</a></h2>
+<p>Every operator is resolved for the current device by a three-level registrar; later levels override earlier ones on a name collision:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Priority</p></th>
+<th class="head"><p>Source</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flaggems_sglang.ops</span></code></p></td>
+<td><p>Generic Triton implementation</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flaggems_sglang.runtime.backend._&lt;vendor&gt;/ops</span></code></p></td>
+<td><p>Per-vendor specialization</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">flaggems_sglang.runtime.backend._&lt;vendor&gt;/&lt;arch&gt;/ops</span></code></p></td>
+<td><p>Per-architecture specialization, for example <code class="docutils literal notranslate"><span class="pre">_nvidia/hopper/ops</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Routing is driven by function name: a vendor override defines <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_op(...)</span></code> in <code class="docutils literal notranslate"><span class="pre">_&lt;vendor&gt;/ops/my_op.py</span></code> and lists it in that module’s <code class="docutils literal notranslate"><span class="pre">__all__</span></code>. Operators a vendor does not specialize automatically fall back to the generic implementation, so each vendor ships only the kernels it actually adapts.</p>
+<p>The resolved implementation is attached to the package namespace, so callers use one entry point regardless of the underlying hardware:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">flaggems_sglang</span>
+
+<span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">device</span>                    <span class="c1"># device name, for example cuda</span>
+<span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">vendor_name</span>               <span class="c1"># detected vendor, for example nvidia</span>
+<span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">all_registered_ops</span><span class="p">()</span>      <span class="c1"># operator names resolved for this device</span>
+<span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">get_op</span><span class="p">(</span><span class="s2">"silu_and_mul"</span><span class="p">)</span>    <span class="c1"># resolved callable</span>
+<span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">silu_and_mul</span><span class="o">.</span><span class="vm">__module__</span>   <span class="c1"># module the resolved implementation came from</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="features.html#supported-backends">Supported backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#relationship-with-flaggems-and-sglang-plugin-fl">Relationship with FlagGems and sglang-plugin-FL</a></li>
+</ul>
+</li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -592,6 +653,23 @@
             
             
               
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-level-operator-routing">Multi-level operator routing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -620,7 +698,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
@@ -643,5 +721,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flaggems_sglang_zh/overview/overview.html">中文</a></body>
 </html>

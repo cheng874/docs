@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="user_guide/usage.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="After installing FlagGems-sglang, you can use its optimized operators directly in your Python code. For example, import the library and call the operators on CUDA tensors: For a full operator list, see Operator List." />
+<meta property="og:description" content="After installing FlagGems-sglang, import the package and call the operators directly. Every operator resolved for the current device is attached to the package namespace, so the call site stays the same regardless of the underlying hardware. The example below uses two exported operators, silu_and..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="After installing FlagGems-sglang, you can use its optimized operators directly in your Python code. For example, import the library and call the operators on CUDA tensors: For a full operator list, see Operator List." />
+<meta name="description" content="After installing FlagGems-sglang, import the package and call the operators directly. Every operator resolved for the current device is attached to the package namespace, so the call site stays the same regardless of the underlying hardware. The example below uses two exported operators, silu_and..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Use operators &#8212; FlagGems-sglang Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/user_guide/usage.76f06298-06bc-4224-a2f4-3b5d239c4cb5.js"></script>
+    <script defer="defer" src="../_static/tippy/user_guide/usage.d631106f-6948-4390-afcf-be09e0cfb8ce.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/usage';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -392,6 +392,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="run-tests-and-benchmark.html">Run tests and benchmark</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/operator_list.html">Operator List</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -546,19 +550,29 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="use-operators">
 <h1>Use operators<a class="headerlink" href="#use-operators" title="Link to this heading">#</a></h1>
-<p>After installing FlagGems-sglang, you can use its optimized operators directly in your Python code.</p>
-<p>For example, import the library and call the operators on CUDA tensors:</p>
+<p>After installing FlagGems-sglang, import the package and call the operators directly. Every operator resolved for the current device is attached to the package namespace, so the call site stays the same regardless of the underlying hardware.</p>
+<p>The example below uses two exported operators, <code class="docutils literal notranslate"><span class="pre">silu_and_mul</span></code> and <code class="docutils literal notranslate"><span class="pre">fused_rmsnorm</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">flaggems_sglang</span>
 
-<span class="c1"># Create a tensor</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="c1"># Create a tensor; hidden_states has shape [..., 2d]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
-<span class="c1"># Apply ReLU activation</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Gated SiLU: out = silu(x[..., :d]) * x[..., d:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">silu_and_mul</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Fused RMSNorm over the last dimension</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">fused_rmsnorm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For a full operator list, see <a class="reference internal" href="#../reference/operator_list.md"><span class="xref myst">Operator List</span></a>.</p>
+<p>To check which implementation was resolved on the current machine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">vendor_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">silu_and_mul</span><span class="o">.</span><span class="vm">__module__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flaggems_sglang</span><span class="o">.</span><span class="n">all_registered_ops</span><span class="p">()),</span> <span class="s2">"operators registered"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a full operator list, see <a class="reference internal" href="../reference/operator_list.html"><span class="std std-doc">Operator List</span></a>.</p>
 </section>
 
 
@@ -625,7 +639,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
@@ -648,5 +662,5 @@ By FlagOS Community
 
   <footer class="bd-footer">
   </footer>
-  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div></body>
+  <!--preview-badge--><div style="position:fixed;top:0;left:0;right:0;height:36px;line-height:36px;z-index:2147483647;background:#f59e0b;color:#000;text-align:center;font:700 15px sans-serif;letter-spacing:.08em;box-shadow:0 2px 6px rgba(0,0,0,.25)">PREVIEW</div><!--langswitch-css--><style>a.langswitch{position:fixed;bottom:18px;right:16px;z-index:2147483646;display:inline-block;padding:8px 16px;border-radius:999px;background:#111827;color:#fff !important;font:600 14px/1.2 sans-serif;text-decoration:none !important;box-shadow:0 2px 10px rgba(0,0,0,.3)}a.langswitch:hover{background:#374151}</style><a class="langswitch" href="../../flaggems_sglang_zh/user_guide/usage.html">中文</a></body>
 </html>
