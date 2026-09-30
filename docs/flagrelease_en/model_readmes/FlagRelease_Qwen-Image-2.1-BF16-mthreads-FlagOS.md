@@ -34,7 +34,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609200725
+docker pull harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609240151
 ```
 
 ### Download Open-source Model Weights
@@ -54,38 +54,19 @@ docker run -d \
   -e OUT_DIR=/output/bench_1024 \
   -v /data/models/Qwen-Image-2.1:/public-flash/models/Qwen-Image-2.1:ro \
   --entrypoint sleep \
-  harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609200725 infinity
+  harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609240151 infinity
 ```
 ### Start the Server
 ```bash
-cd /opt/qwen21-no-fbc-optimized/pr342-source
-
-export PYTHON=/review/delivery/venv/bin/python
-export PYTHONPATH=/review/pr342-autoload:/review/pr342-site:/opt/qwen21-runtime:/review/pr342-diffusers:$PWD
-export TORCH_DEVICE_BACKEND_AUTOLOAD=0
-export LD_LIBRARY_PATH=/usr/local/musa/lib:/usr/local/musa/lib64:${LD_LIBRARY_PATH:-}
-export QWEN_IMAGE_21_MODEL=/data/Qwen-Image-2.1
-export QWEN_IMAGE_21_DIFFUSERS=/review/pr342-diffusers
-export TRITON_CACHE_DIR=/opt/qwen21-triton-cache
-export PYTHONWARNINGS=ignore
-export FLAGGEMS_LIBENTRY_DEFAULT_BENCHMARK=event
-export FLAGOS_ACCELERATOR=musa
-export FLAGOS_LOG=fallback
-export FLAGOS_OP_randn=musa
-export FLAGOS_OP_convolution_overrideable=flaggems
-export FLAGOS_OP_add__Tensor=flaggems
-export FLAGOS_OP_div__Tensor=flaggems
-export FLAGOS_OP_add___Tensor=flaggems
-export FLAGOS_OP_sub__Tensor=flaggems
-export LOG=/output/bench_1024/bench.log
-
-mkdir -p /output/bench_1024
-tests/manual/qwen_image_21/run.sh bench \
-  --device flagos --batch 1 --steps 40 \
-  --height 1024 --width 1024 --seed 42 --true-cfg-scale 1 \
-  --warmup 2 --min-run-time 60 \
-  --out /output/bench_1024/result.json \
-  --image /output/bench_1024/result.png
+env -u PYTHONPATH \
+  MUSA_VISIBLE_DEVICES=3 \
+  TORCH_DEVICE_BACKEND_AUTOLOAD=0 \
+  /review/delivery/venv/bin/python \
+  /opt/qwen21-under15/qwen21.py generate \
+  --prompt '一只橘猫坐在窗边，窗外是雨后的花园，柔和的自然光，真实摄影风格。' \
+  --seed 42 \
+  --warmup 0 \
+  --out /output/custom.png
 ```
 
 
