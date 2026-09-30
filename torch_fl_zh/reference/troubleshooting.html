@@ -17,7 +17,7 @@
 <meta name="description" content="按症状给出跨平台反复出现的问题的解决办法。驱动正常但设备数为 0、导入时符号错误、或单个算子崩溃，通常都指向导入顺序、缺失的厂商库、或编译器不匹配这三类原因，下列各节逐一覆盖。 导入顺序: 在所有 CUDA-ABI 平台（CUDA、MetaX、PPU、DCU）上，新进程里 import torch_fl 必须 先于 import torch 。导入时 Torch-FL 会预加载厂商 libtorch 与 CUDA 资源；若先导入 torch ，PyTorch 会缓存其 stub CUDA hooks，预加载就失去作用。 顺序写错的典型症状：,, 症状, 平台,,, Cannot init..." />
 <meta name="twitter:card" content="summary_large_image" />
 
-    <title>常见故障排查 &#8212; Torch-FL 文档中心</title>
+    <title>常见故障排查 &#8212; torch-FL 文档中心</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/troubleshooting.a0869bdd-9860-421b-81ad-0443d6338262.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/troubleshooting.66ffa617-a9b9-4536-a10a-b04880244d74.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/troubleshooting';</script>
@@ -351,8 +351,8 @@
     
     
     
-    <img src="../_static/logo-en-light.svg" class="logo__image only-light" alt="Torch-FL 文档中心 - Home"/>
-    <img src="../_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="Torch-FL 文档中心 - Home"/>
+    <img src="../_static/logo-en-light.svg" class="logo__image only-light" alt="torch-FL 文档中心 - Home"/>
+    <img src="../_static/logo-en-dark.svg" class="logo__image only-dark pst-js-only" alt="torch-FL 文档中心 - Home"/>
   
   
 </a></div>
