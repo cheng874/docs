@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="index.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="快速入门 概述 快速了解 sglang-plugin-FL 以及一些基本概念。 了解更多 » sglang-plugin-FL 概述 快速入门 概述 sglang-plugin-FL 的安装要求，并提供从运行推理任务的分步说明。 了解更多 » 快速入门 用户指南 指导您如何在 FlagGems、厂商特定实现和 PyTorch 之间调度算子。 了解更多 » 算子调度用户指南 API 参考 算子调度系统和配置选项的 API 参考。 了解更多 » reference/dispatch-api-reference" />
+<meta property="og:description" content="快速入门 概述 快速了解 sglang-plugin-FL 以及一些基本概念。 了解更多 » sglang-plugin-FL 概述 快速入门 概述 sglang-plugin-FL 的安装要求，并提供从运行推理任务的分步说明。 了解更多 » 快速入门 用户指南 指导您如何在 FlagGems、厂商特定实现和 PyTorch 之间调度算子。 了解更多 » 算子调度用户指南 API 参考 算子调度系统和配置选项的 API 参考。 了解更多 » 环境变量参考与示例" />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="快速入门 概述 快速了解 sglang-plugin-FL 以及一些基本概念。 了解更多 » sglang-plugin-FL 概述 快速入门 概述 sglang-plugin-FL 的安装要求，并提供从运行推理任务的分步说明。 了解更多 » 快速入门 用户指南 指导您如何在 FlagGems、厂商特定实现和 PyTorch 之间调度算子。 了解更多 » 算子调度用户指南 API 参考 算子调度系统和配置选项的 API 参考。 了解更多 » reference/dispatch-api-reference" />
+<meta name="description" content="快速入门 概述 快速了解 sglang-plugin-FL 以及一些基本概念。 了解更多 » sglang-plugin-FL 概述 快速入门 概述 sglang-plugin-FL 的安装要求，并提供从运行推理任务的分步说明。 了解更多 » 快速入门 用户指南 指导您如何在 FlagGems、厂商特定实现和 PyTorch 之间调度算子。 了解更多 » 算子调度用户指南 API 参考 算子调度系统和配置选项的 API 参考。 了解更多 » 环境变量参考与示例" />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>sglang-plugin-FL 文档 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/index.c7ec5571-ac40-41e0-bcb4-6d52eafffbec.js"></script>
+    <script defer="defer" src="_static/tippy/index.f613828f-2bc6-4b1d-b4e7-bb6e24c5f19f.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
@@ -83,7 +83,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="_static/searchtools.js"></script>
@@ -386,6 +386,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="dispatch_user_guide/dispatch-user-guide.html">算子调度用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -395,6 +396,10 @@
 <li class="toctree-l2"><a class="reference internal" href="dispatch_user_guide/vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -597,9 +602,9 @@
 <p class="sd-card-text">算子调度系统和配置选项的 API 参考。</p>
 </div>
 <div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="reference internal" href="#reference/dispatch-api-reference.md"><span class="xref myst">了解更多 »</span></a></p>
+<p class="sd-card-text"><a class="reference internal" href="reference/dispatch-reference-and-example.html"><span class="std std-doc">了解更多 »</span></a></p>
 </div>
-<span class="sd-stretched-link sd-hide-link-text">reference/dispatch-api-reference</span></div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="reference/dispatch-reference-and-example.html"><span class="doc">环境变量参考与示例</span></a></div>
 </div>
 </div>
 </div>
@@ -667,7 +672,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

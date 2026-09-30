@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="调度系统提供三层算子替换。您可以独立且灵活地控制每一层。 调度系统支持 YAML 配置和环境变量进行细粒度控制。环境变量优先级高于 YAML 配置。 优先级链如下： 通过 YAML 配置文件进行调度- 配置字段, 常用配置方案., 通过环境变量进行调度- 第二层 — 融合算子调度, 第一层 — ATen 替换（FlagGems）, 第三层 — 分布式通信, 系统 / 调试, 示例., 调试与诊断- 调度日志, ATen 替换日志, 通过精度二分法排查数值精度问题, 常见问题., 厂商集成- 1. 后端类（my_chip.py）, 2. 注册（register_ops.py）, 3. 算子..." />
+<meta property="og:description" content="调度系统通过 YAML 文件和环境变量提供算子替换与分布式通信配置。您可以独立控制替换层，并配置可感知平台的通信后端。 调度系统同时支持 YAML 配置和环境变量，以便进行细粒度控制。环境变量优先于 YAML 配置。 优先级链如下： 通过 YAML 配置文件进行调度- 配置字段, 常用配置方案., 通过环境变量进行调度- 第二层 — 融合算子调度, 第一层 — ATen 替换（FlagGems）, 第三层 — 分布式通信, 系统 / 调试, 示例., 调试与诊断- 策略与后端解析, 分布式与 FlagCX 诊断, 调度日志, ATen 替换日志, 通过精度二分法排查数值精度问题, 常见问..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="调度系统提供三层算子替换。您可以独立且灵活地控制每一层。 调度系统支持 YAML 配置和环境变量进行细粒度控制。环境变量优先级高于 YAML 配置。 优先级链如下： 通过 YAML 配置文件进行调度- 配置字段, 常用配置方案., 通过环境变量进行调度- 第二层 — 融合算子调度, 第一层 — ATen 替换（FlagGems）, 第三层 — 分布式通信, 系统 / 调试, 示例., 调试与诊断- 调度日志, ATen 替换日志, 通过精度二分法排查数值精度问题, 常见问题., 厂商集成- 1. 后端类（my_chip.py）, 2. 注册（register_ops.py）, 3. 算子..." />
+<meta name="description" content="调度系统通过 YAML 文件和环境变量提供算子替换与分布式通信配置。您可以独立控制替换层，并配置可感知平台的通信后端。 调度系统同时支持 YAML 配置和环境变量，以便进行细粒度控制。环境变量优先于 YAML 配置。 优先级链如下： 通过 YAML 配置文件进行调度- 配置字段, 常用配置方案., 通过环境变量进行调度- 第二层 — 融合算子调度, 第一层 — ATen 替换（FlagGems）, 第三层 — 分布式通信, 系统 / 调试, 示例., 调试与诊断- 策略与后端解析, 分布式与 FlagCX 诊断, 调度日志, ATen 替换日志, 通过精度二分法排查数值精度问题, 常见问..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>算子调度用户指南 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-user-guide.07e6c23f-3edd-4782-920b-e5f6c6e977fd.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-user-guide.07644397-f586-4406-93e5-f3268ff84732.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-user-guide';</script>
@@ -80,11 +80,11 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="通过 YAML 配置文件进行调度" href="dispatch-through-yaml-file.html" />
-    <link rel="prev" title="安装 sglang-plugin-FL" href="../getting_started/install.html" />
+    <link rel="prev" title="快速运行推理任务" href="../getting_started/quick-run-inference-task.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -385,6 +385,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">算子调度用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -549,8 +554,9 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>算子调度用户指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>调度系统提供三层算子替换。您可以独立且灵活地控制每一层。</p>
-<p>调度系统支持 YAML 配置和环境变量进行细粒度控制。环境变量优先级高于 YAML 配置。</p>
+<!-- CHANGED: v0.2.0 documents policy-based dispatch and distributed communication while keeping the public scope to the three released layers; PD disaggregation is outside the v0.2.0 release scope. -->
+<p>调度系统通过 YAML 文件和环境变量提供算子替换与分布式通信配置。您可以独立控制替换层，并配置可感知平台的通信后端。</p>
+<p>调度系统同时支持 YAML 配置和环境变量，以便进行细粒度控制。环境变量优先于 YAML 配置。</p>
 <p>优先级链如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SGLANG_FL_</span><span class="o">*</span> <span class="n">环境变量</span> <span class="o">&gt;</span> <span class="n">YAML</span> <span class="n">配置</span><span class="err">（</span><span class="n">SGLANG_FL_CONFIG</span><span class="err">）</span><span class="o">&gt;</span> <span class="n">平台自动检测</span> <span class="n">YAML</span> <span class="o">&gt;</span> <span class="n">代码默认值</span>
 </pre></div>
@@ -571,10 +577,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="debugg-and-diagonostics.html">调试与诊断</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id2">调度日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id2">策略与后端解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#flagcx">分布式与 FlagCX 诊断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id3">调度日志</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#aten">ATen 替换日志</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id3">通过精度二分法排查数值精度问题</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id4">常见问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id4">通过精度二分法排查数值精度问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#id5">常见问题</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vendor-integration.html">厂商集成</a><ul>
@@ -600,12 +608,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../getting_started/install.html"
+       href="../getting_started/quick-run-inference-task.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">安装 sglang-plugin-FL</p>
+        <p class="prev-next-title">快速运行推理任务</p>
       </div>
     </a>
     <a class="right-next"
@@ -652,7 +660,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

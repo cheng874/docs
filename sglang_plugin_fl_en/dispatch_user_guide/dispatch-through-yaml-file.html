@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-through-yaml-file.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="The plugin ships with a sample config file config/sample.yaml with all available options. Copy it and customize: If SGLANG_FL_CONFIG is not set, the plugin uses sensible defaults (equivalent to prefer: flagos on CUDA). You only need a YAML file when you want to customize behavior. Config Fields:,..." />
+<meta property="og:description" content="The plugin ships platform YAML defaults under sglang_fl/dispatch/config/. Available platform files include ascend.yaml, gcu.yaml, hygon.yaml, iluvatar.yaml, kunlunxin.yaml, musa.yaml, nvidia.yaml, and tsingmicro.yaml. These files provide default dispatch policy; they are not a vendor validation m..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="The plugin ships with a sample config file config/sample.yaml with all available options. Copy it and customize: If SGLANG_FL_CONFIG is not set, the plugin uses sensible defaults (equivalent to prefer: flagos on CUDA). You only need a YAML file when you want to customize behavior. Config Fields:,..." />
+<meta name="description" content="The plugin ships platform YAML defaults under sglang_fl/dispatch/config/. Available platform files include ascend.yaml, gcu.yaml, hygon.yaml, iluvatar.yaml, kunlunxin.yaml, musa.yaml, nvidia.yaml, and tsingmicro.yaml. These files provide default dispatch policy; they are not a vendor validation m..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Dispatch through YAML config file &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-yaml-file.75cfcae3-b363-42fa-aaeb-3e349a704312.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-yaml-file.29f5f676-cf03-42e1-b969-e34c5e892db3.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-through-yaml-file';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dispatch-user-guide.html">Operator Dispatch User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -551,7 +556,7 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-fields">Config Fields</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-recipes">Common Recipes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-cuda">1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native CUDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-path">1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native path)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-rmsnorm-to-use-vendor-backend-others-use-flagos">2. Force RMSNorm to use vendor backend, others use flagos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-pure-pytorch-reference-for-all-ops-useful-for-precision-debugging">3. Use pure PyTorch reference for all Ops (useful for precision debugging)</a></li>
 </ul>
@@ -569,17 +574,19 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dispatch-through-yaml-config-file">
 <h1>Dispatch through YAML config file<a class="headerlink" href="#dispatch-through-yaml-config-file" title="Link to this heading">#</a></h1>
-<p>The plugin ships with a sample config file <code class="docutils literal notranslate"><span class="pre">config/sample.yaml</span></code> with all available options. Copy it and customize:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy the sample config</span>
-cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from sglang_fl.config import _CONFIG_DIR; print(_CONFIG_DIR / 'sample.yaml')"</span><span class="k">)</span><span class="w"> </span>my_config.yaml
-
-<span class="c1"># Edit as needed, then launch with it</span>
-<span class="nv">SGLANG_FL_CONFIG</span><span class="o">=</span>./my_config.yaml<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span><span class="se">\</span>
+<!-- CHANGED: v0.2.0 stores platform defaults under sglang_fl/dispatch/config and distinguishes explicit YAML from platform auto-detection. -->
+<p>The plugin ships platform YAML defaults under <code class="docutils literal notranslate"><span class="pre">sglang_fl/dispatch/config/</span></code>. Available platform files include <code class="docutils literal notranslate"><span class="pre">ascend.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">gcu.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">hygon.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">iluvatar.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">kunlunxin.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">musa.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">nvidia.yaml</span></code>, and <code class="docutils literal notranslate"><span class="pre">tsingmicro.yaml</span></code>. These files provide default dispatch policy; they are not a vendor validation matrix.</p>
+<p>Create an explicit YAML file when you want to override the platform defaults:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">SGLANG_FL_CONFIG</span><span class="o">=</span>./my_config.yaml<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--model-path<span class="w"> </span>Qwen/Qwen2.5-0.5B-Instruct<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="w"> </span><span class="m">30000</span><span class="w"> </span>--disable-piecewise-cuda-graph
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_CONFIG</span></code> is not set, the plugin uses sensible defaults (equivalent to <code class="docutils literal notranslate"><span class="pre">prefer:</span> <span class="pre">flagos</span></code> on CUDA). You only need a YAML file when you want to customize behavior.</p>
+<p>Configuration precedence is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>If no explicit YAML is supplied, the detected platform YAML and code defaults are used. Environment variables can override either YAML source.</p>
 <section id="config-fields">
 <h2>Config Fields<a class="headerlink" href="#config-fields" title="Link to this heading">#</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Global backend preference: flagos | vendor | reference</span>
@@ -590,8 +597,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="w">  </span><span class="nt">rms_norm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">silu_and_mul</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 
-<span class="c1"># Layer 2 fused ops to skip (fall through to SGLang native CUDA)</span>
-<span class="c1"># Available: SiluAndMul, RMSNorm, RotaryEmbedding</span>
+<span class="c1"># Layer 2 fused ops to skip (fall through to SGLang native path)</span>
 <span class="nt">oot_blacklist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RotaryEmbedding</span>
 
@@ -599,6 +605,13 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="nt">flagos_blacklist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mul</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sub</span>
+
+<span class="c1"># Optional vendor filters</span>
+<span class="nt">allow_vendors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nt">deny_vendors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+
+<span class="c1"># Disable fallback when true</span>
+<span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -612,13 +625,22 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <td><p>Global backend preference: <code class="docutils literal notranslate"><span class="pre">flagos</span></code>, <code class="docutils literal notranslate"><span class="pre">vendor</span></code>, <code class="docutils literal notranslate"><span class="pre">reference</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op_backends</span></code></p></td>
-<td><p>Per-op ordered backend list (first available wins, can list 1–3 backends)</p></td>
+<td><p>Per-op ordered backend list; the first available and allowed backend is selected</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oot_blacklist</span></code></p></td>
-<td><p>Layer 2 fused ops to skip from OOT dispatch (fall through to SGLang native CUDA)</p></td>
+<td><p>Layer 2 fused ops to skip from OOT dispatch</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flagos_blacklist</span></code></p></td>
-<td><p>Layer 1 ATen ops to exclude from FlagGems replacement (fall through to PyTorch native)</p></td>
+<td><p>Layer 1 ATen ops to exclude from FlagGems replacement</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">allow_vendors</span></code></p></td>
+<td><p>Optional vendor allow list; only listed vendors are eligible</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deny_vendors</span></code></p></td>
+<td><p>Optional vendor deny list</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strict</span></code></p></td>
+<td><p>Disables fallback when enabled; exact YAML boolean syntax is [TODO: needs confirmation]</p></td>
 </tr>
 </tbody>
 </table>
@@ -627,8 +649,8 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <section id="common-recipes">
 <h2>Common Recipes<a class="headerlink" href="#common-recipes" title="Link to this heading">#</a></h2>
 <p>Each recipe shows a YAML config and expected dispatch result. Use <a class="reference internal" href="debugg-and-diagonostics.html"><span class="std std-doc">Dispatch Log</span></a> to verify.</p>
-<section id="skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-cuda">
-<h3>1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native CUDA)<a class="headerlink" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-cuda" title="Link to this heading">#</a></h3>
+<section id="skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-path">
+<h3>1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native path)<a class="headerlink" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-path" title="Link to this heading">#</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_config.yaml</span>
 <span class="nt">prefer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flagos</span>
 <span class="nt">oot_blacklist</span><span class="p">:</span>
@@ -645,7 +667,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="w">  </span><span class="nt">rms_norm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
-<p>Expected dispatch log: <code class="docutils literal notranslate"><span class="pre">RMSNorm</span> <span class="pre">→</span> <span class="pre">vendor(vendor.nvidia)</span></code>, <code class="docutils literal notranslate"><span class="pre">SiluAndMul</span> <span class="pre">→</span> <span class="pre">flagos(flagos)</span></code>.</p>
+<p>Expected dispatch log: the first available, allowed backend is selected according to the active platform and vendor filters.</p>
 </section>
 <section id="use-pure-pytorch-reference-for-all-ops-useful-for-precision-debugging">
 <h3>3. Use pure PyTorch reference for all Ops (useful for precision debugging)<a class="headerlink" href="#use-pure-pytorch-reference-for-all-ops-useful-for-precision-debugging" title="Link to this heading">#</a></h3>
@@ -653,7 +675,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="nt">prefer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reference</span>
 </pre></div>
 </div>
-<p>Expected dispatch log: all ops → <code class="docutils literal notranslate"><span class="pre">reference(reference)</span></code>.</p>
+<p>Expected dispatch log: reference implementations are selected when available.</p>
 </section>
 </section>
 </section>
@@ -707,7 +729,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-fields">Config Fields</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-recipes">Common Recipes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-cuda">1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native CUDA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-rotaryembedding-from-oot-dispatch-fall-through-to-sglang-native-path">1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native path)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-rmsnorm-to-use-vendor-backend-others-use-flagos">2. Force RMSNorm to use vendor backend, others use flagos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-pure-pytorch-reference-for-all-ops-useful-for-precision-debugging">3. Use pure PyTorch reference for all Ops (useful for precision debugging)</a></li>
 </ul>
@@ -745,7 +767,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

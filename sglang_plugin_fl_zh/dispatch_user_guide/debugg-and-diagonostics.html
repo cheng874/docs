@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/debugg-and-diagonostics.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节介绍算子调度的诊断方法。 调度日志: 查看每个融合算子解析到哪个后端（在服务器启动时写入）： ATen 替换日志: 记录哪些 PyTorch ATen 算子被 FlagGems 替换： 通过精度二分法排查数值精度问题: 当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层/算子被定位。 常见问题:,, 症状, 原因与解决方案,,, dispatch.log 为空, 插件未加载——检查 pip show sglang_fl,, gems_aten.txt 为空, 设置了 USE_FLAGGEMS=0 ，或 SGLANG_FL_FLAGOS_WHI..." />
+<meta property="og:description" content="本节介绍算子调度的诊断方法。 策略与后端解析: 调度采用基于策略的方式，而不是固定的 flagos &gt; vendor &gt; reference 链。当算子未使用预期实现时，请检查有效配置和后端可用性： 检查 SGLANG_FL_PREFER 、 SGLANG_FL_PER_OP 、 SGLANG_FL_ALLOW_VENDORS 、 SGLANG_FL_DENY_VENDORS 和 SGLANG_FL_STRICT 等环境变量覆盖项。, 检查 SGLANG_FL_CONFIG 以及 sglang_fl/dispatch/config/ 下检测到的平台 YAML。, 如果需要额外..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节介绍算子调度的诊断方法。 调度日志: 查看每个融合算子解析到哪个后端（在服务器启动时写入）： ATen 替换日志: 记录哪些 PyTorch ATen 算子被 FlagGems 替换： 通过精度二分法排查数值精度问题: 当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层/算子被定位。 常见问题:,, 症状, 原因与解决方案,,, dispatch.log 为空, 插件未加载——检查 pip show sglang_fl,, gems_aten.txt 为空, 设置了 USE_FLAGGEMS=0 ，或 SGLANG_FL_FLAGOS_WHI..." />
+<meta name="description" content="本节介绍算子调度的诊断方法。 策略与后端解析: 调度采用基于策略的方式，而不是固定的 flagos &gt; vendor &gt; reference 链。当算子未使用预期实现时，请检查有效配置和后端可用性： 检查 SGLANG_FL_PREFER 、 SGLANG_FL_PER_OP 、 SGLANG_FL_ALLOW_VENDORS 、 SGLANG_FL_DENY_VENDORS 和 SGLANG_FL_STRICT 等环境变量覆盖项。, 检查 SGLANG_FL_CONFIG 以及 sglang_fl/dispatch/config/ 下检测到的平台 YAML。, 如果需要额外..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>调试与诊断 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/debugg-and-diagonostics.3ae9b46b-63f7-4f6c-acf3-3d240352a1e2.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/debugg-and-diagonostics.6d7705a2-1b3e-441b-84a4-cb4051cddeec.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/debugg-and-diagonostics';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dispatch-user-guide.html">算子调度用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -549,10 +554,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">调度日志</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">策略与后端解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagcx">分布式与 FlagCX 诊断</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">调度日志</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aten">ATen 替换日志</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">通过精度二分法排查数值精度问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">常见问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">通过精度二分法排查数值精度问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">常见问题</a></li>
 </ul>
             </nav>
         </div>
@@ -567,8 +574,25 @@
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>调试与诊断<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节介绍算子调度的诊断方法。</p>
+<!-- NEW in v0.2.0 -->
 <section id="id2">
-<h2>调度日志<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>策略与后端解析<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>调度采用基于策略的方式，而不是固定的 <code class="docutils literal notranslate"><span class="pre">flagos</span> <span class="pre">&gt;</span> <span class="pre">vendor</span> <span class="pre">&gt;</span> <span class="pre">reference</span></code> 链。当算子未使用预期实现时，请检查有效配置和后端可用性：</p>
+<ol class="arabic simple">
+<li><p>检查 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PREFER</span></code>、<code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PER_OP</span></code>、<code class="docutils literal notranslate"><span class="pre">SGLANG_FL_ALLOW_VENDORS</span></code>、<code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DENY_VENDORS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_STRICT</span></code> 等环境变量覆盖项。</p></li>
+<li><p>检查 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_CONFIG</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">sglang_fl/dispatch/config/</span></code> 下检测到的平台 YAML。</p></li>
+<li><p>如果需要额外的策略诊断，请启用 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DISPATCH_DEBUG=[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code>。</p></li>
+<li><p>确认所选后端的运行时和设备在目标镜像中可用。</p></li>
+</ol>
+<p>严格模式下，如果首选或显式排序的后端不可用，系统会报错而不是回退。未启用严格模式时，调度会过滤不可用或不允许的候选项，并选择下一个允许的实现。</p>
+</section>
+<section id="flagcx">
+<h2>分布式与 FlagCX 诊断<a class="headerlink" href="#flagcx" title="Link to this heading">#</a></h2>
+<p>对于分布式通信故障，请检查所选的 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DIST_BACKEND</span></code>、预期使用 FlagCX 时的 <code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code>、设备可见性、网络配置以及张量并行 / 流水线并行设置。平台特定的框架、镜像和网络设备前置条件记录在<a class="reference external" href="https://flagos.io/resourcedownload?lang=en">集中式厂商 / 框架 / 镜像选择页面</a>中。</p>
+<!-- END NEW -->
+</section>
+<section id="id3">
+<h2>调度日志<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>查看每个融合算子解析到哪个后端（在服务器启动时写入）：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">dispatch</span><span class="o">.</span><span class="n">log</span>
 <span class="n">SGLANG_FL_DISPATCH_LOG</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">dispatch</span><span class="o">.</span><span class="n">log</span> \
@@ -601,9 +625,9 @@
 <p>日志使用 <code class="docutils literal notranslate"><span class="pre">_AtenOnlyFilter</span></code> 仅记录 <code class="docutils literal notranslate"><span class="pre">flag_gems.ops.*</span></code> 命名空间调用，排除第二层实现触发的内部 FlagGems 调用。</p>
 </div>
 </section>
-<section id="id3">
-<h2>通过精度二分法排查数值精度问题<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层/算子被定位。</p>
+<section id="id4">
+<h2>通过精度二分法排查数值精度问题<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层 / 算子被定位。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 第 1 步：禁用所有——确认原生 SGLang 正常工作</span>
 <span class="n">SGLANG_PLUGINS</span><span class="o">=</span><span class="s2">"__none__"</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">sglang</span><span class="o">.</span><span class="n">launch_server</span> \
     <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">path</span> <span class="n">Qwen</span><span class="o">/</span><span class="n">Qwen2</span><span class="mf">.5</span><span class="o">-</span><span class="mf">0.5</span><span class="n">B</span><span class="o">-</span><span class="n">Instruct</span> \
@@ -634,8 +658,8 @@
 </pre></div>
 </div>
 </section>
-<section id="id4">
-<h2>常见问题<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2>常见问题<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>症状</p></th>
@@ -714,10 +738,12 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">调度日志</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">策略与后端解析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flagcx">分布式与 FlagCX 诊断</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">调度日志</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aten">ATen 替换日志</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">通过精度二分法排查数值精度问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">常见问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">通过精度二分法排查数值精度问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">常见问题</a></li>
 </ul>
   </nav></div>
 
@@ -751,7 +777,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-through-yaml-file.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="插件附带一个示例配置文件 config/sample.yaml ，包含所有可用选项。复制并自定义： 如果未设置 SGLANG_FL_CONFIG ，插件使用合理的默认值（在 CUDA 上等同于 prefer: flagos ）。仅当需要自定义行为时才需要 YAML 文件。 配置字段:,, 字段, 描述,,, prefer, 全局后端偏好： flagos 、 vendor 、 reference,, op_backends, 逐算子有序后端列表（第一个可用的胜出，可列出 1–3 个后端）,, oot_blacklist, 第二层要从 OOT 调度中跳过的融合算子（回退到 SGLang 原生..." />
+<meta property="og:description" content="插件在 sglang_fl/dispatch/config/ 下提供平台 YAML 默认配置。可用的平台文件包括 ascend.yaml 、 gcu.yaml 、 hygon.yaml 、 iluvatar.yaml 、 kunlunxin.yaml 、 musa.yaml 、 nvidia.yaml 和 tsingmicro.yaml 。这些文件提供默认调度策略；它们不是厂商验证矩阵。 当您需要覆盖平台默认值时，请创建显式 YAML 文件： 配置优先级如下： 如果未提供显式 YAML，则使用检测到的平台 YAML 和代码默认值。环境变量可以覆盖任一 YAML 来源。 配置字段:,, 字..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="插件附带一个示例配置文件 config/sample.yaml ，包含所有可用选项。复制并自定义： 如果未设置 SGLANG_FL_CONFIG ，插件使用合理的默认值（在 CUDA 上等同于 prefer: flagos ）。仅当需要自定义行为时才需要 YAML 文件。 配置字段:,, 字段, 描述,,, prefer, 全局后端偏好： flagos 、 vendor 、 reference,, op_backends, 逐算子有序后端列表（第一个可用的胜出，可列出 1–3 个后端）,, oot_blacklist, 第二层要从 OOT 调度中跳过的融合算子（回退到 SGLang 原生..." />
+<meta name="description" content="插件在 sglang_fl/dispatch/config/ 下提供平台 YAML 默认配置。可用的平台文件包括 ascend.yaml 、 gcu.yaml 、 hygon.yaml 、 iluvatar.yaml 、 kunlunxin.yaml 、 musa.yaml 、 nvidia.yaml 和 tsingmicro.yaml 。这些文件提供默认调度策略；它们不是厂商验证矩阵。 当您需要覆盖平台默认值时，请创建显式 YAML 文件： 配置优先级如下： 如果未提供显式 YAML，则使用检测到的平台 YAML 和代码默认值。环境变量可以覆盖任一 YAML 来源。 配置字段:,, 字..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>通过 YAML 配置文件进行调度 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-yaml-file.63b45831-7707-4054-8310-d76bea7b6efb.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-yaml-file.be64e76b-a7d9-454e-b566-9ec0c39cb8dc.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-through-yaml-file';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dispatch-user-guide.html">算子调度用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -551,7 +556,7 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">配置字段</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">常用配置方案</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotaryembedding-oot-sglang-cuda">1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生 CUDA）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotaryembedding-oot-sglang">1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生路径）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rmsnorm-vendor-flagos">2. 强制 RMSNorm 使用 vendor 后端，其他使用 flagos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-reference">3. 所有算子使用纯 PyTorch reference（适用于精度调试）</a></li>
 </ul>
@@ -569,36 +574,44 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="yaml">
 <h1>通过 YAML 配置文件进行调度<a class="headerlink" href="#yaml" title="Link to this heading">#</a></h1>
-<p>插件附带一个示例配置文件 <code class="docutils literal notranslate"><span class="pre">config/sample.yaml</span></code>，包含所有可用选项。复制并自定义：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 复制示例配置</span>
-cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from sglang_fl.config import _CONFIG_DIR; print(_CONFIG_DIR / 'sample.yaml')"</span><span class="k">)</span><span class="w"> </span>my_config.yaml
-
-<span class="c1"># 根据需要编辑，然后使用它启动</span>
-<span class="nv">SGLANG_FL_CONFIG</span><span class="o">=</span>./my_config.yaml<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span><span class="se">\</span>
+<!-- CHANGED: v0.2.0 stores platform defaults under sglang_fl/dispatch/config and distinguishes explicit YAML from platform auto-detection. -->
+<p>插件在 <code class="docutils literal notranslate"><span class="pre">sglang_fl/dispatch/config/</span></code> 下提供平台 YAML 默认配置。可用的平台文件包括 <code class="docutils literal notranslate"><span class="pre">ascend.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">gcu.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">hygon.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">iluvatar.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">kunlunxin.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">musa.yaml</span></code>、<code class="docutils literal notranslate"><span class="pre">nvidia.yaml</span></code> 和 <code class="docutils literal notranslate"><span class="pre">tsingmicro.yaml</span></code>。这些文件提供默认调度策略；它们不是厂商验证矩阵。</p>
+<p>当您需要覆盖平台默认值时，请创建显式 YAML 文件：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">SGLANG_FL_CONFIG</span><span class="o">=</span>./my_config.yaml<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--model-path<span class="w"> </span>Qwen/Qwen2.5-0.5B-Instruct<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="w"> </span><span class="m">30000</span><span class="w"> </span>--disable-piecewise-cuda-graph
 </pre></div>
 </div>
-<p>如果未设置 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_CONFIG</span></code>，插件使用合理的默认值（在 CUDA 上等同于 <code class="docutils literal notranslate"><span class="pre">prefer:</span> <span class="pre">flagos</span></code>）。仅当需要自定义行为时才需要 YAML 文件。</p>
+<p>配置优先级如下：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>如果未提供显式 YAML，则使用检测到的平台 YAML 和代码默认值。环境变量可以覆盖任一 YAML 来源。</p>
 <section id="id1">
 <h2>配置字段<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># 全局后端偏好：flagos | vendor | reference</span>
 <span class="nt">prefer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flagos</span>
 
-<span class="c1"># 逐算子后端优先级（有序列表，第一个可用的胜出）</span>
+<span class="c1"># 逐算子后端优先级（有序列表，第一个可用者胜出）</span>
 <span class="nt">op_backends</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rms_norm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">silu_and_mul</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 
-<span class="c1"># 第二层要跳过的融合算子（回退到 SGLang 原生 CUDA）</span>
-<span class="c1"># 可用：SiluAndMul、RMSNorm、RotaryEmbedding</span>
+<span class="c1"># 要跳过的第二层融合算子（回退到 SGLang 原生路径）</span>
 <span class="nt">oot_blacklist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RotaryEmbedding</span>
 
-<span class="c1"># 第一层要从 FlagGems Triton 替换中排除的 ATen 算子</span>
+<span class="c1"># 要从 FlagGems Triton 替换中排除的第一层 ATen 算子</span>
 <span class="nt">flagos_blacklist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mul</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sub</span>
+
+<span class="c1"># 可选厂商过滤器</span>
+<span class="nt">allow_vendors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nt">deny_vendors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+
+<span class="c1"># 为 true 时禁用回退</span>
+<span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -612,13 +625,22 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <td><p>全局后端偏好：<code class="docutils literal notranslate"><span class="pre">flagos</span></code>、<code class="docutils literal notranslate"><span class="pre">vendor</span></code>、<code class="docutils literal notranslate"><span class="pre">reference</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op_backends</span></code></p></td>
-<td><p>逐算子有序后端列表（第一个可用的胜出，可列出 1–3 个后端）</p></td>
+<td><p>逐算子有序后端列表；选择第一个可用且被允许的后端</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">oot_blacklist</span></code></p></td>
-<td><p>第二层要从 OOT 调度中跳过的融合算子（回退到 SGLang 原生 CUDA）</p></td>
+<td><p>要从 OOT 调度中跳过的第二层融合算子</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flagos_blacklist</span></code></p></td>
-<td><p>第一层要从 FlagGems 替换中排除的 ATen 算子（回退到 PyTorch 原生）</p></td>
+<td><p>要从 FlagGems 替换中排除的第一层 ATen 算子</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">allow_vendors</span></code></p></td>
+<td><p>可选厂商允许列表；只有列出的厂商符合条件</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deny_vendors</span></code></p></td>
+<td><p>可选厂商拒绝列表</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strict</span></code></p></td>
+<td><p>启用后禁用回退；确切 YAML 布尔语法为 [TODO: needs confirmation]</p></td>
 </tr>
 </tbody>
 </table>
@@ -627,8 +649,8 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <section id="id2">
 <h2>常用配置方案<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>每个方案展示一个 YAML 配置和预期的调度结果。使用<a class="reference internal" href="debugg-and-diagonostics.html"><span class="std std-doc">调度日志</span></a>进行验证。</p>
-<section id="rotaryembedding-oot-sglang-cuda">
-<h3>1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生 CUDA）<a class="headerlink" href="#rotaryembedding-oot-sglang-cuda" title="Link to this heading">#</a></h3>
+<section id="rotaryembedding-oot-sglang">
+<h3>1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生路径）<a class="headerlink" href="#rotaryembedding-oot-sglang" title="Link to this heading">#</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_config.yaml</span>
 <span class="nt">prefer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flagos</span>
 <span class="nt">oot_blacklist</span><span class="p">:</span>
@@ -645,7 +667,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="w">  </span><span class="nt">rms_norm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">vendor</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">flagos</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reference</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
-<p>预期调度日志：<code class="docutils literal notranslate"><span class="pre">RMSNorm</span> <span class="pre">→</span> <span class="pre">vendor(vendor.nvidia)</span></code>，<code class="docutils literal notranslate"><span class="pre">SiluAndMul</span> <span class="pre">→</span> <span class="pre">flagos(flagos)</span></code>。</p>
+<p>预期调度日志：根据当前平台和厂商过滤器，选择第一个可用且被允许的后端。</p>
 </section>
 <section id="pytorch-reference">
 <h3>3. 所有算子使用纯 PyTorch reference（适用于精度调试）<a class="headerlink" href="#pytorch-reference" title="Link to this heading">#</a></h3>
@@ -653,7 +675,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
 <span class="nt">prefer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reference</span>
 </pre></div>
 </div>
-<p>预期调度日志：所有算子 → <code class="docutils literal notranslate"><span class="pre">reference(reference)</span></code>。</p>
+<p>预期调度日志：在可用时选择 reference 实现。</p>
 </section>
 </section>
 </section>
@@ -707,7 +729,7 @@ cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">配置字段</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">常用配置方案</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotaryembedding-oot-sglang-cuda">1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生 CUDA）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotaryembedding-oot-sglang">1. 跳过 RotaryEmbedding 的 OOT 调度（回退到 SGLang 原生路径）</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rmsnorm-vendor-flagos">2. 强制 RMSNorm 使用 vendor 后端，其他使用 flagos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-reference">3. 所有算子使用纯 PyTorch reference（适用于精度调试）</a></li>
 </ul>
@@ -745,7 +767,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

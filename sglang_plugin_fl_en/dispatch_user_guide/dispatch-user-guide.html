@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-user-guide.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="The dispatch system provides three layers of operator replacement. You can control each layer independently and flexibly. The dispatch system supports both YAML configuration and environment variables for fine-grained control. Environment variables take precedence over YAML config. The priority c..." />
+<meta property="og:description" content="The dispatch system provides operator replacement and distributed communication configuration through YAML files and environment variables. You can control the replacement layers independently and configure platform-aware communication backends. The dispatch system supports both YAML configuratio..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="The dispatch system provides three layers of operator replacement. You can control each layer independently and flexibly. The dispatch system supports both YAML configuration and environment variables for fine-grained control. Environment variables take precedence over YAML config. The priority c..." />
+<meta name="description" content="The dispatch system provides operator replacement and distributed communication configuration through YAML files and environment variables. You can control the replacement layers independently and configure platform-aware communication backends. The dispatch system supports both YAML configuratio..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Operator Dispatch User Guide &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-user-guide.d566079c-7ff1-4d4b-b69b-1e909fb6751c.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-user-guide.58a9fc65-6e80-4400-8e62-91db11d538c3.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-user-guide';</script>
@@ -80,11 +80,11 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Dispatch through YAML config file" href="dispatch-through-yaml-file.html" />
-    <link rel="prev" title="Install sglang-plugin-FL" href="../getting_started/install.html" />
+    <link rel="prev" title="Quick run an inference task" href="../getting_started/quick-run-inference-task.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -385,6 +385,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Operator Dispatch User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -549,7 +554,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="operator-dispatch-user-guide">
 <h1>Operator Dispatch User Guide<a class="headerlink" href="#operator-dispatch-user-guide" title="Link to this heading">#</a></h1>
-<p>The dispatch system provides three layers of operator replacement. You can control each layer independently and flexibly.</p>
+<!-- CHANGED: v0.2.0 documents policy-based dispatch and distributed communication while keeping the public scope to the three released layers; PD disaggregation is outside the v0.2.0 release scope. -->
+<p>The dispatch system provides operator replacement and distributed communication configuration through YAML files and environment variables. You can control the replacement layers independently and configure platform-aware communication backends.</p>
 <p>The dispatch system supports both YAML configuration and environment variables for fine-grained control. Environment variables take precedence over YAML config.</p>
 <p>The priority chain is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SGLANG_FL_</span><span class="o">*</span> <span class="n">env</span> <span class="nb">vars</span> <span class="o">&gt;</span> <span class="n">YAML</span> <span class="n">config</span> <span class="p">(</span><span class="n">SGLANG_FL_CONFIG</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Platform</span> <span class="n">auto</span><span class="o">-</span><span class="n">detect</span> <span class="n">YAML</span> <span class="o">&gt;</span> <span class="n">Code</span> <span class="n">defaults</span>
@@ -571,6 +577,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="debugg-and-diagonostics.html">Debugging and diagnostics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#policy-and-backend-resolution">Policy and backend resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#distributed-and-flagcx-diagnostics">Distributed and FlagCX diagnostics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#dispatch-log">Dispatch log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#aten-replacement-log">ATen replacement log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugg-and-diagonostics.html#troubleshoot-numerical-precision-issues-through-precision-bisection">Troubleshoot numerical precision issues through Precision Bisection</a></li>
@@ -581,7 +589,7 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html#backend-class-my-chip-py">1. Backend class (my_chip.py)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html#registration-register-ops-py">2. Registration (register_ops.py)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html#operator-implementations-impl">3. Operator implementations (impl/)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor-integration.html#vendors-backend-auto-discovery">Vendor’s backend auto-discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vendor-integration.html#vendor-backend-auto-discovery">Vendor backend auto-discovery</a></li>
 </ul>
 </li>
 </ul>
@@ -600,12 +608,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../getting_started/install.html"
+       href="../getting_started/quick-run-inference-task.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Install sglang-plugin-FL</p>
+        <p class="prev-next-title">Quick run an inference task</p>
       </div>
     </a>
     <a class="right-next"
@@ -652,7 +660,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/how-plugin-works.5edc5f54-5525-4b5f-8e9b-e010ab4bdbc1.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/how-plugin-works.f0171411-7254-4368-8469-e1617e16a6cf.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/how-plugin-works';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -553,6 +558,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-hook">Dispatch hook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-architecture-shared-with-vllm-plugin-fl">Dispatch Architecture (shared with vllm-plugin-FL)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aten-replacement">ATen replacement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode-boundary">Empty mode boundary</a></li>
 </ul>
             </nav>
         </div>
@@ -581,6 +587,7 @@
 <section id="dispatch-hook">
 <h2>Dispatch hook<a class="headerlink" href="#dispatch-hook" title="Link to this heading">#</a></h2>
 <p>The core mechanism uses an AROUND hook on <code class="docutils literal notranslate"><span class="pre">MultiPlatformOp.dispatch_forward()</span></code> combined with a standardized dispatch system:</p>
+<!-- CHANGED: v0.2.0 dispatch no longer documents a fixed flagos > vendor > reference resolution order. -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dispatch_forward</span><span class="p">()</span> <span class="n">called</span> <span class="k">for</span> <span class="n">an</span> <span class="n">op</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">RMSNorm</span><span class="p">)</span>
   <span class="err">→</span> <span class="n">AROUND</span> <span class="n">hook</span> <span class="n">intercepts</span>
     <span class="err">→</span> <span class="n">Check</span> <span class="n">OOT_WHITELIST</span><span class="o">/</span><span class="n">OOT_BLACKLIST</span>
@@ -590,11 +597,16 @@
       <span class="n">rms_norm_bridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">residual</span><span class="p">,</span> <span class="n">post_residual_addition</span><span class="p">)</span>
     <span class="err">→</span> <span class="n">Bridge</span> <span class="n">handles</span> <span class="n">SGLang</span><span class="o">-</span><span class="n">specific</span> <span class="n">params</span> <span class="p">(</span><span class="n">post_residual_addition</span> <span class="err">→</span> <span class="n">merge</span> <span class="n">into</span> <span class="n">residual</span><span class="p">)</span>
     <span class="err">→</span> <span class="n">Bridge</span> <span class="n">calls</span> <span class="n">dispatch</span><span class="o">.</span><span class="n">call_op</span><span class="p">(</span><span class="s2">"rms_norm"</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">residual</span><span class="p">)</span>
-      <span class="err">→</span> <span class="n">OpManager</span> <span class="n">resolves</span> <span class="n">best</span> <span class="n">impl</span> <span class="n">via</span> <span class="n">policy</span> <span class="p">(</span><span class="n">flagos</span> <span class="o">&gt;</span> <span class="n">vendor</span> <span class="o">&gt;</span> <span class="n">reference</span><span class="p">)</span>
-      <span class="err">→</span> <span class="n">Calls</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">backend</span><span class="p">:</span> <span class="n">rms_norm_flaggems</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">residual</span><span class="p">)</span>
+      <span class="err">→</span> <span class="n">OpManager</span> <span class="n">asks</span> <span class="n">SelectionPolicy</span> <span class="k">for</span> <span class="n">candidate</span> <span class="n">backend</span> <span class="n">order</span>
+      <span class="err">→</span> <span class="n">Policy</span> <span class="n">combines</span> <span class="k">global</span> <span class="n">preference</span><span class="p">,</span> <span class="n">per</span><span class="o">-</span><span class="n">op</span> <span class="n">ordering</span><span class="p">,</span> <span class="n">availability</span><span class="p">,</span> <span class="n">vendor</span> <span class="n">filters</span><span class="p">,</span> <span class="ow">and</span> <span class="n">strict</span> <span class="n">mode</span>
+      <span class="err">→</span> <span class="n">OpManager</span> <span class="n">selects</span> <span class="n">the</span> <span class="n">first</span> <span class="n">available</span> <span class="n">implementation</span><span class="p">,</span> <span class="n">caches</span> <span class="n">the</span> <span class="n">result</span><span class="p">,</span> <span class="ow">or</span> <span class="n">falls</span> <span class="n">back</span> <span class="n">when</span> <span class="n">allowed</span>
+      <span class="err">→</span> <span class="n">Calls</span> <span class="n">the</span> <span class="n">selected</span> <span class="n">backend</span> <span class="n">implementation</span>
 </pre></div>
 </div>
 <p>The bridge layer decouples framework-specific parameters from the standardized op signatures. Vendor backends only need to implement the standard signatures — the same impl works for both sglang-plugin-FL and vllm-plugin-FL.</p>
+<!-- NEW in v0.2.0 -->
+<p>Strict mode disables fallback: if the preferred or explicitly ordered backend cannot be used, dispatch reports an error instead of silently selecting another backend. Without strict mode, unavailable backends are filtered out and the next allowed candidate can run.</p>
+<!-- END NEW -->
 </section>
 <section id="dispatch-architecture-shared-with-vllm-plugin-fl">
 <h2>Dispatch Architecture (shared with vllm-plugin-FL)<a class="headerlink" href="#dispatch-architecture-shared-with-vllm-plugin-fl" title="Link to this heading">#</a></h2>
@@ -612,11 +624,9 @@
           <span class="err">┌────────────────┼────────────────┐</span>
           <span class="err">▼</span>                <span class="err">▼</span>                <span class="err">▼</span>
    <span class="err">┌─────────────┐</span>  <span class="err">┌───────────┐</span>  <span class="err">┌──────────────┐</span>
-   <span class="err">│</span> <span class="n">DEFAULT</span>     <span class="err">│</span>  <span class="err">│</span> <span class="n">VENDOR</span>    <span class="err">│</span>  <span class="err">│</span> <span class="n">REFERENCE</span>    <span class="err">│</span>
-   <span class="err">│</span> <span class="p">(</span><span class="n">FlagGems</span><span class="p">)</span>  <span class="err">│</span>  <span class="err">│</span> <span class="p">(</span><span class="n">Ascend</span><span class="o">/</span>  <span class="err">│</span>  <span class="err">│</span> <span class="p">(</span><span class="n">PyTorch</span><span class="p">)</span>    <span class="err">│</span>
-   <span class="err">│</span> <span class="n">priority</span><span class="o">=</span><span class="mi">150</span><span class="err">│</span>  <span class="err">│</span>  <span class="n">CUDA</span><span class="p">)</span>    <span class="err">│</span>  <span class="err">│</span> <span class="n">priority</span><span class="o">=</span><span class="mi">50</span>  <span class="err">│</span>
-   <span class="err">│</span>             <span class="err">│</span>  <span class="err">│</span> <span class="n">priority</span><span class="o">=</span> <span class="err">│</span>  <span class="err">│</span>              <span class="err">│</span>
-   <span class="err">│</span>             <span class="err">│</span>  <span class="err">│</span>   <span class="mi">100</span>     <span class="err">│</span>  <span class="err">│</span>              <span class="err">│</span>
+   <span class="err">│</span> <span class="n">FLAGOS</span>      <span class="err">│</span>  <span class="err">│</span> <span class="n">VENDOR</span>    <span class="err">│</span>  <span class="err">│</span> <span class="n">REFERENCE</span>    <span class="err">│</span>
+   <span class="err">│</span> <span class="p">(</span><span class="n">FlagGems</span><span class="p">)</span>  <span class="err">│</span>  <span class="err">│</span> <span class="p">(</span><span class="n">chip</span><span class="o">-</span>    <span class="err">│</span>  <span class="err">│</span> <span class="p">(</span><span class="n">PyTorch</span><span class="p">)</span>    <span class="err">│</span>
+   <span class="err">│</span>             <span class="err">│</span>  <span class="err">│</span> <span class="n">native</span><span class="p">)</span>   <span class="err">│</span>  <span class="err">│</span>              <span class="err">│</span>
    <span class="err">└─────────────┘</span>  <span class="err">└───────────┘</span>  <span class="err">└──────────────┘</span>
 </pre></div>
 </div>
@@ -631,6 +641,13 @@
     <span class="p">(</span><span class="n">excludes</span> <span class="n">internal</span> <span class="n">FlagGems</span> <span class="n">calls</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Layer</span> <span class="mi">2</span> <span class="n">flagos</span> <span class="n">implementations</span><span class="p">)</span>
 </pre></div>
 </div>
+<!-- NEW in v0.2.0 -->
+</section>
+<section id="empty-mode-boundary">
+<h2>Empty mode boundary<a class="headerlink" href="#empty-mode-boundary" title="Link to this heading">#</a></h2>
+<p>Empty mode is an installation/runtime assembly mechanism for target platforms where the CUDA-oriented dependency set is not the deployment environment. It is not a no-device mode. The target platform still supplies vendor torch, drivers, firmware, device runtime, communication libraries, platform attention backends, and any operators not covered by the plugin.</p>
+<p>Use the centralized vendor/framework/image-selection page for platform-specific runtime and image choices: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p>
+<!-- END NEW -->
 </section>
 </section>
 
@@ -685,6 +702,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-hook">Dispatch hook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-architecture-shared-with-vllm-plugin-fl">Dispatch Architecture (shared with vllm-plugin-FL)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aten-replacement">ATen replacement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode-boundary">Empty mode boundary</a></li>
 </ul>
   </nav></div>
 
@@ -718,7 +736,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="reference/dispatch-reference-and-example.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This page documents the references and examples of environment variables for sglang-plugin-FL. Environment Variables — Complete Reference: Layer 2 — Fused Op Dispatch:,,, Variable, Default, Description,,, SGLANG_FL_OOT_ENABLED, 1, Master switch: 0 disables Layer 2 (keeps Layer 1 ATen active),, SG..." />
+<meta property="og:description" content="This page documents the references and examples of environment variables for sglang-plugin-FL. The effective configuration precedence is: For vendor/framework/image selection, platform-specific runtime packages, images, and validation status, use the centralized vendor/framework/image-selection p..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This page documents the references and examples of environment variables for sglang-plugin-FL. Environment Variables — Complete Reference: Layer 2 — Fused Op Dispatch:,,, Variable, Default, Description,,, SGLANG_FL_OOT_ENABLED, 1, Master switch: 0 disables Layer 2 (keeps Layer 1 ATen active),, SG..." />
+<meta name="description" content="This page documents the references and examples of environment variables for sglang-plugin-FL. The effective configuration precedence is: For vendor/framework/image selection, platform-specific runtime packages, images, and validation status, use the centralized vendor/framework/image-selection p..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Environment variable references and examples &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/dispatch-reference-and-example.2c6ec9b8-256d-467e-8f3b-1aff382313b3.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/dispatch-reference-and-example.87e768dc-9568-4b89-bddb-c6b39bf10ee2.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/dispatch-reference-and-example';</script>
@@ -79,10 +79,11 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Vendor integration" href="../dispatch_user_guide/vendor-integration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -250,8 +251,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -389,6 +388,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +398,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -571,6 +575,13 @@
   <section class="tex2jax_ignore mathjax_ignore" id="environment-variable-references-and-examples">
 <h1>Environment variable references and examples<a class="headerlink" href="#environment-variable-references-and-examples" title="Link to this heading">#</a></h1>
 <p>This page documents the references and examples of environment variables for sglang-plugin-FL.</p>
+<!-- NEW in v0.2.0 -->
+<p>The effective configuration precedence is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>For vendor/framework/image selection, platform-specific runtime packages, images, and validation status, use the <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p>
+<!-- END NEW -->
 <section id="environment-variables-complete-reference">
 <h2>Environment Variables — Complete Reference<a class="headerlink" href="#environment-variables-complete-reference" title="Link to this heading">#</a></h2>
 <section id="layer-2-fused-op-dispatch">
@@ -759,6 +770,15 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../dispatch_user_guide/vendor-integration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vendor integration</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -818,7 +838,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

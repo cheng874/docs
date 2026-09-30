@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="overview/overview.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="sglang-plugin-FL 是 SGLang 的树外（OOT）插件，构建于 FlagOS 的统一多芯片后端之上——包括统一算子库 FlagGems 和统一通信库 FlagCX 。它将 SGLang 的推理能力扩展到多种硬件平台。无需更改 SGLang 的原始接口或使用方式，同一命令即可在不同芯片上运行模型推理。 功能特性- 第一层 — ATen 算子, 第二层 — SGLang 融合内核, 第三层 — 分布式通信., 插件工作原理- 加载插件, 调度钩子, 调度架构（与 vllm-plugin-FL 共享）, ATen 替换., 项目结构." />
+<meta property="og:description" content="sglang-plugin-FL 是 SGLang 的树外（OOT）插件，构建于 FlagOS 的统一多芯片后端之上——包括统一算子库 FlagGems 和统一通信库 FlagCX 。它将 SGLang 的推理能力扩展到多种硬件平台。无需更改 SGLang 的原始接口或使用方式，同一命令即可在不同芯片上运行模型推理。 功能特性- 第一层 — ATen 算子, 第二层 — SGLang 融合内核, 第三层 — 分布式通信., 插件工作原理- 加载插件, 调度钩子, 调度架构（与 vllm-plugin-FL 共享）, ATen 替换, 空模式边界., 项目结构." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="sglang-plugin-FL 是 SGLang 的树外（OOT）插件，构建于 FlagOS 的统一多芯片后端之上——包括统一算子库 FlagGems 和统一通信库 FlagCX 。它将 SGLang 的推理能力扩展到多种硬件平台。无需更改 SGLang 的原始接口或使用方式，同一命令即可在不同芯片上运行模型推理。 功能特性- 第一层 — ATen 算子, 第二层 — SGLang 融合内核, 第三层 — 分布式通信., 插件工作原理- 加载插件, 调度钩子, 调度架构（与 vllm-plugin-FL 共享）, ATen 替换., 项目结构." />
+<meta name="description" content="sglang-plugin-FL 是 SGLang 的树外（OOT）插件，构建于 FlagOS 的统一多芯片后端之上——包括统一算子库 FlagGems 和统一通信库 FlagCX 。它将 SGLang 的推理能力扩展到多种硬件平台。无需更改 SGLang 的原始接口或使用方式，同一命令即可在不同芯片上运行模型推理。 功能特性- 第一层 — ATen 算子, 第二层 — SGLang 融合内核, 第三层 — 分布式通信., 插件工作原理- 加载插件, 调度钩子, 调度架构（与 vllm-plugin-FL 共享）, ATen 替换, 空模式边界., 项目结构." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>sglang-plugin-FL 概述 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/overview.e7c8e511-be1c-4afc-9011-7f9c1d33f260.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/overview.64ee7ea9-ab57-4338-89c6-878d51e5336b.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/overview';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -385,6 +385,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">算子调度用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -563,6 +568,7 @@
 <li class="toctree-l2"><a class="reference internal" href="how-plugin-works.html#id3">调度钩子</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how-plugin-works.html#vllm-plugin-fl">调度架构（与 vllm-plugin-FL 共享）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how-plugin-works.html#aten">ATen 替换</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-plugin-works.html#id4">空模式边界</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="project-structure.html">项目结构</a></li>
@@ -634,7 +640,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

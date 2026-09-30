@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Docker Images (Recommended): Pre-built Docker images for v0.1.0-rc2:,,, Platform, Image, Contents,,, NVIDIA GPU (dual-node), harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual, sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0,, NVIDIA GPU (single-node), harbor..." />
+<meta property="og:description" content="Runtime images and platform packages: Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: centralized vendor/framework/image-selection page. Use that page to choose the vendor, framework, ..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Docker Images (Recommended): Pre-built Docker images for v0.1.0-rc2:,,, Platform, Image, Contents,,, NVIDIA GPU (dual-node), harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual, sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0,, NVIDIA GPU (single-node), harbor..." />
+<meta name="description" content="Runtime images and platform packages: Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: centralized vendor/framework/image-selection page. Use that page to choose the vendor, framework, ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Install sglang-plugin-FL &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.20888a7f-e848-43fd-a5e0-71bacfccad62.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.859de73d-60e7-4b33-b74d-100290856215.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -79,12 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operator Dispatch User Guide" href="../dispatch_user_guide/dispatch-user-guide.html" />
+    <link rel="next" title="Quick run an inference task" href="quick-run-inference-task.html" />
     <link rel="prev" title="Requirements" href="requirements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -549,7 +554,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images-recommended">Docker Images (Recommended)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-images-and-platform-packages">Runtime images and platform packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode">Empty mode</a></li>
 </ul>
             </nav>
         </div>
@@ -563,53 +569,27 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="install-sglang-plugin-fl">
 <h1>Install sglang-plugin-FL<a class="headerlink" href="#install-sglang-plugin-fl" title="Link to this heading">#</a></h1>
-<section id="docker-images-recommended">
-<h2>Docker Images (Recommended)<a class="headerlink" href="#docker-images-recommended" title="Link to this heading">#</a></h2>
-<p>Pre-built Docker images for v0.1.0-rc2:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Platform</p></th>
-<th class="head"><p>Image</p></th>
-<th class="head"><p>Contents</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA GPU (dual-node)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>NVIDIA GPU (single-node)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Moore Threads MUSA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa</span></code></p></td>
-<td><p>sglang 0.5.12, torch 2.9.0, flag_gems 5.0.2</p></td>
-</tr>
-<tr class="row-odd"><td><p>Moore Threads (SVT)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.9.0, triton 3.1.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Huawei Ascend</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend</span></code></p></td>
-<td><p>sglang 0.5.12, flag_gems 5.0.2, CANN 8.5.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NVIDIA dual-node (cross-node inference)</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual
-<span class="c1"># NVIDIA single-node</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single
-<span class="c1"># Moore Threads MUSA</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa
-<span class="c1"># Moore Threads SVT (full-stack test)</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt
-<span class="c1"># Huawei Ascend</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend
-</pre></div>
-</div>
-<p>Dual-node images support cross-node LLM inference. Single-node images support single-machine inference. SVT images are full-stack test images.</p>
+<!-- CHANGED: v0.2.0 centralizes vendor/framework/image selection and removes stale private image tags from this page. -->
+<section id="runtime-images-and-platform-packages">
+<h2>Runtime images and platform packages<a class="headerlink" href="#runtime-images-and-platform-packages" title="Link to this heading">#</a></h2>
+<p>Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>. Use that page to choose the vendor, framework, and image before installing or launching sglang-plugin-FL.</p>
+<p>This page intentionally does not maintain a full image matrix or platform-specific package recipe.</p>
+<!-- NEW in v0.2.0 -->
+</section>
+<section id="empty-mode">
+<h2>Empty mode<a class="headerlink" href="#empty-mode" title="Link to this heading">#</a></h2>
+<p>Empty mode is an installation/runtime assembly mechanism for platforms where the CUDA-oriented SGLang dependency stack is not the target deployment environment. It avoids treating CUDA packages as the universal dependency set, but it is <strong>not</strong> a no-device mode.</p>
+<p>The target platform still provides:</p>
+<ul class="simple">
+<li><p>vendor torch;</p></li>
+<li><p>drivers and firmware;</p></li>
+<li><p>device runtime;</p></li>
+<li><p>communication libraries;</p></li>
+<li><p>platform attention backends;</p></li>
+<li><p>operators not covered by sglang-plugin-FL.</p></li>
+</ul>
+<p>Use the centralized vendor/framework/image-selection page for the platform-specific image and dependency set: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p>
+<!-- END NEW -->
 </section>
 </section>
 
@@ -634,11 +614,11 @@ docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flag
       </div>
     </a>
     <a class="right-next"
-       href="../dispatch_user_guide/dispatch-user-guide.html"
+       href="quick-run-inference-task.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Operator Dispatch User Guide</p>
+        <p class="prev-next-title">Quick run an inference task</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -660,7 +640,8 @@ docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flag
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images-recommended">Docker Images (Recommended)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-images-and-platform-packages">Runtime images and platform packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode">Empty mode</a></li>
 </ul>
   </nav></div>
 
@@ -694,7 +675,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

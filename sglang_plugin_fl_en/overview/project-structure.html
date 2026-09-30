@@ -11,8 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="overview/project-structure.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
+<meta property="og:description" content="Platform YAML files provide default dispatch policy for a detected platform. They are not a vendor validation matrix. Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: centralized vendor..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
+<meta name="description" content="Platform YAML files provide default dispatch policy for a detected platform. They are not a vendor validation matrix. Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: centralized vendor..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Project structure &#8212; sglang-Plugin-FL Documentation</title>
@@ -68,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/overview/project-structure.8d1af2fb-9713-4485-83a5-3142ae727309.js"></script>
+    <script defer="defer" src="../_static/tippy/overview/project-structure.93a6dadc-ad4c-4c1d-ba56-adc206490367.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/project-structure';</script>
@@ -82,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -383,6 +385,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -392,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -547,6 +554,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="project-structure">
 <h1>Project structure<a class="headerlink" href="#project-structure" title="Link to this heading">#</a></h1>
+<!-- CHANGED: v0.2.0 moves platform YAML defaults under dispatch/config and expands vendor backends without maintaining a full support matrix here. -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sglang_fl</span><span class="o">/</span>
 <span class="err">├──</span> <span class="n">pyproject</span><span class="o">.</span><span class="n">toml</span>                    <span class="c1"># Package config + entry_points registration</span>
 <span class="err">└──</span> <span class="n">sglang_fl</span><span class="o">/</span>
@@ -557,11 +565,6 @@
     <span class="err">│</span>   <span class="err">├──</span> <span class="n">communicator</span><span class="o">.</span><span class="n">py</span>           <span class="c1"># CommunicatorFL (FlagCX / torch.distributed wrapper)</span>
     <span class="err">│</span>   <span class="err">└──</span> <span class="n">device_communicators</span><span class="o">/</span>
     <span class="err">│</span>       <span class="err">└──</span> <span class="n">flagcx</span><span class="o">.</span><span class="n">py</span>             <span class="c1"># FlagCX-specific communicator</span>
-    <span class="err">├──</span> <span class="n">config</span><span class="o">/</span>
-    <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>               <span class="c1"># YAML config loader with platform auto-detection</span>
-    <span class="err">│</span>   <span class="err">├──</span> <span class="n">sample</span><span class="o">.</span><span class="n">yaml</span>               <span class="c1"># Full example config with all options documented</span>
-    <span class="err">│</span>   <span class="err">├──</span> <span class="n">nvidia</span><span class="o">.</span><span class="n">yaml</span>               <span class="c1"># NVIDIA CUDA platform defaults</span>
-    <span class="err">│</span>   <span class="err">└──</span> <span class="n">ascend</span><span class="o">.</span><span class="n">yaml</span>               <span class="c1"># Ascend platform defaults (with blacklists)</span>
     <span class="err">└──</span> <span class="n">dispatch</span><span class="o">/</span>                     <span class="c1"># Op dispatch system (aligned with vllm-plugin-FL)</span>
         <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>               <span class="c1"># Public API: call_op(), resolve_op()</span>
         <span class="err">├──</span> <span class="n">types</span><span class="o">.</span><span class="n">py</span>                  <span class="c1"># OpImpl, BackendImplKind, BackendPriority</span>
@@ -571,6 +574,15 @@
         <span class="err">├──</span> <span class="n">builtin_ops</span><span class="o">.</span><span class="n">py</span>            <span class="c1"># Registration orchestrator</span>
         <span class="err">├──</span> <span class="n">ops</span><span class="o">.</span><span class="n">py</span>                    <span class="c1"># FLBackendBase ABC (op signature definitions)</span>
         <span class="err">├──</span> <span class="n">logger_manager</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># Logging with SGLANG_FL_LOG_LEVEL</span>
+        <span class="err">├──</span> <span class="n">config</span><span class="o">/</span>                   <span class="c1"># Platform YAML defaults and dispatch configuration</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">ascend</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">gcu</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">hygon</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">iluvatar</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">kunlunxin</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">musa</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">├──</span> <span class="n">nvidia</span><span class="o">.</span><span class="n">yaml</span>
+        <span class="err">│</span>   <span class="err">└──</span> <span class="n">tsingmicro</span><span class="o">.</span><span class="n">yaml</span>
         <span class="err">├──</span> <span class="n">bridge</span><span class="o">/</span>                   <span class="c1"># SGLang ↔ dispatch parameter translation</span>
         <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
         <span class="err">│</span>   <span class="err">├──</span> <span class="n">silu_and_mul</span><span class="o">.</span><span class="n">py</span>       <span class="c1"># forward_cuda(self, x) → call_op("silu_and_mul", obj, x)</span>
@@ -587,11 +599,13 @@
             <span class="err">│</span>   <span class="err">├──</span> <span class="n">register_ops</span><span class="o">.</span><span class="n">py</span>
             <span class="err">│</span>   <span class="err">└──</span> <span class="n">impl</span><span class="o">/</span>             <span class="c1"># activation.py, normalization.py, rotary.py</span>
             <span class="err">└──</span> <span class="n">vendor</span><span class="o">/</span>               <span class="c1"># VENDOR backends (auto-discovered)</span>
-                <span class="err">├──</span> <span class="n">ascend</span><span class="o">/</span>           <span class="c1"># Huawei Ascend NPU (torch_npu)</span>
-                <span class="err">├──</span> <span class="n">cuda</span><span class="o">/</span>             <span class="c1"># NVIDIA CUDA (sgl_kernel)</span>
+                <span class="err">├──</span> <span class="o">&lt;</span><span class="n">vendor</span><span class="o">&gt;/</span>         <span class="c1"># Vendor-specific backend package</span>
                 <span class="err">└──</span> <span class="n">template</span><span class="o">/</span>         <span class="c1"># Template for new vendors</span>
 </pre></div>
 </div>
+<!-- NEW in v0.2.0 -->
+<p>Platform YAML files provide default dispatch policy for a detected platform. They are not a vendor validation matrix. Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p>
+<!-- END NEW -->
 </section>
 
 
@@ -658,7 +672,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

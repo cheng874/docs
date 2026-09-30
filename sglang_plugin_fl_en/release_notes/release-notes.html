@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="release_notes/release-notes.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v0.1.0: Initial release of sglang-plugin-FL. Added features- Three-layer operator replacement architecture for SGLang:- Layer 1: ATen operator replacement via FlagGems Triton kernels, Layer 2: SGLang fused kernel dispatch (SiluAndMul, RMSNorm, RotaryEmbedding), Layer 3: Distributed communication ..." />
+<meta property="og:description" content="v0.2.0: This release expands sglang-plugin-FL’s dispatch, platform configuration, and runtime configuration surface for v0.1.0 → v0.2.0. Added features- Expanded platform configuration through platform YAML defaults under sglang_fl/dispatch/config/., Expanded dispatch policy controls, including g..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v0.1.0: Initial release of sglang-plugin-FL. Added features- Three-layer operator replacement architecture for SGLang:- Layer 1: ATen operator replacement via FlagGems Triton kernels, Layer 2: SGLang fused kernel dispatch (SiluAndMul, RMSNorm, RotaryEmbedding), Layer 3: Distributed communication ..." />
+<meta name="description" content="v0.2.0: This release expands sglang-plugin-FL’s dispatch, platform configuration, and runtime configuration surface for v0.1.0 → v0.2.0. Added features- Expanded platform configuration through platform YAML defaults under sglang_fl/dispatch/config/., Expanded dispatch policy controls, including g..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Release Notes &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/release_notes/release-notes.c234ae53-a97a-49a2-98e3-2e19eeae05f1.js"></script>
+    <script defer="defer" src="../_static/tippy/release_notes/release-notes.d1885745-14f9-4312-9540-7f899186cbdd.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'release_notes/release-notes';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -549,6 +554,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
             </nav>
@@ -563,6 +569,28 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
+<!-- NEW in v0.2.0 -->
+<section id="v0-2-0">
+<h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Link to this heading">#</a></h2>
+<p>This release expands sglang-plugin-FL’s dispatch, platform configuration, and runtime configuration surface for <code class="docutils literal notranslate"><span class="pre">v0.1.0</span> <span class="pre">→</span> <span class="pre">v0.2.0</span></code>.</p>
+<ul class="simple">
+<li><p>Added features</p>
+<ul>
+<li><p>Expanded platform configuration through platform YAML defaults under <code class="docutils literal notranslate"><span class="pre">sglang_fl/dispatch/config/</span></code>.</p></li>
+<li><p>Expanded dispatch policy controls, including global backend preference, per-operation backend ordering, vendor allow/deny filtering, strict mode, fallback behavior, and dispatch cache invalidation.</p></li>
+<li><p>Empty-mode installation/runtime assembly boundary for vendor-specific runtime stacks. Empty mode is not a no-device mode; the target platform still provides vendor torch, drivers, firmware, device runtime, communication libraries, and uncovered operators.</p></li>
+<li><p>Multinode and pipeline-parallel inference examples, Qwen3.6 MTP workflow coverage, and throughput benchmark infrastructure.</p></li>
+</ul>
+</li>
+<li><p>Documentation scope</p>
+<ul>
+<li><p>Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are centralized outside this English plugin documentation: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p></li>
+<li><p>This documentation keeps the generic plugin architecture, dispatch configuration, and workflow shape without maintaining a full vendor support or image matrix.</p></li>
+</ul>
+</li>
+</ul>
+<!-- END NEW -->
+</section>
 <section id="v0-1-0">
 <h2>v0.1.0<a class="headerlink" href="#v0-1-0" title="Link to this heading">#</a></h2>
 <p>Initial release of sglang-plugin-FL.</p>
@@ -638,6 +666,7 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-2-0">v0.2.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v0-1-0">v0.1.0</a></li>
 </ul>
   </nav></div>
@@ -672,7 +701,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

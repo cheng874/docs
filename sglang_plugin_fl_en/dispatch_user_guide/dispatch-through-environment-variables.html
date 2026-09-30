@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-through-environment-variables.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="All plugin behavior is controlled by environment variables with the SGLANG_FL_* prefix. Layer 2 — Fused Op Dispatch:,,, Variable, Default, Description,,, SGLANG_FL_OOT_ENABLED, 1, Master switch: 0 disables Layer 2 (keeps Layer 1 ATen active),, SGLANG_FL_PREFER, flagos, Global backend preference: ..." />
+<meta property="og:description" content="All plugin behavior is controlled by environment variables with the SGLANG_FL_* prefix. The effective configuration precedence is: Environment variables can override explicit and platform YAML values. Platform-specific backend names and runtime defaults depend on the target platform; use[TODO: ne..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="All plugin behavior is controlled by environment variables with the SGLANG_FL_* prefix. Layer 2 — Fused Op Dispatch:,,, Variable, Default, Description,,, SGLANG_FL_OOT_ENABLED, 1, Master switch: 0 disables Layer 2 (keeps Layer 1 ATen active),, SGLANG_FL_PREFER, flagos, Global backend preference: ..." />
+<meta name="description" content="All plugin behavior is controlled by environment variables with the SGLANG_FL_* prefix. The effective configuration precedence is: Environment variables can override explicit and platform YAML values. Platform-specific backend names and runtime defaults depend on the target platform; use[TODO: ne..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Dispatch through environment variables &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-environment-variables.92c750f5-8508-49ac-9bd6-7d3b4da22d50.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-environment-variables.97380dcd-3f81-4573-86b2-83bf4bcb2a87.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-through-environment-variables';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dispatch-user-guide.html">Operator Dispatch User Guide</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -567,7 +572,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dispatch-through-environment-variables">
 <h1>Dispatch through environment variables<a class="headerlink" href="#dispatch-through-environment-variables" title="Link to this heading">#</a></h1>
-<p>All plugin behavior is controlled by environment variables with the  <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_*</span></code> prefix.</p>
+<p>All plugin behavior is controlled by environment variables with the <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_*</span></code> prefix.</p>
+<!-- NEW in v0.2.0 -->
+<p>The effective configuration precedence is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>Environment variables can override explicit and platform YAML values. Platform-specific backend names and runtime defaults depend on the target platform; use <code class="docutils literal notranslate"><span class="pre">[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code> where a deployment requires an accepted-value list that is not defined by this generic guide.</p>
+<!-- END NEW -->
 <section id="layer-2-fused-op-dispatch">
 <h2>Layer 2 — Fused Op Dispatch<a class="headerlink" href="#layer-2-fused-op-dispatch" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -600,11 +612,11 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_STRICT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> = disable fallback (error if preferred backend unavailable)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> disables fallback; an unavailable preferred/ordered backend becomes an error</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DENY_VENDORS</span></code></p></td>
 <td><p>—</p></td>
-<td><p>Deny specific vendors (comma-separated, e.g. <code class="docutils literal notranslate"><span class="pre">cuda,ascend</span></code>)</p></td>
+<td><p>Deny specific vendors (comma-separated)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_ALLOW_VENDORS</span></code></p></td>
 <td><p>—</p></td>
@@ -613,6 +625,10 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DISPATCH_LOG</span></code></p></td>
 <td><p>—</p></td>
 <td><p>Path to dispatch log file (records which ops are intercepted)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DISPATCH_DEBUG</span></code></p></td>
+<td><p>[TODO: needs confirmation]</p></td>
+<td><p>Enables additional dispatch diagnostics; accepted values are [TODO: needs confirmation]</p></td>
 </tr>
 </tbody>
 </table>
@@ -670,16 +686,17 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DIST_BACKEND</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">nccl</span></code></p></td>
-<td><p>Backend: <code class="docutils literal notranslate"><span class="pre">nccl</span></code> / <code class="docutils literal notranslate"><span class="pre">hccl</span></code> / <code class="docutils literal notranslate"><span class="pre">flagcx</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nccl</span></code> in the generic reference table</p></td>
+<td><p>Distributed backend selection; platform runtime defaults may map to another backend, and <code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code> can select FlagCX when no explicit override is set</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code></p></td>
 <td><p>—</p></td>
-<td><p>FlagCX installation path (if set, defaults to <code class="docutils literal notranslate"><span class="pre">flagcx</span></code> backend)</p></td>
+<td><p>FlagCX installation path; required for FlagCX collectives</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Supported runtime choices depend on the platform and installed libraries. Use <code class="docutils literal notranslate"><span class="pre">[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code> for platform-specific accepted values not covered by the target runtime.</p>
 </section>
 <section id="system-debug">
 <h2>System / Debug<a class="headerlink" href="#system-debug" title="Link to this heading">#</a></h2>
@@ -697,7 +714,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PLATFORM</span></code></p></td>
 <td><p>(auto)</p></td>
-<td><p>Force platform: <code class="docutils literal notranslate"><span class="pre">cuda</span></code>, <code class="docutils literal notranslate"><span class="pre">ascend</span></code> (overrides auto-detection)</p></td>
+<td><p>Force platform; accepted values are [TODO: needs confirmation]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_LOG_LEVEL</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
@@ -829,7 +846,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

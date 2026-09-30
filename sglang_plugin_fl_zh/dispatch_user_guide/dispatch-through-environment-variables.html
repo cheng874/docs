@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="dispatch_user_guide/dispatch-through-environment-variables.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="所有插件行为由带有 SGLANG_FL_* 前缀的环境变量控制。 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后端优先级，例如 rms_norm=vendor|flagos;silu_and_mul=reference,, SGLANG_FL_OOT_BLACKLIST, —, 跳过列..." />
+<meta property="og:description" content="所有插件行为都由带有 SGLANG_FL_* 前缀的环境变量控制。 有效配置优先级如下： 环境变量可以覆盖显式 YAML 和平台 YAML 中的值。平台特定后端名称和运行时默认值取决于目标平台；当部署需要本通用指南未定义的可接受值列表时，请使用[TODO: needs confirmation] 。 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="所有插件行为由带有 SGLANG_FL_* 前缀的环境变量控制。 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后端优先级，例如 rms_norm=vendor|flagos;silu_and_mul=reference,, SGLANG_FL_OOT_BLACKLIST, —, 跳过列..." />
+<meta name="description" content="所有插件行为都由带有 SGLANG_FL_* 前缀的环境变量控制。 有效配置优先级如下： 环境变量可以覆盖显式 YAML 和平台 YAML 中的值。平台特定后端名称和运行时默认值取决于目标平台；当部署需要本通用指南未定义的可接受值列表时，请使用[TODO: needs confirmation] 。 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>通过环境变量进行调度 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-environment-variables.4453f54d-45f5-4ad0-a041-cf3450b2c7e8.js"></script>
+    <script defer="defer" src="../_static/tippy/dispatch_user_guide/dispatch-through-environment-variables.bb1bea7e-6f91-42df-b6f6-334dd34c9e21.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dispatch_user_guide/dispatch-through-environment-variables';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="dispatch-user-guide.html">算子调度用户指南</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -567,7 +572,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>通过环境变量进行调度<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>所有插件行为由带有 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_*</span></code> 前缀的环境变量控制。</p>
+<p>所有插件行为都由带有 <code class="docutils literal notranslate"><span class="pre">SGLANG_FL_*</span></code> 前缀的环境变量控制。</p>
+<!-- NEW in v0.2.0 -->
+<p>有效配置优先级如下：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>环境变量可以覆盖显式 YAML 和平台 YAML 中的值。平台特定后端名称和运行时默认值取决于目标平台；当部署需要本通用指南未定义的可接受值列表时，请使用 <code class="docutils literal notranslate"><span class="pre">[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code>。</p>
+<!-- END NEW -->
 <section id="id2">
 <h2>第二层 — 融合算子调度<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -580,7 +592,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_OOT_ENABLED</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>总开关：<code class="docutils literal notranslate"><span class="pre">0</span></code> 禁用第二层（保留第一层 ATen 激活）</p></td>
+<td><p>总开关：<code class="docutils literal notranslate"><span class="pre">0</span></code> 禁用第二层（保留第一层 ATen）</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PREFER</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">flagos</span></code></p></td>
@@ -600,11 +612,11 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_STRICT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> = 禁用回退（首选后端不可用时报错）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> 禁用回退；首选或有序后端不可用时会报错</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DENY_VENDORS</span></code></p></td>
 <td><p>—</p></td>
-<td><p>拒绝特定厂商（逗号分隔，例如 <code class="docutils literal notranslate"><span class="pre">cuda,ascend</span></code>）</p></td>
+<td><p>拒绝指定厂商（逗号分隔）</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_ALLOW_VENDORS</span></code></p></td>
 <td><p>—</p></td>
@@ -613,6 +625,10 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DISPATCH_LOG</span></code></p></td>
 <td><p>—</p></td>
 <td><p>调度日志文件路径（记录哪些算子被拦截）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DISPATCH_DEBUG</span></code></p></td>
+<td><p>[TODO: needs confirmation]</p></td>
+<td><p>启用额外调度诊断；可接受值为 [TODO: needs confirmation]</p></td>
 </tr>
 </tbody>
 </table>
@@ -670,16 +686,17 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DIST_BACKEND</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">nccl</span></code></p></td>
-<td><p>后端：<code class="docutils literal notranslate"><span class="pre">nccl</span></code> / <code class="docutils literal notranslate"><span class="pre">hccl</span></code> / <code class="docutils literal notranslate"><span class="pre">flagcx</span></code></p></td>
+<td><p>通用参考表中为 <code class="docutils literal notranslate"><span class="pre">nccl</span></code></p></td>
+<td><p>分布式后端选择；平台运行时默认值可能映射到其他后端，且未设置显式覆盖时，<code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code> 可以选择 FlagCX</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code></p></td>
 <td><p>—</p></td>
-<td><p>FlagCX 安装路径（设置后默认使用 <code class="docutils literal notranslate"><span class="pre">flagcx</span></code> 后端）</p></td>
+<td><p>FlagCX 安装路径；使用 FlagCX collective communication 时必需</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>支持的运行时选项取决于平台和已安装库。对于目标运行时未覆盖的平台特定可接受值，请使用 <code class="docutils literal notranslate"><span class="pre">[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code>。</p>
 </section>
 <section id="id4">
 <h2>系统 / 调试<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -697,7 +714,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PLATFORM</span></code></p></td>
 <td><p>（自动）</p></td>
-<td><p>强制指定平台：<code class="docutils literal notranslate"><span class="pre">cuda</span></code>、<code class="docutils literal notranslate"><span class="pre">ascend</span></code>（覆盖自动检测）</p></td>
+<td><p>强制指定平台；可接受值为 [TODO: needs confirmation]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_LOG_LEVEL</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
@@ -829,7 +846,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

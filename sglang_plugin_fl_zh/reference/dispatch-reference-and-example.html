@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="reference/dispatch-reference-and-example.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本页记录了 sglang-plugin-FL 的环境变量参考和示例。 环境变量 — 完整参考: 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后端优先级，例如 rms_norm=vendor|flagos;silu_and_mul=reference,, SGLANG_FL_OOT_BL..." />
+<meta property="og:description" content="本页记录 sglang-plugin-FL 的环境变量参考和示例。 有效配置优先级如下： 关于厂商 / 框架 / 镜像选择、平台特定运行时软件包、镜像和验证状态，请参阅 集中式厂商 / 框架 / 镜像选择页面 。 环境变量 — 完整参考: 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本页记录了 sglang-plugin-FL 的环境变量参考和示例。 环境变量 — 完整参考: 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后端优先级，例如 rms_norm=vendor|flagos;silu_and_mul=reference,, SGLANG_FL_OOT_BL..." />
+<meta name="description" content="本页记录 sglang-plugin-FL 的环境变量参考和示例。 有效配置优先级如下： 关于厂商 / 框架 / 镜像选择、平台特定运行时软件包、镜像和验证状态，请参阅 集中式厂商 / 框架 / 镜像选择页面 。 环境变量 — 完整参考: 第二层 — 融合算子调度:,,, 变量, 默认值, 描述,,, SGLANG_FL_OOT_ENABLED, 1, 总开关： 0 禁用第二层（保留第一层 ATen 激活）,, SGLANG_FL_PREFER, flagos, 全局后端偏好： flagos 、 vendor 、 reference,, SGLANG_FL_PER_OP, —, 逐算子后..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>环境变量参考与示例 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/reference/dispatch-reference-and-example.a649f541-39da-457c-9dd2-a8757eb91504.js"></script>
+    <script defer="defer" src="../_static/tippy/reference/dispatch-reference-and-example.97de221a-54ca-4920-b6a3-b6d168f83c52.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/dispatch-reference-and-example';</script>
@@ -79,10 +79,11 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="厂商集成" href="../dispatch_user_guide/vendor-integration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -250,8 +251,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -389,6 +388,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started/getting-started.html">快速入门</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">算子调度用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +398,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -570,7 +574,14 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>环境变量参考与示例<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>本页记录了 sglang-plugin-FL 的环境变量参考和示例。</p>
+<p>本页记录 sglang-plugin-FL 的环境变量参考和示例。</p>
+<!-- NEW in v0.2.0 -->
+<p>有效配置优先级如下：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>environment variables &gt; explicit YAML (`SGLANG_FL_CONFIG`) &gt; platform auto-detected YAML &gt; code defaults
+</pre></div>
+</div>
+<p>关于厂商 / 框架 / 镜像选择、平台特定运行时软件包、镜像和验证状态，请参阅<a class="reference external" href="https://flagos.io/resourcedownload?lang=en">集中式厂商 / 框架 / 镜像选择页面</a>。</p>
+<!-- END NEW -->
 <section id="id2">
 <h2>环境变量 — 完整参考<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
@@ -673,16 +684,17 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_DIST_BACKEND</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">nccl</span></code></p></td>
-<td><p>后端：<code class="docutils literal notranslate"><span class="pre">nccl</span></code> / <code class="docutils literal notranslate"><span class="pre">hccl</span></code> / <code class="docutils literal notranslate"><span class="pre">flagcx</span></code></p></td>
+<td><p>通用参考表中为 <code class="docutils literal notranslate"><span class="pre">nccl</span></code></p></td>
+<td><p>分布式后端选择；平台运行时默认值可能映射到其他后端，且未设置显式覆盖时，<code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code> 可以选择 FlagCX</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FLAGCX_PATH</span></code></p></td>
 <td><p>—</p></td>
-<td><p>FlagCX 安装路径（设置后默认使用 <code class="docutils literal notranslate"><span class="pre">flagcx</span></code> 后端）</p></td>
+<td><p>FlagCX 安装路径；使用 FlagCX collective communication 时必需</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>支持的运行时选项取决于平台和已安装库。对于目标运行时未覆盖的平台特定可接受值，请使用 <code class="docutils literal notranslate"><span class="pre">[TODO:</span> <span class="pre">needs</span> <span class="pre">confirmation]</span></code>。</p>
 </section>
 <section id="id5">
 <h3>系统 / 调试<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
@@ -700,7 +712,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_PLATFORM</span></code></p></td>
 <td><p>（自动）</p></td>
-<td><p>强制指定平台：<code class="docutils literal notranslate"><span class="pre">cuda</span></code>、<code class="docutils literal notranslate"><span class="pre">ascend</span></code>（覆盖自动检测）</p></td>
+<td><p>强制指定平台；可接受值为 [TODO: needs confirmation]</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGLANG_FL_LOG_LEVEL</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
@@ -759,6 +771,15 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../dispatch_user_guide/vendor-integration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">厂商集成</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -818,7 +839,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

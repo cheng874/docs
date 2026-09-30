@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/quick-run-inference-task.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers how to quick start a inference task through sglang-plugin-FL. Installation: 1. Install SGLang v0.5.11: 2. Install FlagGems: 3. Install sglang-plugin-FL: 4. (Optional) Install FlagCX for multi-chip communication: Download models: If HuggingFace is not accessible, use a mirror: ..." />
+<meta property="og:description" content="This section covers how to quick start a inference task through sglang-plugin-FL. Installation: 1. Install SGLang v0.5.11: 2. Install FlagGems: 3. Install sglang-plugin-FL: 4. (Optional) Install FlagCX for multi-chip communication: For vendor-specific Empty-mode installation, runtime images, fram..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers how to quick start a inference task through sglang-plugin-FL. Installation: 1. Install SGLang v0.5.11: 2. Install FlagGems: 3. Install sglang-plugin-FL: 4. (Optional) Install FlagCX for multi-chip communication: Download models: If HuggingFace is not accessible, use a mirror: ..." />
+<meta name="description" content="This section covers how to quick start a inference task through sglang-plugin-FL. Installation: 1. Install SGLang v0.5.11: 2. Install FlagGems: 3. Install sglang-plugin-FL: 4. (Optional) Install FlagCX for multi-chip communication: For vendor-specific Empty-mode installation, runtime images, fram..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Quick run an inference task &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/quick-run-inference-task.783b2595-8b41-4bf0-afd2-30abc3be9c08.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/quick-run-inference-task.b61c145d-36b9-45d4-8dd1-0e815f7185ab.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/quick-run-inference-task';</script>
@@ -79,10 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Operator Dispatch User Guide" href="../dispatch_user_guide/dispatch-user-guide.html" />
+    <link rel="prev" title="Install sglang-plugin-FL" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -250,8 +252,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -379,16 +379,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/release-notes.html">Release Notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Guides</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../overview/overview.html">sglang-plugin-FL Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview/features.html">Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/how-plugin-works.html">How plugin works ?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/project-structure.html">Project structure</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -563,6 +568,9 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-with-tensor-parallelism">Multi-GPU with Tensor Parallelism</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinode-and-pipeline-parallelism">Multinode and pipeline parallelism</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3-6-mtp">Qwen3.6 MTP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throughput-benchmarking">Throughput benchmarking</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-a-request">2. Send a Request</a></li>
 </ul>
 </li>
@@ -610,6 +618,9 @@
 <span class="nb">export</span><span class="w"> </span><span class="nv">FLAGCX_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>
 </pre></div>
 </div>
+<!-- NEW in v0.2.0 -->
+<p>For vendor-specific Empty-mode installation, runtime images, framework packages, and validation prerequisites, use the centralized vendor/framework/image-selection page: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>. Empty mode is not a no-device mode; the target platform must provide its vendor torch, drivers, firmware, device runtime, communication libraries, attention backend, and uncovered operators.</p>
+<!-- END NEW -->
 </section>
 </section>
 <section id="download-models">
@@ -652,7 +663,22 @@ huggingface-cli<span class="w"> </span>download<span class="w"> </span>Qwen/Qwen
 <p class="admonition-title">Note</p>
 <p>FlagGems Triton kernels contain <code class="docutils literal notranslate"><span class="pre">logging.Logger</span></code> calls that are incompatible with <code class="docutils literal notranslate"><span class="pre">torch.compile</span></code> (used by SGLang’s piecewise CUDA graph). Always use <code class="docutils literal notranslate"><span class="pre">--disable-piecewise-cuda-graph</span></code> when launching the server. Regular CUDA graph capture works normally.</p>
 </div>
+<!-- NEW in v0.2.0 -->
 </section>
+</section>
+<section id="multinode-and-pipeline-parallelism">
+<h3>Multinode and pipeline parallelism<a class="headerlink" href="#multinode-and-pipeline-parallelism" title="Link to this heading">#</a></h3>
+<p>For multinode inference, configure the distributed backend and network interfaces for the target platform, then use the corresponding SGLang tensor-parallel and pipeline-parallel arguments. The repository’s multinode examples are starting points rather than universal hardware recipes; replace addresses, device visibility variables, communication paths, and interface names with values for the target deployment.</p>
+<p>Pipeline-parallel workflows may use FlagCX or <code class="docutils literal notranslate"><span class="pre">torch.distributed</span></code> through <code class="docutils literal notranslate"><span class="pre">CommunicatorFL</span></code>. See the dispatch environment-variable guide for backend selection. Platform-specific images, framework builds, and validation status are maintained on the centralized page: <a class="reference external" href="https://flagos.io/resourcedownload?lang=en">centralized vendor/framework/image-selection page</a>.</p>
+</section>
+<section id="qwen3-6-mtp">
+<h3>Qwen3.6 MTP<a class="headerlink" href="#qwen3-6-mtp" title="Link to this heading">#</a></h3>
+<p>The v0.2.0 examples include Qwen3.6 multi-token prediction (MTP) workflow coverage. Use the model’s supported SGLang launch arguments and the target platform’s validated runtime selection; this page does not assert universal model or hardware support.</p>
+</section>
+<section id="throughput-benchmarking">
+<h3>Throughput benchmarking<a class="headerlink" href="#throughput-benchmarking" title="Link to this heading">#</a></h3>
+<p>Use the repository’s serving benchmark tooling after the inference path is working. Compare throughput, time to first token, and decode latency across input/output lengths and request rates. Do not infer universal performance characteristics from the generic workflow.</p>
+<!-- END NEW -->
 </section>
 <section id="send-a-request">
 <h3>2. Send a Request<a class="headerlink" href="#send-a-request" title="Link to this heading">#</a></h3>
@@ -697,6 +723,24 @@ huggingface-cli<span class="w"> </span>download<span class="w"> </span>Qwen/Qwen
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="install.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Install sglang-plugin-FL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../dispatch_user_guide/dispatch-user-guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Operator Dispatch User Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -729,6 +773,9 @@ huggingface-cli<span class="w"> </span>download<span class="w"> </span>Qwen/Qwen
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-gpu-with-tensor-parallelism">Multi-GPU with Tensor Parallelism</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinode-and-pipeline-parallelism">Multinode and pipeline parallelism</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qwen3-6-mtp">Qwen3.6 MTP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throughput-benchmarking">Throughput benchmarking</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-a-request">2. Send a Request</a></li>
 </ul>
 </li>
@@ -766,7 +813,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

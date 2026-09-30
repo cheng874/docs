@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="This section covers the requirements for installing sglang-plugin-FL and guides you through the installation process and running an inference task. Requirements- Software requirements, Hardware requirements, Verified models., Install sglang-plugin-FL- Docker Images (Recommended).." />
+<meta property="og:description" content="This section covers the requirements for installing sglang-plugin-FL and guides you through the installation process and running an inference task. Requirements- Software requirements, Empty mode boundary, Hardware requirements, Verified models., Install sglang-plugin-FL- Runtime images and platf..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="This section covers the requirements for installing sglang-plugin-FL and guides you through the installation process and running an inference task. Requirements- Software requirements, Hardware requirements, Verified models., Install sglang-plugin-FL- Docker Images (Recommended).." />
+<meta name="description" content="This section covers the requirements for installing sglang-plugin-FL and guides you through the installation process and running an inference task. Requirements- Software requirements, Empty mode boundary, Hardware requirements, Verified models., Install sglang-plugin-FL- Runtime images and platf..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Getting Started &#8212; sglang-Plugin-FL Documentation</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.a56e452c-f965-406b-aa84-d9eae2756db9.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.e591d205-5b94-4fbd-b0ef-431074d5ff29.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -385,6 +385,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Install sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html">Quick run an inference task</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">Operator Dispatch User Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">Vendor integration</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">Environment variable references and examples</a></li>
 </ul>
 
     </div>
@@ -554,12 +559,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#software-requirements">Software requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#empty-mode-boundary">Empty mode boundary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#verified-models">Verified models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install sglang-plugin-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#docker-images-recommended">Docker Images (Recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#runtime-images-and-platform-packages">Runtime images and platform packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#empty-mode">Empty mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-run-inference-task.html">Quick run an inference task</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#download-models">Download models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#run-the-inference-task">Run the inference task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#use-native-cuda-operators">Use native CUDA operators</a></li>
 </ul>
 </li>
 </ul>
@@ -630,7 +644,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

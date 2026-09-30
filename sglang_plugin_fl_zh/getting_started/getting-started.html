@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/getting-started.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="本节介绍安装 sglang-plugin-FL 的要求，并指导您完成安装过程和运行推理任务。 要求- 软件要求, 硬件要求, 已验证的模型., 安装 sglang-plugin-FL- Docker 镜像（推荐）.." />
+<meta property="og:description" content="本节介绍安装 sglang-plugin-FL 的要求，并指导您完成安装过程和运行推理任务。 要求- 软件要求, Empty mode 边界, 硬件要求, 已验证的模型., 安装 sglang-plugin-FL- 运行时镜像与平台软件包, Empty mode., 快速运行推理任务- 安装, 下载模型, 运行推理任务, 使用原生 CUDA 算子.." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="本节介绍安装 sglang-plugin-FL 的要求，并指导您完成安装过程和运行推理任务。 要求- 软件要求, 硬件要求, 已验证的模型., 安装 sglang-plugin-FL- Docker 镜像（推荐）.." />
+<meta name="description" content="本节介绍安装 sglang-plugin-FL 的要求，并指导您完成安装过程和运行推理任务。 要求- 软件要求, Empty mode 边界, 硬件要求, 已验证的模型., 安装 sglang-plugin-FL- 运行时镜像与平台软件包, Empty mode., 快速运行推理任务- 安装, 下载模型, 运行推理任务, 使用原生 CUDA 算子.." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>快速入门 &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/getting-started.f1ee8b8a-d1c4-4a44-a6f7-be07f28b367c.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/getting-started.718bfb20-8975-4cab-a6e3-a983ea839b23.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/getting-started';</script>
@@ -84,7 +84,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -385,6 +385,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">快速入门</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">算子调度用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +395,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -554,12 +559,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements.html">要求</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#id2">软件要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#empty-mode">Empty mode 边界</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#id3">硬件要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.html#id4">已验证的模型</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">安装 sglang-plugin-FL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#docker">Docker 镜像（推荐）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id1">运行时镜像与平台软件包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#empty-mode">Empty mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-run-inference-task.html">快速运行推理任务</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#id2">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#id3">下载模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#id4">运行推理任务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html#cuda">使用原生 CUDA 算子</a></li>
 </ul>
 </li>
 </ul>
@@ -630,7 +644,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

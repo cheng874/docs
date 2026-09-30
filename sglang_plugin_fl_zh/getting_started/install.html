@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="getting_started/install.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="Docker 镜像（推荐）: v0.1.0-rc2 预构建 Docker 镜像：,,, 平台, 镜像, 内容,,, NVIDIA GPU（双节点）, harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual, sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0,, NVIDIA GPU（单节点）, harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nv..." />
+<meta property="og:description" content="运行时镜像与平台软件包: 特定厂商的框架选择、运行时镜像、验证状态、安装命令和适配流程统一维护在集中页面： 厂商/框架/镜像选择集中页面 。安装或启动 sglang-plugin-FL 前，请使用该页面选择厂商、框架和镜像。 本页面有意不再维护完整镜像矩阵或平台专属软件包配方。 Empty mode: Empty mode 是一种安装/运行时组装机制，适用于以 CUDA 为导向的 SGLang 依赖栈并非目标部署环境的平台。它避免将 CUDA 软件包视为通用依赖集，但它 不是 无设备模式。 目标平台仍需提供： 厂商 torch；, 驱动和固件；, 设备运行时；, 通信库；, 平台注意力后..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="Docker 镜像（推荐）: v0.1.0-rc2 预构建 Docker 镜像：,,, 平台, 镜像, 内容,,, NVIDIA GPU（双节点）, harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual, sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0,, NVIDIA GPU（单节点）, harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nv..." />
+<meta name="description" content="运行时镜像与平台软件包: 特定厂商的框架选择、运行时镜像、验证状态、安装命令和适配流程统一维护在集中页面： 厂商/框架/镜像选择集中页面 。安装或启动 sglang-plugin-FL 前，请使用该页面选择厂商、框架和镜像。 本页面有意不再维护完整镜像矩阵或平台专属软件包配方。 Empty mode: Empty mode 是一种安装/运行时组装机制，适用于以 CUDA 为导向的 SGLang 依赖栈并非目标部署环境的平台。它避免将 CUDA 软件包视为通用依赖集，但它 不是 无设备模式。 目标平台仍需提供： 厂商 torch；, 驱动和固件；, 设备运行时；, 通信库；, 平台注意力后..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>安装 sglang-plugin-FL &#8212; sglang-Plugin-FL 文档中心</title>
@@ -70,7 +70,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/getting_started/install.38267513-e5c6-4408-9f15-eb2e929b365a.js"></script>
+    <script defer="defer" src="../_static/tippy/getting_started/install.29df3f4f-d9ab-4f0b-a14e-f3e4a799226c.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/install';</script>
@@ -79,12 +79,12 @@
     <link rel="icon" href="../_static/favicon.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="算子调度用户指南" href="../dispatch_user_guide/dispatch-user-guide.html" />
+    <link rel="next" title="快速运行推理任务" href="quick-run-inference-task.html" />
     <link rel="prev" title="要求" href="requirements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -389,6 +389,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="getting-started.html">快速入门</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="requirements.html">要求</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">安装 sglang-plugin-FL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-run-inference-task.html">快速运行推理任务</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dispatch_user_guide/dispatch-user-guide.html">算子调度用户指南</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -398,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../dispatch_user_guide/vendor-integration.html">厂商集成</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📖 参考</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/dispatch-reference-and-example.html">环境变量参考与示例</a></li>
 </ul>
 
     </div>
@@ -549,7 +554,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker 镜像（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">运行时镜像与平台软件包</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode">Empty mode</a></li>
 </ul>
             </nav>
         </div>
@@ -563,53 +569,27 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sglang-plugin-fl">
 <h1>安装 sglang-plugin-FL<a class="headerlink" href="#sglang-plugin-fl" title="Link to this heading">#</a></h1>
-<section id="docker">
-<h2>Docker 镜像（推荐）<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
-<p>v0.1.0-rc2 预构建 Docker 镜像：</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>平台</p></th>
-<th class="head"><p>镜像</p></th>
-<th class="head"><p>内容</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>NVIDIA GPU（双节点）</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>NVIDIA GPU（单节点）</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0</p></td>
-</tr>
-<tr class="row-even"><td><p>摩尔线程 MUSA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa</span></code></p></td>
-<td><p>sglang 0.5.12, torch 2.9.0, flag_gems 5.0.2</p></td>
-</tr>
-<tr class="row-odd"><td><p>摩尔线程（SVT）</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt</span></code></p></td>
-<td><p>sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.9.0, triton 3.1.0</p></td>
-</tr>
-<tr class="row-even"><td><p>华为昇腾</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend</span></code></p></td>
-<td><p>sglang 0.5.12, flag_gems 5.0.2, CANN 8.5.0</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># NVIDIA 双节点（跨节点推理）</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual
-<span class="c1"># NVIDIA 单节点</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single
-<span class="c1"># 摩尔线程 MUSA</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa
-<span class="c1"># 摩尔线程 SVT（全栈测试）</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt
-<span class="c1"># 华为昇腾</span>
-docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend
-</pre></div>
-</div>
-<p>双节点镜像支持跨节点大模型推理，单节点镜像支持单机推理。SVT 为全栈测试镜像。</p>
+<!-- CHANGED: v0.2.0 centralizes vendor/framework/image selection and removes stale private image tags from this page. -->
+<section id="id1">
+<h2>运行时镜像与平台软件包<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>特定厂商的框架选择、运行时镜像、验证状态、安装命令和适配流程统一维护在集中页面：<a class="reference external" href="https://flagos.io/resourcedownload?lang=en">厂商/框架/镜像选择集中页面</a>。安装或启动 sglang-plugin-FL 前，请使用该页面选择厂商、框架和镜像。</p>
+<p>本页面有意不再维护完整镜像矩阵或平台专属软件包配方。</p>
+<!-- NEW in v0.2.0 -->
+</section>
+<section id="empty-mode">
+<h2>Empty mode<a class="headerlink" href="#empty-mode" title="Link to this heading">#</a></h2>
+<p>Empty mode 是一种安装/运行时组装机制，适用于以 CUDA 为导向的 SGLang 依赖栈并非目标部署环境的平台。它避免将 CUDA 软件包视为通用依赖集，但它<strong>不是</strong>无设备模式。</p>
+<p>目标平台仍需提供：</p>
+<ul class="simple">
+<li><p>厂商 torch；</p></li>
+<li><p>驱动和固件；</p></li>
+<li><p>设备运行时；</p></li>
+<li><p>通信库；</p></li>
+<li><p>平台注意力后端；</p></li>
+<li><p>sglang-plugin-FL 未覆盖的算子。</p></li>
+</ul>
+<p>请使用集中厂商/框架/镜像选择页面获取平台专属镜像和依赖集：<a class="reference external" href="https://flagos.io/resourcedownload?lang=en">厂商/框架/镜像选择集中页面</a>。</p>
+<!-- END NEW -->
 </section>
 </section>
 
@@ -634,11 +614,11 @@ docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flag
       </div>
     </a>
     <a class="right-next"
-       href="../dispatch_user_guide/dispatch-user-guide.html"
+       href="quick-run-inference-task.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">算子调度用户指南</p>
+        <p class="prev-next-title">快速运行推理任务</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -660,7 +640,8 @@ docker<span class="w"> </span>pull<span class="w"> </span>harbor.baai.ac.cn/flag
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker 镜像（推荐）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">运行时镜像与平台软件包</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-mode">Empty mode</a></li>
 </ul>
   </nav></div>
 
@@ -694,7 +675,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>
