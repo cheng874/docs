@@ -74,9 +74,9 @@ The FlagOS ecosystem enablement layer adopts a plugin architecture composed of t
 
   sglang-plugin-FL is an out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip backend. It extends SGLang's inference capabilities across diverse hardware platforms.
 
-- **PyTorch-Plugin-FL** (v0.1.0)
+- **Torch-FL** (v0.1.0)
 
-  PyTorch-Plugin-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend for unified multi-chip support.
+  Torch-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend for unified multi-chip support.
 
 - **Megatron-LM-FL** (v0.2.0)
 

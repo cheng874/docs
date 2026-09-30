@@ -259,17 +259,17 @@ msgstr ""
 "的推理能力扩展到多种硬件平台。"
 
 #: ../../overview.md:77
-msgid "**PyTorch-Plugin-FL** (v0.1.0)"
-msgstr "**PyTorch-Plugin-FL** (v0.1.0)"
+msgid "**Torch-FL** (v0.1.0)"
+msgstr "**Torch-FL** (v0.1.0)"
 
 #: ../../overview.md:79
 msgid ""
-"PyTorch-Plugin-FL is a custom PyTorch device plugin based on the "
+"Torch-FL is a custom PyTorch device plugin based on the "
 "PrivateUse1 extension mechanism, registering FlagGems high-performance "
 "Triton operators as the flagos device backend for unified multi-chip "
 "support."
 msgstr ""
-"PyTorch-Plugin-FL 是一个基于 PrivateUse1 扩展机制的自定义 PyTorch 设备插件，将 FlagGems 高性能 "
+"Torch-FL 是一个基于 PrivateUse1 扩展机制的自定义 PyTorch 设备插件，将 FlagGems 高性能 "
 "Triton 算子注册为 flagos 设备后端，实现统一的多芯片支持。"
 
 #: ../../overview.md:81

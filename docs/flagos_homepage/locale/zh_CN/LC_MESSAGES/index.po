@@ -299,8 +299,8 @@ msgstr ""
 "link-sd }"
 
 #: ../../index.md:154
-msgid "PyTorch-Plugin-FL"
-msgstr "PyTorch-Plugin-FL"
+msgid "Torch-FL"
+msgstr "Torch-FL"
 
 #: ../../index.md:157
 msgid ""
@@ -314,10 +314,10 @@ msgstr ""
 #: ../../index.md:160
 #, python-brace-format
 msgid ""
-"[View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-"
+"[View Documentation →](https://docs.flagos.io/projects/torch-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/zh-"
+"[查看文档 →](https://docs.flagos.io/projects/torch-FL/zh-"
 "cn/latest/){ .card-link-sd }"
 
 #: ../../index.md:163

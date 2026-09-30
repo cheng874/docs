@@ -151,13 +151,13 @@ A fork of veRL that extends the upstream library with multi-chip/multi-hardware 
 [View Documentation →](https://docs.flagos.io/projects/verl-FL/en/latest/){ .card-link-sd }
 ```
 
-```{grid-item-card} PyTorch-Plugin-FL
+```{grid-item-card} Torch-FL
 :class-card: flagos-card-sd
 
 A custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend.
 
 +++
-[View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/en/latest/){ .card-link-sd }
+[View Documentation →](https://docs.flagos.io/projects/torch-FL/en/latest/){ .card-link-sd }
 ```
 
 ```{grid-item-card} sglang-plugin-FL
