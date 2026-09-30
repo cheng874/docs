@@ -6,10 +6,6 @@ orphan: true
 
 **Kind:** NeuralNetwork | **Stage:** stable | **Since:** 3.0
 
-## ATen Mapping
-
-- `_flash_attention_forward`
-
 ## Labels
 
 `aten`, `NoCPU`

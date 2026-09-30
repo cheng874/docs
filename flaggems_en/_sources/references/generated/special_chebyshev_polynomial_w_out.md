@@ -13,7 +13,7 @@ provided `out`.
 
 ## ATen Mapping
 
-- `special.chebyshev_polynomial_w.out`
+- `special_chebyshev_polynomial_w.out`
 
 ## Labels
 

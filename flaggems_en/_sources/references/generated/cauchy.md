@@ -12,7 +12,7 @@ Draws random numbers from a Cauchy distribution.
 
 ## ATen Mapping
 
-- `cauchy.float`
+- `cauchy`
 
 ## Labels
 

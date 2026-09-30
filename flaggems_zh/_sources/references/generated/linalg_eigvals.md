@@ -12,6 +12,7 @@ Computes the eigenvalues of a square matrix.
 
 ## ATen Mapping
 
+- `linalg_eigvals`
 - `_linalg_eigvals`
 
 ## Labels

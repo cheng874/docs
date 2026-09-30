@@ -10,10 +10,6 @@ orphan: true
 
 An internal IR for applying Layer Normalization for last certain number of dimensions.
 
-## ATen Mapping
-
-- `native_layer_norm`
-
 ## Labels
 
 `aten`

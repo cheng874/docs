@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="references/changelog.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v4.3: 发布日期 ：待定 新增数学算子： acos, ceil, ceil_, ceil_out, equal, logical_and_, logical_or_, 新增 BLAS 算子： bmm.out, 新增 Distribution 算子： normal_, 新增神经网络算子： one_hot, triu_, upsample_linear1d, upsample_nearest1d,, 新增张量算子： unfold_backward, zero_, 移除 Reduction 算子： moe_sum. v4.2: 发布日期 ：2026-01-04 此版本包含 216 个算子，..." />
+<meta property="og:description" content="v5.4: 发布日期 ：2026-09-28 FlagOS 2.2 的组成部分。, 新增工具功能： Op Diff, 新增 KernelGen 算子： argsort 、 isneginf 、 special_bessel_j1 、 igammac_ 、 special_logsumexp 、 special_bessel_y1 、 bernoulli 、 not_equal 、 pdist 、 norm 、 randint_like 、 reflection_pad3d 、 reflection_pad3d_backward 、_batch_norm_no_update 、_cdist..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v4.3: 发布日期 ：待定 新增数学算子： acos, ceil, ceil_, ceil_out, equal, logical_and_, logical_or_, 新增 BLAS 算子： bmm.out, 新增 Distribution 算子： normal_, 新增神经网络算子： one_hot, triu_, upsample_linear1d, upsample_nearest1d,, 新增张量算子： unfold_backward, zero_, 移除 Reduction 算子： moe_sum. v4.2: 发布日期 ：2026-01-04 此版本包含 216 个算子，..." />
+<meta name="description" content="v5.4: 发布日期 ：2026-09-28 FlagOS 2.2 的组成部分。, 新增工具功能： Op Diff, 新增 KernelGen 算子： argsort 、 isneginf 、 special_bessel_j1 、 igammac_ 、 special_logsumexp 、 special_bessel_y1 、 bernoulli 、 not_equal 、 pdist 、 norm 、 randint_like 、 reflection_pad3d 、 reflection_pad3d_backward 、_batch_norm_no_update 、_cdist..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>变更历史 &#8212; FlagGems 文档中心</title>
@@ -73,7 +73,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/references/changelog.1191b7d8-0107-4f6c-a03c-e162efd02478.js"></script>
+    <script defer="defer" src="../_static/tippy/references/changelog.8fb1d2c7-e898-45e4-bae6-b0a430bbb7ff.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'references/changelog';</script>
@@ -87,7 +87,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="zh"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="9月 29, 2026"/>
+    <meta name="docbuild:last-update" content="9月 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -608,7 +608,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-3">v4.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-4">v5.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-3">v5.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-0">v5.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-2">v4.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-1">v4.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-0">v4.0</a></li>
@@ -630,32 +632,182 @@
                   
   <section id="id1">
 <h1>变更历史<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="v4-3">
-<h2>v4.3<a class="headerlink" href="#v4-3" title="Link to this heading">#</a></h2>
-<p><strong>发布日期</strong>：待定</p>
+<section id="v5-4">
+<h2>v5.4<a class="headerlink" href="#v5-4" title="Link to this heading">#</a></h2>
+<p><strong>发布日期</strong>：2026-09-28</p>
+<ul class="simple">
+<li><p>FlagOS 2.2 的组成部分。</p></li>
+<li><p>新增工具功能：
+<code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">Diff</span></code></p></li>
+<li><p>新增 KernelGen 算子：
+<code class="docutils literal notranslate"><span class="pre">argsort</span></code>、
+<code class="docutils literal notranslate"><span class="pre">isneginf</span></code>、
+<code class="docutils literal notranslate"><span class="pre">special_bessel_j1</span></code>、
+<code class="docutils literal notranslate"><span class="pre">igammac_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">special_logsumexp</span></code>、
+<code class="docutils literal notranslate"><span class="pre">special_bessel_y1</span></code>、
+<code class="docutils literal notranslate"><span class="pre">bernoulli</span></code>、
+<code class="docutils literal notranslate"><span class="pre">not_equal</span></code>、
+<code class="docutils literal notranslate"><span class="pre">pdist</span></code>、
+<code class="docutils literal notranslate"><span class="pre">norm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">randint_like</span></code>、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad3d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad3d_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">_batch_norm_no_update</span></code>、
+<code class="docutils literal notranslate"><span class="pre">_cdist_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">renorm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">remainder</span></code>、
+<code class="docutils literal notranslate"><span class="pre">add_rms_norm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">clamp_max</span></code>、
+<code class="docutils literal notranslate"><span class="pre">fractional_max_pool2d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">special_airy_ai</span></code>、
+<code class="docutils literal notranslate"><span class="pre">digamma</span></code></p></li>
+<li><p>新增 SiliconFlow 算子：
+<code class="docutils literal notranslate"><span class="pre">upsample_linear1d_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">geometric</span></code>、
+<code class="docutils literal notranslate"><span class="pre">geometric_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">_scaled_mm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">_scaled_grouped_mm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">segment_reduce</span></code>、
+<code class="docutils literal notranslate"><span class="pre">_segment_reduce_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">nanmedian</span></code>、
+<code class="docutils literal notranslate"><span class="pre">unique_dim</span></code>、
+<code class="docutils literal notranslate"><span class="pre">searchsorted</span></code>、
+<code class="docutils literal notranslate"><span class="pre">index_reduce_</span></code></p></li>
+<li><p>新增大模型及融合算子：
+<code class="docutils literal notranslate"><span class="pre">flash_mla_with_kvcache</span></code>、
+<code class="docutils literal notranslate"><span class="pre">BeamSearchScore</span></code>、
+<code class="docutils literal notranslate"><span class="pre">MatmulBiasActivation</span></code></p></li>
+</ul>
+</section>
+<section id="v5-3">
+<h2>v5.3<a class="headerlink" href="#v5-3" title="Link to this heading">#</a></h2>
+<p><strong>发布日期</strong>：2026-06-24</p>
+<ul class="simple">
+<li><p>FlagOS 2.1 的组成部分。</p></li>
+<li><p>为部分矩阵乘算子新增 FlagTune 功能：
+简单且可扩展的 FlagTune API、
+使用 <code class="docutils literal notranslate"><span class="pre">GROUP_M</span></code> 对 <code class="docutils literal notranslate"><span class="pre">mm</span></code> 进行调优</p></li>
+<li><p>新增并优化 FP8 与 MoE 内核：
+FP8 分块 <code class="docutils literal notranslate"><span class="pre">bmm</span></code>、
+<code class="docutils literal notranslate"><span class="pre">fp8_einsum</span></code>、
+优化的融合 MoE 内核、
+<code class="docutils literal notranslate"><span class="pre">router_gemm</span></code>、
+融合 Marlin MoE</p></li>
+<li><p>新增大模型融合算子：
+<code class="docutils literal notranslate"><span class="pre">fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert</span></code></p></li>
+<li><p>新增神经网络算子：
+<code class="docutils literal notranslate"><span class="pre">affine_grid_generator</span></code></p></li>
+<li><p>改进 NVIDIA 后端：
+将 SQMMA 描述符迁移至 Triton 3.6 TensorDescriptor API、
+升级至 Triton 3.6、
+升级 NVIDIA 后端使用的 PyTorch</p></li>
+<li><p>改进 Spacemit 和 Enflame 的后端及安装支持。</p></li>
+<li><p>新增 QUICK_MODE，以缩短测试套件运行时间。</p></li>
+</ul>
+</section>
+<section id="v5-0">
+<h2>v5.0<a class="headerlink" href="#v5-0" title="Link to this heading">#</a></h2>
+<p><strong>发布日期</strong>：2026-03-26</p>
 <ul class="simple">
 <li><p>新增数学算子：
-<code class="docutils literal notranslate"><span class="pre">acos</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ceil</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ceil_</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ceil_out</span></code>,
-<code class="docutils literal notranslate"><span class="pre">equal</span></code>,
-<code class="docutils literal notranslate"><span class="pre">logical_and_</span></code>,
-<code class="docutils literal notranslate"><span class="pre">logical_or_</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">absolute</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">acos</span></code>、
+<code class="docutils literal notranslate"><span class="pre">arcsinh</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">arcsinh_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">arcsinh.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">arctanh_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">asinh_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">ceil</span></code>、
+<code class="docutils literal notranslate"><span class="pre">ceil_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">ceil.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">diagmma_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">equal</span></code>、
+<code class="docutils literal notranslate"><span class="pre">floor_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">fmin</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">fmin.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">hardswish_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">hypot</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">i0</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">i0_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">i0.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">log1p_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">logaddexp</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">logaddexp.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">logical_and_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">logical_or_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">logit</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">logit_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">logit.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">sgn_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">sinh_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">special_i1</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">special_i1.out</span></code> (<em>generated</em>)</p></li>
 <li><p>新增 BLAS 算子：
-<code class="docutils literal notranslate"><span class="pre">bmm.out</span></code></p></li>
-<li><p>新增 Distribution 算子：
+<code class="docutils literal notranslate"><span class="pre">bmm.out</span></code>、
+<code class="docutils literal notranslate"><span class="pre">cutlass_scaled_mm_sm_90</span></code>、
+<code class="docutils literal notranslate"><span class="pre">tril</span></code> (<em>generated</em>)</p></li>
+<li><p>新增 MoE 算子：
+<code class="docutils literal notranslate"><span class="pre">dispatch_fused_moe_kernel</span></code>、
+<code class="docutils literal notranslate"><span class="pre">grouped_topk</span></code>、
+<code class="docutils literal notranslate"><span class="pre">inplace_fused_experts</span></code>、
+<code class="docutils literal notranslate"><span class="pre">outplace_fused_experts</span></code></p></li>
+<li><p>新增分布算子：
 <code class="docutils literal notranslate"><span class="pre">normal_</span></code></p></li>
 <li><p>新增神经网络算子：
-<code class="docutils literal notranslate"><span class="pre">one_hot</span></code>,
-<code class="docutils literal notranslate"><span class="pre">triu_</span></code>,
-<code class="docutils literal notranslate"><span class="pre">upsample_linear1d</span></code>,
-<code class="docutils literal notranslate"><span class="pre">upsample_nearest1d</span></code>,</p></li>
+<code class="docutils literal notranslate"><span class="pre">_upsample_nearest_exact1d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">apply_repetition_penalties</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">chunk_gated_delta_rule_fwd</span></code>、
+<code class="docutils literal notranslate"><span class="pre">dswiglu</span></code>、
+<code class="docutils literal notranslate"><span class="pre">embedding_dense_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">fused_recurrent_gated_delta_rule_fwd</span></code>、
+<code class="docutils literal notranslate"><span class="pre">hardsigmoid</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">hardsigmoid.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">nll_loss_nd_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">nll_loss_nd_forward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">one_hot</span></code>、
+<code class="docutils literal notranslate"><span class="pre">pixel_unshuffle</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">pixel_unshuffle.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">prelu</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad1d</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad1d.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad2d</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">reflection_pad2d.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">relu6</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">swiglu</span></code>、
+<code class="docutils literal notranslate"><span class="pre">triu_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">unfold_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">upsample_bicubic2d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">upsample_linear1d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">upsample_nearest1d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">upsample_nearest3d</span></code></p></li>
 <li><p>新增张量算子：
-<code class="docutils literal notranslate"><span class="pre">unfold_backward</span></code>,
-<code class="docutils literal notranslate"><span class="pre">zero_</span></code></p></li>
-<li><p>移除 Reduction 算子：
-<code class="docutils literal notranslate"><span class="pre">moe_sum</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">_functional_sym_constrain_range_for_size</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">alias_copy</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">alias_copy.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">fill.Scalar_out</span></code>、
+<code class="docutils literal notranslate"><span class="pre">fill.Tensor_out</span></code>、
+<code class="docutils literal notranslate"><span class="pre">lift_fresh_copy</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">replication_pad1d</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">replication_pad1d.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">replication_pad3d</span></code>、
+<code class="docutils literal notranslate"><span class="pre">rrelu_with_noise_backward</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">selu</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">selu_</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">slice_backward</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">softshrink</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">softshrink.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">t_copy</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">t_copy.out</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">unfold_backward</span></code>、
+<code class="docutils literal notranslate"><span class="pre">zero</span></code> (<em>generated</em>)、
+<code class="docutils literal notranslate"><span class="pre">zero_</span></code>、
+<code class="docutils literal notranslate"><span class="pre">zero.out</span></code> (<em>generated</em>)</p></li>
+<li><p>移除 Reduction 算子 <code class="docutils literal notranslate"><span class="pre">moe_sum</span></code>。</p></li>
+<li><p>新增 Reduction 算子：
+<code class="docutils literal notranslate"><span class="pre">bincount</span></code></p></li>
+<li><p>新增 DSA 算子：
+<code class="docutils literal notranslate"><span class="pre">spare_mla_fwd</span></code></p></li>
 </ul>
 </section>
 <section id="v4-2">
@@ -1104,7 +1256,9 @@ RWKV 项目采纳</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-3">v4.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-4">v5.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-3">v5.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-0">v5.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-2">v4.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-1">v4.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-0">v4.0</a></li>
@@ -1146,7 +1300,7 @@ RWKV 项目采纳</p></li>
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9月 29, 2026.
+  Last updated on 9月 30, 2026.
   <br/>
 </p>
   </div>

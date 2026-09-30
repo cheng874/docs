@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="references/changelog.html" />
 <meta property="og:site_name" content="KernelGen Documentation" />
-<meta property="og:description" content="v5.0: Release date: TBD Added math operators: absolute( generated), acos, arcsinh( generated), arcsinh_( generated), arcsinh.out( generated), arctanh_( generated), asinh_( generated), ceil, ceil_, ceil.out, diagmma_( generated), equal, floor_( generated), fmin( generated), fmin.out( generated) ha..." />
+<meta property="og:description" content="v5.4: Release date: 2026-09-28 Part of FlagOS 2.2., Added tooling feature: Op Diff, Added KernelGen operators: argsort, isneginf, special_bessel_j1, igammac_, special_logsumexp, special_bessel_y1, bernoulli, not_equal, pdist, norm, randint_like, reflection_pad3d, reflection_pad3d_backward,_batch_..." />
 <meta property="og:image" content="https://docs.readthedocs.io/en/latest/_static/img/logo-opengraph.png" />
 <meta property="og:image:alt" content="KernelGen Documentation" />
-<meta name="description" content="v5.0: Release date: TBD Added math operators: absolute( generated), acos, arcsinh( generated), arcsinh_( generated), arcsinh.out( generated), arctanh_( generated), asinh_( generated), ceil, ceil_, ceil.out, diagmma_( generated), equal, floor_( generated), fmin( generated), fmin.out( generated) ha..." />
+<meta name="description" content="v5.4: Release date: 2026-09-28 Part of FlagOS 2.2., Added tooling feature: Op Diff, Added KernelGen operators: argsort, isneginf, special_bessel_j1, igammac_, special_logsumexp, special_bessel_y1, bernoulli, not_equal, pdist, norm, randint_like, reflection_pad3d, reflection_pad3d_backward,_batch_..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Change History &#8212; FlagGems Documentation</title>
@@ -73,7 +73,7 @@
     <script src="../_static/js/lightbox2-options.js?v=b4db3a7c"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/references/changelog.cc2be4c8-87d8-4004-b31a-85e48b07776b.js"></script>
+    <script defer="defer" src="../_static/tippy/references/changelog.520c96f2-f760-44eb-8cf7-cb74e34dd059.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'references/changelog';</script>
@@ -87,7 +87,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -608,6 +608,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-4">v5.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-3">v5.3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-0">v5.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-2">v4.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-1">v4.1</a></li>
@@ -630,9 +632,83 @@
                   
   <section id="change-history">
 <h1>Change History<a class="headerlink" href="#change-history" title="Link to this heading">#</a></h1>
+<section id="v5-4">
+<h2>v5.4<a class="headerlink" href="#v5-4" title="Link to this heading">#</a></h2>
+<p><strong>Release date</strong>: 2026-09-28</p>
+<ul class="simple">
+<li><p>Part of FlagOS 2.2.</p></li>
+<li><p>Added tooling feature:
+<code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">Diff</span></code></p></li>
+<li><p>Added KernelGen operators:
+<code class="docutils literal notranslate"><span class="pre">argsort</span></code>,
+<code class="docutils literal notranslate"><span class="pre">isneginf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">special_bessel_j1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">igammac_</span></code>,
+<code class="docutils literal notranslate"><span class="pre">special_logsumexp</span></code>,
+<code class="docutils literal notranslate"><span class="pre">special_bessel_y1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bernoulli</span></code>,
+<code class="docutils literal notranslate"><span class="pre">not_equal</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pdist</span></code>,
+<code class="docutils literal notranslate"><span class="pre">norm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">randint_like</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reflection_pad3d</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reflection_pad3d_backward</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_batch_norm_no_update</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_cdist_backward</span></code>,
+<code class="docutils literal notranslate"><span class="pre">renorm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remainder</span></code>,
+<code class="docutils literal notranslate"><span class="pre">add_rms_norm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">clamp_max</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fractional_max_pool2d</span></code>,
+<code class="docutils literal notranslate"><span class="pre">special_airy_ai</span></code>,
+<code class="docutils literal notranslate"><span class="pre">digamma</span></code></p></li>
+<li><p>Added SiliconFlow operators:
+<code class="docutils literal notranslate"><span class="pre">upsample_linear1d_backward</span></code>,
+<code class="docutils literal notranslate"><span class="pre">geometric</span></code>,
+<code class="docutils literal notranslate"><span class="pre">geometric_</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_scaled_mm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_scaled_grouped_mm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">segment_reduce</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_segment_reduce_backward</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nanmedian</span></code>,
+<code class="docutils literal notranslate"><span class="pre">unique_dim</span></code>,
+<code class="docutils literal notranslate"><span class="pre">searchsorted</span></code>,
+<code class="docutils literal notranslate"><span class="pre">index_reduce_</span></code></p></li>
+<li><p>Added large-model and fused operators:
+<code class="docutils literal notranslate"><span class="pre">flash_mla_with_kvcache</span></code>,
+<code class="docutils literal notranslate"><span class="pre">BeamSearchScore</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MatmulBiasActivation</span></code></p></li>
+</ul>
+</section>
+<section id="v5-3">
+<h2>v5.3<a class="headerlink" href="#v5-3" title="Link to this heading">#</a></h2>
+<p><strong>Release date</strong>: 2026-06-24</p>
+<ul class="simple">
+<li><p>Part of FlagOS 2.1.</p></li>
+<li><p>Added FlagTune features for selected matmul operators:
+simple extensible FlagTune API,
+<code class="docutils literal notranslate"><span class="pre">mm</span></code> tuning with <code class="docutils literal notranslate"><span class="pre">GROUP_M</span></code></p></li>
+<li><p>Added and optimized FP8 and MoE kernels:
+FP8 block-wise <code class="docutils literal notranslate"><span class="pre">bmm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">fp8_einsum</span></code>,
+optimized fused MoE kernel,
+<code class="docutils literal notranslate"><span class="pre">router_gemm</span></code>,
+fused Marlin MoE</p></li>
+<li><p>Added large-model fused operators:
+<code class="docutils literal notranslate"><span class="pre">fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert</span></code></p></li>
+<li><p>Added neural network operator:
+<code class="docutils literal notranslate"><span class="pre">affine_grid_generator</span></code></p></li>
+<li><p>Improved NVIDIA backend:
+migrated SQMMA descriptor usage to the Triton 3.6 TensorDescriptor API,
+bumped Triton to 3.6,
+bumped PyTorch for the NVIDIA backend</p></li>
+<li><p>Improved backend and setup support for Spacemit and Enflame.</p></li>
+<li><p>Added QUICK_MODE support to reduce test suite runtime.</p></li>
+</ul>
+</section>
 <section id="v5-0">
 <h2>v5.0<a class="headerlink" href="#v5-0" title="Link to this heading">#</a></h2>
-<p><strong>Release date</strong>: TBD</p>
+<p><strong>Release date</strong>: 2026-03-26</p>
 <ul class="simple">
 <li><p>Added math operators:
 <code class="docutils literal notranslate"><span class="pre">absolute</span></code> (<em>generated</em>),
@@ -1182,6 +1258,8 @@ Ascend, AIPU, etc.</p></li>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-4">v5.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-3">v5.3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v5-0">v5.0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-2">v4.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-1">v4.1</a></li>
@@ -1224,7 +1302,7 @@ By FlagOS Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2026.
+  Last updated on Sep 30, 2026.
   <br/>
 </p>
   </div>

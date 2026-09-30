@@ -15,8 +15,6 @@ is an alias of `torch.div()` with `rounding_mode=None`.
 ## ATen Mapping
 
 - `div.Tensor`
-- `divide.Tensor`
-- `true_divide.Tensor`
 
 ## Labels
 

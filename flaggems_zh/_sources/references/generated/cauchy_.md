@@ -12,7 +12,7 @@ Fills the tensor with numbers drawn from the Cauchy distribution.
 
 ## ATen Mapping
 
-- `cauchy_.float`
+- `cauchy_`
 
 ## Labels
 

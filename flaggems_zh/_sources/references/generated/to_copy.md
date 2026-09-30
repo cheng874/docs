@@ -6,6 +6,10 @@ orphan: true
 
 **Kind:** Tensor | **Stage:** stable | **Since:** 5.3
 
+## Description
+
+Copies a tensor to a different dtype, layout, device, or memory format, exposed as the low-level `_to_copy` aten operator.
+
 ## ATen Mapping
 
 - `_to_copy`

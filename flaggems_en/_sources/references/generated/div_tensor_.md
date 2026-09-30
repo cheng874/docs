@@ -14,7 +14,6 @@ This is the in-place version of `div_tensor()`.
 
 - `div_.Tensor`
 - `divide_.Tensor`
-- `true_divide_.Tensor`
 
 ## Labels
 

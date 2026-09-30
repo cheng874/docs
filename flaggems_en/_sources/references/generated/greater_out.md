@@ -12,7 +12,7 @@ A variant of `greater` that saves the output to the specified `out`.
 
 ## ATen Mapping
 
-- `greater.out`
+- `greater.Tensor_out`
 
 ## Labels
 

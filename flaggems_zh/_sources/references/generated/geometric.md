@@ -12,7 +12,7 @@ Draws random numbers from a geometric distribution.
 
 ## ATen Mapping
 
-- `geometric.float`
+- `geometric`
 
 ## Labels
 

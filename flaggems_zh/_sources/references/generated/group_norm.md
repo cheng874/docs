@@ -10,10 +10,6 @@ orphan: true
 
 An internal IR for applying Group Normalization for last certain number of dimensions.
 
-## ATen Mapping
-
-- `native_group_norm`
-
 ## Labels
 
 `aten`, `Reduction`

@@ -4,7 +4,7 @@ orphan: true
 
 # upsample_nearest_exact1d
 
-**Kind:** NeuralNetwork | **Stage:** stable | **Since:** 5.3
+**Kind:** NeuralNetwork | **Stage:** beta | **Since:** 5.0
 
 ## Description
 

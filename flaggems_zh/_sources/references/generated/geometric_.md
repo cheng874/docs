@@ -12,7 +12,7 @@ Fills self tensor with elements drawn from the geometric distribution.
 
 ## ATen Mapping
 
-- `geometric_.float`
+- `geometric_`
 
 ## Labels
 

@@ -10,10 +10,6 @@ orphan: true
 
 An internal operator used for implementing the `BatchNorm` functionality.
 
-## ATen Mapping
-
-- `native_batch_norm`
-
 ## Labels
 
 `aten`
