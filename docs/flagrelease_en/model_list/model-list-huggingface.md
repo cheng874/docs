@@ -2,39 +2,36 @@
 
 | Model Name | Website |
 |------------|---------|
+| AI21-Jamba-1.5-Mini-hygon-FlagOS | <https://huggingface.co/FlagRelease/AI21-Jamba-1.5-Mini-hygon-FlagOS> |
 | AI21-Jamba-1.5-Mini-nvidia-FlagOS | <https://huggingface.co/FlagRelease/AI21-Jamba-1.5-Mini-nvidia-FlagOS> |
 | BAAI-Cardiac-Agent-hygon-FlagOS | <https://huggingface.co/FlagRelease/BAAI-Cardiac-Agent-hygon-FlagOS> |
 | DeepSeek-R1-FlagOS-Iluvatar-INT8 | <https://huggingface.co/FlagRelease/DeepSeek-R1-FlagOS-Iluvatar-INT8> |
 | DeepSeek-V4-Pro-nvidia-FlagOS | <https://huggingface.co/FlagRelease/DeepSeek-V4-Pro-nvidia-FlagOS> |
 | ERNIE-4.5-0.3B-PT | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT> |
+| ERNIE-4.5-0.3B-PT-ascend-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-ascend-FlagOS> |
 | ERNIE-4.5-0.3B-PT-hygon-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-hygon-FlagOS> |
 | ERNIE-4.5-0.3B-PT-iluvatar-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-iluvatar-FlagOS> |
 | ERNIE-4.5-0.3B-PT-metax-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-metax-FlagOS> |
 | ERNIE-4.5-0.3B-PT-mthreads-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-mthreads-FlagOS> |
+| ERNIE-4.5-0.3B-PT-nvidia-FlagOS | <https://huggingface.co/FlagRelease/ERNIE-4.5-0.3B-PT-nvidia-FlagOS> |
 | farm_molecular_representation-hygon-FlagOS | <https://huggingface.co/FlagRelease/farm_molecular_representation-hygon-FlagOS> |
 | GLM-5.2-mthreads-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.2-mthreads-FlagOS> |
 | GLM-5.2-zhenwu-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.2-zhenwu-FlagOS> |
 | GLM-5.3-Flash-BF16-ascend-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-ascend-FlagOS> |
-| GLM-5.3-Flash-BF16-hygon-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-hygon-FlagOS> |
 | GLM-5.3-Flash-BF16-kunlunxin-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-kunlunxin-FlagOS> |
-| GLM-5.3-Flash-BF16-metax-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-metax-FlagOS> |
-| GLM-5.3-Flash-BF16-nvidia-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-nvidia-FlagOS> |
 | GLM-5.3-Flash-BF16-tsingmicro-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-tsingmicro-FlagOS> |
-| GLM-5.3-Flash-BF16-zhenwu-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-BF16-zhenwu-FlagOS> |
 | GLM-5.3-Flash-FP8-mthreads-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-FP8-mthreads-FlagOS> |
 | GLM-5.3-Flash-INT8-sunrise-FlagOS | <https://huggingface.co/FlagRelease/GLM-5.3-Flash-INT8-sunrise-FlagOS> |
 | Hy3-iluvatar-FlagOS | <https://huggingface.co/FlagRelease/Hy3-iluvatar-FlagOS> |
 | Hy3-nvidia-FlagOS-Express | <https://huggingface.co/FlagRelease/Hy3-nvidia-FlagOS-Express> |
 | Hy3-tsingmicro-FlagOS | <https://huggingface.co/FlagRelease/Hy3-tsingmicro-FlagOS> |
-| Hy4-preview-FP8-mthreads-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-FP8-mthreads-FlagOS> |
 | Hy4-preview-FP8-nvidia-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-FP8-nvidia-FlagOS> |
 | Hy4-preview-INT8-ascend-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-INT8-ascend-FlagOS> |
 | Hy4-preview-INT8-hygon-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-INT8-hygon-FlagOS> |
-| Hy4-preview-INT8-kunlunxin-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-INT8-kunlunxin-FlagOS> |
-| Hy4-preview-INT8-metax-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-INT8-metax-FlagOS> |
 | Hy4-preview-INT8-zhenwu-FlagOS | <https://huggingface.co/FlagRelease/Hy4-preview-INT8-zhenwu-FlagOS> |
 | Kimi-Linear-48B-A3B-Instruct-hygon-FlagOS | <https://huggingface.co/FlagRelease/Kimi-Linear-48B-A3B-Instruct-hygon-FlagOS> |
 | Kimi-Linear-48B-A3B-Instruct-iluvatar-FlagOS | <https://huggingface.co/FlagRelease/Kimi-Linear-48B-A3B-Instruct-iluvatar-FlagOS> |
+| Kimi-Linear-48B-A3B-Instruct-metax-FlagOS | <https://huggingface.co/FlagRelease/Kimi-Linear-48B-A3B-Instruct-metax-FlagOS> |
 | Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS | <https://huggingface.co/FlagRelease/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS> |
 | MiniCPM-o-4.5-ascend-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-o-4.5-ascend-FlagOS> |
 | MiniCPM-o-4.5-hygon-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-o-4.5-hygon-FlagOS> |
@@ -42,9 +39,11 @@
 | MiniCPM-o-4.5-metax-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-o-4.5-metax-FlagOS> |
 | MiniCPM-o-4.5-nvidia-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-o-4.5-nvidia-FlagOS> |
 | MiniCPM-o-4.5-zhenwu-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-o-4.5-zhenwu-FlagOS> |
+| MiniCPM-V-4-metax-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM-V-4-metax-FlagOS> |
 | MiniCPM5-2B-W8A8-arm-FlagOS | <https://huggingface.co/FlagRelease/MiniCPM5-2B-W8A8-arm-FlagOS> |
 | MiniMax-M2.7-iluvatar-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M2.7-iluvatar-FlagOS> |
 | MiniMax-M2.7-metax-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M2.7-metax-FlagOS> |
+| MiniMax-M2.7-nvidia-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M2.7-nvidia-FlagOS> |
 | MiniMax-M3-ascend-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M3-ascend-FlagOS> |
 | MiniMax-M3-hygon-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M3-hygon-FlagOS> |
 | MiniMax-M3-mthreads-FlagOS | <https://huggingface.co/FlagRelease/MiniMax-M3-mthreads-FlagOS> |
@@ -93,6 +92,7 @@
 | Qwen3.8-Flash-Next-BF16-zhenwu-FlagOS | <https://huggingface.co/FlagRelease/Qwen3.8-Flash-Next-BF16-zhenwu-FlagOS> |
 | Qwen3.8-Flash-Next-FP8-mthreads-FlagOS | <https://huggingface.co/FlagRelease/Qwen3.8-Flash-Next-FP8-mthreads-FlagOS> |
 | RoboBrain-X0-FlagOS | <https://huggingface.co/FlagRelease/RoboBrain-X0-FlagOS> |
+| Seed-OSS-36B-Instruct-hygon-FlagOS | <https://huggingface.co/FlagRelease/Seed-OSS-36B-Instruct-hygon-FlagOS> |
 | Xing4.0-29B-A4B-BF16-ascend-FlagOS | <https://huggingface.co/FlagRelease/Xing4.0-29B-A4B-BF16-ascend-FlagOS> |
 | Xing4.0-29B-A4B-BF16-hygon-FlagOS | <https://huggingface.co/FlagRelease/Xing4.0-29B-A4B-BF16-hygon-FlagOS> |
 | Xing4.0-29B-A4B-BF16-iluvatar-FlagOS | <https://huggingface.co/FlagRelease/Xing4.0-29B-A4B-BF16-iluvatar-FlagOS> |
