@@ -34,10 +34,6 @@
 | HY-MT2-1.8B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20694> |
 | HY-MT2-1.8B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20700> |
 | HY-MT2-30B-A3B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20699> |
-| HY-MT2-30B-A3B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20696> |
-| HY-MT2-30B-A3B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20702> |
-| HY-MT2-7B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20698> |
-| HY-MT2-7B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20695> |
 | HY-MT2-7B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20701> |
 | Hy3-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/29183> |
 | Hy3-iluvatar-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/29182> |
@@ -90,7 +86,6 @@
 | phi-4-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8858> |
 | phi-4-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8859> |
 | phi-4-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8860> |
-| pi0-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8862> |
 | Qwen-Image-2.1-BF16-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53282> |
 | Qwen-Image-2.1-BF16-enflame-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53279> |
 | Qwen-Image-2.1-BF16-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53283> |
